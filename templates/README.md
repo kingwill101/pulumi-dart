@@ -7,6 +7,7 @@ Available templates:
 - `dart-minimal`: minimal stack project that validates language-host + SDK setup.
 - `dart-random`: stack project with `pulumi_random` provider package wiring.
 - `dart-aws-app-platform`: deploys a low-cost ECS/Fargate Dart web service using `pulumi_aws_app_platform`.
+- `dart-aws-faas`: deploys a Dart AWS Lambda function using `pulumi_dart_faas` (image or zip modes).
 
 Use locally:
 
