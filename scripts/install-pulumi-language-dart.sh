@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-REPO="${PULUMI_DART_RELEASE_REPO:-pulumi/pulumi-dart}"
+REPO="${PULUMI_DART_RELEASE_REPO:-kingwill101/pulumi-dart}"
 VERSION="latest"
 INSTALL_DIR="${PULUMI_DART_INSTALL_DIR:-$HOME/.local/bin}"
 

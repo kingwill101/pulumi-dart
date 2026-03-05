@@ -1,0 +1,233 @@
+version: 2.1
+
+jobs:
+  go-test:
+    docker:
+      - image: cimg/go:1.25
+    working_directory: ~/project
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - go-mod-v1-{{ checksum "pulumi-language-dart/go.sum" }}
+      - run:
+          name: Download Go modules
+          command: cd pulumi-language-dart && go mod download
+      - save_cache:
+          key: go-mod-v1-{{ checksum "pulumi-language-dart/go.sum" }}
+          paths:
+            - ~/go/pkg/mod
+            - ~/.cache/go-build
+      - run:
+          name: Test pulumi-language-dart
+          command: cd pulumi-language-dart && go test ./...
+
+  dart-core:
+    docker:
+      - image: cimg/base:stable
+    working_directory: ~/project
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - dart-pub-v1-{{ checksum "pubspec.lock" }}
+      - run:
+          name: Install Dart SDK 3.11.0
+          command: |
+            set -euo pipefail
+            sudo apt-get update
+            sudo apt-get install -y unzip
+            curl -fsSL https://storage.googleapis.com/dart-archive/channels/stable/release/3.11.0/sdk/dartsdk-linux-x64-release.zip -o /tmp/dartsdk.zip
+            sudo unzip -q /tmp/dartsdk.zip -d /opt
+            echo 'export PATH="/opt/dart-sdk/bin:$PATH"' >> "${BASH_ENV}"
+            . "${BASH_ENV}"
+            dart --version
+      - run:
+          name: Resolve Dart workspace dependencies
+          command: dart pub get
+      - save_cache:
+          key: dart-pub-v1-{{ checksum "pubspec.lock" }}
+          paths:
+            - ~/.pub-cache
+      - run:
+          name: Analyze pulumi core package
+          command: dart analyze packages/pulumi-dart
+      - run:
+          name: Test pulumi core package
+          command: cd packages/pulumi-dart && dart test
+
+  build-language-host:
+    parameters:
+      goos:
+        type: string
+      goarch:
+        type: string
+      archive_format:
+        type: enum
+        enum: ["tar.gz", "zip"]
+    docker:
+      - image: cimg/go:1.25
+    working_directory: ~/project
+    environment:
+      CGO_ENABLED: "0"
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - go-mod-v1-{{ checksum "pulumi-language-dart/go.sum" }}
+      - run:
+          name: Download Go modules
+          command: cd pulumi-language-dart && go mod download
+      - save_cache:
+          key: go-mod-v1-{{ checksum "pulumi-language-dart/go.sum" }}
+          paths:
+            - ~/go/pkg/mod
+            - ~/.cache/go-build
+      - run:
+          name: Install archive tooling
+          command: sudo apt-get update && sudo apt-get install -y zip
+      - run:
+          name: Build << parameters.goos >>/<< parameters.goarch >> archive
+          command: |
+            set -euo pipefail
+            VERSION="${CIRCLE_TAG:-dev-${CIRCLE_SHA1:0:7}}"
+            TARGET_DIR="dist/<< parameters.goos >>-<< parameters.goarch >>"
+            BUILD_DIR="${TARGET_DIR}/build"
+            mkdir -p "${BUILD_DIR}"
+
+            BINARY_NAME="pulumi-language-dart"
+            OUTPUT_NAME="${BINARY_NAME}"
+            if [ "<< parameters.goos >>" = "windows" ]; then
+              OUTPUT_NAME="${BINARY_NAME}.exe"
+            fi
+
+            (
+              cd pulumi-language-dart
+              GOOS=<< parameters.goos >> GOARCH=<< parameters.goarch >> go build \
+                -trimpath \
+                -ldflags="-s -w" \
+                -o "../${BUILD_DIR}/${OUTPUT_NAME}" \
+                .
+            )
+
+            ARCHIVE_BASENAME="${BINARY_NAME}-${VERSION}-<< parameters.goos >>-<< parameters.goarch >>"
+            if [ "<< parameters.archive_format >>" = "zip" ]; then
+              (
+                cd "${BUILD_DIR}"
+                zip -q "../${ARCHIVE_BASENAME}.zip" "${OUTPUT_NAME}"
+              )
+              ARCHIVE_PATH="${TARGET_DIR}/${ARCHIVE_BASENAME}.zip"
+            else
+              tar -C "${BUILD_DIR}" -czf "${TARGET_DIR}/${ARCHIVE_BASENAME}.tar.gz" "${OUTPUT_NAME}"
+              ARCHIVE_PATH="${TARGET_DIR}/${ARCHIVE_BASENAME}.tar.gz"
+            fi
+
+            sha256sum "${ARCHIVE_PATH}" > "${ARCHIVE_PATH}.sha256"
+      - store_artifacts:
+          path: dist
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - dist
+
+  release-language-host:
+    docker:
+      - image: ghcr.io/cli/cli:2.78.0
+    working_directory: /work
+    steps:
+      - attach_workspace:
+          at: /work
+      - store_artifacts:
+          path: /work/dist
+          destination: pulumi-language-dart-release
+      - run:
+          name: Validate release inputs
+          command: |
+            set -euo pipefail
+            test -n "${CIRCLE_TAG}"
+            test -n "${GITHUB_TOKEN}"
+      - run:
+          name: Publish GitHub release assets
+          command: |
+            set -euo pipefail
+            gh release view "${CIRCLE_TAG}" --repo kingwill101/pulumi-dart >/dev/null 2>&1 || \
+              gh release create "${CIRCLE_TAG}" \
+                --repo kingwill101/pulumi-dart \
+                --title "${CIRCLE_TAG}" \
+                --generate-notes
+            find dist -type f -print | sort | xargs gh release upload "${CIRCLE_TAG}" --repo kingwill101/pulumi-dart --clobber
+
+workflows:
+  ci:
+    jobs:
+      - go-test:
+          filters:
+            tags:
+              only: /.*/
+      - dart-core:
+          filters:
+            tags:
+              only: /.*/
+      - build-language-host:
+          name: build-language-host-linux-amd64
+          goos: linux
+          goarch: amd64
+          archive_format: tar.gz
+          filters:
+            tags:
+              only: /.*/
+      - build-language-host:
+          name: build-language-host-linux-arm64
+          goos: linux
+          goarch: arm64
+          archive_format: tar.gz
+          filters:
+            tags:
+              only: /.*/
+      - build-language-host:
+          name: build-language-host-darwin-amd64
+          goos: darwin
+          goarch: amd64
+          archive_format: tar.gz
+          filters:
+            tags:
+              only: /.*/
+      - build-language-host:
+          name: build-language-host-darwin-arm64
+          goos: darwin
+          goarch: arm64
+          archive_format: tar.gz
+          filters:
+            tags:
+              only: /.*/
+      - build-language-host:
+          name: build-language-host-windows-amd64
+          goos: windows
+          goarch: amd64
+          archive_format: zip
+          filters:
+            tags:
+              only: /.*/
+      - build-language-host:
+          name: build-language-host-windows-arm64
+          goos: windows
+          goarch: arm64
+          archive_format: zip
+          filters:
+            tags:
+              only: /.*/
+      - release-language-host:
+          requires:
+            - go-test
+            - dart-core
+            - build-language-host-linux-amd64
+            - build-language-host-linux-arm64
+            - build-language-host-darwin-amd64
+            - build-language-host-darwin-arm64
+            - build-language-host-windows-amd64
+            - build-language-host-windows-arm64
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v.*/
