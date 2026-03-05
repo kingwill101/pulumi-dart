@@ -196,7 +196,7 @@ class Widget extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    mode = registerOutput<WidgetMode>('mode');
+    mode = registerOutput<WidgetMode>('mode', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WidgetMode.fromValue(guardedValue as String); });
   }
 }
 
@@ -312,4 +312,3 @@ class ProviderProvider extends pulumi.ProviderResource {
           options ?? pulumi.CustomResourceOptions(),
         );
 }
-

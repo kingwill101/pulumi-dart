@@ -90,6 +90,34 @@ func resourceOutputValueType(property packagePropertySpec) string {
 	return nullableDartType(propertyBaseDartType(property), property.Required)
 }
 
+func resourceOutputDecoderExpression(property packagePropertySpec) string {
+	typeSpec := propertyTypeSpec(property)
+	if !typeSpecNeedsDecodeConversion(typeSpec) {
+		return ""
+	}
+
+	decodedExpr := typeSpecDecodeExpression(typeSpec, "guardedValue")
+	return fmt.Sprintf(
+		"(raw) { final guardedValue = raw; if (guardedValue == null) return null; return %s; }",
+		decodedExpr,
+	)
+}
+
+func resourceRegisterOutputExpression(property packagePropertySpec) string {
+	outputType := resourceOutputValueType(property)
+	propertyName := dartStringLiteral(property.Name)
+	decoderExpr := resourceOutputDecoderExpression(property)
+	if decoderExpr == "" {
+		return fmt.Sprintf("registerOutput<%s>(%s)", outputType, propertyName)
+	}
+	return fmt.Sprintf(
+		"registerOutput<%s>(%s, decoder: %s)",
+		outputType,
+		propertyName,
+		decoderExpr,
+	)
+}
+
 func configPropertyGetterType(property packagePropertySpec) string {
 	base := propertyBaseDartType(property)
 	if base == "dynamic" {

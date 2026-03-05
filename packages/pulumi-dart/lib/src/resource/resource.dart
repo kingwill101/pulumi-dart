@@ -264,8 +264,11 @@ abstract class Resource {
   /// late final Output<String> name;
   /// name = registerOutput<String>('name');
   /// ```
-  Output<T> registerOutput<T>(String propertyName) {
-    final source = OutputCompletionSource.create<T>(this);
+  Output<T> registerOutput<T>(
+    String propertyName, {
+    Object? Function(Object?)? decoder,
+  }) {
+    final source = OutputCompletionSource.create<T>(this, decoder: decoder);
     completionSources[propertyName] = source;
     if (_pendingOutputException != null) {
       source.trySetException(_pendingOutputException!);

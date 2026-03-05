@@ -32,8 +32,11 @@ abstract class IOutputCompletionSource {
 /// Factory helpers for [IOutputCompletionSource] instances.
 class OutputCompletionSource {
   /// Creates a typed completion source for a resource output property.
-  static IOutputCompletionSource create<T>(Resource resource) {
-    return _TypedOutputCompletionSource<T>(resource);
+  static IOutputCompletionSource create<T>(
+    Resource resource, {
+    Object? Function(Object?)? decoder,
+  }) {
+    return _TypedOutputCompletionSource<T>(resource, decoder: decoder);
   }
 
   /// Initializes predeclared outputs for [resource].
@@ -50,10 +53,14 @@ class OutputCompletionSource {
 /// Typed completion source implementation for one output property.
 class _TypedOutputCompletionSource<T> implements IOutputCompletionSource {
   final Resource _resource;
+  final Object? Function(Object?)? _decoder;
   final Completer<OutputData<T>> _completer = Completer<OutputData<T>>();
 
   /// Creates a typed output completion source for one property.
-  _TypedOutputCompletionSource(this._resource);
+  _TypedOutputCompletionSource(
+    this._resource, {
+    Object? Function(Object?)? decoder,
+  }) : _decoder = decoder;
 
   /// Target type represented by `T`.
   @override
@@ -133,7 +140,10 @@ class _TypedOutputCompletionSource<T> implements IOutputCompletionSource {
     // If provider output data is a resource reference but the generated target
     // type cannot be hydrated and we coerce to null, keep the value unknown.
     // This preserves apply/preview semantics instead of surfacing known nulls.
-    return data.value is Resource && coerced == null;
+    return (data.value is Resource ||
+            data.value is Map ||
+            data.value is List) &&
+        coerced == null;
   }
 
   T? _coerceToTarget(Object? value) {
@@ -195,10 +205,27 @@ class _TypedOutputCompletionSource<T> implements IOutputCompletionSource {
       return null;
     }
 
+    if (_decoder != null) {
+      try {
+        final decoded = _decoder!(value);
+        if (decoded == null) {
+          return null;
+        }
+        return decoded as T;
+      } on TypeError {
+        return null;
+      } on Exception {
+        return null;
+      }
+    }
+
     try {
       return value as T;
     } on TypeError {
-      if (isNullableTarget) {
+      if (isNullableTarget ||
+          value is Resource ||
+          value is Map ||
+          value is List) {
         return null;
       }
       rethrow;

@@ -3,6 +3,12 @@ import 'package:pulumi/src/output_completion_source.dart';
 import 'package:pulumi/src/resource/dependency_resource.dart';
 import 'package:test/test.dart';
 
+class _DecodedOutput {
+  final String name;
+
+  _DecodedOutput(this.name);
+}
+
 void main() {
   group('output completion source', () {
     final resource = DependencyResource(
@@ -296,5 +302,48 @@ void main() {
         expect(data.value, isNull);
       },
     );
+
+    test('setValue uses decoder for custom typed outputs', () async {
+      final source = OutputCompletionSource.create<_DecodedOutput?>(
+        resource,
+        decoder: (raw) {
+          final map = (raw as Map).cast<String, dynamic>();
+          return _DecodedOutput(map['name'] as String);
+        },
+      );
+
+      source.setValue(
+        const OutputData<Object?>(
+          value: <String, Object?>{'name': 'decoded'},
+          isKnown: true,
+          isSecret: false,
+          resources: {},
+        ),
+      );
+
+      final value = await source.output.getValue();
+      expect(value, isNotNull);
+      expect(value!.name, equals('decoded'));
+    });
+
+    test('decoder failures downgrade known map outputs to unknown', () async {
+      final source = OutputCompletionSource.create<_DecodedOutput?>(
+        resource,
+        decoder: (_) => throw StateError('decode failed'),
+      );
+
+      source.setValue(
+        const OutputData<Object?>(
+          value: <String, Object?>{'name': 'decoded'},
+          isKnown: true,
+          isSecret: false,
+          resources: {},
+        ),
+      );
+
+      final data = await source.output.getData();
+      expect(data.isKnown, isFalse);
+      expect(data.value, isNull);
+    });
   });
 }

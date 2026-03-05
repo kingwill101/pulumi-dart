@@ -250,15 +250,14 @@ pulumi.Input<U>? _mapOptionalInputValue<T, U>(pulumi.Input<T>? input, U Function
 				if resource.ArgsClass != "" {
 					ctorParamNames = []string{"name", "args", "options"}
 				}
-				for _, property := range resource.OutputProperties {
-					fmt.Fprintf(
-						&b,
-						"    %s = registerOutput<%s>(%s);\n",
-						registerOutputAssignmentTarget(property.FieldName, ctorParamNames...),
-						resourceOutputValueType(property),
-						dartStringLiteral(property.Name),
-					)
-				}
+					for _, property := range resource.OutputProperties {
+						fmt.Fprintf(
+							&b,
+							"    %s = %s;\n",
+							registerOutputAssignmentTarget(property.FieldName, ctorParamNames...),
+							resourceRegisterOutputExpression(property),
+						)
+					}
 				b.WriteString("  }\n}\n\n")
 			}
 			continue
@@ -301,15 +300,14 @@ pulumi.Input<U>? _mapOptionalInputValue<T, U>(pulumi.Input<T>? input, U Function
 		}
 		b.WriteString(" {\n")
 		ctorParamNames := []string{"name", "args", "options"}
-		for _, property := range resource.OutputProperties {
-			fmt.Fprintf(
-				&b,
-				"    %s = registerOutput<%s>(%s);\n",
-				registerOutputAssignmentTarget(property.FieldName, ctorParamNames...),
-				resourceOutputValueType(property),
-				dartStringLiteral(property.Name),
-			)
-		}
+			for _, property := range resource.OutputProperties {
+				fmt.Fprintf(
+					&b,
+					"    %s = %s;\n",
+					registerOutputAssignmentTarget(property.FieldName, ctorParamNames...),
+					resourceRegisterOutputExpression(property),
+				)
+			}
 		b.WriteString("  }\n}\n\n")
 	}
 
