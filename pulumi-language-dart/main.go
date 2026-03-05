@@ -481,6 +481,18 @@ func normalizeDartBuildTargetPath(programDirectory, buildTarget string) string {
 	return filepath.Join(programDirectory, buildTarget)
 }
 
+func shouldEmitCompileCacheLogs() bool {
+	if logging.V(5) {
+		return true
+	}
+	switch strings.TrimSpace(strings.ToLower(os.Getenv("PULUMI_DART_COMPILE_CACHE_LOGS"))) {
+	case "1", "true", "yes", "on":
+		return true
+	default:
+		return false
+	}
+}
+
 func appendDartFileFingerprint(entries *[]string, programDirectory, path string) error {
 	stat, err := os.Stat(path)
 	if err != nil {
@@ -724,14 +736,16 @@ func (host *dartLanguageHost) ensureCompiledDartProgram(
 		return "", errors.New("build target is required for compilation")
 	}
 
-	if reuseExisting {
-		if stat, err := os.Stat(buildTarget); err == nil && !stat.IsDir() {
-			logging.V(5).Infof("Reusing cached Dart executable: %s", buildTarget)
-			fmt.Fprintf(os.Stderr, "pulumi-language-dart: cache hit executable=%s\n", buildTarget)
-			return buildTarget, nil
-		} else if err != nil && !os.IsNotExist(err) {
-			return "", fmt.Errorf("failed to inspect cached executable %s: %w", buildTarget, err)
-		}
+		if reuseExisting {
+			if stat, err := os.Stat(buildTarget); err == nil && !stat.IsDir() {
+				logging.V(5).Infof("Reusing cached Dart executable: %s", buildTarget)
+				if shouldEmitCompileCacheLogs() {
+					logging.Infof("pulumi-language-dart: cache hit executable=%s", buildTarget)
+				}
+				return buildTarget, nil
+			} else if err != nil && !os.IsNotExist(err) {
+				return "", fmt.Errorf("failed to inspect cached executable %s: %w", buildTarget, err)
+			}
 	}
 
 	if err := os.MkdirAll(filepath.Dir(buildTarget), 0o700); err != nil {
@@ -742,7 +756,9 @@ func (host *dartLanguageHost) ensureCompiledDartProgram(
 	if logging.V(5) {
 		logging.V(5).Infof("Compiling Dart Pulumi program: %s %s", host.exec, strings.Join(compileArgs, " "))
 	}
-	fmt.Fprintf(os.Stderr, "pulumi-language-dart: cache miss compiling entrypoint=%s output=%s\n", entryPoint, buildTarget)
+	if shouldEmitCompileCacheLogs() {
+		logging.Infof("pulumi-language-dart: cache miss compiling entrypoint=%s output=%s", entryPoint, buildTarget)
+	}
 	start := time.Now()
 
 	cmd := exec.CommandContext(ctx, host.exec, compileArgs...)
@@ -752,7 +768,9 @@ func (host *dartLanguageHost) ensureCompiledDartProgram(
 	if err := cmd.Run(); err != nil {
 		return "", err
 	}
-	fmt.Fprintf(os.Stderr, "pulumi-language-dart: compile complete duration=%s output=%s\n", time.Since(start).Round(time.Millisecond), buildTarget)
+	if shouldEmitCompileCacheLogs() {
+		logging.Infof("pulumi-language-dart: compile complete duration=%s output=%s", time.Since(start).Round(time.Millisecond), buildTarget)
+	}
 
 	return buildTarget, nil
 }
@@ -1811,12 +1829,12 @@ func (host *dartLanguageHost) Run(ctx context.Context, req *pulumirpc.RunRequest
 			return &pulumirpc.RunResponse{
 				Error: fmt.Sprintf("problem starting debugger: %v", err),
 			}, nil
-		}
-		if endpoint := vmServiceEndpointFromURI(vmServiceURI); endpoint != "" {
-			fmt.Fprintf(os.Stderr, "pulumi-language-dart: debugger endpoint=%s\n", endpoint)
-		} else if port := vmServicePortFromURI(vmServiceURI); port != "" {
-			fmt.Fprintf(os.Stderr, "pulumi-language-dart: debugger endpoint=127.0.0.1:%s\n", port)
-		}
+			}
+			if endpoint := vmServiceEndpointFromURI(vmServiceURI); endpoint != "" {
+				logging.Infof("pulumi-language-dart: debugger endpoint=%s", endpoint)
+			} else if port := vmServicePortFromURI(vmServiceURI); port != "" {
+				logging.Infof("pulumi-language-dart: debugger endpoint=127.0.0.1:%s", port)
+			}
 
 		if err := <-runDone; err != nil {
 			return runResponseForProcessError(err), nil
@@ -2211,14 +2229,16 @@ func (host *dartLanguageHost) RunPlugin(
 		}
 	}
 
-	runTarget := ""
-	if pubspec, err := codegen.ReadAndParsePubspec(filepath.Join(cmdDir, "pubspec.yaml")); err == nil {
-		runTarget = strings.TrimSpace(pubspec.Name)
+	entryPoint := resolveProgramEntryPoint(req.GetInfo(), ".", cmdDir)
+	fallbackRoot := req.GetPwd()
+	if req.GetInfo() != nil && fallbackRoot == "" {
+		fallbackRoot = req.GetInfo().GetRootDirectory()
 	}
+	cmdDir, entryPoint = normalizeCompilationContext(cmdDir, entryPoint, fallbackRoot)
 
 	dartArgs := []string{"run"}
-	if runTarget != "" {
-		dartArgs = append(dartArgs, runTarget)
+	if entryPoint != "" && entryPoint != "." {
+		dartArgs = append(dartArgs, entryPoint)
 	}
 	if isAnalyzer {
 		dartArgs = append(dartArgs, runArgs...)
