@@ -64,10 +64,7 @@ class PolicyConfigSchema {
   ///
   /// The key `enforcementLevel` is reserved and cannot be defined in
   /// [properties] or [required].
-  PolicyConfigSchema({
-    required this.properties,
-    this.required,
-  }) {
+  PolicyConfigSchema({required this.properties, this.required}) {
     if (properties.containsKey('enforcementLevel')) {
       throw ArgumentError.value(
         properties,
@@ -188,9 +185,7 @@ typedef ResourceValidation =
 
 /// Callback signature for resource policy remediation.
 typedef ResourceRemediation =
-    FutureOr<Map<String, Object?>?> Function(
-      ResourceValidationArgs args,
-    );
+    FutureOr<Map<String, Object?>?> Function(ResourceValidationArgs args);
 
 /// Callback used for combined remediation/validation implementations.
 typedef ResourceValidationRemediation =
@@ -707,11 +702,9 @@ class ValidateRemediateResource {
 ///   },
 /// );
 /// ```
-ResourceRemediation
-remediateResourceOfType<TProps extends Map<String, Object?>>(
-  String resourceType,
-  TypedResourceRemediation<TProps> remediate,
-) {
+ResourceRemediation remediateResourceOfType<
+  TProps extends Map<String, Object?>
+>(String resourceType, TypedResourceRemediation<TProps> remediate) {
   return (args) {
     final props = args.asType<TProps>(resourceType);
     if (props == null) {
