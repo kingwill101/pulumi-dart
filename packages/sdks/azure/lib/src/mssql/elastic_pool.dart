@@ -366,10 +366,26 @@ class ElasticPool extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     perDatabaseSettings = registerOutput<ElasticPoolPerDatabaseSettings>(
       'perDatabaseSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ElasticPoolPerDatabaseSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     serverName = registerOutput<String>('serverName');
-    sku = registerOutput<ElasticPoolSku>('sku');
+    sku = registerOutput<ElasticPoolSku>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ElasticPoolSku.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     zoneRedundant = registerOutput<bool?>('zoneRedundant');
   }
@@ -408,10 +424,26 @@ class ElasticPool extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     perDatabaseSettings = registerOutput<ElasticPoolPerDatabaseSettings>(
       'perDatabaseSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ElasticPoolPerDatabaseSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     serverName = registerOutput<String>('serverName');
-    sku = registerOutput<ElasticPoolSku>('sku');
+    sku = registerOutput<ElasticPoolSku>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ElasticPoolSku.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     zoneRedundant = registerOutput<bool?>('zoneRedundant');
   }

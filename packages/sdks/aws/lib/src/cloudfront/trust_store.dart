@@ -333,13 +333,29 @@ class TrustStore extends pulumi.CustomResource {
     caCertificatesBundleSource =
         registerOutput<TrustStoreCaCertificatesBundleSource>(
           'caCertificatesBundleSource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return TrustStoreCaCertificatesBundleSource.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
     numberOfCaCertificates = registerOutput<int>('numberOfCaCertificates');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<TrustStoreTimeouts?>('timeouts');
+    timeouts = registerOutput<TrustStoreTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TrustStoreTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [TrustStore] resource's state with the given [name] and [id].
@@ -369,12 +385,28 @@ class TrustStore extends pulumi.CustomResource {
     caCertificatesBundleSource =
         registerOutput<TrustStoreCaCertificatesBundleSource>(
           'caCertificatesBundleSource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return TrustStoreCaCertificatesBundleSource.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
     numberOfCaCertificates = registerOutput<int>('numberOfCaCertificates');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<TrustStoreTimeouts?>('timeouts');
+    timeouts = registerOutput<TrustStoreTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TrustStoreTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

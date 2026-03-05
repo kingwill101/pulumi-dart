@@ -412,6 +412,13 @@ class Account extends pulumi.CustomResource {
     defaultGroup = registerOutput<String>('defaultGroup');
     encryptionConfig = registerOutput<EncryptionConfigResponse>(
       'encryptionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EncryptionConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     encryptionProvisioningState = registerOutput<String>(
       'encryptionProvisioningState',
@@ -421,7 +428,16 @@ class Account extends pulumi.CustomResource {
     firewallAllowAzureIps = registerOutput<String>('firewallAllowAzureIps');
     firewallRules = registerOutput<List<Map<String, dynamic>>>('firewallRules');
     firewallState = registerOutput<String>('firewallState');
-    identity = registerOutput<EncryptionIdentityResponse>('identity');
+    identity = registerOutput<EncryptionIdentityResponse>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EncryptionIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

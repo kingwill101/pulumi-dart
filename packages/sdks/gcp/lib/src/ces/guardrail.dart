@@ -1936,22 +1936,74 @@ class Guardrail extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    action = registerOutput<GuardrailAction?>('action');
+    action = registerOutput<GuardrailAction?>(
+      'action',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GuardrailAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     app = registerOutput<String>('app');
-    codeCallback = registerOutput<GuardrailCodeCallback?>('codeCallback');
-    contentFilter = registerOutput<GuardrailContentFilter?>('contentFilter');
+    codeCallback = registerOutput<GuardrailCodeCallback?>(
+      'codeCallback',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GuardrailCodeCallback.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    contentFilter = registerOutput<GuardrailContentFilter?>(
+      'contentFilter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GuardrailContentFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool?>('enabled');
     etag = registerOutput<String>('etag');
     guardrailId = registerOutput<String>('guardrailId');
-    llmPolicy = registerOutput<GuardrailLlmPolicy?>('llmPolicy');
+    llmPolicy = registerOutput<GuardrailLlmPolicy?>(
+      'llmPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GuardrailLlmPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     llmPromptSecurity = registerOutput<GuardrailLlmPromptSecurity?>(
       'llmPromptSecurity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GuardrailLlmPromptSecurity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
-    modelSafety = registerOutput<GuardrailModelSafety?>('modelSafety');
+    modelSafety = registerOutput<GuardrailModelSafety?>(
+      'modelSafety',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GuardrailModelSafety.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     updateTime = registerOutput<String>('updateTime');
@@ -1980,22 +2032,74 @@ class Guardrail extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    action = registerOutput<GuardrailAction?>('action');
+    action = registerOutput<GuardrailAction?>(
+      'action',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GuardrailAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     app = registerOutput<String>('app');
-    codeCallback = registerOutput<GuardrailCodeCallback?>('codeCallback');
-    contentFilter = registerOutput<GuardrailContentFilter?>('contentFilter');
+    codeCallback = registerOutput<GuardrailCodeCallback?>(
+      'codeCallback',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GuardrailCodeCallback.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    contentFilter = registerOutput<GuardrailContentFilter?>(
+      'contentFilter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GuardrailContentFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool?>('enabled');
     etag = registerOutput<String>('etag');
     guardrailId = registerOutput<String>('guardrailId');
-    llmPolicy = registerOutput<GuardrailLlmPolicy?>('llmPolicy');
+    llmPolicy = registerOutput<GuardrailLlmPolicy?>(
+      'llmPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GuardrailLlmPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     llmPromptSecurity = registerOutput<GuardrailLlmPromptSecurity?>(
       'llmPromptSecurity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GuardrailLlmPromptSecurity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
-    modelSafety = registerOutput<GuardrailModelSafety?>('modelSafety');
+    modelSafety = registerOutput<GuardrailModelSafety?>(
+      'modelSafety',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GuardrailModelSafety.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     updateTime = registerOutput<String>('updateTime');

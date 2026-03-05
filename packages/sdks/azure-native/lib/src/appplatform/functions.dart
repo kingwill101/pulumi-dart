@@ -523,7 +523,8 @@ Future<GetDeploymentLogFileUrlResult> getDeploymentLogFileUrl(
 /// Other available API versions: 2023-05-01-preview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native appplatform [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_appplatform_get_deployment_remote_debugging_config_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDeploymentRemoteDebuggingConfigResult> getDeploymentRemoteDebuggingConfig(
+Future<GetDeploymentRemoteDebuggingConfigResult>
+getDeploymentRemoteDebuggingConfig(
   GetDeploymentRemoteDebuggingConfigArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -741,7 +742,8 @@ Future<ListApmSecretKeysResult> listApmSecretKeys(
 /// Other available API versions: 2023-05-01-preview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01, 2024-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native appplatform [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_appplatform_list_build_service_builder_deployments_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListBuildServiceBuilderDeploymentsResult> listBuildServiceBuilderDeployments(
+Future<ListBuildServiceBuilderDeploymentsResult>
+listBuildServiceBuilderDeployments(
   ListBuildServiceBuilderDeploymentsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

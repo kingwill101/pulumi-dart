@@ -39,10 +39,24 @@ class InboundSamlSsoProfileCloudidentityV1beta1 extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     idpConfig = registerOutput<SamlIdpConfigResponseCloudidentityV1beta1>(
       'idpConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SamlIdpConfigResponseCloudidentityV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     spConfig = registerOutput<SamlSpConfigResponseCloudidentityV1beta1>(
       'spConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SamlSpConfigResponseCloudidentityV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

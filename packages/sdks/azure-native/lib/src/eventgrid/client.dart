@@ -268,12 +268,28 @@ class Client extends pulumi.CustomResource {
     clientCertificateAuthentication =
         registerOutput<ClientCertificateAuthenticationResponse?>(
           'clientCertificateAuthentication',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ClientCertificateAuthenticationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     state = registerOutput<String?>('state');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

@@ -51,7 +51,16 @@ class FeatureOnlineStore extends pulumi.CustomResource {
     bigtable =
         registerOutput<
           GoogleCloudAiplatformV1FeatureOnlineStoreBigtableResponse
-        >('bigtable');
+        >(
+          'bigtable',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1FeatureOnlineStoreBigtableResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     createTime = registerOutput<String>('createTime');
     etag = registerOutput<String>('etag');
     featureOnlineStoreId = registerOutput<String>('featureOnlineStoreId');

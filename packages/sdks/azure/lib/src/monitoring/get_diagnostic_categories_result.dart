@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getDiagnosticCategories.
 class GetDiagnosticCategoriesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of the supported log category groups of this resource to send to the destination.
   final List<String> logCategoryGroups;
+
   /// A list of the supported log category types of this resource to send to the destination.
   final List<String> logCategoryTypes;
+
   /// A list of the Metric Categories supported for this Resource.
   final List<String> metrics;
   final String resourceId;
@@ -47,4 +49,3 @@ class GetDiagnosticCategoriesResult {
     );
   }
 }
-

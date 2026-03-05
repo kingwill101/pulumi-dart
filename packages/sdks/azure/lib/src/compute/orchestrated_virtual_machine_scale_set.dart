@@ -365,14 +365,39 @@ class OrchestratedVirtualMachineScaleSet extends pulumi.CustomResource {
     additionalCapabilities =
         registerOutput<
           OrchestratedVirtualMachineScaleSetAdditionalCapabilities?
-        >('additionalCapabilities');
+        >(
+          'additionalCapabilities',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return OrchestratedVirtualMachineScaleSetAdditionalCapabilities.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     automaticInstanceRepair =
         registerOutput<
           OrchestratedVirtualMachineScaleSetAutomaticInstanceRepair
-        >('automaticInstanceRepair');
+        >(
+          'automaticInstanceRepair',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return OrchestratedVirtualMachineScaleSetAutomaticInstanceRepair.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     bootDiagnostics =
         registerOutput<OrchestratedVirtualMachineScaleSetBootDiagnostics?>(
           'bootDiagnostics',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return OrchestratedVirtualMachineScaleSetBootDiagnostics.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     capacityReservationGroupId = registerOutput<String?>(
       'capacityReservationGroupId',
@@ -387,6 +412,13 @@ class OrchestratedVirtualMachineScaleSet extends pulumi.CustomResource {
     extensionsTimeBudget = registerOutput<String?>('extensionsTimeBudget');
     identity = registerOutput<OrchestratedVirtualMachineScaleSetIdentity?>(
       'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrchestratedVirtualMachineScaleSetIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     instances = registerOutput<int>('instances');
     licenseType = registerOutput<String?>('licenseType');
@@ -399,16 +431,46 @@ class OrchestratedVirtualMachineScaleSet extends pulumi.CustomResource {
     );
     osDisk = registerOutput<OrchestratedVirtualMachineScaleSetOsDisk?>(
       'osDisk',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrchestratedVirtualMachineScaleSetOsDisk.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     osProfile = registerOutput<OrchestratedVirtualMachineScaleSetOsProfile?>(
       'osProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrchestratedVirtualMachineScaleSetOsProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    plan = registerOutput<OrchestratedVirtualMachineScaleSetPlan?>('plan');
+    plan = registerOutput<OrchestratedVirtualMachineScaleSetPlan?>(
+      'plan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrchestratedVirtualMachineScaleSetPlan.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     platformFaultDomainCount = registerOutput<int>('platformFaultDomainCount');
     priority = registerOutput<String?>('priority');
     priorityMix =
         registerOutput<OrchestratedVirtualMachineScaleSetPriorityMix?>(
           'priorityMix',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return OrchestratedVirtualMachineScaleSetPriorityMix.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     proximityPlacementGroupId = registerOutput<String?>(
       'proximityPlacementGroupId',
@@ -417,22 +479,52 @@ class OrchestratedVirtualMachineScaleSet extends pulumi.CustomResource {
     rollingUpgradePolicy =
         registerOutput<OrchestratedVirtualMachineScaleSetRollingUpgradePolicy?>(
           'rollingUpgradePolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return OrchestratedVirtualMachineScaleSetRollingUpgradePolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     singlePlacementGroup = registerOutput<bool>('singlePlacementGroup');
     skuName = registerOutput<String?>('skuName');
     skuProfile = registerOutput<OrchestratedVirtualMachineScaleSetSkuProfile?>(
       'skuProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrchestratedVirtualMachineScaleSetSkuProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sourceImageId = registerOutput<String?>('sourceImageId');
     sourceImageReference =
         registerOutput<OrchestratedVirtualMachineScaleSetSourceImageReference?>(
           'sourceImageReference',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return OrchestratedVirtualMachineScaleSetSourceImageReference.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tags = registerOutput<Map<String, String>?>('tags');
     terminationNotification =
         registerOutput<
           OrchestratedVirtualMachineScaleSetTerminationNotification
-        >('terminationNotification');
+        >(
+          'terminationNotification',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return OrchestratedVirtualMachineScaleSetTerminationNotification.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     uniqueId = registerOutput<String>('uniqueId');
     upgradeMode = registerOutput<String?>('upgradeMode');
     userDataBase64 = registerOutput<String?>('userDataBase64');
@@ -466,14 +558,39 @@ class OrchestratedVirtualMachineScaleSet extends pulumi.CustomResource {
     additionalCapabilities =
         registerOutput<
           OrchestratedVirtualMachineScaleSetAdditionalCapabilities?
-        >('additionalCapabilities');
+        >(
+          'additionalCapabilities',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return OrchestratedVirtualMachineScaleSetAdditionalCapabilities.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     automaticInstanceRepair =
         registerOutput<
           OrchestratedVirtualMachineScaleSetAutomaticInstanceRepair
-        >('automaticInstanceRepair');
+        >(
+          'automaticInstanceRepair',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return OrchestratedVirtualMachineScaleSetAutomaticInstanceRepair.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     bootDiagnostics =
         registerOutput<OrchestratedVirtualMachineScaleSetBootDiagnostics?>(
           'bootDiagnostics',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return OrchestratedVirtualMachineScaleSetBootDiagnostics.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     capacityReservationGroupId = registerOutput<String?>(
       'capacityReservationGroupId',
@@ -488,6 +605,13 @@ class OrchestratedVirtualMachineScaleSet extends pulumi.CustomResource {
     extensionsTimeBudget = registerOutput<String?>('extensionsTimeBudget');
     identity = registerOutput<OrchestratedVirtualMachineScaleSetIdentity?>(
       'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrchestratedVirtualMachineScaleSetIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     instances = registerOutput<int>('instances');
     licenseType = registerOutput<String?>('licenseType');
@@ -500,16 +624,46 @@ class OrchestratedVirtualMachineScaleSet extends pulumi.CustomResource {
     );
     osDisk = registerOutput<OrchestratedVirtualMachineScaleSetOsDisk?>(
       'osDisk',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrchestratedVirtualMachineScaleSetOsDisk.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     osProfile = registerOutput<OrchestratedVirtualMachineScaleSetOsProfile?>(
       'osProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrchestratedVirtualMachineScaleSetOsProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    plan = registerOutput<OrchestratedVirtualMachineScaleSetPlan?>('plan');
+    plan = registerOutput<OrchestratedVirtualMachineScaleSetPlan?>(
+      'plan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrchestratedVirtualMachineScaleSetPlan.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     platformFaultDomainCount = registerOutput<int>('platformFaultDomainCount');
     priority = registerOutput<String?>('priority');
     priorityMix =
         registerOutput<OrchestratedVirtualMachineScaleSetPriorityMix?>(
           'priorityMix',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return OrchestratedVirtualMachineScaleSetPriorityMix.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     proximityPlacementGroupId = registerOutput<String?>(
       'proximityPlacementGroupId',
@@ -518,22 +672,52 @@ class OrchestratedVirtualMachineScaleSet extends pulumi.CustomResource {
     rollingUpgradePolicy =
         registerOutput<OrchestratedVirtualMachineScaleSetRollingUpgradePolicy?>(
           'rollingUpgradePolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return OrchestratedVirtualMachineScaleSetRollingUpgradePolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     singlePlacementGroup = registerOutput<bool>('singlePlacementGroup');
     skuName = registerOutput<String?>('skuName');
     skuProfile = registerOutput<OrchestratedVirtualMachineScaleSetSkuProfile?>(
       'skuProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrchestratedVirtualMachineScaleSetSkuProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sourceImageId = registerOutput<String?>('sourceImageId');
     sourceImageReference =
         registerOutput<OrchestratedVirtualMachineScaleSetSourceImageReference?>(
           'sourceImageReference',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return OrchestratedVirtualMachineScaleSetSourceImageReference.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tags = registerOutput<Map<String, String>?>('tags');
     terminationNotification =
         registerOutput<
           OrchestratedVirtualMachineScaleSetTerminationNotification
-        >('terminationNotification');
+        >(
+          'terminationNotification',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return OrchestratedVirtualMachineScaleSetTerminationNotification.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     uniqueId = registerOutput<String>('uniqueId');
     upgradeMode = registerOutput<String?>('upgradeMode');
     userDataBase64 = registerOutput<String?>('userDataBase64');

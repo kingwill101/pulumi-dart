@@ -275,6 +275,13 @@ class SecurityContact extends pulumi.CustomResource {
     notificationsByRole =
         registerOutput<SecurityContactPropertiesResponseNotificationsByRole?>(
           'notificationsByRole',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SecurityContactPropertiesResponseNotificationsByRole.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     notificationsSources = registerOutput<List<Map<String, dynamic>>?>(
       'notificationsSources',

@@ -235,7 +235,16 @@ class Queue extends pulumi.CustomResource {
     accessedAt = registerOutput<String>('accessedAt');
     autoDeleteOnIdle = registerOutput<String?>('autoDeleteOnIdle');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    countDetails = registerOutput<MessageCountDetailsResponse>('countDetails');
+    countDetails = registerOutput<MessageCountDetailsResponse>(
+      'countDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MessageCountDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createdAt = registerOutput<String>('createdAt');
     deadLetteringOnMessageExpiration = registerOutput<bool?>(
       'deadLetteringOnMessageExpiration',
@@ -268,7 +277,16 @@ class Queue extends pulumi.CustomResource {
     requiresSession = registerOutput<bool?>('requiresSession');
     sizeInBytes = registerOutput<double>('sizeInBytes');
     status = registerOutput<String?>('status');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     updatedAt = registerOutput<String>('updatedAt');
   }

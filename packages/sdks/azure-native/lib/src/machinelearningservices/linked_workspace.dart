@@ -192,7 +192,16 @@ class LinkedWorkspace extends pulumi.CustomResource {
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<LinkedWorkspacePropsResponse>('properties');
+    properties = registerOutput<LinkedWorkspacePropsResponse>(
+      'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinkedWorkspacePropsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

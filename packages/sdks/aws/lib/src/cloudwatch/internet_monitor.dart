@@ -155,10 +155,24 @@ class InternetMonitor extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     healthEventsConfig = registerOutput<InternetMonitorHealthEventsConfig?>(
       'healthEventsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InternetMonitorHealthEventsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     internetMeasurementsLogDelivery =
         registerOutput<InternetMonitorInternetMeasurementsLogDelivery?>(
           'internetMeasurementsLogDelivery',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InternetMonitorInternetMeasurementsLogDelivery.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     maxCityNetworksToMonitor = registerOutput<int?>('maxCityNetworksToMonitor');
     monitorName = registerOutput<String>('monitorName');
@@ -198,10 +212,24 @@ class InternetMonitor extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     healthEventsConfig = registerOutput<InternetMonitorHealthEventsConfig?>(
       'healthEventsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InternetMonitorHealthEventsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     internetMeasurementsLogDelivery =
         registerOutput<InternetMonitorInternetMeasurementsLogDelivery?>(
           'internetMeasurementsLogDelivery',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InternetMonitorInternetMeasurementsLogDelivery.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     maxCityNetworksToMonitor = registerOutput<int?>('maxCityNetworksToMonitor');
     monitorName = registerOutput<String>('monitorName');

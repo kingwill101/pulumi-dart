@@ -240,10 +240,28 @@ class EventAction extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    action = registerOutput<EventActionAction>('action');
+    action = registerOutput<EventActionAction>(
+      'action',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventActionAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');
-    event = registerOutput<EventActionEvent>('event');
+    event = registerOutput<EventActionEvent>(
+      'event',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventActionEvent.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     updatedAt = registerOutput<String>('updatedAt');
   }
@@ -271,10 +289,28 @@ class EventAction extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    action = registerOutput<EventActionAction>('action');
+    action = registerOutput<EventActionAction>(
+      'action',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventActionAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');
-    event = registerOutput<EventActionEvent>('event');
+    event = registerOutput<EventActionEvent>(
+      'event',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventActionEvent.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     updatedAt = registerOutput<String>('updatedAt');
   }

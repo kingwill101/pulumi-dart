@@ -1,25 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getFunctionAppHostKeys.
 class GetFunctionAppHostKeysResult {
   /// Function App resource's Blobs Extension system key.
   final String blobsExtensionKey;
+
   /// Function App resource's default function key.
   final String defaultFunctionKey;
+
   /// Function App resource's Durable Task Extension system key.
   final String durabletaskExtensionKey;
+
   /// Function App resource's Event Grid Extension Config system key.
   final String eventGridExtensionConfigKey;
   final String eventGridExtensionKey;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
+
   /// Function App resource's secret key
   final String primaryKey;
   final String resourceGroupName;
+
   /// Function App resource's SignalR Extension system key.
   final String signalrExtensionKey;
+
   /// Function App resource's Web PubSub Extension system key.
   final String webpubsubExtensionKey;
 
@@ -81,4 +87,3 @@ class GetFunctionAppHostKeysResult {
     );
   }
 }
-

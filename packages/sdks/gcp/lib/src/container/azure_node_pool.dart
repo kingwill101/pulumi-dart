@@ -708,19 +708,53 @@ class AzureNodePool extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
-    autoscaling = registerOutput<AzureNodePoolAutoscaling>('autoscaling');
+    autoscaling = registerOutput<AzureNodePoolAutoscaling>(
+      'autoscaling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AzureNodePoolAutoscaling.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     azureAvailabilityZone = registerOutput<String>('azureAvailabilityZone');
     cluster = registerOutput<String>('cluster');
-    config = registerOutput<AzureNodePoolConfig>('config');
+    config = registerOutput<AzureNodePoolConfig>(
+      'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AzureNodePoolConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     effectiveAnnotations = registerOutput<Map<String, String>>(
       'effectiveAnnotations',
     );
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
-    management = registerOutput<AzureNodePoolManagement>('management');
+    management = registerOutput<AzureNodePoolManagement>(
+      'management',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AzureNodePoolManagement.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     maxPodsConstraint = registerOutput<AzureNodePoolMaxPodsConstraint>(
       'maxPodsConstraint',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AzureNodePoolMaxPodsConstraint.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -756,19 +790,53 @@ class AzureNodePool extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
-    autoscaling = registerOutput<AzureNodePoolAutoscaling>('autoscaling');
+    autoscaling = registerOutput<AzureNodePoolAutoscaling>(
+      'autoscaling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AzureNodePoolAutoscaling.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     azureAvailabilityZone = registerOutput<String>('azureAvailabilityZone');
     cluster = registerOutput<String>('cluster');
-    config = registerOutput<AzureNodePoolConfig>('config');
+    config = registerOutput<AzureNodePoolConfig>(
+      'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AzureNodePoolConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     effectiveAnnotations = registerOutput<Map<String, String>>(
       'effectiveAnnotations',
     );
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
-    management = registerOutput<AzureNodePoolManagement>('management');
+    management = registerOutput<AzureNodePoolManagement>(
+      'management',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AzureNodePoolManagement.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     maxPodsConstraint = registerOutput<AzureNodePoolMaxPodsConstraint>(
       'maxPodsConstraint',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AzureNodePoolMaxPodsConstraint.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

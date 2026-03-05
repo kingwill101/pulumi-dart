@@ -217,8 +217,26 @@ class Service extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     publicKey = registerOutput<String?>('publicKey');
-    sku = registerOutput<ServiceSkuResponse?>('sku');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    sku = registerOutput<ServiceSkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceSkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     virtualNicId = registerOutput<String?>('virtualNicId');

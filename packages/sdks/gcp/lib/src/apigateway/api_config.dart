@@ -110,7 +110,16 @@ class ApiConfig extends pulumi.CustomResource {
     apiConfigIdPrefix = registerOutput<String>('apiConfigIdPrefix');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    gatewayConfig = registerOutput<ApiConfigGatewayConfig?>('gatewayConfig');
+    gatewayConfig = registerOutput<ApiConfigGatewayConfig?>(
+      'gatewayConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiConfigGatewayConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     grpcServices = registerOutput<List<Map<String, dynamic>>?>('grpcServices');
     labels = registerOutput<Map<String, String>?>('labels');
     managedServiceConfigs = registerOutput<List<Map<String, dynamic>>?>(
@@ -153,7 +162,16 @@ class ApiConfig extends pulumi.CustomResource {
     apiConfigIdPrefix = registerOutput<String>('apiConfigIdPrefix');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    gatewayConfig = registerOutput<ApiConfigGatewayConfig?>('gatewayConfig');
+    gatewayConfig = registerOutput<ApiConfigGatewayConfig?>(
+      'gatewayConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiConfigGatewayConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     grpcServices = registerOutput<List<Map<String, dynamic>>?>('grpcServices');
     labels = registerOutput<Map<String, String>?>('labels');
     managedServiceConfigs = registerOutput<List<Map<String, dynamic>>?>(

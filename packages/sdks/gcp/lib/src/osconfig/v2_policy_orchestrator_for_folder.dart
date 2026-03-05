@@ -899,10 +899,24 @@ class V2PolicyOrchestratorForFolder extends pulumi.CustomResource {
     orchestratedResource =
         registerOutput<V2PolicyOrchestratorForFolderOrchestratedResource>(
           'orchestratedResource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return V2PolicyOrchestratorForFolderOrchestratedResource.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     orchestrationScope =
         registerOutput<V2PolicyOrchestratorForFolderOrchestrationScope?>(
           'orchestrationScope',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return V2PolicyOrchestratorForFolderOrchestrationScope.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     orchestrationStates = registerOutput<List<Map<String, dynamic>>>(
       'orchestrationStates',
@@ -948,10 +962,24 @@ class V2PolicyOrchestratorForFolder extends pulumi.CustomResource {
     orchestratedResource =
         registerOutput<V2PolicyOrchestratorForFolderOrchestratedResource>(
           'orchestratedResource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return V2PolicyOrchestratorForFolderOrchestratedResource.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     orchestrationScope =
         registerOutput<V2PolicyOrchestratorForFolderOrchestrationScope?>(
           'orchestrationScope',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return V2PolicyOrchestratorForFolderOrchestrationScope.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     orchestrationStates = registerOutput<List<Map<String, dynamic>>>(
       'orchestrationStates',

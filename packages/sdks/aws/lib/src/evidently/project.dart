@@ -486,7 +486,16 @@ class Project extends pulumi.CustomResource {
     activeLaunchCount = registerOutput<int>('activeLaunchCount');
     arn = registerOutput<String>('arn');
     createdTime = registerOutput<String>('createdTime');
-    dataDelivery = registerOutput<ProjectDataDelivery?>('dataDelivery');
+    dataDelivery = registerOutput<ProjectDataDelivery?>(
+      'dataDelivery',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectDataDelivery.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     experimentCount = registerOutput<int>('experimentCount');
     featureCount = registerOutput<int>('featureCount');
@@ -526,7 +535,16 @@ class Project extends pulumi.CustomResource {
     activeLaunchCount = registerOutput<int>('activeLaunchCount');
     arn = registerOutput<String>('arn');
     createdTime = registerOutput<String>('createdTime');
-    dataDelivery = registerOutput<ProjectDataDelivery?>('dataDelivery');
+    dataDelivery = registerOutput<ProjectDataDelivery?>(
+      'dataDelivery',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectDataDelivery.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     experimentCount = registerOutput<int>('experimentCount');
     featureCount = registerOutput<int>('featureCount');

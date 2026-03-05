@@ -303,7 +303,16 @@ class Access extends pulumi.CustomResource {
     );
     homeDirectoryType = registerOutput<String?>('homeDirectoryType');
     policy = registerOutput<String?>('policy');
-    posixProfile = registerOutput<AccessPosixProfile?>('posixProfile');
+    posixProfile = registerOutput<AccessPosixProfile?>(
+      'posixProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccessPosixProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     role = registerOutput<String?>('role');
     serverId = registerOutput<String>('serverId');
@@ -339,7 +348,16 @@ class Access extends pulumi.CustomResource {
     );
     homeDirectoryType = registerOutput<String?>('homeDirectoryType');
     policy = registerOutput<String?>('policy');
-    posixProfile = registerOutput<AccessPosixProfile?>('posixProfile');
+    posixProfile = registerOutput<AccessPosixProfile?>(
+      'posixProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccessPosixProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     role = registerOutput<String?>('role');
     serverId = registerOutput<String>('serverId');

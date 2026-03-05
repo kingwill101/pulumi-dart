@@ -83,18 +83,66 @@ class ConnectionProfile extends pulumi.CustomResource {
     forwardSshConnectivity =
         registerOutput<ForwardSshTunnelConnectivityResponse>(
           'forwardSshConnectivity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ForwardSshTunnelConnectivityResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    gcsProfile = registerOutput<GcsProfileResponse>('gcsProfile');
+    gcsProfile = registerOutput<GcsProfileResponse>(
+      'gcsProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GcsProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
-    mysqlProfile = registerOutput<MysqlProfileResponse>('mysqlProfile');
+    mysqlProfile = registerOutput<MysqlProfileResponse>(
+      'mysqlProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MysqlProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
-    oracleProfile = registerOutput<OracleProfileResponse>('oracleProfile');
+    oracleProfile = registerOutput<OracleProfileResponse>(
+      'oracleProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OracleProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     postgresqlProfile = registerOutput<PostgresqlProfileResponse>(
       'postgresqlProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PostgresqlProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     privateConnectivity = registerOutput<PrivateConnectivityResponse>(
       'privateConnectivity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PrivateConnectivityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');

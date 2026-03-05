@@ -281,12 +281,35 @@ class ServerDetails extends pulumi.CustomResource {
        ) {
     asAdministrators = registerOutput<ServerAdministratorsResponse?>(
       'asAdministrators',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerAdministratorsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     backupBlobContainerUri = registerOutput<String?>('backupBlobContainerUri');
-    gatewayDetails = registerOutput<GatewayDetailsResponse?>('gatewayDetails');
+    gatewayDetails = registerOutput<GatewayDetailsResponse?>(
+      'gatewayDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GatewayDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ipV4FirewallSettings = registerOutput<IPv4FirewallSettingsResponse?>(
       'ipV4FirewallSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IPv4FirewallSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     managedMode = registerOutput<int?>('managedMode');
@@ -297,7 +320,16 @@ class ServerDetails extends pulumi.CustomResource {
     );
     serverFullName = registerOutput<String>('serverFullName');
     serverMonitorMode = registerOutput<int?>('serverMonitorMode');
-    sku = registerOutput<ResourceSkuResponse>('sku');
+    sku = registerOutput<ResourceSkuResponse>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceSkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     state = registerOutput<String>('state');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

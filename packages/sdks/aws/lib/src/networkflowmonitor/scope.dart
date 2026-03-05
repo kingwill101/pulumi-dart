@@ -234,7 +234,16 @@ class Scope extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     targets = registerOutput<List<Map<String, dynamic>>>('targets');
-    timeouts = registerOutput<ScopeTimeouts?>('timeouts');
+    timeouts = registerOutput<ScopeTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScopeTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Scope] resource's state with the given [name] and [id].
@@ -262,6 +271,15 @@ class Scope extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     targets = registerOutput<List<Map<String, dynamic>>>('targets');
-    timeouts = registerOutput<ScopeTimeouts?>('timeouts');
+    timeouts = registerOutput<ScopeTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScopeTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

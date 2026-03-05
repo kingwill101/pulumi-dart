@@ -429,8 +429,26 @@ class ElasticSan extends pulumi.CustomResource {
     );
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    sku = registerOutput<SkuResponse>('sku');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    sku = registerOutput<SkuResponse>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     totalIops = registerOutput<double>('totalIops');
     totalMBps = registerOutput<double>('totalMBps');

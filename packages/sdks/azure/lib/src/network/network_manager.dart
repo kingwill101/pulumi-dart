@@ -289,7 +289,16 @@ class NetworkManager extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    scope = registerOutput<NetworkManagerScope>('scope');
+    scope = registerOutput<NetworkManagerScope>(
+      'scope',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkManagerScope.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     scopeAccesses = registerOutput<List<String>?>('scopeAccesses');
     tags = registerOutput<Map<String, String>?>('tags');
   }
@@ -324,7 +333,16 @@ class NetworkManager extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    scope = registerOutput<NetworkManagerScope>('scope');
+    scope = registerOutput<NetworkManagerScope>(
+      'scope',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkManagerScope.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     scopeAccesses = registerOutput<List<String>?>('scopeAccesses');
     tags = registerOutput<Map<String, String>?>('tags');
   }

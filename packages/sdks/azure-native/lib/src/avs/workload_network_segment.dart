@@ -238,8 +238,26 @@ class WorkloadNetworkSegment extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     revision = registerOutput<double?>('revision');
     status = registerOutput<String>('status');
-    subnet = registerOutput<WorkloadNetworkSegmentSubnetResponse?>('subnet');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    subnet = registerOutput<WorkloadNetworkSegmentSubnetResponse?>(
+      'subnet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkloadNetworkSegmentSubnetResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

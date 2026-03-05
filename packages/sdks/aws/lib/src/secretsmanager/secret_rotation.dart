@@ -183,6 +183,13 @@ class SecretRotation extends pulumi.CustomResource {
     rotationLambdaArn = registerOutput<String?>('rotationLambdaArn');
     rotationRules = registerOutput<SecretRotationRotationRules>(
       'rotationRules',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecretRotationRotationRules.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     secretId = registerOutput<String>('secretId');
   }
@@ -216,6 +223,13 @@ class SecretRotation extends pulumi.CustomResource {
     rotationLambdaArn = registerOutput<String?>('rotationLambdaArn');
     rotationRules = registerOutput<SecretRotationRotationRules>(
       'rotationRules',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecretRotationRotationRules.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     secretId = registerOutput<String>('secretId');
   }

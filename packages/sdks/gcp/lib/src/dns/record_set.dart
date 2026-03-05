@@ -1960,7 +1960,16 @@ class RecordSet extends pulumi.CustomResource {
     managedZone = registerOutput<String>('managedZone');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    routingPolicy = registerOutput<RecordSetRoutingPolicy?>('routingPolicy');
+    routingPolicy = registerOutput<RecordSetRoutingPolicy?>(
+      'routingPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RecordSetRoutingPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     rrdatas = registerOutput<List<String>?>('rrdatas');
     ttl = registerOutput<int?>('ttl');
     type = registerOutput<String>('type');
@@ -1992,7 +2001,16 @@ class RecordSet extends pulumi.CustomResource {
     managedZone = registerOutput<String>('managedZone');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    routingPolicy = registerOutput<RecordSetRoutingPolicy?>('routingPolicy');
+    routingPolicy = registerOutput<RecordSetRoutingPolicy?>(
+      'routingPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RecordSetRoutingPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     rrdatas = registerOutput<List<String>?>('rrdatas');
     ttl = registerOutput<int?>('ttl');
     type = registerOutput<String>('type');

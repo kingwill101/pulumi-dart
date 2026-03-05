@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getLocalReference.
 class GetLocalReferenceResult {
   /// The outputs displayed from Terraform state.
@@ -8,14 +7,10 @@ class GetLocalReferenceResult {
 
   /// Creates a new [GetLocalReferenceResult].
   /// [outputs] The outputs displayed from Terraform state.
-  GetLocalReferenceResult({
-    required this.outputs,
-  });
+  GetLocalReferenceResult({required this.outputs});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'outputs': outputs,
-    };
+    return <String, dynamic>{'outputs': outputs};
   }
 
   factory GetLocalReferenceResult.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class GetLocalReferenceResult {
     );
   }
 }
-

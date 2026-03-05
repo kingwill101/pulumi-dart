@@ -969,7 +969,16 @@ class TaskIamBinding extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<TaskIamBindingCondition?>('condition');
+    condition = registerOutput<TaskIamBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TaskIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     lake = registerOutput<String>('lake');
     location = registerOutput<String>('location');
@@ -1002,7 +1011,16 @@ class TaskIamBinding extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<TaskIamBindingCondition?>('condition');
+    condition = registerOutput<TaskIamBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TaskIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     lake = registerOutput<String>('lake');
     location = registerOutput<String>('location');

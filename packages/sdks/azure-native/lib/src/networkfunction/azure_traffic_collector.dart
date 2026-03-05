@@ -202,9 +202,25 @@ class AzureTrafficCollector extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<TrackedResourceResponseSystemData>(
       'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TrackedResourceResponseSystemData.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    virtualHub = registerOutput<ResourceReferenceResponse?>('virtualHub');
+    virtualHub = registerOutput<ResourceReferenceResponse?>(
+      'virtualHub',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceReferenceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

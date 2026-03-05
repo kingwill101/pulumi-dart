@@ -155,7 +155,8 @@ Future<GetCassandraDataCenterResult> getCassandraDataCenter(
 /// Other available API versions: 2019-08-01, 2019-12-12, 2020-03-01, 2020-04-01, 2020-06-01-preview, 2020-09-01, 2021-01-15, 2021-03-01-preview, 2021-03-15, 2021-04-01-preview, 2021-04-15, 2021-05-15, 2021-06-15, 2021-07-01-preview, 2021-10-15, 2021-10-15-preview, 2021-11-15-preview, 2022-02-15-preview, 2022-05-15, 2022-05-15-preview, 2022-08-15, 2022-08-15-preview, 2022-11-15, 2022-11-15-preview, 2023-03-01-preview, 2023-03-15, 2023-03-15-preview, 2023-04-15, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview, 2024-11-15, 2024-12-01-preview, 2025-04-15, 2025-05-01-preview, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cosmosdb_get_cassandra_resource_cassandra_keyspace_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetCassandraResourceCassandraKeyspaceResult> getCassandraResourceCassandraKeyspace(
+Future<GetCassandraResourceCassandraKeyspaceResult>
+getCassandraResourceCassandraKeyspace(
   GetCassandraResourceCassandraKeyspaceArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -175,7 +176,8 @@ Future<GetCassandraResourceCassandraKeyspaceResult> getCassandraResourceCassandr
 /// Other available API versions: 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cosmosdb_get_cassandra_resource_cassandra_role_assignment_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetCassandraResourceCassandraRoleAssignmentResult> getCassandraResourceCassandraRoleAssignment(
+Future<GetCassandraResourceCassandraRoleAssignmentResult>
+getCassandraResourceCassandraRoleAssignment(
   GetCassandraResourceCassandraRoleAssignmentArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -195,7 +197,8 @@ Future<GetCassandraResourceCassandraRoleAssignmentResult> getCassandraResourceCa
 /// Other available API versions: 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cosmosdb_get_cassandra_resource_cassandra_role_definition_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetCassandraResourceCassandraRoleDefinitionResult> getCassandraResourceCassandraRoleDefinition(
+Future<GetCassandraResourceCassandraRoleDefinitionResult>
+getCassandraResourceCassandraRoleDefinition(
   GetCassandraResourceCassandraRoleDefinitionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -215,7 +218,8 @@ Future<GetCassandraResourceCassandraRoleDefinitionResult> getCassandraResourceCa
 /// Other available API versions: 2019-08-01, 2019-12-12, 2020-03-01, 2020-04-01, 2020-06-01-preview, 2020-09-01, 2021-01-15, 2021-03-01-preview, 2021-03-15, 2021-04-01-preview, 2021-04-15, 2021-05-15, 2021-06-15, 2021-07-01-preview, 2021-10-15, 2021-10-15-preview, 2021-11-15-preview, 2022-02-15-preview, 2022-05-15, 2022-05-15-preview, 2022-08-15, 2022-08-15-preview, 2022-11-15, 2022-11-15-preview, 2023-03-01-preview, 2023-03-15, 2023-03-15-preview, 2023-04-15, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview, 2024-11-15, 2024-12-01-preview, 2025-04-15, 2025-05-01-preview, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cosmosdb_get_cassandra_resource_cassandra_table_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetCassandraResourceCassandraTableResult> getCassandraResourceCassandraTable(
+Future<GetCassandraResourceCassandraTableResult>
+getCassandraResourceCassandraTable(
   GetCassandraResourceCassandraTableArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -235,7 +239,8 @@ Future<GetCassandraResourceCassandraTableResult> getCassandraResourceCassandraTa
 /// Other available API versions: 2021-07-01-preview, 2021-10-15-preview, 2021-11-15-preview, 2022-02-15-preview, 2022-05-15-preview, 2022-08-15-preview, 2022-11-15-preview, 2023-03-01-preview, 2023-03-15-preview, 2023-09-15-preview, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15-preview, 2024-09-01-preview, 2025-05-01-preview, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cosmosdb_get_cassandra_resource_cassandra_view_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetCassandraResourceCassandraViewResult> getCassandraResourceCassandraView(
+Future<GetCassandraResourceCassandraViewResult>
+getCassandraResourceCassandraView(
   GetCassandraResourceCassandraViewArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -275,7 +280,8 @@ Future<GetDatabaseAccountResult> getDatabaseAccount(
 /// Other available API versions: 2015-04-01, 2015-04-08, 2015-11-06, 2016-03-19. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cosmosdb_get_database_account_cassandra_keyspace_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDatabaseAccountCassandraKeyspaceResult> getDatabaseAccountCassandraKeyspace(
+Future<GetDatabaseAccountCassandraKeyspaceResult>
+getDatabaseAccountCassandraKeyspace(
   GetDatabaseAccountCassandraKeyspaceArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -315,7 +321,8 @@ Future<GetDatabaseAccountCassandraTableResult> getDatabaseAccountCassandraTable(
 /// Other available API versions: 2015-04-01, 2015-04-08, 2015-11-06, 2016-03-19. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cosmosdb_get_database_account_gremlin_database_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDatabaseAccountGremlinDatabaseResult> getDatabaseAccountGremlinDatabase(
+Future<GetDatabaseAccountGremlinDatabaseResult>
+getDatabaseAccountGremlinDatabase(
   GetDatabaseAccountGremlinDatabaseArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -355,7 +362,8 @@ Future<GetDatabaseAccountGremlinGraphResult> getDatabaseAccountGremlinGraph(
 /// Other available API versions: 2015-04-01, 2015-04-08, 2015-11-06, 2016-03-19. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cosmosdb_get_database_account_mongo_dbcollection_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDatabaseAccountMongoDBCollectionResult> getDatabaseAccountMongoDBCollection(
+Future<GetDatabaseAccountMongoDBCollectionResult>
+getDatabaseAccountMongoDBCollection(
   GetDatabaseAccountMongoDBCollectionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -375,7 +383,8 @@ Future<GetDatabaseAccountMongoDBCollectionResult> getDatabaseAccountMongoDBColle
 /// Other available API versions: 2015-04-01, 2015-04-08, 2015-11-06, 2016-03-19. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cosmosdb_get_database_account_mongo_dbdatabase_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDatabaseAccountMongoDBDatabaseResult> getDatabaseAccountMongoDBDatabase(
+Future<GetDatabaseAccountMongoDBDatabaseResult>
+getDatabaseAccountMongoDBDatabase(
   GetDatabaseAccountMongoDBDatabaseArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -573,7 +582,8 @@ Future<GetGraphResourceGraphResult> getGraphResourceGraph(
 /// Other available API versions: 2019-08-01, 2019-12-12, 2020-03-01, 2020-04-01, 2020-06-01-preview, 2020-09-01, 2021-01-15, 2021-03-01-preview, 2021-03-15, 2021-04-01-preview, 2021-04-15, 2021-05-15, 2021-06-15, 2021-07-01-preview, 2021-10-15, 2021-10-15-preview, 2021-11-15-preview, 2022-02-15-preview, 2022-05-15, 2022-05-15-preview, 2022-08-15, 2022-08-15-preview, 2022-11-15, 2022-11-15-preview, 2023-03-01-preview, 2023-03-15, 2023-03-15-preview, 2023-04-15, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview, 2024-11-15, 2024-12-01-preview, 2025-04-15, 2025-05-01-preview, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cosmosdb_get_gremlin_resource_gremlin_database_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetGremlinResourceGremlinDatabaseResult> getGremlinResourceGremlinDatabase(
+Future<GetGremlinResourceGremlinDatabaseResult>
+getGremlinResourceGremlinDatabase(
   GetGremlinResourceGremlinDatabaseArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -613,7 +623,8 @@ Future<GetGremlinResourceGremlinGraphResult> getGremlinResourceGremlinGraph(
 /// Other available API versions: 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cosmosdb_get_gremlin_resource_gremlin_role_assignment_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetGremlinResourceGremlinRoleAssignmentResult> getGremlinResourceGremlinRoleAssignment(
+Future<GetGremlinResourceGremlinRoleAssignmentResult>
+getGremlinResourceGremlinRoleAssignment(
   GetGremlinResourceGremlinRoleAssignmentArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -633,7 +644,8 @@ Future<GetGremlinResourceGremlinRoleAssignmentResult> getGremlinResourceGremlinR
 /// Other available API versions: 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cosmosdb_get_gremlin_resource_gremlin_role_definition_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetGremlinResourceGremlinRoleDefinitionResult> getGremlinResourceGremlinRoleDefinition(
+Future<GetGremlinResourceGremlinRoleDefinitionResult>
+getGremlinResourceGremlinRoleDefinition(
   GetGremlinResourceGremlinRoleDefinitionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -693,7 +705,8 @@ Future<GetMongoClusterFirewallRuleResult> getMongoClusterFirewallRule(
 /// Other available API versions: 2019-08-01, 2019-12-12, 2020-03-01, 2020-04-01, 2020-06-01-preview, 2020-09-01, 2021-01-15, 2021-03-01-preview, 2021-03-15, 2021-04-01-preview, 2021-04-15, 2021-05-15, 2021-06-15, 2021-07-01-preview, 2021-10-15, 2021-10-15-preview, 2021-11-15-preview, 2022-02-15-preview, 2022-05-15, 2022-05-15-preview, 2022-08-15, 2022-08-15-preview, 2022-11-15, 2022-11-15-preview, 2023-03-01-preview, 2023-03-15, 2023-03-15-preview, 2023-04-15, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview, 2024-11-15, 2024-12-01-preview, 2025-04-15, 2025-05-01-preview, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cosmosdb_get_mongo_dbresource_mongo_dbcollection_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetMongoDBResourceMongoDBCollectionResult> getMongoDBResourceMongoDBCollection(
+Future<GetMongoDBResourceMongoDBCollectionResult>
+getMongoDBResourceMongoDBCollection(
   GetMongoDBResourceMongoDBCollectionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -713,7 +726,8 @@ Future<GetMongoDBResourceMongoDBCollectionResult> getMongoDBResourceMongoDBColle
 /// Other available API versions: 2019-08-01, 2019-12-12, 2020-03-01, 2020-04-01, 2020-06-01-preview, 2020-09-01, 2021-01-15, 2021-03-01-preview, 2021-03-15, 2021-04-01-preview, 2021-04-15, 2021-05-15, 2021-06-15, 2021-07-01-preview, 2021-10-15, 2021-10-15-preview, 2021-11-15-preview, 2022-02-15-preview, 2022-05-15, 2022-05-15-preview, 2022-08-15, 2022-08-15-preview, 2022-11-15, 2022-11-15-preview, 2023-03-01-preview, 2023-03-15, 2023-03-15-preview, 2023-04-15, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview, 2024-11-15, 2024-12-01-preview, 2025-04-15, 2025-05-01-preview, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cosmosdb_get_mongo_dbresource_mongo_dbdatabase_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetMongoDBResourceMongoDBDatabaseResult> getMongoDBResourceMongoDBDatabase(
+Future<GetMongoDBResourceMongoDBDatabaseResult>
+getMongoDBResourceMongoDBDatabase(
   GetMongoDBResourceMongoDBDatabaseArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -733,7 +747,8 @@ Future<GetMongoDBResourceMongoDBDatabaseResult> getMongoDBResourceMongoDBDatabas
 /// Other available API versions: 2021-10-15-preview, 2021-11-15-preview, 2022-02-15-preview, 2022-05-15-preview, 2022-08-15, 2022-08-15-preview, 2022-11-15, 2022-11-15-preview, 2023-03-01-preview, 2023-03-15, 2023-03-15-preview, 2023-04-15, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview, 2024-11-15, 2024-12-01-preview, 2025-04-15, 2025-05-01-preview, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cosmosdb_get_mongo_dbresource_mongo_role_definition_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetMongoDBResourceMongoRoleDefinitionResult> getMongoDBResourceMongoRoleDefinition(
+Future<GetMongoDBResourceMongoRoleDefinitionResult>
+getMongoDBResourceMongoRoleDefinition(
   GetMongoDBResourceMongoRoleDefinitionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -753,7 +768,8 @@ Future<GetMongoDBResourceMongoRoleDefinitionResult> getMongoDBResourceMongoRoleD
 /// Other available API versions: 2021-10-15-preview, 2021-11-15-preview, 2022-02-15-preview, 2022-05-15-preview, 2022-08-15, 2022-08-15-preview, 2022-11-15, 2022-11-15-preview, 2023-03-01-preview, 2023-03-15, 2023-03-15-preview, 2023-04-15, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview, 2024-11-15, 2024-12-01-preview, 2025-04-15, 2025-05-01-preview, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cosmosdb_get_mongo_dbresource_mongo_user_definition_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetMongoDBResourceMongoUserDefinitionResult> getMongoDBResourceMongoUserDefinition(
+Future<GetMongoDBResourceMongoUserDefinitionResult>
+getMongoDBResourceMongoUserDefinition(
   GetMongoDBResourceMongoUserDefinitionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -773,7 +789,8 @@ Future<GetMongoDBResourceMongoUserDefinitionResult> getMongoDBResourceMongoUserD
 /// Other available API versions: 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cosmosdb_get_mongo_miresource_mongo_mirole_assignment_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetMongoMIResourceMongoMIRoleAssignmentResult> getMongoMIResourceMongoMIRoleAssignment(
+Future<GetMongoMIResourceMongoMIRoleAssignmentResult>
+getMongoMIResourceMongoMIRoleAssignment(
   GetMongoMIResourceMongoMIRoleAssignmentArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -793,7 +810,8 @@ Future<GetMongoMIResourceMongoMIRoleAssignmentResult> getMongoMIResourceMongoMIR
 /// Other available API versions: 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cosmosdb_get_mongo_miresource_mongo_mirole_definition_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetMongoMIResourceMongoMIRoleDefinitionResult> getMongoMIResourceMongoMIRoleDefinition(
+Future<GetMongoMIResourceMongoMIRoleDefinitionResult>
+getMongoMIResourceMongoMIRoleDefinition(
   GetMongoMIResourceMongoMIRoleDefinitionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -993,7 +1011,8 @@ Future<GetSqlResourceSqlTriggerResult> getSqlResourceSqlTrigger(
 /// Other available API versions: 2019-08-01, 2019-12-12, 2020-03-01, 2020-04-01, 2020-06-01-preview, 2020-09-01, 2021-01-15, 2021-03-01-preview, 2021-03-15, 2021-04-01-preview, 2021-04-15, 2021-05-15, 2021-06-15, 2021-07-01-preview, 2021-10-15, 2021-10-15-preview, 2021-11-15-preview, 2022-02-15-preview, 2022-05-15, 2022-05-15-preview, 2022-08-15, 2022-08-15-preview, 2022-11-15, 2022-11-15-preview, 2023-03-01-preview, 2023-03-15, 2023-03-15-preview, 2023-04-15, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview, 2024-11-15, 2024-12-01-preview, 2025-04-15, 2025-05-01-preview, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cosmosdb_get_sql_resource_sql_user_defined_function_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetSqlResourceSqlUserDefinedFunctionResult> getSqlResourceSqlUserDefinedFunction(
+Future<GetSqlResourceSqlUserDefinedFunctionResult>
+getSqlResourceSqlUserDefinedFunction(
   GetSqlResourceSqlUserDefinedFunctionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1033,7 +1052,8 @@ Future<GetTableResourceTableResult> getTableResourceTable(
 /// Other available API versions: 2025-05-01-preview, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cosmosdb_get_table_resource_table_role_assignment_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetTableResourceTableRoleAssignmentResult> getTableResourceTableRoleAssignment(
+Future<GetTableResourceTableRoleAssignmentResult>
+getTableResourceTableRoleAssignment(
   GetTableResourceTableRoleAssignmentArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1053,7 +1073,8 @@ Future<GetTableResourceTableRoleAssignmentResult> getTableResourceTableRoleAssig
 /// Other available API versions: 2025-05-01-preview, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cosmosdb_get_table_resource_table_role_definition_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetTableResourceTableRoleDefinitionResult> getTableResourceTableRoleDefinition(
+Future<GetTableResourceTableRoleDefinitionResult>
+getTableResourceTableRoleDefinition(
   GetTableResourceTableRoleDefinitionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1113,7 +1134,8 @@ Future<GetThroughputPoolAccountResult> getThroughputPoolAccount(
 /// Other available API versions: 2015-04-01, 2015-04-08, 2015-11-06, 2016-03-19, 2016-03-31, 2019-08-01, 2019-12-12, 2020-03-01, 2020-04-01, 2020-06-01-preview, 2020-09-01, 2021-01-15, 2021-03-01-preview, 2021-03-15, 2021-04-01-preview, 2021-04-15, 2021-05-15, 2021-06-15, 2021-07-01-preview, 2021-10-15, 2021-10-15-preview, 2021-11-15-preview, 2022-02-15-preview, 2022-05-15, 2022-05-15-preview, 2022-08-15, 2022-08-15-preview, 2022-11-15, 2022-11-15-preview, 2023-03-01-preview, 2023-03-15, 2023-03-15-preview, 2023-04-15, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview, 2024-11-15, 2024-12-01-preview, 2025-04-15, 2025-05-01-preview, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cosmosdb_list_database_account_connection_strings_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListDatabaseAccountConnectionStringsResult> listDatabaseAccountConnectionStrings(
+Future<ListDatabaseAccountConnectionStringsResult>
+listDatabaseAccountConnectionStrings(
   ListDatabaseAccountConnectionStringsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1153,7 +1175,8 @@ Future<ListDatabaseAccountKeysResult> listDatabaseAccountKeys(
 /// Other available API versions: 2023-03-01-preview, 2023-03-15-preview, 2023-09-15-preview, 2023-11-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cosmosdb_list_mongo_cluster_connection_strings_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListMongoClusterConnectionStringsResult> listMongoClusterConnectionStrings(
+Future<ListMongoClusterConnectionStringsResult>
+listMongoClusterConnectionStrings(
   ListMongoClusterConnectionStringsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1173,7 +1196,8 @@ Future<ListMongoClusterConnectionStringsResult> listMongoClusterConnectionString
 /// Other available API versions: 2019-08-01, 2019-12-12, 2020-03-01, 2020-04-01, 2020-06-01-preview, 2020-09-01, 2021-01-15, 2021-03-01-preview, 2021-03-15, 2021-04-01-preview, 2021-04-15, 2021-05-15, 2021-06-15, 2021-07-01-preview, 2021-10-15, 2021-10-15-preview, 2021-11-15-preview, 2022-02-15-preview, 2022-05-15, 2022-05-15-preview, 2022-08-15, 2022-08-15-preview, 2022-11-15, 2022-11-15-preview, 2023-03-01-preview, 2023-03-15, 2023-03-15-preview, 2023-04-15, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview, 2024-11-15, 2024-12-01-preview, 2025-04-15, 2025-05-01-preview, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cosmosdb_list_notebook_workspace_connection_info_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListNotebookWorkspaceConnectionInfoResult> listNotebookWorkspaceConnectionInfo(
+Future<ListNotebookWorkspaceConnectionInfoResult>
+listNotebookWorkspaceConnectionInfo(
   ListNotebookWorkspaceConnectionInfoArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

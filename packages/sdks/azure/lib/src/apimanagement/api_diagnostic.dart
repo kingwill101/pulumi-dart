@@ -713,15 +713,43 @@ class ApiDiagnostic extends pulumi.CustomResource {
     apiName = registerOutput<String>('apiName');
     backendRequest = registerOutput<ApiDiagnosticBackendRequest>(
       'backendRequest',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiDiagnosticBackendRequest.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     backendResponse = registerOutput<ApiDiagnosticBackendResponse>(
       'backendResponse',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiDiagnosticBackendResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     frontendRequest = registerOutput<ApiDiagnosticFrontendRequest>(
       'frontendRequest',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiDiagnosticFrontendRequest.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     frontendResponse = registerOutput<ApiDiagnosticFrontendResponse>(
       'frontendResponse',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiDiagnosticFrontendResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     httpCorrelationProtocol = registerOutput<String>('httpCorrelationProtocol');
     identifier = registerOutput<String>('identifier');
@@ -761,15 +789,43 @@ class ApiDiagnostic extends pulumi.CustomResource {
     apiName = registerOutput<String>('apiName');
     backendRequest = registerOutput<ApiDiagnosticBackendRequest>(
       'backendRequest',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiDiagnosticBackendRequest.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     backendResponse = registerOutput<ApiDiagnosticBackendResponse>(
       'backendResponse',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiDiagnosticBackendResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     frontendRequest = registerOutput<ApiDiagnosticFrontendRequest>(
       'frontendRequest',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiDiagnosticFrontendRequest.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     frontendResponse = registerOutput<ApiDiagnosticFrontendResponse>(
       'frontendResponse',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiDiagnosticFrontendResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     httpCorrelationProtocol = registerOutput<String>('httpCorrelationProtocol');
     identifier = registerOutput<String>('identifier');

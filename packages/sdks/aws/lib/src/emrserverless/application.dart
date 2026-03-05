@@ -965,12 +965,33 @@ class Application extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     autoStartConfiguration = registerOutput<ApplicationAutoStartConfiguration>(
       'autoStartConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationAutoStartConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     autoStopConfiguration = registerOutput<ApplicationAutoStopConfiguration>(
       'autoStopConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationAutoStopConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     imageConfiguration = registerOutput<ApplicationImageConfiguration>(
       'imageConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationImageConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     initialCapacities = registerOutput<List<Map<String, dynamic>>?>(
       'initialCapacities',
@@ -978,17 +999,45 @@ class Application extends pulumi.CustomResource {
     interactiveConfiguration =
         registerOutput<ApplicationInteractiveConfiguration>(
           'interactiveConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ApplicationInteractiveConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     maximumCapacity = registerOutput<ApplicationMaximumCapacity>(
       'maximumCapacity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationMaximumCapacity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     monitoringConfiguration =
         registerOutput<ApplicationMonitoringConfiguration?>(
           'monitoringConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ApplicationMonitoringConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     networkConfiguration = registerOutput<ApplicationNetworkConfiguration?>(
       'networkConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationNetworkConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     releaseLabel = registerOutput<String>('releaseLabel');
@@ -997,6 +1046,13 @@ class Application extends pulumi.CustomResource {
     );
     schedulerConfiguration = registerOutput<ApplicationSchedulerConfiguration?>(
       'schedulerConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationSchedulerConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -1030,12 +1086,33 @@ class Application extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     autoStartConfiguration = registerOutput<ApplicationAutoStartConfiguration>(
       'autoStartConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationAutoStartConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     autoStopConfiguration = registerOutput<ApplicationAutoStopConfiguration>(
       'autoStopConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationAutoStopConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     imageConfiguration = registerOutput<ApplicationImageConfiguration>(
       'imageConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationImageConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     initialCapacities = registerOutput<List<Map<String, dynamic>>?>(
       'initialCapacities',
@@ -1043,17 +1120,45 @@ class Application extends pulumi.CustomResource {
     interactiveConfiguration =
         registerOutput<ApplicationInteractiveConfiguration>(
           'interactiveConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ApplicationInteractiveConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     maximumCapacity = registerOutput<ApplicationMaximumCapacity>(
       'maximumCapacity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationMaximumCapacity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     monitoringConfiguration =
         registerOutput<ApplicationMonitoringConfiguration?>(
           'monitoringConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ApplicationMonitoringConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     networkConfiguration = registerOutput<ApplicationNetworkConfiguration?>(
       'networkConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationNetworkConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     releaseLabel = registerOutput<String>('releaseLabel');
@@ -1062,6 +1167,13 @@ class Application extends pulumi.CustomResource {
     );
     schedulerConfiguration = registerOutput<ApplicationSchedulerConfiguration?>(
       'schedulerConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationSchedulerConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

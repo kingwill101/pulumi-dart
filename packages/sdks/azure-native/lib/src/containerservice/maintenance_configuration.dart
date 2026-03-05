@@ -310,12 +310,28 @@ class MaintenanceConfiguration extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     maintenanceWindow = registerOutput<MaintenanceWindowResponse?>(
       'maintenanceWindow',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MaintenanceWindowResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     notAllowedTime = registerOutput<List<Map<String, dynamic>>?>(
       'notAllowedTime',
     );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     timeInWeek = registerOutput<List<Map<String, dynamic>>?>('timeInWeek');
     type = registerOutput<String>('type');
   }

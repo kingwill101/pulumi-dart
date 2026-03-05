@@ -222,10 +222,26 @@ class Secret extends pulumi.CustomResource {
     parameters =
         registerOutput<AzureFirstPartyManagedCertificateParametersResponse?>(
           'parameters',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AzureFirstPartyManagedCertificateParametersResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     profileName = registerOutput<String>('profileName');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

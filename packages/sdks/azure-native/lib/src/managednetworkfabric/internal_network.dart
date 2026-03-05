@@ -641,6 +641,13 @@ class InternalNetwork extends pulumi.CustomResource {
     bgpConfiguration =
         registerOutput<InternalNetworkPropertiesResponseBgpConfiguration?>(
           'bgpConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InternalNetworkPropertiesResponseBgpConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     configurationState = registerOutput<String>('configurationState');
     connectedIPv4Subnets = registerOutput<List<Map<String, dynamic>>?>(
@@ -652,11 +659,25 @@ class InternalNetwork extends pulumi.CustomResource {
     egressAclId = registerOutput<String?>('egressAclId');
     exportRoutePolicy = registerOutput<ExportRoutePolicyResponse?>(
       'exportRoutePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExportRoutePolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     exportRoutePolicyId = registerOutput<String?>('exportRoutePolicyId');
     extension = registerOutput<String?>('extension');
     importRoutePolicy = registerOutput<ImportRoutePolicyResponse?>(
       'importRoutePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImportRoutePolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     importRoutePolicyId = registerOutput<String?>('importRoutePolicyId');
     ingressAclId = registerOutput<String?>('ingressAclId');
@@ -667,8 +688,26 @@ class InternalNetwork extends pulumi.CustomResource {
     staticRouteConfiguration =
         registerOutput<
           InternalNetworkPropertiesResponseStaticRouteConfiguration?
-        >('staticRouteConfiguration');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+        >(
+          'staticRouteConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InternalNetworkPropertiesResponseStaticRouteConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     vlanId = registerOutput<int>('vlanId');
   }

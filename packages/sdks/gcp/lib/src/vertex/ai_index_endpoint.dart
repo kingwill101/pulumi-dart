@@ -708,6 +708,13 @@ class AiIndexEndpoint extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     encryptionSpec = registerOutput<AiIndexEndpointEncryptionSpec?>(
       'encryptionSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiIndexEndpointEncryptionSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -716,6 +723,13 @@ class AiIndexEndpoint extends pulumi.CustomResource {
     privateServiceConnectConfig =
         registerOutput<AiIndexEndpointPrivateServiceConnectConfig>(
           'privateServiceConnectConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AiIndexEndpointPrivateServiceConnectConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     project = registerOutput<String>('project');
     publicEndpointDomainName = registerOutput<String>(
@@ -756,6 +770,13 @@ class AiIndexEndpoint extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     encryptionSpec = registerOutput<AiIndexEndpointEncryptionSpec?>(
       'encryptionSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiIndexEndpointEncryptionSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -764,6 +785,13 @@ class AiIndexEndpoint extends pulumi.CustomResource {
     privateServiceConnectConfig =
         registerOutput<AiIndexEndpointPrivateServiceConnectConfig>(
           'privateServiceConnectConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AiIndexEndpointPrivateServiceConnectConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     project = registerOutput<String>('project');
     publicEndpointDomainName = registerOutput<String>(

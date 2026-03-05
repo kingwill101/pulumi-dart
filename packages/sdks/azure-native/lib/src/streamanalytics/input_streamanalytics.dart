@@ -1228,7 +1228,16 @@ class InputStreamanalytics extends pulumi.CustomResource {
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String?>('name');
-    properties = registerOutput<ReferenceInputPropertiesResponse>('properties');
+    properties = registerOutput<ReferenceInputPropertiesResponse>(
+      'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReferenceInputPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

@@ -251,7 +251,16 @@ class ElasticSan extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    sku = registerOutput<ElasticSanSku>('sku');
+    sku = registerOutput<ElasticSanSku>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ElasticSanSku.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     totalIops = registerOutput<int>('totalIops');
     totalMbps = registerOutput<int>('totalMbps');
@@ -289,7 +298,16 @@ class ElasticSan extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    sku = registerOutput<ElasticSanSku>('sku');
+    sku = registerOutput<ElasticSanSku>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ElasticSanSku.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     totalIops = registerOutput<int>('totalIops');
     totalMbps = registerOutput<int>('totalMbps');

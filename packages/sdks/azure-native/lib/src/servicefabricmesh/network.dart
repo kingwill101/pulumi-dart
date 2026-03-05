@@ -183,6 +183,13 @@ class Network extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     properties = registerOutput<NetworkResourcePropertiesResponse>(
       'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkResourcePropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

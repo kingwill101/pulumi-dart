@@ -1029,6 +1029,13 @@ class RegionDisk extends pulumi.CustomResource {
     accessMode = registerOutput<String>('accessMode');
     asyncPrimaryDisk = registerOutput<RegionDiskAsyncPrimaryDisk?>(
       'asyncPrimaryDisk',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegionDiskAsyncPrimaryDisk.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createSnapshotBeforeDestroy = registerOutput<bool?>(
       'createSnapshotBeforeDestroy',
@@ -1040,6 +1047,13 @@ class RegionDisk extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     diskEncryptionKey = registerOutput<RegionDiskDiskEncryptionKey?>(
       'diskEncryptionKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegionDiskDiskEncryptionKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     diskId = registerOutput<String>('diskId');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -1068,6 +1082,13 @@ class RegionDisk extends pulumi.CustomResource {
     sourceSnapshotEncryptionKey =
         registerOutput<RegionDiskSourceSnapshotEncryptionKey?>(
           'sourceSnapshotEncryptionKey',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RegionDiskSourceSnapshotEncryptionKey.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     sourceSnapshotId = registerOutput<String>('sourceSnapshotId');
     type = registerOutput<String?>('type');
@@ -1100,6 +1121,13 @@ class RegionDisk extends pulumi.CustomResource {
     accessMode = registerOutput<String>('accessMode');
     asyncPrimaryDisk = registerOutput<RegionDiskAsyncPrimaryDisk?>(
       'asyncPrimaryDisk',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegionDiskAsyncPrimaryDisk.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createSnapshotBeforeDestroy = registerOutput<bool?>(
       'createSnapshotBeforeDestroy',
@@ -1111,6 +1139,13 @@ class RegionDisk extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     diskEncryptionKey = registerOutput<RegionDiskDiskEncryptionKey?>(
       'diskEncryptionKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegionDiskDiskEncryptionKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     diskId = registerOutput<String>('diskId');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -1139,6 +1174,13 @@ class RegionDisk extends pulumi.CustomResource {
     sourceSnapshotEncryptionKey =
         registerOutput<RegionDiskSourceSnapshotEncryptionKey?>(
           'sourceSnapshotEncryptionKey',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RegionDiskSourceSnapshotEncryptionKey.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     sourceSnapshotId = registerOutput<String>('sourceSnapshotId');
     type = registerOutput<String?>('type');

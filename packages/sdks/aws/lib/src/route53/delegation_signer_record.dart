@@ -635,8 +635,24 @@ class DelegationSignerRecord extends pulumi.CustomResource {
     signingAttributes =
         registerOutput<DelegationSignerRecordSigningAttributes?>(
           'signingAttributes',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DelegationSignerRecordSigningAttributes.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    timeouts = registerOutput<DelegationSignerRecordTimeouts?>('timeouts');
+    timeouts = registerOutput<DelegationSignerRecordTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DelegationSignerRecordTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [DelegationSignerRecord] resource's state with the given [name] and [id].
@@ -667,7 +683,23 @@ class DelegationSignerRecord extends pulumi.CustomResource {
     signingAttributes =
         registerOutput<DelegationSignerRecordSigningAttributes?>(
           'signingAttributes',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DelegationSignerRecordSigningAttributes.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    timeouts = registerOutput<DelegationSignerRecordTimeouts?>('timeouts');
+    timeouts = registerOutput<DelegationSignerRecordTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DelegationSignerRecordTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

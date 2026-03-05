@@ -559,10 +559,26 @@ class V2modelsSlotType extends pulumi.CustomResource {
     slotTypeValues = registerOutput<List<Map<String, dynamic>>?>(
       'slotTypeValues',
     );
-    timeouts = registerOutput<V2modelsSlotTypeTimeouts?>('timeouts');
+    timeouts = registerOutput<V2modelsSlotTypeTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2modelsSlotTypeTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     valueSelectionSetting =
         registerOutput<V2modelsSlotTypeValueSelectionSetting?>(
           'valueSelectionSetting',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return V2modelsSlotTypeValueSelectionSetting.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 
@@ -608,10 +624,26 @@ class V2modelsSlotType extends pulumi.CustomResource {
     slotTypeValues = registerOutput<List<Map<String, dynamic>>?>(
       'slotTypeValues',
     );
-    timeouts = registerOutput<V2modelsSlotTypeTimeouts?>('timeouts');
+    timeouts = registerOutput<V2modelsSlotTypeTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2modelsSlotTypeTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     valueSelectionSetting =
         registerOutput<V2modelsSlotTypeValueSelectionSetting?>(
           'valueSelectionSetting',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return V2modelsSlotTypeValueSelectionSetting.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

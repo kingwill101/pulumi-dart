@@ -327,10 +327,26 @@ class MultiplexProgram extends pulumi.CustomResource {
     multiplexProgramSettings =
         registerOutput<MultiplexProgramMultiplexProgramSettings?>(
           'multiplexProgramSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MultiplexProgramMultiplexProgramSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     programName = registerOutput<String>('programName');
     region = registerOutput<String>('region');
-    timeouts = registerOutput<MultiplexProgramTimeouts?>('timeouts');
+    timeouts = registerOutput<MultiplexProgramTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MultiplexProgramTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [MultiplexProgram] resource's state with the given [name] and [id].
@@ -360,9 +376,25 @@ class MultiplexProgram extends pulumi.CustomResource {
     multiplexProgramSettings =
         registerOutput<MultiplexProgramMultiplexProgramSettings?>(
           'multiplexProgramSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MultiplexProgramMultiplexProgramSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     programName = registerOutput<String>('programName');
     region = registerOutput<String>('region');
-    timeouts = registerOutput<MultiplexProgramTimeouts?>('timeouts');
+    timeouts = registerOutput<MultiplexProgramTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MultiplexProgramTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

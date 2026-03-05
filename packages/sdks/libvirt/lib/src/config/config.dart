@@ -23,8 +23,6 @@ class LibvirtConfig {
   }
 
   bool get uriIsSecret => _isSecret('uri');
-
 }
 
 final config = LibvirtConfig();
-

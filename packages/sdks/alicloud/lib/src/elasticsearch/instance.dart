@@ -522,12 +522,26 @@ class Instance extends pulumi.CustomResource {
     clientNodeAmount = registerOutput<int>('clientNodeAmount');
     clientNodeConfiguration = registerOutput<InstanceClientNodeConfiguration>(
       'clientNodeConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceClientNodeConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clientNodeSpec = registerOutput<String>('clientNodeSpec');
     createTime = registerOutput<String>('createTime');
     dataNodeAmount = registerOutput<int>('dataNodeAmount');
     dataNodeConfiguration = registerOutput<InstanceDataNodeConfiguration>(
       'dataNodeConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceDataNodeConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dataNodeDiskEncrypted = registerOutput<bool>('dataNodeDiskEncrypted');
     dataNodeDiskPerformanceLevel = registerOutput<String>(
@@ -550,6 +564,13 @@ class Instance extends pulumi.CustomResource {
     instanceChargeType = registerOutput<String>('instanceChargeType');
     kibanaConfiguration = registerOutput<InstanceKibanaConfiguration>(
       'kibanaConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceKibanaConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     kibanaDomain = registerOutput<String>('kibanaDomain');
     kibanaNodeSpec = registerOutput<String>('kibanaNodeSpec');
@@ -567,6 +588,13 @@ class Instance extends pulumi.CustomResource {
     );
     masterConfiguration = registerOutput<InstanceMasterConfiguration>(
       'masterConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceMasterConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     masterNodeDiskType = registerOutput<String>('masterNodeDiskType');
     masterNodeSpec = registerOutput<String>('masterNodeSpec');
@@ -592,6 +620,13 @@ class Instance extends pulumi.CustomResource {
     warmNodeAmount = registerOutput<int>('warmNodeAmount');
     warmNodeConfiguration = registerOutput<InstanceWarmNodeConfiguration>(
       'warmNodeConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceWarmNodeConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     warmNodeDiskEncrypted = registerOutput<bool>('warmNodeDiskEncrypted');
     warmNodeDiskSize = registerOutput<int>('warmNodeDiskSize');
@@ -628,12 +663,26 @@ class Instance extends pulumi.CustomResource {
     clientNodeAmount = registerOutput<int>('clientNodeAmount');
     clientNodeConfiguration = registerOutput<InstanceClientNodeConfiguration>(
       'clientNodeConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceClientNodeConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clientNodeSpec = registerOutput<String>('clientNodeSpec');
     createTime = registerOutput<String>('createTime');
     dataNodeAmount = registerOutput<int>('dataNodeAmount');
     dataNodeConfiguration = registerOutput<InstanceDataNodeConfiguration>(
       'dataNodeConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceDataNodeConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dataNodeDiskEncrypted = registerOutput<bool>('dataNodeDiskEncrypted');
     dataNodeDiskPerformanceLevel = registerOutput<String>(
@@ -656,6 +705,13 @@ class Instance extends pulumi.CustomResource {
     instanceChargeType = registerOutput<String>('instanceChargeType');
     kibanaConfiguration = registerOutput<InstanceKibanaConfiguration>(
       'kibanaConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceKibanaConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     kibanaDomain = registerOutput<String>('kibanaDomain');
     kibanaNodeSpec = registerOutput<String>('kibanaNodeSpec');
@@ -673,6 +729,13 @@ class Instance extends pulumi.CustomResource {
     );
     masterConfiguration = registerOutput<InstanceMasterConfiguration>(
       'masterConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceMasterConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     masterNodeDiskType = registerOutput<String>('masterNodeDiskType');
     masterNodeSpec = registerOutput<String>('masterNodeSpec');
@@ -698,6 +761,13 @@ class Instance extends pulumi.CustomResource {
     warmNodeAmount = registerOutput<int>('warmNodeAmount');
     warmNodeConfiguration = registerOutput<InstanceWarmNodeConfiguration>(
       'warmNodeConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceWarmNodeConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     warmNodeDiskEncrypted = registerOutput<bool>('warmNodeDiskEncrypted');
     warmNodeDiskSize = registerOutput<int>('warmNodeDiskSize');

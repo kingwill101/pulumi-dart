@@ -345,7 +345,16 @@ class ScriptExecution extends pulumi.CustomResource {
     scriptCmdletId = registerOutput<String?>('scriptCmdletId');
     startedAt = registerOutput<String>('startedAt');
     submittedAt = registerOutput<String>('submittedAt');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     timeout = registerOutput<String>('timeout');
     type = registerOutput<String>('type');
     warnings = registerOutput<List<String>>('warnings');

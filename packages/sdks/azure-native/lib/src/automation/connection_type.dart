@@ -291,6 +291,16 @@ class ConnectionType extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     fieldDefinitions = registerOutput<Map<String, FieldDefinitionResponse>>(
       'fieldDefinitions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeMapValues<FieldDefinitionResponse>(
+          guardedValue,
+          (value) => FieldDefinitionResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      },
     );
     isGlobal = registerOutput<bool?>('isGlobal');
     lastModifiedTime = registerOutput<String?>('lastModifiedTime');

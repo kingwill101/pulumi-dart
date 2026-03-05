@@ -782,19 +782,54 @@ class Service extends pulumi.CustomResource {
     );
     encryptionConfiguration = registerOutput<ServiceEncryptionConfiguration?>(
       'encryptionConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceEncryptionConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     healthCheckConfiguration = registerOutput<ServiceHealthCheckConfiguration>(
       'healthCheckConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceHealthCheckConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     instanceConfiguration = registerOutput<ServiceInstanceConfiguration>(
       'instanceConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceInstanceConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     networkConfiguration = registerOutput<ServiceNetworkConfiguration>(
       'networkConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceNetworkConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     observabilityConfiguration =
         registerOutput<ServiceObservabilityConfiguration?>(
           'observabilityConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ServiceObservabilityConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     serviceId = registerOutput<String>('serviceId');
@@ -802,6 +837,13 @@ class Service extends pulumi.CustomResource {
     serviceUrl = registerOutput<String>('serviceUrl');
     sourceConfiguration = registerOutput<ServiceSourceConfiguration>(
       'sourceConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceSourceConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -837,19 +879,54 @@ class Service extends pulumi.CustomResource {
     );
     encryptionConfiguration = registerOutput<ServiceEncryptionConfiguration?>(
       'encryptionConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceEncryptionConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     healthCheckConfiguration = registerOutput<ServiceHealthCheckConfiguration>(
       'healthCheckConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceHealthCheckConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     instanceConfiguration = registerOutput<ServiceInstanceConfiguration>(
       'instanceConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceInstanceConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     networkConfiguration = registerOutput<ServiceNetworkConfiguration>(
       'networkConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceNetworkConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     observabilityConfiguration =
         registerOutput<ServiceObservabilityConfiguration?>(
           'observabilityConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ServiceObservabilityConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     serviceId = registerOutput<String>('serviceId');
@@ -857,6 +934,13 @@ class Service extends pulumi.CustomResource {
     serviceUrl = registerOutput<String>('serviceUrl');
     sourceConfiguration = registerOutput<ServiceSourceConfiguration>(
       'sourceConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceSourceConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');

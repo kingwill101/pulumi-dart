@@ -2076,30 +2076,76 @@ class ManagedZone extends pulumi.CustomResource {
        ) {
     cloudLoggingConfig = registerOutput<ManagedZoneCloudLoggingConfig>(
       'cloudLoggingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedZoneCloudLoggingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     creationTime = registerOutput<String>('creationTime');
     description = registerOutput<String>('description');
     dnsName = registerOutput<String>('dnsName');
-    dnssecConfig = registerOutput<ManagedZoneDnssecConfig>('dnssecConfig');
+    dnssecConfig = registerOutput<ManagedZoneDnssecConfig>(
+      'dnssecConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedZoneDnssecConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     forceDestroy = registerOutput<bool?>('forceDestroy');
     forwardingConfig = registerOutput<ManagedZoneForwardingConfig?>(
       'forwardingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedZoneForwardingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     labels = registerOutput<Map<String, String>?>('labels');
     managedZoneId = registerOutput<String>('managedZoneId');
     this.name = registerOutput<String>('name');
     nameServers = registerOutput<List<String>>('nameServers');
-    peeringConfig = registerOutput<ManagedZonePeeringConfig?>('peeringConfig');
+    peeringConfig = registerOutput<ManagedZonePeeringConfig?>(
+      'peeringConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedZonePeeringConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     privateVisibilityConfig =
         registerOutput<ManagedZonePrivateVisibilityConfig?>(
           'privateVisibilityConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ManagedZonePrivateVisibilityConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     reverseLookup = registerOutput<bool?>('reverseLookup');
     serviceDirectoryConfig = registerOutput<ManagedZoneServiceDirectoryConfig?>(
       'serviceDirectoryConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedZoneServiceDirectoryConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     visibility = registerOutput<String?>('visibility');
   }
@@ -2129,30 +2175,76 @@ class ManagedZone extends pulumi.CustomResource {
        ) {
     cloudLoggingConfig = registerOutput<ManagedZoneCloudLoggingConfig>(
       'cloudLoggingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedZoneCloudLoggingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     creationTime = registerOutput<String>('creationTime');
     description = registerOutput<String>('description');
     dnsName = registerOutput<String>('dnsName');
-    dnssecConfig = registerOutput<ManagedZoneDnssecConfig>('dnssecConfig');
+    dnssecConfig = registerOutput<ManagedZoneDnssecConfig>(
+      'dnssecConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedZoneDnssecConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     forceDestroy = registerOutput<bool?>('forceDestroy');
     forwardingConfig = registerOutput<ManagedZoneForwardingConfig?>(
       'forwardingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedZoneForwardingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     labels = registerOutput<Map<String, String>?>('labels');
     managedZoneId = registerOutput<String>('managedZoneId');
     this.name = registerOutput<String>('name');
     nameServers = registerOutput<List<String>>('nameServers');
-    peeringConfig = registerOutput<ManagedZonePeeringConfig?>('peeringConfig');
+    peeringConfig = registerOutput<ManagedZonePeeringConfig?>(
+      'peeringConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedZonePeeringConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     privateVisibilityConfig =
         registerOutput<ManagedZonePrivateVisibilityConfig?>(
           'privateVisibilityConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ManagedZonePrivateVisibilityConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     reverseLookup = registerOutput<bool?>('reverseLookup');
     serviceDirectoryConfig = registerOutput<ManagedZoneServiceDirectoryConfig?>(
       'serviceDirectoryConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedZoneServiceDirectoryConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     visibility = registerOutput<String?>('visibility');
   }

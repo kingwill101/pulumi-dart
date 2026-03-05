@@ -181,16 +181,39 @@ class RiskConfiguration extends pulumi.CustomResource {
     accountTakeoverRiskConfiguration =
         registerOutput<RiskConfigurationAccountTakeoverRiskConfiguration?>(
           'accountTakeoverRiskConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RiskConfigurationAccountTakeoverRiskConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     clientId = registerOutput<String?>('clientId');
     compromisedCredentialsRiskConfiguration =
         registerOutput<
           RiskConfigurationCompromisedCredentialsRiskConfiguration?
-        >('compromisedCredentialsRiskConfiguration');
+        >(
+          'compromisedCredentialsRiskConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RiskConfigurationCompromisedCredentialsRiskConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     region = registerOutput<String>('region');
     riskExceptionConfiguration =
         registerOutput<RiskConfigurationRiskExceptionConfiguration?>(
           'riskExceptionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RiskConfigurationRiskExceptionConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     userPoolId = registerOutput<String>('userPoolId');
   }
@@ -221,16 +244,39 @@ class RiskConfiguration extends pulumi.CustomResource {
     accountTakeoverRiskConfiguration =
         registerOutput<RiskConfigurationAccountTakeoverRiskConfiguration?>(
           'accountTakeoverRiskConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RiskConfigurationAccountTakeoverRiskConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     clientId = registerOutput<String?>('clientId');
     compromisedCredentialsRiskConfiguration =
         registerOutput<
           RiskConfigurationCompromisedCredentialsRiskConfiguration?
-        >('compromisedCredentialsRiskConfiguration');
+        >(
+          'compromisedCredentialsRiskConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RiskConfigurationCompromisedCredentialsRiskConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     region = registerOutput<String>('region');
     riskExceptionConfiguration =
         registerOutput<RiskConfigurationRiskExceptionConfiguration?>(
           'riskExceptionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RiskConfigurationRiskExceptionConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     userPoolId = registerOutput<String>('userPoolId');
   }

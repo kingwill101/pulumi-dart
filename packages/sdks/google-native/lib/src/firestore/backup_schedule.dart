@@ -50,6 +50,13 @@ class BackupSchedule extends pulumi.CustomResource {
     weeklyRecurrence =
         registerOutput<GoogleFirestoreAdminV1WeeklyRecurrenceResponse>(
           'weeklyRecurrence',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleFirestoreAdminV1WeeklyRecurrenceResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

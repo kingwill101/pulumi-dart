@@ -86,6 +86,13 @@ class Document extends pulumi.CustomResource {
        ) {
     cloudAiDocument = registerOutput<GoogleCloudDocumentaiV1DocumentResponse>(
       'cloudAiDocument',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudDocumentaiV1DocumentResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     contentCategory = registerOutput<String>('contentCategory');
     createTime = registerOutput<String>('createTime');

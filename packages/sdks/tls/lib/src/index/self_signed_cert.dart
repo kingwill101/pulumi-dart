@@ -79,7 +79,16 @@ class SelfSignedCert extends pulumi.CustomResource {
     readyForRenewal = registerOutput<bool>('readyForRenewal');
     setAuthorityKeyId = registerOutput<bool>('setAuthorityKeyId');
     setSubjectKeyId = registerOutput<bool>('setSubjectKeyId');
-    subject = registerOutput<SelfSignedCertSubject?>('subject');
+    subject = registerOutput<SelfSignedCertSubject?>(
+      'subject',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SelfSignedCertSubject.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     uris = registerOutput<List<String>?>('uris');
     validityEndTime = registerOutput<String>('validityEndTime');
     validityPeriodHours = registerOutput<int>('validityPeriodHours');
@@ -121,7 +130,16 @@ class SelfSignedCert extends pulumi.CustomResource {
     readyForRenewal = registerOutput<bool>('readyForRenewal');
     setAuthorityKeyId = registerOutput<bool>('setAuthorityKeyId');
     setSubjectKeyId = registerOutput<bool>('setSubjectKeyId');
-    subject = registerOutput<SelfSignedCertSubject?>('subject');
+    subject = registerOutput<SelfSignedCertSubject?>(
+      'subject',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SelfSignedCertSubject.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     uris = registerOutput<List<String>?>('uris');
     validityEndTime = registerOutput<String>('validityEndTime');
     validityPeriodHours = registerOutput<int>('validityPeriodHours');

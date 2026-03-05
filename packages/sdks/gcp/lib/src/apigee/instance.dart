@@ -1495,6 +1495,13 @@ class Instance extends pulumi.CustomResource {
        ) {
     accessLoggingConfig = registerOutput<InstanceAccessLoggingConfig?>(
       'accessLoggingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceAccessLoggingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     consumerAcceptLists = registerOutput<List<String>>('consumerAcceptLists');
     description = registerOutput<String?>('description');
@@ -1535,6 +1542,13 @@ class Instance extends pulumi.CustomResource {
        ) {
     accessLoggingConfig = registerOutput<InstanceAccessLoggingConfig?>(
       'accessLoggingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceAccessLoggingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     consumerAcceptLists = registerOutput<List<String>>('consumerAcceptLists');
     description = registerOutput<String?>('description');

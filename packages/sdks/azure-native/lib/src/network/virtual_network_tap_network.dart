@@ -210,10 +210,24 @@ class VirtualNetworkTapNetwork extends pulumi.CustomResource {
     destinationLoadBalancerFrontEndIPConfiguration =
         registerOutput<FrontendIPConfigurationResponse?>(
           'destinationLoadBalancerFrontEndIPConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FrontendIPConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     destinationNetworkInterfaceIPConfiguration =
         registerOutput<NetworkInterfaceIPConfigurationResponse?>(
           'destinationNetworkInterfaceIPConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NetworkInterfaceIPConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     destinationPort = registerOutput<int?>('destinationPort');
     etag = registerOutput<String>('etag');

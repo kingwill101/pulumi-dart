@@ -635,8 +635,26 @@ class Recorder extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     this.name = registerOutput<String>('name');
-    recordingGroup = registerOutput<RecorderRecordingGroup>('recordingGroup');
-    recordingMode = registerOutput<RecorderRecordingMode>('recordingMode');
+    recordingGroup = registerOutput<RecorderRecordingGroup>(
+      'recordingGroup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RecorderRecordingGroup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    recordingMode = registerOutput<RecorderRecordingMode>(
+      'recordingMode',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RecorderRecordingMode.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
   }
@@ -665,8 +683,26 @@ class Recorder extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     this.name = registerOutput<String>('name');
-    recordingGroup = registerOutput<RecorderRecordingGroup>('recordingGroup');
-    recordingMode = registerOutput<RecorderRecordingMode>('recordingMode');
+    recordingGroup = registerOutput<RecorderRecordingGroup>(
+      'recordingGroup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RecorderRecordingGroup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    recordingMode = registerOutput<RecorderRecordingMode>(
+      'recordingMode',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RecorderRecordingMode.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
   }

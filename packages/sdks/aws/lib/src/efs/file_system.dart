@@ -324,7 +324,16 @@ class FileSystem extends pulumi.CustomResource {
     numberOfMountTargets = registerOutput<int>('numberOfMountTargets');
     ownerId = registerOutput<String>('ownerId');
     performanceMode = registerOutput<String>('performanceMode');
-    protection = registerOutput<FileSystemProtection>('protection');
+    protection = registerOutput<FileSystemProtection>(
+      'protection',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FileSystemProtection.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     provisionedThroughputInMibps = registerOutput<double?>(
       'provisionedThroughputInMibps',
     );
@@ -372,7 +381,16 @@ class FileSystem extends pulumi.CustomResource {
     numberOfMountTargets = registerOutput<int>('numberOfMountTargets');
     ownerId = registerOutput<String>('ownerId');
     performanceMode = registerOutput<String>('performanceMode');
-    protection = registerOutput<FileSystemProtection>('protection');
+    protection = registerOutput<FileSystemProtection>(
+      'protection',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FileSystemProtection.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     provisionedThroughputInMibps = registerOutput<double?>(
       'provisionedThroughputInMibps',
     );

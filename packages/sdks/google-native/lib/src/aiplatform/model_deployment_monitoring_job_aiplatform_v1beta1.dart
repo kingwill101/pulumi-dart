@@ -124,19 +124,51 @@ class ModelDeploymentMonitoringJobAiplatformV1beta1
     encryptionSpec =
         registerOutput<GoogleCloudAiplatformV1beta1EncryptionSpecResponse>(
           'encryptionSpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1beta1EncryptionSpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     endpoint = registerOutput<String>('endpoint');
-    error = registerOutput<GoogleRpcStatusResponseAiplatformV1beta1>('error');
+    error = registerOutput<GoogleRpcStatusResponseAiplatformV1beta1>(
+      'error',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleRpcStatusResponseAiplatformV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>>('labels');
     latestMonitoringPipelineMetadata =
         registerOutput<
           GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadataResponse
-        >('latestMonitoringPipelineMetadata');
+        >(
+          'latestMonitoringPipelineMetadata',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadataResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     location = registerOutput<String>('location');
     logTtl = registerOutput<String>('logTtl');
     loggingSamplingStrategy =
         registerOutput<GoogleCloudAiplatformV1beta1SamplingStrategyResponse>(
           'loggingSamplingStrategy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1beta1SamplingStrategyResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     modelDeploymentMonitoringObjectiveConfigs =
         registerOutput<List<Map<String, dynamic>>>(
@@ -145,11 +177,29 @@ class ModelDeploymentMonitoringJobAiplatformV1beta1
     modelDeploymentMonitoringScheduleConfig =
         registerOutput<
           GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigResponse
-        >('modelDeploymentMonitoringScheduleConfig');
+        >(
+          'modelDeploymentMonitoringScheduleConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     modelMonitoringAlertConfig =
         registerOutput<
           GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigResponse
-        >('modelMonitoringAlertConfig');
+        >(
+          'modelMonitoringAlertConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     this.name = registerOutput<String>('name');
     nextScheduleTime = registerOutput<String>('nextScheduleTime');
     predictInstanceSchemaUri = registerOutput<String>(
@@ -162,6 +212,13 @@ class ModelDeploymentMonitoringJobAiplatformV1beta1
     statsAnomaliesBaseDirectory =
         registerOutput<GoogleCloudAiplatformV1beta1GcsDestinationResponse>(
           'statsAnomaliesBaseDirectory',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1beta1GcsDestinationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     updateTime = registerOutput<String>('updateTime');
   }

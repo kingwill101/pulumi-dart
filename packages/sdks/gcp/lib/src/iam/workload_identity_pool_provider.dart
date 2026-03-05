@@ -2230,20 +2230,56 @@ class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
        ) {
     attributeCondition = registerOutput<String?>('attributeCondition');
     attributeMapping = registerOutput<Map<String, String>?>('attributeMapping');
-    aws = registerOutput<WorkloadIdentityPoolProviderAws?>('aws');
+    aws = registerOutput<WorkloadIdentityPoolProviderAws?>(
+      'aws',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkloadIdentityPoolProviderAws.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
-    oidc = registerOutput<WorkloadIdentityPoolProviderOidc?>('oidc');
+    oidc = registerOutput<WorkloadIdentityPoolProviderOidc?>(
+      'oidc',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkloadIdentityPoolProviderOidc.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
-    saml = registerOutput<WorkloadIdentityPoolProviderSaml?>('saml');
+    saml = registerOutput<WorkloadIdentityPoolProviderSaml?>(
+      'saml',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkloadIdentityPoolProviderSaml.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     state = registerOutput<String>('state');
     workloadIdentityPoolId = registerOutput<String>('workloadIdentityPoolId');
     workloadIdentityPoolProviderId = registerOutput<String>(
       'workloadIdentityPoolProviderId',
     );
-    x509 = registerOutput<WorkloadIdentityPoolProviderX509?>('x509');
+    x509 = registerOutput<WorkloadIdentityPoolProviderX509?>(
+      'x509',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkloadIdentityPoolProviderX509.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [WorkloadIdentityPoolProvider] resource's state with the given [name] and [id].
@@ -2271,19 +2307,55 @@ class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
        ) {
     attributeCondition = registerOutput<String?>('attributeCondition');
     attributeMapping = registerOutput<Map<String, String>?>('attributeMapping');
-    aws = registerOutput<WorkloadIdentityPoolProviderAws?>('aws');
+    aws = registerOutput<WorkloadIdentityPoolProviderAws?>(
+      'aws',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkloadIdentityPoolProviderAws.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
-    oidc = registerOutput<WorkloadIdentityPoolProviderOidc?>('oidc');
+    oidc = registerOutput<WorkloadIdentityPoolProviderOidc?>(
+      'oidc',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkloadIdentityPoolProviderOidc.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
-    saml = registerOutput<WorkloadIdentityPoolProviderSaml?>('saml');
+    saml = registerOutput<WorkloadIdentityPoolProviderSaml?>(
+      'saml',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkloadIdentityPoolProviderSaml.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.state = registerOutput<String>('state');
     workloadIdentityPoolId = registerOutput<String>('workloadIdentityPoolId');
     workloadIdentityPoolProviderId = registerOutput<String>(
       'workloadIdentityPoolProviderId',
     );
-    x509 = registerOutput<WorkloadIdentityPoolProviderX509?>('x509');
+    x509 = registerOutput<WorkloadIdentityPoolProviderX509?>(
+      'x509',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkloadIdentityPoolProviderX509.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

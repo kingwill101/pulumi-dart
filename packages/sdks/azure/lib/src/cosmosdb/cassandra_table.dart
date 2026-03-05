@@ -442,11 +442,27 @@ class CassandraTable extends pulumi.CustomResource {
     analyticalStorageTtl = registerOutput<int?>('analyticalStorageTtl');
     autoscaleSettings = registerOutput<CassandraTableAutoscaleSettings?>(
       'autoscaleSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CassandraTableAutoscaleSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     cassandraKeyspaceId = registerOutput<String>('cassandraKeyspaceId');
     defaultTtl = registerOutput<int?>('defaultTtl');
     this.name = registerOutput<String>('name');
-    schema = registerOutput<CassandraTableSchema>('schema');
+    schema = registerOutput<CassandraTableSchema>(
+      'schema',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CassandraTableSchema.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     throughput = registerOutput<int>('throughput');
   }
 
@@ -476,11 +492,27 @@ class CassandraTable extends pulumi.CustomResource {
     analyticalStorageTtl = registerOutput<int?>('analyticalStorageTtl');
     autoscaleSettings = registerOutput<CassandraTableAutoscaleSettings?>(
       'autoscaleSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CassandraTableAutoscaleSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     cassandraKeyspaceId = registerOutput<String>('cassandraKeyspaceId');
     defaultTtl = registerOutput<int?>('defaultTtl');
     this.name = registerOutput<String>('name');
-    schema = registerOutput<CassandraTableSchema>('schema');
+    schema = registerOutput<CassandraTableSchema>(
+      'schema',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CassandraTableSchema.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     throughput = registerOutput<int>('throughput');
   }
 }

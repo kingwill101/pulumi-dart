@@ -252,10 +252,28 @@ class DicomService extends pulumi.CustomResource {
     authentications = registerOutput<List<Map<String, dynamic>>>(
       'authentications',
     );
-    cors = registerOutput<DicomServiceCors>('cors');
+    cors = registerOutput<DicomServiceCors>(
+      'cors',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DicomServiceCors.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dataPartitionsEnabled = registerOutput<bool?>('dataPartitionsEnabled');
     encryptionKeyUrl = registerOutput<String?>('encryptionKeyUrl');
-    identity = registerOutput<DicomServiceIdentity?>('identity');
+    identity = registerOutput<DicomServiceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DicomServiceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     privateEndpoints = registerOutput<List<Map<String, dynamic>>>(
@@ -265,7 +283,16 @@ class DicomService extends pulumi.CustomResource {
       'publicNetworkAccessEnabled',
     );
     serviceUrl = registerOutput<String>('serviceUrl');
-    storage = registerOutput<DicomServiceStorage>('storage');
+    storage = registerOutput<DicomServiceStorage>(
+      'storage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DicomServiceStorage.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     workspaceId = registerOutput<String>('workspaceId');
   }
@@ -296,10 +323,28 @@ class DicomService extends pulumi.CustomResource {
     authentications = registerOutput<List<Map<String, dynamic>>>(
       'authentications',
     );
-    cors = registerOutput<DicomServiceCors>('cors');
+    cors = registerOutput<DicomServiceCors>(
+      'cors',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DicomServiceCors.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dataPartitionsEnabled = registerOutput<bool?>('dataPartitionsEnabled');
     encryptionKeyUrl = registerOutput<String?>('encryptionKeyUrl');
-    identity = registerOutput<DicomServiceIdentity?>('identity');
+    identity = registerOutput<DicomServiceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DicomServiceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     privateEndpoints = registerOutput<List<Map<String, dynamic>>>(
@@ -309,7 +354,16 @@ class DicomService extends pulumi.CustomResource {
       'publicNetworkAccessEnabled',
     );
     serviceUrl = registerOutput<String>('serviceUrl');
-    storage = registerOutput<DicomServiceStorage>('storage');
+    storage = registerOutput<DicomServiceStorage>(
+      'storage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DicomServiceStorage.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     workspaceId = registerOutput<String>('workspaceId');
   }

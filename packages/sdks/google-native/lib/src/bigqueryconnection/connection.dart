@@ -44,7 +44,16 @@ class Connection extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    cloudSql = registerOutput<CloudSqlPropertiesResponse>('cloudSql');
+    cloudSql = registerOutput<CloudSqlPropertiesResponse>(
+      'cloudSql',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CloudSqlPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     connectionId = registerOutput<String?>('connectionId');
     creationTime = registerOutput<String>('creationTime');
     description = registerOutput<String>('description');

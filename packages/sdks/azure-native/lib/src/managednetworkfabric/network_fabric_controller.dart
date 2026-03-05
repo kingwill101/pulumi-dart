@@ -334,6 +334,13 @@ class NetworkFabricController extends pulumi.CustomResource {
         );
     infrastructureServices = registerOutput<ControllerServicesResponse>(
       'infrastructureServices',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ControllerServicesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     ipv4AddressSpace = registerOutput<String?>('ipv4AddressSpace');
     ipv6AddressSpace = registerOutput<String?>('ipv6AddressSpace');
@@ -344,12 +351,28 @@ class NetworkFabricController extends pulumi.CustomResource {
     managedResourceGroupConfiguration =
         registerOutput<ManagedResourceGroupConfigurationResponse?>(
           'managedResourceGroupConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ManagedResourceGroupConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     networkFabricIds = registerOutput<List<String>>('networkFabricIds');
     nfcSku = registerOutput<String?>('nfcSku');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tenantInternetGatewayIds = registerOutput<List<String>>(
       'tenantInternetGatewayIds',
@@ -364,6 +387,13 @@ class NetworkFabricController extends pulumi.CustomResource {
     );
     workloadServices = registerOutput<ControllerServicesResponse>(
       'workloadServices',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ControllerServicesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

@@ -76,15 +76,36 @@ class ReservationComputeV1Resource extends pulumi.CustomResource {
     resourcePolicies = registerOutput<Map<String, String>>('resourcePolicies');
     resourceStatus = registerOutput<AllocationResourceStatusResponseComputeV1>(
       'resourceStatus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AllocationResourceStatusResponseComputeV1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
     selfLink = registerOutput<String>('selfLink');
     shareSettings = registerOutput<ShareSettingsResponseComputeV1>(
       'shareSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ShareSettingsResponseComputeV1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     specificReservation =
         registerOutput<AllocationSpecificSKUReservationResponseComputeV1>(
           'specificReservation',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AllocationSpecificSKUReservationResponseComputeV1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     specificReservationRequired = registerOutput<bool>(
       'specificReservationRequired',

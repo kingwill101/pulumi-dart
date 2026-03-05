@@ -533,7 +533,16 @@ class CooWebCcRule extends pulumi.CustomResource {
        ) {
     domain = registerOutput<String>('domain');
     this.name = registerOutput<String>('name');
-    ruleDetail = registerOutput<CooWebCcRuleRuleDetail>('ruleDetail');
+    ruleDetail = registerOutput<CooWebCcRuleRuleDetail>(
+      'ruleDetail',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CooWebCcRuleRuleDetail.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [CooWebCcRule] resource's state with the given [name] and [id].
@@ -561,6 +570,15 @@ class CooWebCcRule extends pulumi.CustomResource {
        ) {
     domain = registerOutput<String>('domain');
     this.name = registerOutput<String>('name');
-    ruleDetail = registerOutput<CooWebCcRuleRuleDetail>('ruleDetail');
+    ruleDetail = registerOutput<CooWebCcRuleRuleDetail>(
+      'ruleDetail',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CooWebCcRuleRuleDetail.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

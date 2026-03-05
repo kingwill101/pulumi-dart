@@ -42,7 +42,16 @@ class ControllerRevisionPatchAppsV1 extends pulumi.CustomResource {
     apiVersion = registerOutput<String?>('apiVersion');
     data = registerOutput<dynamic>('data');
     kind = registerOutput<String?>('kind');
-    metadata = registerOutput<ObjectMetaPatch?>('metadata');
+    metadata = registerOutput<ObjectMetaPatch?>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMetaPatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     revision = registerOutput<int?>('revision');
   }
 }

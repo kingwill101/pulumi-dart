@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getEnvgroup.
 class GetEnvgroupResult {
   /// The time at which the environment group was created as milliseconds since epoch.
   final String createdAt;
+
   /// Host names for this environment group.
   final List<String> hostnames;
+
   /// The time at which the environment group was last updated as milliseconds since epoch.
   final String lastModifiedAt;
+
   /// ID of the environment group.
   final String name;
+
   /// State of the environment group. Values other than ACTIVE means the resource is not ready to use.
   final String state;
 
@@ -48,4 +51,3 @@ class GetEnvgroupResult {
     );
   }
 }
-

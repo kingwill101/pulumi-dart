@@ -603,12 +603,35 @@ class Table extends pulumi.CustomResource {
     createdBy = registerOutput<String>('createdBy');
     encryptionConfiguration = registerOutput<TableEncryptionConfiguration>(
       'encryptionConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TableEncryptionConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     format = registerOutput<String>('format');
     maintenanceConfiguration = registerOutput<TableMaintenanceConfiguration>(
       'maintenanceConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TableMaintenanceConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    metadata = registerOutput<TableMetadata?>('metadata');
+    metadata = registerOutput<TableMetadata?>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TableMetadata.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     metadataLocation = registerOutput<String>('metadataLocation');
     modifiedAt = registerOutput<String>('modifiedAt');
     modifiedBy = registerOutput<String>('modifiedBy');
@@ -648,12 +671,35 @@ class Table extends pulumi.CustomResource {
     createdBy = registerOutput<String>('createdBy');
     encryptionConfiguration = registerOutput<TableEncryptionConfiguration>(
       'encryptionConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TableEncryptionConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     format = registerOutput<String>('format');
     maintenanceConfiguration = registerOutput<TableMaintenanceConfiguration>(
       'maintenanceConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TableMaintenanceConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    metadata = registerOutput<TableMetadata?>('metadata');
+    metadata = registerOutput<TableMetadata?>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TableMetadata.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     metadataLocation = registerOutput<String>('metadataLocation');
     modifiedAt = registerOutput<String>('modifiedAt');
     modifiedBy = registerOutput<String>('modifiedBy');

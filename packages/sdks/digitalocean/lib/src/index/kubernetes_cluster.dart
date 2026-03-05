@@ -826,9 +826,23 @@ class KubernetesCluster extends pulumi.CustomResource {
     amdGpuDeviceMetricsExporterPlugin =
         registerOutput<KubernetesClusterAmdGpuDeviceMetricsExporterPlugin>(
           'amdGpuDeviceMetricsExporterPlugin',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return KubernetesClusterAmdGpuDeviceMetricsExporterPlugin.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     amdGpuDevicePlugin = registerOutput<KubernetesClusterAmdGpuDevicePlugin>(
       'amdGpuDevicePlugin',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KubernetesClusterAmdGpuDevicePlugin.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     autoUpgrade = registerOutput<bool?>('autoUpgrade');
     clusterAutoscalerConfigurations =
@@ -840,6 +854,13 @@ class KubernetesCluster extends pulumi.CustomResource {
     controlPlaneFirewall =
         registerOutput<KubernetesClusterControlPlaneFirewall>(
           'controlPlaneFirewall',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return KubernetesClusterControlPlaneFirewall.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     createdAt = registerOutput<String>('createdAt');
     destroyAllAssociatedResources = registerOutput<bool?>(
@@ -852,21 +873,58 @@ class KubernetesCluster extends pulumi.CustomResource {
     kubeconfigExpireSeconds = registerOutput<int?>('kubeconfigExpireSeconds');
     maintenancePolicy = registerOutput<KubernetesClusterMaintenancePolicy>(
       'maintenancePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KubernetesClusterMaintenancePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
-    nodePool = registerOutput<KubernetesClusterNodePool>('nodePool');
+    nodePool = registerOutput<KubernetesClusterNodePool>(
+      'nodePool',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KubernetesClusterNodePool.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     nvidiaGpuDevicePlugin =
         registerOutput<KubernetesClusterNvidiaGpuDevicePlugin>(
           'nvidiaGpuDevicePlugin',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return KubernetesClusterNvidiaGpuDevicePlugin.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     rdmaSharedDevicePlugin =
         registerOutput<KubernetesClusterRdmaSharedDevicePlugin>(
           'rdmaSharedDevicePlugin',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return KubernetesClusterRdmaSharedDevicePlugin.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     registryIntegration = registerOutput<bool?>('registryIntegration');
     routingAgent = registerOutput<KubernetesClusterRoutingAgent>(
       'routingAgent',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KubernetesClusterRoutingAgent.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     serviceSubnet = registerOutput<String>('serviceSubnet');
     status = registerOutput<String>('status');
@@ -903,9 +961,23 @@ class KubernetesCluster extends pulumi.CustomResource {
     amdGpuDeviceMetricsExporterPlugin =
         registerOutput<KubernetesClusterAmdGpuDeviceMetricsExporterPlugin>(
           'amdGpuDeviceMetricsExporterPlugin',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return KubernetesClusterAmdGpuDeviceMetricsExporterPlugin.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     amdGpuDevicePlugin = registerOutput<KubernetesClusterAmdGpuDevicePlugin>(
       'amdGpuDevicePlugin',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KubernetesClusterAmdGpuDevicePlugin.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     autoUpgrade = registerOutput<bool?>('autoUpgrade');
     clusterAutoscalerConfigurations =
@@ -917,6 +989,13 @@ class KubernetesCluster extends pulumi.CustomResource {
     controlPlaneFirewall =
         registerOutput<KubernetesClusterControlPlaneFirewall>(
           'controlPlaneFirewall',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return KubernetesClusterControlPlaneFirewall.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     createdAt = registerOutput<String>('createdAt');
     destroyAllAssociatedResources = registerOutput<bool?>(
@@ -929,21 +1008,58 @@ class KubernetesCluster extends pulumi.CustomResource {
     kubeconfigExpireSeconds = registerOutput<int?>('kubeconfigExpireSeconds');
     maintenancePolicy = registerOutput<KubernetesClusterMaintenancePolicy>(
       'maintenancePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KubernetesClusterMaintenancePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
-    nodePool = registerOutput<KubernetesClusterNodePool>('nodePool');
+    nodePool = registerOutput<KubernetesClusterNodePool>(
+      'nodePool',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KubernetesClusterNodePool.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     nvidiaGpuDevicePlugin =
         registerOutput<KubernetesClusterNvidiaGpuDevicePlugin>(
           'nvidiaGpuDevicePlugin',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return KubernetesClusterNvidiaGpuDevicePlugin.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     rdmaSharedDevicePlugin =
         registerOutput<KubernetesClusterRdmaSharedDevicePlugin>(
           'rdmaSharedDevicePlugin',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return KubernetesClusterRdmaSharedDevicePlugin.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     registryIntegration = registerOutput<bool?>('registryIntegration');
     routingAgent = registerOutput<KubernetesClusterRoutingAgent>(
       'routingAgent',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KubernetesClusterRoutingAgent.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     serviceSubnet = registerOutput<String>('serviceSubnet');
     status = registerOutput<String>('status');

@@ -489,6 +489,13 @@ class Queue extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     outboundCallerConfig = registerOutput<QueueOutboundCallerConfig?>(
       'outboundCallerConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return QueueOutboundCallerConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     queueId = registerOutput<String>('queueId');
     quickConnectIds = registerOutput<List<String>?>('quickConnectIds');
@@ -525,6 +532,13 @@ class Queue extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     outboundCallerConfig = registerOutput<QueueOutboundCallerConfig?>(
       'outboundCallerConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return QueueOutboundCallerConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     queueId = registerOutput<String>('queueId');
     quickConnectIds = registerOutput<List<String>?>('quickConnectIds');

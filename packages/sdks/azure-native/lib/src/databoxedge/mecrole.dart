@@ -177,13 +177,29 @@ class MECRole extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     connectionString = registerOutput<AsymmetricEncryptedSecretResponse?>(
       'connectionString',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AsymmetricEncryptedSecretResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     controllerEndpoint = registerOutput<String?>('controllerEndpoint');
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
     resourceUniqueId = registerOutput<String?>('resourceUniqueId');
     roleStatus = registerOutput<String>('roleStatus');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

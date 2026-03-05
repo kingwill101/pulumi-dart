@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAlertRule.
 class GetAlertRuleResult {
   /// The provider-assigned unique ID for this managed resource.
@@ -34,4 +33,3 @@ class GetAlertRuleResult {
     );
   }
 }
-

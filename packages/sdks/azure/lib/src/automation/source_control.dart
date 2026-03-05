@@ -296,7 +296,16 @@ class SourceControl extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     publishRunbookEnabled = registerOutput<bool?>('publishRunbookEnabled');
     repositoryUrl = registerOutput<String>('repositoryUrl');
-    security = registerOutput<SourceControlSecurity>('security');
+    security = registerOutput<SourceControlSecurity>(
+      'security',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SourceControlSecurity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sourceControlType = registerOutput<String>('sourceControlType');
   }
 
@@ -331,7 +340,16 @@ class SourceControl extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     publishRunbookEnabled = registerOutput<bool?>('publishRunbookEnabled');
     repositoryUrl = registerOutput<String>('repositoryUrl');
-    security = registerOutput<SourceControlSecurity>('security');
+    security = registerOutput<SourceControlSecurity>(
+      'security',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SourceControlSecurity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sourceControlType = registerOutput<String>('sourceControlType');
   }
 }

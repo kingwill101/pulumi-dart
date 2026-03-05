@@ -1793,23 +1793,69 @@ class VirtualNetworkNetwork extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    addressSpace = registerOutput<AddressSpaceResponse?>('addressSpace');
+    addressSpace = registerOutput<AddressSpaceResponse?>(
+      'addressSpace',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AddressSpaceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     bgpCommunities = registerOutput<VirtualNetworkBgpCommunitiesResponse?>(
       'bgpCommunities',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualNetworkBgpCommunitiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     ddosProtectionPlan = registerOutput<SubResourceResponse?>(
       'ddosProtectionPlan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    dhcpOptions = registerOutput<DhcpOptionsResponse?>('dhcpOptions');
+    dhcpOptions = registerOutput<DhcpOptionsResponse?>(
+      'dhcpOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DhcpOptionsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     enableDdosProtection = registerOutput<bool?>('enableDdosProtection');
     enableVmProtection = registerOutput<bool?>('enableVmProtection');
     encryption = registerOutput<VirtualNetworkEncryptionResponse?>(
       'encryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualNetworkEncryptionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     extendedLocation = registerOutput<ExtendedLocationResponse?>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     flowLogs = registerOutput<List<Map<String, dynamic>>>('flowLogs');
     flowTimeoutInMinutes = registerOutput<int?>('flowTimeoutInMinutes');

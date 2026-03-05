@@ -227,8 +227,24 @@ class NspAssociation extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     privateLinkResource = registerOutput<SubResourceResponse?>(
       'privateLinkResource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    profile = registerOutput<SubResourceResponse?>('profile');
+    profile = registerOutput<SubResourceResponse?>(
+      'profile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     provisioningState = registerOutput<String>('provisioningState');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

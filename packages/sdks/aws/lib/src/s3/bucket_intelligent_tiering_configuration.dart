@@ -427,6 +427,13 @@ class BucketIntelligentTieringConfiguration extends pulumi.CustomResource {
     bucket = registerOutput<String>('bucket');
     filter = registerOutput<BucketIntelligentTieringConfigurationFilter?>(
       'filter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketIntelligentTieringConfigurationFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -460,6 +467,13 @@ class BucketIntelligentTieringConfiguration extends pulumi.CustomResource {
     bucket = registerOutput<String>('bucket');
     filter = registerOutput<BucketIntelligentTieringConfigurationFilter?>(
       'filter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketIntelligentTieringConfigurationFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

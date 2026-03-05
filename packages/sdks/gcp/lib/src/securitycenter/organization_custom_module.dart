@@ -533,6 +533,13 @@ class OrganizationCustomModule extends pulumi.CustomResource {
     ancestorModule = registerOutput<String>('ancestorModule');
     customConfig = registerOutput<OrganizationCustomModuleCustomConfig>(
       'customConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrganizationCustomModuleCustomConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     displayName = registerOutput<String>('displayName');
     enablementState = registerOutput<String>('enablementState');
@@ -568,6 +575,13 @@ class OrganizationCustomModule extends pulumi.CustomResource {
     ancestorModule = registerOutput<String>('ancestorModule');
     customConfig = registerOutput<OrganizationCustomModuleCustomConfig>(
       'customConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrganizationCustomModuleCustomConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     displayName = registerOutput<String>('displayName');
     enablementState = registerOutput<String>('enablementState');

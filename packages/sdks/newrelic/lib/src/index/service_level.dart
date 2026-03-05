@@ -920,10 +920,28 @@ class ServiceLevel extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     description = registerOutput<String?>('description');
-    events = registerOutput<ServiceLevelEvents>('events');
+    events = registerOutput<ServiceLevelEvents>(
+      'events',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceLevelEvents.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     guid = registerOutput<String>('guid');
     this.name = registerOutput<String>('name');
-    objective = registerOutput<ServiceLevelObjective>('objective');
+    objective = registerOutput<ServiceLevelObjective>(
+      'objective',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceLevelObjective.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sliGuid = registerOutput<String>('sliGuid');
     sliId = registerOutput<String>('sliId');
   }
@@ -952,10 +970,28 @@ class ServiceLevel extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     description = registerOutput<String?>('description');
-    events = registerOutput<ServiceLevelEvents>('events');
+    events = registerOutput<ServiceLevelEvents>(
+      'events',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceLevelEvents.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     guid = registerOutput<String>('guid');
     this.name = registerOutput<String>('name');
-    objective = registerOutput<ServiceLevelObjective>('objective');
+    objective = registerOutput<ServiceLevelObjective>(
+      'objective',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceLevelObjective.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sliGuid = registerOutput<String>('sliGuid');
     sliId = registerOutput<String>('sliId');
   }

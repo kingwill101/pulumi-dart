@@ -551,7 +551,16 @@ class WasmPlugin extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String?>('location');
-    logConfig = registerOutput<WasmPluginLogConfig?>('logConfig');
+    logConfig = registerOutput<WasmPluginLogConfig?>(
+      'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WasmPluginLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     mainVersionId = registerOutput<String>('mainVersionId');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -589,7 +598,16 @@ class WasmPlugin extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String?>('location');
-    logConfig = registerOutput<WasmPluginLogConfig?>('logConfig');
+    logConfig = registerOutput<WasmPluginLogConfig?>(
+      'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WasmPluginLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     mainVersionId = registerOutput<String>('mainVersionId');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

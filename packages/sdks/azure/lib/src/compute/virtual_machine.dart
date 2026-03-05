@@ -633,10 +633,24 @@ class VirtualMachine extends pulumi.CustomResource {
     additionalCapabilities =
         registerOutput<VirtualMachineAdditionalCapabilities?>(
           'additionalCapabilities',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VirtualMachineAdditionalCapabilities.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     availabilitySetId = registerOutput<String>('availabilitySetId');
     bootDiagnostics = registerOutput<VirtualMachineBootDiagnostics?>(
       'bootDiagnostics',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualMachineBootDiagnostics.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     deleteDataDisksOnTermination = registerOutput<bool?>(
       'deleteDataDisksOnTermination',
@@ -644,14 +658,39 @@ class VirtualMachine extends pulumi.CustomResource {
     deleteOsDiskOnTermination = registerOutput<bool?>(
       'deleteOsDiskOnTermination',
     );
-    identity = registerOutput<VirtualMachineIdentity?>('identity');
+    identity = registerOutput<VirtualMachineIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualMachineIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     licenseType = registerOutput<String>('licenseType');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds');
-    osProfile = registerOutput<VirtualMachineOsProfile?>('osProfile');
+    osProfile = registerOutput<VirtualMachineOsProfile?>(
+      'osProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualMachineOsProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     osProfileLinuxConfig = registerOutput<VirtualMachineOsProfileLinuxConfig?>(
       'osProfileLinuxConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualMachineOsProfileLinuxConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     osProfileSecrets = registerOutput<List<Map<String, dynamic>>?>(
       'osProfileSecrets',
@@ -659,8 +698,24 @@ class VirtualMachine extends pulumi.CustomResource {
     osProfileWindowsConfig =
         registerOutput<VirtualMachineOsProfileWindowsConfig?>(
           'osProfileWindowsConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VirtualMachineOsProfileWindowsConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    plan = registerOutput<VirtualMachinePlan?>('plan');
+    plan = registerOutput<VirtualMachinePlan?>(
+      'plan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualMachinePlan.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     primaryNetworkInterfaceId = registerOutput<String?>(
       'primaryNetworkInterfaceId',
     );
@@ -673,9 +728,23 @@ class VirtualMachine extends pulumi.CustomResource {
     );
     storageImageReference = registerOutput<VirtualMachineStorageImageReference>(
       'storageImageReference',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualMachineStorageImageReference.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     storageOsDisk = registerOutput<VirtualMachineStorageOsDisk>(
       'storageOsDisk',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualMachineStorageOsDisk.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     vmSize = registerOutput<String>('vmSize');
@@ -708,10 +777,24 @@ class VirtualMachine extends pulumi.CustomResource {
     additionalCapabilities =
         registerOutput<VirtualMachineAdditionalCapabilities?>(
           'additionalCapabilities',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VirtualMachineAdditionalCapabilities.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     availabilitySetId = registerOutput<String>('availabilitySetId');
     bootDiagnostics = registerOutput<VirtualMachineBootDiagnostics?>(
       'bootDiagnostics',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualMachineBootDiagnostics.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     deleteDataDisksOnTermination = registerOutput<bool?>(
       'deleteDataDisksOnTermination',
@@ -719,14 +802,39 @@ class VirtualMachine extends pulumi.CustomResource {
     deleteOsDiskOnTermination = registerOutput<bool?>(
       'deleteOsDiskOnTermination',
     );
-    identity = registerOutput<VirtualMachineIdentity?>('identity');
+    identity = registerOutput<VirtualMachineIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualMachineIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     licenseType = registerOutput<String>('licenseType');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds');
-    osProfile = registerOutput<VirtualMachineOsProfile?>('osProfile');
+    osProfile = registerOutput<VirtualMachineOsProfile?>(
+      'osProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualMachineOsProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     osProfileLinuxConfig = registerOutput<VirtualMachineOsProfileLinuxConfig?>(
       'osProfileLinuxConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualMachineOsProfileLinuxConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     osProfileSecrets = registerOutput<List<Map<String, dynamic>>?>(
       'osProfileSecrets',
@@ -734,8 +842,24 @@ class VirtualMachine extends pulumi.CustomResource {
     osProfileWindowsConfig =
         registerOutput<VirtualMachineOsProfileWindowsConfig?>(
           'osProfileWindowsConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VirtualMachineOsProfileWindowsConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    plan = registerOutput<VirtualMachinePlan?>('plan');
+    plan = registerOutput<VirtualMachinePlan?>(
+      'plan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualMachinePlan.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     primaryNetworkInterfaceId = registerOutput<String?>(
       'primaryNetworkInterfaceId',
     );
@@ -748,9 +872,23 @@ class VirtualMachine extends pulumi.CustomResource {
     );
     storageImageReference = registerOutput<VirtualMachineStorageImageReference>(
       'storageImageReference',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualMachineStorageImageReference.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     storageOsDisk = registerOutput<VirtualMachineStorageOsDisk>(
       'storageOsDisk',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualMachineStorageOsDisk.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     vmSize = registerOutput<String>('vmSize');

@@ -340,9 +340,23 @@ class MongoDBResourceMongoDBCollection extends pulumi.CustomResource {
     this.options =
         registerOutput<MongoDBCollectionGetPropertiesResponseOptions?>(
           'options',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MongoDBCollectionGetPropertiesResponseOptions.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     resource = registerOutput<MongoDBCollectionGetPropertiesResponseResource?>(
       'resource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MongoDBCollectionGetPropertiesResponseResource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

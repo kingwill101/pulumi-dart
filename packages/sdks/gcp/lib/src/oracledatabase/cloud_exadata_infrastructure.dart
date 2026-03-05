@@ -570,6 +570,13 @@ class CloudExadataInfrastructure extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     properties = registerOutput<CloudExadataInfrastructureProperties?>(
       'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CloudExadataInfrastructureProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
   }
@@ -612,6 +619,13 @@ class CloudExadataInfrastructure extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     properties = registerOutput<CloudExadataInfrastructureProperties?>(
       'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CloudExadataInfrastructureProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
   }

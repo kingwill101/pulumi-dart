@@ -162,10 +162,28 @@ class Device extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     arn = registerOutput<String>('arn');
-    awsLocation = registerOutput<DeviceAwsLocation?>('awsLocation');
+    awsLocation = registerOutput<DeviceAwsLocation?>(
+      'awsLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeviceAwsLocation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     globalNetworkId = registerOutput<String>('globalNetworkId');
-    location = registerOutput<DeviceLocation?>('location');
+    location = registerOutput<DeviceLocation?>(
+      'location',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeviceLocation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     model = registerOutput<String?>('model');
     serialNumber = registerOutput<String?>('serialNumber');
     siteId = registerOutput<String?>('siteId');
@@ -199,10 +217,28 @@ class Device extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    awsLocation = registerOutput<DeviceAwsLocation?>('awsLocation');
+    awsLocation = registerOutput<DeviceAwsLocation?>(
+      'awsLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeviceAwsLocation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     globalNetworkId = registerOutput<String>('globalNetworkId');
-    location = registerOutput<DeviceLocation?>('location');
+    location = registerOutput<DeviceLocation?>(
+      'location',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeviceLocation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     model = registerOutput<String?>('model');
     serialNumber = registerOutput<String?>('serialNumber');
     siteId = registerOutput<String?>('siteId');

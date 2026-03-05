@@ -37,7 +37,8 @@ Future<GetConfigurationProfileResult> getConfigurationProfile(
 /// Other available API versions: 2020-06-30-preview, 2021-04-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automanage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_automanage_get_configuration_profile_assignment_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetConfigurationProfileAssignmentResult> getConfigurationProfileAssignment(
+Future<GetConfigurationProfileAssignmentResult>
+getConfigurationProfileAssignment(
   GetConfigurationProfileAssignmentArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -57,7 +58,8 @@ Future<GetConfigurationProfileAssignmentResult> getConfigurationProfileAssignmen
 /// Other available API versions: 2021-04-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automanage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_automanage_get_configuration_profile_hciassignment_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetConfigurationProfileHCIAssignmentResult> getConfigurationProfileHCIAssignment(
+Future<GetConfigurationProfileHCIAssignmentResult>
+getConfigurationProfileHCIAssignment(
   GetConfigurationProfileHCIAssignmentArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -77,7 +79,8 @@ Future<GetConfigurationProfileHCIAssignmentResult> getConfigurationProfileHCIAss
 /// Other available API versions: 2021-04-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automanage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_automanage_get_configuration_profile_hcrpassignment_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetConfigurationProfileHCRPAssignmentResult> getConfigurationProfileHCRPAssignment(
+Future<GetConfigurationProfileHCRPAssignmentResult>
+getConfigurationProfileHCRPAssignment(
   GetConfigurationProfileHCRPAssignmentArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

@@ -41,7 +41,16 @@ class Instance extends pulumi.CustomResource {
     featurePolicy =
         registerOutput<
           GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse
-        >('featurePolicy');
+        >(
+          'featurePolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     location = registerOutput<String>('location');
     loggingEnabled = registerOutput<bool>('loggingEnabled');
     this.name = registerOutput<String>('name');

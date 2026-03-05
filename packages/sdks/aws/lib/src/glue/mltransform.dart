@@ -712,7 +712,16 @@ class MLTransform extends pulumi.CustomResource {
     maxRetries = registerOutput<int?>('maxRetries');
     this.name = registerOutput<String>('name');
     numberOfWorkers = registerOutput<int?>('numberOfWorkers');
-    parameters = registerOutput<MLTransformParameters>('parameters');
+    parameters = registerOutput<MLTransformParameters>(
+      'parameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MLTransformParameters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     schemas = registerOutput<List<Map<String, dynamic>>>('schemas');
@@ -756,7 +765,16 @@ class MLTransform extends pulumi.CustomResource {
     maxRetries = registerOutput<int?>('maxRetries');
     this.name = registerOutput<String>('name');
     numberOfWorkers = registerOutput<int?>('numberOfWorkers');
-    parameters = registerOutput<MLTransformParameters>('parameters');
+    parameters = registerOutput<MLTransformParameters>(
+      'parameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MLTransformParameters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     schemas = registerOutput<List<Map<String, dynamic>>>('schemas');

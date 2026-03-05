@@ -1300,6 +1300,13 @@ class BucketObjectv2 extends pulumi.CustomResource {
     );
     overrideProvider = registerOutput<BucketObjectv2OverrideProvider?>(
       'overrideProvider',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketObjectv2OverrideProvider.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     serverSideEncryption = registerOutput<String>('serverSideEncryption');
@@ -1366,6 +1373,13 @@ class BucketObjectv2 extends pulumi.CustomResource {
     );
     overrideProvider = registerOutput<BucketObjectv2OverrideProvider?>(
       'overrideProvider',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketObjectv2OverrideProvider.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     serverSideEncryption = registerOutput<String>('serverSideEncryption');

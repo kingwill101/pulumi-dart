@@ -144,7 +144,16 @@ class NatGatewayEipAssociation extends pulumi.CustomResource {
     associationId = registerOutput<String>('associationId');
     natGatewayId = registerOutput<String>('natGatewayId');
     region = registerOutput<String>('region');
-    timeouts = registerOutput<NatGatewayEipAssociationTimeouts?>('timeouts');
+    timeouts = registerOutput<NatGatewayEipAssociationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NatGatewayEipAssociationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [NatGatewayEipAssociation] resource's state with the given [name] and [id].
@@ -174,6 +183,15 @@ class NatGatewayEipAssociation extends pulumi.CustomResource {
     associationId = registerOutput<String>('associationId');
     natGatewayId = registerOutput<String>('natGatewayId');
     region = registerOutput<String>('region');
-    timeouts = registerOutput<NatGatewayEipAssociationTimeouts?>('timeouts');
+    timeouts = registerOutput<NatGatewayEipAssociationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NatGatewayEipAssociationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

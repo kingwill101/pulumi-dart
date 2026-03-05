@@ -1057,7 +1057,16 @@ class CxTestCase extends pulumi.CustomResource {
     testCaseConversationTurns = registerOutput<List<Map<String, dynamic>>?>(
       'testCaseConversationTurns',
     );
-    testConfig = registerOutput<CxTestCaseTestConfig?>('testConfig');
+    testConfig = registerOutput<CxTestCaseTestConfig?>(
+      'testConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxTestCaseTestConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [CxTestCase] resource's state with the given [name] and [id].
@@ -1095,6 +1104,15 @@ class CxTestCase extends pulumi.CustomResource {
     testCaseConversationTurns = registerOutput<List<Map<String, dynamic>>?>(
       'testCaseConversationTurns',
     );
-    testConfig = registerOutput<CxTestCaseTestConfig?>('testConfig');
+    testConfig = registerOutput<CxTestCaseTestConfig?>(
+      'testConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxTestCaseTestConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

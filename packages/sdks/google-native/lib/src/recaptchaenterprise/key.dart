@@ -63,12 +63,28 @@ class Key extends pulumi.CustomResource {
     androidSettings =
         registerOutput<
           GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse
-        >('androidSettings');
+        >(
+          'androidSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
     iosSettings =
         registerOutput<GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse>(
           'iosSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     labels = registerOutput<Map<String, String>>('labels');
     this.name = registerOutput<String>('name');
@@ -76,14 +92,35 @@ class Key extends pulumi.CustomResource {
     testingOptions =
         registerOutput<GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse>(
           'testingOptions',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     wafSettings =
         registerOutput<GoogleCloudRecaptchaenterpriseV1WafSettingsResponse>(
           'wafSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudRecaptchaenterpriseV1WafSettingsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     webSettings =
         registerOutput<GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse>(
           'webSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

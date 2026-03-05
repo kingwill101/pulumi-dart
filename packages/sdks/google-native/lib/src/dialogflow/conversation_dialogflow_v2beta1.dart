@@ -60,7 +60,16 @@ class ConversationDialogflowV2beta1 extends pulumi.CustomResource {
     phoneNumber =
         registerOutput<
           GoogleCloudDialogflowV2beta1ConversationPhoneNumberResponse
-        >('phoneNumber');
+        >(
+          'phoneNumber',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowV2beta1ConversationPhoneNumberResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     project = registerOutput<String>('project');
     startTime = registerOutput<String>('startTime');
   }

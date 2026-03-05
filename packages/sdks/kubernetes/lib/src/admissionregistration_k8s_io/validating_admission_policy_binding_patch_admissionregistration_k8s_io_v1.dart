@@ -44,7 +44,25 @@ class ValidatingAdmissionPolicyBindingPatchAdmissionregistrationK8sIoV1
        ) {
     apiVersion = registerOutput<String?>('apiVersion');
     kind = registerOutput<String?>('kind');
-    metadata = registerOutput<ObjectMetaPatch?>('metadata');
-    spec = registerOutput<ValidatingAdmissionPolicyBindingSpecPatch?>('spec');
+    metadata = registerOutput<ObjectMetaPatch?>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMetaPatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    spec = registerOutput<ValidatingAdmissionPolicyBindingSpecPatch?>(
+      'spec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ValidatingAdmissionPolicyBindingSpecPatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

@@ -491,16 +491,39 @@ class BlobContainer extends pulumi.CustomResource {
     hasLegalHold = registerOutput<bool>('hasLegalHold');
     immutabilityPolicy = registerOutput<ImmutabilityPolicyPropertiesResponse>(
       'immutabilityPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImmutabilityPolicyPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     immutableStorageWithVersioning =
         registerOutput<ImmutableStorageWithVersioningResponse?>(
           'immutableStorageWithVersioning',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ImmutableStorageWithVersioningResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     leaseDuration = registerOutput<String>('leaseDuration');
     leaseState = registerOutput<String>('leaseState');
     leaseStatus = registerOutput<String>('leaseStatus');
-    legalHold = registerOutput<LegalHoldPropertiesResponse>('legalHold');
+    legalHold = registerOutput<LegalHoldPropertiesResponse>(
+      'legalHold',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LegalHoldPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');
     publicAccess = registerOutput<String?>('publicAccess');

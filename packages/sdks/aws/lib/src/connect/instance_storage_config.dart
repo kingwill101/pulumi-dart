@@ -789,6 +789,13 @@ class InstanceStorageConfig extends pulumi.CustomResource {
     resourceType = registerOutput<String>('resourceType');
     storageConfig = registerOutput<InstanceStorageConfigStorageConfig>(
       'storageConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceStorageConfigStorageConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -821,6 +828,13 @@ class InstanceStorageConfig extends pulumi.CustomResource {
     resourceType = registerOutput<String>('resourceType');
     storageConfig = registerOutput<InstanceStorageConfigStorageConfig>(
       'storageConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceStorageConfigStorageConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

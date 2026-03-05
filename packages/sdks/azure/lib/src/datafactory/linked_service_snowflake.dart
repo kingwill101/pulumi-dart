@@ -549,6 +549,13 @@ class LinkedServiceSnowflake extends pulumi.CustomResource {
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
     keyVaultPassword = registerOutput<LinkedServiceSnowflakeKeyVaultPassword?>(
       'keyVaultPassword',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinkedServiceSnowflakeKeyVaultPassword.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');
@@ -587,6 +594,13 @@ class LinkedServiceSnowflake extends pulumi.CustomResource {
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
     keyVaultPassword = registerOutput<LinkedServiceSnowflakeKeyVaultPassword?>(
       'keyVaultPassword',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinkedServiceSnowflakeKeyVaultPassword.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');

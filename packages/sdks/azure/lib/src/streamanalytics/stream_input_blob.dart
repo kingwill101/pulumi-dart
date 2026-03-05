@@ -397,6 +397,13 @@ class StreamInputBlob extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     serialization = registerOutput<StreamInputBlobSerialization>(
       'serialization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StreamInputBlobSerialization.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     storageAccountKey = registerOutput<String>('storageAccountKey');
     storageAccountName = registerOutput<String>('storageAccountName');
@@ -435,6 +442,13 @@ class StreamInputBlob extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     serialization = registerOutput<StreamInputBlobSerialization>(
       'serialization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StreamInputBlobSerialization.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     storageAccountKey = registerOutput<String>('storageAccountKey');
     storageAccountName = registerOutput<String>('storageAccountName');

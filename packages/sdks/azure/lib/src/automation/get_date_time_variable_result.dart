@@ -1,17 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getDateTimeVariable.
 class GetDateTimeVariableResult {
   final String automationAccountName;
+
   /// The description of the Automation Variable.
   final String description;
+
   /// Specifies if the Automation Variable is encrypted. Defaults to `false`.
   final bool encrypted;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
   final String resourceGroupName;
+
   /// The value of the Automation Variable in the [RFC3339 Section 5.6 Internet Date/Time Format](https://tools.ietf.org/html/rfc3339#section-5.6).
   final String value;
 
@@ -57,4 +60,3 @@ class GetDateTimeVariableResult {
     );
   }
 }
-

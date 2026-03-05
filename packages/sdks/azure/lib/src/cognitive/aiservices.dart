@@ -252,16 +252,41 @@ class AIServices extends pulumi.CustomResource {
     customSubdomainName = registerOutput<String?>('customSubdomainName');
     customerManagedKey = registerOutput<AIServicesCustomerManagedKey?>(
       'customerManagedKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AIServicesCustomerManagedKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     endpoint = registerOutput<String>('endpoint');
     fqdns = registerOutput<List<String>?>('fqdns');
-    identity = registerOutput<AIServicesIdentity?>('identity');
+    identity = registerOutput<AIServicesIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AIServicesIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     localAuthenticationEnabled = registerOutput<bool?>(
       'localAuthenticationEnabled',
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkAcls = registerOutput<AIServicesNetworkAcls?>('networkAcls');
+    networkAcls = registerOutput<AIServicesNetworkAcls?>(
+      'networkAcls',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AIServicesNetworkAcls.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     outboundNetworkAccessRestricted = registerOutput<bool?>(
       'outboundNetworkAccessRestricted',
     );
@@ -300,16 +325,41 @@ class AIServices extends pulumi.CustomResource {
     customSubdomainName = registerOutput<String?>('customSubdomainName');
     customerManagedKey = registerOutput<AIServicesCustomerManagedKey?>(
       'customerManagedKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AIServicesCustomerManagedKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     endpoint = registerOutput<String>('endpoint');
     fqdns = registerOutput<List<String>?>('fqdns');
-    identity = registerOutput<AIServicesIdentity?>('identity');
+    identity = registerOutput<AIServicesIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AIServicesIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     localAuthenticationEnabled = registerOutput<bool?>(
       'localAuthenticationEnabled',
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkAcls = registerOutput<AIServicesNetworkAcls?>('networkAcls');
+    networkAcls = registerOutput<AIServicesNetworkAcls?>(
+      'networkAcls',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AIServicesNetworkAcls.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     outboundNetworkAccessRestricted = registerOutput<bool?>(
       'outboundNetworkAccessRestricted',
     );

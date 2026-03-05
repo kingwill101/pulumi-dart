@@ -228,6 +228,13 @@ class SnapshotPolicy extends pulumi.CustomResource {
     copyEncryptionConfiguration =
         registerOutput<SnapshotPolicyCopyEncryptionConfiguration?>(
           'copyEncryptionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SnapshotPolicyCopyEncryptionConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     createTime = registerOutput<String>('createTime');
     enableCrossRegionCopy = registerOutput<bool?>('enableCrossRegionCopy');
@@ -272,6 +279,13 @@ class SnapshotPolicy extends pulumi.CustomResource {
     copyEncryptionConfiguration =
         registerOutput<SnapshotPolicyCopyEncryptionConfiguration?>(
           'copyEncryptionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SnapshotPolicyCopyEncryptionConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     createTime = registerOutput<String>('createTime');
     enableCrossRegionCopy = registerOutput<bool?>('enableCrossRegionCopy');

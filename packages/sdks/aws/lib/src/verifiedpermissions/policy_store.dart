@@ -162,6 +162,13 @@ class PolicyStore extends pulumi.CustomResource {
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     validationSettings = registerOutput<PolicyStoreValidationSettings>(
       'validationSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyStoreValidationSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -197,6 +204,13 @@ class PolicyStore extends pulumi.CustomResource {
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     validationSettings = registerOutput<PolicyStoreValidationSettings>(
       'validationSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyStoreValidationSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

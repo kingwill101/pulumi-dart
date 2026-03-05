@@ -219,7 +219,16 @@ class V3LayerVersion extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     acl = registerOutput<String?>('acl');
-    code = registerOutput<V3LayerVersionCode?>('code');
+    code = registerOutput<V3LayerVersionCode?>(
+      'code',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V3LayerVersionCode.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     codeSize = registerOutput<String>('codeSize');
     compatibleRuntimes = registerOutput<List<String>>('compatibleRuntimes');
     createTime = registerOutput<String>('createTime');
@@ -255,7 +264,16 @@ class V3LayerVersion extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     acl = registerOutput<String?>('acl');
-    code = registerOutput<V3LayerVersionCode?>('code');
+    code = registerOutput<V3LayerVersionCode?>(
+      'code',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V3LayerVersionCode.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     codeSize = registerOutput<String>('codeSize');
     compatibleRuntimes = registerOutput<List<String>>('compatibleRuntimes');
     createTime = registerOutput<String>('createTime');

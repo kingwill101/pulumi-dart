@@ -75,15 +75,36 @@ class RegionSecurityPolicyComputeV1 extends pulumi.CustomResource {
     adaptiveProtectionConfig =
         registerOutput<SecurityPolicyAdaptiveProtectionConfigResponseComputeV1>(
           'adaptiveProtectionConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SecurityPolicyAdaptiveProtectionConfigResponseComputeV1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     advancedOptionsConfig =
         registerOutput<SecurityPolicyAdvancedOptionsConfigResponseComputeV1>(
           'advancedOptionsConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SecurityPolicyAdvancedOptionsConfigResponseComputeV1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     creationTimestamp = registerOutput<String>('creationTimestamp');
     ddosProtectionConfig =
         registerOutput<SecurityPolicyDdosProtectionConfigResponseComputeV1>(
           'ddosProtectionConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SecurityPolicyDdosProtectionConfigResponseComputeV1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String>('description');
     fingerprint = registerOutput<String>('fingerprint');
@@ -95,6 +116,13 @@ class RegionSecurityPolicyComputeV1 extends pulumi.CustomResource {
     recaptchaOptionsConfig =
         registerOutput<SecurityPolicyRecaptchaOptionsConfigResponseComputeV1>(
           'recaptchaOptionsConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SecurityPolicyRecaptchaOptionsConfigResponseComputeV1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     requestId = registerOutput<String?>('requestId');

@@ -1,16 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getResourceAnchor.
 class GetResourceAnchorResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Oracle Cloud Infrastructure compartment [OCID](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/identifiers.htm) which was created or linked by customer with Resource Anchor.
   final String linkedCompartmentId;
+
   /// The Azure Region where the Oracle Resource Anchor exists.
   final String location;
   final String name;
   final String resourceGroupName;
+
   /// A mapping of tags assigned to the Oracle Resource Anchor.
   final Map<String, String> tags;
 
@@ -52,4 +54,3 @@ class GetResourceAnchorResult {
     );
   }
 }
-

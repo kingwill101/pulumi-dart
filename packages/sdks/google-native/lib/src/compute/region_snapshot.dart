@@ -170,11 +170,25 @@ class RegionSnapshot extends pulumi.CustomResource {
     selfLinkWithId = registerOutput<String>('selfLinkWithId');
     snapshotEncryptionKey = registerOutput<CustomerEncryptionKeyResponse>(
       'snapshotEncryptionKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomerEncryptionKeyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     snapshotType = registerOutput<String>('snapshotType');
     sourceDisk = registerOutput<String>('sourceDisk');
     sourceDiskEncryptionKey = registerOutput<CustomerEncryptionKeyResponse>(
       'sourceDiskEncryptionKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomerEncryptionKeyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sourceDiskForRecoveryCheckpoint = registerOutput<String>(
       'sourceDiskForRecoveryCheckpoint',
@@ -184,6 +198,13 @@ class RegionSnapshot extends pulumi.CustomResource {
     sourceInstantSnapshotEncryptionKey =
         registerOutput<CustomerEncryptionKeyResponse>(
           'sourceInstantSnapshotEncryptionKey',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CustomerEncryptionKeyResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     sourceInstantSnapshotId = registerOutput<String>('sourceInstantSnapshotId');
     sourceSnapshotSchedulePolicy = registerOutput<String>(

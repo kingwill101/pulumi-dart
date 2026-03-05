@@ -417,6 +417,13 @@ class DscNodeConfiguration extends pulumi.CustomResource {
     configuration =
         registerOutput<DscConfigurationAssociationPropertyResponse?>(
           'configuration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DscConfigurationAssociationPropertyResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     creationTime = registerOutput<String?>('creationTime');
     incrementNodeConfigurationBuild = registerOutput<bool?>(

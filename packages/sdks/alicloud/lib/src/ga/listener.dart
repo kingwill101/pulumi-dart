@@ -347,6 +347,13 @@ class Listener extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     forwardedForConfig = registerOutput<ListenerForwardedForConfig?>(
       'forwardedForConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ListenerForwardedForConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     httpVersion = registerOutput<String>('httpVersion');
     idleTimeout = registerOutput<int>('idleTimeout');
@@ -389,6 +396,13 @@ class Listener extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     forwardedForConfig = registerOutput<ListenerForwardedForConfig?>(
       'forwardedForConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ListenerForwardedForConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     httpVersion = registerOutput<String>('httpVersion');
     idleTimeout = registerOutput<int>('idleTimeout');

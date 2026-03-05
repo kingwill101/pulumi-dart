@@ -2010,7 +2010,16 @@ class DatasetIamBinding extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<DatasetIamBindingCondition?>('condition');
+    condition = registerOutput<DatasetIamBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatasetIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     datasetId = registerOutput<String>('datasetId');
     etag = registerOutput<String>('etag');
     members = registerOutput<List<String>>('members');
@@ -2041,7 +2050,16 @@ class DatasetIamBinding extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<DatasetIamBindingCondition?>('condition');
+    condition = registerOutput<DatasetIamBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatasetIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     datasetId = registerOutput<String>('datasetId');
     etag = registerOutput<String>('etag');
     members = registerOutput<List<String>>('members');

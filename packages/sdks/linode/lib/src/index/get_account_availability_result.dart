@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAccountAvailability.
 class GetAccountAvailabilityResult {
   /// A set of services which are available to the account in a region.
   final List<String> availables;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The region ID.
   final String region;
+
   /// A set of services which are unavailable to the account in a region.
   final List<String> unavailables;
 
@@ -42,4 +44,3 @@ class GetAccountAvailabilityResult {
     );
   }
 }
-

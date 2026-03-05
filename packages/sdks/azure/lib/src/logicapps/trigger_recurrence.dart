@@ -237,7 +237,16 @@ class TriggerRecurrence extends pulumi.CustomResource {
     interval = registerOutput<int>('interval');
     logicAppId = registerOutput<String>('logicAppId');
     this.name = registerOutput<String>('name');
-    schedule = registerOutput<TriggerRecurrenceSchedule?>('schedule');
+    schedule = registerOutput<TriggerRecurrenceSchedule?>(
+      'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TriggerRecurrenceSchedule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     startTime = registerOutput<String?>('startTime');
     timeZone = registerOutput<String>('timeZone');
   }
@@ -269,7 +278,16 @@ class TriggerRecurrence extends pulumi.CustomResource {
     interval = registerOutput<int>('interval');
     logicAppId = registerOutput<String>('logicAppId');
     this.name = registerOutput<String>('name');
-    schedule = registerOutput<TriggerRecurrenceSchedule?>('schedule');
+    schedule = registerOutput<TriggerRecurrenceSchedule?>(
+      'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TriggerRecurrenceSchedule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     startTime = registerOutput<String?>('startTime');
     timeZone = registerOutput<String>('timeZone');
   }

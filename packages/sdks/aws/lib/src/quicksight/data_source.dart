@@ -909,19 +909,53 @@ class DataSource extends pulumi.CustomResource {
        ) {
     arn = registerOutput<String>('arn');
     awsAccountId = registerOutput<String>('awsAccountId');
-    credentials = registerOutput<DataSourceCredentials?>('credentials');
+    credentials = registerOutput<DataSourceCredentials?>(
+      'credentials',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataSourceCredentials.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dataSourceId = registerOutput<String>('dataSourceId');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<DataSourceParameters>('parameters');
+    parameters = registerOutput<DataSourceParameters>(
+      'parameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataSourceParameters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     permissions = registerOutput<List<Map<String, dynamic>>?>('permissions');
     region = registerOutput<String>('region');
-    sslProperties = registerOutput<DataSourceSslProperties>('sslProperties');
+    sslProperties = registerOutput<DataSourceSslProperties>(
+      'sslProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataSourceSslProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     type = registerOutput<String>('type');
     vpcConnectionProperties =
         registerOutput<DataSourceVpcConnectionProperties?>(
           'vpcConnectionProperties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataSourceVpcConnectionProperties.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 
@@ -950,19 +984,53 @@ class DataSource extends pulumi.CustomResource {
        ) {
     arn = registerOutput<String>('arn');
     awsAccountId = registerOutput<String>('awsAccountId');
-    credentials = registerOutput<DataSourceCredentials?>('credentials');
+    credentials = registerOutput<DataSourceCredentials?>(
+      'credentials',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataSourceCredentials.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dataSourceId = registerOutput<String>('dataSourceId');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<DataSourceParameters>('parameters');
+    parameters = registerOutput<DataSourceParameters>(
+      'parameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataSourceParameters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     permissions = registerOutput<List<Map<String, dynamic>>?>('permissions');
     region = registerOutput<String>('region');
-    sslProperties = registerOutput<DataSourceSslProperties>('sslProperties');
+    sslProperties = registerOutput<DataSourceSslProperties>(
+      'sslProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataSourceSslProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     type = registerOutput<String>('type');
     vpcConnectionProperties =
         registerOutput<DataSourceVpcConnectionProperties?>(
           'vpcConnectionProperties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataSourceVpcConnectionProperties.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

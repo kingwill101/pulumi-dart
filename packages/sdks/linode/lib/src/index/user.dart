@@ -356,7 +356,16 @@ class User extends pulumi.CustomResource {
     firewallGrants = registerOutput<List<Map<String, dynamic>>>(
       'firewallGrants',
     );
-    globalGrants = registerOutput<UserGlobalGrants>('globalGrants');
+    globalGrants = registerOutput<UserGlobalGrants>(
+      'globalGrants',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserGlobalGrants.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     imageGrants = registerOutput<List<Map<String, dynamic>>>('imageGrants');
     linodeGrants = registerOutput<List<Map<String, dynamic>>>('linodeGrants');
     longviewGrants = registerOutput<List<Map<String, dynamic>>>(
@@ -401,7 +410,16 @@ class User extends pulumi.CustomResource {
     firewallGrants = registerOutput<List<Map<String, dynamic>>>(
       'firewallGrants',
     );
-    globalGrants = registerOutput<UserGlobalGrants>('globalGrants');
+    globalGrants = registerOutput<UserGlobalGrants>(
+      'globalGrants',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserGlobalGrants.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     imageGrants = registerOutput<List<Map<String, dynamic>>>('imageGrants');
     linodeGrants = registerOutput<List<Map<String, dynamic>>>('linodeGrants');
     longviewGrants = registerOutput<List<Map<String, dynamic>>>(

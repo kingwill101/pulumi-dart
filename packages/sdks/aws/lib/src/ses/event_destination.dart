@@ -523,12 +523,26 @@ class EventDestination extends pulumi.CustomResource {
     enabled = registerOutput<bool?>('enabled');
     kinesisDestination = registerOutput<EventDestinationKinesisDestination?>(
       'kinesisDestination',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventDestinationKinesisDestination.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     matchingTypes = registerOutput<List<String>>('matchingTypes');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     snsDestination = registerOutput<EventDestinationSnsDestination?>(
       'snsDestination',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventDestinationSnsDestination.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -563,12 +577,26 @@ class EventDestination extends pulumi.CustomResource {
     enabled = registerOutput<bool?>('enabled');
     kinesisDestination = registerOutput<EventDestinationKinesisDestination?>(
       'kinesisDestination',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventDestinationKinesisDestination.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     matchingTypes = registerOutput<List<String>>('matchingTypes');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     snsDestination = registerOutput<EventDestinationSnsDestination?>(
       'snsDestination',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventDestinationSnsDestination.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

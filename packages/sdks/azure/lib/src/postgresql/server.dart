@@ -326,7 +326,16 @@ class Server extends pulumi.CustomResource {
     geoRedundantBackupEnabled = registerOutput<bool?>(
       'geoRedundantBackupEnabled',
     );
-    identity = registerOutput<ServerIdentity?>('identity');
+    identity = registerOutput<ServerIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     infrastructureEncryptionEnabled = registerOutput<bool?>(
       'infrastructureEncryptionEnabled',
     );
@@ -346,6 +355,13 @@ class Server extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     threatDetectionPolicy = registerOutput<ServerThreatDetectionPolicy?>(
       'threatDetectionPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerThreatDetectionPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     version = registerOutput<String>('version');
   }
@@ -388,7 +404,16 @@ class Server extends pulumi.CustomResource {
     geoRedundantBackupEnabled = registerOutput<bool?>(
       'geoRedundantBackupEnabled',
     );
-    identity = registerOutput<ServerIdentity?>('identity');
+    identity = registerOutput<ServerIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     infrastructureEncryptionEnabled = registerOutput<bool?>(
       'infrastructureEncryptionEnabled',
     );
@@ -408,6 +433,13 @@ class Server extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     threatDetectionPolicy = registerOutput<ServerThreatDetectionPolicy?>(
       'threatDetectionPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerThreatDetectionPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     version = registerOutput<String>('version');
   }

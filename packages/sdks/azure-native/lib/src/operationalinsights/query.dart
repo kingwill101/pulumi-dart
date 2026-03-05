@@ -335,8 +335,24 @@ class Query extends pulumi.CustomResource {
     related =
         registerOutput<LogAnalyticsQueryPackQueryPropertiesResponseRelated?>(
           'related',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LogAnalyticsQueryPackQueryPropertiesResponseRelated.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, List<String>>?>('tags');
     timeCreated = registerOutput<String>('timeCreated');
     timeModified = registerOutput<String>('timeModified');

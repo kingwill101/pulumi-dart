@@ -2091,7 +2091,16 @@ class DatabaseInstance extends pulumi.CustomResource {
       'availableMaintenanceVersions',
     );
     backupdrBackup = registerOutput<String?>('backupdrBackup');
-    clone = registerOutput<DatabaseInstanceClone?>('clone');
+    clone = registerOutput<DatabaseInstanceClone?>(
+      'clone',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseInstanceClone.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     connectionName = registerOutput<String>('connectionName');
     databaseVersion = registerOutput<String>('databaseVersion');
     deletionProtection = registerOutput<bool?>('deletionProtection');
@@ -2109,6 +2118,13 @@ class DatabaseInstance extends pulumi.CustomResource {
     pointInTimeRestoreContext =
         registerOutput<DatabaseInstancePointInTimeRestoreContext?>(
           'pointInTimeRestoreContext',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DatabaseInstancePointInTimeRestoreContext.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     privateIpAddress = registerOutput<String>('privateIpAddress');
     project = registerOutput<String>('project');
@@ -2119,14 +2135,35 @@ class DatabaseInstance extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     replicaConfiguration = registerOutput<DatabaseInstanceReplicaConfiguration>(
       'replicaConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseInstanceReplicaConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     replicaNames = registerOutput<List<String>>('replicaNames');
     replicationCluster = registerOutput<DatabaseInstanceReplicationCluster>(
       'replicationCluster',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseInstanceReplicationCluster.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     restoreBackupContext =
         registerOutput<DatabaseInstanceRestoreBackupContext?>(
           'restoreBackupContext',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DatabaseInstanceRestoreBackupContext.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     rootPassword = registerOutput<String?>('rootPassword');
     rootPasswordWo = registerOutput<String?>('rootPasswordWo');
@@ -2136,7 +2173,16 @@ class DatabaseInstance extends pulumi.CustomResource {
     serviceAccountEmailAddress = registerOutput<String>(
       'serviceAccountEmailAddress',
     );
-    settings = registerOutput<DatabaseInstanceSettings>('settings');
+    settings = registerOutput<DatabaseInstanceSettings>(
+      'settings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseInstanceSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [DatabaseInstance] resource's state with the given [name] and [id].
@@ -2166,7 +2212,16 @@ class DatabaseInstance extends pulumi.CustomResource {
       'availableMaintenanceVersions',
     );
     backupdrBackup = registerOutput<String?>('backupdrBackup');
-    clone = registerOutput<DatabaseInstanceClone?>('clone');
+    clone = registerOutput<DatabaseInstanceClone?>(
+      'clone',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseInstanceClone.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     connectionName = registerOutput<String>('connectionName');
     databaseVersion = registerOutput<String>('databaseVersion');
     deletionProtection = registerOutput<bool?>('deletionProtection');
@@ -2184,6 +2239,13 @@ class DatabaseInstance extends pulumi.CustomResource {
     pointInTimeRestoreContext =
         registerOutput<DatabaseInstancePointInTimeRestoreContext?>(
           'pointInTimeRestoreContext',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DatabaseInstancePointInTimeRestoreContext.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     privateIpAddress = registerOutput<String>('privateIpAddress');
     project = registerOutput<String>('project');
@@ -2194,14 +2256,35 @@ class DatabaseInstance extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     replicaConfiguration = registerOutput<DatabaseInstanceReplicaConfiguration>(
       'replicaConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseInstanceReplicaConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     replicaNames = registerOutput<List<String>>('replicaNames');
     replicationCluster = registerOutput<DatabaseInstanceReplicationCluster>(
       'replicationCluster',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseInstanceReplicationCluster.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     restoreBackupContext =
         registerOutput<DatabaseInstanceRestoreBackupContext?>(
           'restoreBackupContext',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DatabaseInstanceRestoreBackupContext.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     rootPassword = registerOutput<String?>('rootPassword');
     rootPasswordWo = registerOutput<String?>('rootPasswordWo');
@@ -2211,6 +2294,15 @@ class DatabaseInstance extends pulumi.CustomResource {
     serviceAccountEmailAddress = registerOutput<String>(
       'serviceAccountEmailAddress',
     );
-    settings = registerOutput<DatabaseInstanceSettings>('settings');
+    settings = registerOutput<DatabaseInstanceSettings>(
+      'settings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseInstanceSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

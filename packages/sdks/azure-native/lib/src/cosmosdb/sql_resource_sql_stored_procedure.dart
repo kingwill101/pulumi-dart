@@ -214,6 +214,13 @@ class SqlResourceSqlStoredProcedure extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     resource = registerOutput<SqlStoredProcedureGetPropertiesResponseResource?>(
       'resource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SqlStoredProcedureGetPropertiesResponseResource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

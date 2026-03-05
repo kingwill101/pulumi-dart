@@ -73,19 +73,71 @@ class ConnectionProfile extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    alloydb = registerOutput<AlloyDbConnectionProfileResponse>('alloydb');
-    cloudsql = registerOutput<CloudSqlConnectionProfileResponse>('cloudsql');
+    alloydb = registerOutput<AlloyDbConnectionProfileResponse>(
+      'alloydb',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlloyDbConnectionProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    cloudsql = registerOutput<CloudSqlConnectionProfileResponse>(
+      'cloudsql',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CloudSqlConnectionProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     connectionProfileId = registerOutput<String>('connectionProfileId');
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
-    error = registerOutput<StatusResponse>('error');
+    error = registerOutput<StatusResponse>(
+      'error',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
-    mysql = registerOutput<MySqlConnectionProfileResponse>('mysql');
+    mysql = registerOutput<MySqlConnectionProfileResponse>(
+      'mysql',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MySqlConnectionProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
-    oracle = registerOutput<OracleConnectionProfileResponse>('oracle');
+    oracle = registerOutput<OracleConnectionProfileResponse>(
+      'oracle',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OracleConnectionProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     postgresql = registerOutput<PostgreSqlConnectionProfileResponse>(
       'postgresql',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PostgreSqlConnectionProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     provider = registerOutput<String>('provider');

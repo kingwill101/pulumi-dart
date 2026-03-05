@@ -60,8 +60,26 @@ class CSIStorageCapacityStorageK8sIoV1 extends pulumi.CustomResource {
     capacity = registerOutput<String>('capacity');
     kind = registerOutput<String>('kind');
     maximumVolumeSize = registerOutput<String>('maximumVolumeSize');
-    metadata = registerOutput<ObjectMeta>('metadata');
-    nodeTopology = registerOutput<LabelSelector>('nodeTopology');
+    metadata = registerOutput<ObjectMeta>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    nodeTopology = registerOutput<LabelSelector>(
+      'nodeTopology',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LabelSelector.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     storageClassName = registerOutput<String>('storageClassName');
   }
 }

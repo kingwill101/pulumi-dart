@@ -308,7 +308,16 @@ class DiskPool extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     status = registerOutput<String>('status');
     subnetId = registerOutput<String>('subnetId');
-    systemData = registerOutput<SystemMetadataResponse>('systemData');
+    systemData = registerOutput<SystemMetadataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemMetadataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tier = registerOutput<String?>('tier');
     type = registerOutput<String>('type');

@@ -244,6 +244,13 @@ class Schedule extends pulumi.CustomResource {
        ) {
     advancedSchedule = registerOutput<AdvancedScheduleResponse?>(
       'advancedSchedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AdvancedScheduleResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     creationTime = registerOutput<String?>('creationTime');

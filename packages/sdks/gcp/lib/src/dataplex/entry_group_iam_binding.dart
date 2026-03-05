@@ -929,7 +929,16 @@ class EntryGroupIamBinding extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<EntryGroupIamBindingCondition?>('condition');
+    condition = registerOutput<EntryGroupIamBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EntryGroupIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     entryGroupId = registerOutput<String>('entryGroupId');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
@@ -961,7 +970,16 @@ class EntryGroupIamBinding extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<EntryGroupIamBindingCondition?>('condition');
+    condition = registerOutput<EntryGroupIamBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EntryGroupIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     entryGroupId = registerOutput<String>('entryGroupId');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');

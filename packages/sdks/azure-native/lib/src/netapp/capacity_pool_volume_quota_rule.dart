@@ -220,7 +220,16 @@ class CapacityPoolVolumeQuotaRule extends pulumi.CustomResource {
     quotaSizeInKiBs = registerOutput<double?>('quotaSizeInKiBs');
     quotaTarget = registerOutput<String?>('quotaTarget');
     quotaType = registerOutput<String?>('quotaType');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

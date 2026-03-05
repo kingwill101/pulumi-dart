@@ -76,10 +76,24 @@ class Task extends pulumi.CustomResource {
     executionSpec =
         registerOutput<GoogleCloudDataplexV1TaskExecutionSpecResponse>(
           'executionSpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDataplexV1TaskExecutionSpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     executionStatus =
         registerOutput<GoogleCloudDataplexV1TaskExecutionStatusResponse>(
           'executionStatus',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDataplexV1TaskExecutionStatusResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     labels = registerOutput<Map<String, String>>('labels');
     lakeId = registerOutput<String>('lakeId');
@@ -88,15 +102,36 @@ class Task extends pulumi.CustomResource {
     notebook =
         registerOutput<GoogleCloudDataplexV1TaskNotebookTaskConfigResponse>(
           'notebook',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDataplexV1TaskNotebookTaskConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     project = registerOutput<String>('project');
     spark = registerOutput<GoogleCloudDataplexV1TaskSparkTaskConfigResponse>(
       'spark',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudDataplexV1TaskSparkTaskConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     state = registerOutput<String>('state');
     taskId = registerOutput<String>('taskId');
     triggerSpec = registerOutput<GoogleCloudDataplexV1TaskTriggerSpecResponse>(
       'triggerSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudDataplexV1TaskTriggerSpecResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');

@@ -227,7 +227,16 @@ class Workflow extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    accessControl = registerOutput<WorkflowAccessControl?>('accessControl');
+    accessControl = registerOutput<WorkflowAccessControl?>(
+      'accessControl',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkflowAccessControl.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     accessEndpoint = registerOutput<String>('accessEndpoint');
     connectorEndpointIpAddresses = registerOutput<List<String>>(
       'connectorEndpointIpAddresses',
@@ -236,7 +245,16 @@ class Workflow extends pulumi.CustomResource {
       'connectorOutboundIpAddresses',
     );
     enabled = registerOutput<bool?>('enabled');
-    identity = registerOutput<WorkflowIdentity?>('identity');
+    identity = registerOutput<WorkflowIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkflowIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     integrationServiceEnvironmentId = registerOutput<String?>(
       'integrationServiceEnvironmentId',
     );
@@ -284,7 +302,16 @@ class Workflow extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    accessControl = registerOutput<WorkflowAccessControl?>('accessControl');
+    accessControl = registerOutput<WorkflowAccessControl?>(
+      'accessControl',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkflowAccessControl.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     accessEndpoint = registerOutput<String>('accessEndpoint');
     connectorEndpointIpAddresses = registerOutput<List<String>>(
       'connectorEndpointIpAddresses',
@@ -293,7 +320,16 @@ class Workflow extends pulumi.CustomResource {
       'connectorOutboundIpAddresses',
     );
     enabled = registerOutput<bool?>('enabled');
-    identity = registerOutput<WorkflowIdentity?>('identity');
+    identity = registerOutput<WorkflowIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkflowIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     integrationServiceEnvironmentId = registerOutput<String?>(
       'integrationServiceEnvironmentId',
     );

@@ -379,17 +379,53 @@ class FileSystem extends pulumi.CustomResource {
     keytab = registerOutput<String?>('keytab');
     keytabMd5 = registerOutput<String?>('keytabMd5');
     kmsKeyId = registerOutput<String>('kmsKeyId');
-    nfsAcl = registerOutput<FileSystemNfsAcl>('nfsAcl');
-    this.options = registerOutput<FileSystemOptions>('options');
+    nfsAcl = registerOutput<FileSystemNfsAcl>(
+      'nfsAcl',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FileSystemNfsAcl.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    this.options = registerOutput<FileSystemOptions>(
+      'options',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FileSystemOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     protocolType = registerOutput<String>('protocolType');
-    recycleBin = registerOutput<FileSystemRecycleBin>('recycleBin');
+    recycleBin = registerOutput<FileSystemRecycleBin>(
+      'recycleBin',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FileSystemRecycleBin.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     redundancyType = registerOutput<String>('redundancyType');
     redundancyVswitchIds = registerOutput<List<String>?>(
       'redundancyVswitchIds',
     );
     regionId = registerOutput<String>('regionId');
     resourceGroupId = registerOutput<String>('resourceGroupId');
-    smbAcl = registerOutput<FileSystemSmbAcl>('smbAcl');
+    smbAcl = registerOutput<FileSystemSmbAcl>(
+      'smbAcl',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FileSystemSmbAcl.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     snapshotId = registerOutput<String?>('snapshotId');
     status = registerOutput<String>('status');
     storageType = registerOutput<String>('storageType');
@@ -430,17 +466,53 @@ class FileSystem extends pulumi.CustomResource {
     keytab = registerOutput<String?>('keytab');
     keytabMd5 = registerOutput<String?>('keytabMd5');
     kmsKeyId = registerOutput<String>('kmsKeyId');
-    nfsAcl = registerOutput<FileSystemNfsAcl>('nfsAcl');
-    this.options = registerOutput<FileSystemOptions>('options');
+    nfsAcl = registerOutput<FileSystemNfsAcl>(
+      'nfsAcl',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FileSystemNfsAcl.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    this.options = registerOutput<FileSystemOptions>(
+      'options',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FileSystemOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     protocolType = registerOutput<String>('protocolType');
-    recycleBin = registerOutput<FileSystemRecycleBin>('recycleBin');
+    recycleBin = registerOutput<FileSystemRecycleBin>(
+      'recycleBin',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FileSystemRecycleBin.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     redundancyType = registerOutput<String>('redundancyType');
     redundancyVswitchIds = registerOutput<List<String>?>(
       'redundancyVswitchIds',
     );
     regionId = registerOutput<String>('regionId');
     resourceGroupId = registerOutput<String>('resourceGroupId');
-    smbAcl = registerOutput<FileSystemSmbAcl>('smbAcl');
+    smbAcl = registerOutput<FileSystemSmbAcl>(
+      'smbAcl',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FileSystemSmbAcl.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     snapshotId = registerOutput<String?>('snapshotId');
     status = registerOutput<String>('status');
     storageType = registerOutput<String>('storageType');

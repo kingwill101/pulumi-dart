@@ -59,18 +59,43 @@ class ZoneQueuedResource extends pulumi.CustomResource {
     bulkInsertInstanceResource =
         registerOutput<BulkInsertInstanceResourceResponse>(
           'bulkInsertInstanceResource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return BulkInsertInstanceResourceResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    queuingPolicy = registerOutput<QueuingPolicyResponse>('queuingPolicy');
+    queuingPolicy = registerOutput<QueuingPolicyResponse>(
+      'queuingPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return QueuingPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     requestId = registerOutput<String?>('requestId');
     selfLink = registerOutput<String>('selfLink');
     selfLinkWithId = registerOutput<String>('selfLinkWithId');
     state = registerOutput<String>('state');
-    status = registerOutput<QueuedResourceStatusResponse>('status');
+    status = registerOutput<QueuedResourceStatusResponse>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return QueuedResourceStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     zone = registerOutput<String>('zone');
   }
 }

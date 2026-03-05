@@ -1,25 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getProduct.
 class GetProductResult {
   final String apiManagementName;
+
   /// Do subscribers need to be approved prior to being able to use the Product?
   final bool approvalRequired;
+
   /// The description of this Product, which may include HTML formatting tags.
   final String description;
+
   /// The Display Name for this API Management Product.
   final String displayName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String productId;
+
   /// Is this Product Published?
   final bool published;
   final String resourceGroupName;
+
   /// Is a Subscription required to access API's included in this Product?
   final bool subscriptionRequired;
+
   /// The number of subscriptions a user can have to this Product at the same time.
   final int subscriptionsLimit;
+
   /// Any Terms and Conditions for this Product, which must be accepted by Developers before they can begin the Subscription process.
   final String terms;
 
@@ -81,4 +88,3 @@ class GetProductResult {
     );
   }
 }
-

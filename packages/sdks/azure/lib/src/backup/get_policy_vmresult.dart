@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getPolicyVM.
 class GetPolicyVMResult {
   /// The provider-assigned unique ID for this managed resource.
@@ -39,4 +38,3 @@ class GetPolicyVMResult {
     );
   }
 }
-

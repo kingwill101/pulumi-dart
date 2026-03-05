@@ -61,8 +61,26 @@ class Secret extends pulumi.CustomResource {
     labels = registerOutput<Map<String, String>>('labels');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    replication = registerOutput<ReplicationResponse>('replication');
-    rotation = registerOutput<RotationResponse>('rotation');
+    replication = registerOutput<ReplicationResponse>(
+      'replication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReplicationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    rotation = registerOutput<RotationResponse>(
+      'rotation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RotationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     secretId = registerOutput<String>('secretId');
     topics = registerOutput<List<Map<String, dynamic>>>('topics');
     ttl = registerOutput<String>('ttl');

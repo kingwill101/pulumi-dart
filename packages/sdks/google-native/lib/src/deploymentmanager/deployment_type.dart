@@ -68,20 +68,56 @@ class DeploymentType extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     createPolicy = registerOutput<String?>('createPolicy');
-    credential = registerOutput<CredentialResponse>('credential');
+    credential = registerOutput<CredentialResponse>(
+      'credential',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CredentialResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String>('description');
     fingerprint = registerOutput<String>('fingerprint');
     insertTime = registerOutput<String>('insertTime');
     labels = registerOutput<List<Map<String, dynamic>>>('labels');
     manifest = registerOutput<String>('manifest');
     this.name = registerOutput<String>('name');
-    operation = registerOutput<OperationResponse>('operation');
+    operation = registerOutput<OperationResponse>(
+      'operation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OperationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     outputs = registerOutput<List<Map<String, dynamic>>>('outputs');
     preview = registerOutput<bool?>('preview');
     project = registerOutput<String>('project');
     selfLink = registerOutput<String>('selfLink');
-    target = registerOutput<TargetConfigurationResponse>('target');
-    update = registerOutput<DeploymentUpdateResponse>('update');
+    target = registerOutput<TargetConfigurationResponse>(
+      'target',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TargetConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    update = registerOutput<DeploymentUpdateResponse>(
+      'update',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentUpdateResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     updateTime = registerOutput<String>('updateTime');
   }
 }

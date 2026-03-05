@@ -460,6 +460,13 @@ class AiTensorboard extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     encryptionSpec = registerOutput<AiTensorboardEncryptionSpec?>(
       'encryptionSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiTensorboardEncryptionSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
@@ -500,6 +507,13 @@ class AiTensorboard extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     encryptionSpec = registerOutput<AiTensorboardEncryptionSpec?>(
       'encryptionSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiTensorboardEncryptionSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');

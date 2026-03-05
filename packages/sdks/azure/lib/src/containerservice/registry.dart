@@ -915,19 +915,46 @@ class Registry extends pulumi.CustomResource {
     dataEndpointHostNames = registerOutput<List<String>>(
       'dataEndpointHostNames',
     );
-    encryption = registerOutput<RegistryEncryption>('encryption');
+    encryption = registerOutput<RegistryEncryption>(
+      'encryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegistryEncryption.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     exportPolicyEnabled = registerOutput<bool?>('exportPolicyEnabled');
     georeplications = registerOutput<List<Map<String, dynamic>>?>(
       'georeplications',
     );
-    identity = registerOutput<RegistryIdentity?>('identity');
+    identity = registerOutput<RegistryIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegistryIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     loginServer = registerOutput<String>('loginServer');
     this.name = registerOutput<String>('name');
     networkRuleBypassOption = registerOutput<String?>(
       'networkRuleBypassOption',
     );
-    networkRuleSet = registerOutput<RegistryNetworkRuleSet>('networkRuleSet');
+    networkRuleSet = registerOutput<RegistryNetworkRuleSet>(
+      'networkRuleSet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegistryNetworkRuleSet.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     publicNetworkAccessEnabled = registerOutput<bool?>(
       'publicNetworkAccessEnabled',
     );
@@ -971,19 +998,46 @@ class Registry extends pulumi.CustomResource {
     dataEndpointHostNames = registerOutput<List<String>>(
       'dataEndpointHostNames',
     );
-    encryption = registerOutput<RegistryEncryption>('encryption');
+    encryption = registerOutput<RegistryEncryption>(
+      'encryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegistryEncryption.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     exportPolicyEnabled = registerOutput<bool?>('exportPolicyEnabled');
     georeplications = registerOutput<List<Map<String, dynamic>>?>(
       'georeplications',
     );
-    identity = registerOutput<RegistryIdentity?>('identity');
+    identity = registerOutput<RegistryIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegistryIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     loginServer = registerOutput<String>('loginServer');
     this.name = registerOutput<String>('name');
     networkRuleBypassOption = registerOutput<String?>(
       'networkRuleBypassOption',
     );
-    networkRuleSet = registerOutput<RegistryNetworkRuleSet>('networkRuleSet');
+    networkRuleSet = registerOutput<RegistryNetworkRuleSet>(
+      'networkRuleSet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegistryNetworkRuleSet.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     publicNetworkAccessEnabled = registerOutput<bool?>(
       'publicNetworkAccessEnabled',
     );

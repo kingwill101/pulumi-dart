@@ -118,15 +118,45 @@ class Cluster extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>>('annotations');
     automatedBackupPolicy = registerOutput<AutomatedBackupPolicyResponse>(
       'automatedBackupPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AutomatedBackupPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    backupSource = registerOutput<BackupSourceResponse>('backupSource');
+    backupSource = registerOutput<BackupSourceResponse>(
+      'backupSource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackupSourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     clusterId = registerOutput<String>('clusterId');
     clusterType = registerOutput<String>('clusterType');
     continuousBackupConfig = registerOutput<ContinuousBackupConfigResponse>(
       'continuousBackupConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContinuousBackupConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     continuousBackupInfo = registerOutput<ContinuousBackupInfoResponse>(
       'continuousBackupInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContinuousBackupInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     databaseVersion = registerOutput<String>('databaseVersion');
@@ -134,26 +164,92 @@ class Cluster extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     encryptionConfig = registerOutput<EncryptionConfigResponse>(
       'encryptionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EncryptionConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    encryptionInfo = registerOutput<EncryptionInfoResponse>('encryptionInfo');
+    encryptionInfo = registerOutput<EncryptionInfoResponse>(
+      'encryptionInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EncryptionInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
-    initialUser = registerOutput<UserPasswordResponse>('initialUser');
+    initialUser = registerOutput<UserPasswordResponse>(
+      'initialUser',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserPasswordResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
     migrationSource = registerOutput<MigrationSourceResponse>(
       'migrationSource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MigrationSourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
-    networkConfig = registerOutput<NetworkConfigResponse>('networkConfig');
-    primaryConfig = registerOutput<PrimaryConfigResponse>('primaryConfig');
+    networkConfig = registerOutput<NetworkConfigResponse>(
+      'networkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    primaryConfig = registerOutput<PrimaryConfigResponse>(
+      'primaryConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PrimaryConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     reconciling = registerOutput<bool>('reconciling');
     requestId = registerOutput<String?>('requestId');
     secondaryConfig = registerOutput<SecondaryConfigResponse>(
       'secondaryConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecondaryConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    sslConfig = registerOutput<SslConfigResponse>('sslConfig');
+    sslConfig = registerOutput<SslConfigResponse>(
+      'sslConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SslConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');

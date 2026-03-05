@@ -923,9 +923,27 @@ class ActivityLogAlert extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    actions = registerOutput<ActionListResponse>('actions');
+    actions = registerOutput<ActionListResponse>(
+      'actions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ActionListResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    condition = registerOutput<AlertRuleAllOfConditionResponse>('condition');
+    condition = registerOutput<AlertRuleAllOfConditionResponse>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlertRuleAllOfConditionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
     location = registerOutput<String?>('location');

@@ -291,6 +291,13 @@ class LinkedServiceAzureFileStorage extends pulumi.CustomResource {
     keyVaultPassword =
         registerOutput<LinkedServiceAzureFileStorageKeyVaultPassword?>(
           'keyVaultPassword',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinkedServiceAzureFileStorageKeyVaultPassword.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');
@@ -334,6 +341,13 @@ class LinkedServiceAzureFileStorage extends pulumi.CustomResource {
     keyVaultPassword =
         registerOutput<LinkedServiceAzureFileStorageKeyVaultPassword?>(
           'keyVaultPassword',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinkedServiceAzureFileStorageKeyVaultPassword.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');

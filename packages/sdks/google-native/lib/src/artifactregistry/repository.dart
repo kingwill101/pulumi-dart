@@ -82,17 +82,40 @@ class Repository extends pulumi.CustomResource {
     description = registerOutput<String>('description');
     dockerConfig = registerOutput<DockerRepositoryConfigResponse>(
       'dockerConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DockerRepositoryConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     format = registerOutput<String>('format');
     kmsKeyName = registerOutput<String>('kmsKeyName');
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
-    mavenConfig = registerOutput<MavenRepositoryConfigResponse>('mavenConfig');
+    mavenConfig = registerOutput<MavenRepositoryConfigResponse>(
+      'mavenConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MavenRepositoryConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     mode = registerOutput<String>('mode');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     remoteRepositoryConfig = registerOutput<RemoteRepositoryConfigResponse>(
       'remoteRepositoryConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RemoteRepositoryConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     repositoryId = registerOutput<String>('repositoryId');
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
@@ -100,6 +123,13 @@ class Repository extends pulumi.CustomResource {
     updateTime = registerOutput<String>('updateTime');
     virtualRepositoryConfig = registerOutput<VirtualRepositoryConfigResponse>(
       'virtualRepositoryConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualRepositoryConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

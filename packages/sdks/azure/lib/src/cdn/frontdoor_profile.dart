@@ -313,7 +313,16 @@ class FrontdoorProfile extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    identity = registerOutput<FrontdoorProfileIdentity?>('identity');
+    identity = registerOutput<FrontdoorProfileIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FrontdoorProfileIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     logScrubbingRules = registerOutput<List<Map<String, dynamic>>?>(
       'logScrubbingRules',
     );
@@ -348,7 +357,16 @@ class FrontdoorProfile extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    identity = registerOutput<FrontdoorProfileIdentity?>('identity');
+    identity = registerOutput<FrontdoorProfileIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FrontdoorProfileIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     logScrubbingRules = registerOutput<List<Map<String, dynamic>>?>(
       'logScrubbingRules',
     );

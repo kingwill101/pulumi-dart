@@ -101,6 +101,13 @@ class NodeTpuV1 extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     schedulingConfig = registerOutput<SchedulingConfigResponse>(
       'schedulingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SchedulingConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     serviceAccount = registerOutput<String>('serviceAccount');
     state = registerOutput<String>('state');

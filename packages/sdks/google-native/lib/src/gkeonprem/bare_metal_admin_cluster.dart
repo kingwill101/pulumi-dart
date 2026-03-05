@@ -139,58 +139,178 @@ class BareMetalAdminCluster extends pulumi.CustomResource {
     bareMetalVersion = registerOutput<String>('bareMetalVersion');
     binaryAuthorization = registerOutput<BinaryAuthorizationResponse>(
       'binaryAuthorization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BinaryAuthorizationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clusterOperations =
         registerOutput<BareMetalAdminClusterOperationsConfigResponse>(
           'clusterOperations',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return BareMetalAdminClusterOperationsConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     controlPlane = registerOutput<BareMetalAdminControlPlaneConfigResponse>(
       'controlPlane',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalAdminControlPlaneConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     description = registerOutput<String>('description');
     endpoint = registerOutput<String>('endpoint');
     etag = registerOutput<String>('etag');
-    fleet = registerOutput<FleetResponse>('fleet');
+    fleet = registerOutput<FleetResponse>(
+      'fleet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FleetResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     loadBalancer = registerOutput<BareMetalAdminLoadBalancerConfigResponse>(
       'loadBalancer',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalAdminLoadBalancerConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     localName = registerOutput<String>('localName');
     location = registerOutput<String>('location');
     maintenanceConfig = registerOutput<BareMetalAdminMaintenanceConfigResponse>(
       'maintenanceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalAdminMaintenanceConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     maintenanceStatus = registerOutput<BareMetalAdminMaintenanceStatusResponse>(
       'maintenanceStatus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalAdminMaintenanceStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     networkConfig = registerOutput<BareMetalAdminNetworkConfigResponse>(
       'networkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalAdminNetworkConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     nodeAccessConfig = registerOutput<BareMetalAdminNodeAccessConfigResponse>(
       'nodeAccessConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalAdminNodeAccessConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     nodeConfig = registerOutput<BareMetalAdminWorkloadNodeConfigResponse>(
       'nodeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalAdminWorkloadNodeConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     osEnvironmentConfig =
         registerOutput<BareMetalAdminOsEnvironmentConfigResponse>(
           'osEnvironmentConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return BareMetalAdminOsEnvironmentConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     project = registerOutput<String>('project');
-    proxy = registerOutput<BareMetalAdminProxyConfigResponse>('proxy');
+    proxy = registerOutput<BareMetalAdminProxyConfigResponse>(
+      'proxy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalAdminProxyConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     reconciling = registerOutput<bool>('reconciling');
     securityConfig = registerOutput<BareMetalAdminSecurityConfigResponse>(
       'securityConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalAdminSecurityConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     state = registerOutput<String>('state');
-    status = registerOutput<ResourceStatusResponse>('status');
-    storage = registerOutput<BareMetalAdminStorageConfigResponse>('storage');
+    status = registerOutput<ResourceStatusResponse>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    storage = registerOutput<BareMetalAdminStorageConfigResponse>(
+      'storage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalAdminStorageConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
     validationCheck = registerOutput<ValidationCheckResponse>(
       'validationCheck',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ValidationCheckResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

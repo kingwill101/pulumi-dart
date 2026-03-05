@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getClusterParameterGroup.
 class GetClusterParameterGroupResult {
   /// ARN of the cluster parameter group.
   final String arn;
+
   /// Description of the cluster parameter group.
   final String description;
+
   /// Family of the cluster parameter group.
   final String family;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -52,4 +54,3 @@ class GetClusterParameterGroupResult {
     );
   }
 }
-

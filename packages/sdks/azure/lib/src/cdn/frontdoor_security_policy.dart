@@ -582,6 +582,13 @@ class FrontdoorSecurityPolicy extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     securityPolicies = registerOutput<FrontdoorSecurityPolicySecurityPolicies>(
       'securityPolicies',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FrontdoorSecurityPolicySecurityPolicies.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -612,6 +619,13 @@ class FrontdoorSecurityPolicy extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     securityPolicies = registerOutput<FrontdoorSecurityPolicySecurityPolicies>(
       'securityPolicies',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FrontdoorSecurityPolicySecurityPolicies.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

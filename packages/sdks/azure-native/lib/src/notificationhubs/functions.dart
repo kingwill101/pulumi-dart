@@ -105,7 +105,8 @@ Future<GetNotificationHubResult> getNotificationHub(
 /// Other available API versions: 2023-01-01-preview, 2023-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native notificationhubs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_notificationhubs_get_notification_hub_authorization_rule_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNotificationHubAuthorizationRuleResult> getNotificationHubAuthorizationRule(
+Future<GetNotificationHubAuthorizationRuleResult>
+getNotificationHubAuthorizationRule(
   GetNotificationHubAuthorizationRuleArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

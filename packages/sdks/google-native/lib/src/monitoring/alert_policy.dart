@@ -61,19 +61,64 @@ class AlertPolicy extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    alertStrategy = registerOutput<AlertStrategyResponse>('alertStrategy');
+    alertStrategy = registerOutput<AlertStrategyResponse>(
+      'alertStrategy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlertStrategyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     combiner = registerOutput<String>('combiner');
     conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
-    creationRecord = registerOutput<MutationRecordResponse>('creationRecord');
+    creationRecord = registerOutput<MutationRecordResponse>(
+      'creationRecord',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MutationRecordResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     displayName = registerOutput<String>('displayName');
-    documentation = registerOutput<DocumentationResponse>('documentation');
+    documentation = registerOutput<DocumentationResponse>(
+      'documentation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DocumentationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     enabled = registerOutput<bool>('enabled');
-    mutationRecord = registerOutput<MutationRecordResponse>('mutationRecord');
+    mutationRecord = registerOutput<MutationRecordResponse>(
+      'mutationRecord',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MutationRecordResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     notificationChannels = registerOutput<List<String>>('notificationChannels');
     project = registerOutput<String>('project');
     severity = registerOutput<String>('severity');
     userLabels = registerOutput<Map<String, String>>('userLabels');
-    validity = registerOutput<StatusResponse>('validity');
+    validity = registerOutput<StatusResponse>(
+      'validity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

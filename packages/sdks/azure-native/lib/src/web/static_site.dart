@@ -309,6 +309,13 @@ class StaticSite extends pulumi.CustomResource {
     branch = registerOutput<String?>('branch');
     buildProperties = registerOutput<StaticSiteBuildPropertiesResponse?>(
       'buildProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StaticSiteBuildPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     contentDistributionEndpoint = registerOutput<String>(
       'contentDistributionEndpoint',
@@ -321,7 +328,16 @@ class StaticSite extends pulumi.CustomResource {
     enterpriseGradeCdnStatus = registerOutput<String?>(
       'enterpriseGradeCdnStatus',
     );
-    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    identity = registerOutput<ManagedServiceIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedServiceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     keyVaultReferenceIdentity = registerOutput<String>(
       'keyVaultReferenceIdentity',
     );
@@ -338,13 +354,29 @@ class StaticSite extends pulumi.CustomResource {
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     repositoryToken = registerOutput<String?>('repositoryToken');
     repositoryUrl = registerOutput<String?>('repositoryUrl');
-    sku = registerOutput<SkuDescriptionResponse?>('sku');
+    sku = registerOutput<SkuDescriptionResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuDescriptionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     stagingEnvironmentPolicy = registerOutput<String?>(
       'stagingEnvironmentPolicy',
     );
     tags = registerOutput<Map<String, String>?>('tags');
     templateProperties = registerOutput<StaticSiteTemplateOptionsResponse?>(
       'templateProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StaticSiteTemplateOptionsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     type = registerOutput<String>('type');
     userProvidedFunctionApps = registerOutput<List<Map<String, dynamic>>>(

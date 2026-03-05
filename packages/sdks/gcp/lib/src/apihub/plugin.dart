@@ -635,12 +635,39 @@ class Plugin extends pulumi.CustomResource {
     actionsConfigs = registerOutput<List<Map<String, dynamic>>?>(
       'actionsConfigs',
     );
-    configTemplate = registerOutput<PluginConfigTemplate>('configTemplate');
+    configTemplate = registerOutput<PluginConfigTemplate>(
+      'configTemplate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PluginConfigTemplate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    documentation = registerOutput<PluginDocumentation?>('documentation');
-    hostingService = registerOutput<PluginHostingService?>('hostingService');
+    documentation = registerOutput<PluginDocumentation?>(
+      'documentation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PluginDocumentation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    hostingService = registerOutput<PluginHostingService?>(
+      'hostingService',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PluginHostingService.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     ownershipType = registerOutput<String>('ownershipType');
@@ -677,12 +704,39 @@ class Plugin extends pulumi.CustomResource {
     actionsConfigs = registerOutput<List<Map<String, dynamic>>?>(
       'actionsConfigs',
     );
-    configTemplate = registerOutput<PluginConfigTemplate>('configTemplate');
+    configTemplate = registerOutput<PluginConfigTemplate>(
+      'configTemplate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PluginConfigTemplate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    documentation = registerOutput<PluginDocumentation?>('documentation');
-    hostingService = registerOutput<PluginHostingService?>('hostingService');
+    documentation = registerOutput<PluginDocumentation?>(
+      'documentation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PluginDocumentation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    hostingService = registerOutput<PluginHostingService?>(
+      'hostingService',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PluginHostingService.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     ownershipType = registerOutput<String>('ownershipType');

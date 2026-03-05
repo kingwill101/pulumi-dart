@@ -2007,10 +2007,28 @@ class Subnetwork extends pulumi.CustomResource {
     ipv6AccessType = registerOutput<String?>('ipv6AccessType');
     ipv6CidrRange = registerOutput<String>('ipv6CidrRange');
     ipv6GceEndpoint = registerOutput<String>('ipv6GceEndpoint');
-    logConfig = registerOutput<SubnetworkLogConfig?>('logConfig');
+    logConfig = registerOutput<SubnetworkLogConfig?>(
+      'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubnetworkLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
-    params = registerOutput<SubnetworkParams?>('params');
+    params = registerOutput<SubnetworkParams?>(
+      'params',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubnetworkParams.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     privateIpGoogleAccess = registerOutput<bool>('privateIpGoogleAccess');
     privateIpv6GoogleAccess = registerOutput<String>('privateIpv6GoogleAccess');
     project = registerOutput<String>('project');
@@ -2068,10 +2086,28 @@ class Subnetwork extends pulumi.CustomResource {
     ipv6AccessType = registerOutput<String?>('ipv6AccessType');
     ipv6CidrRange = registerOutput<String>('ipv6CidrRange');
     ipv6GceEndpoint = registerOutput<String>('ipv6GceEndpoint');
-    logConfig = registerOutput<SubnetworkLogConfig?>('logConfig');
+    logConfig = registerOutput<SubnetworkLogConfig?>(
+      'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubnetworkLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
-    params = registerOutput<SubnetworkParams?>('params');
+    params = registerOutput<SubnetworkParams?>(
+      'params',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubnetworkParams.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     privateIpGoogleAccess = registerOutput<bool>('privateIpGoogleAccess');
     privateIpv6GoogleAccess = registerOutput<String>('privateIpv6GoogleAccess');
     project = registerOutput<String>('project');

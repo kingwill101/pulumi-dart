@@ -97,17 +97,49 @@ class Instance extends pulumi.CustomResource {
     maintenancePolicy =
         registerOutput<GoogleCloudMemcacheV1MaintenancePolicyResponse>(
           'maintenancePolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudMemcacheV1MaintenancePolicyResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     maintenanceSchedule = registerOutput<MaintenanceScheduleResponse>(
       'maintenanceSchedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MaintenanceScheduleResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     memcacheFullVersion = registerOutput<String>('memcacheFullVersion');
     memcacheNodes = registerOutput<List<Map<String, dynamic>>>('memcacheNodes');
     memcacheVersion = registerOutput<String>('memcacheVersion');
     this.name = registerOutput<String>('name');
-    nodeConfig = registerOutput<NodeConfigResponse>('nodeConfig');
+    nodeConfig = registerOutput<NodeConfigResponse>(
+      'nodeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodeConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     nodeCount = registerOutput<int>('nodeCount');
-    parameters = registerOutput<MemcacheParametersResponse>('parameters');
+    parameters = registerOutput<MemcacheParametersResponse>(
+      'parameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MemcacheParametersResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     reservedIpRangeId = registerOutput<List<String>>('reservedIpRangeId');
     state = registerOutput<String>('state');

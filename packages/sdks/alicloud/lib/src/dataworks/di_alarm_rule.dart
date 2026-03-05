@@ -846,6 +846,13 @@ class DiAlarmRule extends pulumi.CustomResource {
     metricType = registerOutput<String>('metricType');
     notificationSettings = registerOutput<DiAlarmRuleNotificationSettings>(
       'notificationSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiAlarmRuleNotificationSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     triggerConditions = registerOutput<List<Map<String, dynamic>>>(
       'triggerConditions',
@@ -883,6 +890,13 @@ class DiAlarmRule extends pulumi.CustomResource {
     metricType = registerOutput<String>('metricType');
     notificationSettings = registerOutput<DiAlarmRuleNotificationSettings>(
       'notificationSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiAlarmRuleNotificationSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     triggerConditions = registerOutput<List<Map<String, dynamic>>>(
       'triggerConditions',

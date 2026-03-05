@@ -650,6 +650,13 @@ class V3AsyncInvokeConfig extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     destinationConfig = registerOutput<V3AsyncInvokeConfigDestinationConfig?>(
       'destinationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V3AsyncInvokeConfigDestinationConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     functionArn = registerOutput<String>('functionArn');
     functionName = registerOutput<String>('functionName');
@@ -688,6 +695,13 @@ class V3AsyncInvokeConfig extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     destinationConfig = registerOutput<V3AsyncInvokeConfigDestinationConfig?>(
       'destinationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V3AsyncInvokeConfigDestinationConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     functionArn = registerOutput<String>('functionArn');
     functionName = registerOutput<String>('functionName');

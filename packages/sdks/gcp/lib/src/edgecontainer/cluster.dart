@@ -434,11 +434,36 @@ class Cluster extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    authorization = registerOutput<ClusterAuthorization>('authorization');
+    authorization = registerOutput<ClusterAuthorization>(
+      'authorization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterAuthorization.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     clusterCaCertificate = registerOutput<String>('clusterCaCertificate');
-    controlPlane = registerOutput<ClusterControlPlane?>('controlPlane');
+    controlPlane = registerOutput<ClusterControlPlane?>(
+      'controlPlane',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterControlPlane.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     controlPlaneEncryption = registerOutput<ClusterControlPlaneEncryption>(
       'controlPlaneEncryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterControlPlaneEncryption.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     controlPlaneVersion = registerOutput<String>('controlPlaneVersion');
     createTime = registerOutput<String>('createTime');
@@ -448,7 +473,16 @@ class Cluster extends pulumi.CustomResource {
     externalLoadBalancerIpv4AddressPools = registerOutput<List<String>>(
       'externalLoadBalancerIpv4AddressPools',
     );
-    fleet = registerOutput<ClusterFleet>('fleet');
+    fleet = registerOutput<ClusterFleet>(
+      'fleet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterFleet.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     maintenanceEvents = registerOutput<List<Map<String, dynamic>>>(
@@ -456,9 +490,25 @@ class Cluster extends pulumi.CustomResource {
     );
     maintenancePolicy = registerOutput<ClusterMaintenancePolicy>(
       'maintenancePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterMaintenancePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
-    networking = registerOutput<ClusterNetworking>('networking');
+    networking = registerOutput<ClusterNetworking>(
+      'networking',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterNetworking.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     nodeVersion = registerOutput<String>('nodeVersion');
     port = registerOutput<int>('port');
     project = registerOutput<String>('project');
@@ -467,6 +517,13 @@ class Cluster extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     systemAddonsConfig = registerOutput<ClusterSystemAddonsConfig>(
       'systemAddonsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterSystemAddonsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     targetVersion = registerOutput<String>('targetVersion');
     updateTime = registerOutput<String>('updateTime');
@@ -495,11 +552,36 @@ class Cluster extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    authorization = registerOutput<ClusterAuthorization>('authorization');
+    authorization = registerOutput<ClusterAuthorization>(
+      'authorization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterAuthorization.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     clusterCaCertificate = registerOutput<String>('clusterCaCertificate');
-    controlPlane = registerOutput<ClusterControlPlane?>('controlPlane');
+    controlPlane = registerOutput<ClusterControlPlane?>(
+      'controlPlane',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterControlPlane.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     controlPlaneEncryption = registerOutput<ClusterControlPlaneEncryption>(
       'controlPlaneEncryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterControlPlaneEncryption.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     controlPlaneVersion = registerOutput<String>('controlPlaneVersion');
     createTime = registerOutput<String>('createTime');
@@ -509,7 +591,16 @@ class Cluster extends pulumi.CustomResource {
     externalLoadBalancerIpv4AddressPools = registerOutput<List<String>>(
       'externalLoadBalancerIpv4AddressPools',
     );
-    fleet = registerOutput<ClusterFleet>('fleet');
+    fleet = registerOutput<ClusterFleet>(
+      'fleet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterFleet.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     maintenanceEvents = registerOutput<List<Map<String, dynamic>>>(
@@ -517,9 +608,25 @@ class Cluster extends pulumi.CustomResource {
     );
     maintenancePolicy = registerOutput<ClusterMaintenancePolicy>(
       'maintenancePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterMaintenancePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
-    networking = registerOutput<ClusterNetworking>('networking');
+    networking = registerOutput<ClusterNetworking>(
+      'networking',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterNetworking.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     nodeVersion = registerOutput<String>('nodeVersion');
     port = registerOutput<int>('port');
     project = registerOutput<String>('project');
@@ -528,6 +635,13 @@ class Cluster extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     systemAddonsConfig = registerOutput<ClusterSystemAddonsConfig>(
       'systemAddonsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterSystemAddonsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     targetVersion = registerOutput<String>('targetVersion');
     updateTime = registerOutput<String>('updateTime');

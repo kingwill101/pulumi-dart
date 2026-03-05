@@ -327,12 +327,48 @@ class Pool extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    poolType = registerOutput<PoolTypeResponse>('poolType');
+    poolType = registerOutput<PoolTypeResponse>(
+      'poolType',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PoolTypeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     provisioningState = registerOutput<String>('provisioningState');
     reclaimPolicy = registerOutput<String?>('reclaimPolicy');
-    resources = registerOutput<ResourcesResponse?>('resources');
-    status = registerOutput<ResourceOperationalStatusResponse>('status');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    resources = registerOutput<ResourcesResponse?>(
+      'resources',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourcesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    status = registerOutput<ResourceOperationalStatusResponse>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceOperationalStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     zones = registerOutput<List<String>?>('zones');

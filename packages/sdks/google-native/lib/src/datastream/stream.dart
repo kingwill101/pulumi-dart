@@ -68,7 +68,16 @@ class Stream extends pulumi.CustomResource {
         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
         options ?? pulumi.CustomResourceOptions(),
       ) {
-    backfillAll = registerOutput<BackfillAllStrategyResponse>('backfillAll');
+    backfillAll = registerOutput<BackfillAllStrategyResponse>(
+      'backfillAll',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackfillAllStrategyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     backfillNone = registerOutput<Map<String, dynamic>>('backfillNone');
     createTime = registerOutput<String>('createTime');
     customerManagedEncryptionKey = registerOutput<String>(
@@ -76,6 +85,13 @@ class Stream extends pulumi.CustomResource {
     );
     destinationConfig = registerOutput<DestinationConfigResponse>(
       'destinationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DestinationConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     displayName = registerOutput<String>('displayName');
     errors = registerOutput<List<Map<String, dynamic>>>('errors');
@@ -86,7 +102,16 @@ class Stream extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');
-    sourceConfig = registerOutput<SourceConfigResponse>('sourceConfig');
+    sourceConfig = registerOutput<SourceConfigResponse>(
+      'sourceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SourceConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     state = registerOutput<String>('state');
     streamId = registerOutput<String>('streamId');
     updateTime = registerOutput<String>('updateTime');

@@ -496,6 +496,13 @@ class AvailabilityGroupListener extends pulumi.CustomResource {
        ) {
     availabilityGroupConfiguration = registerOutput<AgConfigurationResponse?>(
       'availabilityGroupConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     availabilityGroupName = registerOutput<String?>('availabilityGroupName');
     azureApiVersion = registerOutput<String>('azureApiVersion');
@@ -511,7 +518,16 @@ class AvailabilityGroupListener extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     port = registerOutput<int?>('port');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

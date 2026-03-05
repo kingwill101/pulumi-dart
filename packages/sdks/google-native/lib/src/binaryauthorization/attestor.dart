@@ -45,6 +45,13 @@ class Attestor extends pulumi.CustomResource {
     updateTime = registerOutput<String>('updateTime');
     userOwnedGrafeasNote = registerOutput<UserOwnedGrafeasNoteResponse>(
       'userOwnedGrafeasNote',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserOwnedGrafeasNoteResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

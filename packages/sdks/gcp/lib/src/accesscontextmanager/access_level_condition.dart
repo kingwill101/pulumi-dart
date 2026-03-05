@@ -520,6 +520,13 @@ class AccessLevelCondition extends pulumi.CustomResource {
     accessPolicyId = registerOutput<String>('accessPolicyId');
     devicePolicy = registerOutput<AccessLevelConditionDevicePolicy?>(
       'devicePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccessLevelConditionDevicePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     ipSubnetworks = registerOutput<List<String>?>('ipSubnetworks');
     members = registerOutput<List<String>?>('members');
@@ -560,6 +567,13 @@ class AccessLevelCondition extends pulumi.CustomResource {
     accessPolicyId = registerOutput<String>('accessPolicyId');
     devicePolicy = registerOutput<AccessLevelConditionDevicePolicy?>(
       'devicePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccessLevelConditionDevicePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     ipSubnetworks = registerOutput<List<String>?>('ipSubnetworks');
     members = registerOutput<List<String>?>('members');

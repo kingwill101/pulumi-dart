@@ -1,25 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getConsumerImageShareGroupToken.
 class GetConsumerImageShareGroupTokenResult {
   /// When the token was created.
   final String created;
+
   /// When the token will expire.
   final String expiry;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A label for the token.
   final String label;
+
   /// The label of the Image Share Group that the token is for.
   final String sharegroupLabel;
+
   /// The UUID of the Image Share Group that the token is for.
   final String sharegroupUuid;
+
   /// The status of the token.
   final String status;
   final String tokenUuid;
+
   /// When the token was last updated.
   final String updated;
+
   /// The UUID of the Image Share Group for which to create a token.
   final String validForSharegroupUuid;
 
@@ -62,7 +69,9 @@ class GetConsumerImageShareGroupTokenResult {
     };
   }
 
-  factory GetConsumerImageShareGroupTokenResult.fromMap(Map<String, dynamic> map) {
+  factory GetConsumerImageShareGroupTokenResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetConsumerImageShareGroupTokenResult(
       created: map['created'] as String,
       expiry: map['expiry'] as String,
@@ -77,4 +86,3 @@ class GetConsumerImageShareGroupTokenResult {
     );
   }
 }
-

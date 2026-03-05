@@ -125,7 +125,16 @@ class OrganizationsAccess extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     enabled = registerOutput<bool>('enabled');
-    timeouts = registerOutput<OrganizationsAccessTimeouts?>('timeouts');
+    timeouts = registerOutput<OrganizationsAccessTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrganizationsAccessTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [OrganizationsAccess] resource's state with the given [name] and [id].
@@ -152,6 +161,15 @@ class OrganizationsAccess extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     enabled = registerOutput<bool>('enabled');
-    timeouts = registerOutput<OrganizationsAccessTimeouts?>('timeouts');
+    timeouts = registerOutput<OrganizationsAccessTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrganizationsAccessTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

@@ -1,28 +1,37 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getQuotasetV3.
 class GetQuotasetV3Result {
   /// The size (GB) of backups that are allowed.
   final int backupGigabytes;
+
   /// The number of backups that are allowed.
   final int backups;
+
   /// The size (GB) of volumes and snapshots that are allowed.
   final int gigabytes;
+
   /// The number of groups that are allowed.
   final int groups;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The size (GB) of volumes that are allowed for each volume.
   final int perVolumeGigabytes;
+
   /// See Argument Reference above.
   final String projectId;
+
   /// See Argument Reference above.
   final String region;
+
   /// The number of snapshots that are allowed.
   final int snapshots;
+
   /// Map with gigabytes_{volume_type}, snapshots_{volume_type}, volumes_{volume_type} for each volume type.
   final Map<String, String> volumeTypeQuota;
+
   /// The number of volumes that are allowed.
   final int volumes;
 
@@ -84,4 +93,3 @@ class GetQuotasetV3Result {
     );
   }
 }
-

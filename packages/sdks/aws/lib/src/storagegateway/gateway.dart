@@ -972,12 +972,26 @@ class Gateway extends pulumi.CustomResource {
     hostEnvironment = registerOutput<String>('hostEnvironment');
     maintenanceStartTime = registerOutput<GatewayMaintenanceStartTime>(
       'maintenanceStartTime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GatewayMaintenanceStartTime.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     mediumChangerType = registerOutput<String?>('mediumChangerType');
     region = registerOutput<String>('region');
     smbActiveDirectorySettings =
         registerOutput<GatewaySmbActiveDirectorySettings?>(
           'smbActiveDirectorySettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GatewaySmbActiveDirectorySettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     smbFileShareVisibility = registerOutput<bool?>('smbFileShareVisibility');
     smbGuestPassword = registerOutput<String?>('smbGuestPassword');
@@ -1033,12 +1047,26 @@ class Gateway extends pulumi.CustomResource {
     hostEnvironment = registerOutput<String>('hostEnvironment');
     maintenanceStartTime = registerOutput<GatewayMaintenanceStartTime>(
       'maintenanceStartTime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GatewayMaintenanceStartTime.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     mediumChangerType = registerOutput<String?>('mediumChangerType');
     region = registerOutput<String>('region');
     smbActiveDirectorySettings =
         registerOutput<GatewaySmbActiveDirectorySettings?>(
           'smbActiveDirectorySettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GatewaySmbActiveDirectorySettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     smbFileShareVisibility = registerOutput<bool?>('smbFileShareVisibility');
     smbGuestPassword = registerOutput<String?>('smbGuestPassword');

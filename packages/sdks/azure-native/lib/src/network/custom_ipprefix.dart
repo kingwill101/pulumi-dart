@@ -233,11 +233,25 @@ class CustomIPPrefix extends pulumi.CustomResource {
     commissionedState = registerOutput<String?>('commissionedState');
     customIpPrefixParent = registerOutput<SubResourceResponse?>(
       'customIpPrefixParent',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     expressRouteAdvertise = registerOutput<bool?>('expressRouteAdvertise');
     extendedLocation = registerOutput<ExtendedLocationResponse?>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     failedReason = registerOutput<String>('failedReason');
     geo = registerOutput<String?>('geo');

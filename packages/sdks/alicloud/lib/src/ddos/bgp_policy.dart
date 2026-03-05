@@ -283,7 +283,16 @@ class BgpPolicy extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    content = registerOutput<BgpPolicyContent>('content');
+    content = registerOutput<BgpPolicyContent>(
+      'content',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BgpPolicyContent.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     policyName = registerOutput<String>('policyName');
     type = registerOutput<String>('type');
   }
@@ -311,7 +320,16 @@ class BgpPolicy extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    content = registerOutput<BgpPolicyContent>('content');
+    content = registerOutput<BgpPolicyContent>(
+      'content',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BgpPolicyContent.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     policyName = registerOutput<String>('policyName');
     type = registerOutput<String>('type');
   }

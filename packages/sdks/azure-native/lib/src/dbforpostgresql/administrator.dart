@@ -194,7 +194,16 @@ class Administrator extends pulumi.CustomResource {
     objectId = registerOutput<String?>('objectId');
     principalName = registerOutput<String?>('principalName');
     principalType = registerOutput<String?>('principalType');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tenantId = registerOutput<String?>('tenantId');
     type = registerOutput<String>('type');
   }

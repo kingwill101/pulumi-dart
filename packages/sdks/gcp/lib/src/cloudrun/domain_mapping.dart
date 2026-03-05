@@ -312,10 +312,28 @@ class DomainMapping extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     location = registerOutput<String>('location');
-    metadata = registerOutput<DomainMappingMetadata>('metadata');
+    metadata = registerOutput<DomainMappingMetadata>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainMappingMetadata.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    spec = registerOutput<DomainMappingSpec>('spec');
+    spec = registerOutput<DomainMappingSpec>(
+      'spec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainMappingSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
   }
 
@@ -343,10 +361,28 @@ class DomainMapping extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     location = registerOutput<String>('location');
-    metadata = registerOutput<DomainMappingMetadata>('metadata');
+    metadata = registerOutput<DomainMappingMetadata>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainMappingMetadata.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    spec = registerOutput<DomainMappingSpec>('spec');
+    spec = registerOutput<DomainMappingSpec>(
+      'spec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainMappingSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
   }
 }

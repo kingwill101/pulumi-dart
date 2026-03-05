@@ -41,6 +41,13 @@ class DomainMappingAppengineV1beta extends pulumi.CustomResource {
     );
     sslSettings = registerOutput<SslSettingsResponseAppengineV1beta>(
       'sslSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SslSettingsResponseAppengineV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

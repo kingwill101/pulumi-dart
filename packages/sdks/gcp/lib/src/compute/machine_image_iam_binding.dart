@@ -1828,7 +1828,16 @@ class MachineImageIamBinding extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<MachineImageIamBindingCondition?>('condition');
+    condition = registerOutput<MachineImageIamBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MachineImageIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     machineImage = registerOutput<String>('machineImage');
     members = registerOutput<List<String>>('members');
@@ -1859,7 +1868,16 @@ class MachineImageIamBinding extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<MachineImageIamBindingCondition?>('condition');
+    condition = registerOutput<MachineImageIamBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MachineImageIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     machineImage = registerOutput<String>('machineImage');
     members = registerOutput<List<String>>('members');

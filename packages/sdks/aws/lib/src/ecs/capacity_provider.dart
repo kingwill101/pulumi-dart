@@ -578,11 +578,25 @@ class CapacityProvider extends pulumi.CustomResource {
     autoScalingGroupProvider =
         registerOutput<CapacityProviderAutoScalingGroupProvider?>(
           'autoScalingGroupProvider',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CapacityProviderAutoScalingGroupProvider.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     cluster = registerOutput<String?>('cluster');
     managedInstancesProvider =
         registerOutput<CapacityProviderManagedInstancesProvider?>(
           'managedInstancesProvider',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CapacityProviderManagedInstancesProvider.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -617,11 +631,25 @@ class CapacityProvider extends pulumi.CustomResource {
     autoScalingGroupProvider =
         registerOutput<CapacityProviderAutoScalingGroupProvider?>(
           'autoScalingGroupProvider',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CapacityProviderAutoScalingGroupProvider.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     cluster = registerOutput<String?>('cluster');
     managedInstancesProvider =
         registerOutput<CapacityProviderManagedInstancesProvider?>(
           'managedInstancesProvider',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CapacityProviderManagedInstancesProvider.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

@@ -319,7 +319,16 @@ class Environment extends pulumi.CustomResource {
     );
     defaultDomain = registerOutput<String>('defaultDomain');
     dockerBridgeCidr = registerOutput<String>('dockerBridgeCidr');
-    identity = registerOutput<EnvironmentIdentity?>('identity');
+    identity = registerOutput<EnvironmentIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnvironmentIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     infrastructureResourceGroupName = registerOutput<String?>(
       'infrastructureResourceGroupName',
     );
@@ -379,7 +388,16 @@ class Environment extends pulumi.CustomResource {
     );
     defaultDomain = registerOutput<String>('defaultDomain');
     dockerBridgeCidr = registerOutput<String>('dockerBridgeCidr');
-    identity = registerOutput<EnvironmentIdentity?>('identity');
+    identity = registerOutput<EnvironmentIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnvironmentIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     infrastructureResourceGroupName = registerOutput<String?>(
       'infrastructureResourceGroupName',
     );

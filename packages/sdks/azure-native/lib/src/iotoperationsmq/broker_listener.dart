@@ -567,6 +567,13 @@ class BrokerListener extends pulumi.CustomResource {
     brokerRef = registerOutput<String>('brokerRef');
     extendedLocation = registerOutput<ExtendedLocationPropertyResponse>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationPropertyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -575,9 +582,27 @@ class BrokerListener extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     serviceName = registerOutput<String?>('serviceName');
     serviceType = registerOutput<String?>('serviceType');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
-    tls = registerOutput<TlsCertMethodResponse?>('tls');
+    tls = registerOutput<TlsCertMethodResponse?>(
+      'tls',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TlsCertMethodResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

@@ -290,7 +290,16 @@ class SigningJob extends pulumi.CustomResource {
        ) {
     completedAt = registerOutput<String>('completedAt');
     createdAt = registerOutput<String>('createdAt');
-    destination = registerOutput<SigningJobDestination>('destination');
+    destination = registerOutput<SigningJobDestination>(
+      'destination',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SigningJobDestination.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ignoreSigningJobFailure = registerOutput<bool?>('ignoreSigningJobFailure');
     jobId = registerOutput<String>('jobId');
     jobInvoker = registerOutput<String>('jobInvoker');
@@ -306,7 +315,16 @@ class SigningJob extends pulumi.CustomResource {
     );
     signatureExpiresAt = registerOutput<String>('signatureExpiresAt');
     signedObjects = registerOutput<List<Map<String, dynamic>>>('signedObjects');
-    source = registerOutput<SigningJobSource>('source');
+    source = registerOutput<SigningJobSource>(
+      'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SigningJobSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String>('status');
     statusReason = registerOutput<String>('statusReason');
   }
@@ -336,7 +354,16 @@ class SigningJob extends pulumi.CustomResource {
        ) {
     completedAt = registerOutput<String>('completedAt');
     createdAt = registerOutput<String>('createdAt');
-    destination = registerOutput<SigningJobDestination>('destination');
+    destination = registerOutput<SigningJobDestination>(
+      'destination',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SigningJobDestination.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ignoreSigningJobFailure = registerOutput<bool?>('ignoreSigningJobFailure');
     jobId = registerOutput<String>('jobId');
     jobInvoker = registerOutput<String>('jobInvoker');
@@ -352,7 +379,16 @@ class SigningJob extends pulumi.CustomResource {
     );
     signatureExpiresAt = registerOutput<String>('signatureExpiresAt');
     signedObjects = registerOutput<List<Map<String, dynamic>>>('signedObjects');
-    source = registerOutput<SigningJobSource>('source');
+    source = registerOutput<SigningJobSource>(
+      'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SigningJobSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String>('status');
     statusReason = registerOutput<String>('statusReason');
   }

@@ -191,6 +191,13 @@ class NetworkInterfaceTapConfiguration extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     virtualNetworkTap = registerOutput<VirtualNetworkTapResponse?>(
       'virtualNetworkTap',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualNetworkTapResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

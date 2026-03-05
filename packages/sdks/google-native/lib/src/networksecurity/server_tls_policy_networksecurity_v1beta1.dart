@@ -58,13 +58,29 @@ class ServerTlsPolicyNetworksecurityV1beta1 extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     mtlsPolicy = registerOutput<MTLSPolicyResponseNetworksecurityV1beta1>(
       'mtlsPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MTLSPolicyResponseNetworksecurityV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     serverCertificate =
         registerOutput<
           GoogleCloudNetworksecurityV1beta1CertificateProviderResponse
-        >('serverCertificate');
+        >(
+          'serverCertificate',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudNetworksecurityV1beta1CertificateProviderResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     serverTlsPolicyId = registerOutput<String>('serverTlsPolicyId');
     updateTime = registerOutput<String>('updateTime');
   }

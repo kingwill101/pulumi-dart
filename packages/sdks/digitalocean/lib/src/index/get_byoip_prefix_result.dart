@@ -1,20 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getByoipPrefix.
 class GetByoipPrefixResult {
   /// A boolean indicating whether the prefix is currently being advertised.
   final bool advertised;
+
   /// The reason for failure if the status is "failed".
   final String failureReason;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The CIDR notation of the prefix (e.g., "192.0.2.0/24").
   final String prefix;
+
   /// The DigitalOcean region where the prefix is deployed.
   final String region;
+
   /// The current status of the BYOIP prefix (e.g., "verified", "pending", "failed").
   final String status;
+
   /// The UUID of the BYOIP prefix.
   final String uuid;
 
@@ -60,4 +65,3 @@ class GetByoipPrefixResult {
     );
   }
 }
-

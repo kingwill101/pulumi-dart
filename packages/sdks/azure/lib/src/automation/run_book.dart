@@ -312,7 +312,16 @@ class RunBook extends pulumi.CustomResource {
     automationAccountName = registerOutput<String>('automationAccountName');
     content = registerOutput<String>('content');
     description = registerOutput<String?>('description');
-    draft = registerOutput<RunBookDraft?>('draft');
+    draft = registerOutput<RunBookDraft?>(
+      'draft',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RunBookDraft.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     jobSchedules = registerOutput<List<Map<String, dynamic>>>('jobSchedules');
     location = registerOutput<String>('location');
     logActivityTraceLevel = registerOutput<int?>('logActivityTraceLevel');
@@ -321,6 +330,13 @@ class RunBook extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     publishContentLink = registerOutput<RunBookPublishContentLink?>(
       'publishContentLink',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RunBookPublishContentLink.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     runbookType = registerOutput<String>('runbookType');
@@ -354,7 +370,16 @@ class RunBook extends pulumi.CustomResource {
     automationAccountName = registerOutput<String>('automationAccountName');
     content = registerOutput<String>('content');
     description = registerOutput<String?>('description');
-    draft = registerOutput<RunBookDraft?>('draft');
+    draft = registerOutput<RunBookDraft?>(
+      'draft',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RunBookDraft.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     jobSchedules = registerOutput<List<Map<String, dynamic>>>('jobSchedules');
     location = registerOutput<String>('location');
     logActivityTraceLevel = registerOutput<int?>('logActivityTraceLevel');
@@ -363,6 +388,13 @@ class RunBook extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     publishContentLink = registerOutput<RunBookPublishContentLink?>(
       'publishContentLink',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RunBookPublishContentLink.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     runbookType = registerOutput<String>('runbookType');

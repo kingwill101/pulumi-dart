@@ -652,7 +652,16 @@ class DatasetIamMember extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<DatasetIamMemberCondition?>('condition');
+    condition = registerOutput<DatasetIamMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatasetIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     datasetId = registerOutput<String>('datasetId');
     etag = registerOutput<String>('etag');
     member = registerOutput<String>('member');
@@ -682,7 +691,16 @@ class DatasetIamMember extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<DatasetIamMemberCondition?>('condition');
+    condition = registerOutput<DatasetIamMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatasetIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     datasetId = registerOutput<String>('datasetId');
     etag = registerOutput<String>('etag');
     member = registerOutput<String>('member');

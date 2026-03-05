@@ -5972,6 +5972,13 @@ class ForwardingRule extends pulumi.CustomResource {
     serviceDirectoryRegistrations =
         registerOutput<ForwardingRuleServiceDirectoryRegistrations>(
           'serviceDirectoryRegistrations',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ForwardingRuleServiceDirectoryRegistrations.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     serviceLabel = registerOutput<String?>('serviceLabel');
     serviceName = registerOutput<String>('serviceName');
@@ -6036,6 +6043,13 @@ class ForwardingRule extends pulumi.CustomResource {
     serviceDirectoryRegistrations =
         registerOutput<ForwardingRuleServiceDirectoryRegistrations>(
           'serviceDirectoryRegistrations',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ForwardingRuleServiceDirectoryRegistrations.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     serviceLabel = registerOutput<String?>('serviceLabel');
     serviceName = registerOutput<String>('serviceName');

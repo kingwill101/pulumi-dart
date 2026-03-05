@@ -764,7 +764,14 @@ class Plan extends pulumi.CustomResource {
     perSiteScaling = registerOutput<bool?>('perSiteScaling');
     reserved = registerOutput<bool?>('reserved');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    sku = registerOutput<PlanSku>('sku');
+    sku = registerOutput<PlanSku>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PlanSku.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     zoneRedundant = registerOutput<bool?>('zoneRedundant');
   }
@@ -802,7 +809,14 @@ class Plan extends pulumi.CustomResource {
     perSiteScaling = registerOutput<bool?>('perSiteScaling');
     reserved = registerOutput<bool?>('reserved');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    sku = registerOutput<PlanSku>('sku');
+    sku = registerOutput<PlanSku>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PlanSku.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     zoneRedundant = registerOutput<bool?>('zoneRedundant');
   }

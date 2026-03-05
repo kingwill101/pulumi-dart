@@ -377,6 +377,13 @@ class ReplicationConfigurationTemplate extends pulumi.CustomResource {
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     timeouts = registerOutput<ReplicationConfigurationTemplateTimeouts?>(
       'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReplicationConfigurationTemplateTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     useDedicatedReplicationServer = registerOutput<bool>(
       'useDedicatedReplicationServer',
@@ -433,6 +440,13 @@ class ReplicationConfigurationTemplate extends pulumi.CustomResource {
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     timeouts = registerOutput<ReplicationConfigurationTemplateTimeouts?>(
       'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReplicationConfigurationTemplateTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     useDedicatedReplicationServer = registerOutput<bool>(
       'useDedicatedReplicationServer',

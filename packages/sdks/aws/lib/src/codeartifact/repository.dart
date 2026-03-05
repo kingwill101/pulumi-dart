@@ -524,6 +524,13 @@ class Repository extends pulumi.CustomResource {
     domainOwner = registerOutput<String>('domainOwner');
     externalConnections = registerOutput<RepositoryExternalConnections?>(
       'externalConnections',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RepositoryExternalConnections.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     repository = registerOutput<String>('repository');
@@ -562,6 +569,13 @@ class Repository extends pulumi.CustomResource {
     domainOwner = registerOutput<String>('domainOwner');
     externalConnections = registerOutput<RepositoryExternalConnections?>(
       'externalConnections',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RepositoryExternalConnections.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     repository = registerOutput<String>('repository');

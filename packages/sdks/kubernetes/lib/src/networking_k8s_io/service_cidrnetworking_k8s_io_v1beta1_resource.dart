@@ -37,8 +37,35 @@ class ServiceCIDRNetworkingK8sIoV1beta1Resource extends pulumi.CustomResource {
        ) {
     apiVersion = registerOutput<String>('apiVersion');
     kind = registerOutput<String>('kind');
-    metadata = registerOutput<ObjectMeta>('metadata');
-    spec = registerOutput<ServiceCIDRSpecNetworkingK8sIoV1beta1>('spec');
-    status = registerOutput<ServiceCIDRStatusNetworkingK8sIoV1beta1?>('status');
+    metadata = registerOutput<ObjectMeta>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    spec = registerOutput<ServiceCIDRSpecNetworkingK8sIoV1beta1>(
+      'spec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceCIDRSpecNetworkingK8sIoV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    status = registerOutput<ServiceCIDRStatusNetworkingK8sIoV1beta1?>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceCIDRStatusNetworkingK8sIoV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

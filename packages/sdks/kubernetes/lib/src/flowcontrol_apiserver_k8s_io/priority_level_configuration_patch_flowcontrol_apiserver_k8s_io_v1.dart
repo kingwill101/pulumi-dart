@@ -44,8 +44,35 @@ class PriorityLevelConfigurationPatchFlowcontrolApiserverK8sIoV1
        ) {
     apiVersion = registerOutput<String?>('apiVersion');
     kind = registerOutput<String?>('kind');
-    metadata = registerOutput<ObjectMetaPatch?>('metadata');
-    spec = registerOutput<PriorityLevelConfigurationSpecPatch?>('spec');
-    status = registerOutput<PriorityLevelConfigurationStatusPatch?>('status');
+    metadata = registerOutput<ObjectMetaPatch?>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMetaPatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    spec = registerOutput<PriorityLevelConfigurationSpecPatch?>(
+      'spec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PriorityLevelConfigurationSpecPatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    status = registerOutput<PriorityLevelConfigurationStatusPatch?>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PriorityLevelConfigurationStatusPatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

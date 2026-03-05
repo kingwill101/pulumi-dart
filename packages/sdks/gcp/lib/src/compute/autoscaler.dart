@@ -1031,6 +1031,13 @@ class Autoscaler extends pulumi.CustomResource {
        ) {
     autoscalingPolicy = registerOutput<AutoscalerAutoscalingPolicy>(
       'autoscalingPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AutoscalerAutoscalingPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String?>('description');
@@ -1066,6 +1073,13 @@ class Autoscaler extends pulumi.CustomResource {
        ) {
     autoscalingPolicy = registerOutput<AutoscalerAutoscalingPolicy>(
       'autoscalingPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AutoscalerAutoscalingPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String?>('description');

@@ -350,16 +350,39 @@ class DeploymentStackAtManagementGroup extends pulumi.CustomResource {
        ) {
     actionOnUnmanage = registerOutput<ActionOnUnmanageResponse>(
       'actionOnUnmanage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ActionOnUnmanageResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     correlationId = registerOutput<String>('correlationId');
     debugSetting = registerOutput<DeploymentStacksDebugSettingResponse?>(
       'debugSetting',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentStacksDebugSettingResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     deletedResources = registerOutput<List<Map<String, dynamic>>>(
       'deletedResources',
     );
-    denySettings = registerOutput<DenySettingsResponse>('denySettings');
+    denySettings = registerOutput<DenySettingsResponse>(
+      'denySettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DenySettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     deploymentId = registerOutput<String>('deploymentId');
     deploymentScope = registerOutput<String?>('deploymentScope');
     description = registerOutput<String?>('description');
@@ -367,7 +390,16 @@ class DeploymentStackAtManagementGroup extends pulumi.CustomResource {
       'detachedResources',
     );
     duration = registerOutput<String>('duration');
-    error = registerOutput<ErrorDetailResponse?>('error');
+    error = registerOutput<ErrorDetailResponse?>(
+      'error',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ErrorDetailResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     failedResources = registerOutput<List<Map<String, dynamic>>>(
       'failedResources',
     );
@@ -376,13 +408,39 @@ class DeploymentStackAtManagementGroup extends pulumi.CustomResource {
     outputs = registerOutput<dynamic>('outputs');
     parameters = registerOutput<Map<String, DeploymentParameterResponse>?>(
       'parameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeMapValues<DeploymentParameterResponse>(
+          guardedValue,
+          (value) => DeploymentParameterResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      },
     );
     parametersLink = registerOutput<DeploymentStacksParametersLinkResponse?>(
       'parametersLink',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentStacksParametersLinkResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     provisioningState = registerOutput<String>('provisioningState');
     resources = registerOutput<List<Map<String, dynamic>>>('resources');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

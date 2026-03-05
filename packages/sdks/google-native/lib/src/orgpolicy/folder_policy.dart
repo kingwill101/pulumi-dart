@@ -37,12 +37,35 @@ class FolderPolicy extends pulumi.CustomResource {
     alternate =
         registerOutput<GoogleCloudOrgpolicyV2AlternatePolicySpecResponse>(
           'alternate',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudOrgpolicyV2AlternatePolicySpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dryRunSpec = registerOutput<GoogleCloudOrgpolicyV2PolicySpecResponse>(
       'dryRunSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudOrgpolicyV2PolicySpecResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     folderId = registerOutput<String>('folderId');
     this.name = registerOutput<String>('name');
-    spec = registerOutput<GoogleCloudOrgpolicyV2PolicySpecResponse>('spec');
+    spec = registerOutput<GoogleCloudOrgpolicyV2PolicySpecResponse>(
+      'spec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudOrgpolicyV2PolicySpecResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

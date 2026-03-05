@@ -187,14 +187,32 @@ class IncidentComment extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    author = registerOutput<ClientInfoResponse>('author');
+    author = registerOutput<ClientInfoResponse>(
+      'author',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClientInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdTimeUtc = registerOutput<String>('createdTimeUtc');
     etag = registerOutput<String?>('etag');
     lastModifiedTimeUtc = registerOutput<String>('lastModifiedTimeUtc');
     message = registerOutput<String>('message');
     this.name = registerOutput<String>('name');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

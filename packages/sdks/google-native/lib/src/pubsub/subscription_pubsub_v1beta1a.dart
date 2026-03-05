@@ -32,7 +32,16 @@ class SubscriptionPubsubV1beta1a extends pulumi.CustomResource {
        ) {
     ackDeadlineSeconds = registerOutput<int>('ackDeadlineSeconds');
     this.name = registerOutput<String>('name');
-    pushConfig = registerOutput<PushConfigResponsePubsubV1beta1a>('pushConfig');
+    pushConfig = registerOutput<PushConfigResponsePubsubV1beta1a>(
+      'pushConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PushConfigResponsePubsubV1beta1a.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     topic = registerOutput<String>('topic');
   }
 }

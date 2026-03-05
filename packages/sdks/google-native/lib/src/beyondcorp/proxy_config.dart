@@ -64,7 +64,16 @@ class ProxyConfig extends pulumi.CustomResource {
     encryptionInfo =
         registerOutput<
           GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponse
-        >('encryptionInfo');
+        >(
+          'encryptionInfo',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     this.name = registerOutput<String>('name');
     organizationId = registerOutput<String>('organizationId');
     partnerTenantId = registerOutput<String>('partnerTenantId');
@@ -73,11 +82,29 @@ class ProxyConfig extends pulumi.CustomResource {
     routingInfo =
         registerOutput<
           GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponse
-        >('routingInfo');
+        >(
+          'routingInfo',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     transportInfo =
         registerOutput<
           GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponse
-        >('transportInfo');
+        >(
+          'transportInfo',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -228,6 +228,13 @@ class Configuration extends pulumi.CustomResource {
     inGuestUserPatchMode = registerOutput<String?>('inGuestUserPatchMode');
     installPatches = registerOutput<ConfigurationInstallPatches?>(
       'installPatches',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigurationInstallPatches.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -236,7 +243,16 @@ class Configuration extends pulumi.CustomResource {
     scope = registerOutput<String>('scope');
     tags = registerOutput<Map<String, String>?>('tags');
     visibility = registerOutput<String?>('visibility');
-    window = registerOutput<ConfigurationWindow?>('window');
+    window = registerOutput<ConfigurationWindow?>(
+      'window',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigurationWindow.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Configuration] resource's state with the given [name] and [id].
@@ -265,6 +281,13 @@ class Configuration extends pulumi.CustomResource {
     inGuestUserPatchMode = registerOutput<String?>('inGuestUserPatchMode');
     installPatches = registerOutput<ConfigurationInstallPatches?>(
       'installPatches',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigurationInstallPatches.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -273,6 +296,15 @@ class Configuration extends pulumi.CustomResource {
     scope = registerOutput<String>('scope');
     tags = registerOutput<Map<String, String>?>('tags');
     visibility = registerOutput<String?>('visibility');
-    window = registerOutput<ConfigurationWindow?>('window');
+    window = registerOutput<ConfigurationWindow?>(
+      'window',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigurationWindow.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

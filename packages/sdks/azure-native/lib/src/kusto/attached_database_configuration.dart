@@ -316,6 +316,13 @@ class AttachedDatabaseConfiguration extends pulumi.CustomResource {
     tableLevelSharingProperties =
         registerOutput<TableLevelSharingPropertiesResponse?>(
           'tableLevelSharingProperties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return TableLevelSharingPropertiesResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     type = registerOutput<String>('type');
   }

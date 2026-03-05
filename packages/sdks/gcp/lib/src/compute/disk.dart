@@ -826,6 +826,13 @@ class Disk extends pulumi.CustomResource {
     architecture = registerOutput<String?>('architecture');
     asyncPrimaryDisk = registerOutput<DiskAsyncPrimaryDisk?>(
       'asyncPrimaryDisk',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiskAsyncPrimaryDisk.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createSnapshotBeforeDestroy = registerOutput<bool?>(
       'createSnapshotBeforeDestroy',
@@ -837,6 +844,13 @@ class Disk extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     diskEncryptionKey = registerOutput<DiskDiskEncryptionKey?>(
       'diskEncryptionKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiskDiskEncryptionKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     diskId = registerOutput<String>('diskId');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -855,7 +869,16 @@ class Disk extends pulumi.CustomResource {
     licenses = registerOutput<List<String>>('licenses');
     multiWriter = registerOutput<bool?>('multiWriter');
     this.name = registerOutput<String>('name');
-    params = registerOutput<DiskParams?>('params');
+    params = registerOutput<DiskParams?>(
+      'params',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiskParams.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     physicalBlockSizeBytes = registerOutput<int>('physicalBlockSizeBytes');
     project = registerOutput<String>('project');
     provisionedIops = registerOutput<int>('provisionedIops');
@@ -869,6 +892,13 @@ class Disk extends pulumi.CustomResource {
     sourceDiskId = registerOutput<String>('sourceDiskId');
     sourceImageEncryptionKey = registerOutput<DiskSourceImageEncryptionKey?>(
       'sourceImageEncryptionKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiskSourceImageEncryptionKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sourceImageId = registerOutput<String>('sourceImageId');
     sourceInstantSnapshot = registerOutput<String?>('sourceInstantSnapshot');
@@ -876,6 +906,13 @@ class Disk extends pulumi.CustomResource {
     sourceSnapshotEncryptionKey =
         registerOutput<DiskSourceSnapshotEncryptionKey?>(
           'sourceSnapshotEncryptionKey',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DiskSourceSnapshotEncryptionKey.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     sourceSnapshotId = registerOutput<String>('sourceSnapshotId');
     sourceStorageObject = registerOutput<String?>('sourceStorageObject');
@@ -908,6 +945,13 @@ class Disk extends pulumi.CustomResource {
     architecture = registerOutput<String?>('architecture');
     asyncPrimaryDisk = registerOutput<DiskAsyncPrimaryDisk?>(
       'asyncPrimaryDisk',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiskAsyncPrimaryDisk.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createSnapshotBeforeDestroy = registerOutput<bool?>(
       'createSnapshotBeforeDestroy',
@@ -919,6 +963,13 @@ class Disk extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     diskEncryptionKey = registerOutput<DiskDiskEncryptionKey?>(
       'diskEncryptionKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiskDiskEncryptionKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     diskId = registerOutput<String>('diskId');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -937,7 +988,16 @@ class Disk extends pulumi.CustomResource {
     licenses = registerOutput<List<String>>('licenses');
     multiWriter = registerOutput<bool?>('multiWriter');
     this.name = registerOutput<String>('name');
-    params = registerOutput<DiskParams?>('params');
+    params = registerOutput<DiskParams?>(
+      'params',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiskParams.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     physicalBlockSizeBytes = registerOutput<int>('physicalBlockSizeBytes');
     project = registerOutput<String>('project');
     provisionedIops = registerOutput<int>('provisionedIops');
@@ -951,6 +1011,13 @@ class Disk extends pulumi.CustomResource {
     sourceDiskId = registerOutput<String>('sourceDiskId');
     sourceImageEncryptionKey = registerOutput<DiskSourceImageEncryptionKey?>(
       'sourceImageEncryptionKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiskSourceImageEncryptionKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sourceImageId = registerOutput<String>('sourceImageId');
     sourceInstantSnapshot = registerOutput<String?>('sourceInstantSnapshot');
@@ -958,6 +1025,13 @@ class Disk extends pulumi.CustomResource {
     sourceSnapshotEncryptionKey =
         registerOutput<DiskSourceSnapshotEncryptionKey?>(
           'sourceSnapshotEncryptionKey',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DiskSourceSnapshotEncryptionKey.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     sourceSnapshotId = registerOutput<String>('sourceSnapshotId');
     sourceStorageObject = registerOutput<String?>('sourceStorageObject');

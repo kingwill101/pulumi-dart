@@ -349,6 +349,13 @@ class SmbFileShare extends pulumi.CustomResource {
     bucketRegion = registerOutput<String?>('bucketRegion');
     cacheAttributes = registerOutput<SmbFileShareCacheAttributes?>(
       'cacheAttributes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SmbFileShareCacheAttributes.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     caseSensitivity = registerOutput<String?>('caseSensitivity');
     defaultStorageClass = registerOutput<String?>('defaultStorageClass');
@@ -406,6 +413,13 @@ class SmbFileShare extends pulumi.CustomResource {
     bucketRegion = registerOutput<String?>('bucketRegion');
     cacheAttributes = registerOutput<SmbFileShareCacheAttributes?>(
       'cacheAttributes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SmbFileShareCacheAttributes.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     caseSensitivity = registerOutput<String?>('caseSensitivity');
     defaultStorageClass = registerOutput<String?>('defaultStorageClass');

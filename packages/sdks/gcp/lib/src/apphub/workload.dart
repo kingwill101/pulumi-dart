@@ -97,7 +97,16 @@ class Workload extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     applicationId = registerOutput<String>('applicationId');
-    attributes = registerOutput<WorkloadAttributes?>('attributes');
+    attributes = registerOutput<WorkloadAttributes?>(
+      'attributes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkloadAttributes.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     discoveredWorkload = registerOutput<String>('discoveredWorkload');
@@ -141,7 +150,16 @@ class Workload extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     applicationId = registerOutput<String>('applicationId');
-    attributes = registerOutput<WorkloadAttributes?>('attributes');
+    attributes = registerOutput<WorkloadAttributes?>(
+      'attributes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkloadAttributes.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     discoveredWorkload = registerOutput<String>('discoveredWorkload');

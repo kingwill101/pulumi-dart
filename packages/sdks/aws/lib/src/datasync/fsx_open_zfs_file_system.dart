@@ -207,7 +207,16 @@ class FsxOpenZfsFileSystem extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     creationTime = registerOutput<String>('creationTime');
     fsxFilesystemArn = registerOutput<String>('fsxFilesystemArn');
-    protocol = registerOutput<FsxOpenZfsFileSystemProtocol>('protocol');
+    protocol = registerOutput<FsxOpenZfsFileSystemProtocol>(
+      'protocol',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FsxOpenZfsFileSystemProtocol.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     securityGroupArns = registerOutput<List<String>>('securityGroupArns');
     subdirectory = registerOutput<String>('subdirectory');
@@ -242,7 +251,16 @@ class FsxOpenZfsFileSystem extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     creationTime = registerOutput<String>('creationTime');
     fsxFilesystemArn = registerOutput<String>('fsxFilesystemArn');
-    protocol = registerOutput<FsxOpenZfsFileSystemProtocol>('protocol');
+    protocol = registerOutput<FsxOpenZfsFileSystemProtocol>(
+      'protocol',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FsxOpenZfsFileSystemProtocol.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     securityGroupArns = registerOutput<List<String>>('securityGroupArns');
     subdirectory = registerOutput<String>('subdirectory');

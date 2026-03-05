@@ -2003,11 +2003,56 @@ class Connection extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    aws = registerOutput<ConnectionAws?>('aws');
-    azure = registerOutput<ConnectionAzure?>('azure');
-    cloudResource = registerOutput<ConnectionCloudResource?>('cloudResource');
-    cloudSpanner = registerOutput<ConnectionCloudSpanner?>('cloudSpanner');
-    cloudSql = registerOutput<ConnectionCloudSql?>('cloudSql');
+    aws = registerOutput<ConnectionAws?>(
+      'aws',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionAws.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    azure = registerOutput<ConnectionAzure?>(
+      'azure',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionAzure.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    cloudResource = registerOutput<ConnectionCloudResource?>(
+      'cloudResource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionCloudResource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    cloudSpanner = registerOutput<ConnectionCloudSpanner?>(
+      'cloudSpanner',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionCloudSpanner.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    cloudSql = registerOutput<ConnectionCloudSql?>(
+      'cloudSql',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionCloudSql.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     connectionId = registerOutput<String>('connectionId');
     description = registerOutput<String?>('description');
     friendlyName = registerOutput<String?>('friendlyName');
@@ -2016,7 +2061,16 @@ class Connection extends pulumi.CustomResource {
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    spark = registerOutput<ConnectionSpark?>('spark');
+    spark = registerOutput<ConnectionSpark?>(
+      'spark',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionSpark.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Connection] resource's state with the given [name] and [id].
@@ -2042,11 +2096,56 @@ class Connection extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    aws = registerOutput<ConnectionAws?>('aws');
-    azure = registerOutput<ConnectionAzure?>('azure');
-    cloudResource = registerOutput<ConnectionCloudResource?>('cloudResource');
-    cloudSpanner = registerOutput<ConnectionCloudSpanner?>('cloudSpanner');
-    cloudSql = registerOutput<ConnectionCloudSql?>('cloudSql');
+    aws = registerOutput<ConnectionAws?>(
+      'aws',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionAws.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    azure = registerOutput<ConnectionAzure?>(
+      'azure',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionAzure.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    cloudResource = registerOutput<ConnectionCloudResource?>(
+      'cloudResource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionCloudResource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    cloudSpanner = registerOutput<ConnectionCloudSpanner?>(
+      'cloudSpanner',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionCloudSpanner.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    cloudSql = registerOutput<ConnectionCloudSql?>(
+      'cloudSql',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionCloudSql.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     connectionId = registerOutput<String>('connectionId');
     description = registerOutput<String?>('description');
     friendlyName = registerOutput<String?>('friendlyName');
@@ -2055,6 +2154,15 @@ class Connection extends pulumi.CustomResource {
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    spark = registerOutput<ConnectionSpark?>('spark');
+    spark = registerOutput<ConnectionSpark?>(
+      'spark',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionSpark.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

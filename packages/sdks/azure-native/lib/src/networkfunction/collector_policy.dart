@@ -285,12 +285,26 @@ class CollectorPolicy extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     ingestionPolicy = registerOutput<IngestionPolicyPropertiesFormatResponse?>(
       'ingestionPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IngestionPolicyPropertiesFormatResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<TrackedResourceResponseSystemData>(
       'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TrackedResourceResponseSystemData.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

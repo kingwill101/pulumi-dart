@@ -1,18 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getRedisFirewallRule.
 class GetRedisFirewallRuleResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// highest IP address included in the range
   final String endIP;
+
   /// resource ID (of the firewall rule)
   final String id;
+
   /// name of the firewall rule
   final String name;
+
   /// lowest IP address included in the range
   final String startIP;
+
   /// type (of the firewall rule resource = 'Microsoft.Cache/redis/firewallRule')
   final String type;
 
@@ -54,4 +58,3 @@ class GetRedisFirewallRuleResult {
     );
   }
 }
-

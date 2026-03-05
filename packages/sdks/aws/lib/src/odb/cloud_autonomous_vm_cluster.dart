@@ -735,6 +735,13 @@ class CloudAutonomousVmCluster extends pulumi.CustomResource {
     maintenanceWindow =
         registerOutput<CloudAutonomousVmClusterMaintenanceWindow>(
           'maintenanceWindow',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CloudAutonomousVmClusterMaintenanceWindow.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     maxAcdsLowestScaledValue = registerOutput<int>('maxAcdsLowestScaledValue');
     memoryPerOracleComputeUnitInGbs = registerOutput<int>(
@@ -776,7 +783,16 @@ class CloudAutonomousVmCluster extends pulumi.CustomResource {
       'timeOrdsCertificateExpires',
     );
     timeZone = registerOutput<String>('timeZone');
-    timeouts = registerOutput<CloudAutonomousVmClusterTimeouts?>('timeouts');
+    timeouts = registerOutput<CloudAutonomousVmClusterTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CloudAutonomousVmClusterTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     totalContainerDatabases = registerOutput<int>('totalContainerDatabases');
   }
 
@@ -843,6 +859,13 @@ class CloudAutonomousVmCluster extends pulumi.CustomResource {
     maintenanceWindow =
         registerOutput<CloudAutonomousVmClusterMaintenanceWindow>(
           'maintenanceWindow',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CloudAutonomousVmClusterMaintenanceWindow.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     maxAcdsLowestScaledValue = registerOutput<int>('maxAcdsLowestScaledValue');
     memoryPerOracleComputeUnitInGbs = registerOutput<int>(
@@ -884,7 +907,16 @@ class CloudAutonomousVmCluster extends pulumi.CustomResource {
       'timeOrdsCertificateExpires',
     );
     timeZone = registerOutput<String>('timeZone');
-    timeouts = registerOutput<CloudAutonomousVmClusterTimeouts?>('timeouts');
+    timeouts = registerOutput<CloudAutonomousVmClusterTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CloudAutonomousVmClusterTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     totalContainerDatabases = registerOutput<int>('totalContainerDatabases');
   }
 }

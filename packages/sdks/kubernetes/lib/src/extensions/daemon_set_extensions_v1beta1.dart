@@ -37,8 +37,35 @@ class DaemonSetExtensionsV1beta1 extends pulumi.CustomResource {
        ) {
     apiVersion = registerOutput<String>('apiVersion');
     kind = registerOutput<String>('kind');
-    metadata = registerOutput<ObjectMeta>('metadata');
-    spec = registerOutput<DaemonSetSpec>('spec');
-    status = registerOutput<DaemonSetStatus?>('status');
+    metadata = registerOutput<ObjectMeta>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    spec = registerOutput<DaemonSetSpec>(
+      'spec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DaemonSetSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    status = registerOutput<DaemonSetStatus?>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DaemonSetStatus.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

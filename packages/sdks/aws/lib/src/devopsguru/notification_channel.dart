@@ -281,9 +281,27 @@ class NotificationChannel extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    filters = registerOutput<NotificationChannelFilters?>('filters');
+    filters = registerOutput<NotificationChannelFilters?>(
+      'filters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NotificationChannelFilters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
-    sns = registerOutput<NotificationChannelSns>('sns');
+    sns = registerOutput<NotificationChannelSns>(
+      'sns',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NotificationChannelSns.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [NotificationChannel] resource's state with the given [name] and [id].
@@ -309,8 +327,26 @@ class NotificationChannel extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    filters = registerOutput<NotificationChannelFilters?>('filters');
+    filters = registerOutput<NotificationChannelFilters?>(
+      'filters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NotificationChannelFilters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
-    sns = registerOutput<NotificationChannelSns>('sns');
+    sns = registerOutput<NotificationChannelSns>(
+      'sns',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NotificationChannelSns.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

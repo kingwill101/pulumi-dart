@@ -1,20 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getDatasetDataLakeGen2.
 class GetDatasetDataLakeGen2Result {
   /// The name of the Data Share Dataset.
   final String displayName;
+
   /// The path of the file in the data lake file system to be shared with the receiver.
   final String filePath;
+
   /// The name of the data lake file system to be shared with the receiver.
   final String fileSystemName;
+
   /// The folder path in the data lake file system to be shared with the receiver.
   final String folderPath;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
   final String shareId;
+
   /// The resource ID of the storage account of the data lake file system to be shared with the receiver.
   final String storageAccountId;
 
@@ -64,4 +68,3 @@ class GetDatasetDataLakeGen2Result {
     );
   }
 }
-

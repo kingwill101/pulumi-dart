@@ -421,12 +421,37 @@ class CapacityProvider extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     permissionsConfig = registerOutput<CapacityProviderPermissionsConfig>(
       'permissionsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CapacityProviderPermissionsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<CapacityProviderTimeouts?>('timeouts');
-    vpcConfig = registerOutput<CapacityProviderVpcConfig>('vpcConfig');
+    timeouts = registerOutput<CapacityProviderTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CapacityProviderTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    vpcConfig = registerOutput<CapacityProviderVpcConfig>(
+      'vpcConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CapacityProviderVpcConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [CapacityProvider] resource's state with the given [name] and [id].
@@ -463,11 +488,36 @@ class CapacityProvider extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     permissionsConfig = registerOutput<CapacityProviderPermissionsConfig>(
       'permissionsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CapacityProviderPermissionsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<CapacityProviderTimeouts?>('timeouts');
-    vpcConfig = registerOutput<CapacityProviderVpcConfig>('vpcConfig');
+    timeouts = registerOutput<CapacityProviderTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CapacityProviderTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    vpcConfig = registerOutput<CapacityProviderVpcConfig>(
+      'vpcConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CapacityProviderVpcConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

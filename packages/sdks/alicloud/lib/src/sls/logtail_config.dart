@@ -547,7 +547,16 @@ class LogtailConfig extends pulumi.CustomResource {
     lastModifyTime = registerOutput<int>('lastModifyTime');
     logSample = registerOutput<String?>('logSample');
     logtailConfigName = registerOutput<String>('logtailConfigName');
-    outputDetail = registerOutput<LogtailConfigOutputDetail?>('outputDetail');
+    outputDetail = registerOutput<LogtailConfigOutputDetail?>(
+      'outputDetail',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LogtailConfigOutputDetail.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     outputType = registerOutput<String?>('outputType');
     projectName = registerOutput<String>('projectName');
   }
@@ -581,7 +590,16 @@ class LogtailConfig extends pulumi.CustomResource {
     lastModifyTime = registerOutput<int>('lastModifyTime');
     logSample = registerOutput<String?>('logSample');
     logtailConfigName = registerOutput<String>('logtailConfigName');
-    outputDetail = registerOutput<LogtailConfigOutputDetail?>('outputDetail');
+    outputDetail = registerOutput<LogtailConfigOutputDetail?>(
+      'outputDetail',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LogtailConfigOutputDetail.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     outputType = registerOutput<String?>('outputType');
     projectName = registerOutput<String>('projectName');
   }

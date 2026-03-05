@@ -639,7 +639,16 @@ class SynapseSpark extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     description = registerOutput<String?>('description');
-    identity = registerOutput<SynapseSparkIdentity?>('identity');
+    identity = registerOutput<SynapseSparkIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SynapseSparkIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
     location = registerOutput<String>('location');
     machineLearningWorkspaceId = registerOutput<String>(
@@ -674,7 +683,16 @@ class SynapseSpark extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     description = registerOutput<String?>('description');
-    identity = registerOutput<SynapseSparkIdentity?>('identity');
+    identity = registerOutput<SynapseSparkIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SynapseSparkIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
     location = registerOutput<String>('location');
     machineLearningWorkspaceId = registerOutput<String>(

@@ -3826,7 +3826,16 @@ class Pool extends pulumi.CustomResource {
     applicationPackages = registerOutput<List<Map<String, dynamic>>?>(
       'applicationPackages',
     );
-    autoScaleRun = registerOutput<AutoScaleRunResponse>('autoScaleRun');
+    autoScaleRun = registerOutput<AutoScaleRunResponse>(
+      'autoScaleRun',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AutoScaleRunResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     certificates = registerOutput<List<Map<String, dynamic>>?>('certificates');
     creationTime = registerOutput<String>('creationTime');
@@ -3837,10 +3846,26 @@ class Pool extends pulumi.CustomResource {
     );
     deploymentConfiguration = registerOutput<DeploymentConfigurationResponse?>(
       'deploymentConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     displayName = registerOutput<String?>('displayName');
     etag = registerOutput<String>('etag');
-    identity = registerOutput<BatchPoolIdentityResponse?>('identity');
+    identity = registerOutput<BatchPoolIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BatchPoolIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     interNodeCommunication = registerOutput<String?>('interNodeCommunication');
     lastModified = registerOutput<String>('lastModified');
     metadata = registerOutput<List<Map<String, dynamic>>?>('metadata');
@@ -3850,6 +3875,13 @@ class Pool extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkConfiguration = registerOutput<NetworkConfigurationResponse?>(
       'networkConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     provisioningState = registerOutput<String>('provisioningState');
     provisioningStateTransitionTime = registerOutput<String>(
@@ -3857,21 +3889,71 @@ class Pool extends pulumi.CustomResource {
     );
     resizeOperationStatus = registerOutput<ResizeOperationStatusResponse>(
       'resizeOperationStatus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResizeOperationStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     resourceTags = registerOutput<Map<String, String>?>('resourceTags');
-    scaleSettings = registerOutput<ScaleSettingsResponse?>('scaleSettings');
-    startTask = registerOutput<StartTaskResponse?>('startTask');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    scaleSettings = registerOutput<ScaleSettingsResponse?>(
+      'scaleSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScaleSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    startTask = registerOutput<StartTaskResponse?>(
+      'startTask',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StartTaskResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     targetNodeCommunicationMode = registerOutput<String?>(
       'targetNodeCommunicationMode',
     );
     taskSchedulingPolicy = registerOutput<TaskSchedulingPolicyResponse?>(
       'taskSchedulingPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TaskSchedulingPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     taskSlotsPerNode = registerOutput<int?>('taskSlotsPerNode');
     type = registerOutput<String>('type');
-    upgradePolicy = registerOutput<UpgradePolicyResponse?>('upgradePolicy');
+    upgradePolicy = registerOutput<UpgradePolicyResponse?>(
+      'upgradePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UpgradePolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     userAccounts = registerOutput<List<Map<String, dynamic>>?>('userAccounts');
     vmSize = registerOutput<String?>('vmSize');
   }

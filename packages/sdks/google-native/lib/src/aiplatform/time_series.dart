@@ -69,7 +69,16 @@ class TimeSeries extends pulumi.CustomResource {
     metadata =
         registerOutput<
           GoogleCloudAiplatformV1TensorboardTimeSeriesMetadataResponse
-        >('metadata');
+        >(
+          'metadata',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1TensorboardTimeSeriesMetadataResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     this.name = registerOutput<String>('name');
     pluginData = registerOutput<String>('pluginData');
     pluginName = registerOutput<String>('pluginName');

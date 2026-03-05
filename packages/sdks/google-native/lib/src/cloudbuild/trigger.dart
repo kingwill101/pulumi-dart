@@ -113,23 +113,73 @@ class Trigger extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    approvalConfig = registerOutput<ApprovalConfigResponse>('approvalConfig');
+    approvalConfig = registerOutput<ApprovalConfigResponse>(
+      'approvalConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApprovalConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     autodetect = registerOutput<bool>('autodetect');
     bitbucketServerTriggerConfig =
         registerOutput<BitbucketServerTriggerConfigResponse>(
           'bitbucketServerTriggerConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return BitbucketServerTriggerConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    build = registerOutput<BuildResponse>('build');
+    build = registerOutput<BuildResponse>(
+      'build',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BuildResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     disabled = registerOutput<bool>('disabled');
     eventType = registerOutput<String>('eventType');
     filename = registerOutput<String>('filename');
     filter = registerOutput<String>('filter');
-    gitFileSource = registerOutput<GitFileSourceResponse>('gitFileSource');
-    github = registerOutput<GitHubEventsConfigResponse>('github');
+    gitFileSource = registerOutput<GitFileSourceResponse>(
+      'gitFileSource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GitFileSourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    github = registerOutput<GitHubEventsConfigResponse>(
+      'github',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GitHubEventsConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     gitlabEnterpriseEventsConfig = registerOutput<GitLabEventsConfigResponse>(
       'gitlabEnterpriseEventsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GitLabEventsConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     ignoredFiles = registerOutput<List<String>>('ignoredFiles');
     includeBuildLogs = registerOutput<String>('includeBuildLogs');
@@ -138,16 +188,59 @@ class Trigger extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     projectId = registerOutput<String>('projectId');
-    pubsubConfig = registerOutput<PubsubConfigResponse>('pubsubConfig');
+    pubsubConfig = registerOutput<PubsubConfigResponse>(
+      'pubsubConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PubsubConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     repositoryEventConfig = registerOutput<RepositoryEventConfigResponse>(
       'repositoryEventConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RepositoryEventConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     resourceName = registerOutput<String>('resourceName');
     serviceAccount = registerOutput<String>('serviceAccount');
-    sourceToBuild = registerOutput<GitRepoSourceResponse>('sourceToBuild');
+    sourceToBuild = registerOutput<GitRepoSourceResponse>(
+      'sourceToBuild',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GitRepoSourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     substitutions = registerOutput<Map<String, String>>('substitutions');
     tags = registerOutput<List<String>>('tags');
-    triggerTemplate = registerOutput<RepoSourceResponse>('triggerTemplate');
-    webhookConfig = registerOutput<WebhookConfigResponse>('webhookConfig');
+    triggerTemplate = registerOutput<RepoSourceResponse>(
+      'triggerTemplate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RepoSourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    webhookConfig = registerOutput<WebhookConfigResponse>(
+      'webhookConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebhookConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

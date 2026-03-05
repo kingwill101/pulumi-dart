@@ -9,31 +9,44 @@ class GetImageRecipeResult {
   /// Tags that are applied to the AMI that Image Builder creates during the Build phase prior to image distribution.
   final Map<String, String> amiTags;
   final String arn;
+
   /// Set of objects with block device mappings for the image recipe.
   final List<GetImageRecipeBlockDeviceMapping> blockDeviceMappings;
+
   /// List of objects with components for the image recipe.
   final List<GetImageRecipeComponent> components;
+
   /// Date the image recipe was created.
   final String dateCreated;
+
   /// Description of the image recipe.
   final String description;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Name of the image recipe.
   final String name;
+
   /// Owner of the image recipe.
   final String owner;
+
   /// Base image of the image recipe.
   final String parentImage;
+
   /// Platform of the image recipe.
   final String platform;
   final String region;
+
   /// Key-value map of resource tags for the image recipe.
   final Map<String, String> tags;
+
   /// Base64 encoded contents of user data. Commands or a command script to run when build instance is launched.
   final String userDataBase64;
+
   /// Version of the image recipe.
   final String version;
+
   /// Working directory used during build and test workflows.
   final String workingDirectory;
 
@@ -77,8 +90,16 @@ class GetImageRecipeResult {
     return <String, dynamic>{
       'amiTags': amiTags,
       'arn': arn,
-      'blockDeviceMappings': pulumi.Input.encodeList<GetImageRecipeBlockDeviceMapping, Map<String, dynamic>>(blockDeviceMappings, (value) => value.toMap()),
-      'components': pulumi.Input.encodeList<GetImageRecipeComponent, Map<String, dynamic>>(components, (value) => value.toMap()),
+      'blockDeviceMappings':
+          pulumi.Input.encodeList<
+            GetImageRecipeBlockDeviceMapping,
+            Map<String, dynamic>
+          >(blockDeviceMappings, (value) => value.toMap()),
+      'components':
+          pulumi.Input.encodeList<
+            GetImageRecipeComponent,
+            Map<String, dynamic>
+          >(components, (value) => value.toMap()),
       'dateCreated': dateCreated,
       'description': description,
       'id': id,
@@ -98,8 +119,19 @@ class GetImageRecipeResult {
     return GetImageRecipeResult(
       amiTags: (map['amiTags'] as Map).cast<String, String>(),
       arn: map['arn'] as String,
-      blockDeviceMappings: pulumi.Input.decodeList<GetImageRecipeBlockDeviceMapping>(map['blockDeviceMappings']!, (value) => GetImageRecipeBlockDeviceMapping.fromMap((value as Map).cast<String, dynamic>())),
-      components: pulumi.Input.decodeList<GetImageRecipeComponent>(map['components']!, (value) => GetImageRecipeComponent.fromMap((value as Map).cast<String, dynamic>())),
+      blockDeviceMappings:
+          pulumi.Input.decodeList<GetImageRecipeBlockDeviceMapping>(
+            map['blockDeviceMappings']!,
+            (value) => GetImageRecipeBlockDeviceMapping.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+      components: pulumi.Input.decodeList<GetImageRecipeComponent>(
+        map['components']!,
+        (value) => GetImageRecipeComponent.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       dateCreated: map['dateCreated'] as String,
       description: map['description'] as String,
       id: map['id'] as String,
@@ -115,4 +147,3 @@ class GetImageRecipeResult {
     );
   }
 }
-

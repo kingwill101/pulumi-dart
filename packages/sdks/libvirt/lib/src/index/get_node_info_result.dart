@@ -1,22 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getNodeInfo.
 class GetNodeInfoResult {
   /// Number of CPU cores per socket.
   final double cpuCoresPerSocket;
+
   /// Total number of logical CPU cores available on the host.
   final double cpuCoresTotal;
+
   /// CPU model name (e.g., 'x86_64').
   final String cpuModel;
+
   /// Number of CPU sockets on the host.
   final double cpuSockets;
+
   /// Number of threads per CPU core (e.g., 2 for hyper-threading).
   final double cpuThreadsPerCore;
+
   /// Internal identifier for this data source (hash of all values).
   final String id;
+
   /// Total memory available on the host in kilobytes.
   final double memoryTotalKb;
+
   /// Number of NUMA nodes on the host.
   final double numaNodes;
 
@@ -66,4 +72,3 @@ class GetNodeInfoResult {
     );
   }
 }
-

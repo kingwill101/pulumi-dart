@@ -227,8 +227,26 @@ class ConnectionDeployment extends pulumi.CustomResource {
     properties =
         registerOutput<
           ContentSafetyEndpointDeploymentResourcePropertiesResponse
-        >('properties');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+        >(
+          'properties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ContentSafetyEndpointDeploymentResourcePropertiesResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

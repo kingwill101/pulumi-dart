@@ -711,9 +711,25 @@ class WebApp extends pulumi.CustomResource {
       ) {
     accessEndpoint = registerOutput<String>('accessEndpoint');
     arn = registerOutput<String>('arn');
-    endpointDetails = registerOutput<WebAppEndpointDetails?>('endpointDetails');
+    endpointDetails = registerOutput<WebAppEndpointDetails?>(
+      'endpointDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebAppEndpointDetails.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     identityProviderDetails = registerOutput<WebAppIdentityProviderDetails>(
       'identityProviderDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebAppIdentityProviderDetails.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -748,9 +764,25 @@ class WebApp extends pulumi.CustomResource {
        ) {
     accessEndpoint = registerOutput<String>('accessEndpoint');
     arn = registerOutput<String>('arn');
-    endpointDetails = registerOutput<WebAppEndpointDetails?>('endpointDetails');
+    endpointDetails = registerOutput<WebAppEndpointDetails?>(
+      'endpointDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebAppEndpointDetails.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     identityProviderDetails = registerOutput<WebAppIdentityProviderDetails>(
       'identityProviderDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebAppIdentityProviderDetails.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');

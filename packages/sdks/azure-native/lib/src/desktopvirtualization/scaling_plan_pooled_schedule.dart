@@ -421,11 +421,29 @@ class ScalingPlanPooledSchedule extends pulumi.CustomResource {
     offPeakLoadBalancingAlgorithm = registerOutput<String?>(
       'offPeakLoadBalancingAlgorithm',
     );
-    offPeakStartTime = registerOutput<TimeResponse?>('offPeakStartTime');
+    offPeakStartTime = registerOutput<TimeResponse?>(
+      'offPeakStartTime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TimeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     peakLoadBalancingAlgorithm = registerOutput<String?>(
       'peakLoadBalancingAlgorithm',
     );
-    peakStartTime = registerOutput<TimeResponse?>('peakStartTime');
+    peakStartTime = registerOutput<TimeResponse?>(
+      'peakStartTime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TimeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     rampDownCapacityThresholdPct = registerOutput<int?>(
       'rampDownCapacityThresholdPct',
     );
@@ -439,7 +457,16 @@ class ScalingPlanPooledSchedule extends pulumi.CustomResource {
     rampDownNotificationMessage = registerOutput<String?>(
       'rampDownNotificationMessage',
     );
-    rampDownStartTime = registerOutput<TimeResponse?>('rampDownStartTime');
+    rampDownStartTime = registerOutput<TimeResponse?>(
+      'rampDownStartTime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TimeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     rampDownStopHostsWhen = registerOutput<String?>('rampDownStopHostsWhen');
     rampDownWaitTimeMinutes = registerOutput<int?>('rampDownWaitTimeMinutes');
     rampUpCapacityThresholdPct = registerOutput<int?>(
@@ -449,8 +476,26 @@ class ScalingPlanPooledSchedule extends pulumi.CustomResource {
       'rampUpLoadBalancingAlgorithm',
     );
     rampUpMinimumHostsPct = registerOutput<int?>('rampUpMinimumHostsPct');
-    rampUpStartTime = registerOutput<TimeResponse?>('rampUpStartTime');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    rampUpStartTime = registerOutput<TimeResponse?>(
+      'rampUpStartTime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TimeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

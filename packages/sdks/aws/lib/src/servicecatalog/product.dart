@@ -235,6 +235,13 @@ class Product extends pulumi.CustomResource {
     provisioningArtifactParameters =
         registerOutput<ProductProvisioningArtifactParameters>(
           'provisioningArtifactParameters',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ProductProvisioningArtifactParameters.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
@@ -280,6 +287,13 @@ class Product extends pulumi.CustomResource {
     provisioningArtifactParameters =
         registerOutput<ProductProvisioningArtifactParameters>(
           'provisioningArtifactParameters',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ProductProvisioningArtifactParameters.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');

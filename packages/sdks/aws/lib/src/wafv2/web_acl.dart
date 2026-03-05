@@ -100,17 +100,58 @@ class WebAcl extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     associationConfig = registerOutput<WebAclAssociationConfig?>(
       'associationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebAclAssociationConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     capacity = registerOutput<int>('capacity');
-    captchaConfig = registerOutput<WebAclCaptchaConfig?>('captchaConfig');
-    challengeConfig = registerOutput<WebAclChallengeConfig?>('challengeConfig');
+    captchaConfig = registerOutput<WebAclCaptchaConfig?>(
+      'captchaConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebAclCaptchaConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    challengeConfig = registerOutput<WebAclChallengeConfig?>(
+      'challengeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebAclChallengeConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     customResponseBodies = registerOutput<List<Map<String, dynamic>>?>(
       'customResponseBodies',
     );
     dataProtectionConfig = registerOutput<WebAclDataProtectionConfig?>(
       'dataProtectionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebAclDataProtectionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    defaultAction = registerOutput<WebAclDefaultAction>('defaultAction');
+    defaultAction = registerOutput<WebAclDefaultAction>(
+      'defaultAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebAclDefaultAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     lockToken = registerOutput<String>('lockToken');
     this.name = registerOutput<String>('name');
@@ -124,6 +165,13 @@ class WebAcl extends pulumi.CustomResource {
     tokenDomains = registerOutput<List<String>?>('tokenDomains');
     visibilityConfig = registerOutput<WebAclVisibilityConfig>(
       'visibilityConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebAclVisibilityConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -156,17 +204,58 @@ class WebAcl extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     associationConfig = registerOutput<WebAclAssociationConfig?>(
       'associationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebAclAssociationConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     capacity = registerOutput<int>('capacity');
-    captchaConfig = registerOutput<WebAclCaptchaConfig?>('captchaConfig');
-    challengeConfig = registerOutput<WebAclChallengeConfig?>('challengeConfig');
+    captchaConfig = registerOutput<WebAclCaptchaConfig?>(
+      'captchaConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebAclCaptchaConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    challengeConfig = registerOutput<WebAclChallengeConfig?>(
+      'challengeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebAclChallengeConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     customResponseBodies = registerOutput<List<Map<String, dynamic>>?>(
       'customResponseBodies',
     );
     dataProtectionConfig = registerOutput<WebAclDataProtectionConfig?>(
       'dataProtectionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebAclDataProtectionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    defaultAction = registerOutput<WebAclDefaultAction>('defaultAction');
+    defaultAction = registerOutput<WebAclDefaultAction>(
+      'defaultAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebAclDefaultAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     lockToken = registerOutput<String>('lockToken');
     this.name = registerOutput<String>('name');
@@ -180,6 +269,13 @@ class WebAcl extends pulumi.CustomResource {
     tokenDomains = registerOutput<List<String>?>('tokenDomains');
     visibilityConfig = registerOutput<WebAclVisibilityConfig>(
       'visibilityConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebAclVisibilityConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

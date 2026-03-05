@@ -885,7 +885,16 @@ class SchemaIamBinding extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<SchemaIamBindingCondition?>('condition');
+    condition = registerOutput<SchemaIamBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SchemaIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     members = registerOutput<List<String>>('members');
     project = registerOutput<String>('project');
@@ -916,7 +925,16 @@ class SchemaIamBinding extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<SchemaIamBindingCondition?>('condition');
+    condition = registerOutput<SchemaIamBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SchemaIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     members = registerOutput<List<String>>('members');
     project = registerOutput<String>('project');

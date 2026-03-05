@@ -80,6 +80,13 @@ class DefaultObjectAccessControl extends pulumi.CustomResource {
     object_ = registerOutput<String>('object');
     projectTeam = registerOutput<DefaultObjectAccessControlProjectTeamResponse>(
       'projectTeam',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DefaultObjectAccessControlProjectTeamResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     role = registerOutput<String>('role');
     selfLink = registerOutput<String>('selfLink');

@@ -934,7 +934,16 @@ class ConnectionIamBinding extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<ConnectionIamBindingCondition?>('condition');
+    condition = registerOutput<ConnectionIamBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     connectionId = registerOutput<String>('connectionId');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
@@ -966,7 +975,16 @@ class ConnectionIamBinding extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<ConnectionIamBindingCondition?>('condition');
+    condition = registerOutput<ConnectionIamBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     connectionId = registerOutput<String>('connectionId');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');

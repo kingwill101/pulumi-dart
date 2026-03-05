@@ -35,7 +35,8 @@ Future<GetGuestConfigurationAssignmentResult> getGuestConfigurationAssignment(
 /// Other available API versions: 2022-01-25. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native guestconfiguration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_guestconfiguration_get_guest_configuration_assignments_vmssargs_doc}
 /// [options] Invoke options controlling this call.
-Future<GetGuestConfigurationAssignmentsVMSSResult> getGuestConfigurationAssignmentsVMSS(
+Future<GetGuestConfigurationAssignmentsVMSSResult>
+getGuestConfigurationAssignmentsVMSS(
   GetGuestConfigurationAssignmentsVMSSArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -55,7 +56,8 @@ Future<GetGuestConfigurationAssignmentsVMSSResult> getGuestConfigurationAssignme
 /// Other available API versions: 2022-01-25. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native guestconfiguration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_guestconfiguration_get_guest_configuration_connected_vmwarev_sphere_assignment_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetGuestConfigurationConnectedVMwarevSphereAssignmentResult> getGuestConfigurationConnectedVMwarevSphereAssignment(
+Future<GetGuestConfigurationConnectedVMwarevSphereAssignmentResult>
+getGuestConfigurationConnectedVMwarevSphereAssignment(
   GetGuestConfigurationConnectedVMwarevSphereAssignmentArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -65,7 +67,9 @@ Future<GetGuestConfigurationConnectedVMwarevSphereAssignmentResult> getGuestConf
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetGuestConfigurationConnectedVMwarevSphereAssignmentResult.fromMap(result);
+  return GetGuestConfigurationConnectedVMwarevSphereAssignmentResult.fromMap(
+    result,
+  );
 }
 
 /// Get information about a guest configuration assignment
@@ -75,7 +79,8 @@ Future<GetGuestConfigurationConnectedVMwarevSphereAssignmentResult> getGuestConf
 /// Other available API versions: 2022-01-25. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native guestconfiguration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_guestconfiguration_get_guest_configuration_hcrpassignment_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetGuestConfigurationHCRPAssignmentResult> getGuestConfigurationHCRPAssignment(
+Future<GetGuestConfigurationHCRPAssignmentResult>
+getGuestConfigurationHCRPAssignment(
   GetGuestConfigurationHCRPAssignmentArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

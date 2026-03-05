@@ -96,11 +96,27 @@ class TemplatesVersion extends pulumi.CustomResource {
     taskConfigs = registerOutput<List<Map<String, dynamic>>>('taskConfigs');
     teardown = registerOutput<EnterpriseCrmEventbusProtoTeardownResponse>(
       'teardown',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnterpriseCrmEventbusProtoTeardownResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     templateParameters =
         registerOutput<
           EnterpriseCrmFrontendsEventbusProtoWorkflowParametersResponse
-        >('templateParameters');
+        >(
+          'templateParameters',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EnterpriseCrmFrontendsEventbusProtoWorkflowParametersResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     triggerConfigs = registerOutput<List<Map<String, dynamic>>>(
       'triggerConfigs',
     );

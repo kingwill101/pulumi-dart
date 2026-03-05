@@ -1,18 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getHttpNamespace.
 class GetHttpNamespaceResult {
   /// ARN that Amazon Route 53 assigns to the namespace when you create it.
   final String arn;
+
   /// Description that you specify for the namespace when you create it.
   final String description;
+
   /// Name of an HTTP namespace.
   final String httpName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
   final String region;
+
   /// Map of tags for the resource.
   final Map<String, String> tags;
 
@@ -58,4 +61,3 @@ class GetHttpNamespaceResult {
     );
   }
 }
-

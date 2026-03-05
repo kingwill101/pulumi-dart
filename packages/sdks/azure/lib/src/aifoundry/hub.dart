@@ -511,15 +511,42 @@ class Hub extends pulumi.CustomResource {
     containerRegistryId = registerOutput<String?>('containerRegistryId');
     description = registerOutput<String?>('description');
     discoveryUrl = registerOutput<String>('discoveryUrl');
-    encryption = registerOutput<HubEncryption?>('encryption');
+    encryption = registerOutput<HubEncryption?>(
+      'encryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HubEncryption.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     friendlyName = registerOutput<String?>('friendlyName');
     highBusinessImpactEnabled = registerOutput<bool>(
       'highBusinessImpactEnabled',
     );
-    identity = registerOutput<HubIdentity>('identity');
+    identity = registerOutput<HubIdentity>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HubIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     keyVaultId = registerOutput<String>('keyVaultId');
     location = registerOutput<String>('location');
-    managedNetwork = registerOutput<HubManagedNetwork>('managedNetwork');
+    managedNetwork = registerOutput<HubManagedNetwork>(
+      'managedNetwork',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HubManagedNetwork.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     primaryUserAssignedIdentity = registerOutput<String?>(
       'primaryUserAssignedIdentity',
@@ -554,15 +581,42 @@ class Hub extends pulumi.CustomResource {
     containerRegistryId = registerOutput<String?>('containerRegistryId');
     description = registerOutput<String?>('description');
     discoveryUrl = registerOutput<String>('discoveryUrl');
-    encryption = registerOutput<HubEncryption?>('encryption');
+    encryption = registerOutput<HubEncryption?>(
+      'encryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HubEncryption.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     friendlyName = registerOutput<String?>('friendlyName');
     highBusinessImpactEnabled = registerOutput<bool>(
       'highBusinessImpactEnabled',
     );
-    identity = registerOutput<HubIdentity>('identity');
+    identity = registerOutput<HubIdentity>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HubIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     keyVaultId = registerOutput<String>('keyVaultId');
     location = registerOutput<String>('location');
-    managedNetwork = registerOutput<HubManagedNetwork>('managedNetwork');
+    managedNetwork = registerOutput<HubManagedNetwork>(
+      'managedNetwork',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HubManagedNetwork.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     primaryUserAssignedIdentity = registerOutput<String?>(
       'primaryUserAssignedIdentity',

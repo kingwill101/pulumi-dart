@@ -478,7 +478,16 @@ class Asset extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     dataplexZone = registerOutput<String>('dataplexZone');
     description = registerOutput<String?>('description');
-    discoverySpec = registerOutput<AssetDiscoverySpec>('discoverySpec');
+    discoverySpec = registerOutput<AssetDiscoverySpec>(
+      'discoverySpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AssetDiscoverySpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     discoveryStatuses = registerOutput<List<Map<String, dynamic>>>(
       'discoveryStatuses',
     );
@@ -490,7 +499,16 @@ class Asset extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    resourceSpec = registerOutput<AssetResourceSpec>('resourceSpec');
+    resourceSpec = registerOutput<AssetResourceSpec>(
+      'resourceSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AssetResourceSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceStatuses = registerOutput<List<Map<String, dynamic>>>(
       'resourceStatuses',
     );
@@ -524,7 +542,16 @@ class Asset extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     dataplexZone = registerOutput<String>('dataplexZone');
     description = registerOutput<String?>('description');
-    discoverySpec = registerOutput<AssetDiscoverySpec>('discoverySpec');
+    discoverySpec = registerOutput<AssetDiscoverySpec>(
+      'discoverySpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AssetDiscoverySpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     discoveryStatuses = registerOutput<List<Map<String, dynamic>>>(
       'discoveryStatuses',
     );
@@ -536,7 +563,16 @@ class Asset extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    resourceSpec = registerOutput<AssetResourceSpec>('resourceSpec');
+    resourceSpec = registerOutput<AssetResourceSpec>(
+      'resourceSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AssetResourceSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceStatuses = registerOutput<List<Map<String, dynamic>>>(
       'resourceStatuses',
     );

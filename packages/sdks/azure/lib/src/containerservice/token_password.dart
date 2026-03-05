@@ -371,8 +371,26 @@ class TokenPassword extends pulumi.CustomResource {
     containerRegistryTokenId = registerOutput<String>(
       'containerRegistryTokenId',
     );
-    password1 = registerOutput<TokenPasswordPassword1>('password1');
-    password2 = registerOutput<TokenPasswordPassword2?>('password2');
+    password1 = registerOutput<TokenPasswordPassword1>(
+      'password1',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TokenPasswordPassword1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    password2 = registerOutput<TokenPasswordPassword2?>(
+      'password2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TokenPasswordPassword2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [TokenPassword] resource's state with the given [name] and [id].
@@ -401,7 +419,25 @@ class TokenPassword extends pulumi.CustomResource {
     containerRegistryTokenId = registerOutput<String>(
       'containerRegistryTokenId',
     );
-    password1 = registerOutput<TokenPasswordPassword1>('password1');
-    password2 = registerOutput<TokenPasswordPassword2?>('password2');
+    password1 = registerOutput<TokenPasswordPassword1>(
+      'password1',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TokenPasswordPassword1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    password2 = registerOutput<TokenPasswordPassword2?>(
+      'password2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TokenPasswordPassword2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

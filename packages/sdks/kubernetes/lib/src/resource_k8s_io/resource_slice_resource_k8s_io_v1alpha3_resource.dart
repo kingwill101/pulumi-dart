@@ -45,7 +45,25 @@ class ResourceSliceResourceK8sIoV1alpha3Resource extends pulumi.CustomResource {
        ) {
     apiVersion = registerOutput<String>('apiVersion');
     kind = registerOutput<String>('kind');
-    metadata = registerOutput<ObjectMeta>('metadata');
-    spec = registerOutput<ResourceSliceSpecResourceK8sIoV1alpha3>('spec');
+    metadata = registerOutput<ObjectMeta>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    spec = registerOutput<ResourceSliceSpecResourceK8sIoV1alpha3>(
+      'spec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceSliceSpecResourceK8sIoV1alpha3.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

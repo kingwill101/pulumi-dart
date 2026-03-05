@@ -136,6 +136,13 @@ class InstanceDatafusionV1beta1 extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     cryptoKeyConfig = registerOutput<CryptoKeyConfigResponseDatafusionV1beta1>(
       'cryptoKeyConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CryptoKeyConfigResponseDatafusionV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dataprocServiceAccount = registerOutput<String>('dataprocServiceAccount');
     description = registerOutput<String>('description');
@@ -150,6 +157,13 @@ class InstanceDatafusionV1beta1 extends pulumi.CustomResource {
     eventPublishConfig =
         registerOutput<EventPublishConfigResponseDatafusionV1beta1>(
           'eventPublishConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EventPublishConfigResponseDatafusionV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     gcsBucket = registerOutput<String>('gcsBucket');
     instanceId = registerOutput<String>('instanceId');
@@ -158,6 +172,13 @@ class InstanceDatafusionV1beta1 extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkConfig = registerOutput<NetworkConfigResponseDatafusionV1beta1>(
       'networkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkConfigResponseDatafusionV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.options = registerOutput<Map<String, String>>('options');
     p4ServiceAccount = registerOutput<String>('p4ServiceAccount');

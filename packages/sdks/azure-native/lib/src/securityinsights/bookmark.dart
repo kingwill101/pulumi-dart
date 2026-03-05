@@ -301,11 +301,29 @@ class Bookmark extends pulumi.CustomResource {
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     created = registerOutput<String?>('created');
-    createdBy = registerOutput<UserInfoResponse?>('createdBy');
+    createdBy = registerOutput<UserInfoResponse?>(
+      'createdBy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String?>('etag');
     eventTime = registerOutput<String?>('eventTime');
-    incidentInfo = registerOutput<IncidentInfoResponse?>('incidentInfo');
+    incidentInfo = registerOutput<IncidentInfoResponse?>(
+      'incidentInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IncidentInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<List<String>?>('labels');
     this.name = registerOutput<String>('name');
     notes = registerOutput<String?>('notes');
@@ -313,9 +331,27 @@ class Bookmark extends pulumi.CustomResource {
     queryEndTime = registerOutput<String?>('queryEndTime');
     queryResult = registerOutput<String?>('queryResult');
     queryStartTime = registerOutput<String?>('queryStartTime');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     updated = registerOutput<String?>('updated');
-    updatedBy = registerOutput<UserInfoResponse?>('updatedBy');
+    updatedBy = registerOutput<UserInfoResponse?>(
+      'updatedBy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

@@ -235,15 +235,49 @@ class User extends pulumi.CustomResource {
         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
         options ?? pulumi.CustomResourceOptions(),
       ) {
-    addresses = registerOutput<UserAddresses?>('addresses');
+    addresses = registerOutput<UserAddresses?>(
+      'addresses',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserAddresses.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     displayName = registerOutput<String>('displayName');
-    emails = registerOutput<UserEmails?>('emails');
+    emails = registerOutput<UserEmails?>(
+      'emails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserEmails.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     externalIds = registerOutput<List<Map<String, dynamic>>>('externalIds');
     identityStoreId = registerOutput<String>('identityStoreId');
     locale = registerOutput<String?>('locale');
-    this.name = registerOutput<UserName>('name');
+    this.name = registerOutput<UserName>(
+      'name',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserName.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     nickname = registerOutput<String?>('nickname');
-    phoneNumbers = registerOutput<UserPhoneNumbers?>('phoneNumbers');
+    phoneNumbers = registerOutput<UserPhoneNumbers?>(
+      'phoneNumbers',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserPhoneNumbers.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     preferredLanguage = registerOutput<String?>('preferredLanguage');
     profileUrl = registerOutput<String?>('profileUrl');
     region = registerOutput<String>('region');
@@ -273,15 +307,49 @@ class User extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    addresses = registerOutput<UserAddresses?>('addresses');
+    addresses = registerOutput<UserAddresses?>(
+      'addresses',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserAddresses.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     displayName = registerOutput<String>('displayName');
-    emails = registerOutput<UserEmails?>('emails');
+    emails = registerOutput<UserEmails?>(
+      'emails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserEmails.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     externalIds = registerOutput<List<Map<String, dynamic>>>('externalIds');
     identityStoreId = registerOutput<String>('identityStoreId');
     locale = registerOutput<String?>('locale');
-    this.name = registerOutput<UserName>('name');
+    this.name = registerOutput<UserName>(
+      'name',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserName.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     nickname = registerOutput<String?>('nickname');
-    phoneNumbers = registerOutput<UserPhoneNumbers?>('phoneNumbers');
+    phoneNumbers = registerOutput<UserPhoneNumbers?>(
+      'phoneNumbers',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserPhoneNumbers.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     preferredLanguage = registerOutput<String?>('preferredLanguage');
     profileUrl = registerOutput<String?>('profileUrl');
     region = registerOutput<String>('region');

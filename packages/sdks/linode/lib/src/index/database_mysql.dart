@@ -424,7 +424,16 @@ class DatabaseMysql extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     type = registerOutput<String>('type');
     updated = registerOutput<String>('updated');
-    updates = registerOutput<DatabaseMysqlUpdates>('updates');
+    updates = registerOutput<DatabaseMysqlUpdates>(
+      'updates',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseMysqlUpdates.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     version = registerOutput<String>('version');
   }
 
@@ -469,7 +478,16 @@ class DatabaseMysql extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     type = registerOutput<String>('type');
     updated = registerOutput<String>('updated');
-    updates = registerOutput<DatabaseMysqlUpdates>('updates');
+    updates = registerOutput<DatabaseMysqlUpdates>(
+      'updates',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseMysqlUpdates.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     version = registerOutput<String>('version');
   }
 }

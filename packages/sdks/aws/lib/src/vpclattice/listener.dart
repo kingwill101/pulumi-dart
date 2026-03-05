@@ -804,7 +804,16 @@ class Listener extends pulumi.CustomResource {
        ) {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');
-    defaultAction = registerOutput<ListenerDefaultAction>('defaultAction');
+    defaultAction = registerOutput<ListenerDefaultAction>(
+      'defaultAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ListenerDefaultAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     lastUpdatedAt = registerOutput<String>('lastUpdatedAt');
     listenerId = registerOutput<String>('listenerId');
     this.name = registerOutput<String>('name');
@@ -842,7 +851,16 @@ class Listener extends pulumi.CustomResource {
        ) {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');
-    defaultAction = registerOutput<ListenerDefaultAction>('defaultAction');
+    defaultAction = registerOutput<ListenerDefaultAction>(
+      'defaultAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ListenerDefaultAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     lastUpdatedAt = registerOutput<String>('lastUpdatedAt');
     listenerId = registerOutput<String>('listenerId');
     this.name = registerOutput<String>('name');

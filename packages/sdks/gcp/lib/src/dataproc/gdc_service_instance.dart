@@ -286,7 +286,16 @@ class GdcServiceInstance extends pulumi.CustomResource {
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     effectiveServiceAccount = registerOutput<String>('effectiveServiceAccount');
-    gdceCluster = registerOutput<GdcServiceInstanceGdceCluster?>('gdceCluster');
+    gdceCluster = registerOutput<GdcServiceInstanceGdceCluster?>(
+      'gdceCluster',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GdcServiceInstanceGdceCluster.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -332,7 +341,16 @@ class GdcServiceInstance extends pulumi.CustomResource {
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     effectiveServiceAccount = registerOutput<String>('effectiveServiceAccount');
-    gdceCluster = registerOutput<GdcServiceInstanceGdceCluster?>('gdceCluster');
+    gdceCluster = registerOutput<GdcServiceInstanceGdceCluster?>(
+      'gdceCluster',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GdcServiceInstanceGdceCluster.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

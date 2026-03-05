@@ -342,6 +342,13 @@ class Fleet extends pulumi.CustomResource {
     baseCapacity = registerOutput<int>('baseCapacity');
     computeConfiguration = registerOutput<FleetComputeConfiguration?>(
       'computeConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FleetComputeConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     computeType = registerOutput<String>('computeType');
     created = registerOutput<String>('created');
@@ -354,6 +361,13 @@ class Fleet extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     scalingConfiguration = registerOutput<FleetScalingConfiguration?>(
       'scalingConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FleetScalingConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -384,6 +398,13 @@ class Fleet extends pulumi.CustomResource {
     baseCapacity = registerOutput<int>('baseCapacity');
     computeConfiguration = registerOutput<FleetComputeConfiguration?>(
       'computeConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FleetComputeConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     computeType = registerOutput<String>('computeType');
     created = registerOutput<String>('created');
@@ -396,6 +417,13 @@ class Fleet extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     scalingConfiguration = registerOutput<FleetScalingConfiguration?>(
       'scalingConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FleetScalingConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
     tags = registerOutput<Map<String, String>?>('tags');

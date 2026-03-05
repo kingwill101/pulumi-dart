@@ -160,9 +160,27 @@ class ManagementGroupSubscription extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
-    parent = registerOutput<DescendantParentGroupInfoResponse?>('parent');
+    parent = registerOutput<DescendantParentGroupInfoResponse?>(
+      'parent',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DescendantParentGroupInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     state = registerOutput<String?>('state');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tenant = registerOutput<String?>('tenant');
     type = registerOutput<String>('type');
   }

@@ -257,14 +257,53 @@ class Application extends pulumi.CustomResource {
     billingDetails =
         registerOutput<ApplicationBillingDetailsDefinitionResponse>(
           'billingDetails',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ApplicationBillingDetailsDefinitionResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    createdBy = registerOutput<ApplicationClientDetailsResponse>('createdBy');
+    createdBy = registerOutput<ApplicationClientDetailsResponse>(
+      'createdBy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationClientDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     customerSupport = registerOutput<ApplicationPackageContactResponse>(
       'customerSupport',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationPackageContactResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    identity = registerOutput<IdentityResponse?>('identity');
+    identity = registerOutput<IdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     jitAccessPolicy = registerOutput<ApplicationJitAccessPolicyResponse?>(
       'jitAccessPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationJitAccessPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     kind = registerOutput<String>('kind');
     location = registerOutput<String?>('location');
@@ -274,16 +313,59 @@ class Application extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     outputs = registerOutput<dynamic>('outputs');
     parameters = registerOutput<dynamic>('parameters');
-    plan = registerOutput<PlanResponse?>('plan');
+    plan = registerOutput<PlanResponse?>(
+      'plan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PlanResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     provisioningState = registerOutput<String>('provisioningState');
     publisherTenantId = registerOutput<String>('publisherTenantId');
-    sku = registerOutput<SkuResponse?>('sku');
+    sku = registerOutput<SkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     supportUrls = registerOutput<ApplicationPackageSupportUrlsResponse>(
       'supportUrls',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationPackageSupportUrlsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    updatedBy = registerOutput<ApplicationClientDetailsResponse>('updatedBy');
+    updatedBy = registerOutput<ApplicationClientDetailsResponse>(
+      'updatedBy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationClientDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

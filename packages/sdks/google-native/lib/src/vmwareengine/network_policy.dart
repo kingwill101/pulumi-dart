@@ -60,8 +60,26 @@ class NetworkPolicy extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     edgeServicesCidr = registerOutput<String>('edgeServicesCidr');
-    externalIp = registerOutput<NetworkServiceResponse>('externalIp');
-    internetAccess = registerOutput<NetworkServiceResponse>('internetAccess');
+    externalIp = registerOutput<NetworkServiceResponse>(
+      'externalIp',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkServiceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    internetAccess = registerOutput<NetworkServiceResponse>(
+      'internetAccess',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkServiceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     networkPolicyId = registerOutput<String>('networkPolicyId');

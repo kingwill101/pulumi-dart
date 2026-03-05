@@ -66,7 +66,16 @@ class Trigger extends pulumi.CustomResource {
     channel = registerOutput<String>('channel');
     conditions = registerOutput<Map<String, String>>('conditions');
     createTime = registerOutput<String>('createTime');
-    destination = registerOutput<DestinationResponse>('destination');
+    destination = registerOutput<DestinationResponse>(
+      'destination',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DestinationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     eventDataContentType = registerOutput<String>('eventDataContentType');
     eventFilters = registerOutput<List<Map<String, dynamic>>>('eventFilters');
@@ -75,7 +84,16 @@ class Trigger extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     serviceAccount = registerOutput<String>('serviceAccount');
-    transport = registerOutput<TransportResponse>('transport');
+    transport = registerOutput<TransportResponse>(
+      'transport',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TransportResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     triggerId = registerOutput<String>('triggerId');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');

@@ -289,13 +289,38 @@ class Console extends pulumi.CustomResource {
     expiration = registerOutput<String?>('expiration');
     extendedLocation = registerOutput<ExtendedLocationResponse>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     privateLinkServiceId = registerOutput<String>('privateLinkServiceId');
     provisioningState = registerOutput<String>('provisioningState');
-    sshPublicKey = registerOutput<SshPublicKeyResponse>('sshPublicKey');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    sshPublicKey = registerOutput<SshPublicKeyResponse>(
+      'sshPublicKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SshPublicKeyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     virtualMachineAccessId = registerOutput<String>('virtualMachineAccessId');

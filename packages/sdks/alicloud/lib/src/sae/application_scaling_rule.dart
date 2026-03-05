@@ -800,10 +800,24 @@ class ApplicationScalingRule extends pulumi.CustomResource {
     scalingRuleMetric =
         registerOutput<ApplicationScalingRuleScalingRuleMetric?>(
           'scalingRuleMetric',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ApplicationScalingRuleScalingRuleMetric.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     scalingRuleName = registerOutput<String>('scalingRuleName');
     scalingRuleTimer = registerOutput<ApplicationScalingRuleScalingRuleTimer?>(
       'scalingRuleTimer',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationScalingRuleScalingRuleTimer.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     scalingRuleType = registerOutput<String>('scalingRuleType');
   }
@@ -838,10 +852,24 @@ class ApplicationScalingRule extends pulumi.CustomResource {
     scalingRuleMetric =
         registerOutput<ApplicationScalingRuleScalingRuleMetric?>(
           'scalingRuleMetric',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ApplicationScalingRuleScalingRuleMetric.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     scalingRuleName = registerOutput<String>('scalingRuleName');
     scalingRuleTimer = registerOutput<ApplicationScalingRuleScalingRuleTimer?>(
       'scalingRuleTimer',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationScalingRuleScalingRuleTimer.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     scalingRuleType = registerOutput<String>('scalingRuleType');
   }

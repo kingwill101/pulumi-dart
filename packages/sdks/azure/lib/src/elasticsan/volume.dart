@@ -666,7 +666,16 @@ class Volume extends pulumi.CustomResource {
         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
         options ?? pulumi.CustomResourceOptions(),
       ) {
-    createSource = registerOutput<VolumeCreateSource?>('createSource');
+    createSource = registerOutput<VolumeCreateSource?>(
+      'createSource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VolumeCreateSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     sizeInGib = registerOutput<int>('sizeInGib');
     targetIqn = registerOutput<String>('targetIqn');
@@ -699,7 +708,16 @@ class Volume extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    createSource = registerOutput<VolumeCreateSource?>('createSource');
+    createSource = registerOutput<VolumeCreateSource?>(
+      'createSource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VolumeCreateSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     sizeInGib = registerOutput<int>('sizeInGib');
     targetIqn = registerOutput<String>('targetIqn');

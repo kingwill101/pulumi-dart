@@ -218,7 +218,16 @@ class BandwidthSchedule extends pulumi.CustomResource {
     rateInMbps = registerOutput<int>('rateInMbps');
     start = registerOutput<String>('start');
     stop = registerOutput<String>('stop');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

@@ -20,7 +20,7 @@ import 'package:pulumi_f5bigip/pulumi_f5bigip.dart' as provider;
 dependencies:
   pulumi_f5bigip:
     git:
-      url: https://github.com/<owner>/<repo>.git
+      url: https://github.com/kingwill101/pulumi-dart.git
       path: packages/f5bigip
       ref: main
 ~~~

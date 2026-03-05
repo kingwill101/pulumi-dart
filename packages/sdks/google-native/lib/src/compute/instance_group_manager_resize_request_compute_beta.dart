@@ -72,6 +72,13 @@ class InstanceGroupManagerResizeRequestComputeBeta
     requestId = registerOutput<String?>('requestId');
     requestedRunDuration = registerOutput<DurationResponseComputeBeta>(
       'requestedRunDuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DurationResponseComputeBeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     resizeBy = registerOutput<int>('resizeBy');
     selfLink = registerOutput<String>('selfLink');
@@ -80,7 +87,16 @@ class InstanceGroupManagerResizeRequestComputeBeta
     status =
         registerOutput<
           InstanceGroupManagerResizeRequestStatusResponseComputeBeta
-        >('status');
+        >(
+          'status',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceGroupManagerResizeRequestStatusResponseComputeBeta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     zone = registerOutput<String>('zone');
   }
 }

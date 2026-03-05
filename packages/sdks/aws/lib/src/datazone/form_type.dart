@@ -690,7 +690,16 @@ class FormType extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     domainIdentifier = registerOutput<String>('domainIdentifier');
     imports = registerOutput<List<Map<String, dynamic>>>('imports');
-    model = registerOutput<FormTypeModel>('model');
+    model = registerOutput<FormTypeModel>(
+      'model',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FormTypeModel.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     originDomainId = registerOutput<String>('originDomainId');
     originProjectId = registerOutput<String>('originProjectId');
@@ -698,7 +707,16 @@ class FormType extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     revision = registerOutput<String>('revision');
     status = registerOutput<String>('status');
-    timeouts = registerOutput<FormTypeTimeouts?>('timeouts');
+    timeouts = registerOutput<FormTypeTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FormTypeTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [FormType] resource's state with the given [name] and [id].
@@ -729,7 +747,16 @@ class FormType extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     domainIdentifier = registerOutput<String>('domainIdentifier');
     imports = registerOutput<List<Map<String, dynamic>>>('imports');
-    model = registerOutput<FormTypeModel>('model');
+    model = registerOutput<FormTypeModel>(
+      'model',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FormTypeModel.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     originDomainId = registerOutput<String>('originDomainId');
     originProjectId = registerOutput<String>('originProjectId');
@@ -737,6 +764,15 @@ class FormType extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     revision = registerOutput<String>('revision');
     status = registerOutput<String>('status');
-    timeouts = registerOutput<FormTypeTimeouts?>('timeouts');
+    timeouts = registerOutput<FormTypeTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FormTypeTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

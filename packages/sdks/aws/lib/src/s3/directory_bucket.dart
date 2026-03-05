@@ -297,7 +297,16 @@ class DirectoryBucket extends pulumi.CustomResource {
     bucket = registerOutput<String>('bucket');
     dataRedundancy = registerOutput<String>('dataRedundancy');
     forceDestroy = registerOutput<bool>('forceDestroy');
-    location = registerOutput<DirectoryBucketLocation>('location');
+    location = registerOutput<DirectoryBucketLocation>(
+      'location',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DirectoryBucketLocation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -331,7 +340,16 @@ class DirectoryBucket extends pulumi.CustomResource {
     bucket = registerOutput<String>('bucket');
     dataRedundancy = registerOutput<String>('dataRedundancy');
     forceDestroy = registerOutput<bool>('forceDestroy');
-    location = registerOutput<DirectoryBucketLocation>('location');
+    location = registerOutput<DirectoryBucketLocation>(
+      'location',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DirectoryBucketLocation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

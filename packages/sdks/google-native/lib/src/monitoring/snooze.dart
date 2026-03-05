@@ -31,9 +31,27 @@ class Snooze extends pulumi.CustomResource {
         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
         options ?? pulumi.CustomResourceOptions(),
       ) {
-    criteria = registerOutput<CriteriaResponse>('criteria');
+    criteria = registerOutput<CriteriaResponse>(
+      'criteria',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CriteriaResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     displayName = registerOutput<String>('displayName');
-    interval = registerOutput<TimeIntervalResponse>('interval');
+    interval = registerOutput<TimeIntervalResponse>(
+      'interval',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TimeIntervalResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
   }

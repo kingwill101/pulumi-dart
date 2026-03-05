@@ -547,7 +547,16 @@ class VpnGateway extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    bgpSettings = registerOutput<BgpSettingsResponse?>('bgpSettings');
+    bgpSettings = registerOutput<BgpSettingsResponse?>(
+      'bgpSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BgpSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     connections = registerOutput<List<Map<String, dynamic>>?>('connections');
     enableBgpRouteTranslationForNat = registerOutput<bool?>(
       'enableBgpRouteTranslationForNat',
@@ -565,7 +574,16 @@ class VpnGateway extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    virtualHub = registerOutput<SubResourceResponse?>('virtualHub');
+    virtualHub = registerOutput<SubResourceResponse?>(
+      'virtualHub',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vpnGatewayScaleUnit = registerOutput<int?>('vpnGatewayScaleUnit');
   }
 }

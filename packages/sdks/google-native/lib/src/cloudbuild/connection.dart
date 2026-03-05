@@ -68,17 +68,49 @@ class Connection extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     disabled = registerOutput<bool>('disabled');
     etag = registerOutput<String>('etag');
-    githubConfig = registerOutput<GitHubConfigResponse>('githubConfig');
+    githubConfig = registerOutput<GitHubConfigResponse>(
+      'githubConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GitHubConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     githubEnterpriseConfig =
         registerOutput<
           GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigResponse
-        >('githubEnterpriseConfig');
+        >(
+          'githubEnterpriseConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     gitlabConfig =
         registerOutput<GoogleDevtoolsCloudbuildV2GitLabConfigResponse>(
           'gitlabConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleDevtoolsCloudbuildV2GitLabConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     installationState = registerOutput<InstallationStateResponse>(
       'installationState',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstallationStateResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

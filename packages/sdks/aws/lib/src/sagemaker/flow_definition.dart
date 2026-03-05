@@ -711,15 +711,45 @@ class FlowDefinition extends pulumi.CustomResource {
     humanLoopActivationConfig =
         registerOutput<FlowDefinitionHumanLoopActivationConfig?>(
           'humanLoopActivationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FlowDefinitionHumanLoopActivationConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     humanLoopConfig = registerOutput<FlowDefinitionHumanLoopConfig>(
       'humanLoopConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FlowDefinitionHumanLoopConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     humanLoopRequestSource =
         registerOutput<FlowDefinitionHumanLoopRequestSource?>(
           'humanLoopRequestSource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FlowDefinitionHumanLoopRequestSource.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    outputConfig = registerOutput<FlowDefinitionOutputConfig>('outputConfig');
+    outputConfig = registerOutput<FlowDefinitionOutputConfig>(
+      'outputConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FlowDefinitionOutputConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -754,15 +784,45 @@ class FlowDefinition extends pulumi.CustomResource {
     humanLoopActivationConfig =
         registerOutput<FlowDefinitionHumanLoopActivationConfig?>(
           'humanLoopActivationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FlowDefinitionHumanLoopActivationConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     humanLoopConfig = registerOutput<FlowDefinitionHumanLoopConfig>(
       'humanLoopConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FlowDefinitionHumanLoopConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     humanLoopRequestSource =
         registerOutput<FlowDefinitionHumanLoopRequestSource?>(
           'humanLoopRequestSource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FlowDefinitionHumanLoopRequestSource.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    outputConfig = registerOutput<FlowDefinitionOutputConfig>('outputConfig');
+    outputConfig = registerOutput<FlowDefinitionOutputConfig>(
+      'outputConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FlowDefinitionOutputConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     tags = registerOutput<Map<String, String>?>('tags');

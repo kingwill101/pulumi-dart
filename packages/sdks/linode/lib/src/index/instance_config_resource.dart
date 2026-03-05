@@ -756,7 +756,16 @@ class InstanceConfigResource extends pulumi.CustomResource {
     booted = registerOutput<bool>('booted');
     comments = registerOutput<String?>('comments');
     device = registerOutput<List<Map<String, dynamic>>>('device');
-    devices = registerOutput<InstanceConfigDevices>('devices');
+    devices = registerOutput<InstanceConfigDevices>(
+      'devices',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceConfigDevices.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     helpers = registerOutput<List<Map<String, dynamic>>>('helpers');
     interfaces = registerOutput<List<Map<String, dynamic>>?>('interfaces');
     kernel = registerOutput<String?>('kernel');
@@ -794,7 +803,16 @@ class InstanceConfigResource extends pulumi.CustomResource {
     booted = registerOutput<bool>('booted');
     comments = registerOutput<String?>('comments');
     device = registerOutput<List<Map<String, dynamic>>>('device');
-    devices = registerOutput<InstanceConfigDevices>('devices');
+    devices = registerOutput<InstanceConfigDevices>(
+      'devices',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceConfigDevices.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     helpers = registerOutput<List<Map<String, dynamic>>>('helpers');
     interfaces = registerOutput<List<Map<String, dynamic>>?>('interfaces');
     kernel = registerOutput<String?>('kernel');

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getApiManagementServiceDomainOwnershipIdentifier.
 class GetApiManagementServiceDomainOwnershipIdentifierResult {
   /// The domain ownership identifier value.
@@ -18,10 +17,11 @@ class GetApiManagementServiceDomainOwnershipIdentifierResult {
     };
   }
 
-  factory GetApiManagementServiceDomainOwnershipIdentifierResult.fromMap(Map<String, dynamic> map) {
+  factory GetApiManagementServiceDomainOwnershipIdentifierResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetApiManagementServiceDomainOwnershipIdentifierResult(
       domainOwnershipIdentifier: map['domainOwnershipIdentifier'] as String,
     );
   }
 }
-

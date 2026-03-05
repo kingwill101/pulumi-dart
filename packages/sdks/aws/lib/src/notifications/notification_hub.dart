@@ -121,7 +121,16 @@ class NotificationHub extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     notificationHubRegion = registerOutput<String>('notificationHubRegion');
-    timeouts = registerOutput<NotificationHubTimeouts?>('timeouts');
+    timeouts = registerOutput<NotificationHubTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NotificationHubTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [NotificationHub] resource's state with the given [name] and [id].
@@ -148,6 +157,15 @@ class NotificationHub extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     notificationHubRegion = registerOutput<String>('notificationHubRegion');
-    timeouts = registerOutput<NotificationHubTimeouts?>('timeouts');
+    timeouts = registerOutput<NotificationHubTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NotificationHubTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

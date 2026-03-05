@@ -559,6 +559,13 @@ class VolumeReplication extends pulumi.CustomResource {
     destinationVolumeParameters =
         registerOutput<VolumeReplicationDestinationVolumeParameters?>(
           'destinationVolumeParameters',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VolumeReplicationDestinationVolumeParameters.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     forceStopping = registerOutput<bool?>('forceStopping');
@@ -617,6 +624,13 @@ class VolumeReplication extends pulumi.CustomResource {
     destinationVolumeParameters =
         registerOutput<VolumeReplicationDestinationVolumeParameters?>(
           'destinationVolumeParameters',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VolumeReplicationDestinationVolumeParameters.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     forceStopping = registerOutput<bool?>('forceStopping');

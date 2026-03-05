@@ -1662,14 +1662,44 @@ class Cluster extends pulumi.CustomResource {
     );
     restoreToPointInTime = registerOutput<ClusterRestoreToPointInTime?>(
       'restoreToPointInTime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterRestoreToPointInTime.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    s3Import = registerOutput<ClusterS3Import?>('s3Import');
+    s3Import = registerOutput<ClusterS3Import?>(
+      's3Import',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterS3Import.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     scalingConfiguration = registerOutput<ClusterScalingConfiguration?>(
       'scalingConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterScalingConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     serverlessv2ScalingConfiguration =
         registerOutput<ClusterServerlessv2ScalingConfiguration?>(
           'serverlessv2ScalingConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ClusterServerlessv2ScalingConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     skipFinalSnapshot = registerOutput<bool?>('skipFinalSnapshot');
     snapshotIdentifier = registerOutput<String?>('snapshotIdentifier');
@@ -1803,14 +1833,44 @@ class Cluster extends pulumi.CustomResource {
     );
     restoreToPointInTime = registerOutput<ClusterRestoreToPointInTime?>(
       'restoreToPointInTime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterRestoreToPointInTime.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    s3Import = registerOutput<ClusterS3Import?>('s3Import');
+    s3Import = registerOutput<ClusterS3Import?>(
+      's3Import',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterS3Import.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     scalingConfiguration = registerOutput<ClusterScalingConfiguration?>(
       'scalingConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterScalingConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     serverlessv2ScalingConfiguration =
         registerOutput<ClusterServerlessv2ScalingConfiguration?>(
           'serverlessv2ScalingConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ClusterServerlessv2ScalingConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     skipFinalSnapshot = registerOutput<bool?>('skipFinalSnapshot');
     snapshotIdentifier = registerOutput<String?>('snapshotIdentifier');

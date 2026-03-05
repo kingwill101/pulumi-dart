@@ -52,9 +52,27 @@ class ResourceClassParametersPatchResourceK8sIoV1alpha2
     generatedFrom =
         registerOutput<
           ResourceClassParametersReferencePatchResourceK8sIoV1alpha2?
-        >('generatedFrom');
+        >(
+          'generatedFrom',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResourceClassParametersReferencePatchResourceK8sIoV1alpha2.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     kind = registerOutput<String?>('kind');
-    metadata = registerOutput<ObjectMetaPatch?>('metadata');
+    metadata = registerOutput<ObjectMetaPatch?>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMetaPatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vendorParameters = registerOutput<List<Map<String, dynamic>>?>(
       'vendorParameters',
     );

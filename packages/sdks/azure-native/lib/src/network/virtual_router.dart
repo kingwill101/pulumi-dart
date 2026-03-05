@@ -220,8 +220,26 @@ class VirtualRouter extends pulumi.CustomResource {
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
-    hostedGateway = registerOutput<SubResourceResponse?>('hostedGateway');
-    hostedSubnet = registerOutput<SubResourceResponse?>('hostedSubnet');
+    hostedGateway = registerOutput<SubResourceResponse?>(
+      'hostedGateway',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    hostedSubnet = registerOutput<SubResourceResponse?>(
+      'hostedSubnet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     peerings = registerOutput<List<Map<String, dynamic>>>('peerings');

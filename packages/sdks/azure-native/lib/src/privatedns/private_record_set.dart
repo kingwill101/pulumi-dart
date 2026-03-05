@@ -1477,7 +1477,16 @@ class PrivateRecordSet extends pulumi.CustomResource {
     aRecords = registerOutput<List<Map<String, dynamic>>?>('aRecords');
     aaaaRecords = registerOutput<List<Map<String, dynamic>>?>('aaaaRecords');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    cnameRecord = registerOutput<CnameRecordResponse?>('cnameRecord');
+    cnameRecord = registerOutput<CnameRecordResponse?>(
+      'cnameRecord',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CnameRecordResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String?>('etag');
     fqdn = registerOutput<String>('fqdn');
     isAutoRegistered = registerOutput<bool>('isAutoRegistered');
@@ -1485,9 +1494,27 @@ class PrivateRecordSet extends pulumi.CustomResource {
     mxRecords = registerOutput<List<Map<String, dynamic>>?>('mxRecords');
     this.name = registerOutput<String>('name');
     ptrRecords = registerOutput<List<Map<String, dynamic>>?>('ptrRecords');
-    soaRecord = registerOutput<SoaRecordResponse?>('soaRecord');
+    soaRecord = registerOutput<SoaRecordResponse?>(
+      'soaRecord',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SoaRecordResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     srvRecords = registerOutput<List<Map<String, dynamic>>?>('srvRecords');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ttl = registerOutput<double?>('ttl');
     txtRecords = registerOutput<List<Map<String, dynamic>>?>('txtRecords');
     type = registerOutput<String>('type');

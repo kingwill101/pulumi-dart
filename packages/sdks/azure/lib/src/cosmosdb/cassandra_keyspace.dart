@@ -308,6 +308,13 @@ class CassandraKeyspace extends pulumi.CustomResource {
     accountName = registerOutput<String>('accountName');
     autoscaleSettings = registerOutput<CassandraKeyspaceAutoscaleSettings?>(
       'autoscaleSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CassandraKeyspaceAutoscaleSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -340,6 +347,13 @@ class CassandraKeyspace extends pulumi.CustomResource {
     accountName = registerOutput<String>('accountName');
     autoscaleSettings = registerOutput<CassandraKeyspaceAutoscaleSettings?>(
       'autoscaleSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CassandraKeyspaceAutoscaleSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

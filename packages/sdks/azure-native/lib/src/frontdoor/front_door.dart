@@ -839,6 +839,13 @@ class FrontDoor extends pulumi.CustomResource {
     backendPools = registerOutput<List<Map<String, dynamic>>?>('backendPools');
     backendPoolsSettings = registerOutput<BackendPoolsSettingsResponse?>(
       'backendPoolsSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackendPoolsSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     cname = registerOutput<String>('cname');
     enabledState = registerOutput<String?>('enabledState');

@@ -64,17 +64,60 @@ class TransferJob extends pulumi.CustomResource {
     creationTime = registerOutput<String>('creationTime');
     deletionTime = registerOutput<String>('deletionTime');
     description = registerOutput<String>('description');
-    eventStream = registerOutput<EventStreamResponse>('eventStream');
+    eventStream = registerOutput<EventStreamResponse>(
+      'eventStream',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventStreamResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     lastModificationTime = registerOutput<String>('lastModificationTime');
     latestOperationName = registerOutput<String>('latestOperationName');
-    loggingConfig = registerOutput<LoggingConfigResponse>('loggingConfig');
+    loggingConfig = registerOutput<LoggingConfigResponse>(
+      'loggingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoggingConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     notificationConfig = registerOutput<NotificationConfigResponse>(
       'notificationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NotificationConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
-    schedule = registerOutput<ScheduleResponse>('schedule');
+    schedule = registerOutput<ScheduleResponse>(
+      'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduleResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String>('status');
-    transferSpec = registerOutput<TransferSpecResponse>('transferSpec');
+    transferSpec = registerOutput<TransferSpecResponse>(
+      'transferSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TransferSpecResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

@@ -475,6 +475,13 @@ class VpcIpamPoolCidr extends pulumi.CustomResource {
     cidrAuthorizationContext =
         registerOutput<VpcIpamPoolCidrCidrAuthorizationContext?>(
           'cidrAuthorizationContext',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VpcIpamPoolCidrCidrAuthorizationContext.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     ipamPoolCidrId = registerOutput<String>('ipamPoolCidrId');
     ipamPoolId = registerOutput<String>('ipamPoolId');
@@ -509,6 +516,13 @@ class VpcIpamPoolCidr extends pulumi.CustomResource {
     cidrAuthorizationContext =
         registerOutput<VpcIpamPoolCidrCidrAuthorizationContext?>(
           'cidrAuthorizationContext',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VpcIpamPoolCidrCidrAuthorizationContext.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     ipamPoolCidrId = registerOutput<String>('ipamPoolCidrId');
     ipamPoolId = registerOutput<String>('ipamPoolId');

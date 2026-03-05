@@ -276,7 +276,16 @@ class Port extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     backendPort = registerOutput<String?>('backendPort');
-    config = registerOutput<PortConfig>('config');
+    config = registerOutput<PortConfig>(
+      'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PortConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     frontendPort = registerOutput<String>('frontendPort');
     frontendProtocol = registerOutput<String>('frontendProtocol');
     instanceId = registerOutput<String>('instanceId');
@@ -303,7 +312,16 @@ class Port extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     backendPort = registerOutput<String?>('backendPort');
-    config = registerOutput<PortConfig>('config');
+    config = registerOutput<PortConfig>(
+      'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PortConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     frontendPort = registerOutput<String>('frontendPort');
     frontendProtocol = registerOutput<String>('frontendProtocol');
     instanceId = registerOutput<String>('instanceId');

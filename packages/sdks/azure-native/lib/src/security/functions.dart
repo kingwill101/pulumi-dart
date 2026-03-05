@@ -101,7 +101,8 @@ Future<GetAPICollectionResult> getAPICollection(
 /// Uses Azure REST API version 2023-11-15.
 /// [args] Arguments passed to this invoke. {@macro pulumi_security_get_apicollection_by_azure_api_management_service_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetAPICollectionByAzureApiManagementServiceResult> getAPICollectionByAzureApiManagementService(
+Future<GetAPICollectionByAzureApiManagementServiceResult>
+getAPICollectionByAzureApiManagementService(
   GetAPICollectionByAzureApiManagementServiceArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -197,7 +198,8 @@ Future<GetAssessmentResult> getAssessment(
 /// Other available API versions: 2020-01-01, 2025-05-04-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_security_get_assessment_metadata_in_subscription_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetAssessmentMetadataInSubscriptionResult> getAssessmentMetadataInSubscription(
+Future<GetAssessmentMetadataInSubscriptionResult>
+getAssessmentMetadataInSubscription(
   GetAssessmentMetadataInSubscriptionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -215,7 +217,8 @@ Future<GetAssessmentMetadataInSubscriptionResult> getAssessmentMetadataInSubscri
 /// Uses Azure REST API version 2019-01-01-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_security_get_assessments_metadata_subscription_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetAssessmentsMetadataSubscriptionResult> getAssessmentsMetadataSubscription(
+Future<GetAssessmentsMetadataSubscriptionResult>
+getAssessmentsMetadataSubscription(
   GetAssessmentsMetadataSubscriptionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -667,7 +670,8 @@ Future<GetServerVulnerabilityAssessmentResult> getServerVulnerabilityAssessment(
 /// Other available API versions: 2020-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_security_get_sql_vulnerability_assessment_baseline_rule_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetSqlVulnerabilityAssessmentBaselineRuleResult> getSqlVulnerabilityAssessmentBaselineRule(
+Future<GetSqlVulnerabilityAssessmentBaselineRuleResult>
+getSqlVulnerabilityAssessmentBaselineRule(
   GetSqlVulnerabilityAssessmentBaselineRuleArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

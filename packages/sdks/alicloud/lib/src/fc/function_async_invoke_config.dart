@@ -852,6 +852,13 @@ class FunctionAsyncInvokeConfig extends pulumi.CustomResource {
     destinationConfig =
         registerOutput<FunctionAsyncInvokeConfigDestinationConfig?>(
           'destinationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FunctionAsyncInvokeConfigDestinationConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     functionName = registerOutput<String>('functionName');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
@@ -889,6 +896,13 @@ class FunctionAsyncInvokeConfig extends pulumi.CustomResource {
     destinationConfig =
         registerOutput<FunctionAsyncInvokeConfigDestinationConfig?>(
           'destinationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FunctionAsyncInvokeConfigDestinationConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     functionName = registerOutput<String>('functionName');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');

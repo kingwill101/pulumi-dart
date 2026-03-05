@@ -68,15 +68,36 @@ class RegionUrlMapComputeV1 extends pulumi.CustomResource {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     defaultRouteAction = registerOutput<HttpRouteActionResponseComputeV1>(
       'defaultRouteAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HttpRouteActionResponseComputeV1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     defaultService = registerOutput<String>('defaultService');
     defaultUrlRedirect = registerOutput<HttpRedirectActionResponseComputeV1>(
       'defaultUrlRedirect',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HttpRedirectActionResponseComputeV1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String>('description');
     fingerprint = registerOutput<String>('fingerprint');
     headerAction = registerOutput<HttpHeaderActionResponseComputeV1>(
       'headerAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HttpHeaderActionResponseComputeV1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     hostRules = registerOutput<List<Map<String, dynamic>>>('hostRules');
     kind = registerOutput<String>('kind');

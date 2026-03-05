@@ -1913,6 +1913,13 @@ class WebRegionForwardingRuleServiceIamMember extends pulumi.CustomResource {
     condition =
         registerOutput<WebRegionForwardingRuleServiceIamMemberCondition?>(
           'condition',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WebRegionForwardingRuleServiceIamMemberCondition.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     etag = registerOutput<String>('etag');
     forwardingRuleRegionServiceName = registerOutput<String>(
@@ -1950,6 +1957,13 @@ class WebRegionForwardingRuleServiceIamMember extends pulumi.CustomResource {
     condition =
         registerOutput<WebRegionForwardingRuleServiceIamMemberCondition?>(
           'condition',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WebRegionForwardingRuleServiceIamMemberCondition.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     etag = registerOutput<String>('etag');
     forwardingRuleRegionServiceName = registerOutput<String>(

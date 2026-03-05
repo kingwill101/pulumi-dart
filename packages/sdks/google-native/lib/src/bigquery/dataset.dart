@@ -92,11 +92,25 @@ class Dataset extends pulumi.CustomResource {
     creationTime = registerOutput<String>('creationTime');
     datasetReference = registerOutput<DatasetReferenceResponse>(
       'datasetReference',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatasetReferenceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     defaultCollation = registerOutput<String>('defaultCollation');
     defaultEncryptionConfiguration =
         registerOutput<EncryptionConfigurationResponse>(
           'defaultEncryptionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EncryptionConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     defaultPartitionExpirationMs = registerOutput<String>(
       'defaultPartitionExpirationMs',
@@ -109,6 +123,13 @@ class Dataset extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     externalDatasetReference = registerOutput<ExternalDatasetReferenceResponse>(
       'externalDatasetReference',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExternalDatasetReferenceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     friendlyName = registerOutput<String>('friendlyName');
     isCaseInsensitive = registerOutput<bool>('isCaseInsensitive');

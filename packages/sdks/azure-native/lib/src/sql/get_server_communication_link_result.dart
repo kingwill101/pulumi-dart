@@ -1,22 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getServerCommunicationLink.
 class GetServerCommunicationLinkResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Resource ID.
   final String id;
+
   /// Communication link kind.  This property is used for Azure Portal metadata.
   final String kind;
+
   /// Communication link location.
   final String location;
+
   /// Resource name.
   final String name;
+
   /// The name of the partner server.
   final String partnerServer;
+
   /// The state.
   final String state;
+
   /// Resource type.
   final String type;
 
@@ -66,4 +72,3 @@ class GetServerCommunicationLinkResult {
     );
   }
 }
-

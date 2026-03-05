@@ -234,11 +234,38 @@ class Vault extends pulumi.CustomResource {
     crossRegionRestoreEnabled = registerOutput<bool?>(
       'crossRegionRestoreEnabled',
     );
-    encryption = registerOutput<VaultEncryption?>('encryption');
-    identity = registerOutput<VaultIdentity?>('identity');
+    encryption = registerOutput<VaultEncryption?>(
+      'encryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VaultEncryption.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    identity = registerOutput<VaultIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VaultIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     immutability = registerOutput<String>('immutability');
     location = registerOutput<String>('location');
-    monitoring = registerOutput<VaultMonitoring?>('monitoring');
+    monitoring = registerOutput<VaultMonitoring?>(
+      'monitoring',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VaultMonitoring.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     publicNetworkAccessEnabled = registerOutput<bool?>(
       'publicNetworkAccessEnabled',
@@ -275,11 +302,38 @@ class Vault extends pulumi.CustomResource {
     crossRegionRestoreEnabled = registerOutput<bool?>(
       'crossRegionRestoreEnabled',
     );
-    encryption = registerOutput<VaultEncryption?>('encryption');
-    identity = registerOutput<VaultIdentity?>('identity');
+    encryption = registerOutput<VaultEncryption?>(
+      'encryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VaultEncryption.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    identity = registerOutput<VaultIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VaultIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     immutability = registerOutput<String>('immutability');
     location = registerOutput<String>('location');
-    monitoring = registerOutput<VaultMonitoring?>('monitoring');
+    monitoring = registerOutput<VaultMonitoring?>(
+      'monitoring',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VaultMonitoring.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     publicNetworkAccessEnabled = registerOutput<bool?>(
       'publicNetworkAccessEnabled',

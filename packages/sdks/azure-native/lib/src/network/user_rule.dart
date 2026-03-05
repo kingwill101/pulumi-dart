@@ -448,7 +448,16 @@ class UserRule extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     sourcePortRanges = registerOutput<List<String>?>('sourcePortRanges');
     sources = registerOutput<List<Map<String, dynamic>>?>('sources');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

@@ -637,10 +637,24 @@ class StackSetInstance extends pulumi.CustomResource {
     callAs = registerOutput<String?>('callAs');
     deploymentTargets = registerOutput<StackSetInstanceDeploymentTargets?>(
       'deploymentTargets',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StackSetInstanceDeploymentTargets.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     operationPreferences =
         registerOutput<StackSetInstanceOperationPreferences?>(
           'operationPreferences',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return StackSetInstanceOperationPreferences.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     organizationalUnitId = registerOutput<String>('organizationalUnitId');
     parameterOverrides = registerOutput<Map<String, String>?>(
@@ -683,10 +697,24 @@ class StackSetInstance extends pulumi.CustomResource {
     callAs = registerOutput<String?>('callAs');
     deploymentTargets = registerOutput<StackSetInstanceDeploymentTargets?>(
       'deploymentTargets',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StackSetInstanceDeploymentTargets.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     operationPreferences =
         registerOutput<StackSetInstanceOperationPreferences?>(
           'operationPreferences',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return StackSetInstanceOperationPreferences.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     organizationalUnitId = registerOutput<String>('organizationalUnitId');
     parameterOverrides = registerOutput<Map<String, String>?>(

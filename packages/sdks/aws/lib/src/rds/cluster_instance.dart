@@ -378,7 +378,14 @@ class ClusterInstance extends pulumi.CustomResource {
     dbSubnetGroupName = registerOutput<String>('dbSubnetGroupName');
     dbiResourceId = registerOutput<String>('dbiResourceId');
     endpoint = registerOutput<String>('endpoint');
-    engine = registerOutput<EngineType>('engine');
+    engine = registerOutput<EngineType>(
+      'engine',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EngineType.fromValue(guardedValue as String);
+      },
+    );
     engineVersion = registerOutput<String>('engineVersion');
     engineVersionActual = registerOutput<String>('engineVersionActual');
     forceDestroy = registerOutput<bool?>('forceDestroy');
@@ -449,7 +456,14 @@ class ClusterInstance extends pulumi.CustomResource {
     dbSubnetGroupName = registerOutput<String>('dbSubnetGroupName');
     dbiResourceId = registerOutput<String>('dbiResourceId');
     endpoint = registerOutput<String>('endpoint');
-    engine = registerOutput<EngineType>('engine');
+    engine = registerOutput<EngineType>(
+      'engine',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EngineType.fromValue(guardedValue as String);
+      },
+    );
     engineVersion = registerOutput<String>('engineVersion');
     engineVersionActual = registerOutput<String>('engineVersionActual');
     forceDestroy = registerOutput<bool?>('forceDestroy');

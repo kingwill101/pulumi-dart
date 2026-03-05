@@ -521,8 +521,26 @@ class SparkPool extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    autoPause = registerOutput<SparkPoolAutoPause?>('autoPause');
-    autoScale = registerOutput<SparkPoolAutoScale?>('autoScale');
+    autoPause = registerOutput<SparkPoolAutoPause?>(
+      'autoPause',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkPoolAutoPause.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    autoScale = registerOutput<SparkPoolAutoScale?>(
+      'autoScale',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkPoolAutoScale.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     cacheSize = registerOutput<int?>('cacheSize');
     computeIsolationEnabled = registerOutput<bool?>('computeIsolationEnabled');
     dynamicExecutorAllocationEnabled = registerOutput<bool?>(
@@ -530,6 +548,13 @@ class SparkPool extends pulumi.CustomResource {
     );
     libraryRequirement = registerOutput<SparkPoolLibraryRequirement?>(
       'libraryRequirement',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkPoolLibraryRequirement.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     maxExecutors = registerOutput<int?>('maxExecutors');
     minExecutors = registerOutput<int?>('minExecutors');
@@ -540,7 +565,16 @@ class SparkPool extends pulumi.CustomResource {
     sessionLevelPackagesEnabled = registerOutput<bool?>(
       'sessionLevelPackagesEnabled',
     );
-    sparkConfig = registerOutput<SparkPoolSparkConfig?>('sparkConfig');
+    sparkConfig = registerOutput<SparkPoolSparkConfig?>(
+      'sparkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkPoolSparkConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sparkEventsFolder = registerOutput<String?>('sparkEventsFolder');
     sparkLogFolder = registerOutput<String?>('sparkLogFolder');
     sparkVersion = registerOutput<String>('sparkVersion');
@@ -571,8 +605,26 @@ class SparkPool extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    autoPause = registerOutput<SparkPoolAutoPause?>('autoPause');
-    autoScale = registerOutput<SparkPoolAutoScale?>('autoScale');
+    autoPause = registerOutput<SparkPoolAutoPause?>(
+      'autoPause',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkPoolAutoPause.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    autoScale = registerOutput<SparkPoolAutoScale?>(
+      'autoScale',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkPoolAutoScale.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     cacheSize = registerOutput<int?>('cacheSize');
     computeIsolationEnabled = registerOutput<bool?>('computeIsolationEnabled');
     dynamicExecutorAllocationEnabled = registerOutput<bool?>(
@@ -580,6 +632,13 @@ class SparkPool extends pulumi.CustomResource {
     );
     libraryRequirement = registerOutput<SparkPoolLibraryRequirement?>(
       'libraryRequirement',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkPoolLibraryRequirement.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     maxExecutors = registerOutput<int?>('maxExecutors');
     minExecutors = registerOutput<int?>('minExecutors');
@@ -590,7 +649,16 @@ class SparkPool extends pulumi.CustomResource {
     sessionLevelPackagesEnabled = registerOutput<bool?>(
       'sessionLevelPackagesEnabled',
     );
-    sparkConfig = registerOutput<SparkPoolSparkConfig?>('sparkConfig');
+    sparkConfig = registerOutput<SparkPoolSparkConfig?>(
+      'sparkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkPoolSparkConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sparkEventsFolder = registerOutput<String?>('sparkEventsFolder');
     sparkLogFolder = registerOutput<String?>('sparkLogFolder');
     sparkVersion = registerOutput<String>('sparkVersion');

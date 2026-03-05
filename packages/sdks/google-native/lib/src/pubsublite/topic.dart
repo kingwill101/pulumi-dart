@@ -39,13 +39,34 @@ class Topic extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     partitionConfig = registerOutput<PartitionConfigResponse>(
       'partitionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PartitionConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     reservationConfig = registerOutput<ReservationConfigResponse>(
       'reservationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReservationConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     retentionConfig = registerOutput<RetentionConfigResponse>(
       'retentionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RetentionConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     topicId = registerOutput<String>('topicId');
   }

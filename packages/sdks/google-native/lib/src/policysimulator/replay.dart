@@ -39,6 +39,13 @@ class Replay extends pulumi.CustomResource {
       ) {
     config = registerOutput<GoogleCloudPolicysimulatorV1ReplayConfigResponse>(
       'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudPolicysimulatorV1ReplayConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -46,7 +53,16 @@ class Replay extends pulumi.CustomResource {
     resultsSummary =
         registerOutput<
           GoogleCloudPolicysimulatorV1ReplayResultsSummaryResponse
-        >('resultsSummary');
+        >(
+          'resultsSummary',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudPolicysimulatorV1ReplayResultsSummaryResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     state = registerOutput<String>('state');
   }
 }

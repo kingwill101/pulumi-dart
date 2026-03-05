@@ -388,11 +388,27 @@ class ProjectFeed extends pulumi.CustomResource {
     assetNames = registerOutput<List<String>?>('assetNames');
     assetTypes = registerOutput<List<String>?>('assetTypes');
     billingProject = registerOutput<String?>('billingProject');
-    condition = registerOutput<ProjectFeedCondition?>('condition');
+    condition = registerOutput<ProjectFeedCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectFeedCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     contentType = registerOutput<String?>('contentType');
     feedId = registerOutput<String>('feedId');
     feedOutputConfig = registerOutput<ProjectFeedFeedOutputConfig>(
       'feedOutputConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectFeedFeedOutputConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -424,11 +440,27 @@ class ProjectFeed extends pulumi.CustomResource {
     assetNames = registerOutput<List<String>?>('assetNames');
     assetTypes = registerOutput<List<String>?>('assetTypes');
     billingProject = registerOutput<String?>('billingProject');
-    condition = registerOutput<ProjectFeedCondition?>('condition');
+    condition = registerOutput<ProjectFeedCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectFeedCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     contentType = registerOutput<String?>('contentType');
     feedId = registerOutput<String>('feedId');
     feedOutputConfig = registerOutput<ProjectFeedFeedOutputConfig>(
       'feedOutputConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectFeedFeedOutputConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

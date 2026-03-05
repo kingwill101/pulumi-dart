@@ -45,6 +45,13 @@ class FolderReplayPolicysimulatorV1beta1 extends pulumi.CustomResource {
     config =
         registerOutput<GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse>(
           'config',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     folderId = registerOutput<String>('folderId');
     location = registerOutput<String>('location');
@@ -52,7 +59,16 @@ class FolderReplayPolicysimulatorV1beta1 extends pulumi.CustomResource {
     resultsSummary =
         registerOutput<
           GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse
-        >('resultsSummary');
+        >(
+          'resultsSummary',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     state = registerOutput<String>('state');
   }
 }

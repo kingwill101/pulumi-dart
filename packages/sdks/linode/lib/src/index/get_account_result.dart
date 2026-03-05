@@ -1,36 +1,48 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAccount.
 class GetAccountResult {
   /// When this account was first activated.
   final String activeSince;
+
   /// First line of this Account's billing address.
   final String address1;
+
   /// Second line of this Account's billing address.
   final String address2;
+
   /// This Account's balance, in US dollars.
   final double balance;
+
   /// A set containing all the capabilities of the current Account.
   final List<String> capabilities;
+
   /// The city for this Account's billing address.
   final String city;
+
   /// The company name associated with this Account.
   final String company;
+
   /// The two-letter country code of this Account's billing address.
   final String country;
+
   /// The email address for this Account, for account management communications, and may be used for other communications as configured.
   final String email;
   final String euuid;
+
   /// The first name of the person associated with this Account.
   final String firstName;
   final String id;
+
   /// The last name of the person associated with this Account.
   final String lastName;
+
   /// The phone number associated with this Account.
   final String phone;
+
   /// If billing address is in the United States, this is the State portion of the Account's billing address. If the address is outside the US, this is the Province associated with the Account's billing address.
   final String state;
+
   /// The zip code of this Account's billing address.
   final String zip;
 
@@ -112,4 +124,3 @@ class GetAccountResult {
     );
   }
 }
-

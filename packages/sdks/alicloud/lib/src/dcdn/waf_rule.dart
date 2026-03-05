@@ -445,7 +445,16 @@ class WafRule extends pulumi.CustomResource {
     gmtModified = registerOutput<String>('gmtModified');
     otherRegionList = registerOutput<String?>('otherRegionList');
     policyId = registerOutput<String>('policyId');
-    rateLimit = registerOutput<WafRuleRateLimit?>('rateLimit');
+    rateLimit = registerOutput<WafRuleRateLimit?>(
+      'rateLimit',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WafRuleRateLimit.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     regularRules = registerOutput<List<String>?>('regularRules');
     regularTypes = registerOutput<List<String>?>('regularTypes');
     remoteAddrs = registerOutput<List<String>?>('remoteAddrs');
@@ -487,7 +496,16 @@ class WafRule extends pulumi.CustomResource {
     gmtModified = registerOutput<String>('gmtModified');
     otherRegionList = registerOutput<String?>('otherRegionList');
     policyId = registerOutput<String>('policyId');
-    rateLimit = registerOutput<WafRuleRateLimit?>('rateLimit');
+    rateLimit = registerOutput<WafRuleRateLimit?>(
+      'rateLimit',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WafRuleRateLimit.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     regularRules = registerOutput<List<String>?>('regularRules');
     regularTypes = registerOutput<List<String>?>('regularTypes');
     remoteAddrs = registerOutput<List<String>?>('remoteAddrs');

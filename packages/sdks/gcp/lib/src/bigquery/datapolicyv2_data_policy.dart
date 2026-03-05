@@ -698,6 +698,13 @@ class Datapolicyv2DataPolicy extends pulumi.CustomResource {
     dataMaskingPolicy =
         registerOutput<Datapolicyv2DataPolicyDataMaskingPolicy?>(
           'dataMaskingPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return Datapolicyv2DataPolicyDataMaskingPolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dataPolicyId = registerOutput<String>('dataPolicyId');
     dataPolicyType = registerOutput<String>('dataPolicyType');
@@ -736,6 +743,13 @@ class Datapolicyv2DataPolicy extends pulumi.CustomResource {
     dataMaskingPolicy =
         registerOutput<Datapolicyv2DataPolicyDataMaskingPolicy?>(
           'dataMaskingPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return Datapolicyv2DataPolicyDataMaskingPolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dataPolicyId = registerOutput<String>('dataPolicyId');
     dataPolicyType = registerOutput<String>('dataPolicyType');

@@ -510,13 +510,40 @@ class Connector extends pulumi.CustomResource {
        ) {
     accessRole = registerOutput<String>('accessRole');
     arn = registerOutput<String>('arn');
-    as2Config = registerOutput<ConnectorAs2Config?>('as2Config');
+    as2Config = registerOutput<ConnectorAs2Config?>(
+      'as2Config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectorAs2Config.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     connectorId = registerOutput<String>('connectorId');
-    egressConfig = registerOutput<ConnectorEgressConfig?>('egressConfig');
+    egressConfig = registerOutput<ConnectorEgressConfig?>(
+      'egressConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectorEgressConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     loggingRole = registerOutput<String?>('loggingRole');
     region = registerOutput<String>('region');
     securityPolicyName = registerOutput<String>('securityPolicyName');
-    sftpConfig = registerOutput<ConnectorSftpConfig?>('sftpConfig');
+    sftpConfig = registerOutput<ConnectorSftpConfig?>(
+      'sftpConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectorSftpConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     url = registerOutput<String?>('url');
@@ -547,13 +574,40 @@ class Connector extends pulumi.CustomResource {
        ) {
     accessRole = registerOutput<String>('accessRole');
     arn = registerOutput<String>('arn');
-    as2Config = registerOutput<ConnectorAs2Config?>('as2Config');
+    as2Config = registerOutput<ConnectorAs2Config?>(
+      'as2Config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectorAs2Config.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     connectorId = registerOutput<String>('connectorId');
-    egressConfig = registerOutput<ConnectorEgressConfig?>('egressConfig');
+    egressConfig = registerOutput<ConnectorEgressConfig?>(
+      'egressConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectorEgressConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     loggingRole = registerOutput<String?>('loggingRole');
     region = registerOutput<String>('region');
     securityPolicyName = registerOutput<String>('securityPolicyName');
-    sftpConfig = registerOutput<ConnectorSftpConfig?>('sftpConfig');
+    sftpConfig = registerOutput<ConnectorSftpConfig?>(
+      'sftpConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectorSftpConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     url = registerOutput<String?>('url');

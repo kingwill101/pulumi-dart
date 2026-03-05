@@ -770,6 +770,13 @@ class CertificateAuthority extends pulumi.CustomResource {
     certificateAuthorityConfiguration =
         registerOutput<CertificateAuthorityCertificateAuthorityConfiguration>(
           'certificateAuthorityConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CertificateAuthorityCertificateAuthorityConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     certificateChain = registerOutput<String>('certificateChain');
     certificateSigningRequest = registerOutput<String>(
@@ -788,6 +795,13 @@ class CertificateAuthority extends pulumi.CustomResource {
     revocationConfiguration =
         registerOutput<CertificateAuthorityRevocationConfiguration?>(
           'revocationConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CertificateAuthorityRevocationConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     serial = registerOutput<String>('serial');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -824,6 +838,13 @@ class CertificateAuthority extends pulumi.CustomResource {
     certificateAuthorityConfiguration =
         registerOutput<CertificateAuthorityCertificateAuthorityConfiguration>(
           'certificateAuthorityConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CertificateAuthorityCertificateAuthorityConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     certificateChain = registerOutput<String>('certificateChain');
     certificateSigningRequest = registerOutput<String>(
@@ -842,6 +863,13 @@ class CertificateAuthority extends pulumi.CustomResource {
     revocationConfiguration =
         registerOutput<CertificateAuthorityRevocationConfiguration?>(
           'revocationConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CertificateAuthorityRevocationConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     serial = registerOutput<String>('serial');
     tags = registerOutput<Map<String, String>?>('tags');

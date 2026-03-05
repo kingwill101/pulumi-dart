@@ -281,25 +281,73 @@ class Bucket extends pulumi.CustomResource {
     lifecycleRules = registerOutput<List<Map<String, dynamic>>>(
       'lifecycleRules',
     );
-    logging = registerOutput<BucketLogging>('logging');
+    logging = registerOutput<BucketLogging>(
+      'logging',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketLogging.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     objectLockConfiguration = registerOutput<BucketObjectLockConfiguration>(
       'objectLockConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketObjectLockConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     objectLockEnabled = registerOutput<bool>('objectLockEnabled');
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');
     replicationConfiguration = registerOutput<BucketReplicationConfiguration>(
       'replicationConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketReplicationConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     requestPayer = registerOutput<String>('requestPayer');
     serverSideEncryptionConfiguration =
         registerOutput<BucketServerSideEncryptionConfiguration>(
           'serverSideEncryptionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return BucketServerSideEncryptionConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    versioning = registerOutput<BucketVersioning>('versioning');
-    website = registerOutput<BucketWebsite>('website');
+    versioning = registerOutput<BucketVersioning>(
+      'versioning',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketVersioning.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    website = registerOutput<BucketWebsite>(
+      'website',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketWebsite.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     websiteDomain = registerOutput<String>('websiteDomain');
     websiteEndpoint = registerOutput<String>('websiteEndpoint');
   }
@@ -344,25 +392,73 @@ class Bucket extends pulumi.CustomResource {
     lifecycleRules = registerOutput<List<Map<String, dynamic>>>(
       'lifecycleRules',
     );
-    logging = registerOutput<BucketLogging>('logging');
+    logging = registerOutput<BucketLogging>(
+      'logging',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketLogging.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     objectLockConfiguration = registerOutput<BucketObjectLockConfiguration>(
       'objectLockConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketObjectLockConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     objectLockEnabled = registerOutput<bool>('objectLockEnabled');
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');
     replicationConfiguration = registerOutput<BucketReplicationConfiguration>(
       'replicationConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketReplicationConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     requestPayer = registerOutput<String>('requestPayer');
     serverSideEncryptionConfiguration =
         registerOutput<BucketServerSideEncryptionConfiguration>(
           'serverSideEncryptionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return BucketServerSideEncryptionConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    versioning = registerOutput<BucketVersioning>('versioning');
-    website = registerOutput<BucketWebsite>('website');
+    versioning = registerOutput<BucketVersioning>(
+      'versioning',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketVersioning.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    website = registerOutput<BucketWebsite>(
+      'website',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketWebsite.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     websiteDomain = registerOutput<String>('websiteDomain');
     websiteEndpoint = registerOutput<String>('websiteEndpoint');
   }

@@ -188,11 +188,25 @@ class CassandraCluster extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     identity = registerOutput<ManagedCassandraManagedServiceIdentityResponse?>(
       'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedCassandraManagedServiceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     properties = registerOutput<ClusterResourceResponseProperties>(
       'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterResourceResponseProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

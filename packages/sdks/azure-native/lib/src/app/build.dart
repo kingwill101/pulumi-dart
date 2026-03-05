@@ -584,15 +584,38 @@ class Build extends pulumi.CustomResource {
     buildStatus = registerOutput<String>('buildStatus');
     configuration = registerOutput<BuildConfigurationResponse?>(
       'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BuildConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     destinationContainerRegistry =
         registerOutput<ContainerRegistryWithCustomImageResponse?>(
           'destinationContainerRegistry',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ContainerRegistryWithCustomImageResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     logStreamEndpoint = registerOutput<String>('logStreamEndpoint');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tokenEndpoint = registerOutput<String>('tokenEndpoint');
     type = registerOutput<String>('type');
     uploadEndpoint = registerOutput<String>('uploadEndpoint');

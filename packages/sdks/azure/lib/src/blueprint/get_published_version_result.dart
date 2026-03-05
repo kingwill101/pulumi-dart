@@ -1,20 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getPublishedVersion.
 class GetPublishedVersionResult {
   final String blueprintName;
+
   /// The description of the Blueprint Published Version
   final String description;
+
   /// The display name of the Blueprint Published Version
   final String displayName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String lastModified;
   final String scopeId;
+
   /// The target scope
   final String targetScope;
   final String timeCreated;
+
   /// The type of the Blueprint
   final String type;
   final String version;
@@ -73,4 +77,3 @@ class GetPublishedVersionResult {
     );
   }
 }
-

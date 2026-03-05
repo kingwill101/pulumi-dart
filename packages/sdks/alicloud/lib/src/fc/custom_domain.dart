@@ -767,7 +767,16 @@ class CustomDomain extends pulumi.CustomResource {
        ) {
     accountId = registerOutput<String>('accountId');
     apiVersion = registerOutput<String>('apiVersion');
-    certConfig = registerOutput<CustomDomainCertConfig?>('certConfig');
+    certConfig = registerOutput<CustomDomainCertConfig?>(
+      'certConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomDomainCertConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createdTime = registerOutput<String>('createdTime');
     domainName = registerOutput<String>('domainName');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
@@ -800,7 +809,16 @@ class CustomDomain extends pulumi.CustomResource {
        ) {
     accountId = registerOutput<String>('accountId');
     apiVersion = registerOutput<String>('apiVersion');
-    certConfig = registerOutput<CustomDomainCertConfig?>('certConfig');
+    certConfig = registerOutput<CustomDomainCertConfig?>(
+      'certConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomDomainCertConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createdTime = registerOutput<String>('createdTime');
     domainName = registerOutput<String>('domainName');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');

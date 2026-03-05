@@ -348,6 +348,13 @@ class AutonomousDatabase extends pulumi.CustomResource {
     longTermBackupSchedule =
         registerOutput<AutonomousDatabaseLongTermBackupSchedule?>(
           'longTermBackupSchedule',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AutonomousDatabaseLongTermBackupSchedule.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     mtlsConnectionRequired = registerOutput<bool>('mtlsConnectionRequired');
     this.name = registerOutput<String>('name');
@@ -403,6 +410,13 @@ class AutonomousDatabase extends pulumi.CustomResource {
     longTermBackupSchedule =
         registerOutput<AutonomousDatabaseLongTermBackupSchedule?>(
           'longTermBackupSchedule',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AutonomousDatabaseLongTermBackupSchedule.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     mtlsConnectionRequired = registerOutput<bool>('mtlsConnectionRequired');
     this.name = registerOutput<String>('name');

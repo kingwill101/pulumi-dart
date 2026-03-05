@@ -1528,6 +1528,13 @@ class DeliveryPipeline extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     serialPipeline = registerOutput<DeliveryPipelineSerialPipeline?>(
       'serialPipeline',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeliveryPipelineSerialPipeline.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     suspended = registerOutput<bool?>('suspended');
     uid = registerOutput<String>('uid');
@@ -1573,6 +1580,13 @@ class DeliveryPipeline extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     serialPipeline = registerOutput<DeliveryPipelineSerialPipeline?>(
       'serialPipeline',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeliveryPipelineSerialPipeline.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     suspended = registerOutput<bool?>('suspended');
     uid = registerOutput<String>('uid');

@@ -303,6 +303,13 @@ class ProvisionedProduct extends pulumi.CustomResource {
     stackSetProvisioningPreferences =
         registerOutput<ProvisionedProductStackSetProvisioningPreferences?>(
           'stackSetProvisioningPreferences',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ProvisionedProductStackSetProvisioningPreferences.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     status = registerOutput<String>('status');
     statusMessage = registerOutput<String>('statusMessage');
@@ -368,6 +375,13 @@ class ProvisionedProduct extends pulumi.CustomResource {
     stackSetProvisioningPreferences =
         registerOutput<ProvisionedProductStackSetProvisioningPreferences?>(
           'stackSetProvisioningPreferences',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ProvisionedProductStackSetProvisioningPreferences.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     status = registerOutput<String>('status');
     statusMessage = registerOutput<String>('statusMessage');

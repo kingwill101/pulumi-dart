@@ -442,8 +442,26 @@ class Metadata extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    author = registerOutput<MetadataAuthor?>('author');
-    category = registerOutput<MetadataCategory?>('category');
+    author = registerOutput<MetadataAuthor?>(
+      'author',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MetadataAuthor.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    category = registerOutput<MetadataCategory?>(
+      'category',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MetadataCategory.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     contentId = registerOutput<String>('contentId');
     contentSchemaVersion = registerOutput<String?>('contentSchemaVersion');
     customVersion = registerOutput<String?>('customVersion');
@@ -457,8 +475,26 @@ class Metadata extends pulumi.CustomResource {
     previewImages = registerOutput<List<String>?>('previewImages');
     previewImagesDarks = registerOutput<List<String>?>('previewImagesDarks');
     providers = registerOutput<List<String>?>('providers');
-    source = registerOutput<MetadataSource>('source');
-    support = registerOutput<MetadataSupport?>('support');
+    source = registerOutput<MetadataSource>(
+      'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MetadataSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    support = registerOutput<MetadataSupport?>(
+      'support',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MetadataSupport.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     threatAnalysisTactics = registerOutput<List<String>?>(
       'threatAnalysisTactics',
     );
@@ -492,8 +528,26 @@ class Metadata extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    author = registerOutput<MetadataAuthor?>('author');
-    category = registerOutput<MetadataCategory?>('category');
+    author = registerOutput<MetadataAuthor?>(
+      'author',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MetadataAuthor.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    category = registerOutput<MetadataCategory?>(
+      'category',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MetadataCategory.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     contentId = registerOutput<String>('contentId');
     contentSchemaVersion = registerOutput<String?>('contentSchemaVersion');
     customVersion = registerOutput<String?>('customVersion');
@@ -507,8 +561,26 @@ class Metadata extends pulumi.CustomResource {
     previewImages = registerOutput<List<String>?>('previewImages');
     previewImagesDarks = registerOutput<List<String>?>('previewImagesDarks');
     providers = registerOutput<List<String>?>('providers');
-    source = registerOutput<MetadataSource>('source');
-    support = registerOutput<MetadataSupport?>('support');
+    source = registerOutput<MetadataSource>(
+      'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MetadataSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    support = registerOutput<MetadataSupport?>(
+      'support',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MetadataSupport.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     threatAnalysisTactics = registerOutput<List<String>?>(
       'threatAnalysisTactics',
     );

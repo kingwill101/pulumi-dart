@@ -229,7 +229,16 @@ class ElasticCluster extends pulumi.CustomResource {
     subnetIds = registerOutput<List<String>>('subnetIds');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ElasticClusterTimeouts?>('timeouts');
+    timeouts = registerOutput<ElasticClusterTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ElasticClusterTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds');
   }
 
@@ -274,7 +283,16 @@ class ElasticCluster extends pulumi.CustomResource {
     subnetIds = registerOutput<List<String>>('subnetIds');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ElasticClusterTimeouts?>('timeouts');
+    timeouts = registerOutput<ElasticClusterTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ElasticClusterTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds');
   }
 }

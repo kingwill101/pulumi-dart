@@ -3815,7 +3815,16 @@ class RestorePlan extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    restoreConfig = registerOutput<RestorePlanRestoreConfig>('restoreConfig');
+    restoreConfig = registerOutput<RestorePlanRestoreConfig>(
+      'restoreConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RestorePlanRestoreConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     state = registerOutput<String>('state');
     stateReason = registerOutput<String>('stateReason');
     uid = registerOutput<String>('uid');
@@ -3853,7 +3862,16 @@ class RestorePlan extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    restoreConfig = registerOutput<RestorePlanRestoreConfig>('restoreConfig');
+    restoreConfig = registerOutput<RestorePlanRestoreConfig>(
+      'restoreConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RestorePlanRestoreConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.state = registerOutput<String>('state');
     stateReason = registerOutput<String>('stateReason');
     uid = registerOutput<String>('uid');

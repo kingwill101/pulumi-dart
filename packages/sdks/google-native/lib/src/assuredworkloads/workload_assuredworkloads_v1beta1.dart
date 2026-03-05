@@ -137,12 +137,30 @@ class WorkloadAssuredworkloadsV1beta1 extends pulumi.CustomResource {
     cjisSettings =
         registerOutput<
           GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsResponse
-        >('cjisSettings');
+        >(
+          'cjisSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     complianceRegime = registerOutput<String>('complianceRegime');
     complianceStatus =
         registerOutput<
           GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatusResponse
-        >('complianceStatus');
+        >(
+          'complianceStatus',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatusResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     compliantButDisallowedServices = registerOutput<List<String>>(
       'compliantButDisallowedServices',
     );
@@ -151,27 +169,72 @@ class WorkloadAssuredworkloadsV1beta1 extends pulumi.CustomResource {
     ekmProvisioningResponse =
         registerOutput<
           GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse
-        >('ekmProvisioningResponse');
+        >(
+          'ekmProvisioningResponse',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     enableSovereignControls = registerOutput<bool>('enableSovereignControls');
     etag = registerOutput<String>('etag');
     externalId = registerOutput<String?>('externalId');
     fedrampHighSettings =
         registerOutput<
           GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsResponse
-        >('fedrampHighSettings');
+        >(
+          'fedrampHighSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     fedrampModerateSettings =
         registerOutput<
           GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsResponse
-        >('fedrampModerateSettings');
+        >(
+          'fedrampModerateSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     il4Settings =
         registerOutput<
           GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsResponse
-        >('il4Settings');
+        >(
+          'il4Settings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     kajEnrollmentState = registerOutput<String>('kajEnrollmentState');
     kmsSettings =
         registerOutput<
           GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponse
-        >('kmsSettings');
+        >(
+          'kmsSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -180,7 +243,16 @@ class WorkloadAssuredworkloadsV1beta1 extends pulumi.CustomResource {
     partnerPermissions =
         registerOutput<
           GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponse
-        >('partnerPermissions');
+        >(
+          'partnerPermissions',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     provisionedResourcesParent = registerOutput<String>(
       'provisionedResourcesParent',
     );
@@ -194,7 +266,16 @@ class WorkloadAssuredworkloadsV1beta1 extends pulumi.CustomResource {
     saaEnrollmentResponse =
         registerOutput<
           GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseResponse
-        >('saaEnrollmentResponse');
+        >(
+          'saaEnrollmentResponse',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     violationNotificationsEnabled = registerOutput<bool>(
       'violationNotificationsEnabled',
     );

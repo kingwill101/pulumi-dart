@@ -37,8 +37,35 @@ class HorizontalPodAutoscalerAutoscalingV1 extends pulumi.CustomResource {
        ) {
     apiVersion = registerOutput<String>('apiVersion');
     kind = registerOutput<String>('kind');
-    metadata = registerOutput<ObjectMeta>('metadata');
-    spec = registerOutput<HorizontalPodAutoscalerSpec>('spec');
-    status = registerOutput<HorizontalPodAutoscalerStatus?>('status');
+    metadata = registerOutput<ObjectMeta>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    spec = registerOutput<HorizontalPodAutoscalerSpec>(
+      'spec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HorizontalPodAutoscalerSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    status = registerOutput<HorizontalPodAutoscalerStatus?>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HorizontalPodAutoscalerStatus.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

@@ -273,6 +273,13 @@ class VirtualMachineTemplate extends pulumi.CustomResource {
     disks = registerOutput<List<Map<String, dynamic>>>('disks');
     extendedLocation = registerOutput<ExtendedLocationResponse?>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     firmwareType = registerOutput<String>('firmwareType');
     folderPath = registerOutput<String>('folderPath');
@@ -292,7 +299,16 @@ class VirtualMachineTemplate extends pulumi.CustomResource {
     osType = registerOutput<String>('osType');
     provisioningState = registerOutput<String>('provisioningState');
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     toolsVersion = registerOutput<String>('toolsVersion');
     toolsVersionStatus = registerOutput<String>('toolsVersionStatus');

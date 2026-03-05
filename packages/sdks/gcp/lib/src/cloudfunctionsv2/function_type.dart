@@ -6526,18 +6526,45 @@ class FunctionType extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    buildConfig = registerOutput<FunctionBuildConfig?>('buildConfig');
+    buildConfig = registerOutput<FunctionBuildConfig?>(
+      'buildConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionBuildConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     environment = registerOutput<String>('environment');
-    eventTrigger = registerOutput<FunctionEventTrigger?>('eventTrigger');
+    eventTrigger = registerOutput<FunctionEventTrigger?>(
+      'eventTrigger',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionEventTrigger.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kmsKeyName = registerOutput<String?>('kmsKeyName');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    serviceConfig = registerOutput<FunctionServiceConfig?>('serviceConfig');
+    serviceConfig = registerOutput<FunctionServiceConfig?>(
+      'serviceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionServiceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
     url = registerOutput<String>('url');
@@ -6566,18 +6593,45 @@ class FunctionType extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    buildConfig = registerOutput<FunctionBuildConfig?>('buildConfig');
+    buildConfig = registerOutput<FunctionBuildConfig?>(
+      'buildConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionBuildConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     environment = registerOutput<String>('environment');
-    eventTrigger = registerOutput<FunctionEventTrigger?>('eventTrigger');
+    eventTrigger = registerOutput<FunctionEventTrigger?>(
+      'eventTrigger',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionEventTrigger.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kmsKeyName = registerOutput<String?>('kmsKeyName');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    serviceConfig = registerOutput<FunctionServiceConfig?>('serviceConfig');
+    serviceConfig = registerOutput<FunctionServiceConfig?>(
+      'serviceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionServiceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
     url = registerOutput<String>('url');

@@ -202,6 +202,13 @@ class PreviewFeature extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     rolloutOperation = registerOutput<PreviewFeatureRolloutOperation?>(
       'rolloutOperation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PreviewFeatureRolloutOperation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -233,6 +240,13 @@ class PreviewFeature extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     rolloutOperation = registerOutput<PreviewFeatureRolloutOperation?>(
       'rolloutOperation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PreviewFeatureRolloutOperation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

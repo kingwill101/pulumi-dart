@@ -42,10 +42,28 @@ class MutatingAdmissionPolicyPatchResource extends pulumi.CustomResource {
        ) {
     apiVersion = registerOutput<String?>('apiVersion');
     kind = registerOutput<String?>('kind');
-    metadata = registerOutput<ObjectMetaPatch?>('metadata');
+    metadata = registerOutput<ObjectMetaPatch?>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMetaPatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     spec =
         registerOutput<
           MutatingAdmissionPolicySpecPatchAdmissionregistrationK8sIoV1beta1?
-        >('spec');
+        >(
+          'spec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MutatingAdmissionPolicySpecPatchAdmissionregistrationK8sIoV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
   }
 }

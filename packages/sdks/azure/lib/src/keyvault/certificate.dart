@@ -1353,7 +1353,16 @@ class Certificate extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    certificate = registerOutput<CertificateCertificate?>('certificate');
+    certificate = registerOutput<CertificateCertificate?>(
+      'certificate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CertificateCertificate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     certificateAttributes = registerOutput<List<Map<String, dynamic>>>(
       'certificateAttributes',
     );
@@ -1361,6 +1370,13 @@ class Certificate extends pulumi.CustomResource {
     certificateDataBase64 = registerOutput<String>('certificateDataBase64');
     certificatePolicy = registerOutput<CertificateCertificatePolicy>(
       'certificatePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CertificateCertificatePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     keyVaultId = registerOutput<String>('keyVaultId');
     this.name = registerOutput<String>('name');
@@ -1399,7 +1415,16 @@ class Certificate extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    certificate = registerOutput<CertificateCertificate?>('certificate');
+    certificate = registerOutput<CertificateCertificate?>(
+      'certificate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CertificateCertificate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     certificateAttributes = registerOutput<List<Map<String, dynamic>>>(
       'certificateAttributes',
     );
@@ -1407,6 +1432,13 @@ class Certificate extends pulumi.CustomResource {
     certificateDataBase64 = registerOutput<String>('certificateDataBase64');
     certificatePolicy = registerOutput<CertificateCertificatePolicy>(
       'certificatePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CertificateCertificatePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     keyVaultId = registerOutput<String>('keyVaultId');
     this.name = registerOutput<String>('name');

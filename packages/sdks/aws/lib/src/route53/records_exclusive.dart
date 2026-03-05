@@ -342,7 +342,16 @@ class RecordsExclusive extends pulumi.CustomResource {
     resourceRecordSets = registerOutput<List<Map<String, dynamic>>?>(
       'resourceRecordSets',
     );
-    timeouts = registerOutput<RecordsExclusiveTimeouts?>('timeouts');
+    timeouts = registerOutput<RecordsExclusiveTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RecordsExclusiveTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     zoneId = registerOutput<String>('zoneId');
   }
 
@@ -372,7 +381,16 @@ class RecordsExclusive extends pulumi.CustomResource {
     resourceRecordSets = registerOutput<List<Map<String, dynamic>>?>(
       'resourceRecordSets',
     );
-    timeouts = registerOutput<RecordsExclusiveTimeouts?>('timeouts');
+    timeouts = registerOutput<RecordsExclusiveTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RecordsExclusiveTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     zoneId = registerOutput<String>('zoneId');
   }
 }

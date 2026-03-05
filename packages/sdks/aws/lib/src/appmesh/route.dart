@@ -944,7 +944,14 @@ class Route extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     resourceOwner = registerOutput<String>('resourceOwner');
-    spec = registerOutput<RouteSpec>('spec');
+    spec = registerOutput<RouteSpec>(
+      'spec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RouteSpec.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     virtualRouterName = registerOutput<String>('virtualRouterName');
@@ -977,7 +984,14 @@ class Route extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     resourceOwner = registerOutput<String>('resourceOwner');
-    spec = registerOutput<RouteSpec>('spec');
+    spec = registerOutput<RouteSpec>(
+      'spec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RouteSpec.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     virtualRouterName = registerOutput<String>('virtualRouterName');

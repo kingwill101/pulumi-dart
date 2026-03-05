@@ -249,17 +249,44 @@ class WatchlistItem extends pulumi.CustomResource {
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     created = registerOutput<String?>('created');
-    createdBy = registerOutput<WatchlistUserInfoResponse?>('createdBy');
+    createdBy = registerOutput<WatchlistUserInfoResponse?>(
+      'createdBy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WatchlistUserInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     entityMapping = registerOutput<dynamic>('entityMapping');
     etag = registerOutput<String?>('etag');
     isDeleted = registerOutput<bool?>('isDeleted');
     itemsKeyValue = registerOutput<dynamic>('itemsKeyValue');
     this.name = registerOutput<String>('name');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tenantId = registerOutput<String?>('tenantId');
     type = registerOutput<String>('type');
     updated = registerOutput<String?>('updated');
-    updatedBy = registerOutput<WatchlistUserInfoResponse?>('updatedBy');
+    updatedBy = registerOutput<WatchlistUserInfoResponse?>(
+      'updatedBy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WatchlistUserInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     watchlistItemId = registerOutput<String?>('watchlistItemId');
     watchlistItemType = registerOutput<String?>('watchlistItemType');
   }

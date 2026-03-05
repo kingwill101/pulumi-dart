@@ -420,6 +420,13 @@ class BareMetalMachineKeySet extends pulumi.CustomResource {
     expiration = registerOutput<String>('expiration');
     extendedLocation = registerOutput<ExtendedLocationResponse>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     jumpHostsAllowed = registerOutput<List<String>>('jumpHostsAllowed');
     lastValidation = registerOutput<String>('lastValidation');
@@ -428,7 +435,16 @@ class BareMetalMachineKeySet extends pulumi.CustomResource {
     osGroupName = registerOutput<String?>('osGroupName');
     privilegeLevel = registerOutput<String>('privilegeLevel');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     userList = registerOutput<List<Map<String, dynamic>>>('userList');

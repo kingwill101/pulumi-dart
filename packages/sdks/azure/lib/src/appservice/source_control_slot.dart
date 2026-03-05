@@ -352,6 +352,13 @@ class SourceControlSlot extends pulumi.CustomResource {
     githubActionConfiguration =
         registerOutput<SourceControlSlotGithubActionConfiguration?>(
           'githubActionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SourceControlSlotGithubActionConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     repoUrl = registerOutput<String>('repoUrl');
     rollbackEnabled = registerOutput<bool?>('rollbackEnabled');
@@ -390,6 +397,13 @@ class SourceControlSlot extends pulumi.CustomResource {
     githubActionConfiguration =
         registerOutput<SourceControlSlotGithubActionConfiguration?>(
           'githubActionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SourceControlSlotGithubActionConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     repoUrl = registerOutput<String>('repoUrl');
     rollbackEnabled = registerOutput<bool?>('rollbackEnabled');

@@ -339,19 +339,49 @@ class DatasetBinary extends pulumi.CustomResource {
     azureBlobStorageLocation =
         registerOutput<DatasetBinaryAzureBlobStorageLocation?>(
           'azureBlobStorageLocation',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DatasetBinaryAzureBlobStorageLocation.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    compression = registerOutput<DatasetBinaryCompression?>('compression');
+    compression = registerOutput<DatasetBinaryCompression?>(
+      'compression',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatasetBinaryCompression.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     folder = registerOutput<String?>('folder');
     httpServerLocation = registerOutput<DatasetBinaryHttpServerLocation?>(
       'httpServerLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatasetBinaryHttpServerLocation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');
     sftpServerLocation = registerOutput<DatasetBinarySftpServerLocation?>(
       'sftpServerLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatasetBinarySftpServerLocation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -385,19 +415,49 @@ class DatasetBinary extends pulumi.CustomResource {
     azureBlobStorageLocation =
         registerOutput<DatasetBinaryAzureBlobStorageLocation?>(
           'azureBlobStorageLocation',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DatasetBinaryAzureBlobStorageLocation.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    compression = registerOutput<DatasetBinaryCompression?>('compression');
+    compression = registerOutput<DatasetBinaryCompression?>(
+      'compression',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatasetBinaryCompression.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     folder = registerOutput<String?>('folder');
     httpServerLocation = registerOutput<DatasetBinaryHttpServerLocation?>(
       'httpServerLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatasetBinaryHttpServerLocation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');
     sftpServerLocation = registerOutput<DatasetBinarySftpServerLocation?>(
       'sftpServerLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatasetBinarySftpServerLocation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

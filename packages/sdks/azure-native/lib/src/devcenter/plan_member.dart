@@ -217,8 +217,26 @@ class PlanMember extends pulumi.CustomResource {
     memberType = registerOutput<String?>('memberType');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    syncStatus = registerOutput<PlanMemberSyncStatusResponse>('syncStatus');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    syncStatus = registerOutput<PlanMemberSyncStatusResponse>(
+      'syncStatus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PlanMemberSyncStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tier = registerOutput<String?>('tier');
     type = registerOutput<String>('type');

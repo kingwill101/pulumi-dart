@@ -2399,20 +2399,48 @@ class NotebookExecution extends pulumi.CustomResource {
     customEnvironmentSpec =
         registerOutput<NotebookExecutionCustomEnvironmentSpec?>(
           'customEnvironmentSpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NotebookExecutionCustomEnvironmentSpec.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dataformRepositorySource =
         registerOutput<NotebookExecutionDataformRepositorySource?>(
           'dataformRepositorySource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NotebookExecutionDataformRepositorySource.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     directNotebookSource =
         registerOutput<NotebookExecutionDirectNotebookSource?>(
           'directNotebookSource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NotebookExecutionDirectNotebookSource.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     displayName = registerOutput<String>('displayName');
     executionTimeout = registerOutput<String?>('executionTimeout');
     executionUser = registerOutput<String?>('executionUser');
     gcsNotebookSource = registerOutput<NotebookExecutionGcsNotebookSource?>(
       'gcsNotebookSource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NotebookExecutionGcsNotebookSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     gcsOutputUri = registerOutput<String>('gcsOutputUri');
     location = registerOutput<String>('location');
@@ -2450,20 +2478,48 @@ class NotebookExecution extends pulumi.CustomResource {
     customEnvironmentSpec =
         registerOutput<NotebookExecutionCustomEnvironmentSpec?>(
           'customEnvironmentSpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NotebookExecutionCustomEnvironmentSpec.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dataformRepositorySource =
         registerOutput<NotebookExecutionDataformRepositorySource?>(
           'dataformRepositorySource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NotebookExecutionDataformRepositorySource.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     directNotebookSource =
         registerOutput<NotebookExecutionDirectNotebookSource?>(
           'directNotebookSource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NotebookExecutionDirectNotebookSource.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     displayName = registerOutput<String>('displayName');
     executionTimeout = registerOutput<String?>('executionTimeout');
     executionUser = registerOutput<String?>('executionUser');
     gcsNotebookSource = registerOutput<NotebookExecutionGcsNotebookSource?>(
       'gcsNotebookSource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NotebookExecutionGcsNotebookSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     gcsOutputUri = registerOutput<String>('gcsOutputUri');
     location = registerOutput<String>('location');

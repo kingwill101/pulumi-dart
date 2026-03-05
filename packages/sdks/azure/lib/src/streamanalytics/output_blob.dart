@@ -413,7 +413,16 @@ class OutputBlob extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     pathPattern = registerOutput<String>('pathPattern');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    serialization = registerOutput<OutputBlobSerialization>('serialization');
+    serialization = registerOutput<OutputBlobSerialization>(
+      'serialization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OutputBlobSerialization.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     storageAccountKey = registerOutput<String?>('storageAccountKey');
     storageAccountName = registerOutput<String>('storageAccountName');
     storageContainerName = registerOutput<String>('storageContainerName');
@@ -452,7 +461,16 @@ class OutputBlob extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     pathPattern = registerOutput<String>('pathPattern');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    serialization = registerOutput<OutputBlobSerialization>('serialization');
+    serialization = registerOutput<OutputBlobSerialization>(
+      'serialization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OutputBlobSerialization.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     storageAccountKey = registerOutput<String?>('storageAccountKey');
     storageAccountName = registerOutput<String>('storageAccountName');
     storageContainerName = registerOutput<String>('storageContainerName');

@@ -2206,12 +2206,26 @@ class Cluster extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     automatedBackupPolicy = registerOutput<ClusterAutomatedBackupPolicy>(
       'automatedBackupPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterAutomatedBackupPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     backupSources = registerOutput<List<Map<String, dynamic>>>('backupSources');
     clusterId = registerOutput<String>('clusterId');
     clusterType = registerOutput<String?>('clusterType');
     continuousBackupConfig = registerOutput<ClusterContinuousBackupConfig>(
       'continuousBackupConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterContinuousBackupConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     continuousBackupInfos = registerOutput<List<Map<String, dynamic>>>(
       'continuousBackupInfos',
@@ -2226,35 +2240,97 @@ class Cluster extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     encryptionConfig = registerOutput<ClusterEncryptionConfig?>(
       'encryptionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterEncryptionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     encryptionInfos = registerOutput<List<Map<String, dynamic>>>(
       'encryptionInfos',
     );
     etag = registerOutput<String?>('etag');
-    initialUser = registerOutput<ClusterInitialUser?>('initialUser');
+    initialUser = registerOutput<ClusterInitialUser?>(
+      'initialUser',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterInitialUser.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     maintenanceUpdatePolicy = registerOutput<ClusterMaintenanceUpdatePolicy?>(
       'maintenanceUpdatePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterMaintenanceUpdatePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     migrationSources = registerOutput<List<Map<String, dynamic>>>(
       'migrationSources',
     );
     this.name = registerOutput<String>('name');
-    networkConfig = registerOutput<ClusterNetworkConfig>('networkConfig');
+    networkConfig = registerOutput<ClusterNetworkConfig>(
+      'networkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterNetworkConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
-    pscConfig = registerOutput<ClusterPscConfig?>('pscConfig');
+    pscConfig = registerOutput<ClusterPscConfig?>(
+      'pscConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterPscConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     reconciling = registerOutput<bool>('reconciling');
     restoreBackupSource = registerOutput<ClusterRestoreBackupSource?>(
       'restoreBackupSource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterRestoreBackupSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     restoreContinuousBackupSource =
         registerOutput<ClusterRestoreContinuousBackupSource?>(
           'restoreContinuousBackupSource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ClusterRestoreContinuousBackupSource.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     secondaryConfig = registerOutput<ClusterSecondaryConfig?>(
       'secondaryConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterSecondaryConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     skipAwaitMajorVersionUpgrade = registerOutput<bool?>(
       'skipAwaitMajorVersionUpgrade',
@@ -2293,12 +2369,26 @@ class Cluster extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     automatedBackupPolicy = registerOutput<ClusterAutomatedBackupPolicy>(
       'automatedBackupPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterAutomatedBackupPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     backupSources = registerOutput<List<Map<String, dynamic>>>('backupSources');
     clusterId = registerOutput<String>('clusterId');
     clusterType = registerOutput<String?>('clusterType');
     continuousBackupConfig = registerOutput<ClusterContinuousBackupConfig>(
       'continuousBackupConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterContinuousBackupConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     continuousBackupInfos = registerOutput<List<Map<String, dynamic>>>(
       'continuousBackupInfos',
@@ -2313,35 +2403,97 @@ class Cluster extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     encryptionConfig = registerOutput<ClusterEncryptionConfig?>(
       'encryptionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterEncryptionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     encryptionInfos = registerOutput<List<Map<String, dynamic>>>(
       'encryptionInfos',
     );
     etag = registerOutput<String?>('etag');
-    initialUser = registerOutput<ClusterInitialUser?>('initialUser');
+    initialUser = registerOutput<ClusterInitialUser?>(
+      'initialUser',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterInitialUser.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     maintenanceUpdatePolicy = registerOutput<ClusterMaintenanceUpdatePolicy?>(
       'maintenanceUpdatePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterMaintenanceUpdatePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     migrationSources = registerOutput<List<Map<String, dynamic>>>(
       'migrationSources',
     );
     this.name = registerOutput<String>('name');
-    networkConfig = registerOutput<ClusterNetworkConfig>('networkConfig');
+    networkConfig = registerOutput<ClusterNetworkConfig>(
+      'networkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterNetworkConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
-    pscConfig = registerOutput<ClusterPscConfig?>('pscConfig');
+    pscConfig = registerOutput<ClusterPscConfig?>(
+      'pscConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterPscConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     reconciling = registerOutput<bool>('reconciling');
     restoreBackupSource = registerOutput<ClusterRestoreBackupSource?>(
       'restoreBackupSource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterRestoreBackupSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     restoreContinuousBackupSource =
         registerOutput<ClusterRestoreContinuousBackupSource?>(
           'restoreContinuousBackupSource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ClusterRestoreContinuousBackupSource.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     secondaryConfig = registerOutput<ClusterSecondaryConfig?>(
       'secondaryConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterSecondaryConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     skipAwaitMajorVersionUpgrade = registerOutput<bool?>(
       'skipAwaitMajorVersionUpgrade',

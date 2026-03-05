@@ -195,10 +195,26 @@ class IntegrationAccount extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     integrationServiceEnvironment = registerOutput<ResourceReferenceResponse?>(
       'integrationServiceEnvironment',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceReferenceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    sku = registerOutput<IntegrationAccountSkuResponse?>('sku');
+    sku = registerOutput<IntegrationAccountSkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IntegrationAccountSkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     state = registerOutput<String?>('state');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

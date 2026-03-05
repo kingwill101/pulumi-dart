@@ -826,25 +826,88 @@ class Credit extends pulumi.CustomResource {
       'billingProfileResourceId',
     );
     breakdown = registerOutput<List<Map<String, dynamic>>?>('breakdown');
-    credit = registerOutput<CommitmentResponse?>('credit');
+    credit = registerOutput<CommitmentResponse?>(
+      'credit',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CommitmentResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     customerId = registerOutput<String>('customerId');
     endAt = registerOutput<String?>('endAt');
     etag = registerOutput<String>('etag');
-    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    identity = registerOutput<ManagedServiceIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedServiceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kind = registerOutput<String?>('kind');
     location = registerOutput<String>('location');
     managedBy = registerOutput<String?>('managedBy');
     this.name = registerOutput<String>('name');
-    plan = registerOutput<PlanResponse?>('plan');
-    policies = registerOutput<CreditPoliciesResponse?>('policies');
+    plan = registerOutput<PlanResponse?>(
+      'plan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PlanResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    policies = registerOutput<CreditPoliciesResponse?>(
+      'policies',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CreditPoliciesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     productCode = registerOutput<String?>('productCode');
     provisioningState = registerOutput<String>('provisioningState');
-    reason = registerOutput<CreditReasonResponse?>('reason');
+    reason = registerOutput<CreditReasonResponse?>(
+      'reason',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CreditReasonResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceId = registerOutput<String?>('resourceId');
-    sku = registerOutput<SkuResponse?>('sku');
+    sku = registerOutput<SkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     startAt = registerOutput<String?>('startAt');
     status = registerOutput<String?>('status');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     systemId = registerOutput<String?>('systemId');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

@@ -50,9 +50,23 @@ class InsightsAccount extends pulumi.CustomResource {
     environment = registerOutput<String>('environment');
     insightsAccountId = registerOutput<String>('insightsAccountId');
     organizationName = registerOutput<String>('organizationName');
-    provider = registerOutput<CloudProvider>('provider');
+    provider = registerOutput<CloudProvider>(
+      'provider',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CloudProvider.fromValue(guardedValue as String);
+      },
+    );
     providerConfig = registerOutput<Map<String, dynamic>?>('providerConfig');
-    scanSchedule = registerOutput<ScanSchedule>('scanSchedule');
+    scanSchedule = registerOutput<ScanSchedule>(
+      'scanSchedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScanSchedule.fromValue(guardedValue as String);
+      },
+    );
     scheduledScanEnabled = registerOutput<bool>('scheduledScanEnabled');
     tags = registerOutput<Map<String, String>?>('tags');
   }

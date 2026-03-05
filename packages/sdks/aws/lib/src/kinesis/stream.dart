@@ -244,6 +244,13 @@ class Stream extends pulumi.CustomResource {
     shardLevelMetrics = registerOutput<List<String>?>('shardLevelMetrics');
     streamModeDetails = registerOutput<StreamStreamModeDetails>(
       'streamModeDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StreamStreamModeDetails.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -284,6 +291,13 @@ class Stream extends pulumi.CustomResource {
     shardLevelMetrics = registerOutput<List<String>?>('shardLevelMetrics');
     streamModeDetails = registerOutput<StreamStreamModeDetails>(
       'streamModeDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StreamStreamModeDetails.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

@@ -47,15 +47,51 @@ class Job extends pulumi.CustomResource {
         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
         options ?? pulumi.CustomResourceOptions(),
       ) {
-    configuration = registerOutput<JobConfigurationResponse>('configuration');
+    configuration = registerOutput<JobConfigurationResponse>(
+      'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     jobCreationReason = registerOutput<dynamic>('jobCreationReason');
-    jobReference = registerOutput<JobReferenceResponse>('jobReference');
+    jobReference = registerOutput<JobReferenceResponse>(
+      'jobReference',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobReferenceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kind = registerOutput<String>('kind');
     project = registerOutput<String>('project');
     selfLink = registerOutput<String>('selfLink');
-    statistics = registerOutput<JobStatisticsResponse>('statistics');
-    status = registerOutput<JobStatusResponse>('status');
+    statistics = registerOutput<JobStatisticsResponse>(
+      'statistics',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobStatisticsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    status = registerOutput<JobStatusResponse>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     userEmail = registerOutput<String>('userEmail');
   }
 }

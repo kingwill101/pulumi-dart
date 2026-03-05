@@ -559,7 +559,16 @@ class EngineSplitTraffic extends pulumi.CustomResource {
     migrateTraffic = registerOutput<bool?>('migrateTraffic');
     project = registerOutput<String>('project');
     service = registerOutput<String>('service');
-    split = registerOutput<EngineSplitTrafficSplit>('split');
+    split = registerOutput<EngineSplitTrafficSplit>(
+      'split',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EngineSplitTrafficSplit.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [EngineSplitTraffic] resource's state with the given [name] and [id].
@@ -588,6 +597,15 @@ class EngineSplitTraffic extends pulumi.CustomResource {
     migrateTraffic = registerOutput<bool?>('migrateTraffic');
     project = registerOutput<String>('project');
     service = registerOutput<String>('service');
-    split = registerOutput<EngineSplitTrafficSplit>('split');
+    split = registerOutput<EngineSplitTrafficSplit>(
+      'split',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EngineSplitTrafficSplit.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

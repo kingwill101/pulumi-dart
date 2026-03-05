@@ -234,10 +234,28 @@ class SummaryLog extends pulumi.CustomResource {
     isActive = registerOutput<bool>('isActive');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    ruleDefinition = registerOutput<RuleDefinitionResponse?>('ruleDefinition');
+    ruleDefinition = registerOutput<RuleDefinitionResponse?>(
+      'ruleDefinition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RuleDefinitionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ruleType = registerOutput<String?>('ruleType');
     statusCode = registerOutput<String>('statusCode');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

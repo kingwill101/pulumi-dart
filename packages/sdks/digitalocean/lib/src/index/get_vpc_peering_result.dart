@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getVpcPeering.
 class GetVpcPeeringResult {
   /// The date and time of when the VPC Peering was created.
   final String createdAt;
+
   /// The unique identifier for the VPC Peering.
   final String id;
+
   /// The name of the VPC Peering.
   final String name;
+
   /// The status of the VPC Peering.
   final String status;
+
   /// The list of VPC IDs involved in the peering.
   final List<String> vpcIds;
 
@@ -48,4 +51,3 @@ class GetVpcPeeringResult {
     );
   }
 }
-

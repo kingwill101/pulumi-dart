@@ -38,7 +38,16 @@ class BucketHttpsConfig extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     bucket = registerOutput<String>('bucket');
-    cipherSuit = registerOutput<BucketHttpsConfigCipherSuit>('cipherSuit');
+    cipherSuit = registerOutput<BucketHttpsConfigCipherSuit>(
+      'cipherSuit',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketHttpsConfigCipherSuit.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     enable = registerOutput<bool>('enable');
     tlsVersions = registerOutput<List<String>?>('tlsVersions');
   }
@@ -67,7 +76,16 @@ class BucketHttpsConfig extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     bucket = registerOutput<String>('bucket');
-    cipherSuit = registerOutput<BucketHttpsConfigCipherSuit>('cipherSuit');
+    cipherSuit = registerOutput<BucketHttpsConfigCipherSuit>(
+      'cipherSuit',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketHttpsConfigCipherSuit.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     enable = registerOutput<bool>('enable');
     tlsVersions = registerOutput<List<String>?>('tlsVersions');
   }

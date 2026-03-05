@@ -336,7 +336,16 @@ class FunctionJavascriptUda extends pulumi.CustomResource {
        ) {
     inputs = registerOutput<List<Map<String, dynamic>>>('inputs');
     this.name = registerOutput<String>('name');
-    output = registerOutput<FunctionJavascriptUdaOutput>('output');
+    output = registerOutput<FunctionJavascriptUdaOutput>(
+      'output',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionJavascriptUdaOutput.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     script = registerOutput<String>('script');
     streamAnalyticsJobId = registerOutput<String>('streamAnalyticsJobId');
   }
@@ -366,7 +375,16 @@ class FunctionJavascriptUda extends pulumi.CustomResource {
        ) {
     inputs = registerOutput<List<Map<String, dynamic>>>('inputs');
     this.name = registerOutput<String>('name');
-    output = registerOutput<FunctionJavascriptUdaOutput>('output');
+    output = registerOutput<FunctionJavascriptUdaOutput>(
+      'output',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionJavascriptUdaOutput.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     script = registerOutput<String>('script');
     streamAnalyticsJobId = registerOutput<String>('streamAnalyticsJobId');
   }

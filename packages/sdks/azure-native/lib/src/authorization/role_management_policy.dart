@@ -2570,11 +2570,27 @@ class RoleManagementPolicy extends pulumi.CustomResource {
       'effectiveRules',
     );
     isOrganizationDefault = registerOutput<bool?>('isOrganizationDefault');
-    lastModifiedBy = registerOutput<PrincipalResponse>('lastModifiedBy');
+    lastModifiedBy = registerOutput<PrincipalResponse>(
+      'lastModifiedBy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PrincipalResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     lastModifiedDateTime = registerOutput<String>('lastModifiedDateTime');
     this.name = registerOutput<String>('name');
     policyProperties = registerOutput<PolicyPropertiesResponse>(
       'policyProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     rules = registerOutput<List<Map<String, dynamic>>?>('rules');
     scope = registerOutput<String?>('scope');

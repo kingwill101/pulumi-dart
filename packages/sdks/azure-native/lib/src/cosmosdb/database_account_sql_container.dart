@@ -453,14 +453,37 @@ class DatabaseAccountSqlContainer extends pulumi.CustomResource {
     conflictResolutionPolicy =
         registerOutput<ConflictResolutionPolicyResponse?>(
           'conflictResolutionPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConflictResolutionPolicyResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     defaultTtl = registerOutput<int?>('defaultTtl');
     etag = registerOutput<String?>('etag');
-    indexingPolicy = registerOutput<IndexingPolicyResponse?>('indexingPolicy');
+    indexingPolicy = registerOutput<IndexingPolicyResponse?>(
+      'indexingPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IndexingPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     partitionKey = registerOutput<ContainerPartitionKeyResponse?>(
       'partitionKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContainerPartitionKeyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     rid = registerOutput<String?>('rid');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -468,6 +491,13 @@ class DatabaseAccountSqlContainer extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     uniqueKeyPolicy = registerOutput<UniqueKeyPolicyResponse?>(
       'uniqueKeyPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UniqueKeyPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

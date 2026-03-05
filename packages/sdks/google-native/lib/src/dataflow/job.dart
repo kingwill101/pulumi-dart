@@ -104,14 +104,48 @@ class Job extends pulumi.CustomResource {
     createdFromSnapshotId = registerOutput<String>('createdFromSnapshotId');
     currentState = registerOutput<String>('currentState');
     currentStateTime = registerOutput<String>('currentStateTime');
-    environment = registerOutput<EnvironmentResponse>('environment');
-    executionInfo = registerOutput<JobExecutionInfoResponse>('executionInfo');
-    jobMetadata = registerOutput<JobMetadataResponse>('jobMetadata');
+    environment = registerOutput<EnvironmentResponse>(
+      'environment',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnvironmentResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    executionInfo = registerOutput<JobExecutionInfoResponse>(
+      'executionInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobExecutionInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    jobMetadata = registerOutput<JobMetadataResponse>(
+      'jobMetadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobMetadataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     pipelineDescription = registerOutput<PipelineDescriptionResponse>(
       'pipelineDescription',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineDescriptionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     replaceJobId = registerOutput<String>('replaceJobId');
@@ -119,6 +153,13 @@ class Job extends pulumi.CustomResource {
     requestedState = registerOutput<String>('requestedState');
     runtimeUpdatableParams = registerOutput<RuntimeUpdatableParamsResponse>(
       'runtimeUpdatableParams',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RuntimeUpdatableParamsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     satisfiesPzi = registerOutput<bool>('satisfiesPzi');
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');

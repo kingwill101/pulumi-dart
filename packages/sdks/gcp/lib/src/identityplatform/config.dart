@@ -606,16 +606,84 @@ class Config extends pulumi.CustomResource {
     );
     blockingFunctions = registerOutput<ConfigBlockingFunctions?>(
       'blockingFunctions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigBlockingFunctions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    client = registerOutput<ConfigClient>('client');
-    mfa = registerOutput<ConfigMfa>('mfa');
-    monitoring = registerOutput<ConfigMonitoring>('monitoring');
-    multiTenant = registerOutput<ConfigMultiTenant?>('multiTenant');
+    client = registerOutput<ConfigClient>(
+      'client',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigClient.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    mfa = registerOutput<ConfigMfa>(
+      'mfa',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigMfa.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
+    monitoring = registerOutput<ConfigMonitoring>(
+      'monitoring',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigMonitoring.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    multiTenant = registerOutput<ConfigMultiTenant?>(
+      'multiTenant',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigMultiTenant.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    quota = registerOutput<ConfigQuota?>('quota');
-    signIn = registerOutput<ConfigSignIn>('signIn');
-    smsRegionConfig = registerOutput<ConfigSmsRegionConfig>('smsRegionConfig');
+    quota = registerOutput<ConfigQuota?>(
+      'quota',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigQuota.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    signIn = registerOutput<ConfigSignIn>(
+      'signIn',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigSignIn.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    smsRegionConfig = registerOutput<ConfigSmsRegionConfig>(
+      'smsRegionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigSmsRegionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Config] resource's state with the given [name] and [id].
@@ -647,15 +715,83 @@ class Config extends pulumi.CustomResource {
     );
     blockingFunctions = registerOutput<ConfigBlockingFunctions?>(
       'blockingFunctions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigBlockingFunctions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    client = registerOutput<ConfigClient>('client');
-    mfa = registerOutput<ConfigMfa>('mfa');
-    monitoring = registerOutput<ConfigMonitoring>('monitoring');
-    multiTenant = registerOutput<ConfigMultiTenant?>('multiTenant');
+    client = registerOutput<ConfigClient>(
+      'client',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigClient.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    mfa = registerOutput<ConfigMfa>(
+      'mfa',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigMfa.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
+    monitoring = registerOutput<ConfigMonitoring>(
+      'monitoring',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigMonitoring.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    multiTenant = registerOutput<ConfigMultiTenant?>(
+      'multiTenant',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigMultiTenant.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    quota = registerOutput<ConfigQuota?>('quota');
-    signIn = registerOutput<ConfigSignIn>('signIn');
-    smsRegionConfig = registerOutput<ConfigSmsRegionConfig>('smsRegionConfig');
+    quota = registerOutput<ConfigQuota?>(
+      'quota',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigQuota.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    signIn = registerOutput<ConfigSignIn>(
+      'signIn',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigSignIn.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    smsRegionConfig = registerOutput<ConfigSmsRegionConfig>(
+      'smsRegionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigSmsRegionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

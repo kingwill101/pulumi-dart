@@ -111,6 +111,13 @@ class SubnetworkComputeBeta extends pulumi.CustomResource {
     kind = registerOutput<String>('kind');
     logConfig = registerOutput<SubnetworkLogConfigResponseComputeBeta>(
       'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubnetworkLogConfigResponseComputeBeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');

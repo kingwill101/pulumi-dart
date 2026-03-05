@@ -611,6 +611,13 @@ class PerInstanceConfig extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     preservedState = registerOutput<PerInstanceConfigPreservedState?>(
       'preservedState',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PerInstanceConfigPreservedState.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     removeInstanceOnDestroy = registerOutput<bool?>('removeInstanceOnDestroy');
@@ -651,6 +658,13 @@ class PerInstanceConfig extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     preservedState = registerOutput<PerInstanceConfigPreservedState?>(
       'preservedState',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PerInstanceConfigPreservedState.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     removeInstanceOnDestroy = registerOutput<bool?>('removeInstanceOnDestroy');

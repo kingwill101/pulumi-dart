@@ -196,7 +196,16 @@ class SecondaryNetwork extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<SecondaryNetworkTimeouts?>('timeouts');
+    timeouts = registerOutput<SecondaryNetworkTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecondaryNetworkTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [SecondaryNetwork] resource's state with the given [name] and [id].
@@ -234,6 +243,15 @@ class SecondaryNetwork extends pulumi.CustomResource {
     this.state = registerOutput<String>('state');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<SecondaryNetworkTimeouts?>('timeouts');
+    timeouts = registerOutput<SecondaryNetworkTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecondaryNetworkTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

@@ -48,16 +48,57 @@ class Queue extends pulumi.CustomResource {
       ) {
     appEngineRoutingOverride = registerOutput<AppEngineRoutingResponse>(
       'appEngineRoutingOverride',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppEngineRoutingResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    httpTarget = registerOutput<HttpTargetResponse>('httpTarget');
+    httpTarget = registerOutput<HttpTargetResponse>(
+      'httpTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HttpTargetResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     purgeTime = registerOutput<String>('purgeTime');
-    rateLimits = registerOutput<RateLimitsResponse>('rateLimits');
-    retryConfig = registerOutput<RetryConfigResponse>('retryConfig');
+    rateLimits = registerOutput<RateLimitsResponse>(
+      'rateLimits',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RateLimitsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    retryConfig = registerOutput<RetryConfigResponse>(
+      'retryConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RetryConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     stackdriverLoggingConfig = registerOutput<StackdriverLoggingConfigResponse>(
       'stackdriverLoggingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StackdriverLoggingConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     state = registerOutput<String>('state');
   }

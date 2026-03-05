@@ -117,6 +117,13 @@ class AuthzPolicy extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     customProvider = registerOutput<AuthzPolicyCustomProvider?>(
       'customProvider',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AuthzPolicyCustomProvider.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -126,7 +133,16 @@ class AuthzPolicy extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    target = registerOutput<AuthzPolicyTarget>('target');
+    target = registerOutput<AuthzPolicyTarget>(
+      'target',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AuthzPolicyTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -157,6 +173,13 @@ class AuthzPolicy extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     customProvider = registerOutput<AuthzPolicyCustomProvider?>(
       'customProvider',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AuthzPolicyCustomProvider.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -166,7 +189,16 @@ class AuthzPolicy extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    target = registerOutput<AuthzPolicyTarget>('target');
+    target = registerOutput<AuthzPolicyTarget>(
+      'target',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AuthzPolicyTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -1419,8 +1419,26 @@ class ServicePerimeter extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
     perimeterType = registerOutput<String?>('perimeterType');
-    spec = registerOutput<ServicePerimeterSpec?>('spec');
-    status = registerOutput<ServicePerimeterStatus?>('status');
+    spec = registerOutput<ServicePerimeterSpec?>(
+      'spec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServicePerimeterSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    status = registerOutput<ServicePerimeterStatus?>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServicePerimeterStatus.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     title = registerOutput<String>('title');
     updateTime = registerOutput<String>('updateTime');
     useExplicitDryRunSpec = registerOutput<bool?>('useExplicitDryRunSpec');
@@ -1454,8 +1472,26 @@ class ServicePerimeter extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
     perimeterType = registerOutput<String?>('perimeterType');
-    spec = registerOutput<ServicePerimeterSpec?>('spec');
-    status = registerOutput<ServicePerimeterStatus?>('status');
+    spec = registerOutput<ServicePerimeterSpec?>(
+      'spec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServicePerimeterSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    status = registerOutput<ServicePerimeterStatus?>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServicePerimeterStatus.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     title = registerOutput<String>('title');
     updateTime = registerOutput<String>('updateTime');
     useExplicitDryRunSpec = registerOutput<bool?>('useExplicitDryRunSpec');

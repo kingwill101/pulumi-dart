@@ -174,7 +174,16 @@ class Tenant extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     allowPasswordSignup = registerOutput<bool?>('allowPasswordSignup');
-    client = registerOutput<TenantClient?>('client');
+    client = registerOutput<TenantClient?>(
+      'client',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TenantClient.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     disableAuth = registerOutput<bool?>('disableAuth');
     displayName = registerOutput<String>('displayName');
     enableEmailLinkSignin = registerOutput<bool?>('enableEmailLinkSignin');
@@ -206,7 +215,16 @@ class Tenant extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     allowPasswordSignup = registerOutput<bool?>('allowPasswordSignup');
-    client = registerOutput<TenantClient?>('client');
+    client = registerOutput<TenantClient?>(
+      'client',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TenantClient.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     disableAuth = registerOutput<bool?>('disableAuth');
     displayName = registerOutput<String>('displayName');
     enableEmailLinkSignin = registerOutput<bool?>('enableEmailLinkSignin');

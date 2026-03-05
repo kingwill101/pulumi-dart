@@ -307,9 +307,25 @@ class Approval extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     requestMetadata = registerOutput<RequestMetadataResponse>(
       'requestMetadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RequestMetadataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     stateChangedAt = registerOutput<String?>('stateChangedAt');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ticketId = registerOutput<String?>('ticketId');
     type = registerOutput<String>('type');
   }

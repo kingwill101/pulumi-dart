@@ -841,14 +841,39 @@ class Flow extends pulumi.CustomResource {
     kmsArn = registerOutput<String>('kmsArn');
     metadataCatalogConfig = registerOutput<FlowMetadataCatalogConfig>(
       'metadataCatalogConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FlowMetadataCatalogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    sourceFlowConfig = registerOutput<FlowSourceFlowConfig>('sourceFlowConfig');
+    sourceFlowConfig = registerOutput<FlowSourceFlowConfig>(
+      'sourceFlowConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FlowSourceFlowConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     tasks = registerOutput<List<Map<String, dynamic>>>('tasks');
-    triggerConfig = registerOutput<FlowTriggerConfig>('triggerConfig');
+    triggerConfig = registerOutput<FlowTriggerConfig>(
+      'triggerConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FlowTriggerConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Flow] resource's state with the given [name] and [id].
@@ -879,13 +904,38 @@ class Flow extends pulumi.CustomResource {
     kmsArn = registerOutput<String>('kmsArn');
     metadataCatalogConfig = registerOutput<FlowMetadataCatalogConfig>(
       'metadataCatalogConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FlowMetadataCatalogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    sourceFlowConfig = registerOutput<FlowSourceFlowConfig>('sourceFlowConfig');
+    sourceFlowConfig = registerOutput<FlowSourceFlowConfig>(
+      'sourceFlowConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FlowSourceFlowConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     tasks = registerOutput<List<Map<String, dynamic>>>('tasks');
-    triggerConfig = registerOutput<FlowTriggerConfig>('triggerConfig');
+    triggerConfig = registerOutput<FlowTriggerConfig>(
+      'triggerConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FlowTriggerConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

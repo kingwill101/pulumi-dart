@@ -60,6 +60,13 @@ class Document extends pulumi.CustomResource {
     latestReloadStatus =
         registerOutput<GoogleCloudDialogflowV2DocumentReloadStatusResponse>(
           'latestReloadStatus',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowV2DocumentReloadStatusResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     location = registerOutput<String>('location');
     metadata = registerOutput<Map<String, String>>('metadata');

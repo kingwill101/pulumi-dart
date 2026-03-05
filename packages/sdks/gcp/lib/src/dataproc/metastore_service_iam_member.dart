@@ -932,6 +932,13 @@ class MetastoreServiceIamMember extends pulumi.CustomResource {
        ) {
     condition = registerOutput<MetastoreServiceIamMemberCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MetastoreServiceIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
@@ -966,6 +973,13 @@ class MetastoreServiceIamMember extends pulumi.CustomResource {
        ) {
     condition = registerOutput<MetastoreServiceIamMemberCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MetastoreServiceIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');

@@ -594,7 +594,16 @@ class Dataset extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<AmazonMWSObjectDatasetResponse>('properties');
+    properties = registerOutput<AmazonMWSObjectDatasetResponse>(
+      'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AmazonMWSObjectDatasetResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

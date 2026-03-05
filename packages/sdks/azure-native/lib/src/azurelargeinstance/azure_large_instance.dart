@@ -362,19 +362,62 @@ class AzureLargeInstance extends pulumi.CustomResource {
     azureLargeInstanceId = registerOutput<String?>('azureLargeInstanceId');
     hardwareProfile = registerOutput<HardwareProfileResponse?>(
       'hardwareProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HardwareProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     hwRevision = registerOutput<String?>('hwRevision');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkProfile = registerOutput<NetworkProfileResponse?>('networkProfile');
-    osProfile = registerOutput<OsProfileResponse?>('osProfile');
+    networkProfile = registerOutput<NetworkProfileResponse?>(
+      'networkProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    osProfile = registerOutput<OsProfileResponse?>(
+      'osProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OsProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     powerState = registerOutput<String?>('powerState');
     provisioningState = registerOutput<String>('provisioningState');
     proximityPlacementGroup = registerOutput<String?>(
       'proximityPlacementGroup',
     );
-    storageProfile = registerOutput<StorageProfileResponse?>('storageProfile');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    storageProfile = registerOutput<StorageProfileResponse?>(
+      'storageProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StorageProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

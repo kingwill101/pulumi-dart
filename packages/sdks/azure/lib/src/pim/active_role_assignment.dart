@@ -579,9 +579,27 @@ class ActiveRoleAssignment extends pulumi.CustomResource {
     principalId = registerOutput<String>('principalId');
     principalType = registerOutput<String>('principalType');
     roleDefinitionId = registerOutput<String>('roleDefinitionId');
-    schedule = registerOutput<ActiveRoleAssignmentSchedule>('schedule');
+    schedule = registerOutput<ActiveRoleAssignmentSchedule>(
+      'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ActiveRoleAssignmentSchedule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     scope = registerOutput<String>('scope');
-    ticket = registerOutput<ActiveRoleAssignmentTicket>('ticket');
+    ticket = registerOutput<ActiveRoleAssignmentTicket>(
+      'ticket',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ActiveRoleAssignmentTicket.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [ActiveRoleAssignment] resource's state with the given [name] and [id].
@@ -611,8 +629,26 @@ class ActiveRoleAssignment extends pulumi.CustomResource {
     principalId = registerOutput<String>('principalId');
     principalType = registerOutput<String>('principalType');
     roleDefinitionId = registerOutput<String>('roleDefinitionId');
-    schedule = registerOutput<ActiveRoleAssignmentSchedule>('schedule');
+    schedule = registerOutput<ActiveRoleAssignmentSchedule>(
+      'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ActiveRoleAssignmentSchedule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     scope = registerOutput<String>('scope');
-    ticket = registerOutput<ActiveRoleAssignmentTicket>('ticket');
+    ticket = registerOutput<ActiveRoleAssignmentTicket>(
+      'ticket',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ActiveRoleAssignmentTicket.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

@@ -430,11 +430,27 @@ class AgentcoreCodeInterpreter extends pulumi.CustomResource {
     networkConfiguration =
         registerOutput<AgentcoreCodeInterpreterNetworkConfiguration>(
           'networkConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AgentcoreCodeInterpreterNetworkConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<AgentcoreCodeInterpreterTimeouts?>('timeouts');
+    timeouts = registerOutput<AgentcoreCodeInterpreterTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentcoreCodeInterpreterTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [AgentcoreCodeInterpreter] resource's state with the given [name] and [id].
@@ -468,10 +484,26 @@ class AgentcoreCodeInterpreter extends pulumi.CustomResource {
     networkConfiguration =
         registerOutput<AgentcoreCodeInterpreterNetworkConfiguration>(
           'networkConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AgentcoreCodeInterpreterNetworkConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<AgentcoreCodeInterpreterTimeouts?>('timeouts');
+    timeouts = registerOutput<AgentcoreCodeInterpreterTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentcoreCodeInterpreterTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

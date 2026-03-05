@@ -2920,7 +2920,16 @@ class CxToolVersion extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
-    tool = registerOutput<CxToolVersionTool>('tool');
+    tool = registerOutput<CxToolVersionTool>(
+      'tool',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxToolVersionTool.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -2951,7 +2960,16 @@ class CxToolVersion extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
-    tool = registerOutput<CxToolVersionTool>('tool');
+    tool = registerOutput<CxToolVersionTool>(
+      'tool',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxToolVersionTool.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     updateTime = registerOutput<String>('updateTime');
   }
 }

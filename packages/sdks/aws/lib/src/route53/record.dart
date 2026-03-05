@@ -1223,6 +1223,13 @@ class Record extends pulumi.CustomResource {
     allowOverwrite = registerOutput<bool>('allowOverwrite');
     cidrRoutingPolicy = registerOutput<RecordCidrRoutingPolicy?>(
       'cidrRoutingPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RecordCidrRoutingPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     failoverRoutingPolicies = registerOutput<List<Map<String, dynamic>>?>(
       'failoverRoutingPolicies',
@@ -1234,6 +1241,13 @@ class Record extends pulumi.CustomResource {
     geoproximityRoutingPolicy =
         registerOutput<RecordGeoproximityRoutingPolicy?>(
           'geoproximityRoutingPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RecordGeoproximityRoutingPolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     healthCheckId = registerOutput<String?>('healthCheckId');
     latencyRoutingPolicies = registerOutput<List<Map<String, dynamic>>?>(
@@ -1280,6 +1294,13 @@ class Record extends pulumi.CustomResource {
     allowOverwrite = registerOutput<bool>('allowOverwrite');
     cidrRoutingPolicy = registerOutput<RecordCidrRoutingPolicy?>(
       'cidrRoutingPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RecordCidrRoutingPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     failoverRoutingPolicies = registerOutput<List<Map<String, dynamic>>?>(
       'failoverRoutingPolicies',
@@ -1291,6 +1312,13 @@ class Record extends pulumi.CustomResource {
     geoproximityRoutingPolicy =
         registerOutput<RecordGeoproximityRoutingPolicy?>(
           'geoproximityRoutingPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RecordGeoproximityRoutingPolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     healthCheckId = registerOutput<String?>('healthCheckId');
     latencyRoutingPolicies = registerOutput<List<Map<String, dynamic>>?>(

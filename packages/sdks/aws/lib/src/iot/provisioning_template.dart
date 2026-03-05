@@ -589,6 +589,13 @@ class ProvisioningTemplate extends pulumi.CustomResource {
     preProvisioningHook =
         registerOutput<ProvisioningTemplatePreProvisioningHook?>(
           'preProvisioningHook',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ProvisioningTemplatePreProvisioningHook.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     provisioningRoleArn = registerOutput<String>('provisioningRoleArn');
     region = registerOutput<String>('region');
@@ -629,6 +636,13 @@ class ProvisioningTemplate extends pulumi.CustomResource {
     preProvisioningHook =
         registerOutput<ProvisioningTemplatePreProvisioningHook?>(
           'preProvisioningHook',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ProvisioningTemplatePreProvisioningHook.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     provisioningRoleArn = registerOutput<String>('provisioningRoleArn');
     region = registerOutput<String>('region');

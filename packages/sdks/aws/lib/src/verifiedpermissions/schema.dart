@@ -197,7 +197,16 @@ class Schema extends pulumi.CustomResource {
         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
         options ?? pulumi.CustomResourceOptions(),
       ) {
-    definition = registerOutput<SchemaDefinition>('definition');
+    definition = registerOutput<SchemaDefinition>(
+      'definition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SchemaDefinition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     namespaces = registerOutput<List<String>>('namespaces');
     policyStoreId = registerOutput<String>('policyStoreId');
     region = registerOutput<String>('region');
@@ -226,7 +235,16 @@ class Schema extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    definition = registerOutput<SchemaDefinition>('definition');
+    definition = registerOutput<SchemaDefinition>(
+      'definition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SchemaDefinition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     namespaces = registerOutput<List<String>>('namespaces');
     policyStoreId = registerOutput<String>('policyStoreId');
     region = registerOutput<String>('region');

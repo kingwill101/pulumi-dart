@@ -64,6 +64,13 @@ class CertificateTemplate extends pulumi.CustomResource {
     identityConstraints =
         registerOutput<CertificateIdentityConstraintsResponse>(
           'identityConstraints',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CertificateIdentityConstraintsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
@@ -72,9 +79,23 @@ class CertificateTemplate extends pulumi.CustomResource {
     passthroughExtensions =
         registerOutput<CertificateExtensionConstraintsResponse>(
           'passthroughExtensions',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CertificateExtensionConstraintsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     predefinedValues = registerOutput<X509ParametersResponse>(
       'predefinedValues',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return X509ParametersResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');

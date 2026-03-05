@@ -76,7 +76,16 @@ class RegionSslPolicy extends pulumi.CustomResource {
     requestId = registerOutput<String?>('requestId');
     selfLink = registerOutput<String>('selfLink');
     selfLinkWithId = registerOutput<String>('selfLinkWithId');
-    tlsSettings = registerOutput<ServerTlsSettingsResponse>('tlsSettings');
+    tlsSettings = registerOutput<ServerTlsSettingsResponse>(
+      'tlsSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerTlsSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     warnings = registerOutput<List<Map<String, dynamic>>>('warnings');
   }
 }

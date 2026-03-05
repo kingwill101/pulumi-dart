@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getSourceControlToken.
 class GetSourceControlTokenResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The GitHub Token value.
   final String token;
   final String tokenSecret;
@@ -40,4 +40,3 @@ class GetSourceControlTokenResult {
     );
   }
 }
-

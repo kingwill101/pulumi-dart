@@ -114,28 +114,98 @@ class BuildCloudbuildV1 extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    approval = registerOutput<BuildApprovalResponse>('approval');
-    artifacts = registerOutput<ArtifactsResponse>('artifacts');
-    availableSecrets = registerOutput<SecretsResponse>('availableSecrets');
+    approval = registerOutput<BuildApprovalResponse>(
+      'approval',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BuildApprovalResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    artifacts = registerOutput<ArtifactsResponse>(
+      'artifacts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ArtifactsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    availableSecrets = registerOutput<SecretsResponse>(
+      'availableSecrets',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecretsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     buildTriggerId = registerOutput<String>('buildTriggerId');
     createTime = registerOutput<String>('createTime');
-    failureInfo = registerOutput<FailureInfoResponse>('failureInfo');
+    failureInfo = registerOutput<FailureInfoResponse>(
+      'failureInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FailureInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     finishTime = registerOutput<String>('finishTime');
     images = registerOutput<List<String>>('images');
     location = registerOutput<String>('location');
     logUrl = registerOutput<String>('logUrl');
     logsBucket = registerOutput<String>('logsBucket');
     this.name = registerOutput<String>('name');
-    this.options = registerOutput<BuildOptionsResponse>('options');
+    this.options = registerOutput<BuildOptionsResponse>(
+      'options',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BuildOptionsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     projectId = registerOutput<String>('projectId');
     queueTtl = registerOutput<String>('queueTtl');
-    results = registerOutput<ResultsResponse>('results');
+    results = registerOutput<ResultsResponse>(
+      'results',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResultsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     secrets = registerOutput<List<Map<String, dynamic>>>('secrets');
     serviceAccount = registerOutput<String>('serviceAccount');
-    source = registerOutput<SourceResponse>('source');
+    source = registerOutput<SourceResponse>(
+      'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sourceProvenance = registerOutput<SourceProvenanceResponse>(
       'sourceProvenance',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SourceProvenanceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     startTime = registerOutput<String>('startTime');
     status = registerOutput<String>('status');

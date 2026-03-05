@@ -273,14 +273,37 @@ class SpringCloudApp extends pulumi.CustomResource {
     );
     fqdn = registerOutput<String>('fqdn');
     httpsOnly = registerOutput<bool?>('httpsOnly');
-    identity = registerOutput<SpringCloudAppIdentity?>('identity');
+    identity = registerOutput<SpringCloudAppIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpringCloudAppIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ingressSettings = registerOutput<SpringCloudAppIngressSettings>(
       'ingressSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpringCloudAppIngressSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     isPublic = registerOutput<bool?>('isPublic');
     this.name = registerOutput<String>('name');
     persistentDisk = registerOutput<SpringCloudAppPersistentDisk>(
       'persistentDisk',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpringCloudAppPersistentDisk.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     publicEndpointEnabled = registerOutput<bool?>('publicEndpointEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -318,14 +341,37 @@ class SpringCloudApp extends pulumi.CustomResource {
     );
     fqdn = registerOutput<String>('fqdn');
     httpsOnly = registerOutput<bool?>('httpsOnly');
-    identity = registerOutput<SpringCloudAppIdentity?>('identity');
+    identity = registerOutput<SpringCloudAppIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpringCloudAppIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ingressSettings = registerOutput<SpringCloudAppIngressSettings>(
       'ingressSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpringCloudAppIngressSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     isPublic = registerOutput<bool?>('isPublic');
     this.name = registerOutput<String>('name');
     persistentDisk = registerOutput<SpringCloudAppPersistentDisk>(
       'persistentDisk',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpringCloudAppPersistentDisk.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     publicEndpointEnabled = registerOutput<bool?>('publicEndpointEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');

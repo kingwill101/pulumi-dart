@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getClassDetails.
 class GetClassDetailsResult {
   /// The RDS edition of the instance. Valid values:
@@ -10,11 +9,14 @@ class GetClassDetailsResult {
   /// * **Finance**: Enterprise Edition.
   final String category;
   final String classCode;
+
   /// The specification family.
   final String classGroup;
   final String commodityCode;
+
   /// The number of CPU cores corresponding to the instance specification. Unit: pieces.
   final String cpu;
+
   /// The storage type of the instance. Valid values:
   /// * **local_ssd**: specifies to use local SSDs.
   /// * **cloud_ssd**: specifies to use standard SSDs.
@@ -24,18 +26,25 @@ class GetClassDetailsResult {
   final String dbInstanceStorageType;
   final String engine;
   final String engineVersion;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The architecture of the instance type.
   final String instructionSetArch;
+
   /// The maximum number of connections.
   final String maxConnections;
+
   /// The maximum IO bandwidth corresponding to the instance specification. Unit: Mbps.
   final String maxIombps;
+
   /// The maximum IOPS of the instance.
   final String maxIops;
+
   /// The memory capacity that is supported by the instance type. Unit: GB.
   final String memoryClass;
+
   /// The fee that you must pay for the instance type. Unit: cent (RMB).
   final String referencePrice;
 
@@ -113,4 +122,3 @@ class GetClassDetailsResult {
     );
   }
 }
-

@@ -335,10 +335,24 @@ class DatasetParquet extends pulumi.CustomResource {
     annotations = registerOutput<List<String>?>('annotations');
     azureBlobFsLocation = registerOutput<DatasetParquetAzureBlobFsLocation?>(
       'azureBlobFsLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatasetParquetAzureBlobFsLocation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     azureBlobStorageLocation =
         registerOutput<DatasetParquetAzureBlobStorageLocation?>(
           'azureBlobStorageLocation',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DatasetParquetAzureBlobStorageLocation.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     compressionCodec = registerOutput<String?>('compressionCodec');
     compressionLevel = registerOutput<String?>('compressionLevel');
@@ -347,6 +361,13 @@ class DatasetParquet extends pulumi.CustomResource {
     folder = registerOutput<String?>('folder');
     httpServerLocation = registerOutput<DatasetParquetHttpServerLocation?>(
       'httpServerLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatasetParquetHttpServerLocation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');
@@ -385,10 +406,24 @@ class DatasetParquet extends pulumi.CustomResource {
     annotations = registerOutput<List<String>?>('annotations');
     azureBlobFsLocation = registerOutput<DatasetParquetAzureBlobFsLocation?>(
       'azureBlobFsLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatasetParquetAzureBlobFsLocation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     azureBlobStorageLocation =
         registerOutput<DatasetParquetAzureBlobStorageLocation?>(
           'azureBlobStorageLocation',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DatasetParquetAzureBlobStorageLocation.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     compressionCodec = registerOutput<String?>('compressionCodec');
     compressionLevel = registerOutput<String?>('compressionLevel');
@@ -397,6 +432,13 @@ class DatasetParquet extends pulumi.CustomResource {
     folder = registerOutput<String?>('folder');
     httpServerLocation = registerOutput<DatasetParquetHttpServerLocation?>(
       'httpServerLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatasetParquetHttpServerLocation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');

@@ -892,6 +892,13 @@ class AiFeatureOnlineStoreIamBinding extends pulumi.CustomResource {
        ) {
     condition = registerOutput<AiFeatureOnlineStoreIamBindingCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiFeatureOnlineStoreIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     featureOnlineStore = registerOutput<String>('featureOnlineStore');
@@ -926,6 +933,13 @@ class AiFeatureOnlineStoreIamBinding extends pulumi.CustomResource {
        ) {
     condition = registerOutput<AiFeatureOnlineStoreIamBindingCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiFeatureOnlineStoreIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     featureOnlineStore = registerOutput<String>('featureOnlineStore');

@@ -884,6 +884,13 @@ class AiFeatureStoreEntityTypeIamMember extends pulumi.CustomResource {
        ) {
     condition = registerOutput<AiFeatureStoreEntityTypeIamMemberCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiFeatureStoreEntityTypeIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     entitytype = registerOutput<String>('entitytype');
     etag = registerOutput<String>('etag');
@@ -917,6 +924,13 @@ class AiFeatureStoreEntityTypeIamMember extends pulumi.CustomResource {
        ) {
     condition = registerOutput<AiFeatureStoreEntityTypeIamMemberCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiFeatureStoreEntityTypeIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     entitytype = registerOutput<String>('entitytype');
     etag = registerOutput<String>('etag');

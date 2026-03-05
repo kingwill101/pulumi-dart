@@ -861,7 +861,16 @@ class TableIamMember extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<TableIamMemberCondition?>('condition');
+    condition = registerOutput<TableIamMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TableIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     instanceName = registerOutput<String>('instanceName');
     member = registerOutput<String>('member');
@@ -893,7 +902,16 @@ class TableIamMember extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<TableIamMemberCondition?>('condition');
+    condition = registerOutput<TableIamMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TableIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     instanceName = registerOutput<String>('instanceName');
     member = registerOutput<String>('member');

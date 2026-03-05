@@ -885,7 +885,16 @@ class AttestorIamMember extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     attestor = registerOutput<String>('attestor');
-    condition = registerOutput<AttestorIamMemberCondition?>('condition');
+    condition = registerOutput<AttestorIamMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AttestorIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     member = registerOutput<String>('member');
     project = registerOutput<String>('project');
@@ -916,7 +925,16 @@ class AttestorIamMember extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     attestor = registerOutput<String>('attestor');
-    condition = registerOutput<AttestorIamMemberCondition?>('condition');
+    condition = registerOutput<AttestorIamMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AttestorIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     member = registerOutput<String>('member');
     project = registerOutput<String>('project');

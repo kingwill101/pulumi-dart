@@ -929,7 +929,16 @@ class GlossaryIamMember extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<GlossaryIamMemberCondition?>('condition');
+    condition = registerOutput<GlossaryIamMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GlossaryIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     glossaryId = registerOutput<String>('glossaryId');
     location = registerOutput<String>('location');
@@ -961,7 +970,16 @@ class GlossaryIamMember extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<GlossaryIamMemberCondition?>('condition');
+    condition = registerOutput<GlossaryIamMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GlossaryIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     glossaryId = registerOutput<String>('glossaryId');
     location = registerOutput<String>('location');

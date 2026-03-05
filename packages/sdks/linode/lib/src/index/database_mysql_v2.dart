@@ -1252,6 +1252,13 @@ class DatabaseMysqlV2 extends pulumi.CustomResource {
     port = registerOutput<int>('port');
     privateNetwork = registerOutput<DatabaseMysqlV2PrivateNetwork?>(
       'privateNetwork',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseMysqlV2PrivateNetwork.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     rootPassword = registerOutput<String>('rootPassword');
@@ -1259,10 +1266,28 @@ class DatabaseMysqlV2 extends pulumi.CustomResource {
     sslConnection = registerOutput<bool>('sslConnection');
     status = registerOutput<String>('status');
     suspended = registerOutput<bool>('suspended');
-    timeouts = registerOutput<DatabaseMysqlV2Timeouts?>('timeouts');
+    timeouts = registerOutput<DatabaseMysqlV2Timeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseMysqlV2Timeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     updated = registerOutput<String>('updated');
-    updates = registerOutput<DatabaseMysqlV2Updates>('updates');
+    updates = registerOutput<DatabaseMysqlV2Updates>(
+      'updates',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseMysqlV2Updates.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     version = registerOutput<String>('version');
   }
 
@@ -1394,6 +1419,13 @@ class DatabaseMysqlV2 extends pulumi.CustomResource {
     port = registerOutput<int>('port');
     privateNetwork = registerOutput<DatabaseMysqlV2PrivateNetwork?>(
       'privateNetwork',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseMysqlV2PrivateNetwork.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     rootPassword = registerOutput<String>('rootPassword');
@@ -1401,10 +1433,28 @@ class DatabaseMysqlV2 extends pulumi.CustomResource {
     sslConnection = registerOutput<bool>('sslConnection');
     status = registerOutput<String>('status');
     suspended = registerOutput<bool>('suspended');
-    timeouts = registerOutput<DatabaseMysqlV2Timeouts?>('timeouts');
+    timeouts = registerOutput<DatabaseMysqlV2Timeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseMysqlV2Timeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     updated = registerOutput<String>('updated');
-    updates = registerOutput<DatabaseMysqlV2Updates>('updates');
+    updates = registerOutput<DatabaseMysqlV2Updates>(
+      'updates',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseMysqlV2Updates.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     version = registerOutput<String>('version');
   }
 }

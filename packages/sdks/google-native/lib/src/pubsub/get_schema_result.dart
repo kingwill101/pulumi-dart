@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getSchema.
 class GetSchemaResult {
   /// The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.
   final String definition;
+
   /// Name of the schema. Format is `projects/{project}/schemas/{schema}`.
   final String name;
+
   /// The timestamp that the revision was created.
   final String revisionCreateTime;
+
   /// Immutable. The revision ID of the schema.
   final String revisionId;
+
   /// The type of the schema definition.
   final String type;
 
@@ -48,4 +51,3 @@ class GetSchemaResult {
     );
   }
 }
-

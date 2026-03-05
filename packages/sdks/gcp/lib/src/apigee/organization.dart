@@ -1378,7 +1378,16 @@ class Organization extends pulumi.CustomResource {
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
     projectId = registerOutput<String>('projectId');
-    properties = registerOutput<OrganizationProperties>('properties');
+    properties = registerOutput<OrganizationProperties>(
+      'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrganizationProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     retention = registerOutput<String?>('retention');
     runtimeDatabaseEncryptionKeyName = registerOutput<String?>(
       'runtimeDatabaseEncryptionKeyName',
@@ -1429,7 +1438,16 @@ class Organization extends pulumi.CustomResource {
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
     projectId = registerOutput<String>('projectId');
-    properties = registerOutput<OrganizationProperties>('properties');
+    properties = registerOutput<OrganizationProperties>(
+      'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrganizationProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     retention = registerOutput<String?>('retention');
     runtimeDatabaseEncryptionKeyName = registerOutput<String?>(
       'runtimeDatabaseEncryptionKeyName',

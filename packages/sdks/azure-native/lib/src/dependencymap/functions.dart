@@ -51,7 +51,8 @@ Future<GetMapResult> getMap(
 /// Uses Azure REST API version 2025-07-01-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dependencymap_get_map_dependency_view_for_all_machines_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetMapDependencyViewForAllMachinesResult> getMapDependencyViewForAllMachines(
+Future<GetMapDependencyViewForAllMachinesResult>
+getMapDependencyViewForAllMachines(
   GetMapDependencyViewForAllMachinesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

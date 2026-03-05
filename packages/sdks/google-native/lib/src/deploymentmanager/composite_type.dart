@@ -46,12 +46,28 @@ class CompositeType extends pulumi.CustomResource {
     insertTime = registerOutput<String>('insertTime');
     labels = registerOutput<List<Map<String, dynamic>>>('labels');
     this.name = registerOutput<String>('name');
-    operation = registerOutput<OperationResponse>('operation');
+    operation = registerOutput<OperationResponse>(
+      'operation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OperationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     selfLink = registerOutput<String>('selfLink');
     status = registerOutput<String>('status');
     templateContents = registerOutput<TemplateContentsResponse>(
       'templateContents',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TemplateContentsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

@@ -2365,7 +2365,16 @@ class MigrationJob extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     destination = registerOutput<String>('destination');
     displayName = registerOutput<String?>('displayName');
-    dumpFlags = registerOutput<MigrationJobDumpFlags?>('dumpFlags');
+    dumpFlags = registerOutput<MigrationJobDumpFlags?>(
+      'dumpFlags',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MigrationJobDumpFlags.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dumpPath = registerOutput<String?>('dumpPath');
     dumpType = registerOutput<String?>('dumpType');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -2376,6 +2385,13 @@ class MigrationJob extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     performanceConfig = registerOutput<MigrationJobPerformanceConfig?>(
       'performanceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MigrationJobPerformanceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     phase = registerOutput<String>('phase');
     project = registerOutput<String>('project');
@@ -2383,6 +2399,13 @@ class MigrationJob extends pulumi.CustomResource {
     reverseSshConnectivity =
         registerOutput<MigrationJobReverseSshConnectivity?>(
           'reverseSshConnectivity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MigrationJobReverseSshConnectivity.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     source = registerOutput<String>('source');
     state = registerOutput<String>('state');
@@ -2393,6 +2416,13 @@ class MigrationJob extends pulumi.CustomResource {
     vpcPeeringConnectivity =
         registerOutput<MigrationJobVpcPeeringConnectivity?>(
           'vpcPeeringConnectivity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MigrationJobVpcPeeringConnectivity.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 
@@ -2422,7 +2452,16 @@ class MigrationJob extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     destination = registerOutput<String>('destination');
     displayName = registerOutput<String?>('displayName');
-    dumpFlags = registerOutput<MigrationJobDumpFlags?>('dumpFlags');
+    dumpFlags = registerOutput<MigrationJobDumpFlags?>(
+      'dumpFlags',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MigrationJobDumpFlags.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dumpPath = registerOutput<String?>('dumpPath');
     dumpType = registerOutput<String?>('dumpType');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -2433,6 +2472,13 @@ class MigrationJob extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     performanceConfig = registerOutput<MigrationJobPerformanceConfig?>(
       'performanceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MigrationJobPerformanceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     phase = registerOutput<String>('phase');
     project = registerOutput<String>('project');
@@ -2440,6 +2486,13 @@ class MigrationJob extends pulumi.CustomResource {
     reverseSshConnectivity =
         registerOutput<MigrationJobReverseSshConnectivity?>(
           'reverseSshConnectivity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MigrationJobReverseSshConnectivity.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     source = registerOutput<String>('source');
     this.state = registerOutput<String>('state');
@@ -2450,6 +2503,13 @@ class MigrationJob extends pulumi.CustomResource {
     vpcPeeringConnectivity =
         registerOutput<MigrationJobVpcPeeringConnectivity?>(
           'vpcPeeringConnectivity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MigrationJobVpcPeeringConnectivity.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

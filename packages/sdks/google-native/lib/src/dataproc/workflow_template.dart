@@ -60,13 +60,31 @@ class WorkflowTemplate extends pulumi.CustomResource {
     encryptionConfig =
         registerOutput<
           GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponse
-        >('encryptionConfig');
+        >(
+          'encryptionConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     jobs = registerOutput<List<Map<String, dynamic>>>('jobs');
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     parameters = registerOutput<List<Map<String, dynamic>>>('parameters');
-    placement = registerOutput<WorkflowTemplatePlacementResponse>('placement');
+    placement = registerOutput<WorkflowTemplatePlacementResponse>(
+      'placement',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkflowTemplatePlacementResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     updateTime = registerOutput<String>('updateTime');
     version = registerOutput<int>('version');

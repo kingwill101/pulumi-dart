@@ -2622,13 +2622,29 @@ class Listing extends pulumi.CustomResource {
     );
     bigqueryDataset = registerOutput<ListingBigqueryDataset?>(
       'bigqueryDataset',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ListingBigqueryDataset.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     categories = registerOutput<List<String>?>('categories');
     commercialInfos = registerOutput<List<Map<String, dynamic>>>(
       'commercialInfos',
     );
     dataExchangeId = registerOutput<String>('dataExchangeId');
-    dataProvider = registerOutput<ListingDataProvider?>('dataProvider');
+    dataProvider = registerOutput<ListingDataProvider?>(
+      'dataProvider',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ListingDataProvider.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     deleteCommercial = registerOutput<bool?>('deleteCommercial');
     description = registerOutput<String?>('description');
     discoveryType = registerOutput<String>('discoveryType');
@@ -2643,11 +2659,36 @@ class Listing extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     primaryContact = registerOutput<String?>('primaryContact');
     project = registerOutput<String>('project');
-    publisher = registerOutput<ListingPublisher?>('publisher');
-    pubsubTopic = registerOutput<ListingPubsubTopic?>('pubsubTopic');
+    publisher = registerOutput<ListingPublisher?>(
+      'publisher',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ListingPublisher.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    pubsubTopic = registerOutput<ListingPubsubTopic?>(
+      'pubsubTopic',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ListingPubsubTopic.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     requestAccess = registerOutput<String?>('requestAccess');
     restrictedExportConfig = registerOutput<ListingRestrictedExportConfig?>(
       'restrictedExportConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ListingRestrictedExportConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     state = registerOutput<String>('state');
   }
@@ -2680,13 +2721,29 @@ class Listing extends pulumi.CustomResource {
     );
     bigqueryDataset = registerOutput<ListingBigqueryDataset?>(
       'bigqueryDataset',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ListingBigqueryDataset.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     categories = registerOutput<List<String>?>('categories');
     commercialInfos = registerOutput<List<Map<String, dynamic>>>(
       'commercialInfos',
     );
     dataExchangeId = registerOutput<String>('dataExchangeId');
-    dataProvider = registerOutput<ListingDataProvider?>('dataProvider');
+    dataProvider = registerOutput<ListingDataProvider?>(
+      'dataProvider',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ListingDataProvider.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     deleteCommercial = registerOutput<bool?>('deleteCommercial');
     description = registerOutput<String?>('description');
     discoveryType = registerOutput<String>('discoveryType');
@@ -2701,11 +2758,36 @@ class Listing extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     primaryContact = registerOutput<String?>('primaryContact');
     project = registerOutput<String>('project');
-    publisher = registerOutput<ListingPublisher?>('publisher');
-    pubsubTopic = registerOutput<ListingPubsubTopic?>('pubsubTopic');
+    publisher = registerOutput<ListingPublisher?>(
+      'publisher',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ListingPublisher.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    pubsubTopic = registerOutput<ListingPubsubTopic?>(
+      'pubsubTopic',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ListingPubsubTopic.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     requestAccess = registerOutput<String?>('requestAccess');
     restrictedExportConfig = registerOutput<ListingRestrictedExportConfig?>(
       'restrictedExportConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ListingRestrictedExportConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.state = registerOutput<String>('state');
   }

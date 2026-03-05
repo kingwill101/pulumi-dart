@@ -845,13 +845,36 @@ class DaprComponentResiliencyPolicy extends pulumi.CustomResource {
     inboundPolicy =
         registerOutput<DaprComponentResiliencyPolicyConfigurationResponse?>(
           'inboundPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DaprComponentResiliencyPolicyConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     outboundPolicy =
         registerOutput<DaprComponentResiliencyPolicyConfigurationResponse?>(
           'outboundPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DaprComponentResiliencyPolicyConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

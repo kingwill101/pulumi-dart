@@ -657,7 +657,16 @@ class Hl7StoreIamBinding extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<Hl7StoreIamBindingCondition?>('condition');
+    condition = registerOutput<Hl7StoreIamBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return Hl7StoreIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     hl7V2StoreId = registerOutput<String>('hl7V2StoreId');
     members = registerOutput<List<String>>('members');
@@ -687,7 +696,16 @@ class Hl7StoreIamBinding extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<Hl7StoreIamBindingCondition?>('condition');
+    condition = registerOutput<Hl7StoreIamBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return Hl7StoreIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     hl7V2StoreId = registerOutput<String>('hl7V2StoreId');
     members = registerOutput<List<String>>('members');

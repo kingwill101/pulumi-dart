@@ -350,13 +350,36 @@ class ReadOnlyFollowingDatabase extends pulumi.CustomResource {
     );
     provisioningState = registerOutput<String>('provisioningState');
     softDeletePeriod = registerOutput<String>('softDeletePeriod');
-    statistics = registerOutput<DatabaseStatisticsResponse>('statistics');
+    statistics = registerOutput<DatabaseStatisticsResponse>(
+      'statistics',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseStatisticsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     suspensionDetails = registerOutput<SuspensionDetailsResponse>(
       'suspensionDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SuspensionDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tableLevelSharingProperties =
         registerOutput<TableLevelSharingPropertiesResponse>(
           'tableLevelSharingProperties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return TableLevelSharingPropertiesResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     type = registerOutput<String>('type');
   }

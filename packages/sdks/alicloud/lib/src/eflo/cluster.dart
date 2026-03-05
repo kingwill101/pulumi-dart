@@ -765,7 +765,16 @@ class Cluster extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     hpnZone = registerOutput<String?>('hpnZone');
     ignoreFailedNodeTasks = registerOutput<bool?>('ignoreFailedNodeTasks');
-    networks = registerOutput<ClusterNetworks?>('networks');
+    networks = registerOutput<ClusterNetworks?>(
+      'networks',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterNetworks.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     nimizVswitches = registerOutput<List<String>?>('nimizVswitches');
     nodeGroups = registerOutput<List<Map<String, dynamic>>?>('nodeGroups');
     openEniJumboFrame = registerOutput<bool?>('openEniJumboFrame');
@@ -804,7 +813,16 @@ class Cluster extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     hpnZone = registerOutput<String?>('hpnZone');
     ignoreFailedNodeTasks = registerOutput<bool?>('ignoreFailedNodeTasks');
-    networks = registerOutput<ClusterNetworks?>('networks');
+    networks = registerOutput<ClusterNetworks?>(
+      'networks',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterNetworks.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     nimizVswitches = registerOutput<List<String>?>('nimizVswitches');
     nodeGroups = registerOutput<List<Map<String, dynamic>>?>('nodeGroups');
     openEniJumboFrame = registerOutput<bool?>('openEniJumboFrame');

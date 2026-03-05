@@ -779,6 +779,13 @@ class HybridMonitorSlsTask extends pulumi.CustomResource {
     namespace = registerOutput<String>('namespace');
     slsProcessConfig = registerOutput<HybridMonitorSlsTaskSlsProcessConfig>(
       'slsProcessConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HybridMonitorSlsTaskSlsProcessConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     taskName = registerOutput<String>('taskName');
   }
@@ -813,6 +820,13 @@ class HybridMonitorSlsTask extends pulumi.CustomResource {
     namespace = registerOutput<String>('namespace');
     slsProcessConfig = registerOutput<HybridMonitorSlsTaskSlsProcessConfig>(
       'slsProcessConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HybridMonitorSlsTaskSlsProcessConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     taskName = registerOutput<String>('taskName');
   }

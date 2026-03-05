@@ -99,6 +99,13 @@ class ServiceAttachmentComputeBeta extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     pscServiceAttachmentId = registerOutput<Uint128ResponseComputeBeta>(
       'pscServiceAttachmentId',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return Uint128ResponseComputeBeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     reconcileConnections = registerOutput<bool>('reconcileConnections');
     region = registerOutput<String>('region');
@@ -108,6 +115,13 @@ class ServiceAttachmentComputeBeta extends pulumi.CustomResource {
     tunnelingConfig =
         registerOutput<ServiceAttachmentTunnelingConfigResponseComputeBeta>(
           'tunnelingConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ServiceAttachmentTunnelingConfigResponseComputeBeta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

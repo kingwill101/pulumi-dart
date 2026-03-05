@@ -167,6 +167,13 @@ class MonitoringSchedule extends pulumi.CustomResource {
     monitoringScheduleConfig =
         registerOutput<MonitoringScheduleMonitoringScheduleConfig>(
           'monitoringScheduleConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MonitoringScheduleMonitoringScheduleConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -201,6 +208,13 @@ class MonitoringSchedule extends pulumi.CustomResource {
     monitoringScheduleConfig =
         registerOutput<MonitoringScheduleMonitoringScheduleConfig>(
           'monitoringScheduleConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MonitoringScheduleMonitoringScheduleConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

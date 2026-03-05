@@ -585,10 +585,24 @@ class VirtualMachine extends pulumi.CustomResource {
     bootMethod = registerOutput<String?>('bootMethod');
     cloudServicesNetworkAttachment = registerOutput<NetworkAttachmentResponse>(
       'cloudServicesNetworkAttachment',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkAttachmentResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clusterId = registerOutput<String>('clusterId');
     consoleExtendedLocation = registerOutput<ExtendedLocationResponse?>(
       'consoleExtendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     cpuCores = registerOutput<double>('cpuCores');
     detailedStatus = registerOutput<String>('detailedStatus');
@@ -596,6 +610,13 @@ class VirtualMachine extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     extendedLocation = registerOutput<ExtendedLocationResponse>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     isolateEmulatorThread = registerOutput<String?>('isolateEmulatorThread');
     location = registerOutput<String>('location');
@@ -613,8 +634,26 @@ class VirtualMachine extends pulumi.CustomResource {
     sshPublicKeys = registerOutput<List<Map<String, dynamic>>?>(
       'sshPublicKeys',
     );
-    storageProfile = registerOutput<StorageProfileResponse>('storageProfile');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    storageProfile = registerOutput<StorageProfileResponse>(
+      'storageProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StorageProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     userData = registerOutput<String?>('userData');
@@ -624,6 +663,13 @@ class VirtualMachine extends pulumi.CustomResource {
     vmImageRepositoryCredentials =
         registerOutput<ImageRepositoryCredentialsResponse?>(
           'vmImageRepositoryCredentials',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ImageRepositoryCredentialsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     volumes = registerOutput<List<String>>('volumes');
   }

@@ -1827,7 +1827,16 @@ class ManagedFolderIamBinding extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     bucket = registerOutput<String>('bucket');
-    condition = registerOutput<ManagedFolderIamBindingCondition?>('condition');
+    condition = registerOutput<ManagedFolderIamBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedFolderIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     managedFolder = registerOutput<String>('managedFolder');
     members = registerOutput<List<String>>('members');
@@ -1858,7 +1867,16 @@ class ManagedFolderIamBinding extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     bucket = registerOutput<String>('bucket');
-    condition = registerOutput<ManagedFolderIamBindingCondition?>('condition');
+    condition = registerOutput<ManagedFolderIamBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedFolderIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     managedFolder = registerOutput<String>('managedFolder');
     members = registerOutput<List<String>>('members');

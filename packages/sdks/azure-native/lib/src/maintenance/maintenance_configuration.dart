@@ -252,6 +252,13 @@ class MaintenanceConfiguration extends pulumi.CustomResource {
     );
     installPatches = registerOutput<InputPatchConfigurationResponse?>(
       'installPatches',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InputPatchConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String?>('location');
     maintenanceScope = registerOutput<String?>('maintenanceScope');
@@ -259,7 +266,16 @@ class MaintenanceConfiguration extends pulumi.CustomResource {
     namespace = registerOutput<String?>('namespace');
     recurEvery = registerOutput<String?>('recurEvery');
     startDateTime = registerOutput<String?>('startDateTime');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     timeZone = registerOutput<String?>('timeZone');
     type = registerOutput<String>('type');

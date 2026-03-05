@@ -79,17 +79,62 @@ class EventEventsK8sIoV1 extends pulumi.CustomResource {
       'deprecatedFirstTimestamp',
     );
     deprecatedLastTimestamp = registerOutput<String>('deprecatedLastTimestamp');
-    deprecatedSource = registerOutput<EventSource>('deprecatedSource');
+    deprecatedSource = registerOutput<EventSource>(
+      'deprecatedSource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     eventTime = registerOutput<String>('eventTime');
     kind = registerOutput<String>('kind');
-    metadata = registerOutput<ObjectMeta>('metadata');
+    metadata = registerOutput<ObjectMeta>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     note = registerOutput<String>('note');
     reason = registerOutput<String>('reason');
-    regarding = registerOutput<ObjectReference>('regarding');
-    related = registerOutput<ObjectReference>('related');
+    regarding = registerOutput<ObjectReference>(
+      'regarding',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectReference.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    related = registerOutput<ObjectReference>(
+      'related',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectReference.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     reportingController = registerOutput<String>('reportingController');
     reportingInstance = registerOutput<String>('reportingInstance');
-    series = registerOutput<EventSeries>('series');
+    series = registerOutput<EventSeries>(
+      'series',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventSeries.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

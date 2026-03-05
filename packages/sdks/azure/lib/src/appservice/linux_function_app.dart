@@ -469,11 +469,34 @@ class LinuxFunctionApp extends pulumi.CustomResource {
     appSettings = registerOutput<Map<String, String>?>('appSettings');
     authSettings = registerOutput<LinuxFunctionAppAuthSettings?>(
       'authSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinuxFunctionAppAuthSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     authSettingsV2 = registerOutput<LinuxFunctionAppAuthSettingsV2?>(
       'authSettingsV2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinuxFunctionAppAuthSettingsV2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    backup = registerOutput<LinuxFunctionAppBackup?>('backup');
+    backup = registerOutput<LinuxFunctionAppBackup?>(
+      'backup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinuxFunctionAppBackup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     builtinLoggingEnabled = registerOutput<bool?>('builtinLoggingEnabled');
     clientCertificateEnabled = registerOutput<bool?>(
       'clientCertificateEnabled',
@@ -502,7 +525,16 @@ class LinuxFunctionApp extends pulumi.CustomResource {
     );
     hostingEnvironmentId = registerOutput<String>('hostingEnvironmentId');
     httpsOnly = registerOutput<bool?>('httpsOnly');
-    identity = registerOutput<LinuxFunctionAppIdentity?>('identity');
+    identity = registerOutput<LinuxFunctionAppIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinuxFunctionAppIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     keyVaultReferenceIdentityId = registerOutput<String>(
       'keyVaultReferenceIdentityId',
     );
@@ -524,12 +556,28 @@ class LinuxFunctionApp extends pulumi.CustomResource {
     );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     servicePlanId = registerOutput<String>('servicePlanId');
-    siteConfig = registerOutput<LinuxFunctionAppSiteConfig>('siteConfig');
+    siteConfig = registerOutput<LinuxFunctionAppSiteConfig>(
+      'siteConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinuxFunctionAppSiteConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     siteCredentials = registerOutput<List<Map<String, dynamic>>>(
       'siteCredentials',
     );
     stickySettings = registerOutput<LinuxFunctionAppStickySettings?>(
       'stickySettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinuxFunctionAppStickySettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     storageAccountAccessKey = registerOutput<String?>(
       'storageAccountAccessKey',
@@ -582,11 +630,34 @@ class LinuxFunctionApp extends pulumi.CustomResource {
     appSettings = registerOutput<Map<String, String>?>('appSettings');
     authSettings = registerOutput<LinuxFunctionAppAuthSettings?>(
       'authSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinuxFunctionAppAuthSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     authSettingsV2 = registerOutput<LinuxFunctionAppAuthSettingsV2?>(
       'authSettingsV2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinuxFunctionAppAuthSettingsV2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    backup = registerOutput<LinuxFunctionAppBackup?>('backup');
+    backup = registerOutput<LinuxFunctionAppBackup?>(
+      'backup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinuxFunctionAppBackup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     builtinLoggingEnabled = registerOutput<bool?>('builtinLoggingEnabled');
     clientCertificateEnabled = registerOutput<bool?>(
       'clientCertificateEnabled',
@@ -615,7 +686,16 @@ class LinuxFunctionApp extends pulumi.CustomResource {
     );
     hostingEnvironmentId = registerOutput<String>('hostingEnvironmentId');
     httpsOnly = registerOutput<bool?>('httpsOnly');
-    identity = registerOutput<LinuxFunctionAppIdentity?>('identity');
+    identity = registerOutput<LinuxFunctionAppIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinuxFunctionAppIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     keyVaultReferenceIdentityId = registerOutput<String>(
       'keyVaultReferenceIdentityId',
     );
@@ -637,12 +717,28 @@ class LinuxFunctionApp extends pulumi.CustomResource {
     );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     servicePlanId = registerOutput<String>('servicePlanId');
-    siteConfig = registerOutput<LinuxFunctionAppSiteConfig>('siteConfig');
+    siteConfig = registerOutput<LinuxFunctionAppSiteConfig>(
+      'siteConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinuxFunctionAppSiteConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     siteCredentials = registerOutput<List<Map<String, dynamic>>>(
       'siteCredentials',
     );
     stickySettings = registerOutput<LinuxFunctionAppStickySettings?>(
       'stickySettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinuxFunctionAppStickySettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     storageAccountAccessKey = registerOutput<String?>(
       'storageAccountAccessKey',

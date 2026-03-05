@@ -376,7 +376,16 @@ class Firmware extends pulumi.CustomResource {
     statusMessages = registerOutput<List<Map<String, dynamic>>?>(
       'statusMessages',
     );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     vendor = registerOutput<String?>('vendor');
     version = registerOutput<String?>('version');

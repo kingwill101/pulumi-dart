@@ -73,6 +73,13 @@ class Customer extends pulumi.CustomResource {
     cloudIdentityInfo =
         registerOutput<GoogleCloudChannelV1CloudIdentityInfoResponse>(
           'cloudIdentityInfo',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudChannelV1CloudIdentityInfoResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     correlationId = registerOutput<String>('correlationId');
     createTime = registerOutput<String>('createTime');
@@ -82,10 +89,24 @@ class Customer extends pulumi.CustomResource {
     orgDisplayName = registerOutput<String>('orgDisplayName');
     orgPostalAddress = registerOutput<GoogleTypePostalAddressResponse>(
       'orgPostalAddress',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleTypePostalAddressResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     primaryContactInfo =
         registerOutput<GoogleCloudChannelV1ContactInfoResponse>(
           'primaryContactInfo',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudChannelV1ContactInfoResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     updateTime = registerOutput<String>('updateTime');
   }

@@ -59,7 +59,16 @@ class RouterComputeV1 extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    bgp = registerOutput<RouterBgpResponseComputeV1>('bgp');
+    bgp = registerOutput<RouterBgpResponseComputeV1>(
+      'bgp',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RouterBgpResponseComputeV1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     bgpPeers = registerOutput<List<Map<String, dynamic>>>('bgpPeers');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');

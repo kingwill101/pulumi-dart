@@ -379,6 +379,17 @@ class PolicySetDefinitionVersionAtManagementGroup
     parameters =
         registerOutput<Map<String, ParameterDefinitionsValueResponse>?>(
           'parameters',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return pulumi
+                .Input.decodeMapValues<ParameterDefinitionsValueResponse>(
+              guardedValue,
+              (value) => ParameterDefinitionsValueResponse.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            );
+          },
         );
     policyDefinitionGroups = registerOutput<List<Map<String, dynamic>>?>(
       'policyDefinitionGroups',
@@ -387,7 +398,16 @@ class PolicySetDefinitionVersionAtManagementGroup
       'policyDefinitions',
     );
     policyType = registerOutput<String?>('policyType');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     version = registerOutput<String?>('version');
   }

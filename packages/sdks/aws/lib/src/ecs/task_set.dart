@@ -350,13 +350,36 @@ class TaskSet extends pulumi.CustomResource {
     );
     networkConfiguration = registerOutput<TaskSetNetworkConfiguration?>(
       'networkConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TaskSetNetworkConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     platformVersion = registerOutput<String>('platformVersion');
     region = registerOutput<String>('region');
-    scale = registerOutput<TaskSetScale>('scale');
+    scale = registerOutput<TaskSetScale>(
+      'scale',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TaskSetScale.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     service = registerOutput<String>('service');
     serviceRegistries = registerOutput<TaskSetServiceRegistries?>(
       'serviceRegistries',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TaskSetServiceRegistries.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     stabilityStatus = registerOutput<String>('stabilityStatus');
     status = registerOutput<String>('status');
@@ -404,13 +427,36 @@ class TaskSet extends pulumi.CustomResource {
     );
     networkConfiguration = registerOutput<TaskSetNetworkConfiguration?>(
       'networkConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TaskSetNetworkConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     platformVersion = registerOutput<String>('platformVersion');
     region = registerOutput<String>('region');
-    scale = registerOutput<TaskSetScale>('scale');
+    scale = registerOutput<TaskSetScale>(
+      'scale',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TaskSetScale.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     service = registerOutput<String>('service');
     serviceRegistries = registerOutput<TaskSetServiceRegistries?>(
       'serviceRegistries',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TaskSetServiceRegistries.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     stabilityStatus = registerOutput<String>('stabilityStatus');
     status = registerOutput<String>('status');

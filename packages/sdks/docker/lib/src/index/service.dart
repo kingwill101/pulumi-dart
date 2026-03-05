@@ -104,15 +104,78 @@ class Service extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    auth = registerOutput<ServiceAuth?>('auth');
-    convergeConfig = registerOutput<ServiceConvergeConfig?>('convergeConfig');
-    endpointSpec = registerOutput<ServiceEndpointSpec>('endpointSpec');
+    auth = registerOutput<ServiceAuth?>(
+      'auth',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceAuth.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    convergeConfig = registerOutput<ServiceConvergeConfig?>(
+      'convergeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceConvergeConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    endpointSpec = registerOutput<ServiceEndpointSpec>(
+      'endpointSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceEndpointSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<List<Map<String, dynamic>>>('labels');
-    mode = registerOutput<ServiceMode>('mode');
+    mode = registerOutput<ServiceMode>(
+      'mode',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceMode.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
-    rollbackConfig = registerOutput<ServiceRollbackConfig?>('rollbackConfig');
-    taskSpec = registerOutput<ServiceTaskSpec>('taskSpec');
-    updateConfig = registerOutput<ServiceUpdateConfig?>('updateConfig');
+    rollbackConfig = registerOutput<ServiceRollbackConfig?>(
+      'rollbackConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceRollbackConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    taskSpec = registerOutput<ServiceTaskSpec>(
+      'taskSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceTaskSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    updateConfig = registerOutput<ServiceUpdateConfig?>(
+      'updateConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceUpdateConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Service] resource's state with the given [name] and [id].
@@ -138,14 +201,77 @@ class Service extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    auth = registerOutput<ServiceAuth?>('auth');
-    convergeConfig = registerOutput<ServiceConvergeConfig?>('convergeConfig');
-    endpointSpec = registerOutput<ServiceEndpointSpec>('endpointSpec');
+    auth = registerOutput<ServiceAuth?>(
+      'auth',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceAuth.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    convergeConfig = registerOutput<ServiceConvergeConfig?>(
+      'convergeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceConvergeConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    endpointSpec = registerOutput<ServiceEndpointSpec>(
+      'endpointSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceEndpointSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<List<Map<String, dynamic>>>('labels');
-    mode = registerOutput<ServiceMode>('mode');
+    mode = registerOutput<ServiceMode>(
+      'mode',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceMode.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
-    rollbackConfig = registerOutput<ServiceRollbackConfig?>('rollbackConfig');
-    taskSpec = registerOutput<ServiceTaskSpec>('taskSpec');
-    updateConfig = registerOutput<ServiceUpdateConfig?>('updateConfig');
+    rollbackConfig = registerOutput<ServiceRollbackConfig?>(
+      'rollbackConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceRollbackConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    taskSpec = registerOutput<ServiceTaskSpec>(
+      'taskSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceTaskSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    updateConfig = registerOutput<ServiceUpdateConfig?>(
+      'updateConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceUpdateConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

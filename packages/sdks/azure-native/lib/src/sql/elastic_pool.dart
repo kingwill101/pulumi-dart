@@ -1337,9 +1337,25 @@ class ElasticPool extends pulumi.CustomResource {
     perDatabaseSettings =
         registerOutput<ElasticPoolPerDatabaseSettingsResponse?>(
           'perDatabaseSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ElasticPoolPerDatabaseSettingsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     preferredEnclaveType = registerOutput<String?>('preferredEnclaveType');
-    sku = registerOutput<SkuResponse?>('sku');
+    sku = registerOutput<SkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     state = registerOutput<String>('state');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

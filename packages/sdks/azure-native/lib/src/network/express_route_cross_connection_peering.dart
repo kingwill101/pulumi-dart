@@ -260,11 +260,25 @@ class ExpressRouteCrossConnectionPeering extends pulumi.CustomResource {
     ipv6PeeringConfig =
         registerOutput<Ipv6ExpressRouteCircuitPeeringConfigResponse?>(
           'ipv6PeeringConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return Ipv6ExpressRouteCircuitPeeringConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     lastModifiedBy = registerOutput<String>('lastModifiedBy');
     microsoftPeeringConfig =
         registerOutput<ExpressRouteCircuitPeeringConfigResponse?>(
           'microsoftPeeringConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ExpressRouteCircuitPeeringConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String?>('name');
     peerASN = registerOutput<double?>('peerASN');

@@ -323,17 +323,49 @@ class ScheduledAction extends pulumi.CustomResource {
     eTag = registerOutput<String>('eTag');
     fileDestination = registerOutput<FileDestinationResponse?>(
       'fileDestination',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FileDestinationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     kind = registerOutput<String?>('kind');
     this.name = registerOutput<String>('name');
     notification = registerOutput<NotificationPropertiesResponse>(
       'notification',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NotificationPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     notificationEmail = registerOutput<String?>('notificationEmail');
-    schedule = registerOutput<SchedulePropertiesResponse>('schedule');
+    schedule = registerOutput<SchedulePropertiesResponse>(
+      'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SchedulePropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     scope = registerOutput<String?>('scope');
     status = registerOutput<String>('status');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     viewId = registerOutput<String>('viewId');
   }

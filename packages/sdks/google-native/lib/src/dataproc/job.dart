@@ -104,26 +104,159 @@ class Job extends pulumi.CustomResource {
     driverOutputResourceUri = registerOutput<String>('driverOutputResourceUri');
     driverSchedulingConfig = registerOutput<DriverSchedulingConfigResponse>(
       'driverSchedulingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DriverSchedulingConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    flinkJob = registerOutput<FlinkJobResponse>('flinkJob');
-    hadoopJob = registerOutput<HadoopJobResponse>('hadoopJob');
-    hiveJob = registerOutput<HiveJobResponse>('hiveJob');
+    flinkJob = registerOutput<FlinkJobResponse>(
+      'flinkJob',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FlinkJobResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    hadoopJob = registerOutput<HadoopJobResponse>(
+      'hadoopJob',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HadoopJobResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    hiveJob = registerOutput<HiveJobResponse>(
+      'hiveJob',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HiveJobResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     jobUuid = registerOutput<String>('jobUuid');
     labels = registerOutput<Map<String, String>>('labels');
-    pigJob = registerOutput<PigJobResponse>('pigJob');
-    placement = registerOutput<JobPlacementResponse>('placement');
-    prestoJob = registerOutput<PrestoJobResponse>('prestoJob');
+    pigJob = registerOutput<PigJobResponse>(
+      'pigJob',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PigJobResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    placement = registerOutput<JobPlacementResponse>(
+      'placement',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobPlacementResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    prestoJob = registerOutput<PrestoJobResponse>(
+      'prestoJob',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PrestoJobResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
-    pysparkJob = registerOutput<PySparkJobResponse>('pysparkJob');
-    reference = registerOutput<JobReferenceResponse>('reference');
+    pysparkJob = registerOutput<PySparkJobResponse>(
+      'pysparkJob',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PySparkJobResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    reference = registerOutput<JobReferenceResponse>(
+      'reference',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobReferenceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
-    scheduling = registerOutput<JobSchedulingResponse>('scheduling');
-    sparkJob = registerOutput<SparkJobResponse>('sparkJob');
-    sparkRJob = registerOutput<SparkRJobResponse>('sparkRJob');
-    sparkSqlJob = registerOutput<SparkSqlJobResponse>('sparkSqlJob');
-    status = registerOutput<JobStatusResponse>('status');
+    scheduling = registerOutput<JobSchedulingResponse>(
+      'scheduling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobSchedulingResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    sparkJob = registerOutput<SparkJobResponse>(
+      'sparkJob',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkJobResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    sparkRJob = registerOutput<SparkRJobResponse>(
+      'sparkRJob',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkRJobResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    sparkSqlJob = registerOutput<SparkSqlJobResponse>(
+      'sparkSqlJob',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkSqlJobResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    status = registerOutput<JobStatusResponse>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     statusHistory = registerOutput<List<Map<String, dynamic>>>('statusHistory');
-    trinoJob = registerOutput<TrinoJobResponse>('trinoJob');
+    trinoJob = registerOutput<TrinoJobResponse>(
+      'trinoJob',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TrinoJobResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     yarnApplications = registerOutput<List<Map<String, dynamic>>>(
       'yarnApplications',
     );

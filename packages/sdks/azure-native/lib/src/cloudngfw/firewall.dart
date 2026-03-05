@@ -1138,33 +1138,106 @@ class Firewall extends pulumi.CustomResource {
        ) {
     associatedRulestack = registerOutput<RulestackDetailsResponse?>(
       'associatedRulestack',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RulestackDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    dnsSettings = registerOutput<DNSSettingsResponse>('dnsSettings');
+    dnsSettings = registerOutput<DNSSettingsResponse>(
+      'dnsSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DNSSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     frontEndSettings = registerOutput<List<Map<String, dynamic>>?>(
       'frontEndSettings',
     );
     identity =
         registerOutput<AzureResourceManagerManagedIdentityPropertiesResponse?>(
           'identity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AzureResourceManagerManagedIdentityPropertiesResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     isPanoramaManaged = registerOutput<String?>('isPanoramaManaged');
     isStrataCloudManaged = registerOutput<String?>('isStrataCloudManaged');
     location = registerOutput<String>('location');
     marketplaceDetails = registerOutput<MarketplaceDetailsResponse>(
       'marketplaceDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MarketplaceDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
-    networkProfile = registerOutput<NetworkProfileResponse>('networkProfile');
+    networkProfile = registerOutput<NetworkProfileResponse>(
+      'networkProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     panEtag = registerOutput<String?>('panEtag');
-    panoramaConfig = registerOutput<PanoramaConfigResponse?>('panoramaConfig');
-    planData = registerOutput<PlanDataResponse>('planData');
+    panoramaConfig = registerOutput<PanoramaConfigResponse?>(
+      'panoramaConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PanoramaConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    planData = registerOutput<PlanDataResponse>(
+      'planData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PlanDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     provisioningState = registerOutput<String>('provisioningState');
     strataCloudManagerConfig =
         registerOutput<StrataCloudManagerConfigResponse?>(
           'strataCloudManagerConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return StrataCloudManagerConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

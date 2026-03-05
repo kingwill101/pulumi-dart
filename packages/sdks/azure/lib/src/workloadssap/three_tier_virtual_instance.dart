@@ -1860,7 +1860,16 @@ class ThreeTierVirtualInstance extends pulumi.CustomResource {
        ) {
     appLocation = registerOutput<String>('appLocation');
     environment = registerOutput<String>('environment');
-    identity = registerOutput<ThreeTierVirtualInstanceIdentity?>('identity');
+    identity = registerOutput<ThreeTierVirtualInstanceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ThreeTierVirtualInstanceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     managedResourceGroupName = registerOutput<String?>(
       'managedResourceGroupName',
@@ -1876,6 +1885,13 @@ class ThreeTierVirtualInstance extends pulumi.CustomResource {
     threeTierConfiguration =
         registerOutput<ThreeTierVirtualInstanceThreeTierConfiguration>(
           'threeTierConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ThreeTierVirtualInstanceThreeTierConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 
@@ -1904,7 +1920,16 @@ class ThreeTierVirtualInstance extends pulumi.CustomResource {
        ) {
     appLocation = registerOutput<String>('appLocation');
     environment = registerOutput<String>('environment');
-    identity = registerOutput<ThreeTierVirtualInstanceIdentity?>('identity');
+    identity = registerOutput<ThreeTierVirtualInstanceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ThreeTierVirtualInstanceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     managedResourceGroupName = registerOutput<String?>(
       'managedResourceGroupName',
@@ -1920,6 +1945,13 @@ class ThreeTierVirtualInstance extends pulumi.CustomResource {
     threeTierConfiguration =
         registerOutput<ThreeTierVirtualInstanceThreeTierConfiguration>(
           'threeTierConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ThreeTierVirtualInstanceThreeTierConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

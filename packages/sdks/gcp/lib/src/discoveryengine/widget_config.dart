@@ -412,17 +412,49 @@ class WidgetConfig extends pulumi.CustomResource {
        ) {
     accessSettings = registerOutput<WidgetConfigAccessSettings>(
       'accessSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WidgetConfigAccessSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     collectionId = registerOutput<String?>('collectionId');
     engineId = registerOutput<String>('engineId');
     homepageSetting = registerOutput<WidgetConfigHomepageSetting?>(
       'homepageSetting',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WidgetConfigHomepageSetting.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    uiBranding = registerOutput<WidgetConfigUiBranding?>('uiBranding');
-    uiSettings = registerOutput<WidgetConfigUiSettings>('uiSettings');
+    uiBranding = registerOutput<WidgetConfigUiBranding?>(
+      'uiBranding',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WidgetConfigUiBranding.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    uiSettings = registerOutput<WidgetConfigUiSettings>(
+      'uiSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WidgetConfigUiSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     widgetConfigId = registerOutput<String?>('widgetConfigId');
   }
 
@@ -451,17 +483,49 @@ class WidgetConfig extends pulumi.CustomResource {
        ) {
     accessSettings = registerOutput<WidgetConfigAccessSettings>(
       'accessSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WidgetConfigAccessSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     collectionId = registerOutput<String?>('collectionId');
     engineId = registerOutput<String>('engineId');
     homepageSetting = registerOutput<WidgetConfigHomepageSetting?>(
       'homepageSetting',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WidgetConfigHomepageSetting.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    uiBranding = registerOutput<WidgetConfigUiBranding?>('uiBranding');
-    uiSettings = registerOutput<WidgetConfigUiSettings>('uiSettings');
+    uiBranding = registerOutput<WidgetConfigUiBranding?>(
+      'uiBranding',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WidgetConfigUiBranding.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    uiSettings = registerOutput<WidgetConfigUiSettings>(
+      'uiSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WidgetConfigUiSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     widgetConfigId = registerOutput<String?>('widgetConfigId');
   }
 }

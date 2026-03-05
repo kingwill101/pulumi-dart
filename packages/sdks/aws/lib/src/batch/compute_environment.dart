@@ -1170,10 +1170,24 @@ class ComputeEnvironment extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     computeResources = registerOutput<ComputeEnvironmentComputeResources>(
       'computeResources',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ComputeEnvironmentComputeResources.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     ecsClusterArn = registerOutput<String>('ecsClusterArn');
     eksConfiguration = registerOutput<ComputeEnvironmentEksConfiguration?>(
       'eksConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ComputeEnvironmentEksConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
@@ -1187,6 +1201,13 @@ class ComputeEnvironment extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     updatePolicy = registerOutput<ComputeEnvironmentUpdatePolicy>(
       'updatePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ComputeEnvironmentUpdatePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -1216,10 +1237,24 @@ class ComputeEnvironment extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     computeResources = registerOutput<ComputeEnvironmentComputeResources>(
       'computeResources',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ComputeEnvironmentComputeResources.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     ecsClusterArn = registerOutput<String>('ecsClusterArn');
     eksConfiguration = registerOutput<ComputeEnvironmentEksConfiguration?>(
       'eksConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ComputeEnvironmentEksConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
@@ -1233,6 +1268,13 @@ class ComputeEnvironment extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     updatePolicy = registerOutput<ComputeEnvironmentUpdatePolicy>(
       'updatePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ComputeEnvironmentUpdatePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

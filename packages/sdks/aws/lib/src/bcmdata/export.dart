@@ -378,10 +378,28 @@ class Export extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     arn = registerOutput<String>('arn');
-    export = registerOutput<ExportExport?>('export');
+    export = registerOutput<ExportExport?>(
+      'export',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExportExport.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ExportTimeouts?>('timeouts');
+    timeouts = registerOutput<ExportTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExportTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Export] resource's state with the given [name] and [id].
@@ -408,9 +426,27 @@ class Export extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    export = registerOutput<ExportExport?>('export');
+    export = registerOutput<ExportExport?>(
+      'export',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExportExport.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ExportTimeouts?>('timeouts');
+    timeouts = registerOutput<ExportTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExportTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

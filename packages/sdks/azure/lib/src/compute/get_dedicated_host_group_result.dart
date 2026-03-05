@@ -1,20 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getDedicatedHostGroup.
 class GetDedicatedHostGroupResult {
   /// Whether virtual machines or virtual machine scale sets be placed automatically on this Dedicated Host Group.
   final bool automaticPlacementEnabled;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The Azure location where the Dedicated Host Group exists.
   final String location;
   final String name;
+
   /// The number of fault domains that the Dedicated Host Group spans.
   final int platformFaultDomainCount;
   final String resourceGroupName;
+
   /// A mapping of tags assigned to the resource.
   final Map<String, String> tags;
+
   /// A list of Availability Zones in which this Dedicated Host Group is located.
   final List<String> zones;
 
@@ -64,4 +68,3 @@ class GetDedicatedHostGroupResult {
     );
   }
 }
-

@@ -569,7 +569,16 @@ class Service extends pulumi.CustomResource {
       'customerManagedKeyEnforcementEnabled',
     );
     hostingMode = registerOutput<String?>('hostingMode');
-    identity = registerOutput<ServiceIdentity?>('identity');
+    identity = registerOutput<ServiceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     localAuthenticationEnabled = registerOutput<bool?>(
       'localAuthenticationEnabled',
     );
@@ -626,7 +635,16 @@ class Service extends pulumi.CustomResource {
       'customerManagedKeyEnforcementEnabled',
     );
     hostingMode = registerOutput<String?>('hostingMode');
-    identity = registerOutput<ServiceIdentity?>('identity');
+    identity = registerOutput<ServiceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     localAuthenticationEnabled = registerOutput<bool?>(
       'localAuthenticationEnabled',
     );

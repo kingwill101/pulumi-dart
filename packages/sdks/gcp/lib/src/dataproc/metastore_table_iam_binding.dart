@@ -1006,7 +1006,16 @@ class MetastoreTableIamBinding extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<MetastoreTableIamBindingCondition?>('condition');
+    condition = registerOutput<MetastoreTableIamBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MetastoreTableIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     databaseId = registerOutput<String>('databaseId');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
@@ -1040,7 +1049,16 @@ class MetastoreTableIamBinding extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<MetastoreTableIamBindingCondition?>('condition');
+    condition = registerOutput<MetastoreTableIamBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MetastoreTableIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     databaseId = registerOutput<String>('databaseId');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');

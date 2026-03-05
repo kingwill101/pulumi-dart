@@ -223,11 +223,27 @@ class SnapshotImport extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    clientData = registerOutput<SnapshotImportClientData?>('clientData');
+    clientData = registerOutput<SnapshotImportClientData?>(
+      'clientData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SnapshotImportClientData.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dataEncryptionKeyId = registerOutput<String>('dataEncryptionKeyId');
     description = registerOutput<String>('description');
     diskContainer = registerOutput<SnapshotImportDiskContainer>(
       'diskContainer',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SnapshotImportDiskContainer.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     encrypted = registerOutput<bool?>('encrypted');
     kmsKeyId = registerOutput<String?>('kmsKeyId');
@@ -269,11 +285,27 @@ class SnapshotImport extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    clientData = registerOutput<SnapshotImportClientData?>('clientData');
+    clientData = registerOutput<SnapshotImportClientData?>(
+      'clientData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SnapshotImportClientData.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dataEncryptionKeyId = registerOutput<String>('dataEncryptionKeyId');
     description = registerOutput<String>('description');
     diskContainer = registerOutput<SnapshotImportDiskContainer>(
       'diskContainer',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SnapshotImportDiskContainer.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     encrypted = registerOutput<bool?>('encrypted');
     kmsKeyId = registerOutput<String?>('kmsKeyId');

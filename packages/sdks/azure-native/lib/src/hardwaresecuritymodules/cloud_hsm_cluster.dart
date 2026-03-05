@@ -83,7 +83,16 @@ class CloudHsmCluster extends pulumi.CustomResource {
     );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     hsms = registerOutput<List<Map<String, dynamic>>>('hsms');
-    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    identity = registerOutput<ManagedServiceIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedServiceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
@@ -91,9 +100,27 @@ class CloudHsmCluster extends pulumi.CustomResource {
     );
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    sku = registerOutput<CloudHsmClusterSkuResponse?>('sku');
+    sku = registerOutput<CloudHsmClusterSkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CloudHsmClusterSkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     statusMessage = registerOutput<String>('statusMessage');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

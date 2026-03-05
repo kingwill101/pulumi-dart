@@ -493,9 +493,23 @@ class FailoverGroup extends pulumi.CustomResource {
     );
     readOnlyEndpoint = registerOutput<FailoverGroupReadOnlyEndpointResponse?>(
       'readOnlyEndpoint',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FailoverGroupReadOnlyEndpointResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     readWriteEndpoint = registerOutput<FailoverGroupReadWriteEndpointResponse>(
       'readWriteEndpoint',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FailoverGroupReadWriteEndpointResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     replicationRole = registerOutput<String>('replicationRole');
     replicationState = registerOutput<String>('replicationState');

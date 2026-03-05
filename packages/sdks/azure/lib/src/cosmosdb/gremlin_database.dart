@@ -198,6 +198,13 @@ class GremlinDatabase extends pulumi.CustomResource {
     accountName = registerOutput<String>('accountName');
     autoscaleSettings = registerOutput<GremlinDatabaseAutoscaleSettings?>(
       'autoscaleSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GremlinDatabaseAutoscaleSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -230,6 +237,13 @@ class GremlinDatabase extends pulumi.CustomResource {
     accountName = registerOutput<String>('accountName');
     autoscaleSettings = registerOutput<GremlinDatabaseAutoscaleSettings?>(
       'autoscaleSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GremlinDatabaseAutoscaleSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

@@ -140,7 +140,16 @@ class InstanceDesiredState extends pulumi.CustomResource {
     identifier = registerOutput<String>('identifier');
     region = registerOutput<String>('region');
     state = registerOutput<String>('state');
-    timeouts = registerOutput<InstanceDesiredStateTimeouts?>('timeouts');
+    timeouts = registerOutput<InstanceDesiredStateTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceDesiredStateTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [InstanceDesiredState] resource's state with the given [name] and [id].
@@ -169,6 +178,15 @@ class InstanceDesiredState extends pulumi.CustomResource {
     identifier = registerOutput<String>('identifier');
     region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');
-    timeouts = registerOutput<InstanceDesiredStateTimeouts?>('timeouts');
+    timeouts = registerOutput<InstanceDesiredStateTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceDesiredStateTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

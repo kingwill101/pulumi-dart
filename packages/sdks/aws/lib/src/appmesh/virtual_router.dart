@@ -228,7 +228,16 @@ class VirtualRouter extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     resourceOwner = registerOutput<String>('resourceOwner');
-    spec = registerOutput<VirtualRouterSpec>('spec');
+    spec = registerOutput<VirtualRouterSpec>(
+      'spec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualRouterSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
@@ -264,7 +273,16 @@ class VirtualRouter extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     resourceOwner = registerOutput<String>('resourceOwner');
-    spec = registerOutput<VirtualRouterSpec>('spec');
+    spec = registerOutput<VirtualRouterSpec>(
+      'spec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualRouterSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }

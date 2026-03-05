@@ -1912,6 +1912,13 @@ class WebRegionBackendServiceIamBinding extends pulumi.CustomResource {
        ) {
     condition = registerOutput<WebRegionBackendServiceIamBindingCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebRegionBackendServiceIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     members = registerOutput<List<String>>('members');
@@ -1946,6 +1953,13 @@ class WebRegionBackendServiceIamBinding extends pulumi.CustomResource {
        ) {
     condition = registerOutput<WebRegionBackendServiceIamBindingCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebRegionBackendServiceIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     members = registerOutput<List<String>>('members');

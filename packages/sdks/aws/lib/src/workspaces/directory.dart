@@ -1313,11 +1313,25 @@ class Directory extends pulumi.CustomResource {
        ) {
     activeDirectoryConfig = registerOutput<DirectoryActiveDirectoryConfig?>(
       'activeDirectoryConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DirectoryActiveDirectoryConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     alias = registerOutput<String>('alias');
     certificateBasedAuthProperties =
         registerOutput<DirectoryCertificateBasedAuthProperties>(
           'certificateBasedAuthProperties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DirectoryCertificateBasedAuthProperties.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     customerUserName = registerOutput<String>('customerUserName');
     directoryId = registerOutput<String>('directoryId');
@@ -1328,9 +1342,25 @@ class Directory extends pulumi.CustomResource {
     ipGroupIds = registerOutput<List<String>>('ipGroupIds');
     region = registerOutput<String>('region');
     registrationCode = registerOutput<String>('registrationCode');
-    samlProperties = registerOutput<DirectorySamlProperties>('samlProperties');
+    samlProperties = registerOutput<DirectorySamlProperties>(
+      'samlProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DirectorySamlProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     selfServicePermissions = registerOutput<DirectorySelfServicePermissions>(
       'selfServicePermissions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DirectorySelfServicePermissions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     subnetIds = registerOutput<List<String>>('subnetIds');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -1340,10 +1370,24 @@ class Directory extends pulumi.CustomResource {
     workspaceAccessProperties =
         registerOutput<DirectoryWorkspaceAccessProperties>(
           'workspaceAccessProperties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DirectoryWorkspaceAccessProperties.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     workspaceCreationProperties =
         registerOutput<DirectoryWorkspaceCreationProperties>(
           'workspaceCreationProperties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DirectoryWorkspaceCreationProperties.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     workspaceDirectoryDescription = registerOutput<String?>(
       'workspaceDirectoryDescription',
@@ -1380,11 +1424,25 @@ class Directory extends pulumi.CustomResource {
        ) {
     activeDirectoryConfig = registerOutput<DirectoryActiveDirectoryConfig?>(
       'activeDirectoryConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DirectoryActiveDirectoryConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     alias = registerOutput<String>('alias');
     certificateBasedAuthProperties =
         registerOutput<DirectoryCertificateBasedAuthProperties>(
           'certificateBasedAuthProperties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DirectoryCertificateBasedAuthProperties.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     customerUserName = registerOutput<String>('customerUserName');
     directoryId = registerOutput<String>('directoryId');
@@ -1395,9 +1453,25 @@ class Directory extends pulumi.CustomResource {
     ipGroupIds = registerOutput<List<String>>('ipGroupIds');
     region = registerOutput<String>('region');
     registrationCode = registerOutput<String>('registrationCode');
-    samlProperties = registerOutput<DirectorySamlProperties>('samlProperties');
+    samlProperties = registerOutput<DirectorySamlProperties>(
+      'samlProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DirectorySamlProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     selfServicePermissions = registerOutput<DirectorySelfServicePermissions>(
       'selfServicePermissions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DirectorySelfServicePermissions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     subnetIds = registerOutput<List<String>>('subnetIds');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -1407,10 +1481,24 @@ class Directory extends pulumi.CustomResource {
     workspaceAccessProperties =
         registerOutput<DirectoryWorkspaceAccessProperties>(
           'workspaceAccessProperties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DirectoryWorkspaceAccessProperties.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     workspaceCreationProperties =
         registerOutput<DirectoryWorkspaceCreationProperties>(
           'workspaceCreationProperties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DirectoryWorkspaceCreationProperties.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     workspaceDirectoryDescription = registerOutput<String?>(
       'workspaceDirectoryDescription',

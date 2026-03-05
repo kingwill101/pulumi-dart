@@ -272,7 +272,16 @@ class Curation extends pulumi.CustomResource {
     curationId = registerOutput<String>('curationId');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    endpoint = registerOutput<CurationEndpoint>('endpoint');
+    endpoint = registerOutput<CurationEndpoint>(
+      'endpoint',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CurationEndpoint.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     lastExecutionErrorCode = registerOutput<String>('lastExecutionErrorCode');
     lastExecutionErrorMessage = registerOutput<String>(
       'lastExecutionErrorMessage',
@@ -314,7 +323,16 @@ class Curation extends pulumi.CustomResource {
     curationId = registerOutput<String>('curationId');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    endpoint = registerOutput<CurationEndpoint>('endpoint');
+    endpoint = registerOutput<CurationEndpoint>(
+      'endpoint',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CurationEndpoint.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     lastExecutionErrorCode = registerOutput<String>('lastExecutionErrorCode');
     lastExecutionErrorMessage = registerOutput<String>(
       'lastExecutionErrorMessage',

@@ -247,8 +247,26 @@ class Webhook extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');
     runOn = registerOutput<String?>('runOn');
-    runbook = registerOutput<RunbookAssociationPropertyResponse?>('runbook');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    runbook = registerOutput<RunbookAssociationPropertyResponse?>(
+      'runbook',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RunbookAssociationPropertyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     uri = registerOutput<String?>('uri');
   }

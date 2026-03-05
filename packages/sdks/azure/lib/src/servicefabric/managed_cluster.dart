@@ -336,6 +336,13 @@ class ManagedCluster extends pulumi.CustomResource {
        ) {
     authentication = registerOutput<ManagedClusterAuthentication?>(
       'authentication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedClusterAuthentication.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     backupServiceEnabled = registerOutput<bool?>('backupServiceEnabled');
     clientConnectionPort = registerOutput<int>('clientConnectionPort');
@@ -383,6 +390,13 @@ class ManagedCluster extends pulumi.CustomResource {
        ) {
     authentication = registerOutput<ManagedClusterAuthentication?>(
       'authentication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedClusterAuthentication.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     backupServiceEnabled = registerOutput<bool?>('backupServiceEnabled');
     clientConnectionPort = registerOutput<int>('clientConnectionPort');

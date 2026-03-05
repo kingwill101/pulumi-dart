@@ -183,6 +183,13 @@ class AccessPolicyAssociation extends pulumi.CustomResource {
        ) {
     accessScope = registerOutput<AccessPolicyAssociationAccessScope>(
       'accessScope',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccessPolicyAssociationAccessScope.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     associatedAt = registerOutput<String>('associatedAt');
     clusterName = registerOutput<String>('clusterName');
@@ -217,6 +224,13 @@ class AccessPolicyAssociation extends pulumi.CustomResource {
        ) {
     accessScope = registerOutput<AccessPolicyAssociationAccessScope>(
       'accessScope',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccessPolicyAssociationAccessScope.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     associatedAt = registerOutput<String>('associatedAt');
     clusterName = registerOutput<String>('clusterName');

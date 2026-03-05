@@ -571,10 +571,28 @@ class ListenerRule extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    action = registerOutput<ListenerRuleAction>('action');
+    action = registerOutput<ListenerRuleAction>(
+      'action',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ListenerRuleAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     arn = registerOutput<String>('arn');
     listenerIdentifier = registerOutput<String>('listenerIdentifier');
-    match = registerOutput<ListenerRuleMatch>('match');
+    match = registerOutput<ListenerRuleMatch>(
+      'match',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ListenerRuleMatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     priority = registerOutput<int>('priority');
     region = registerOutput<String>('region');
@@ -607,10 +625,28 @@ class ListenerRule extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    action = registerOutput<ListenerRuleAction>('action');
+    action = registerOutput<ListenerRuleAction>(
+      'action',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ListenerRuleAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     arn = registerOutput<String>('arn');
     listenerIdentifier = registerOutput<String>('listenerIdentifier');
-    match = registerOutput<ListenerRuleMatch>('match');
+    match = registerOutput<ListenerRuleMatch>(
+      'match',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ListenerRuleMatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     priority = registerOutput<int>('priority');
     region = registerOutput<String>('region');

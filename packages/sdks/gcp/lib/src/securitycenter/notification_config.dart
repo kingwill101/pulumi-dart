@@ -234,6 +234,13 @@ class NotificationConfig extends pulumi.CustomResource {
     serviceAccount = registerOutput<String>('serviceAccount');
     streamingConfig = registerOutput<NotificationConfigStreamingConfig>(
       'streamingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NotificationConfigStreamingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -268,6 +275,13 @@ class NotificationConfig extends pulumi.CustomResource {
     serviceAccount = registerOutput<String>('serviceAccount');
     streamingConfig = registerOutput<NotificationConfigStreamingConfig>(
       'streamingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NotificationConfigStreamingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

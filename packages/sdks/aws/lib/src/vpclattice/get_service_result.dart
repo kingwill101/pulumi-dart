@@ -7,21 +7,28 @@ import 'get_service_dns_entry.dart';
 class GetServiceResult {
   /// ARN of the service.
   final String arn;
+
   /// Type of IAM policy. Either `NONE` or `AWS_IAM`.
   final String authType;
+
   /// Amazon Resource Name (ARN) of the certificate.
   final String certificateArn;
+
   /// Custom domain name of the service.
   final String customDomainName;
+
   /// List of objects with DNS names.
   final List<GetServiceDnsEntry> dnsEntries;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
   final String region;
   final String serviceIdentifier;
+
   /// Status of the service.
   final String status;
+
   /// List of tags associated with the service.
   final Map<String, String> tags;
 
@@ -57,7 +64,11 @@ class GetServiceResult {
       'authType': authType,
       'certificateArn': certificateArn,
       'customDomainName': customDomainName,
-      'dnsEntries': pulumi.Input.encodeList<GetServiceDnsEntry, Map<String, dynamic>>(dnsEntries, (value) => value.toMap()),
+      'dnsEntries':
+          pulumi.Input.encodeList<GetServiceDnsEntry, Map<String, dynamic>>(
+            dnsEntries,
+            (value) => value.toMap(),
+          ),
       'id': id,
       'name': name,
       'region': region,
@@ -73,7 +84,11 @@ class GetServiceResult {
       authType: map['authType'] as String,
       certificateArn: map['certificateArn'] as String,
       customDomainName: map['customDomainName'] as String,
-      dnsEntries: pulumi.Input.decodeList<GetServiceDnsEntry>(map['dnsEntries']!, (value) => GetServiceDnsEntry.fromMap((value as Map).cast<String, dynamic>())),
+      dnsEntries: pulumi.Input.decodeList<GetServiceDnsEntry>(
+        map['dnsEntries']!,
+        (value) =>
+            GetServiceDnsEntry.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       id: map['id'] as String,
       name: map['name'] as String,
       region: map['region'] as String,
@@ -83,4 +98,3 @@ class GetServiceResult {
     );
   }
 }
-

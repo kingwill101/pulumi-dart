@@ -45,6 +45,13 @@ class Table extends pulumi.CustomResource {
       ) {
     changeStreamConfig = registerOutput<ChangeStreamConfigResponse>(
       'changeStreamConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ChangeStreamConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clusterStates = registerOutput<Map<String, String>>('clusterStates');
     columnFamilies = registerOutput<Map<String, String>>('columnFamilies');
@@ -53,7 +60,25 @@ class Table extends pulumi.CustomResource {
     instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    restoreInfo = registerOutput<RestoreInfoResponse>('restoreInfo');
-    stats = registerOutput<TableStatsResponse>('stats');
+    restoreInfo = registerOutput<RestoreInfoResponse>(
+      'restoreInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RestoreInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    stats = registerOutput<TableStatsResponse>(
+      'stats',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TableStatsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

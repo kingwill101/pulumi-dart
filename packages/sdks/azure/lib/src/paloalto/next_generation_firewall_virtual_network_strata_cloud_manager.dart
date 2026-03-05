@@ -711,18 +711,45 @@ class NextGenerationFirewallVirtualNetworkStrataCloudManager
     dnsSettings =
         registerOutput<
           NextGenerationFirewallVirtualNetworkStrataCloudManagerDnsSettings?
-        >('dnsSettings');
+        >(
+          'dnsSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NextGenerationFirewallVirtualNetworkStrataCloudManagerDnsSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     identity =
         registerOutput<
           NextGenerationFirewallVirtualNetworkStrataCloudManagerIdentity?
-        >('identity');
+        >(
+          'identity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NextGenerationFirewallVirtualNetworkStrataCloudManagerIdentity.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     location = registerOutput<String>('location');
     marketplaceOfferId = registerOutput<String?>('marketplaceOfferId');
     this.name = registerOutput<String>('name');
     networkProfile =
         registerOutput<
           NextGenerationFirewallVirtualNetworkStrataCloudManagerNetworkProfile
-        >('networkProfile');
+        >(
+          'networkProfile',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NextGenerationFirewallVirtualNetworkStrataCloudManagerNetworkProfile.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     planId = registerOutput<String?>('planId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     strataCloudManagerTenantName = registerOutput<String>(
@@ -760,18 +787,45 @@ class NextGenerationFirewallVirtualNetworkStrataCloudManager
     dnsSettings =
         registerOutput<
           NextGenerationFirewallVirtualNetworkStrataCloudManagerDnsSettings?
-        >('dnsSettings');
+        >(
+          'dnsSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NextGenerationFirewallVirtualNetworkStrataCloudManagerDnsSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     identity =
         registerOutput<
           NextGenerationFirewallVirtualNetworkStrataCloudManagerIdentity?
-        >('identity');
+        >(
+          'identity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NextGenerationFirewallVirtualNetworkStrataCloudManagerIdentity.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     location = registerOutput<String>('location');
     marketplaceOfferId = registerOutput<String?>('marketplaceOfferId');
     this.name = registerOutput<String>('name');
     networkProfile =
         registerOutput<
           NextGenerationFirewallVirtualNetworkStrataCloudManagerNetworkProfile
-        >('networkProfile');
+        >(
+          'networkProfile',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NextGenerationFirewallVirtualNetworkStrataCloudManagerNetworkProfile.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     planId = registerOutput<String?>('planId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     strataCloudManagerTenantName = registerOutput<String>(

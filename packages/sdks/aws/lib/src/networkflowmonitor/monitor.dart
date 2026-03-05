@@ -284,7 +284,16 @@ class Monitor extends pulumi.CustomResource {
     scopeArn = registerOutput<String>('scopeArn');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<MonitorTimeouts?>('timeouts');
+    timeouts = registerOutput<MonitorTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MonitorTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Monitor] resource's state with the given [name] and [id].
@@ -322,6 +331,15 @@ class Monitor extends pulumi.CustomResource {
     scopeArn = registerOutput<String>('scopeArn');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<MonitorTimeouts?>('timeouts');
+    timeouts = registerOutput<MonitorTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MonitorTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

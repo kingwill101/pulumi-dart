@@ -522,9 +522,25 @@ class ResourceCollection extends pulumi.CustomResource {
        ) {
     cloudformation = registerOutput<ResourceCollectionCloudformation?>(
       'cloudformation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceCollectionCloudformation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
-    tags = registerOutput<ResourceCollectionTags?>('tags');
+    tags = registerOutput<ResourceCollectionTags?>(
+      'tags',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceCollectionTags.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 
@@ -553,9 +569,25 @@ class ResourceCollection extends pulumi.CustomResource {
        ) {
     cloudformation = registerOutput<ResourceCollectionCloudformation?>(
       'cloudformation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceCollectionCloudformation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
-    tags = registerOutput<ResourceCollectionTags?>('tags');
+    tags = registerOutput<ResourceCollectionTags?>(
+      'tags',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceCollectionTags.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

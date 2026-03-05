@@ -181,7 +181,16 @@ class AwsLogSource extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     region = registerOutput<String>('region');
-    source = registerOutput<AwsLogSourceSource>('source');
+    source = registerOutput<AwsLogSourceSource>(
+      'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsLogSourceSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [AwsLogSource] resource's state with the given [name] and [id].
@@ -208,6 +217,15 @@ class AwsLogSource extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     region = registerOutput<String>('region');
-    source = registerOutput<AwsLogSourceSource>('source');
+    source = registerOutput<AwsLogSourceSource>(
+      'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsLogSourceSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

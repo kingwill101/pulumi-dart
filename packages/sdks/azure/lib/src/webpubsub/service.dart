@@ -306,8 +306,26 @@ class Service extends pulumi.CustomResource {
     capacity = registerOutput<int?>('capacity');
     externalIp = registerOutput<String>('externalIp');
     hostname = registerOutput<String>('hostname');
-    identity = registerOutput<ServiceIdentity?>('identity');
-    liveTrace = registerOutput<ServiceLiveTrace?>('liveTrace');
+    identity = registerOutput<ServiceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    liveTrace = registerOutput<ServiceLiveTrace?>(
+      'liveTrace',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceLiveTrace.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -356,8 +374,26 @@ class Service extends pulumi.CustomResource {
     capacity = registerOutput<int?>('capacity');
     externalIp = registerOutput<String>('externalIp');
     hostname = registerOutput<String>('hostname');
-    identity = registerOutput<ServiceIdentity?>('identity');
-    liveTrace = registerOutput<ServiceLiveTrace?>('liveTrace');
+    identity = registerOutput<ServiceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    liveTrace = registerOutput<ServiceLiveTrace?>(
+      'liveTrace',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceLiveTrace.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

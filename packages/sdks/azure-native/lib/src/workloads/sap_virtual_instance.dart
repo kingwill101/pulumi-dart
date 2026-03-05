@@ -19761,15 +19761,47 @@ class SapVirtualInstance extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     configuration = registerOutput<DeploymentConfigurationResponse>(
       'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     environment = registerOutput<String>('environment');
-    errors = registerOutput<SAPVirtualInstanceErrorResponse>('errors');
+    errors = registerOutput<SAPVirtualInstanceErrorResponse>(
+      'errors',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SAPVirtualInstanceErrorResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     health = registerOutput<String>('health');
-    identity = registerOutput<SAPVirtualInstanceIdentityResponse?>('identity');
+    identity = registerOutput<SAPVirtualInstanceIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SAPVirtualInstanceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     managedResourceGroupConfiguration =
         registerOutput<ManagedRGConfigurationResponse?>(
           'managedResourceGroupConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ManagedRGConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     managedResourcesNetworkAccessType = registerOutput<String?>(
       'managedResourcesNetworkAccessType',
@@ -19779,7 +19811,16 @@ class SapVirtualInstance extends pulumi.CustomResource {
     sapProduct = registerOutput<String>('sapProduct');
     state = registerOutput<String>('state');
     status = registerOutput<String>('status');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

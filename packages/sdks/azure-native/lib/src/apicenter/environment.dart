@@ -270,9 +270,36 @@ class Environment extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    onboarding = registerOutput<OnboardingResponse?>('onboarding');
-    server = registerOutput<EnvironmentServerResponse?>('server');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    onboarding = registerOutput<OnboardingResponse?>(
+      'onboarding',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OnboardingResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    server = registerOutput<EnvironmentServerResponse?>(
+      'server',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnvironmentServerResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     title = registerOutput<String>('title');
     type = registerOutput<String>('type');
   }

@@ -485,13 +485,29 @@ class Gateway extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     destinationNetwork = registerOutput<NetworkRefResponse>(
       'destinationNetwork',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkRefResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     http = registerOutput<List<Map<String, dynamic>>?>('http');
     ipAddress = registerOutput<String>('ipAddress');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    sourceNetwork = registerOutput<NetworkRefResponse>('sourceNetwork');
+    sourceNetwork = registerOutput<NetworkRefResponse>(
+      'sourceNetwork',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkRefResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String>('status');
     statusDetails = registerOutput<String>('statusDetails');
     tags = registerOutput<Map<String, String>?>('tags');

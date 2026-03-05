@@ -537,13 +537,36 @@ class Pipeline extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    bufferOptions = registerOutput<PipelineBufferOptions?>('bufferOptions');
+    bufferOptions = registerOutput<PipelineBufferOptions?>(
+      'bufferOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineBufferOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     encryptionAtRestOptions = registerOutput<PipelineEncryptionAtRestOptions?>(
       'encryptionAtRestOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineEncryptionAtRestOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     ingestEndpointUrls = registerOutput<List<String>>('ingestEndpointUrls');
     logPublishingOptions = registerOutput<PipelineLogPublishingOptions?>(
       'logPublishingOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineLogPublishingOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     maxUnits = registerOutput<int>('maxUnits');
     minUnits = registerOutput<int>('minUnits');
@@ -556,8 +579,26 @@ class Pipeline extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<PipelineTimeouts?>('timeouts');
-    vpcOptions = registerOutput<PipelineVpcOptions?>('vpcOptions');
+    timeouts = registerOutput<PipelineTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    vpcOptions = registerOutput<PipelineVpcOptions?>(
+      'vpcOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineVpcOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Pipeline] resource's state with the given [name] and [id].
@@ -583,13 +624,36 @@ class Pipeline extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    bufferOptions = registerOutput<PipelineBufferOptions?>('bufferOptions');
+    bufferOptions = registerOutput<PipelineBufferOptions?>(
+      'bufferOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineBufferOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     encryptionAtRestOptions = registerOutput<PipelineEncryptionAtRestOptions?>(
       'encryptionAtRestOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineEncryptionAtRestOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     ingestEndpointUrls = registerOutput<List<String>>('ingestEndpointUrls');
     logPublishingOptions = registerOutput<PipelineLogPublishingOptions?>(
       'logPublishingOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineLogPublishingOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     maxUnits = registerOutput<int>('maxUnits');
     minUnits = registerOutput<int>('minUnits');
@@ -602,7 +666,25 @@ class Pipeline extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<PipelineTimeouts?>('timeouts');
-    vpcOptions = registerOutput<PipelineVpcOptions?>('vpcOptions');
+    timeouts = registerOutput<PipelineTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    vpcOptions = registerOutput<PipelineVpcOptions?>(
+      'vpcOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineVpcOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

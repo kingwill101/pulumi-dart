@@ -1911,7 +1911,16 @@ class TunnelInstanceIAMMember extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<TunnelInstanceIAMMemberCondition?>('condition');
+    condition = registerOutput<TunnelInstanceIAMMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TunnelInstanceIAMMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     instance = registerOutput<String>('instance');
     member = registerOutput<String>('member');
@@ -1943,7 +1952,16 @@ class TunnelInstanceIAMMember extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<TunnelInstanceIAMMemberCondition?>('condition');
+    condition = registerOutput<TunnelInstanceIAMMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TunnelInstanceIAMMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     instance = registerOutput<String>('instance');
     member = registerOutput<String>('member');

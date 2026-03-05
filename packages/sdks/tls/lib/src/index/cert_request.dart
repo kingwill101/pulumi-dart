@@ -181,7 +181,16 @@ class CertRequest extends pulumi.CustomResource {
     ipAddresses = registerOutput<List<String>?>('ipAddresses');
     keyAlgorithm = registerOutput<String>('keyAlgorithm');
     privateKeyPem = registerOutput<String>('privateKeyPem');
-    subject = registerOutput<CertRequestSubject?>('subject');
+    subject = registerOutput<CertRequestSubject?>(
+      'subject',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CertRequestSubject.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     uris = registerOutput<List<String>?>('uris');
   }
 
@@ -213,7 +222,16 @@ class CertRequest extends pulumi.CustomResource {
     ipAddresses = registerOutput<List<String>?>('ipAddresses');
     keyAlgorithm = registerOutput<String>('keyAlgorithm');
     privateKeyPem = registerOutput<String>('privateKeyPem');
-    subject = registerOutput<CertRequestSubject?>('subject');
+    subject = registerOutput<CertRequestSubject?>(
+      'subject',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CertRequestSubject.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     uris = registerOutput<List<String>?>('uris');
   }
 }

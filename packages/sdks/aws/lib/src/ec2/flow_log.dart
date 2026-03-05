@@ -1687,6 +1687,13 @@ class FlowLog extends pulumi.CustomResource {
     );
     destinationOptions = registerOutput<FlowLogDestinationOptions?>(
       'destinationOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FlowLogDestinationOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     eniId = registerOutput<String?>('eniId');
     iamRoleArn = registerOutput<String?>('iamRoleArn');
@@ -1736,6 +1743,13 @@ class FlowLog extends pulumi.CustomResource {
     );
     destinationOptions = registerOutput<FlowLogDestinationOptions?>(
       'destinationOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FlowLogDestinationOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     eniId = registerOutput<String?>('eniId');
     iamRoleArn = registerOutput<String?>('iamRoleArn');

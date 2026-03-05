@@ -83,6 +83,13 @@ class EndpointAiplatformV1beta1 extends pulumi.CustomResource {
     encryptionSpec =
         registerOutput<GoogleCloudAiplatformV1beta1EncryptionSpecResponse>(
           'encryptionSpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1beta1EncryptionSpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     endpointId = registerOutput<String?>('endpointId');
     etag = registerOutput<String>('etag');
@@ -96,7 +103,16 @@ class EndpointAiplatformV1beta1 extends pulumi.CustomResource {
     predictRequestResponseLoggingConfig =
         registerOutput<
           GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigResponse
-        >('predictRequestResponseLoggingConfig');
+        >(
+          'predictRequestResponseLoggingConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     project = registerOutput<String>('project');
     trafficSplit = registerOutput<Map<String, String>>('trafficSplit');
     updateTime = registerOutput<String>('updateTime');

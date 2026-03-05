@@ -381,7 +381,16 @@ class DataRepositoryAssociation extends pulumi.CustomResource {
     fileSystemPath = registerOutput<String>('fileSystemPath');
     importedFileChunkSize = registerOutput<int>('importedFileChunkSize');
     region = registerOutput<String>('region');
-    s3 = registerOutput<DataRepositoryAssociationS3>('s3');
+    s3 = registerOutput<DataRepositoryAssociationS3>(
+      's3',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataRepositoryAssociationS3.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
@@ -420,7 +429,16 @@ class DataRepositoryAssociation extends pulumi.CustomResource {
     fileSystemPath = registerOutput<String>('fileSystemPath');
     importedFileChunkSize = registerOutput<int>('importedFileChunkSize');
     region = registerOutput<String>('region');
-    s3 = registerOutput<DataRepositoryAssociationS3>('s3');
+    s3 = registerOutput<DataRepositoryAssociationS3>(
+      's3',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataRepositoryAssociationS3.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }

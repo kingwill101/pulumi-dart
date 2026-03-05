@@ -757,7 +757,16 @@ class Custom extends pulumi.CustomResource {
     spotStrategy = registerOutput<String?>('spotStrategy');
     status = registerOutput<String>('status');
     supportCase = registerOutput<String?>('supportCase');
-    systemDisk = registerOutput<CustomSystemDisk?>('systemDisk');
+    systemDisk = registerOutput<CustomSystemDisk?>(
+      'systemDisk',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomSystemDisk.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     vswitchId = registerOutput<String>('vswitchId');
     zoneId = registerOutput<String?>('zoneId');
@@ -818,7 +827,16 @@ class Custom extends pulumi.CustomResource {
     spotStrategy = registerOutput<String?>('spotStrategy');
     status = registerOutput<String>('status');
     supportCase = registerOutput<String?>('supportCase');
-    systemDisk = registerOutput<CustomSystemDisk?>('systemDisk');
+    systemDisk = registerOutput<CustomSystemDisk?>(
+      'systemDisk',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomSystemDisk.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     vswitchId = registerOutput<String>('vswitchId');
     zoneId = registerOutput<String?>('zoneId');

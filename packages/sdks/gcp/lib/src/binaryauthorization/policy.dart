@@ -605,6 +605,13 @@ class Policy extends pulumi.CustomResource {
     );
     defaultAdmissionRule = registerOutput<PolicyDefaultAdmissionRule>(
       'defaultAdmissionRule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyDefaultAdmissionRule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     globalPolicyEvaluationMode = registerOutput<String>(
@@ -644,6 +651,13 @@ class Policy extends pulumi.CustomResource {
     );
     defaultAdmissionRule = registerOutput<PolicyDefaultAdmissionRule>(
       'defaultAdmissionRule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyDefaultAdmissionRule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     globalPolicyEvaluationMode = registerOutput<String>(

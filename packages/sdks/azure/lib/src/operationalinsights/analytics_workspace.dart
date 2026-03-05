@@ -254,7 +254,16 @@ class AnalyticsWorkspace extends pulumi.CustomResource {
     cmkForQueryForced = registerOutput<bool?>('cmkForQueryForced');
     dailyQuotaGb = registerOutput<double?>('dailyQuotaGb');
     dataCollectionRuleId = registerOutput<String?>('dataCollectionRuleId');
-    identity = registerOutput<AnalyticsWorkspaceIdentity?>('identity');
+    identity = registerOutput<AnalyticsWorkspaceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AnalyticsWorkspaceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     immediateDataPurgeOn30DaysEnabled = registerOutput<bool?>(
       'immediateDataPurgeOn30DaysEnabled',
     );
@@ -311,7 +320,16 @@ class AnalyticsWorkspace extends pulumi.CustomResource {
     cmkForQueryForced = registerOutput<bool?>('cmkForQueryForced');
     dailyQuotaGb = registerOutput<double?>('dailyQuotaGb');
     dataCollectionRuleId = registerOutput<String?>('dataCollectionRuleId');
-    identity = registerOutput<AnalyticsWorkspaceIdentity?>('identity');
+    identity = registerOutput<AnalyticsWorkspaceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AnalyticsWorkspaceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     immediateDataPurgeOn30DaysEnabled = registerOutput<bool?>(
       'immediateDataPurgeOn30DaysEnabled',
     );

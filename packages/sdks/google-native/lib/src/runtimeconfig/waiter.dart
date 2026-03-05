@@ -46,12 +46,39 @@ class Waiter extends pulumi.CustomResource {
     configId = registerOutput<String>('configId');
     createTime = registerOutput<String>('createTime');
     done = registerOutput<bool>('done');
-    error = registerOutput<StatusResponse>('error');
-    failure = registerOutput<EndConditionResponse>('failure');
+    error = registerOutput<StatusResponse>(
+      'error',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    failure = registerOutput<EndConditionResponse>(
+      'failure',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndConditionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');
-    success = registerOutput<EndConditionResponse>('success');
+    success = registerOutput<EndConditionResponse>(
+      'success',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndConditionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     timeout = registerOutput<String>('timeout');
   }
 }

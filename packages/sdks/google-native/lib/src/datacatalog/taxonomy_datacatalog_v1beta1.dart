@@ -57,10 +57,24 @@ class TaxonomyDatacatalogV1beta1 extends pulumi.CustomResource {
     service =
         registerOutput<GoogleCloudDatacatalogV1beta1TaxonomyServiceResponse>(
           'service',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDatacatalogV1beta1TaxonomyServiceResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     taxonomyTimestamps =
         registerOutput<GoogleCloudDatacatalogV1beta1SystemTimestampsResponse>(
           'taxonomyTimestamps',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDatacatalogV1beta1SystemTimestampsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

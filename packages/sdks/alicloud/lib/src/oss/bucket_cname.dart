@@ -310,7 +310,16 @@ class BucketCname extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     bucket = registerOutput<String>('bucket');
-    certificate = registerOutput<BucketCnameCertificate?>('certificate');
+    certificate = registerOutput<BucketCnameCertificate?>(
+      'certificate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketCnameCertificate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     deleteCertificate = registerOutput<bool?>('deleteCertificate');
     domain = registerOutput<String>('domain');
     force = registerOutput<bool?>('force');
@@ -342,7 +351,16 @@ class BucketCname extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     bucket = registerOutput<String>('bucket');
-    certificate = registerOutput<BucketCnameCertificate?>('certificate');
+    certificate = registerOutput<BucketCnameCertificate?>(
+      'certificate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketCnameCertificate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     deleteCertificate = registerOutput<bool?>('deleteCertificate');
     domain = registerOutput<String>('domain');
     force = registerOutput<bool?>('force');

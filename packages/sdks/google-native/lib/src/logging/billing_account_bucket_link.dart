@@ -42,6 +42,13 @@ class BillingAccountBucketLink extends pulumi.CustomResource {
        ) {
     bigqueryDataset = registerOutput<BigQueryDatasetResponse>(
       'bigqueryDataset',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BigQueryDatasetResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     billingAccountId = registerOutput<String>('billingAccountId');
     bucketId = registerOutput<String>('bucketId');

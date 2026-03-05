@@ -279,6 +279,13 @@ class FolderNotificationConfig extends pulumi.CustomResource {
     serviceAccount = registerOutput<String>('serviceAccount');
     streamingConfig = registerOutput<FolderNotificationConfigStreamingConfig>(
       'streamingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FolderNotificationConfigStreamingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -313,6 +320,13 @@ class FolderNotificationConfig extends pulumi.CustomResource {
     serviceAccount = registerOutput<String>('serviceAccount');
     streamingConfig = registerOutput<FolderNotificationConfigStreamingConfig>(
       'streamingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FolderNotificationConfigStreamingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

@@ -433,17 +433,44 @@ class Device extends pulumi.CustomResource {
     configuredRoleTypes = registerOutput<List<String>>('configuredRoleTypes');
     culture = registerOutput<String>('culture');
     dataBoxEdgeDeviceStatus = registerOutput<String>('dataBoxEdgeDeviceStatus');
-    dataResidency = registerOutput<DataResidencyResponse?>('dataResidency');
+    dataResidency = registerOutput<DataResidencyResponse?>(
+      'dataResidency',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataResidencyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String>('description');
     deviceHcsVersion = registerOutput<String>('deviceHcsVersion');
     deviceLocalCapacity = registerOutput<double>('deviceLocalCapacity');
     deviceModel = registerOutput<String>('deviceModel');
     deviceSoftwareVersion = registerOutput<String>('deviceSoftwareVersion');
     deviceType = registerOutput<String>('deviceType');
-    edgeProfile = registerOutput<EdgeProfileResponse>('edgeProfile');
+    edgeProfile = registerOutput<EdgeProfileResponse>(
+      'edgeProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EdgeProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String?>('etag');
     friendlyName = registerOutput<String>('friendlyName');
-    identity = registerOutput<ResourceIdentityResponse?>('identity');
+    identity = registerOutput<ResourceIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kind = registerOutput<String>('kind');
     kubernetesWorkloadProfile = registerOutput<String>(
       'kubernetesWorkloadProfile',
@@ -454,10 +481,35 @@ class Device extends pulumi.CustomResource {
     nodeCount = registerOutput<int>('nodeCount');
     resourceMoveDetails = registerOutput<ResourceMoveDetailsResponse>(
       'resourceMoveDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceMoveDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     serialNumber = registerOutput<String>('serialNumber');
-    sku = registerOutput<SkuResponse?>('sku');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    sku = registerOutput<SkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     timeZone = registerOutput<String>('timeZone');
     type = registerOutput<String>('type');

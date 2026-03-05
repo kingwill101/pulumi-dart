@@ -193,6 +193,13 @@ class DomainConfiguration extends pulumi.CustomResource {
     authenticationType = registerOutput<String>('authenticationType');
     authorizerConfig = registerOutput<DomainConfigurationAuthorizerConfig?>(
       'authorizerConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainConfigurationAuthorizerConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     domainName = registerOutput<String>('domainName');
     domainType = registerOutput<String>('domainType');
@@ -205,7 +212,16 @@ class DomainConfiguration extends pulumi.CustomResource {
     status = registerOutput<String?>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    tlsConfig = registerOutput<DomainConfigurationTlsConfig>('tlsConfig');
+    tlsConfig = registerOutput<DomainConfigurationTlsConfig>(
+      'tlsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainConfigurationTlsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     validationCertificateArn = registerOutput<String?>(
       'validationCertificateArn',
     );
@@ -239,6 +255,13 @@ class DomainConfiguration extends pulumi.CustomResource {
     authenticationType = registerOutput<String>('authenticationType');
     authorizerConfig = registerOutput<DomainConfigurationAuthorizerConfig?>(
       'authorizerConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainConfigurationAuthorizerConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     domainName = registerOutput<String>('domainName');
     domainType = registerOutput<String>('domainType');
@@ -251,7 +274,16 @@ class DomainConfiguration extends pulumi.CustomResource {
     status = registerOutput<String?>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    tlsConfig = registerOutput<DomainConfigurationTlsConfig>('tlsConfig');
+    tlsConfig = registerOutput<DomainConfigurationTlsConfig>(
+      'tlsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainConfigurationTlsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     validationCertificateArn = registerOutput<String?>(
       'validationCertificateArn',
     );

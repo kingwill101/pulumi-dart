@@ -293,7 +293,16 @@ class ServerSitesController extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    agentDetails = registerOutput<SiteAgentPropertiesResponse?>('agentDetails');
+    agentDetails = registerOutput<SiteAgentPropertiesResponse?>(
+      'agentDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SiteAgentPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     applianceName = registerOutput<String?>('applianceName');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     discoverySolutionId = registerOutput<String?>('discoverySolutionId');
@@ -305,8 +314,24 @@ class ServerSitesController extends pulumi.CustomResource {
     servicePrincipalIdentityDetails =
         registerOutput<SiteSpnPropertiesResponse?>(
           'servicePrincipalIdentityDetails',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SiteSpnPropertiesResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

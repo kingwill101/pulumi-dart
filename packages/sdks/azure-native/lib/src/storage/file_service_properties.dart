@@ -815,15 +815,47 @@ class FileServiceProperties extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    cors = registerOutput<CorsRulesResponse?>('cors');
+    cors = registerOutput<CorsRulesResponse?>(
+      'cors',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CorsRulesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     protocolSettings = registerOutput<ProtocolSettingsResponse?>(
       'protocolSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProtocolSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     shareDeleteRetentionPolicy = registerOutput<DeleteRetentionPolicyResponse?>(
       'shareDeleteRetentionPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeleteRetentionPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    sku = registerOutput<SkuResponse>('sku');
+    sku = registerOutput<SkuResponse>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

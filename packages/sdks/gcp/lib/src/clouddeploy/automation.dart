@@ -1157,7 +1157,16 @@ class Automation extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     rules = registerOutput<List<Map<String, dynamic>>>('rules');
-    selector = registerOutput<AutomationSelector>('selector');
+    selector = registerOutput<AutomationSelector>(
+      'selector',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AutomationSelector.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     serviceAccount = registerOutput<String>('serviceAccount');
     suspended = registerOutput<bool?>('suspended');
     uid = registerOutput<String>('uid');
@@ -1202,7 +1211,16 @@ class Automation extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     rules = registerOutput<List<Map<String, dynamic>>>('rules');
-    selector = registerOutput<AutomationSelector>('selector');
+    selector = registerOutput<AutomationSelector>(
+      'selector',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AutomationSelector.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     serviceAccount = registerOutput<String>('serviceAccount');
     suspended = registerOutput<bool?>('suspended');
     uid = registerOutput<String>('uid');

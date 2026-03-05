@@ -280,10 +280,24 @@ class IndexingConfiguration extends pulumi.CustomResource {
     thingGroupIndexingConfiguration =
         registerOutput<IndexingConfigurationThingGroupIndexingConfiguration>(
           'thingGroupIndexingConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return IndexingConfigurationThingGroupIndexingConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     thingIndexingConfiguration =
         registerOutput<IndexingConfigurationThingIndexingConfiguration>(
           'thingIndexingConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return IndexingConfigurationThingIndexingConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 
@@ -314,10 +328,24 @@ class IndexingConfiguration extends pulumi.CustomResource {
     thingGroupIndexingConfiguration =
         registerOutput<IndexingConfigurationThingGroupIndexingConfiguration>(
           'thingGroupIndexingConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return IndexingConfigurationThingGroupIndexingConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     thingIndexingConfiguration =
         registerOutput<IndexingConfigurationThingIndexingConfiguration>(
           'thingIndexingConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return IndexingConfigurationThingIndexingConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

@@ -154,6 +154,13 @@ class BucketObject extends pulumi.CustomResource {
     customTime = registerOutput<String>('customTime');
     customerEncryption = registerOutput<BucketObjectCustomerEncryptionResponse>(
       'customerEncryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketObjectCustomerEncryptionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     eventBasedHold = registerOutput<bool>('eventBasedHold');
@@ -172,10 +179,28 @@ class BucketObject extends pulumi.CustomResource {
     metadata = registerOutput<Map<String, String>>('metadata');
     metageneration = registerOutput<String>('metageneration');
     this.name = registerOutput<String>('name');
-    owner = registerOutput<BucketObjectOwnerResponse>('owner');
+    owner = registerOutput<BucketObjectOwnerResponse>(
+      'owner',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketObjectOwnerResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     predefinedAcl = registerOutput<String?>('predefinedAcl');
     projection = registerOutput<String?>('projection');
-    retention = registerOutput<BucketObjectRetentionResponse>('retention');
+    retention = registerOutput<BucketObjectRetentionResponse>(
+      'retention',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketObjectRetentionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     retentionExpirationTime = registerOutput<String>('retentionExpirationTime');
     selfLink = registerOutput<String>('selfLink');
     size = registerOutput<String>('size');

@@ -67,9 +67,23 @@ class WorkforcePoolProvider extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     oidc = registerOutput<GoogleIamAdminV1WorkforcePoolProviderOidcResponse>(
       'oidc',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleIamAdminV1WorkforcePoolProviderOidcResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     saml = registerOutput<GoogleIamAdminV1WorkforcePoolProviderSamlResponse>(
       'saml',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleIamAdminV1WorkforcePoolProviderSamlResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     state = registerOutput<String>('state');
     workforcePoolId = registerOutput<String>('workforcePoolId');

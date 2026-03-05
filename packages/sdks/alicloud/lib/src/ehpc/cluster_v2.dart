@@ -945,6 +945,13 @@ class ClusterV2 extends pulumi.CustomResource {
     clusterCategory = registerOutput<String?>('clusterCategory');
     clusterCredentials = registerOutput<ClusterV2ClusterCredentials>(
       'clusterCredentials',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterV2ClusterCredentials.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clusterMode = registerOutput<String?>('clusterMode');
     clusterName = registerOutput<String?>('clusterName');
@@ -952,7 +959,16 @@ class ClusterV2 extends pulumi.CustomResource {
     clusterVswitchId = registerOutput<String?>('clusterVswitchId');
     createTime = registerOutput<String>('createTime');
     deletionProtection = registerOutput<bool?>('deletionProtection');
-    manager = registerOutput<ClusterV2Manager?>('manager');
+    manager = registerOutput<ClusterV2Manager?>(
+      'manager',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterV2Manager.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupId = registerOutput<String>('resourceGroupId');
     securityGroupId = registerOutput<String?>('securityGroupId');
     sharedStorages = registerOutput<List<Map<String, dynamic>>>(
@@ -988,6 +1004,13 @@ class ClusterV2 extends pulumi.CustomResource {
     clusterCategory = registerOutput<String?>('clusterCategory');
     clusterCredentials = registerOutput<ClusterV2ClusterCredentials>(
       'clusterCredentials',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterV2ClusterCredentials.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clusterMode = registerOutput<String?>('clusterMode');
     clusterName = registerOutput<String?>('clusterName');
@@ -995,7 +1018,16 @@ class ClusterV2 extends pulumi.CustomResource {
     clusterVswitchId = registerOutput<String?>('clusterVswitchId');
     createTime = registerOutput<String>('createTime');
     deletionProtection = registerOutput<bool?>('deletionProtection');
-    manager = registerOutput<ClusterV2Manager?>('manager');
+    manager = registerOutput<ClusterV2Manager?>(
+      'manager',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterV2Manager.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupId = registerOutput<String>('resourceGroupId');
     securityGroupId = registerOutput<String?>('securityGroupId');
     sharedStorages = registerOutput<List<Map<String, dynamic>>>(

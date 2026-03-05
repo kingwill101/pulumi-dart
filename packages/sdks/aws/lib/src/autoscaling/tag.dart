@@ -141,7 +141,14 @@ class Tag extends pulumi.CustomResource {
       ) {
     autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
     region = registerOutput<String>('region');
-    tag = registerOutput<TagTag>('tag');
+    tag = registerOutput<TagTag>(
+      'tag',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TagTag.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
   }
 
   /// Gets an existing [Tag] resource's state with the given [name] and [id].
@@ -165,6 +172,13 @@ class Tag extends pulumi.CustomResource {
        ) {
     autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
     region = registerOutput<String>('region');
-    tag = registerOutput<TagTag>('tag');
+    tag = registerOutput<TagTag>(
+      'tag',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TagTag.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
   }
 }

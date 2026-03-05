@@ -62,6 +62,13 @@ class TensorboardAiplatformV1beta1 extends pulumi.CustomResource {
     encryptionSpec =
         registerOutput<GoogleCloudAiplatformV1beta1EncryptionSpecResponse>(
           'encryptionSpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1beta1EncryptionSpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     etag = registerOutput<String>('etag');
     isDefault = registerOutput<bool>('isDefault');

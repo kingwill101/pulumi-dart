@@ -1,24 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getNetworkConnection.
 class GetNetworkConnectionResult {
   /// The Azure Active Directory Join type.
   final String domainJoinType;
+
   /// The name of the Azure Active Directory domain.
   final String domainName;
+
   /// The username of the Azure Active Directory account (user or service account) that has permissions to create computer objects in Active Directory.
   final String domainUsername;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The Azure Region where the Dev Center Network Connection exists.
   final String location;
   final String name;
+
   /// The Azure Active Directory domain Organization Unit (OU).
   final String organizationUnit;
   final String resourceGroupName;
+
   /// The ID of the Subnet that is used to attach Virtual Machines.
   final String subnetId;
+
   /// A mapping of tags assigned to the Dev Center Network Connection.
   final Map<String, String> tags;
 
@@ -76,4 +82,3 @@ class GetNetworkConnectionResult {
     );
   }
 }
-

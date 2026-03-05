@@ -63,7 +63,8 @@ Future<GetHyperVSiteResult> getHyperVSite(
 /// Other available API versions: 2023-06-06, 2024-05-01-preview, 2024-07-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_offazure_get_hyperv_cluster_controller_cluster_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetHypervClusterControllerClusterResult> getHypervClusterControllerCluster(
+Future<GetHypervClusterControllerClusterResult>
+getHypervClusterControllerCluster(
   GetHypervClusterControllerClusterArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -181,7 +182,8 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
 /// Other available API versions: 2023-06-06, 2024-05-01-preview, 2024-07-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_offazure_get_private_endpoint_connection_controller_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetPrivateEndpointConnectionControllerResult> getPrivateEndpointConnectionController(
+Future<GetPrivateEndpointConnectionControllerResult>
+getPrivateEndpointConnectionController(
   GetPrivateEndpointConnectionControllerArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -259,7 +261,8 @@ Future<GetSitesControllerResult> getSitesController(
 /// Other available API versions: 2023-06-06, 2024-05-01-preview, 2024-07-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_offazure_get_sql_discovery_site_data_source_controller_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetSqlDiscoverySiteDataSourceControllerResult> getSqlDiscoverySiteDataSourceController(
+Future<GetSqlDiscoverySiteDataSourceControllerResult>
+getSqlDiscoverySiteDataSourceController(
   GetSqlDiscoverySiteDataSourceControllerArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -319,7 +322,8 @@ Future<GetVcenterControllerResult> getVcenterController(
 /// Other available API versions: 2023-06-06, 2024-05-01-preview, 2024-07-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_offazure_get_web_app_discovery_site_data_sources_controller_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetWebAppDiscoverySiteDataSourcesControllerResult> getWebAppDiscoverySiteDataSourcesController(
+Future<GetWebAppDiscoverySiteDataSourcesControllerResult>
+getWebAppDiscoverySiteDataSourcesController(
   GetWebAppDiscoverySiteDataSourcesControllerArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -359,7 +363,8 @@ Future<GetWebAppSitesControllerResult> getWebAppSitesController(
 /// Other available API versions: 2023-06-06, 2024-05-01-preview, 2024-07-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_offazure_list_hyperv_sites_controller_health_summary_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListHypervSitesControllerHealthSummaryResult> listHypervSitesControllerHealthSummary(
+Future<ListHypervSitesControllerHealthSummaryResult>
+listHypervSitesControllerHealthSummary(
   ListHypervSitesControllerHealthSummaryArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -379,7 +384,8 @@ Future<ListHypervSitesControllerHealthSummaryResult> listHypervSitesControllerHe
 /// Other available API versions: 2023-06-06, 2024-05-01-preview, 2024-07-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_offazure_list_server_sites_controller_health_summary_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListServerSitesControllerHealthSummaryResult> listServerSitesControllerHealthSummary(
+Future<ListServerSitesControllerHealthSummaryResult>
+listServerSitesControllerHealthSummary(
   ListServerSitesControllerHealthSummaryArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

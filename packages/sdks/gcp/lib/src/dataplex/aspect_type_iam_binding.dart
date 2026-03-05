@@ -929,7 +929,16 @@ class AspectTypeIamBinding extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     aspectTypeId = registerOutput<String>('aspectTypeId');
-    condition = registerOutput<AspectTypeIamBindingCondition?>('condition');
+    condition = registerOutput<AspectTypeIamBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AspectTypeIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
     members = registerOutput<List<String>>('members');
@@ -961,7 +970,16 @@ class AspectTypeIamBinding extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     aspectTypeId = registerOutput<String>('aspectTypeId');
-    condition = registerOutput<AspectTypeIamBindingCondition?>('condition');
+    condition = registerOutput<AspectTypeIamBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AspectTypeIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
     members = registerOutput<List<String>>('members');

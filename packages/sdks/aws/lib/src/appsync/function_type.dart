@@ -636,8 +636,26 @@ class FunctionType extends pulumi.CustomResource {
     responseMappingTemplate = registerOutput<String?>(
       'responseMappingTemplate',
     );
-    runtime = registerOutput<FunctionRuntime?>('runtime');
-    syncConfig = registerOutput<FunctionSyncConfig?>('syncConfig');
+    runtime = registerOutput<FunctionRuntime?>(
+      'runtime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionRuntime.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    syncConfig = registerOutput<FunctionSyncConfig?>(
+      'syncConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionSyncConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [FunctionType] resource's state with the given [name] and [id].
@@ -677,7 +695,25 @@ class FunctionType extends pulumi.CustomResource {
     responseMappingTemplate = registerOutput<String?>(
       'responseMappingTemplate',
     );
-    runtime = registerOutput<FunctionRuntime?>('runtime');
-    syncConfig = registerOutput<FunctionSyncConfig?>('syncConfig');
+    runtime = registerOutput<FunctionRuntime?>(
+      'runtime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionRuntime.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    syncConfig = registerOutput<FunctionSyncConfig?>(
+      'syncConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionSyncConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

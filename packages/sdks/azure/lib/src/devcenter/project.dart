@@ -268,7 +268,16 @@ class Project extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     devCenterId = registerOutput<String>('devCenterId');
     devCenterUri = registerOutput<String>('devCenterUri');
-    identity = registerOutput<ProjectIdentity?>('identity');
+    identity = registerOutput<ProjectIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     maximumDevBoxesPerUser = registerOutput<int?>('maximumDevBoxesPerUser');
     this.name = registerOutput<String>('name');
@@ -302,7 +311,16 @@ class Project extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     devCenterId = registerOutput<String>('devCenterId');
     devCenterUri = registerOutput<String>('devCenterUri');
-    identity = registerOutput<ProjectIdentity?>('identity');
+    identity = registerOutput<ProjectIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     maximumDevBoxesPerUser = registerOutput<int?>('maximumDevBoxesPerUser');
     this.name = registerOutput<String>('name');

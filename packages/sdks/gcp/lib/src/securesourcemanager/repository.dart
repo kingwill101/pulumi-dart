@@ -449,7 +449,16 @@ class Repository extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String?>('deletionPolicy');
     description = registerOutput<String?>('description');
-    initialConfig = registerOutput<RepositoryInitialConfig?>('initialConfig');
+    initialConfig = registerOutput<RepositoryInitialConfig?>(
+      'initialConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RepositoryInitialConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     instance = registerOutput<String>('instance');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -486,7 +495,16 @@ class Repository extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String?>('deletionPolicy');
     description = registerOutput<String?>('description');
-    initialConfig = registerOutput<RepositoryInitialConfig?>('initialConfig');
+    initialConfig = registerOutput<RepositoryInitialConfig?>(
+      'initialConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RepositoryInitialConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     instance = registerOutput<String>('instance');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

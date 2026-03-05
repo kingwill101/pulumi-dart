@@ -441,11 +441,27 @@ class FolderFeed extends pulumi.CustomResource {
     assetNames = registerOutput<List<String>?>('assetNames');
     assetTypes = registerOutput<List<String>?>('assetTypes');
     billingProject = registerOutput<String>('billingProject');
-    condition = registerOutput<FolderFeedCondition?>('condition');
+    condition = registerOutput<FolderFeedCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FolderFeedCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     contentType = registerOutput<String?>('contentType');
     feedId = registerOutput<String>('feedId');
     feedOutputConfig = registerOutput<FolderFeedFeedOutputConfig>(
       'feedOutputConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FolderFeedFeedOutputConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     folder = registerOutput<String>('folder');
     folderId = registerOutput<String>('folderId');
@@ -478,11 +494,27 @@ class FolderFeed extends pulumi.CustomResource {
     assetNames = registerOutput<List<String>?>('assetNames');
     assetTypes = registerOutput<List<String>?>('assetTypes');
     billingProject = registerOutput<String>('billingProject');
-    condition = registerOutput<FolderFeedCondition?>('condition');
+    condition = registerOutput<FolderFeedCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FolderFeedCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     contentType = registerOutput<String?>('contentType');
     feedId = registerOutput<String>('feedId');
     feedOutputConfig = registerOutput<FolderFeedFeedOutputConfig>(
       'feedOutputConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FolderFeedFeedOutputConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     folder = registerOutput<String>('folder');
     folderId = registerOutput<String>('folderId');

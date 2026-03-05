@@ -341,7 +341,16 @@ class ResourcePolicyAssignment extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     enforce = registerOutput<bool?>('enforce');
-    identity = registerOutput<ResourcePolicyAssignmentIdentity?>('identity');
+    identity = registerOutput<ResourcePolicyAssignmentIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourcePolicyAssignmentIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     metadata = registerOutput<String>('metadata');
     this.name = registerOutput<String>('name');
@@ -384,7 +393,16 @@ class ResourcePolicyAssignment extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     enforce = registerOutput<bool?>('enforce');
-    identity = registerOutput<ResourcePolicyAssignmentIdentity?>('identity');
+    identity = registerOutput<ResourcePolicyAssignmentIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourcePolicyAssignmentIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     metadata = registerOutput<String>('metadata');
     this.name = registerOutput<String>('name');

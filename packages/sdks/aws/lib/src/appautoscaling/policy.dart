@@ -1671,6 +1671,13 @@ class Policy extends pulumi.CustomResource {
     predictiveScalingPolicyConfiguration =
         registerOutput<PolicyPredictiveScalingPolicyConfiguration?>(
           'predictiveScalingPolicyConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PolicyPredictiveScalingPolicyConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     resourceId = registerOutput<String>('resourceId');
@@ -1679,10 +1686,24 @@ class Policy extends pulumi.CustomResource {
     stepScalingPolicyConfiguration =
         registerOutput<PolicyStepScalingPolicyConfiguration?>(
           'stepScalingPolicyConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PolicyStepScalingPolicyConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     targetTrackingScalingPolicyConfiguration =
         registerOutput<PolicyTargetTrackingScalingPolicyConfiguration?>(
           'targetTrackingScalingPolicyConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PolicyTargetTrackingScalingPolicyConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 
@@ -1716,6 +1737,13 @@ class Policy extends pulumi.CustomResource {
     predictiveScalingPolicyConfiguration =
         registerOutput<PolicyPredictiveScalingPolicyConfiguration?>(
           'predictiveScalingPolicyConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PolicyPredictiveScalingPolicyConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     resourceId = registerOutput<String>('resourceId');
@@ -1724,10 +1752,24 @@ class Policy extends pulumi.CustomResource {
     stepScalingPolicyConfiguration =
         registerOutput<PolicyStepScalingPolicyConfiguration?>(
           'stepScalingPolicyConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PolicyStepScalingPolicyConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     targetTrackingScalingPolicyConfiguration =
         registerOutput<PolicyTargetTrackingScalingPolicyConfiguration?>(
           'targetTrackingScalingPolicyConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PolicyTargetTrackingScalingPolicyConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

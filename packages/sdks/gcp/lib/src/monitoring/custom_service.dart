@@ -228,7 +228,16 @@ class CustomService extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     serviceId = registerOutput<String>('serviceId');
-    telemetry = registerOutput<CustomServiceTelemetry?>('telemetry');
+    telemetry = registerOutput<CustomServiceTelemetry?>(
+      'telemetry',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomServiceTelemetry.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     userLabels = registerOutput<Map<String, String>?>('userLabels');
   }
 
@@ -259,7 +268,16 @@ class CustomService extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     serviceId = registerOutput<String>('serviceId');
-    telemetry = registerOutput<CustomServiceTelemetry?>('telemetry');
+    telemetry = registerOutput<CustomServiceTelemetry?>(
+      'telemetry',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomServiceTelemetry.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     userLabels = registerOutput<Map<String, String>?>('userLabels');
   }
 }

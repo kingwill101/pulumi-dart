@@ -1909,7 +1909,16 @@ class StoragePoolIamBinding extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<StoragePoolIamBindingCondition?>('condition');
+    condition = registerOutput<StoragePoolIamBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StoragePoolIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     members = registerOutput<List<String>>('members');
     this.name = registerOutput<String>('name');
@@ -1941,7 +1950,16 @@ class StoragePoolIamBinding extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<StoragePoolIamBindingCondition?>('condition');
+    condition = registerOutput<StoragePoolIamBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StoragePoolIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     members = registerOutput<List<String>>('members');
     this.name = registerOutput<String>('name');

@@ -93,6 +93,13 @@ class RatePlan extends pulumi.CustomResource {
     fixedFeeFrequency = registerOutput<int>('fixedFeeFrequency');
     fixedRecurringFee = registerOutput<GoogleTypeMoneyResponse>(
       'fixedRecurringFee',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleTypeMoneyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     lastModifiedAt = registerOutput<String>('lastModifiedAt');
     this.name = registerOutput<String>('name');
@@ -102,7 +109,16 @@ class RatePlan extends pulumi.CustomResource {
       'revenueShareRates',
     );
     revenueShareType = registerOutput<String>('revenueShareType');
-    setupFee = registerOutput<GoogleTypeMoneyResponse>('setupFee');
+    setupFee = registerOutput<GoogleTypeMoneyResponse>(
+      'setupFee',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleTypeMoneyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     startTime = registerOutput<String>('startTime');
     state = registerOutput<String>('state');
   }

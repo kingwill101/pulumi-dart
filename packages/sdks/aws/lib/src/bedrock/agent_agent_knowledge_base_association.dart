@@ -167,6 +167,13 @@ class AgentAgentKnowledgeBaseAssociation extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     timeouts = registerOutput<AgentAgentKnowledgeBaseAssociationTimeouts?>(
       'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentAgentKnowledgeBaseAssociationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -201,6 +208,13 @@ class AgentAgentKnowledgeBaseAssociation extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     timeouts = registerOutput<AgentAgentKnowledgeBaseAssociationTimeouts?>(
       'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentAgentKnowledgeBaseAssociationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

@@ -72,6 +72,13 @@ class NodeGroupComputeBeta extends pulumi.CustomResource {
     autoscalingPolicy =
         registerOutput<NodeGroupAutoscalingPolicyResponseComputeBeta>(
           'autoscalingPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NodeGroupAutoscalingPolicyResponseComputeBeta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');
@@ -84,6 +91,13 @@ class NodeGroupComputeBeta extends pulumi.CustomResource {
     maintenanceWindow =
         registerOutput<NodeGroupMaintenanceWindowResponseComputeBeta>(
           'maintenanceWindow',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NodeGroupMaintenanceWindowResponseComputeBeta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     nodeTemplate = registerOutput<String>('nodeTemplate');
@@ -92,6 +106,13 @@ class NodeGroupComputeBeta extends pulumi.CustomResource {
     selfLink = registerOutput<String>('selfLink');
     shareSettings = registerOutput<ShareSettingsResponseComputeBeta>(
       'shareSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ShareSettingsResponseComputeBeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     size = registerOutput<int>('size');
     status = registerOutput<String>('status');

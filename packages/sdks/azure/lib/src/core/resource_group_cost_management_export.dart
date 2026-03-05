@@ -358,11 +358,27 @@ class ResourceGroupCostManagementExport extends pulumi.CustomResource {
     exportDataOptions =
         registerOutput<ResourceGroupCostManagementExportExportDataOptions>(
           'exportDataOptions',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResourceGroupCostManagementExportExportDataOptions.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     exportDataStorageLocation =
         registerOutput<
           ResourceGroupCostManagementExportExportDataStorageLocation
-        >('exportDataStorageLocation');
+        >(
+          'exportDataStorageLocation',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResourceGroupCostManagementExportExportDataStorageLocation.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     fileFormat = registerOutput<String?>('fileFormat');
     this.name = registerOutput<String>('name');
     recurrencePeriodEndDate = registerOutput<String>('recurrencePeriodEndDate');
@@ -400,11 +416,27 @@ class ResourceGroupCostManagementExport extends pulumi.CustomResource {
     exportDataOptions =
         registerOutput<ResourceGroupCostManagementExportExportDataOptions>(
           'exportDataOptions',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResourceGroupCostManagementExportExportDataOptions.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     exportDataStorageLocation =
         registerOutput<
           ResourceGroupCostManagementExportExportDataStorageLocation
-        >('exportDataStorageLocation');
+        >(
+          'exportDataStorageLocation',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResourceGroupCostManagementExportExportDataStorageLocation.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     fileFormat = registerOutput<String?>('fileFormat');
     this.name = registerOutput<String>('name');
     recurrencePeriodEndDate = registerOutput<String>('recurrencePeriodEndDate');

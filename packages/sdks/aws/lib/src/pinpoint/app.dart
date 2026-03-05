@@ -192,11 +192,36 @@ class App extends pulumi.CustomResource {
       ) {
     applicationId = registerOutput<String>('applicationId');
     arn = registerOutput<String>('arn');
-    campaignHook = registerOutput<AppCampaignHook?>('campaignHook');
-    limits = registerOutput<AppLimits?>('limits');
+    campaignHook = registerOutput<AppCampaignHook?>(
+      'campaignHook',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppCampaignHook.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    limits = registerOutput<AppLimits?>(
+      'limits',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppLimits.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
-    quietTime = registerOutput<AppQuietTime?>('quietTime');
+    quietTime = registerOutput<AppQuietTime?>(
+      'quietTime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppQuietTime.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -223,11 +248,36 @@ class App extends pulumi.CustomResource {
        ) {
     applicationId = registerOutput<String>('applicationId');
     arn = registerOutput<String>('arn');
-    campaignHook = registerOutput<AppCampaignHook?>('campaignHook');
-    limits = registerOutput<AppLimits?>('limits');
+    campaignHook = registerOutput<AppCampaignHook?>(
+      'campaignHook',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppCampaignHook.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    limits = registerOutput<AppLimits?>(
+      'limits',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppLimits.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
-    quietTime = registerOutput<AppQuietTime?>('quietTime');
+    quietTime = registerOutput<AppQuietTime?>(
+      'quietTime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppQuietTime.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

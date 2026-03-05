@@ -344,16 +344,46 @@ class RestorePoint extends pulumi.CustomResource {
     excludeDisks = registerOutput<List<Map<String, dynamic>>?>('excludeDisks');
     instanceView = registerOutput<RestorePointInstanceViewResponse>(
       'instanceView',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RestorePointInstanceViewResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     sourceMetadata = registerOutput<RestorePointSourceMetadataResponse?>(
       'sourceMetadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RestorePointSourceMetadataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sourceRestorePoint = registerOutput<ApiEntityReferenceResponse?>(
       'sourceRestorePoint',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiEntityReferenceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     timeCreated = registerOutput<String?>('timeCreated');
     type = registerOutput<String>('type');
   }

@@ -314,10 +314,24 @@ class LinkedServiceSftp extends pulumi.CustomResource {
     keyVaultPrivateKeyContentBase64 =
         registerOutput<LinkedServiceSftpKeyVaultPrivateKeyContentBase64?>(
           'keyVaultPrivateKeyContentBase64',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinkedServiceSftpKeyVaultPrivateKeyContentBase64.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     keyVaultPrivateKeyPassphrase =
         registerOutput<LinkedServiceSftpKeyVaultPrivateKeyPassphrase?>(
           'keyVaultPrivateKeyPassphrase',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinkedServiceSftpKeyVaultPrivateKeyPassphrase.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');
@@ -371,10 +385,24 @@ class LinkedServiceSftp extends pulumi.CustomResource {
     keyVaultPrivateKeyContentBase64 =
         registerOutput<LinkedServiceSftpKeyVaultPrivateKeyContentBase64?>(
           'keyVaultPrivateKeyContentBase64',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinkedServiceSftpKeyVaultPrivateKeyContentBase64.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     keyVaultPrivateKeyPassphrase =
         registerOutput<LinkedServiceSftpKeyVaultPrivateKeyPassphrase?>(
           'keyVaultPrivateKeyPassphrase',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinkedServiceSftpKeyVaultPrivateKeyPassphrase.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');

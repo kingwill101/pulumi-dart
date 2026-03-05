@@ -419,7 +419,16 @@ class InstanceDiskResource extends pulumi.CustomResource {
     stackscriptData = registerOutput<Map<String, String>?>('stackscriptData');
     stackscriptId = registerOutput<int?>('stackscriptId');
     status = registerOutput<String>('status');
-    timeouts = registerOutput<InstanceDiskTimeouts?>('timeouts');
+    timeouts = registerOutput<InstanceDiskTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceDiskTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     updated = registerOutput<String>('updated');
   }
 
@@ -459,7 +468,16 @@ class InstanceDiskResource extends pulumi.CustomResource {
     stackscriptData = registerOutput<Map<String, String>?>('stackscriptData');
     stackscriptId = registerOutput<int?>('stackscriptId');
     status = registerOutput<String>('status');
-    timeouts = registerOutput<InstanceDiskTimeouts?>('timeouts');
+    timeouts = registerOutput<InstanceDiskTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceDiskTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     updated = registerOutput<String>('updated');
   }
 }

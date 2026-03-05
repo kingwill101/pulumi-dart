@@ -231,6 +231,13 @@ class Instance extends pulumi.CustomResource {
     postPayModuleSwitch = registerOutput<String?>('postPayModuleSwitch');
     postPayModuleSwitchObj = registerOutput<InstancePostPayModuleSwitchObj>(
       'postPayModuleSwitchObj',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstancePostPayModuleSwitchObj.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     raspCount = registerOutput<String?>('raspCount');
     renewPeriod = registerOutput<int>('renewPeriod');
@@ -300,6 +307,13 @@ class Instance extends pulumi.CustomResource {
     postPayModuleSwitch = registerOutput<String?>('postPayModuleSwitch');
     postPayModuleSwitchObj = registerOutput<InstancePostPayModuleSwitchObj>(
       'postPayModuleSwitchObj',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstancePostPayModuleSwitchObj.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     raspCount = registerOutput<String?>('raspCount');
     renewPeriod = registerOutput<int>('renewPeriod');

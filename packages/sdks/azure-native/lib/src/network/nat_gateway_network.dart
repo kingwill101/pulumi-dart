@@ -268,7 +268,16 @@ class NatGatewayNetwork extends pulumi.CustomResource {
       'publicIpPrefixes',
     );
     resourceGuid = registerOutput<String>('resourceGuid');
-    sku = registerOutput<NatGatewaySkuResponse?>('sku');
+    sku = registerOutput<NatGatewaySkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NatGatewaySkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     subnets = registerOutput<List<Map<String, dynamic>>>('subnets');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

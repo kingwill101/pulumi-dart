@@ -56,6 +56,13 @@ class ConsentArtifactHealthcareV1beta1 extends pulumi.CustomResource {
     datasetId = registerOutput<String>('datasetId');
     guardianSignature = registerOutput<SignatureResponseHealthcareV1beta1>(
       'guardianSignature',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SignatureResponseHealthcareV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     metadata = registerOutput<Map<String, String>>('metadata');
@@ -64,9 +71,23 @@ class ConsentArtifactHealthcareV1beta1 extends pulumi.CustomResource {
     userId = registerOutput<String>('userId');
     userSignature = registerOutput<SignatureResponseHealthcareV1beta1>(
       'userSignature',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SignatureResponseHealthcareV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     witnessSignature = registerOutput<SignatureResponseHealthcareV1beta1>(
       'witnessSignature',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SignatureResponseHealthcareV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

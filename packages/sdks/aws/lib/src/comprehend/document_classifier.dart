@@ -276,6 +276,13 @@ class DocumentClassifier extends pulumi.CustomResource {
     dataAccessRoleArn = registerOutput<String>('dataAccessRoleArn');
     inputDataConfig = registerOutput<DocumentClassifierInputDataConfig>(
       'inputDataConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DocumentClassifierInputDataConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     languageCode = registerOutput<String>('languageCode');
     mode = registerOutput<String?>('mode');
@@ -283,6 +290,13 @@ class DocumentClassifier extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     outputDataConfig = registerOutput<DocumentClassifierOutputDataConfig>(
       'outputDataConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DocumentClassifierOutputDataConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -290,7 +304,16 @@ class DocumentClassifier extends pulumi.CustomResource {
     versionName = registerOutput<String>('versionName');
     versionNamePrefix = registerOutput<String>('versionNamePrefix');
     volumeKmsKeyId = registerOutput<String?>('volumeKmsKeyId');
-    vpcConfig = registerOutput<DocumentClassifierVpcConfig?>('vpcConfig');
+    vpcConfig = registerOutput<DocumentClassifierVpcConfig?>(
+      'vpcConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DocumentClassifierVpcConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [DocumentClassifier] resource's state with the given [name] and [id].
@@ -320,6 +343,13 @@ class DocumentClassifier extends pulumi.CustomResource {
     dataAccessRoleArn = registerOutput<String>('dataAccessRoleArn');
     inputDataConfig = registerOutput<DocumentClassifierInputDataConfig>(
       'inputDataConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DocumentClassifierInputDataConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     languageCode = registerOutput<String>('languageCode');
     mode = registerOutput<String?>('mode');
@@ -327,6 +357,13 @@ class DocumentClassifier extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     outputDataConfig = registerOutput<DocumentClassifierOutputDataConfig>(
       'outputDataConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DocumentClassifierOutputDataConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -334,6 +371,15 @@ class DocumentClassifier extends pulumi.CustomResource {
     versionName = registerOutput<String>('versionName');
     versionNamePrefix = registerOutput<String>('versionNamePrefix');
     volumeKmsKeyId = registerOutput<String?>('volumeKmsKeyId');
-    vpcConfig = registerOutput<DocumentClassifierVpcConfig?>('vpcConfig');
+    vpcConfig = registerOutput<DocumentClassifierVpcConfig?>(
+      'vpcConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DocumentClassifierVpcConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

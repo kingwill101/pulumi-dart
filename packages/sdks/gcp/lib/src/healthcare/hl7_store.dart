@@ -1091,11 +1091,27 @@ class Hl7Store extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     notificationConfig = registerOutput<Hl7StoreNotificationConfig?>(
       'notificationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return Hl7StoreNotificationConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     notificationConfigs = registerOutput<List<Map<String, dynamic>>?>(
       'notificationConfigs',
     );
-    parserConfig = registerOutput<Hl7StoreParserConfig>('parserConfig');
+    parserConfig = registerOutput<Hl7StoreParserConfig>(
+      'parserConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return Hl7StoreParserConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     rejectDuplicateMessage = registerOutput<bool?>('rejectDuplicateMessage');
     selfLink = registerOutput<String>('selfLink');
@@ -1130,11 +1146,27 @@ class Hl7Store extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     notificationConfig = registerOutput<Hl7StoreNotificationConfig?>(
       'notificationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return Hl7StoreNotificationConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     notificationConfigs = registerOutput<List<Map<String, dynamic>>?>(
       'notificationConfigs',
     );
-    parserConfig = registerOutput<Hl7StoreParserConfig>('parserConfig');
+    parserConfig = registerOutput<Hl7StoreParserConfig>(
+      'parserConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return Hl7StoreParserConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     rejectDuplicateMessage = registerOutput<bool?>('rejectDuplicateMessage');
     selfLink = registerOutput<String>('selfLink');

@@ -255,10 +255,24 @@ class InboundNatRuleNetwork extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     backendAddressPool = registerOutput<SubResourceResponse?>(
       'backendAddressPool',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     backendIPConfiguration =
         registerOutput<NetworkInterfaceIPConfigurationResponse>(
           'backendIPConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NetworkInterfaceIPConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     backendPort = registerOutput<int?>('backendPort');
     enableFloatingIP = registerOutput<bool?>('enableFloatingIP');
@@ -266,6 +280,13 @@ class InboundNatRuleNetwork extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     frontendIPConfiguration = registerOutput<SubResourceResponse?>(
       'frontendIPConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     frontendPort = registerOutput<int?>('frontendPort');
     frontendPortRangeEnd = registerOutput<int?>('frontendPortRangeEnd');

@@ -47,10 +47,35 @@ class ResourceClaimPatchResourceK8sIoV1alpha3Resource
        ) {
     apiVersion = registerOutput<String?>('apiVersion');
     kind = registerOutput<String?>('kind');
-    metadata = registerOutput<ObjectMetaPatch?>('metadata');
-    spec = registerOutput<ResourceClaimSpecPatchResourceK8sIoV1alpha3?>('spec');
+    metadata = registerOutput<ObjectMetaPatch?>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMetaPatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    spec = registerOutput<ResourceClaimSpecPatchResourceK8sIoV1alpha3?>(
+      'spec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceClaimSpecPatchResourceK8sIoV1alpha3.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<ResourceClaimStatusPatchResourceK8sIoV1alpha3?>(
       'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceClaimStatusPatchResourceK8sIoV1alpha3.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

@@ -378,7 +378,16 @@ class SpringCloudBuildPackBinding extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     bindingType = registerOutput<String?>('bindingType');
-    launch = registerOutput<SpringCloudBuildPackBindingLaunch?>('launch');
+    launch = registerOutput<SpringCloudBuildPackBindingLaunch?>(
+      'launch',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpringCloudBuildPackBindingLaunch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     springCloudBuilderId = registerOutput<String>('springCloudBuilderId');
   }
@@ -407,7 +416,16 @@ class SpringCloudBuildPackBinding extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     bindingType = registerOutput<String?>('bindingType');
-    launch = registerOutput<SpringCloudBuildPackBindingLaunch?>('launch');
+    launch = registerOutput<SpringCloudBuildPackBindingLaunch?>(
+      'launch',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpringCloudBuildPackBindingLaunch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     springCloudBuilderId = registerOutput<String>('springCloudBuilderId');
   }

@@ -262,11 +262,27 @@ class RegisteredDomain extends pulumi.CustomResource {
        ) {
     abuseContactEmail = registerOutput<String>('abuseContactEmail');
     abuseContactPhone = registerOutput<String>('abuseContactPhone');
-    adminContact = registerOutput<RegisteredDomainAdminContact>('adminContact');
+    adminContact = registerOutput<RegisteredDomainAdminContact>(
+      'adminContact',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegisteredDomainAdminContact.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     adminPrivacy = registerOutput<bool?>('adminPrivacy');
     autoRenew = registerOutput<bool?>('autoRenew');
     billingContact = registerOutput<RegisteredDomainBillingContact>(
       'billingContact',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegisteredDomainBillingContact.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     billingPrivacy = registerOutput<bool?>('billingPrivacy');
     creationDate = registerOutput<String>('creationDate');
@@ -275,6 +291,13 @@ class RegisteredDomain extends pulumi.CustomResource {
     nameServers = registerOutput<List<Map<String, dynamic>>>('nameServers');
     registrantContact = registerOutput<RegisteredDomainRegistrantContact>(
       'registrantContact',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegisteredDomainRegistrantContact.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     registrantPrivacy = registerOutput<bool?>('registrantPrivacy');
     registrarName = registerOutput<String>('registrarName');
@@ -283,7 +306,16 @@ class RegisteredDomain extends pulumi.CustomResource {
     statusLists = registerOutput<List<String>>('statusLists');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    techContact = registerOutput<RegisteredDomainTechContact>('techContact');
+    techContact = registerOutput<RegisteredDomainTechContact>(
+      'techContact',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegisteredDomainTechContact.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     techPrivacy = registerOutput<bool?>('techPrivacy');
     transferLock = registerOutput<bool?>('transferLock');
     updatedDate = registerOutput<String>('updatedDate');
@@ -315,11 +347,27 @@ class RegisteredDomain extends pulumi.CustomResource {
        ) {
     abuseContactEmail = registerOutput<String>('abuseContactEmail');
     abuseContactPhone = registerOutput<String>('abuseContactPhone');
-    adminContact = registerOutput<RegisteredDomainAdminContact>('adminContact');
+    adminContact = registerOutput<RegisteredDomainAdminContact>(
+      'adminContact',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegisteredDomainAdminContact.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     adminPrivacy = registerOutput<bool?>('adminPrivacy');
     autoRenew = registerOutput<bool?>('autoRenew');
     billingContact = registerOutput<RegisteredDomainBillingContact>(
       'billingContact',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegisteredDomainBillingContact.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     billingPrivacy = registerOutput<bool?>('billingPrivacy');
     creationDate = registerOutput<String>('creationDate');
@@ -328,6 +376,13 @@ class RegisteredDomain extends pulumi.CustomResource {
     nameServers = registerOutput<List<Map<String, dynamic>>>('nameServers');
     registrantContact = registerOutput<RegisteredDomainRegistrantContact>(
       'registrantContact',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegisteredDomainRegistrantContact.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     registrantPrivacy = registerOutput<bool?>('registrantPrivacy');
     registrarName = registerOutput<String>('registrarName');
@@ -336,7 +391,16 @@ class RegisteredDomain extends pulumi.CustomResource {
     statusLists = registerOutput<List<String>>('statusLists');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    techContact = registerOutput<RegisteredDomainTechContact>('techContact');
+    techContact = registerOutput<RegisteredDomainTechContact>(
+      'techContact',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegisteredDomainTechContact.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     techPrivacy = registerOutput<bool?>('techPrivacy');
     transferLock = registerOutput<bool?>('transferLock');
     updatedDate = registerOutput<String>('updatedDate');

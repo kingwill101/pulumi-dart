@@ -284,7 +284,16 @@ class SpringCloudBuilder extends pulumi.CustomResource {
     );
     this.name = registerOutput<String>('name');
     springCloudServiceId = registerOutput<String>('springCloudServiceId');
-    stack = registerOutput<SpringCloudBuilderStack>('stack');
+    stack = registerOutput<SpringCloudBuilderStack>(
+      'stack',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpringCloudBuilderStack.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [SpringCloudBuilder] resource's state with the given [name] and [id].
@@ -315,6 +324,15 @@ class SpringCloudBuilder extends pulumi.CustomResource {
     );
     this.name = registerOutput<String>('name');
     springCloudServiceId = registerOutput<String>('springCloudServiceId');
-    stack = registerOutput<SpringCloudBuilderStack>('stack');
+    stack = registerOutput<SpringCloudBuilderStack>(
+      'stack',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpringCloudBuilderStack.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

@@ -170,9 +170,23 @@ class Cluster extends pulumi.CustomResource {
        ) {
     aggregatorOrSingleRackDefinition = registerOutput<RackDefinitionResponse>(
       'aggregatorOrSingleRackDefinition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RackDefinitionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     analyticsOutputSettings = registerOutput<AnalyticsOutputSettingsResponse?>(
       'analyticsOutputSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AnalyticsOutputSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     analyticsWorkspaceId = registerOutput<String?>('analyticsWorkspaceId');
     availableUpgradeVersions = registerOutput<List<Map<String, dynamic>>>(
@@ -181,10 +195,24 @@ class Cluster extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     clusterCapacity = registerOutput<ClusterCapacityResponse>(
       'clusterCapacity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterCapacityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clusterConnectionStatus = registerOutput<String>('clusterConnectionStatus');
     clusterExtendedLocation = registerOutput<ExtendedLocationResponse>(
       'clusterExtendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clusterLocation = registerOutput<String?>('clusterLocation');
     clusterManagerConnectionStatus = registerOutput<String>(
@@ -194,14 +222,35 @@ class Cluster extends pulumi.CustomResource {
     clusterServicePrincipal =
         registerOutput<ServicePrincipalInformationResponse?>(
           'clusterServicePrincipal',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ServicePrincipalInformationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     clusterType = registerOutput<String>('clusterType');
     clusterVersion = registerOutput<String>('clusterVersion');
     commandOutputSettings = registerOutput<CommandOutputSettingsResponse?>(
       'commandOutputSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CommandOutputSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     computeDeploymentThreshold = registerOutput<ValidationThresholdResponse?>(
       'computeDeploymentThreshold',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ValidationThresholdResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     computeRackDefinitions = registerOutput<List<Map<String, dynamic>>?>(
       'computeRackDefinitions',
@@ -211,15 +260,45 @@ class Cluster extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     extendedLocation = registerOutput<ExtendedLocationResponse>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     hybridAksExtendedLocation = registerOutput<ExtendedLocationResponse>(
       'hybridAksExtendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    identity = registerOutput<ManagedServiceIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedServiceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     managedResourceGroupConfiguration =
         registerOutput<ManagedResourceGroupConfigurationResponse?>(
           'managedResourceGroupConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ManagedResourceGroupConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     manualActionCount = registerOutput<double>('manualActionCount');
     this.name = registerOutput<String>('name');
@@ -228,23 +307,67 @@ class Cluster extends pulumi.CustomResource {
     runtimeProtectionConfiguration =
         registerOutput<RuntimeProtectionConfigurationResponse?>(
           'runtimeProtectionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RuntimeProtectionConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     secretArchive = registerOutput<ClusterSecretArchiveResponse?>(
       'secretArchive',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterSecretArchiveResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     secretArchiveSettings = registerOutput<SecretArchiveSettingsResponse?>(
       'secretArchiveSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecretArchiveSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     supportExpiryDate = registerOutput<String>('supportExpiryDate');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     updateStrategy = registerOutput<ClusterUpdateStrategyResponse?>(
       'updateStrategy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterUpdateStrategyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     vulnerabilityScanningSettings =
         registerOutput<VulnerabilityScanningSettingsResponse?>(
           'vulnerabilityScanningSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VulnerabilityScanningSettingsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     workloadResourceIds = registerOutput<List<String>>('workloadResourceIds');
   }

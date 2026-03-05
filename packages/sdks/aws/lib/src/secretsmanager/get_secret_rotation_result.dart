@@ -8,10 +8,13 @@ class GetSecretRotationResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
+
   /// Specifies whether automatic rotation is enabled for this secret.
   final bool rotationEnabled;
+
   /// Amazon Resource Name (ARN) of the lambda function used for rotation.
   final String rotationLambdaArn;
+
   /// Configuration block for rotation rules. See `rotation_rules` below.
   final List<GetSecretRotationRotationRule> rotationRules;
   final String secretId;
@@ -38,7 +41,11 @@ class GetSecretRotationResult {
       'region': region,
       'rotationEnabled': rotationEnabled,
       'rotationLambdaArn': rotationLambdaArn,
-      'rotationRules': pulumi.Input.encodeList<GetSecretRotationRotationRule, Map<String, dynamic>>(rotationRules, (value) => value.toMap()),
+      'rotationRules':
+          pulumi.Input.encodeList<
+            GetSecretRotationRotationRule,
+            Map<String, dynamic>
+          >(rotationRules, (value) => value.toMap()),
       'secretId': secretId,
     };
   }
@@ -49,9 +56,13 @@ class GetSecretRotationResult {
       region: map['region'] as String,
       rotationEnabled: map['rotationEnabled'] as bool,
       rotationLambdaArn: map['rotationLambdaArn'] as String,
-      rotationRules: pulumi.Input.decodeList<GetSecretRotationRotationRule>(map['rotationRules']!, (value) => GetSecretRotationRotationRule.fromMap((value as Map).cast<String, dynamic>())),
+      rotationRules: pulumi.Input.decodeList<GetSecretRotationRotationRule>(
+        map['rotationRules']!,
+        (value) => GetSecretRotationRotationRule.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       secretId: map['secretId'] as String,
     );
   }
 }
-

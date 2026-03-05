@@ -442,7 +442,16 @@ class DatabasePostgresql extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     type = registerOutput<String>('type');
     updated = registerOutput<String>('updated');
-    updates = registerOutput<DatabasePostgresqlUpdates>('updates');
+    updates = registerOutput<DatabasePostgresqlUpdates>(
+      'updates',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabasePostgresqlUpdates.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     version = registerOutput<String>('version');
   }
 
@@ -489,7 +498,16 @@ class DatabasePostgresql extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     type = registerOutput<String>('type');
     updated = registerOutput<String>('updated');
-    updates = registerOutput<DatabasePostgresqlUpdates>('updates');
+    updates = registerOutput<DatabasePostgresqlUpdates>(
+      'updates',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabasePostgresqlUpdates.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     version = registerOutput<String>('version');
   }
 }

@@ -37,14 +37,36 @@ class ApprovalRule extends pulumi.CustomResource {
        ) {
     approvalRuleConfig = registerOutput<ApprovalRuleConfig>(
       'approvalRuleConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApprovalRuleConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     enabled = registerOutput<bool>('enabled');
     environmentIdentifier = registerOutput<EnvironmentIdentifier>(
       'environmentIdentifier',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnvironmentIdentifier.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     targetActionTypes = registerOutput<List<TargetActionType>>(
       'targetActionTypes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<TargetActionType>(
+          guardedValue,
+          (value) => TargetActionType.fromValue(value as String),
+        );
+      },
     );
   }
 }

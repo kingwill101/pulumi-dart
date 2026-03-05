@@ -880,7 +880,16 @@ class Analyzer extends pulumi.CustomResource {
        ) {
     analyzerName = registerOutput<String>('analyzerName');
     arn = registerOutput<String>('arn');
-    configuration = registerOutput<AnalyzerConfiguration?>('configuration');
+    configuration = registerOutput<AnalyzerConfiguration?>(
+      'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AnalyzerConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -912,7 +921,16 @@ class Analyzer extends pulumi.CustomResource {
        ) {
     analyzerName = registerOutput<String>('analyzerName');
     arn = registerOutput<String>('arn');
-    configuration = registerOutput<AnalyzerConfiguration?>('configuration');
+    configuration = registerOutput<AnalyzerConfiguration?>(
+      'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AnalyzerConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

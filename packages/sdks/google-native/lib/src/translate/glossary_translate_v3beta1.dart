@@ -50,12 +50,33 @@ class GlossaryTranslateV3beta1 extends pulumi.CustomResource {
     entryCount = registerOutput<int>('entryCount');
     inputConfig = registerOutput<GlossaryInputConfigResponseTranslateV3beta1>(
       'inputConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GlossaryInputConfigResponseTranslateV3beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     languageCodesSet = registerOutput<LanguageCodesSetResponseTranslateV3beta1>(
       'languageCodesSet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LanguageCodesSetResponseTranslateV3beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     languagePair = registerOutput<LanguageCodePairResponseTranslateV3beta1>(
       'languagePair',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LanguageCodePairResponseTranslateV3beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

@@ -58,6 +58,15 @@ class PreferenceSetMigrationcenterV1alpha1 extends pulumi.CustomResource {
     virtualMachinePreferences =
         registerOutput<
           VirtualMachinePreferencesResponseMigrationcenterV1alpha1
-        >('virtualMachinePreferences');
+        >(
+          'virtualMachinePreferences',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VirtualMachinePreferencesResponseMigrationcenterV1alpha1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
   }
 }

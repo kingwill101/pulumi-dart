@@ -1448,7 +1448,16 @@ class DatabaseIAMMember extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<DatabaseIAMMemberCondition?>('condition');
+    condition = registerOutput<DatabaseIAMMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseIAMMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     database = registerOutput<String>('database');
     etag = registerOutput<String>('etag');
     instance = registerOutput<String>('instance');
@@ -1480,7 +1489,16 @@ class DatabaseIAMMember extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<DatabaseIAMMemberCondition?>('condition');
+    condition = registerOutput<DatabaseIAMMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseIAMMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     database = registerOutput<String>('database');
     etag = registerOutput<String>('etag');
     instance = registerOutput<String>('instance');

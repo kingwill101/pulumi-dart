@@ -381,7 +381,16 @@ class SpringCloudContainerDeployment extends pulumi.CustomResource {
     instanceCount = registerOutput<int?>('instanceCount');
     languageFramework = registerOutput<String?>('languageFramework');
     this.name = registerOutput<String>('name');
-    quota = registerOutput<SpringCloudContainerDeploymentQuota>('quota');
+    quota = registerOutput<SpringCloudContainerDeploymentQuota>(
+      'quota',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpringCloudContainerDeploymentQuota.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     server = registerOutput<String>('server');
     springCloudAppId = registerOutput<String>('springCloudAppId');
   }
@@ -422,7 +431,16 @@ class SpringCloudContainerDeployment extends pulumi.CustomResource {
     instanceCount = registerOutput<int?>('instanceCount');
     languageFramework = registerOutput<String?>('languageFramework');
     this.name = registerOutput<String>('name');
-    quota = registerOutput<SpringCloudContainerDeploymentQuota>('quota');
+    quota = registerOutput<SpringCloudContainerDeploymentQuota>(
+      'quota',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpringCloudContainerDeploymentQuota.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     server = registerOutput<String>('server');
     springCloudAppId = registerOutput<String>('springCloudAppId');
   }

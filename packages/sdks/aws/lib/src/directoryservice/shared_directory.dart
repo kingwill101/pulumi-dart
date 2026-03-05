@@ -215,7 +215,16 @@ class SharedDirectory extends pulumi.CustomResource {
     notes = registerOutput<String?>('notes');
     region = registerOutput<String>('region');
     sharedDirectoryId = registerOutput<String>('sharedDirectoryId');
-    target = registerOutput<SharedDirectoryTarget>('target');
+    target = registerOutput<SharedDirectoryTarget>(
+      'target',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SharedDirectoryTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [SharedDirectory] resource's state with the given [name] and [id].
@@ -246,6 +255,15 @@ class SharedDirectory extends pulumi.CustomResource {
     notes = registerOutput<String?>('notes');
     region = registerOutput<String>('region');
     sharedDirectoryId = registerOutput<String>('sharedDirectoryId');
-    target = registerOutput<SharedDirectoryTarget>('target');
+    target = registerOutput<SharedDirectoryTarget>(
+      'target',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SharedDirectoryTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

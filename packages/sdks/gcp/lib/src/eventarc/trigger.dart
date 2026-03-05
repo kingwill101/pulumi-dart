@@ -523,7 +523,16 @@ class Trigger extends pulumi.CustomResource {
     channel = registerOutput<String?>('channel');
     conditions = registerOutput<Map<String, String>>('conditions');
     createTime = registerOutput<String>('createTime');
-    destination = registerOutput<TriggerDestination>('destination');
+    destination = registerOutput<TriggerDestination>(
+      'destination',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TriggerDestination.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     etag = registerOutput<String>('etag');
     eventDataContentType = registerOutput<String>('eventDataContentType');
@@ -535,9 +544,27 @@ class Trigger extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    retryPolicy = registerOutput<TriggerRetryPolicy?>('retryPolicy');
+    retryPolicy = registerOutput<TriggerRetryPolicy?>(
+      'retryPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TriggerRetryPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     serviceAccount = registerOutput<String?>('serviceAccount');
-    transport = registerOutput<TriggerTransport>('transport');
+    transport = registerOutput<TriggerTransport>(
+      'transport',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TriggerTransport.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -568,7 +595,16 @@ class Trigger extends pulumi.CustomResource {
     channel = registerOutput<String?>('channel');
     conditions = registerOutput<Map<String, String>>('conditions');
     createTime = registerOutput<String>('createTime');
-    destination = registerOutput<TriggerDestination>('destination');
+    destination = registerOutput<TriggerDestination>(
+      'destination',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TriggerDestination.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     etag = registerOutput<String>('etag');
     eventDataContentType = registerOutput<String>('eventDataContentType');
@@ -580,9 +616,27 @@ class Trigger extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    retryPolicy = registerOutput<TriggerRetryPolicy?>('retryPolicy');
+    retryPolicy = registerOutput<TriggerRetryPolicy?>(
+      'retryPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TriggerRetryPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     serviceAccount = registerOutput<String?>('serviceAccount');
-    transport = registerOutput<TriggerTransport>('transport');
+    transport = registerOutput<TriggerTransport>(
+      'transport',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TriggerTransport.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }

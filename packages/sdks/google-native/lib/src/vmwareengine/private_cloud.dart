@@ -77,14 +77,48 @@ class PrivateCloud extends pulumi.CustomResource {
     deleteTime = registerOutput<String>('deleteTime');
     description = registerOutput<String>('description');
     expireTime = registerOutput<String>('expireTime');
-    hcx = registerOutput<HcxResponse>('hcx');
+    hcx = registerOutput<HcxResponse>(
+      'hcx',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HcxResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     managementCluster = registerOutput<ManagementClusterResponse>(
       'managementCluster',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagementClusterResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
-    networkConfig = registerOutput<NetworkConfigResponse>('networkConfig');
-    nsx = registerOutput<NsxResponse>('nsx');
+    networkConfig = registerOutput<NetworkConfigResponse>(
+      'networkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    nsx = registerOutput<NsxResponse>(
+      'nsx',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NsxResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     privateCloudId = registerOutput<String>('privateCloudId');
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');
@@ -92,6 +126,15 @@ class PrivateCloud extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
-    vcenter = registerOutput<VcenterResponse>('vcenter');
+    vcenter = registerOutput<VcenterResponse>(
+      'vcenter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VcenterResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

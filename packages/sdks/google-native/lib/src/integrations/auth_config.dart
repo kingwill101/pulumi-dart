@@ -99,6 +99,13 @@ class AuthConfig extends pulumi.CustomResource {
     decryptedCredential =
         registerOutput<GoogleCloudIntegrationsV1alphaCredentialResponse>(
           'decryptedCredential',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudIntegrationsV1alphaCredentialResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');

@@ -1216,11 +1216,38 @@ class SyntheticTask extends pulumi.CustomResource {
     availableAssertions = registerOutput<List<Map<String, dynamic>>?>(
       'availableAssertions',
     );
-    commonSetting = registerOutput<SyntheticTaskCommonSetting>('commonSetting');
-    customPeriod = registerOutput<SyntheticTaskCustomPeriod?>('customPeriod');
+    commonSetting = registerOutput<SyntheticTaskCommonSetting>(
+      'commonSetting',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SyntheticTaskCommonSetting.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    customPeriod = registerOutput<SyntheticTaskCustomPeriod?>(
+      'customPeriod',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SyntheticTaskCustomPeriod.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     frequency = registerOutput<String>('frequency');
     monitorCategory = registerOutput<int>('monitorCategory');
-    monitorConf = registerOutput<SyntheticTaskMonitorConf>('monitorConf');
+    monitorConf = registerOutput<SyntheticTaskMonitorConf>(
+      'monitorConf',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SyntheticTaskMonitorConf.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     monitors = registerOutput<List<Map<String, dynamic>>>('monitors');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     status = registerOutput<String>('status');
@@ -1255,11 +1282,38 @@ class SyntheticTask extends pulumi.CustomResource {
     availableAssertions = registerOutput<List<Map<String, dynamic>>?>(
       'availableAssertions',
     );
-    commonSetting = registerOutput<SyntheticTaskCommonSetting>('commonSetting');
-    customPeriod = registerOutput<SyntheticTaskCustomPeriod?>('customPeriod');
+    commonSetting = registerOutput<SyntheticTaskCommonSetting>(
+      'commonSetting',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SyntheticTaskCommonSetting.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    customPeriod = registerOutput<SyntheticTaskCustomPeriod?>(
+      'customPeriod',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SyntheticTaskCustomPeriod.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     frequency = registerOutput<String>('frequency');
     monitorCategory = registerOutput<int>('monitorCategory');
-    monitorConf = registerOutput<SyntheticTaskMonitorConf>('monitorConf');
+    monitorConf = registerOutput<SyntheticTaskMonitorConf>(
+      'monitorConf',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SyntheticTaskMonitorConf.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     monitors = registerOutput<List<Map<String, dynamic>>>('monitors');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     status = registerOutput<String>('status');

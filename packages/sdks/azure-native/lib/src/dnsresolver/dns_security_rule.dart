@@ -267,7 +267,16 @@ class DnsSecurityRule extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    action = registerOutput<DnsSecurityRuleActionResponse>('action');
+    action = registerOutput<DnsSecurityRuleActionResponse>(
+      'action',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DnsSecurityRuleActionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     dnsResolverDomainLists = registerOutput<List<Map<String, dynamic>>>(
       'dnsResolverDomainLists',
@@ -278,7 +287,16 @@ class DnsSecurityRule extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     priority = registerOutput<int>('priority');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

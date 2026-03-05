@@ -883,7 +883,16 @@ class BackendBucketIamBinding extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<BackendBucketIamBindingCondition?>('condition');
+    condition = registerOutput<BackendBucketIamBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackendBucketIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     members = registerOutput<List<String>>('members');
     this.name = registerOutput<String>('name');
@@ -914,7 +923,16 @@ class BackendBucketIamBinding extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<BackendBucketIamBindingCondition?>('condition');
+    condition = registerOutput<BackendBucketIamBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackendBucketIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     members = registerOutput<List<String>>('members');
     this.name = registerOutput<String>('name');

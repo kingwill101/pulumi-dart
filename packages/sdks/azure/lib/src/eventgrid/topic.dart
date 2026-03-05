@@ -231,15 +231,38 @@ class Topic extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     endpoint = registerOutput<String>('endpoint');
-    identity = registerOutput<TopicIdentity?>('identity');
+    identity = registerOutput<TopicIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TopicIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     inboundIpRules = registerOutput<List<Map<String, dynamic>>?>(
       'inboundIpRules',
     );
     inputMappingDefaultValues = registerOutput<TopicInputMappingDefaultValues?>(
       'inputMappingDefaultValues',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TopicInputMappingDefaultValues.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     inputMappingFields = registerOutput<TopicInputMappingFields?>(
       'inputMappingFields',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TopicInputMappingFields.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     inputSchema = registerOutput<String?>('inputSchema');
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
@@ -274,15 +297,38 @@ class Topic extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     endpoint = registerOutput<String>('endpoint');
-    identity = registerOutput<TopicIdentity?>('identity');
+    identity = registerOutput<TopicIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TopicIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     inboundIpRules = registerOutput<List<Map<String, dynamic>>?>(
       'inboundIpRules',
     );
     inputMappingDefaultValues = registerOutput<TopicInputMappingDefaultValues?>(
       'inputMappingDefaultValues',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TopicInputMappingDefaultValues.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     inputMappingFields = registerOutput<TopicInputMappingFields?>(
       'inputMappingFields',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TopicInputMappingFields.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     inputSchema = registerOutput<String?>('inputSchema');
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');

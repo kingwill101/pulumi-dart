@@ -301,6 +301,13 @@ class MongoCollection extends pulumi.CustomResource {
     analyticalStorageTtl = registerOutput<int?>('analyticalStorageTtl');
     autoscaleSettings = registerOutput<MongoCollectionAutoscaleSettings?>(
       'autoscaleSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MongoCollectionAutoscaleSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     databaseName = registerOutput<String>('databaseName');
     defaultTtlSeconds = registerOutput<int?>('defaultTtlSeconds');
@@ -339,6 +346,13 @@ class MongoCollection extends pulumi.CustomResource {
     analyticalStorageTtl = registerOutput<int?>('analyticalStorageTtl');
     autoscaleSettings = registerOutput<MongoCollectionAutoscaleSettings?>(
       'autoscaleSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MongoCollectionAutoscaleSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     databaseName = registerOutput<String>('databaseName');
     defaultTtlSeconds = registerOutput<int?>('defaultTtlSeconds');

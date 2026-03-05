@@ -242,15 +242,36 @@ class DataCollectionEndpoint extends pulumi.CustomResource {
     configurationAccess =
         registerOutput<DataCollectionEndpointResponseConfigurationAccess?>(
           'configurationAccess',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataCollectionEndpointResponseConfigurationAccess.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String?>('description');
     etag = registerOutput<String>('etag');
     failoverConfiguration =
         registerOutput<DataCollectionEndpointResponseFailoverConfiguration>(
           'failoverConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataCollectionEndpointResponseFailoverConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     identity = registerOutput<DataCollectionEndpointResourceResponseIdentity?>(
       'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataCollectionEndpointResourceResponseIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     immutableId = registerOutput<String?>('immutableId');
     kind = registerOutput<String?>('kind');
@@ -258,17 +279,45 @@ class DataCollectionEndpoint extends pulumi.CustomResource {
     logsIngestion =
         registerOutput<DataCollectionEndpointResponseLogsIngestion?>(
           'logsIngestion',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataCollectionEndpointResponseLogsIngestion.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     metadata = registerOutput<DataCollectionEndpointResponseMetadata>(
       'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataCollectionEndpointResponseMetadata.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     metricsIngestion =
         registerOutput<DataCollectionEndpointResponseMetricsIngestion?>(
           'metricsIngestion',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataCollectionEndpointResponseMetricsIngestion.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     networkAcls = registerOutput<DataCollectionEndpointResponseNetworkAcls?>(
       'networkAcls',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataCollectionEndpointResponseNetworkAcls.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     privateLinkScopedResources = registerOutput<List<Map<String, dynamic>>>(
       'privateLinkScopedResources',
@@ -277,6 +326,13 @@ class DataCollectionEndpoint extends pulumi.CustomResource {
     systemData =
         registerOutput<DataCollectionEndpointResourceResponseSystemData>(
           'systemData',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataCollectionEndpointResourceResponseSystemData.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

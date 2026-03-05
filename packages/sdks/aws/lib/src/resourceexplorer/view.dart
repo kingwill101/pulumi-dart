@@ -234,7 +234,16 @@ class View extends pulumi.CustomResource {
       ) {
     arn = registerOutput<String>('arn');
     defaultView = registerOutput<bool>('defaultView');
-    filters = registerOutput<ViewFilters?>('filters');
+    filters = registerOutput<ViewFilters?>(
+      'filters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ViewFilters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     includedProperties = registerOutput<List<Map<String, dynamic>>?>(
       'includedProperties',
     );
@@ -266,7 +275,16 @@ class View extends pulumi.CustomResource {
        ) {
     arn = registerOutput<String>('arn');
     defaultView = registerOutput<bool>('defaultView');
-    filters = registerOutput<ViewFilters?>('filters');
+    filters = registerOutput<ViewFilters?>(
+      'filters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ViewFilters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     includedProperties = registerOutput<List<Map<String, dynamic>>?>(
       'includedProperties',
     );

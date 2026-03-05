@@ -433,11 +433,27 @@ class KafkaConnectorTopicMap extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    batching = registerOutput<KafkaTopicMapBatchingResponse?>('batching');
+    batching = registerOutput<KafkaTopicMapBatchingResponse?>(
+      'batching',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KafkaTopicMapBatchingResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     compression = registerOutput<String?>('compression');
     copyMqttProperties = registerOutput<String?>('copyMqttProperties');
     extendedLocation = registerOutput<ExtendedLocationPropertyResponse>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationPropertyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     kafkaConnectorRef = registerOutput<String>('kafkaConnectorRef');
     location = registerOutput<String>('location');
@@ -446,7 +462,16 @@ class KafkaConnectorTopicMap extends pulumi.CustomResource {
     partitionStrategy = registerOutput<String?>('partitionStrategy');
     provisioningState = registerOutput<String>('provisioningState');
     routes = registerOutput<List<Map<String, dynamic>>>('routes');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

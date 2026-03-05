@@ -159,6 +159,13 @@ class OrganizationConfiguration extends pulumi.CustomResource {
        ) {
     autoEnable = registerOutput<OrganizationConfigurationAutoEnable>(
       'autoEnable',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrganizationConfigurationAutoEnable.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     maxAccountLimitReached = registerOutput<bool>('maxAccountLimitReached');
     region = registerOutput<String>('region');
@@ -189,6 +196,13 @@ class OrganizationConfiguration extends pulumi.CustomResource {
        ) {
     autoEnable = registerOutput<OrganizationConfigurationAutoEnable>(
       'autoEnable',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrganizationConfigurationAutoEnable.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     maxAccountLimitReached = registerOutput<bool>('maxAccountLimitReached');
     region = registerOutput<String>('region');

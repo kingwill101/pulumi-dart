@@ -527,9 +527,25 @@ class CollectorPolicy extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    ipfxEmission = registerOutput<CollectorPolicyIpfxEmission>('ipfxEmission');
+    ipfxEmission = registerOutput<CollectorPolicyIpfxEmission>(
+      'ipfxEmission',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CollectorPolicyIpfxEmission.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ipfxIngestion = registerOutput<CollectorPolicyIpfxIngestion>(
       'ipfxIngestion',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CollectorPolicyIpfxIngestion.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -560,9 +576,25 @@ class CollectorPolicy extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    ipfxEmission = registerOutput<CollectorPolicyIpfxEmission>('ipfxEmission');
+    ipfxEmission = registerOutput<CollectorPolicyIpfxEmission>(
+      'ipfxEmission',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CollectorPolicyIpfxEmission.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ipfxIngestion = registerOutput<CollectorPolicyIpfxIngestion>(
       'ipfxIngestion',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CollectorPolicyIpfxIngestion.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

@@ -531,6 +531,13 @@ class CatalogTableOptimizer extends pulumi.CustomResource {
     catalogId = registerOutput<String>('catalogId');
     configuration = registerOutput<CatalogTableOptimizerConfiguration>(
       'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CatalogTableOptimizerConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     databaseName = registerOutput<String>('databaseName');
     region = registerOutput<String>('region');
@@ -564,6 +571,13 @@ class CatalogTableOptimizer extends pulumi.CustomResource {
     catalogId = registerOutput<String>('catalogId');
     configuration = registerOutput<CatalogTableOptimizerConfiguration>(
       'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CatalogTableOptimizerConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     databaseName = registerOutput<String>('databaseName');
     region = registerOutput<String>('region');

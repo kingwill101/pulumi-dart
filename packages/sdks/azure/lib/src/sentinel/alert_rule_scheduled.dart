@@ -365,8 +365,24 @@ class AlertRuleScheduled extends pulumi.CustomResource {
     );
     eventGrouping = registerOutput<AlertRuleScheduledEventGrouping?>(
       'eventGrouping',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlertRuleScheduledEventGrouping.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    incident = registerOutput<AlertRuleScheduledIncident>('incident');
+    incident = registerOutput<AlertRuleScheduledIncident>(
+      'incident',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlertRuleScheduledIncident.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
     query = registerOutput<String>('query');
@@ -423,8 +439,24 @@ class AlertRuleScheduled extends pulumi.CustomResource {
     );
     eventGrouping = registerOutput<AlertRuleScheduledEventGrouping?>(
       'eventGrouping',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlertRuleScheduledEventGrouping.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    incident = registerOutput<AlertRuleScheduledIncident>('incident');
+    incident = registerOutput<AlertRuleScheduledIncident>(
+      'incident',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlertRuleScheduledIncident.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
     query = registerOutput<String>('query');

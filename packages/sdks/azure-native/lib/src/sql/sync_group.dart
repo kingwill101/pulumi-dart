@@ -391,8 +391,26 @@ class SyncGroup extends pulumi.CustomResource {
     lastSyncTime = registerOutput<String>('lastSyncTime');
     this.name = registerOutput<String>('name');
     privateEndpointName = registerOutput<String>('privateEndpointName');
-    schema = registerOutput<SyncGroupSchemaResponse?>('schema');
-    sku = registerOutput<SkuResponse?>('sku');
+    schema = registerOutput<SyncGroupSchemaResponse?>(
+      'schema',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SyncGroupSchemaResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    sku = registerOutput<SkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     syncDatabaseId = registerOutput<String?>('syncDatabaseId');
     syncState = registerOutput<String>('syncState');
     type = registerOutput<String>('type');

@@ -357,11 +357,29 @@ class Record extends pulumi.CustomResource {
         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
         options ?? pulumi.CustomResourceOptions(),
       ) {
-    authConf = registerOutput<RecordAuthConf?>('authConf');
+    authConf = registerOutput<RecordAuthConf?>(
+      'authConf',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RecordAuthConf.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     bizName = registerOutput<String?>('bizName');
     comment = registerOutput<String?>('comment');
     createTime = registerOutput<String>('createTime');
-    data = registerOutput<RecordData>('data');
+    data = registerOutput<RecordData>(
+      'data',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RecordData.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     hostPolicy = registerOutput<String?>('hostPolicy');
     proxied = registerOutput<bool?>('proxied');
     recordName = registerOutput<String>('recordName');
@@ -394,11 +412,29 @@ class Record extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    authConf = registerOutput<RecordAuthConf?>('authConf');
+    authConf = registerOutput<RecordAuthConf?>(
+      'authConf',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RecordAuthConf.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     bizName = registerOutput<String?>('bizName');
     comment = registerOutput<String?>('comment');
     createTime = registerOutput<String>('createTime');
-    data = registerOutput<RecordData>('data');
+    data = registerOutput<RecordData>(
+      'data',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RecordData.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     hostPolicy = registerOutput<String?>('hostPolicy');
     proxied = registerOutput<bool?>('proxied');
     recordName = registerOutput<String>('recordName');

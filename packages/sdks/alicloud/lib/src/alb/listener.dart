@@ -939,13 +939,38 @@ class Listener extends pulumi.CustomResource {
     );
     accessLogTracingConfig = registerOutput<ListenerAccessLogTracingConfig?>(
       'accessLogTracingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ListenerAccessLogTracingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    aclConfig = registerOutput<ListenerAclConfig>('aclConfig');
+    aclConfig = registerOutput<ListenerAclConfig>(
+      'aclConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ListenerAclConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     caCertificates = registerOutput<List<Map<String, dynamic>>?>(
       'caCertificates',
     );
     caEnabled = registerOutput<bool?>('caEnabled');
-    certificates = registerOutput<ListenerCertificates?>('certificates');
+    certificates = registerOutput<ListenerCertificates?>(
+      'certificates',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ListenerCertificates.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     defaultActions = registerOutput<List<Map<String, dynamic>>>(
       'defaultActions',
     );
@@ -957,13 +982,29 @@ class Listener extends pulumi.CustomResource {
     listenerPort = registerOutput<int>('listenerPort');
     listenerProtocol = registerOutput<String>('listenerProtocol');
     loadBalancerId = registerOutput<String>('loadBalancerId');
-    quicConfig = registerOutput<ListenerQuicConfig>('quicConfig');
+    quicConfig = registerOutput<ListenerQuicConfig>(
+      'quicConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ListenerQuicConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     requestTimeout = registerOutput<int>('requestTimeout');
     securityPolicyId = registerOutput<String>('securityPolicyId');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     xForwardedForConfig = registerOutput<ListenerXForwardedForConfig>(
       'xForwardedForConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ListenerXForwardedForConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -995,13 +1036,38 @@ class Listener extends pulumi.CustomResource {
     );
     accessLogTracingConfig = registerOutput<ListenerAccessLogTracingConfig?>(
       'accessLogTracingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ListenerAccessLogTracingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    aclConfig = registerOutput<ListenerAclConfig>('aclConfig');
+    aclConfig = registerOutput<ListenerAclConfig>(
+      'aclConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ListenerAclConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     caCertificates = registerOutput<List<Map<String, dynamic>>?>(
       'caCertificates',
     );
     caEnabled = registerOutput<bool?>('caEnabled');
-    certificates = registerOutput<ListenerCertificates?>('certificates');
+    certificates = registerOutput<ListenerCertificates?>(
+      'certificates',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ListenerCertificates.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     defaultActions = registerOutput<List<Map<String, dynamic>>>(
       'defaultActions',
     );
@@ -1013,13 +1079,29 @@ class Listener extends pulumi.CustomResource {
     listenerPort = registerOutput<int>('listenerPort');
     listenerProtocol = registerOutput<String>('listenerProtocol');
     loadBalancerId = registerOutput<String>('loadBalancerId');
-    quicConfig = registerOutput<ListenerQuicConfig>('quicConfig');
+    quicConfig = registerOutput<ListenerQuicConfig>(
+      'quicConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ListenerQuicConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     requestTimeout = registerOutput<int>('requestTimeout');
     securityPolicyId = registerOutput<String>('securityPolicyId');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     xForwardedForConfig = registerOutput<ListenerXForwardedForConfig>(
       'xForwardedForConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ListenerXForwardedForConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

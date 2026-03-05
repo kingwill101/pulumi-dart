@@ -656,7 +656,16 @@ class Datastore extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    nfsDatastore = registerOutput<DatastoreNfsDatastore>('nfsDatastore');
+    nfsDatastore = registerOutput<DatastoreNfsDatastore>(
+      'nfsDatastore',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatastoreNfsDatastore.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
@@ -691,7 +700,16 @@ class Datastore extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    nfsDatastore = registerOutput<DatastoreNfsDatastore>('nfsDatastore');
+    nfsDatastore = registerOutput<DatastoreNfsDatastore>(
+      'nfsDatastore',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatastoreNfsDatastore.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     this.state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');

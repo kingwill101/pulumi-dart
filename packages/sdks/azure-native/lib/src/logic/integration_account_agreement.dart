@@ -1116,11 +1116,38 @@ class IntegrationAccountAgreement extends pulumi.CustomResource {
     agreementType = registerOutput<String>('agreementType');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     changedTime = registerOutput<String>('changedTime');
-    content = registerOutput<AgreementContentResponse>('content');
+    content = registerOutput<AgreementContentResponse>(
+      'content',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgreementContentResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createdTime = registerOutput<String>('createdTime');
-    guestIdentity = registerOutput<BusinessIdentityResponse>('guestIdentity');
+    guestIdentity = registerOutput<BusinessIdentityResponse>(
+      'guestIdentity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BusinessIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     guestPartner = registerOutput<String>('guestPartner');
-    hostIdentity = registerOutput<BusinessIdentityResponse>('hostIdentity');
+    hostIdentity = registerOutput<BusinessIdentityResponse>(
+      'hostIdentity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BusinessIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     hostPartner = registerOutput<String>('hostPartner');
     location = registerOutput<String?>('location');
     metadata = registerOutput<dynamic>('metadata');

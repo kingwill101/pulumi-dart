@@ -1190,7 +1190,16 @@ class AppHostingBackend extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     appId = registerOutput<String>('appId');
     backendId = registerOutput<String>('backendId');
-    codebase = registerOutput<AppHostingBackendCodebase?>('codebase');
+    codebase = registerOutput<AppHostingBackendCodebase?>(
+      'codebase',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppHostingBackendCodebase.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     displayName = registerOutput<String?>('displayName');
@@ -1241,7 +1250,16 @@ class AppHostingBackend extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     appId = registerOutput<String>('appId');
     backendId = registerOutput<String>('backendId');
-    codebase = registerOutput<AppHostingBackendCodebase?>('codebase');
+    codebase = registerOutput<AppHostingBackendCodebase?>(
+      'codebase',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppHostingBackendCodebase.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     displayName = registerOutput<String?>('displayName');

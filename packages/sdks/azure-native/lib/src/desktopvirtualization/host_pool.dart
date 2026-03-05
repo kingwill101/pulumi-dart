@@ -472,7 +472,16 @@ class HostPool extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    agentUpdate = registerOutput<AgentUpdatePropertiesResponse?>('agentUpdate');
+    agentUpdate = registerOutput<AgentUpdatePropertiesResponse?>(
+      'agentUpdate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentUpdatePropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     appAttachPackageReferences = registerOutput<List<String>>(
       'appAttachPackageReferences',
     );
@@ -489,6 +498,13 @@ class HostPool extends pulumi.CustomResource {
     identity =
         registerOutput<ResourceModelWithAllowedPropertySetResponseIdentity?>(
           'identity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResourceModelWithAllowedPropertySetResponseIdentity.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     kind = registerOutput<String?>('kind');
     loadBalancerType = registerOutput<String>('loadBalancerType');
@@ -502,6 +518,13 @@ class HostPool extends pulumi.CustomResource {
     );
     plan = registerOutput<ResourceModelWithAllowedPropertySetResponsePlan?>(
       'plan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceModelWithAllowedPropertySetResponsePlan.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     preferredAppGroupType = registerOutput<String>('preferredAppGroupType');
     privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
@@ -510,10 +533,24 @@ class HostPool extends pulumi.CustomResource {
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     registrationInfo = registerOutput<RegistrationInfoResponse?>(
       'registrationInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegistrationInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     ring = registerOutput<int?>('ring');
     sku = registerOutput<ResourceModelWithAllowedPropertySetResponseSku?>(
       'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceModelWithAllowedPropertySetResponseSku.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     ssoClientId = registerOutput<String?>('ssoClientId');
     ssoClientSecretKeyVaultPath = registerOutput<String?>(
@@ -522,7 +559,16 @@ class HostPool extends pulumi.CustomResource {
     ssoSecretType = registerOutput<String?>('ssoSecretType');
     ssoadfsAuthority = registerOutput<String?>('ssoadfsAuthority');
     startVMOnConnect = registerOutput<bool?>('startVMOnConnect');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     validationEnvironment = registerOutput<bool?>('validationEnvironment');

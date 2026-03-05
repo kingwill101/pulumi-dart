@@ -1,18 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getManagedServerDnsAlias.
 class GetManagedServerDnsAliasResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The fully qualified DNS record for managed server alias
   final String azureDnsRecord;
+
   /// Resource ID.
   final String id;
+
   /// Resource name.
   final String name;
+
   /// The fully qualified public DNS record for managed server alias
   final String publicAzureDnsRecord;
+
   /// Resource type.
   final String type;
 
@@ -54,4 +58,3 @@ class GetManagedServerDnsAliasResult {
     );
   }
 }
-

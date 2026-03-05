@@ -910,6 +910,13 @@ class ScheduledAlertRule extends pulumi.CustomResource {
        ) {
     alertDetailsOverride = registerOutput<AlertDetailsOverrideResponse?>(
       'alertDetailsOverride',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlertDetailsOverrideResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     alertRuleTemplateName = registerOutput<String?>('alertRuleTemplateName');
     azureApiVersion = registerOutput<String>('azureApiVersion');
@@ -923,9 +930,23 @@ class ScheduledAlertRule extends pulumi.CustomResource {
     etag = registerOutput<String?>('etag');
     eventGroupingSettings = registerOutput<EventGroupingSettingsResponse?>(
       'eventGroupingSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventGroupingSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     incidentConfiguration = registerOutput<IncidentConfigurationResponse?>(
       'incidentConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IncidentConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     kind = registerOutput<String>('kind');
     lastModifiedUtc = registerOutput<String>('lastModifiedUtc');
@@ -936,7 +957,16 @@ class ScheduledAlertRule extends pulumi.CustomResource {
     severity = registerOutput<String>('severity');
     suppressionDuration = registerOutput<String>('suppressionDuration');
     suppressionEnabled = registerOutput<bool>('suppressionEnabled');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tactics = registerOutput<List<String>?>('tactics');
     techniques = registerOutput<List<String>?>('techniques');
     templateVersion = registerOutput<String?>('templateVersion');

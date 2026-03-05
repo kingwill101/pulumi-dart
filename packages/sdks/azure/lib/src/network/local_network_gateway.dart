@@ -216,6 +216,13 @@ class LocalNetworkGateway extends pulumi.CustomResource {
     addressSpaces = registerOutput<List<String>?>('addressSpaces');
     bgpSettings = registerOutput<LocalNetworkGatewayBgpSettings?>(
       'bgpSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LocalNetworkGatewayBgpSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     gatewayAddress = registerOutput<String?>('gatewayAddress');
     gatewayFqdn = registerOutput<String?>('gatewayFqdn');
@@ -251,6 +258,13 @@ class LocalNetworkGateway extends pulumi.CustomResource {
     addressSpaces = registerOutput<List<String>?>('addressSpaces');
     bgpSettings = registerOutput<LocalNetworkGatewayBgpSettings?>(
       'bgpSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LocalNetworkGatewayBgpSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     gatewayAddress = registerOutput<String?>('gatewayAddress');
     gatewayFqdn = registerOutput<String?>('gatewayFqdn');

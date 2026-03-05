@@ -511,7 +511,16 @@ class AuthorizedView extends pulumi.CustomResource {
     instanceName = registerOutput<String>('instanceName');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    subsetView = registerOutput<AuthorizedViewSubsetView?>('subsetView');
+    subsetView = registerOutput<AuthorizedViewSubsetView?>(
+      'subsetView',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AuthorizedViewSubsetView.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tableName = registerOutput<String>('tableName');
   }
 
@@ -542,7 +551,16 @@ class AuthorizedView extends pulumi.CustomResource {
     instanceName = registerOutput<String>('instanceName');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    subsetView = registerOutput<AuthorizedViewSubsetView?>('subsetView');
+    subsetView = registerOutput<AuthorizedViewSubsetView?>(
+      'subsetView',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AuthorizedViewSubsetView.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tableName = registerOutput<String>('tableName');
   }
 }

@@ -104,13 +104,31 @@ class Conversation extends pulumi.CustomResource {
     callMetadata =
         registerOutput<
           GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse
-        >('callMetadata');
+        >(
+          'callMetadata',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     conversationId = registerOutput<String?>('conversationId');
     createTime = registerOutput<String>('createTime');
     dataSource =
         registerOutput<
           GoogleCloudContactcenterinsightsV1ConversationDataSourceResponse
-        >('dataSource');
+        >(
+          'dataSource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudContactcenterinsightsV1ConversationDataSourceResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     dialogflowIntents = registerOutput<Map<String, String>>(
       'dialogflowIntents',
     );
@@ -121,11 +139,27 @@ class Conversation extends pulumi.CustomResource {
     latestAnalysis =
         registerOutput<GoogleCloudContactcenterinsightsV1AnalysisResponse>(
           'latestAnalysis',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudContactcenterinsightsV1AnalysisResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     latestSummary =
         registerOutput<
           GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse
-        >('latestSummary');
+        >(
+          'latestSummary',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     location = registerOutput<String>('location');
     medium = registerOutput<String>('medium');
     this.name = registerOutput<String>('name');
@@ -138,7 +172,16 @@ class Conversation extends pulumi.CustomResource {
     transcript =
         registerOutput<
           GoogleCloudContactcenterinsightsV1ConversationTranscriptResponse
-        >('transcript');
+        >(
+          'transcript',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudContactcenterinsightsV1ConversationTranscriptResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     ttl = registerOutput<String>('ttl');
     turnCount = registerOutput<int>('turnCount');
     updateTime = registerOutput<String>('updateTime');

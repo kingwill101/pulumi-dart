@@ -147,9 +147,23 @@ class Instance extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     maintenancePolicy = registerOutput<MaintenancePolicyResponse>(
       'maintenancePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MaintenancePolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     maintenanceSchedule = registerOutput<MaintenanceScheduleResponse>(
       'maintenanceSchedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MaintenanceScheduleResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     maintenanceVersion = registerOutput<String>('maintenanceVersion');
     memorySizeGb = registerOutput<int>('memorySizeGb');
@@ -157,6 +171,13 @@ class Instance extends pulumi.CustomResource {
     nodes = registerOutput<List<Map<String, dynamic>>>('nodes');
     persistenceConfig = registerOutput<PersistenceConfigResponse>(
       'persistenceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PersistenceConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     persistenceIamIdentity = registerOutput<String>('persistenceIamIdentity');
     port = registerOutput<int>('port');

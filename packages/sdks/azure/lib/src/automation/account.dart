@@ -238,7 +238,16 @@ class Account extends pulumi.CustomResource {
     dscServerEndpoint = registerOutput<String>('dscServerEndpoint');
     encryptions = registerOutput<List<Map<String, dynamic>>?>('encryptions');
     hybridServiceUrl = registerOutput<String>('hybridServiceUrl');
-    identity = registerOutput<AccountIdentity?>('identity');
+    identity = registerOutput<AccountIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     localAuthenticationEnabled = registerOutput<bool?>(
       'localAuthenticationEnabled',
     );
@@ -283,7 +292,16 @@ class Account extends pulumi.CustomResource {
     dscServerEndpoint = registerOutput<String>('dscServerEndpoint');
     encryptions = registerOutput<List<Map<String, dynamic>>?>('encryptions');
     hybridServiceUrl = registerOutput<String>('hybridServiceUrl');
-    identity = registerOutput<AccountIdentity?>('identity');
+    identity = registerOutput<AccountIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     localAuthenticationEnabled = registerOutput<bool?>(
       'localAuthenticationEnabled',
     );

@@ -54,7 +54,16 @@ class Table extends pulumi.CustomResource {
     deleteTime = registerOutput<String>('deleteTime');
     etag = registerOutput<String>('etag');
     expireTime = registerOutput<String>('expireTime');
-    hiveOptions = registerOutput<HiveTableOptionsResponse>('hiveOptions');
+    hiveOptions = registerOutput<HiveTableOptionsResponse>(
+      'hiveOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HiveTableOptionsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

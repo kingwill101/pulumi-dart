@@ -320,14 +320,48 @@ class Account extends pulumi.CustomResource {
     allowedAuthenticationModes = registerOutput<List<String>>(
       'allowedAuthenticationModes',
     );
-    encryption = registerOutput<AccountEncryption?>('encryption');
-    identity = registerOutput<AccountIdentity?>('identity');
+    encryption = registerOutput<AccountEncryption?>(
+      'encryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountEncryption.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    identity = registerOutput<AccountIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     keyVaultReference = registerOutput<AccountKeyVaultReference?>(
       'keyVaultReference',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountKeyVaultReference.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkProfile = registerOutput<AccountNetworkProfile?>('networkProfile');
+    networkProfile = registerOutput<AccountNetworkProfile?>(
+      'networkProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountNetworkProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     poolAllocationMode = registerOutput<String?>('poolAllocationMode');
     primaryAccessKey = registerOutput<String>('primaryAccessKey');
     publicNetworkAccessEnabled = registerOutput<bool?>(
@@ -372,14 +406,48 @@ class Account extends pulumi.CustomResource {
     allowedAuthenticationModes = registerOutput<List<String>>(
       'allowedAuthenticationModes',
     );
-    encryption = registerOutput<AccountEncryption?>('encryption');
-    identity = registerOutput<AccountIdentity?>('identity');
+    encryption = registerOutput<AccountEncryption?>(
+      'encryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountEncryption.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    identity = registerOutput<AccountIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     keyVaultReference = registerOutput<AccountKeyVaultReference?>(
       'keyVaultReference',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountKeyVaultReference.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkProfile = registerOutput<AccountNetworkProfile?>('networkProfile');
+    networkProfile = registerOutput<AccountNetworkProfile?>(
+      'networkProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountNetworkProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     poolAllocationMode = registerOutput<String?>('poolAllocationMode');
     primaryAccessKey = registerOutput<String>('primaryAccessKey');
     publicNetworkAccessEnabled = registerOutput<bool?>(

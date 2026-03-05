@@ -246,16 +246,39 @@ class IngestionDestination extends pulumi.CustomResource {
     destinationConfiguration =
         registerOutput<IngestionDestinationDestinationConfiguration>(
           'destinationConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return IngestionDestinationDestinationConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     ingestionArn = registerOutput<String>('ingestionArn');
     processingConfiguration =
         registerOutput<IngestionDestinationProcessingConfiguration>(
           'processingConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return IngestionDestinationProcessingConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<IngestionDestinationTimeouts?>('timeouts');
+    timeouts = registerOutput<IngestionDestinationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IngestionDestinationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [IngestionDestination] resource's state with the given [name] and [id].
@@ -286,15 +309,38 @@ class IngestionDestination extends pulumi.CustomResource {
     destinationConfiguration =
         registerOutput<IngestionDestinationDestinationConfiguration>(
           'destinationConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return IngestionDestinationDestinationConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     ingestionArn = registerOutput<String>('ingestionArn');
     processingConfiguration =
         registerOutput<IngestionDestinationProcessingConfiguration>(
           'processingConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return IngestionDestinationProcessingConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<IngestionDestinationTimeouts?>('timeouts');
+    timeouts = registerOutput<IngestionDestinationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IngestionDestinationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

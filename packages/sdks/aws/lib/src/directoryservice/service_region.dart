@@ -608,7 +608,16 @@ class ServiceRegion extends pulumi.CustomResource {
     regionName = registerOutput<String>('regionName');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    vpcSettings = registerOutput<ServiceRegionVpcSettings>('vpcSettings');
+    vpcSettings = registerOutput<ServiceRegionVpcSettings>(
+      'vpcSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceRegionVpcSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [ServiceRegion] resource's state with the given [name] and [id].
@@ -642,6 +651,15 @@ class ServiceRegion extends pulumi.CustomResource {
     regionName = registerOutput<String>('regionName');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    vpcSettings = registerOutput<ServiceRegionVpcSettings>('vpcSettings');
+    vpcSettings = registerOutput<ServiceRegionVpcSettings>(
+      'vpcSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceRegionVpcSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

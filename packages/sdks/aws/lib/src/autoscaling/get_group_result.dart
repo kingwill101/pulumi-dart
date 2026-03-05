@@ -12,63 +12,91 @@ import 'get_group_warm_pool.dart';
 class GetGroupResult {
   /// ARN of the Auto Scaling group.
   final String arn;
+
   /// One or more Availability Zones for the group.
   final List<String> availabilityZones;
   final int defaultCooldown;
+
   /// Desired size of the group.
   final int desiredCapacity;
+
   /// The unit of measurement for the value returned for `desired_capacity`.
   final String desiredCapacityType;
+
   /// List of metrics enabled for collection.
   final List<String> enabledMetrics;
+
   /// The amount of time, in seconds, that Amazon EC2 Auto Scaling waits before checking the health status of an EC2 instance that has come into service.
   final int healthCheckGracePeriod;
+
   /// Service to use for the health checks. The valid values are EC2 and ELB.
   final String healthCheckType;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Instance maintenance policy for the group.
   final List<GetGroupInstanceMaintenancePolicy> instanceMaintenancePolicies;
+
   /// The name of the associated launch configuration.
   final String launchConfiguration;
+
   /// List of launch templates along with the overrides.
   final List<GetGroupLaunchTemplate> launchTemplates;
+
   /// One or more load balancers associated with the group.
   final List<String> loadBalancers;
+
   /// Maximum amount of time, in seconds, that an instance can be in service.
   final int maxInstanceLifetime;
+
   /// Maximum size of the group.
   final int maxSize;
+
   /// Minimum number of instances to maintain in the warm pool.
   final int minSize;
+
   /// List of mixed instances policy objects for the group.
   final List<GetGroupMixedInstancesPolicy> mixedInstancesPolicies;
+
   /// Name of the Auto Scaling Group.
   final String name;
   final bool newInstancesProtectedFromScaleIn;
+
   /// Name of the placement group into which to launch your instances, if any. For more information, see Placement Groups (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html) in the Amazon Elastic Compute Cloud User Guide.
   final String placementGroup;
+
   /// Predicted capacity of the group.
   final int predictedCapacity;
   final String region;
+
   /// ARN of the service-linked role that the Auto Scaling group uses to call other AWS services on your behalf.
   final String serviceLinkedRoleArn;
+
   /// Current state of the group when DeleteAutoScalingGroup is in progress.
   final String status;
+
   /// List of processes suspended processes for the Auto Scaling Group.
   final List<String> suspendedProcesses;
+
   /// List of tags for the group.
   final List<GetGroupTag> tags;
+
   /// ARNs of the target groups for your load balancer.
   final List<String> targetGroupArns;
+
   /// The termination policies for the group.
   final List<String> terminationPolicies;
+
   /// Traffic sources.
   final List<GetGroupTrafficSource> trafficSources;
+
   /// VPC ID for the group.
   final String vpcZoneIdentifier;
+
   /// Current size of the warm pool.
   final int warmPoolSize;
+
   /// List of warm pool configuration objects.
   final List<GetGroupWarmPool> warmPools;
 
@@ -151,14 +179,26 @@ class GetGroupResult {
       'healthCheckGracePeriod': healthCheckGracePeriod,
       'healthCheckType': healthCheckType,
       'id': id,
-      'instanceMaintenancePolicies': pulumi.Input.encodeList<GetGroupInstanceMaintenancePolicy, Map<String, dynamic>>(instanceMaintenancePolicies, (value) => value.toMap()),
+      'instanceMaintenancePolicies':
+          pulumi.Input.encodeList<
+            GetGroupInstanceMaintenancePolicy,
+            Map<String, dynamic>
+          >(instanceMaintenancePolicies, (value) => value.toMap()),
       'launchConfiguration': launchConfiguration,
-      'launchTemplates': pulumi.Input.encodeList<GetGroupLaunchTemplate, Map<String, dynamic>>(launchTemplates, (value) => value.toMap()),
+      'launchTemplates':
+          pulumi.Input.encodeList<GetGroupLaunchTemplate, Map<String, dynamic>>(
+            launchTemplates,
+            (value) => value.toMap(),
+          ),
       'loadBalancers': loadBalancers,
       'maxInstanceLifetime': maxInstanceLifetime,
       'maxSize': maxSize,
       'minSize': minSize,
-      'mixedInstancesPolicies': pulumi.Input.encodeList<GetGroupMixedInstancesPolicy, Map<String, dynamic>>(mixedInstancesPolicies, (value) => value.toMap()),
+      'mixedInstancesPolicies':
+          pulumi.Input.encodeList<
+            GetGroupMixedInstancesPolicy,
+            Map<String, dynamic>
+          >(mixedInstancesPolicies, (value) => value.toMap()),
       'name': name,
       'newInstancesProtectedFromScaleIn': newInstancesProtectedFromScaleIn,
       'placementGroup': placementGroup,
@@ -167,13 +207,24 @@ class GetGroupResult {
       'serviceLinkedRoleArn': serviceLinkedRoleArn,
       'status': status,
       'suspendedProcesses': suspendedProcesses,
-      'tags': pulumi.Input.encodeList<GetGroupTag, Map<String, dynamic>>(tags, (value) => value.toMap()),
+      'tags': pulumi.Input.encodeList<GetGroupTag, Map<String, dynamic>>(
+        tags,
+        (value) => value.toMap(),
+      ),
       'targetGroupArns': targetGroupArns,
       'terminationPolicies': terminationPolicies,
-      'trafficSources': pulumi.Input.encodeList<GetGroupTrafficSource, Map<String, dynamic>>(trafficSources, (value) => value.toMap()),
+      'trafficSources':
+          pulumi.Input.encodeList<GetGroupTrafficSource, Map<String, dynamic>>(
+            trafficSources,
+            (value) => value.toMap(),
+          ),
       'vpcZoneIdentifier': vpcZoneIdentifier,
       'warmPoolSize': warmPoolSize,
-      'warmPools': pulumi.Input.encodeList<GetGroupWarmPool, Map<String, dynamic>>(warmPools, (value) => value.toMap()),
+      'warmPools':
+          pulumi.Input.encodeList<GetGroupWarmPool, Map<String, dynamic>>(
+            warmPools,
+            (value) => value.toMap(),
+          ),
     };
   }
 
@@ -188,30 +239,59 @@ class GetGroupResult {
       healthCheckGracePeriod: map['healthCheckGracePeriod'] as int,
       healthCheckType: map['healthCheckType'] as String,
       id: map['id'] as String,
-      instanceMaintenancePolicies: pulumi.Input.decodeList<GetGroupInstanceMaintenancePolicy>(map['instanceMaintenancePolicies']!, (value) => GetGroupInstanceMaintenancePolicy.fromMap((value as Map).cast<String, dynamic>())),
+      instanceMaintenancePolicies:
+          pulumi.Input.decodeList<GetGroupInstanceMaintenancePolicy>(
+            map['instanceMaintenancePolicies']!,
+            (value) => GetGroupInstanceMaintenancePolicy.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       launchConfiguration: map['launchConfiguration'] as String,
-      launchTemplates: pulumi.Input.decodeList<GetGroupLaunchTemplate>(map['launchTemplates']!, (value) => GetGroupLaunchTemplate.fromMap((value as Map).cast<String, dynamic>())),
+      launchTemplates: pulumi.Input.decodeList<GetGroupLaunchTemplate>(
+        map['launchTemplates']!,
+        (value) => GetGroupLaunchTemplate.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       loadBalancers: (map['loadBalancers'] as List).cast<String>(),
       maxInstanceLifetime: map['maxInstanceLifetime'] as int,
       maxSize: map['maxSize'] as int,
       minSize: map['minSize'] as int,
-      mixedInstancesPolicies: pulumi.Input.decodeList<GetGroupMixedInstancesPolicy>(map['mixedInstancesPolicies']!, (value) => GetGroupMixedInstancesPolicy.fromMap((value as Map).cast<String, dynamic>())),
+      mixedInstancesPolicies:
+          pulumi.Input.decodeList<GetGroupMixedInstancesPolicy>(
+            map['mixedInstancesPolicies']!,
+            (value) => GetGroupMixedInstancesPolicy.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       name: map['name'] as String,
-      newInstancesProtectedFromScaleIn: map['newInstancesProtectedFromScaleIn'] as bool,
+      newInstancesProtectedFromScaleIn:
+          map['newInstancesProtectedFromScaleIn'] as bool,
       placementGroup: map['placementGroup'] as String,
       predictedCapacity: map['predictedCapacity'] as int,
       region: map['region'] as String,
       serviceLinkedRoleArn: map['serviceLinkedRoleArn'] as String,
       status: map['status'] as String,
       suspendedProcesses: (map['suspendedProcesses'] as List).cast<String>(),
-      tags: pulumi.Input.decodeList<GetGroupTag>(map['tags']!, (value) => GetGroupTag.fromMap((value as Map).cast<String, dynamic>())),
+      tags: pulumi.Input.decodeList<GetGroupTag>(
+        map['tags']!,
+        (value) => GetGroupTag.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       targetGroupArns: (map['targetGroupArns'] as List).cast<String>(),
       terminationPolicies: (map['terminationPolicies'] as List).cast<String>(),
-      trafficSources: pulumi.Input.decodeList<GetGroupTrafficSource>(map['trafficSources']!, (value) => GetGroupTrafficSource.fromMap((value as Map).cast<String, dynamic>())),
+      trafficSources: pulumi.Input.decodeList<GetGroupTrafficSource>(
+        map['trafficSources']!,
+        (value) => GetGroupTrafficSource.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       vpcZoneIdentifier: map['vpcZoneIdentifier'] as String,
       warmPoolSize: map['warmPoolSize'] as int,
-      warmPools: pulumi.Input.decodeList<GetGroupWarmPool>(map['warmPools']!, (value) => GetGroupWarmPool.fromMap((value as Map).cast<String, dynamic>())),
+      warmPools: pulumi.Input.decodeList<GetGroupWarmPool>(
+        map['warmPools']!,
+        (value) =>
+            GetGroupWarmPool.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

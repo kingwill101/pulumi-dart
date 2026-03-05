@@ -476,10 +476,24 @@ class ExternalNetwork extends pulumi.CustomResource {
     configurationState = registerOutput<String>('configurationState');
     exportRoutePolicy = registerOutput<ExportRoutePolicyResponse?>(
       'exportRoutePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExportRoutePolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     exportRoutePolicyId = registerOutput<String?>('exportRoutePolicyId');
     importRoutePolicy = registerOutput<ImportRoutePolicyResponse?>(
       'importRoutePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImportRoutePolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     importRoutePolicyId = registerOutput<String?>('importRoutePolicyId');
     this.name = registerOutput<String>('name');
@@ -489,13 +503,36 @@ class ExternalNetwork extends pulumi.CustomResource {
     optionAProperties =
         registerOutput<ExternalNetworkPropertiesResponseOptionAProperties?>(
           'optionAProperties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ExternalNetworkPropertiesResponseOptionAProperties.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     optionBProperties = registerOutput<L3OptionBPropertiesResponse?>(
       'optionBProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return L3OptionBPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     peeringOption = registerOutput<String>('peeringOption');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

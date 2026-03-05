@@ -1,26 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getRecord.
 class GetRecordResult {
   /// Variable data depending on record type. For example, the "data" value for an A record would be the IPv4 address to which the domain will be mapped. For a CAA record, it would contain the domain name of the CA being granted permission to issue certificates.
   final String data;
   final String domain;
+
   /// An unsigned integer between 0-255 used for CAA records.
   final int flags;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
+
   /// The port for SRV records.
   final int port;
+
   /// The priority for SRV and MX records.
   final int priority;
+
   /// The parameter tag for CAA records.
   final String tag;
+
   /// This value is the time to live for the record, in seconds. This defines the time frame that clients can cache queried information before a refresh should be requested.
   final int ttl;
+
   /// The type of the DNS record.
   final String type;
+
   /// The weight for SRV records.
   final int weight;
 
@@ -82,4 +89,3 @@ class GetRecordResult {
     );
   }
 }
-

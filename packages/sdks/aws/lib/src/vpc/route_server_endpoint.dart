@@ -183,7 +183,16 @@ class RouteServerEndpoint extends pulumi.CustomResource {
     subnetId = registerOutput<String>('subnetId');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<RouteServerEndpointTimeouts?>('timeouts');
+    timeouts = registerOutput<RouteServerEndpointTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RouteServerEndpointTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vpcId = registerOutput<String>('vpcId');
   }
 
@@ -219,7 +228,16 @@ class RouteServerEndpoint extends pulumi.CustomResource {
     subnetId = registerOutput<String>('subnetId');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<RouteServerEndpointTimeouts?>('timeouts');
+    timeouts = registerOutput<RouteServerEndpointTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RouteServerEndpointTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vpcId = registerOutput<String>('vpcId');
   }
 }

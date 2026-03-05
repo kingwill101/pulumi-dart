@@ -1388,45 +1388,129 @@ class Bucket extends pulumi.CustomResource {
         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
         options ?? pulumi.CustomResourceOptions(),
       ) {
-    autoclass = registerOutput<BucketAutoclass?>('autoclass');
+    autoclass = registerOutput<BucketAutoclass?>(
+      'autoclass',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketAutoclass.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     cors = registerOutput<List<Map<String, dynamic>>?>('cors');
     customPlacementConfig = registerOutput<BucketCustomPlacementConfig?>(
       'customPlacementConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketCustomPlacementConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     defaultEventBasedHold = registerOutput<bool?>('defaultEventBasedHold');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     enableObjectRetention = registerOutput<bool?>('enableObjectRetention');
-    encryption = registerOutput<BucketEncryption?>('encryption');
+    encryption = registerOutput<BucketEncryption?>(
+      'encryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketEncryption.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     forceDestroy = registerOutput<bool?>('forceDestroy');
     hierarchicalNamespace = registerOutput<BucketHierarchicalNamespace?>(
       'hierarchicalNamespace',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketHierarchicalNamespace.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    ipFilter = registerOutput<BucketIpFilter?>('ipFilter');
+    ipFilter = registerOutput<BucketIpFilter?>(
+      'ipFilter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketIpFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>?>('labels');
     lifecycleRules = registerOutput<List<Map<String, dynamic>>?>(
       'lifecycleRules',
     );
     location = registerOutput<String>('location');
-    logging = registerOutput<BucketLogging?>('logging');
+    logging = registerOutput<BucketLogging?>(
+      'logging',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketLogging.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     projectNumber = registerOutput<int>('projectNumber');
     publicAccessPrevention = registerOutput<String>('publicAccessPrevention');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     requesterPays = registerOutput<bool?>('requesterPays');
-    retentionPolicy = registerOutput<BucketRetentionPolicy?>('retentionPolicy');
+    retentionPolicy = registerOutput<BucketRetentionPolicy?>(
+      'retentionPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketRetentionPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     rpo = registerOutput<String>('rpo');
     selfLink = registerOutput<String>('selfLink');
     softDeletePolicy = registerOutput<BucketSoftDeletePolicy>(
       'softDeletePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketSoftDeletePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     storageClass = registerOutput<String?>('storageClass');
     timeCreated = registerOutput<String>('timeCreated');
     uniformBucketLevelAccess = registerOutput<bool>('uniformBucketLevelAccess');
     updated = registerOutput<String>('updated');
     url = registerOutput<String>('url');
-    versioning = registerOutput<BucketVersioning>('versioning');
-    website = registerOutput<BucketWebsite>('website');
+    versioning = registerOutput<BucketVersioning>(
+      'versioning',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketVersioning.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    website = registerOutput<BucketWebsite>(
+      'website',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketWebsite.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Bucket] resource's state with the given [name] and [id].
@@ -1452,44 +1536,128 @@ class Bucket extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    autoclass = registerOutput<BucketAutoclass?>('autoclass');
+    autoclass = registerOutput<BucketAutoclass?>(
+      'autoclass',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketAutoclass.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     cors = registerOutput<List<Map<String, dynamic>>?>('cors');
     customPlacementConfig = registerOutput<BucketCustomPlacementConfig?>(
       'customPlacementConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketCustomPlacementConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     defaultEventBasedHold = registerOutput<bool?>('defaultEventBasedHold');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     enableObjectRetention = registerOutput<bool?>('enableObjectRetention');
-    encryption = registerOutput<BucketEncryption?>('encryption');
+    encryption = registerOutput<BucketEncryption?>(
+      'encryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketEncryption.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     forceDestroy = registerOutput<bool?>('forceDestroy');
     hierarchicalNamespace = registerOutput<BucketHierarchicalNamespace?>(
       'hierarchicalNamespace',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketHierarchicalNamespace.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    ipFilter = registerOutput<BucketIpFilter?>('ipFilter');
+    ipFilter = registerOutput<BucketIpFilter?>(
+      'ipFilter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketIpFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>?>('labels');
     lifecycleRules = registerOutput<List<Map<String, dynamic>>?>(
       'lifecycleRules',
     );
     location = registerOutput<String>('location');
-    logging = registerOutput<BucketLogging?>('logging');
+    logging = registerOutput<BucketLogging?>(
+      'logging',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketLogging.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     projectNumber = registerOutput<int>('projectNumber');
     publicAccessPrevention = registerOutput<String>('publicAccessPrevention');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     requesterPays = registerOutput<bool?>('requesterPays');
-    retentionPolicy = registerOutput<BucketRetentionPolicy?>('retentionPolicy');
+    retentionPolicy = registerOutput<BucketRetentionPolicy?>(
+      'retentionPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketRetentionPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     rpo = registerOutput<String>('rpo');
     selfLink = registerOutput<String>('selfLink');
     softDeletePolicy = registerOutput<BucketSoftDeletePolicy>(
       'softDeletePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketSoftDeletePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     storageClass = registerOutput<String?>('storageClass');
     timeCreated = registerOutput<String>('timeCreated');
     uniformBucketLevelAccess = registerOutput<bool>('uniformBucketLevelAccess');
     updated = registerOutput<String>('updated');
     url = registerOutput<String>('url');
-    versioning = registerOutput<BucketVersioning>('versioning');
-    website = registerOutput<BucketWebsite>('website');
+    versioning = registerOutput<BucketVersioning>(
+      'versioning',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketVersioning.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    website = registerOutput<BucketWebsite>(
+      'website',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketWebsite.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

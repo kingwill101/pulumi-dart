@@ -215,6 +215,13 @@ class CloudConnector extends pulumi.CustomResource {
     billingModel = registerOutput<String?>('billingModel');
     collectionInfo = registerOutput<ConnectorCollectionInfoResponse>(
       'collectionInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectorCollectionInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createdOn = registerOutput<String>('createdOn');
     credentialsKey = registerOutput<String?>('credentialsKey');

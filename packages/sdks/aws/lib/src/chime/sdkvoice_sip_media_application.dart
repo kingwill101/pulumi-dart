@@ -171,6 +171,13 @@ class SdkvoiceSipMediaApplication extends pulumi.CustomResource {
     awsRegion = registerOutput<String>('awsRegion');
     endpoints = registerOutput<SdkvoiceSipMediaApplicationEndpoints>(
       'endpoints',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SdkvoiceSipMediaApplicationEndpoints.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -205,6 +212,13 @@ class SdkvoiceSipMediaApplication extends pulumi.CustomResource {
     awsRegion = registerOutput<String>('awsRegion');
     endpoints = registerOutput<SdkvoiceSipMediaApplicationEndpoints>(
       'endpoints',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SdkvoiceSipMediaApplicationEndpoints.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

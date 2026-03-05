@@ -673,10 +673,24 @@ class DomainName extends pulumi.CustomResource {
     endpointAccessMode = registerOutput<String?>('endpointAccessMode');
     endpointConfiguration = registerOutput<DomainNameEndpointConfiguration>(
       'endpointConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainNameEndpointConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     mutualTlsAuthentication =
         registerOutput<DomainNameMutualTlsAuthentication?>(
           'mutualTlsAuthentication',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DomainNameMutualTlsAuthentication.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     ownershipVerificationCertificateArn = registerOutput<String>(
       'ownershipVerificationCertificateArn',
@@ -732,10 +746,24 @@ class DomainName extends pulumi.CustomResource {
     endpointAccessMode = registerOutput<String?>('endpointAccessMode');
     endpointConfiguration = registerOutput<DomainNameEndpointConfiguration>(
       'endpointConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainNameEndpointConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     mutualTlsAuthentication =
         registerOutput<DomainNameMutualTlsAuthentication?>(
           'mutualTlsAuthentication',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DomainNameMutualTlsAuthentication.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     ownershipVerificationCertificateArn = registerOutput<String>(
       'ownershipVerificationCertificateArn',

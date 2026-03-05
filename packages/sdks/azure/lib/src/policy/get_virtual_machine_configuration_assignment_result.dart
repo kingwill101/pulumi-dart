@@ -1,20 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getVirtualMachineConfigurationAssignment.
 class GetVirtualMachineConfigurationAssignmentResult {
   /// Combined hash of the configuration package and parameters.
   final String assignmentHash;
+
   /// A value indicating compliance status of the machine for the assigned guest configuration. Possible return values are `Compliant`, `NonCompliant` and `Pending`.
   final String complianceStatus;
+
   /// The content hash for the Guest Configuration package.
   final String contentHash;
+
   /// The content URI where the Guest Configuration package is stored.
   final String contentUri;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Date and time, in RFC3339 format, when the machines compliance status was last checked.
   final String lastComplianceStatusChecked;
+
   /// The ID of the latest report for the guest configuration assignment.
   final String latestReportId;
   final String name;
@@ -60,7 +65,9 @@ class GetVirtualMachineConfigurationAssignmentResult {
     };
   }
 
-  factory GetVirtualMachineConfigurationAssignmentResult.fromMap(Map<String, dynamic> map) {
+  factory GetVirtualMachineConfigurationAssignmentResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVirtualMachineConfigurationAssignmentResult(
       assignmentHash: map['assignmentHash'] as String,
       complianceStatus: map['complianceStatus'] as String,
@@ -75,4 +82,3 @@ class GetVirtualMachineConfigurationAssignmentResult {
     );
   }
 }
-

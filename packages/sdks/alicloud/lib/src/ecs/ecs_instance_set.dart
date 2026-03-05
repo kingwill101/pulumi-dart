@@ -531,6 +531,13 @@ class EcsInstanceSet extends pulumi.CustomResource {
     excludeInstanceFilter =
         registerOutput<EcsInstanceSetExcludeInstanceFilter?>(
           'excludeInstanceFilter',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EcsInstanceSetExcludeInstanceFilter.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     hostName = registerOutput<String>('hostName');
     hpcClusterId = registerOutput<String?>('hpcClusterId');
@@ -614,6 +621,13 @@ class EcsInstanceSet extends pulumi.CustomResource {
     excludeInstanceFilter =
         registerOutput<EcsInstanceSetExcludeInstanceFilter?>(
           'excludeInstanceFilter',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EcsInstanceSetExcludeInstanceFilter.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     hostName = registerOutput<String>('hostName');
     hpcClusterId = registerOutput<String?>('hpcClusterId');

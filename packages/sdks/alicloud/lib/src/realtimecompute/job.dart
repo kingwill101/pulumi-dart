@@ -619,8 +619,24 @@ class Job extends pulumi.CustomResource {
     namespace = registerOutput<String>('namespace');
     resourceId = registerOutput<String>('resourceId');
     resourceQueueName = registerOutput<String?>('resourceQueueName');
-    restoreStrategy = registerOutput<JobRestoreStrategy?>('restoreStrategy');
-    status = registerOutput<JobStatus>('status');
+    restoreStrategy = registerOutput<JobRestoreStrategy?>(
+      'restoreStrategy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobRestoreStrategy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    status = registerOutput<JobStatus>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobStatus.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     stopStrategy = registerOutput<String?>('stopStrategy');
   }
 
@@ -651,8 +667,24 @@ class Job extends pulumi.CustomResource {
     namespace = registerOutput<String>('namespace');
     resourceId = registerOutput<String>('resourceId');
     resourceQueueName = registerOutput<String?>('resourceQueueName');
-    restoreStrategy = registerOutput<JobRestoreStrategy?>('restoreStrategy');
-    status = registerOutput<JobStatus>('status');
+    restoreStrategy = registerOutput<JobRestoreStrategy?>(
+      'restoreStrategy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobRestoreStrategy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    status = registerOutput<JobStatus>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobStatus.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     stopStrategy = registerOutput<String?>('stopStrategy');
   }
 }

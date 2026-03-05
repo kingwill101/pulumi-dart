@@ -198,7 +198,16 @@ class MigrationConfig extends pulumi.CustomResource {
     );
     postMigrationName = registerOutput<String>('postMigrationName');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     targetNamespace = registerOutput<String>('targetNamespace');
     type = registerOutput<String>('type');
   }

@@ -449,7 +449,16 @@ class ResourceGateway extends pulumi.CustomResource {
     subnetIds = registerOutput<List<String>>('subnetIds');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ResourceGatewayTimeouts?>('timeouts');
+    timeouts = registerOutput<ResourceGatewayTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceGatewayTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vpcId = registerOutput<String>('vpcId');
   }
 
@@ -486,7 +495,16 @@ class ResourceGateway extends pulumi.CustomResource {
     subnetIds = registerOutput<List<String>>('subnetIds');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ResourceGatewayTimeouts?>('timeouts');
+    timeouts = registerOutput<ResourceGatewayTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceGatewayTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vpcId = registerOutput<String>('vpcId');
   }
 }

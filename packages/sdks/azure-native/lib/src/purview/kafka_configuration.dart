@@ -242,14 +242,32 @@ class KafkaConfiguration extends pulumi.CustomResource {
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     consumerGroup = registerOutput<String?>('consumerGroup');
-    credentials = registerOutput<CredentialsResponse?>('credentials');
+    credentials = registerOutput<CredentialsResponse?>(
+      'credentials',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CredentialsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     eventHubPartitionId = registerOutput<String?>('eventHubPartitionId');
     eventHubResourceId = registerOutput<String?>('eventHubResourceId');
     eventHubType = registerOutput<String?>('eventHubType');
     eventStreamingState = registerOutput<String?>('eventStreamingState');
     eventStreamingType = registerOutput<String?>('eventStreamingType');
     this.name = registerOutput<String>('name');
-    systemData = registerOutput<ProxyResourceResponseSystemData>('systemData');
+    systemData = registerOutput<ProxyResourceResponseSystemData>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProxyResourceResponseSystemData.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

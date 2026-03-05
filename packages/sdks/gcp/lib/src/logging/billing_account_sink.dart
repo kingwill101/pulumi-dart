@@ -268,6 +268,13 @@ class BillingAccountSink extends pulumi.CustomResource {
        ) {
     bigqueryOptions = registerOutput<BillingAccountSinkBigqueryOptions>(
       'bigqueryOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BillingAccountSinkBigqueryOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     billingAccount = registerOutput<String>('billingAccount');
     description = registerOutput<String?>('description');
@@ -304,6 +311,13 @@ class BillingAccountSink extends pulumi.CustomResource {
        ) {
     bigqueryOptions = registerOutput<BillingAccountSinkBigqueryOptions>(
       'bigqueryOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BillingAccountSinkBigqueryOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     billingAccount = registerOutput<String>('billingAccount');
     description = registerOutput<String?>('description');

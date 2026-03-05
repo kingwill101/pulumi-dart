@@ -124,6 +124,13 @@ class ServiceRunV2 extends pulumi.CustomResource {
     binaryAuthorization =
         registerOutput<GoogleCloudRunV2BinaryAuthorizationResponse>(
           'binaryAuthorization',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudRunV2BinaryAuthorizationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     client = registerOutput<String>('client');
     clientVersion = registerOutput<String>('clientVersion');
@@ -148,13 +155,36 @@ class ServiceRunV2 extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     reconciling = registerOutput<bool>('reconciling');
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
-    scaling = registerOutput<GoogleCloudRunV2ServiceScalingResponse>('scaling');
+    scaling = registerOutput<GoogleCloudRunV2ServiceScalingResponse>(
+      'scaling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudRunV2ServiceScalingResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     serviceId = registerOutput<String>('serviceId');
     template = registerOutput<GoogleCloudRunV2RevisionTemplateResponse>(
       'template',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudRunV2RevisionTemplateResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     terminalCondition = registerOutput<GoogleCloudRunV2ConditionResponse>(
       'terminalCondition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudRunV2ConditionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     traffic = registerOutput<List<Map<String, dynamic>>>('traffic');
     trafficStatuses = registerOutput<List<Map<String, dynamic>>>(

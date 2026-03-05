@@ -152,7 +152,16 @@ class SecurityGroupVpcAssociation extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     securityGroupId = registerOutput<String>('securityGroupId');
     state = registerOutput<String>('state');
-    timeouts = registerOutput<SecurityGroupVpcAssociationTimeouts?>('timeouts');
+    timeouts = registerOutput<SecurityGroupVpcAssociationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityGroupVpcAssociationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vpcId = registerOutput<String>('vpcId');
   }
 
@@ -182,7 +191,16 @@ class SecurityGroupVpcAssociation extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     securityGroupId = registerOutput<String>('securityGroupId');
     this.state = registerOutput<String>('state');
-    timeouts = registerOutput<SecurityGroupVpcAssociationTimeouts?>('timeouts');
+    timeouts = registerOutput<SecurityGroupVpcAssociationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityGroupVpcAssociationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vpcId = registerOutput<String>('vpcId');
   }
 }

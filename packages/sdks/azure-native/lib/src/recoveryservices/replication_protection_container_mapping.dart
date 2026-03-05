@@ -221,6 +221,13 @@ class ReplicationProtectionContainerMapping extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     properties = registerOutput<ProtectionContainerMappingPropertiesResponse>(
       'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProtectionContainerMappingPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     type = registerOutput<String>('type');
   }

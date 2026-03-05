@@ -45,9 +45,36 @@ class Service extends pulumi.CustomResource {
     dryRun = registerOutput<String?>('dryRun');
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
-    metadata = registerOutput<ObjectMetaResponse>('metadata');
+    metadata = registerOutput<ObjectMetaResponse>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMetaResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
-    spec = registerOutput<ServiceSpecResponse>('spec');
-    status = registerOutput<ServiceStatusResponse>('status');
+    spec = registerOutput<ServiceSpecResponse>(
+      'spec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceSpecResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    status = registerOutput<ServiceStatusResponse>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

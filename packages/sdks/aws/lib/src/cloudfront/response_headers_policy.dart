@@ -636,24 +636,61 @@ class ResponseHeadersPolicy extends pulumi.CustomResource {
        ) {
     arn = registerOutput<String>('arn');
     comment = registerOutput<String?>('comment');
-    corsConfig = registerOutput<ResponseHeadersPolicyCorsConfig?>('corsConfig');
+    corsConfig = registerOutput<ResponseHeadersPolicyCorsConfig?>(
+      'corsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResponseHeadersPolicyCorsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     customHeadersConfig =
         registerOutput<ResponseHeadersPolicyCustomHeadersConfig?>(
           'customHeadersConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResponseHeadersPolicyCustomHeadersConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
     removeHeadersConfig =
         registerOutput<ResponseHeadersPolicyRemoveHeadersConfig?>(
           'removeHeadersConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResponseHeadersPolicyRemoveHeadersConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     securityHeadersConfig =
         registerOutput<ResponseHeadersPolicySecurityHeadersConfig?>(
           'securityHeadersConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResponseHeadersPolicySecurityHeadersConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     serverTimingHeadersConfig =
         registerOutput<ResponseHeadersPolicyServerTimingHeadersConfig?>(
           'serverTimingHeadersConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResponseHeadersPolicyServerTimingHeadersConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 
@@ -682,24 +719,61 @@ class ResponseHeadersPolicy extends pulumi.CustomResource {
        ) {
     arn = registerOutput<String>('arn');
     comment = registerOutput<String?>('comment');
-    corsConfig = registerOutput<ResponseHeadersPolicyCorsConfig?>('corsConfig');
+    corsConfig = registerOutput<ResponseHeadersPolicyCorsConfig?>(
+      'corsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResponseHeadersPolicyCorsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     customHeadersConfig =
         registerOutput<ResponseHeadersPolicyCustomHeadersConfig?>(
           'customHeadersConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResponseHeadersPolicyCustomHeadersConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
     removeHeadersConfig =
         registerOutput<ResponseHeadersPolicyRemoveHeadersConfig?>(
           'removeHeadersConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResponseHeadersPolicyRemoveHeadersConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     securityHeadersConfig =
         registerOutput<ResponseHeadersPolicySecurityHeadersConfig?>(
           'securityHeadersConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResponseHeadersPolicySecurityHeadersConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     serverTimingHeadersConfig =
         registerOutput<ResponseHeadersPolicyServerTimingHeadersConfig?>(
           'serverTimingHeadersConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResponseHeadersPolicyServerTimingHeadersConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

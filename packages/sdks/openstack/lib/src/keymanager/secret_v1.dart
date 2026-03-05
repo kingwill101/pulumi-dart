@@ -771,7 +771,16 @@ class SecretV1 extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    acl = registerOutput<SecretV1Acl>('acl');
+    acl = registerOutput<SecretV1Acl>(
+      'acl',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecretV1Acl.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     algorithm = registerOutput<String>('algorithm');
     allMetadata = registerOutput<Map<String, String>>('allMetadata');
     bitLength = registerOutput<int>('bitLength');
@@ -815,7 +824,16 @@ class SecretV1 extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    acl = registerOutput<SecretV1Acl>('acl');
+    acl = registerOutput<SecretV1Acl>(
+      'acl',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecretV1Acl.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     algorithm = registerOutput<String>('algorithm');
     allMetadata = registerOutput<Map<String, String>>('allMetadata');
     bitLength = registerOutput<int>('bitLength');

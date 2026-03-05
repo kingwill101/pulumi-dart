@@ -73,18 +73,46 @@ class Job extends pulumi.CustomResource {
     labels = registerOutput<Map<String, String>>('labels');
     predictionInput = registerOutput<GoogleCloudMlV1PredictionInputResponse>(
       'predictionInput',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudMlV1PredictionInputResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     predictionOutput = registerOutput<GoogleCloudMlV1PredictionOutputResponse>(
       'predictionOutput',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudMlV1PredictionOutputResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     startTime = registerOutput<String>('startTime');
     state = registerOutput<String>('state');
     trainingInput = registerOutput<GoogleCloudMlV1TrainingInputResponse>(
       'trainingInput',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudMlV1TrainingInputResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     trainingOutput = registerOutput<GoogleCloudMlV1TrainingOutputResponse>(
       'trainingOutput',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudMlV1TrainingOutputResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

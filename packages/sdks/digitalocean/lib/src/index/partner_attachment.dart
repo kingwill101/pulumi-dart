@@ -50,7 +50,16 @@ class PartnerAttachment extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    bgp = registerOutput<PartnerAttachmentBgp>('bgp');
+    bgp = registerOutput<PartnerAttachmentBgp>(
+      'bgp',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PartnerAttachmentBgp.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     childrens = registerOutput<List<String>>('childrens');
     connectionBandwidthInMbps = registerOutput<int>(
       'connectionBandwidthInMbps',
@@ -88,7 +97,16 @@ class PartnerAttachment extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    bgp = registerOutput<PartnerAttachmentBgp>('bgp');
+    bgp = registerOutput<PartnerAttachmentBgp>(
+      'bgp',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PartnerAttachmentBgp.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     childrens = registerOutput<List<String>>('childrens');
     connectionBandwidthInMbps = registerOutput<int>(
       'connectionBandwidthInMbps',

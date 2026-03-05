@@ -70,7 +70,8 @@ Future<GetComponentResult> getComponent(
 /// Uses Azure REST API version 2015-05-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_applicationinsights_get_component_current_billing_feature_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetComponentCurrentBillingFeatureResult> getComponentCurrentBillingFeature(
+Future<GetComponentCurrentBillingFeatureResult>
+getComponentCurrentBillingFeature(
   GetComponentCurrentBillingFeatureArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -184,7 +185,8 @@ Future<GetMyWorkbookResult> getMyWorkbook(
 /// Other available API versions: 2015-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native applicationinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_applicationinsights_get_proactive_detection_configuration_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetProactiveDetectionConfigurationResult> getProactiveDetectionConfiguration(
+Future<GetProactiveDetectionConfigurationResult>
+getProactiveDetectionConfiguration(
   GetProactiveDetectionConfigurationArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -279,10 +281,8 @@ Future<GetWorkbookTemplateResult> getWorkbookTemplate(
 ///
 /// Uses Azure REST API version 2017-10-01.
 /// [options] Invoke options controlling this call.
-Future<ListEASubscriptionListMigrationDatePostResult> listEASubscriptionListMigrationDatePost(
-  {
-  pulumi.InvokeOptions? options,
-}) async {
+Future<ListEASubscriptionListMigrationDatePostResult>
+listEASubscriptionListMigrationDatePost({pulumi.InvokeOptions? options}) async {
   final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'azure-native:applicationinsights:listEASubscriptionListMigrationDatePost',

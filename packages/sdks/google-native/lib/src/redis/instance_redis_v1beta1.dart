@@ -150,10 +150,24 @@ class InstanceRedisV1beta1 extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     maintenancePolicy = registerOutput<MaintenancePolicyResponseRedisV1beta1>(
       'maintenancePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MaintenancePolicyResponseRedisV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     maintenanceSchedule =
         registerOutput<MaintenanceScheduleResponseRedisV1beta1>(
           'maintenanceSchedule',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MaintenanceScheduleResponseRedisV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     maintenanceVersion = registerOutput<String>('maintenanceVersion');
     memorySizeGb = registerOutput<int>('memorySizeGb');
@@ -161,6 +175,13 @@ class InstanceRedisV1beta1 extends pulumi.CustomResource {
     nodes = registerOutput<List<Map<String, dynamic>>>('nodes');
     persistenceConfig = registerOutput<PersistenceConfigResponseRedisV1beta1>(
       'persistenceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PersistenceConfigResponseRedisV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     persistenceIamIdentity = registerOutput<String>('persistenceIamIdentity');
     port = registerOutput<int>('port');

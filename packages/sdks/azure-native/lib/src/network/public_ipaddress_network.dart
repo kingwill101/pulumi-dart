@@ -656,39 +656,110 @@ class PublicIPAddressNetwork extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    ddosSettings = registerOutput<DdosSettingsResponse?>('ddosSettings');
+    ddosSettings = registerOutput<DdosSettingsResponse?>(
+      'ddosSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DdosSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     deleteOption = registerOutput<String?>('deleteOption');
     dnsSettings = registerOutput<PublicIPAddressDnsSettingsResponse?>(
       'dnsSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PublicIPAddressDnsSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     extendedLocation = registerOutput<ExtendedLocationResponse?>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     idleTimeoutInMinutes = registerOutput<int?>('idleTimeoutInMinutes');
     ipAddress = registerOutput<String?>('ipAddress');
     ipConfiguration = registerOutput<IPConfigurationResponse>(
       'ipConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IPConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     ipTags = registerOutput<List<Map<String, dynamic>>?>('ipTags');
     linkedPublicIPAddress = registerOutput<PublicIPAddressResponse?>(
       'linkedPublicIPAddress',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PublicIPAddressResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String?>('location');
     migrationPhase = registerOutput<String?>('migrationPhase');
     this.name = registerOutput<String>('name');
-    natGateway = registerOutput<NatGatewayResponse?>('natGateway');
+    natGateway = registerOutput<NatGatewayResponse?>(
+      'natGateway',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NatGatewayResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     provisioningState = registerOutput<String>('provisioningState');
     publicIPAddressVersion = registerOutput<String?>('publicIPAddressVersion');
     publicIPAllocationMethod = registerOutput<String?>(
       'publicIPAllocationMethod',
     );
-    publicIPPrefix = registerOutput<SubResourceResponse?>('publicIPPrefix');
+    publicIPPrefix = registerOutput<SubResourceResponse?>(
+      'publicIPPrefix',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGuid = registerOutput<String>('resourceGuid');
     servicePublicIPAddress = registerOutput<PublicIPAddressResponse?>(
       'servicePublicIPAddress',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PublicIPAddressResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    sku = registerOutput<PublicIPAddressSkuResponse?>('sku');
+    sku = registerOutput<PublicIPAddressSkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PublicIPAddressSkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     zones = registerOutput<List<String>?>('zones');

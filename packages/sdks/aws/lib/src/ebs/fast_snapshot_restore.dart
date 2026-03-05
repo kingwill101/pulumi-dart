@@ -142,7 +142,16 @@ class FastSnapshotRestore extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     snapshotId = registerOutput<String>('snapshotId');
     state = registerOutput<String>('state');
-    timeouts = registerOutput<FastSnapshotRestoreTimeouts?>('timeouts');
+    timeouts = registerOutput<FastSnapshotRestoreTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FastSnapshotRestoreTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [FastSnapshotRestore] resource's state with the given [name] and [id].
@@ -172,6 +181,15 @@ class FastSnapshotRestore extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     snapshotId = registerOutput<String>('snapshotId');
     this.state = registerOutput<String>('state');
-    timeouts = registerOutput<FastSnapshotRestoreTimeouts?>('timeouts');
+    timeouts = registerOutput<FastSnapshotRestoreTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FastSnapshotRestoreTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

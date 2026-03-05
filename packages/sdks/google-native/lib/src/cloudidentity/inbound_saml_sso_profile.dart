@@ -37,8 +37,26 @@ class InboundSamlSsoProfile extends pulumi.CustomResource {
        ) {
     customer = registerOutput<String>('customer');
     displayName = registerOutput<String>('displayName');
-    idpConfig = registerOutput<SamlIdpConfigResponse>('idpConfig');
+    idpConfig = registerOutput<SamlIdpConfigResponse>(
+      'idpConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SamlIdpConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
-    spConfig = registerOutput<SamlSpConfigResponse>('spConfig');
+    spConfig = registerOutput<SamlSpConfigResponse>(
+      'spConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SamlSpConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

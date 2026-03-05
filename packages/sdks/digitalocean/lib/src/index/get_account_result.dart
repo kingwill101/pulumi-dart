@@ -1,22 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAccount.
 class GetAccountResult {
   /// The total number of droplets current user or team may have active at one time.
   final int dropletLimit;
+
   /// The email address used by the current user to register for DigitalOcean.
   final String email;
+
   /// If true, the user has verified their account via email. False otherwise.
   final bool emailVerified;
+
   /// The total number of floating IPs the current user or team may have.
   final int floatingIpLimit;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// This value is one of "active", "warning" or "locked".
   final String status;
+
   /// A human-readable message giving more details about the status of the account.
   final String statusMessage;
+
   /// The unique universal identifier for the current user.
   final String uuid;
 
@@ -66,4 +72,3 @@ class GetAccountResult {
     );
   }
 }
-

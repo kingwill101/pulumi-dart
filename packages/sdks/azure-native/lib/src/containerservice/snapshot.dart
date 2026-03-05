@@ -234,7 +234,16 @@ class Snapshot extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    creationData = registerOutput<CreationDataResponse?>('creationData');
+    creationData = registerOutput<CreationDataResponse?>(
+      'creationData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CreationDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     enableFIPS = registerOutput<bool>('enableFIPS');
     kubernetesVersion = registerOutput<String>('kubernetesVersion');
     location = registerOutput<String>('location');
@@ -243,7 +252,16 @@ class Snapshot extends pulumi.CustomResource {
     osSku = registerOutput<String>('osSku');
     osType = registerOutput<String>('osType');
     snapshotType = registerOutput<String?>('snapshotType');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     vmSize = registerOutput<String>('vmSize');

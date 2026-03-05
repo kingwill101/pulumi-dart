@@ -386,7 +386,16 @@ class Assessment extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     eTag = registerOutput<String?>('eTag');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<AssessmentPropertiesResponse>('properties');
+    properties = registerOutput<AssessmentPropertiesResponse>(
+      'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AssessmentPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

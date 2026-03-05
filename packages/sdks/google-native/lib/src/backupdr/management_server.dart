@@ -76,7 +76,16 @@ class ManagementServer extends pulumi.CustomResource {
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
     managementServerId = registerOutput<String>('managementServerId');
-    managementUri = registerOutput<ManagementURIResponse>('managementUri');
+    managementUri = registerOutput<ManagementURIResponse>(
+      'managementUri',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagementURIResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     networks = registerOutput<List<Map<String, dynamic>>>('networks');
     oauth2ClientId = registerOutput<String>('oauth2ClientId');
@@ -88,10 +97,24 @@ class ManagementServer extends pulumi.CustomResource {
     workforceIdentityBasedManagementUri =
         registerOutput<WorkforceIdentityBasedManagementURIResponse>(
           'workforceIdentityBasedManagementUri',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WorkforceIdentityBasedManagementURIResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     workforceIdentityBasedOauth2ClientId =
         registerOutput<WorkforceIdentityBasedOAuth2ClientIDResponse>(
           'workforceIdentityBasedOauth2ClientId',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WorkforceIdentityBasedOAuth2ClientIDResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

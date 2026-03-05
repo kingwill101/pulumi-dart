@@ -1,22 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getComputePolicy.
 class GetComputePolicyResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The resource identifier.
   final String id;
+
   /// The maximum degree of parallelism per job this user can use to submit jobs.
   final int maxDegreeOfParallelismPerJob;
+
   /// The minimum priority per job this user can use to submit jobs.
   final int minPriorityPerJob;
+
   /// The resource name.
   final String name;
+
   /// The AAD object identifier for the entity to create a policy for.
   final String objectId;
+
   /// The type of AAD object the object identifier refers to.
   final String objectType;
+
   /// The resource type.
   final String type;
 
@@ -66,4 +72,3 @@ class GetComputePolicyResult {
     );
   }
 }
-

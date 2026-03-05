@@ -573,11 +573,27 @@ class AppConnection extends pulumi.CustomResource {
        ) {
     authentication = registerOutput<AppConnectionAuthentication>(
       'authentication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppConnectionAuthentication.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clientType = registerOutput<String?>('clientType');
     functionAppId = registerOutput<String>('functionAppId');
     this.name = registerOutput<String>('name');
-    secretStore = registerOutput<AppConnectionSecretStore?>('secretStore');
+    secretStore = registerOutput<AppConnectionSecretStore?>(
+      'secretStore',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppConnectionSecretStore.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     targetResourceId = registerOutput<String>('targetResourceId');
     vnetSolution = registerOutput<String?>('vnetSolution');
   }
@@ -607,11 +623,27 @@ class AppConnection extends pulumi.CustomResource {
        ) {
     authentication = registerOutput<AppConnectionAuthentication>(
       'authentication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppConnectionAuthentication.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clientType = registerOutput<String?>('clientType');
     functionAppId = registerOutput<String>('functionAppId');
     this.name = registerOutput<String>('name');
-    secretStore = registerOutput<AppConnectionSecretStore?>('secretStore');
+    secretStore = registerOutput<AppConnectionSecretStore?>(
+      'secretStore',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppConnectionSecretStore.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     targetResourceId = registerOutput<String>('targetResourceId');
     vnetSolution = registerOutput<String?>('vnetSolution');
   }

@@ -226,12 +226,30 @@ class StaticWebApp extends pulumi.CustomResource {
        ) {
     apiKey = registerOutput<String>('apiKey');
     appSettings = registerOutput<Map<String, String>?>('appSettings');
-    basicAuth = registerOutput<StaticWebAppBasicAuth?>('basicAuth');
+    basicAuth = registerOutput<StaticWebAppBasicAuth?>(
+      'basicAuth',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StaticWebAppBasicAuth.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     configurationFileChangesEnabled = registerOutput<bool?>(
       'configurationFileChangesEnabled',
     );
     defaultHostName = registerOutput<String>('defaultHostName');
-    identity = registerOutput<StaticWebAppIdentity?>('identity');
+    identity = registerOutput<StaticWebAppIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StaticWebAppIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     previewEnvironmentsEnabled = registerOutput<bool?>(
@@ -274,12 +292,30 @@ class StaticWebApp extends pulumi.CustomResource {
        ) {
     apiKey = registerOutput<String>('apiKey');
     appSettings = registerOutput<Map<String, String>?>('appSettings');
-    basicAuth = registerOutput<StaticWebAppBasicAuth?>('basicAuth');
+    basicAuth = registerOutput<StaticWebAppBasicAuth?>(
+      'basicAuth',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StaticWebAppBasicAuth.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     configurationFileChangesEnabled = registerOutput<bool?>(
       'configurationFileChangesEnabled',
     );
     defaultHostName = registerOutput<String>('defaultHostName');
-    identity = registerOutput<StaticWebAppIdentity?>('identity');
+    identity = registerOutput<StaticWebAppIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StaticWebAppIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     previewEnvironmentsEnabled = registerOutput<bool?>(

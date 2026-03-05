@@ -187,6 +187,13 @@ class RegionDiskComputeBeta extends pulumi.CustomResource {
     architecture = registerOutput<String>('architecture');
     asyncPrimaryDisk = registerOutput<DiskAsyncReplicationResponseComputeBeta>(
       'asyncPrimaryDisk',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiskAsyncReplicationResponseComputeBeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     asyncSecondaryDisks = registerOutput<Map<String, String>>(
       'asyncSecondaryDisks',
@@ -196,6 +203,13 @@ class RegionDiskComputeBeta extends pulumi.CustomResource {
     diskEncryptionKey =
         registerOutput<CustomerEncryptionKeyResponseComputeBeta>(
           'diskEncryptionKey',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CustomerEncryptionKeyResponseComputeBeta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     enableConfidentialCompute = registerOutput<bool>(
       'enableConfidentialCompute',
@@ -217,7 +231,16 @@ class RegionDiskComputeBeta extends pulumi.CustomResource {
     multiWriter = registerOutput<bool>('multiWriter');
     this.name = registerOutput<String>('name');
     this.options = registerOutput<String>('options');
-    params = registerOutput<DiskParamsResponseComputeBeta>('params');
+    params = registerOutput<DiskParamsResponseComputeBeta>(
+      'params',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiskParamsResponseComputeBeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     physicalBlockSizeBytes = registerOutput<String>('physicalBlockSizeBytes');
     project = registerOutput<String>('project');
     provisionedIops = registerOutput<String>('provisionedIops');
@@ -228,6 +251,13 @@ class RegionDiskComputeBeta extends pulumi.CustomResource {
     resourcePolicies = registerOutput<List<String>>('resourcePolicies');
     resourceStatus = registerOutput<DiskResourceStatusResponseComputeBeta>(
       'resourceStatus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiskResourceStatusResponseComputeBeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
     selfLink = registerOutput<String>('selfLink');
@@ -244,6 +274,13 @@ class RegionDiskComputeBeta extends pulumi.CustomResource {
     sourceImageEncryptionKey =
         registerOutput<CustomerEncryptionKeyResponseComputeBeta>(
           'sourceImageEncryptionKey',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CustomerEncryptionKeyResponseComputeBeta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     sourceImageId = registerOutput<String>('sourceImageId');
     sourceInstantSnapshot = registerOutput<String>('sourceInstantSnapshot');
@@ -252,6 +289,13 @@ class RegionDiskComputeBeta extends pulumi.CustomResource {
     sourceSnapshotEncryptionKey =
         registerOutput<CustomerEncryptionKeyResponseComputeBeta>(
           'sourceSnapshotEncryptionKey',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CustomerEncryptionKeyResponseComputeBeta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     sourceSnapshotId = registerOutput<String>('sourceSnapshotId');
     sourceStorageObject = registerOutput<String>('sourceStorageObject');

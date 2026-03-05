@@ -732,6 +732,13 @@ class DataProtectionSettings extends pulumi.CustomResource {
     inlineRedactionConfiguration =
         registerOutput<DataProtectionSettingsInlineRedactionConfiguration?>(
           'inlineRedactionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataProtectionSettingsInlineRedactionConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -774,6 +781,13 @@ class DataProtectionSettings extends pulumi.CustomResource {
     inlineRedactionConfiguration =
         registerOutput<DataProtectionSettingsInlineRedactionConfiguration?>(
           'inlineRedactionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataProtectionSettingsInlineRedactionConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');

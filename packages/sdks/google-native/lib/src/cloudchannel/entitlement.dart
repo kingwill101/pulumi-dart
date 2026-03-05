@@ -74,11 +74,25 @@ class Entitlement extends pulumi.CustomResource {
     associationInfo =
         registerOutput<GoogleCloudChannelV1AssociationInfoResponse>(
           'associationInfo',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudChannelV1AssociationInfoResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     billingAccount = registerOutput<String>('billingAccount');
     commitmentSettings =
         registerOutput<GoogleCloudChannelV1CommitmentSettingsResponse>(
           'commitmentSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudChannelV1CommitmentSettingsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     createTime = registerOutput<String>('createTime');
     customerId = registerOutput<String>('customerId');
@@ -88,12 +102,26 @@ class Entitlement extends pulumi.CustomResource {
     provisionedService =
         registerOutput<GoogleCloudChannelV1ProvisionedServiceResponse>(
           'provisionedService',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudChannelV1ProvisionedServiceResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     provisioningState = registerOutput<String>('provisioningState');
     purchaseOrderId = registerOutput<String>('purchaseOrderId');
     suspensionReasons = registerOutput<List<String>>('suspensionReasons');
     trialSettings = registerOutput<GoogleCloudChannelV1TrialSettingsResponse>(
       'trialSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudChannelV1TrialSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     updateTime = registerOutput<String>('updateTime');
   }

@@ -557,9 +557,23 @@ class LinkedServiceSqlServer extends pulumi.CustomResource {
     keyVaultConnectionString =
         registerOutput<LinkedServiceSqlServerKeyVaultConnectionString?>(
           'keyVaultConnectionString',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinkedServiceSqlServerKeyVaultConnectionString.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     keyVaultPassword = registerOutput<LinkedServiceSqlServerKeyVaultPassword?>(
       'keyVaultPassword',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinkedServiceSqlServerKeyVaultPassword.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');
@@ -600,9 +614,23 @@ class LinkedServiceSqlServer extends pulumi.CustomResource {
     keyVaultConnectionString =
         registerOutput<LinkedServiceSqlServerKeyVaultConnectionString?>(
           'keyVaultConnectionString',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinkedServiceSqlServerKeyVaultConnectionString.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     keyVaultPassword = registerOutput<LinkedServiceSqlServerKeyVaultPassword?>(
       'keyVaultPassword',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinkedServiceSqlServerKeyVaultPassword.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');

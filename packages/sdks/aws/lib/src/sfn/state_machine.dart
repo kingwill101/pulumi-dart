@@ -1063,9 +1063,23 @@ class StateMachine extends pulumi.CustomResource {
     encryptionConfiguration =
         registerOutput<StateMachineEncryptionConfiguration>(
           'encryptionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return StateMachineEncryptionConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     loggingConfiguration = registerOutput<StateMachineLoggingConfiguration>(
       'loggingConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StateMachineLoggingConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
@@ -1079,6 +1093,13 @@ class StateMachine extends pulumi.CustomResource {
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     tracingConfiguration = registerOutput<StateMachineTracingConfiguration>(
       'tracingConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StateMachineTracingConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     type = registerOutput<String?>('type');
     versionDescription = registerOutput<String>('versionDescription');
@@ -1114,9 +1135,23 @@ class StateMachine extends pulumi.CustomResource {
     encryptionConfiguration =
         registerOutput<StateMachineEncryptionConfiguration>(
           'encryptionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return StateMachineEncryptionConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     loggingConfiguration = registerOutput<StateMachineLoggingConfiguration>(
       'loggingConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StateMachineLoggingConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
@@ -1130,6 +1165,13 @@ class StateMachine extends pulumi.CustomResource {
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     tracingConfiguration = registerOutput<StateMachineTracingConfiguration>(
       'tracingConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StateMachineTracingConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     type = registerOutput<String?>('type');
     versionDescription = registerOutput<String>('versionDescription');

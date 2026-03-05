@@ -208,8 +208,24 @@ class User extends pulumi.CustomResource {
     registrationState = registerOutput<String>('registrationState');
     resourceOperationError = registerOutput<ResourceOperationErrorResponse>(
       'resourceOperationError',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceOperationErrorResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     totalUsage = registerOutput<String>('totalUsage');
     type = registerOutput<String>('type');
   }

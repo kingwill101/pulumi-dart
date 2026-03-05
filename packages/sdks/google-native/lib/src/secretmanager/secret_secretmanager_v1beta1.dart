@@ -41,6 +41,13 @@ class SecretSecretmanagerV1beta1 extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     replication = registerOutput<ReplicationResponseSecretmanagerV1beta1>(
       'replication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReplicationResponseSecretmanagerV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     secretId = registerOutput<String>('secretId');
   }

@@ -20,7 +20,7 @@ import 'package:pulumi_kubernetes/pulumi_kubernetes.dart' as provider;
 dependencies:
   pulumi_kubernetes:
     git:
-      url: https://github.com/<owner>/<repo>.git
+      url: https://github.com/kingwill101/pulumi-dart.git
       path: packages/kubernetes
       ref: main
 ~~~

@@ -262,13 +262,40 @@ class CapacityPoolBucket extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    fileSystemUser = registerOutput<FileSystemUserResponse?>('fileSystemUser');
+    fileSystemUser = registerOutput<FileSystemUserResponse?>(
+      'fileSystemUser',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FileSystemUserResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     path = registerOutput<String?>('path');
     provisioningState = registerOutput<String>('provisioningState');
-    server = registerOutput<BucketServerPropertiesResponse?>('server');
+    server = registerOutput<BucketServerPropertiesResponse?>(
+      'server',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketServerPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String>('status');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

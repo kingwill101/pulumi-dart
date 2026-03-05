@@ -321,7 +321,16 @@ class SubscriptionCostManagementView extends pulumi.CustomResource {
        ) {
     accumulated = registerOutput<bool>('accumulated');
     chartType = registerOutput<String>('chartType');
-    dataset = registerOutput<SubscriptionCostManagementViewDataset>('dataset');
+    dataset = registerOutput<SubscriptionCostManagementViewDataset>(
+      'dataset',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubscriptionCostManagementViewDataset.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     displayName = registerOutput<String>('displayName');
     kpis = registerOutput<List<Map<String, dynamic>>?>('kpis');
     this.name = registerOutput<String>('name');
@@ -356,7 +365,16 @@ class SubscriptionCostManagementView extends pulumi.CustomResource {
        ) {
     accumulated = registerOutput<bool>('accumulated');
     chartType = registerOutput<String>('chartType');
-    dataset = registerOutput<SubscriptionCostManagementViewDataset>('dataset');
+    dataset = registerOutput<SubscriptionCostManagementViewDataset>(
+      'dataset',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubscriptionCostManagementViewDataset.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     displayName = registerOutput<String>('displayName');
     kpis = registerOutput<List<Map<String, dynamic>>?>('kpis');
     this.name = registerOutput<String>('name');

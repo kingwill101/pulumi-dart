@@ -83,11 +83,25 @@ class ReservationComputeAlpha extends pulumi.CustomResource {
     aggregateReservation =
         registerOutput<AllocationAggregateReservationResponse>(
           'aggregateReservation',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AllocationAggregateReservationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     commitment = registerOutput<String>('commitment');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deleteAfterDuration = registerOutput<DurationResponse>(
       'deleteAfterDuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     deleteAtTime = registerOutput<String>('deleteAtTime');
     description = registerOutput<String>('description');
@@ -98,14 +112,37 @@ class ReservationComputeAlpha extends pulumi.CustomResource {
     resourcePolicies = registerOutput<Map<String, String>>('resourcePolicies');
     resourceStatus = registerOutput<AllocationResourceStatusResponse>(
       'resourceStatus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AllocationResourceStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
     selfLink = registerOutput<String>('selfLink');
     selfLinkWithId = registerOutput<String>('selfLinkWithId');
-    shareSettings = registerOutput<ShareSettingsResponse>('shareSettings');
+    shareSettings = registerOutput<ShareSettingsResponse>(
+      'shareSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ShareSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     specificReservation =
         registerOutput<AllocationSpecificSKUReservationResponse>(
           'specificReservation',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AllocationSpecificSKUReservationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     specificReservationRequired = registerOutput<bool>(
       'specificReservationRequired',

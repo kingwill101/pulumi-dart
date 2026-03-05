@@ -256,16 +256,37 @@ class ExpressRouteCircuitPeeringNetwork extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     expressRouteConnection = registerOutput<ExpressRouteConnectionIdResponse?>(
       'expressRouteConnection',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExpressRouteConnectionIdResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     gatewayManagerEtag = registerOutput<String?>('gatewayManagerEtag');
     ipv6PeeringConfig =
         registerOutput<Ipv6ExpressRouteCircuitPeeringConfigResponse?>(
           'ipv6PeeringConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return Ipv6ExpressRouteCircuitPeeringConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     lastModifiedBy = registerOutput<String>('lastModifiedBy');
     microsoftPeeringConfig =
         registerOutput<ExpressRouteCircuitPeeringConfigResponse?>(
           'microsoftPeeringConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ExpressRouteCircuitPeeringConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String?>('name');
     peerASN = registerOutput<double?>('peerASN');
@@ -278,14 +299,32 @@ class ExpressRouteCircuitPeeringNetwork extends pulumi.CustomResource {
       'primaryPeerAddressPrefix',
     );
     provisioningState = registerOutput<String>('provisioningState');
-    routeFilter = registerOutput<SubResourceResponse?>('routeFilter');
+    routeFilter = registerOutput<SubResourceResponse?>(
+      'routeFilter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     secondaryAzurePort = registerOutput<String?>('secondaryAzurePort');
     secondaryPeerAddressPrefix = registerOutput<String?>(
       'secondaryPeerAddressPrefix',
     );
     sharedKey = registerOutput<String?>('sharedKey');
     state = registerOutput<String?>('state');
-    stats = registerOutput<ExpressRouteCircuitStatsResponse?>('stats');
+    stats = registerOutput<ExpressRouteCircuitStatsResponse?>(
+      'stats',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExpressRouteCircuitStatsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     vlanId = registerOutput<int?>('vlanId');
   }

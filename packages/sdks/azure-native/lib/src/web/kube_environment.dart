@@ -214,20 +214,48 @@ class KubeEnvironment extends pulumi.CustomResource {
     aksResourceID = registerOutput<String?>('aksResourceID');
     appLogsConfiguration = registerOutput<AppLogsConfigurationResponse?>(
       'appLogsConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppLogsConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     arcConfiguration = registerOutput<ArcConfigurationResponse?>(
       'arcConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ArcConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     containerAppsConfiguration =
         registerOutput<ContainerAppsConfigurationResponse?>(
           'containerAppsConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ContainerAppsConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     defaultDomain = registerOutput<String>('defaultDomain');
     deploymentErrors = registerOutput<String>('deploymentErrors');
     environmentType = registerOutput<String?>('environmentType');
     extendedLocation = registerOutput<ExtendedLocationResponse?>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     internalLoadBalancerEnabled = registerOutput<bool?>(
       'internalLoadBalancerEnabled',

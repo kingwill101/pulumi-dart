@@ -2116,7 +2116,16 @@ class Toolset extends pulumi.CustomResource {
     executionType = registerOutput<String?>('executionType');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    openApiToolset = registerOutput<ToolsetOpenApiToolset?>('openApiToolset');
+    openApiToolset = registerOutput<ToolsetOpenApiToolset?>(
+      'openApiToolset',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ToolsetOpenApiToolset.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     toolsetId = registerOutput<String>('toolsetId');
     updateTime = registerOutput<String>('updateTime');
@@ -2153,7 +2162,16 @@ class Toolset extends pulumi.CustomResource {
     executionType = registerOutput<String?>('executionType');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    openApiToolset = registerOutput<ToolsetOpenApiToolset?>('openApiToolset');
+    openApiToolset = registerOutput<ToolsetOpenApiToolset?>(
+      'openApiToolset',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ToolsetOpenApiToolset.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     toolsetId = registerOutput<String>('toolsetId');
     updateTime = registerOutput<String>('updateTime');

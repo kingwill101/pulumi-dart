@@ -262,7 +262,16 @@ class JobDefinition extends pulumi.CustomResource {
     sourceName = registerOutput<String>('sourceName');
     sourceResourceId = registerOutput<String>('sourceResourceId');
     sourceSubpath = registerOutput<String?>('sourceSubpath');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     targetName = registerOutput<String>('targetName');
     targetResourceId = registerOutput<String>('targetResourceId');
     targetSubpath = registerOutput<String?>('targetSubpath');

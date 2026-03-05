@@ -73,11 +73,36 @@ class Step extends pulumi.CustomResource {
         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
         options ?? pulumi.CustomResourceOptions(),
       ) {
-    completionTime = registerOutput<TimestampResponse>('completionTime');
-    creationTime = registerOutput<TimestampResponse>('creationTime');
+    completionTime = registerOutput<TimestampResponse>(
+      'completionTime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TimestampResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    creationTime = registerOutput<TimestampResponse>(
+      'creationTime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TimestampResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String>('description');
     deviceUsageDuration = registerOutput<DurationResponse>(
       'deviceUsageDuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dimensionValue = registerOutput<List<Map<String, dynamic>>>(
       'dimensionValue',
@@ -86,19 +111,60 @@ class Step extends pulumi.CustomResource {
     hasImages = registerOutput<bool>('hasImages');
     historyId = registerOutput<String>('historyId');
     labels = registerOutput<List<Map<String, dynamic>>>('labels');
-    multiStep = registerOutput<MultiStepResponse>('multiStep');
+    multiStep = registerOutput<MultiStepResponse>(
+      'multiStep',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MultiStepResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
-    outcome = registerOutput<OutcomeResponse>('outcome');
+    outcome = registerOutput<OutcomeResponse>(
+      'outcome',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OutcomeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');
-    runDuration = registerOutput<DurationResponse>('runDuration');
+    runDuration = registerOutput<DurationResponse>(
+      'runDuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     state = registerOutput<String>('state');
     stepId = registerOutput<String>('stepId');
     testExecutionStep = registerOutput<TestExecutionStepResponse>(
       'testExecutionStep',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TestExecutionStepResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     toolExecutionStep = registerOutput<ToolExecutionStepResponse>(
       'toolExecutionStep',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ToolExecutionStepResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

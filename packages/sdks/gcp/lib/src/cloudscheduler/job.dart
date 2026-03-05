@@ -1273,16 +1273,50 @@ class Job extends pulumi.CustomResource {
       ) {
     appEngineHttpTarget = registerOutput<JobAppEngineHttpTarget?>(
       'appEngineHttpTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobAppEngineHttpTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     attemptDeadline = registerOutput<String?>('attemptDeadline');
     description = registerOutput<String?>('description');
-    httpTarget = registerOutput<JobHttpTarget?>('httpTarget');
+    httpTarget = registerOutput<JobHttpTarget?>(
+      'httpTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobHttpTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     paused = registerOutput<bool>('paused');
     project = registerOutput<String>('project');
-    pubsubTarget = registerOutput<JobPubsubTarget?>('pubsubTarget');
+    pubsubTarget = registerOutput<JobPubsubTarget?>(
+      'pubsubTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobPubsubTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
-    retryConfig = registerOutput<JobRetryConfig?>('retryConfig');
+    retryConfig = registerOutput<JobRetryConfig?>(
+      'retryConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobRetryConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     schedule = registerOutput<String?>('schedule');
     state = registerOutput<String>('state');
     timeZone = registerOutput<String?>('timeZone');
@@ -1309,16 +1343,50 @@ class Job extends pulumi.CustomResource {
        ) {
     appEngineHttpTarget = registerOutput<JobAppEngineHttpTarget?>(
       'appEngineHttpTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobAppEngineHttpTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     attemptDeadline = registerOutput<String?>('attemptDeadline');
     description = registerOutput<String?>('description');
-    httpTarget = registerOutput<JobHttpTarget?>('httpTarget');
+    httpTarget = registerOutput<JobHttpTarget?>(
+      'httpTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobHttpTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     paused = registerOutput<bool>('paused');
     project = registerOutput<String>('project');
-    pubsubTarget = registerOutput<JobPubsubTarget?>('pubsubTarget');
+    pubsubTarget = registerOutput<JobPubsubTarget?>(
+      'pubsubTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobPubsubTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
-    retryConfig = registerOutput<JobRetryConfig?>('retryConfig');
+    retryConfig = registerOutput<JobRetryConfig?>(
+      'retryConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobRetryConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     schedule = registerOutput<String?>('schedule');
     this.state = registerOutput<String>('state');
     timeZone = registerOutput<String?>('timeZone');

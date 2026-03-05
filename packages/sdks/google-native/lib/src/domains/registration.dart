@@ -67,9 +67,25 @@ class Registration extends pulumi.CustomResource {
        ) {
     contactSettings = registerOutput<ContactSettingsResponse>(
       'contactSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContactSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
-    dnsSettings = registerOutput<DnsSettingsResponse>('dnsSettings');
+    dnsSettings = registerOutput<DnsSettingsResponse>(
+      'dnsSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DnsSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     domainName = registerOutput<String>('domainName');
     expireTime = registerOutput<String>('expireTime');
     issues = registerOutput<List<String>>('issues');
@@ -77,10 +93,24 @@ class Registration extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     managementSettings = registerOutput<ManagementSettingsResponse>(
       'managementSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagementSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     pendingContactSettings = registerOutput<ContactSettingsResponse>(
       'pendingContactSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContactSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     registerFailureReason = registerOutput<String>('registerFailureReason');

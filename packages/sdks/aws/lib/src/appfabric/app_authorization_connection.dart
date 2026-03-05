@@ -141,10 +141,26 @@ class AppAuthorizationConnection extends pulumi.CustomResource {
     appBundleArn = registerOutput<String>('appBundleArn');
     authRequest = registerOutput<AppAuthorizationConnectionAuthRequest?>(
       'authRequest',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppAuthorizationConnectionAuthRequest.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     tenants = registerOutput<List<Map<String, dynamic>>>('tenants');
-    timeouts = registerOutput<AppAuthorizationConnectionTimeouts?>('timeouts');
+    timeouts = registerOutput<AppAuthorizationConnectionTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppAuthorizationConnectionTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [AppAuthorizationConnection] resource's state with the given [name] and [id].
@@ -175,9 +191,25 @@ class AppAuthorizationConnection extends pulumi.CustomResource {
     appBundleArn = registerOutput<String>('appBundleArn');
     authRequest = registerOutput<AppAuthorizationConnectionAuthRequest?>(
       'authRequest',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppAuthorizationConnectionAuthRequest.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     tenants = registerOutput<List<Map<String, dynamic>>>('tenants');
-    timeouts = registerOutput<AppAuthorizationConnectionTimeouts?>('timeouts');
+    timeouts = registerOutput<AppAuthorizationConnectionTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppAuthorizationConnectionTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

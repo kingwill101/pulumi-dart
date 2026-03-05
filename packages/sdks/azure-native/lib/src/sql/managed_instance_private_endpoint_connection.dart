@@ -200,11 +200,27 @@ class ManagedInstancePrivateEndpointConnection extends pulumi.CustomResource {
     privateEndpoint =
         registerOutput<ManagedInstancePrivateEndpointPropertyResponse?>(
           'privateEndpoint',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ManagedInstancePrivateEndpointPropertyResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     privateLinkServiceConnectionState =
         registerOutput<
           ManagedInstancePrivateLinkServiceConnectionStatePropertyResponse?
-        >('privateLinkServiceConnectionState');
+        >(
+          'privateLinkServiceConnectionState',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ManagedInstancePrivateLinkServiceConnectionStatePropertyResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     provisioningState = registerOutput<String>('provisioningState');
     type = registerOutput<String>('type');
   }

@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAccountIamPolicy.
 class GetAccountIamPolicyResult {
   final String billingAccountId;
+
   /// (Computed) The etag of the IAM policy.
   final String etag;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// (Computed) The policy data
   final String policyData;
 
@@ -41,4 +43,3 @@ class GetAccountIamPolicyResult {
     );
   }
 }
-

@@ -3029,16 +3029,62 @@ class Budget extends pulumi.CustomResource {
     amount = registerOutput<double?>('amount');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     category = registerOutput<String>('category');
-    currentSpend = registerOutput<CurrentSpendResponse>('currentSpend');
+    currentSpend = registerOutput<CurrentSpendResponse>(
+      'currentSpend',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CurrentSpendResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     eTag = registerOutput<String?>('eTag');
-    filter = registerOutput<BudgetFilterResponse?>('filter');
-    forecastSpend = registerOutput<ForecastSpendResponse>('forecastSpend');
+    filter = registerOutput<BudgetFilterResponse?>(
+      'filter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BudgetFilterResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    forecastSpend = registerOutput<ForecastSpendResponse>(
+      'forecastSpend',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ForecastSpendResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     notifications = registerOutput<Map<String, NotificationResponse>?>(
       'notifications',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeMapValues<NotificationResponse>(
+          guardedValue,
+          (value) => NotificationResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      },
     );
     timeGrain = registerOutput<String>('timeGrain');
-    timePeriod = registerOutput<BudgetTimePeriodResponse>('timePeriod');
+    timePeriod = registerOutput<BudgetTimePeriodResponse>(
+      'timePeriod',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BudgetTimePeriodResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

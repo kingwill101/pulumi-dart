@@ -53,7 +53,16 @@ class ClientTlsPolicyNetworksecurityV1beta1 extends pulumi.CustomResource {
     clientCertificate =
         registerOutput<
           GoogleCloudNetworksecurityV1beta1CertificateProviderResponse
-        >('clientCertificate');
+        >(
+          'clientCertificate',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudNetworksecurityV1beta1CertificateProviderResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     clientTlsPolicyId = registerOutput<String>('clientTlsPolicyId');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');

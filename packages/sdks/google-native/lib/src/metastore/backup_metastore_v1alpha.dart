@@ -60,6 +60,13 @@ class BackupMetastoreV1alpha extends pulumi.CustomResource {
     serviceId = registerOutput<String>('serviceId');
     serviceRevision = registerOutput<ServiceResponseMetastoreV1alpha>(
       'serviceRevision',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceResponseMetastoreV1alpha.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     state = registerOutput<String>('state');
   }

@@ -876,12 +876,37 @@ class Cluster extends pulumi.CustomResource {
        ) {
     brokerCapacityConfig = registerOutput<ClusterBrokerCapacityConfig?>(
       'brokerCapacityConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterBrokerCapacityConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    capacityConfig = registerOutput<ClusterCapacityConfig>('capacityConfig');
+    capacityConfig = registerOutput<ClusterCapacityConfig>(
+      'capacityConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterCapacityConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     clusterId = registerOutput<String>('clusterId');
     createTime = registerOutput<String>('createTime');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    gcpConfig = registerOutput<ClusterGcpConfig>('gcpConfig');
+    gcpConfig = registerOutput<ClusterGcpConfig>(
+      'gcpConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterGcpConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -889,9 +914,25 @@ class Cluster extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     rebalanceConfig = registerOutput<ClusterRebalanceConfig?>(
       'rebalanceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterRebalanceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     state = registerOutput<String>('state');
-    tlsConfig = registerOutput<ClusterTlsConfig>('tlsConfig');
+    tlsConfig = registerOutput<ClusterTlsConfig>(
+      'tlsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterTlsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -920,12 +961,37 @@ class Cluster extends pulumi.CustomResource {
        ) {
     brokerCapacityConfig = registerOutput<ClusterBrokerCapacityConfig?>(
       'brokerCapacityConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterBrokerCapacityConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    capacityConfig = registerOutput<ClusterCapacityConfig>('capacityConfig');
+    capacityConfig = registerOutput<ClusterCapacityConfig>(
+      'capacityConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterCapacityConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     clusterId = registerOutput<String>('clusterId');
     createTime = registerOutput<String>('createTime');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    gcpConfig = registerOutput<ClusterGcpConfig>('gcpConfig');
+    gcpConfig = registerOutput<ClusterGcpConfig>(
+      'gcpConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterGcpConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -933,9 +999,25 @@ class Cluster extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     rebalanceConfig = registerOutput<ClusterRebalanceConfig?>(
       'rebalanceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterRebalanceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.state = registerOutput<String>('state');
-    tlsConfig = registerOutput<ClusterTlsConfig>('tlsConfig');
+    tlsConfig = registerOutput<ClusterTlsConfig>(
+      'tlsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterTlsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -184,11 +184,27 @@ class Cluster extends pulumi.CustomResource {
     kmsEncryptionKey = registerOutput<String>('kmsEncryptionKey');
     multiRegionProperties = registerOutput<ClusterMultiRegionProperties?>(
       'multiRegionProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterMultiRegionProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ClusterTimeouts?>('timeouts');
+    timeouts = registerOutput<ClusterTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vpcEndpointServiceName = registerOutput<String>('vpcEndpointServiceName');
   }
 
@@ -227,11 +243,27 @@ class Cluster extends pulumi.CustomResource {
     kmsEncryptionKey = registerOutput<String>('kmsEncryptionKey');
     multiRegionProperties = registerOutput<ClusterMultiRegionProperties?>(
       'multiRegionProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterMultiRegionProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ClusterTimeouts?>('timeouts');
+    timeouts = registerOutput<ClusterTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vpcEndpointServiceName = registerOutput<String>('vpcEndpointServiceName');
   }
 }

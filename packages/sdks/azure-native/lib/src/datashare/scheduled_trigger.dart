@@ -220,7 +220,16 @@ class ScheduledTrigger extends pulumi.CustomResource {
     recurrenceInterval = registerOutput<String>('recurrenceInterval');
     synchronizationMode = registerOutput<String?>('synchronizationMode');
     synchronizationTime = registerOutput<String>('synchronizationTime');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     triggerStatus = registerOutput<String>('triggerStatus');
     type = registerOutput<String>('type');
     userName = registerOutput<String>('userName');

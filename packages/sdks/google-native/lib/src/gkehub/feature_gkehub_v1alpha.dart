@@ -79,6 +79,13 @@ class FeatureGkehubV1alpha extends pulumi.CustomResource {
     fleetDefaultMemberConfig =
         registerOutput<CommonFleetDefaultMemberConfigSpecResponseGkehubV1alpha>(
           'fleetDefaultMemberConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CommonFleetDefaultMemberConfigSpecResponseGkehubV1alpha.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
@@ -89,11 +96,36 @@ class FeatureGkehubV1alpha extends pulumi.CustomResource {
     requestId = registerOutput<String?>('requestId');
     resourceState = registerOutput<FeatureResourceStateResponseGkehubV1alpha>(
       'resourceState',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FeatureResourceStateResponseGkehubV1alpha.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     scopeSpecs = registerOutput<Map<String, String>>('scopeSpecs');
     scopeStates = registerOutput<Map<String, String>>('scopeStates');
-    spec = registerOutput<CommonFeatureSpecResponseGkehubV1alpha>('spec');
-    state = registerOutput<CommonFeatureStateResponseGkehubV1alpha>('state');
+    spec = registerOutput<CommonFeatureSpecResponseGkehubV1alpha>(
+      'spec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CommonFeatureSpecResponseGkehubV1alpha.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    state = registerOutput<CommonFeatureStateResponseGkehubV1alpha>(
+      'state',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CommonFeatureStateResponseGkehubV1alpha.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -363,16 +363,37 @@ class VirtualMachineRunCommandByVirtualMachine extends pulumi.CustomResource {
     errorBlobManagedIdentity =
         registerOutput<RunCommandManagedIdentityResponse?>(
           'errorBlobManagedIdentity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RunCommandManagedIdentityResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     errorBlobUri = registerOutput<String?>('errorBlobUri');
     instanceView = registerOutput<VirtualMachineRunCommandInstanceViewResponse>(
       'instanceView',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualMachineRunCommandInstanceViewResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     outputBlobManagedIdentity =
         registerOutput<RunCommandManagedIdentityResponse?>(
           'outputBlobManagedIdentity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RunCommandManagedIdentityResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     outputBlobUri = registerOutput<String?>('outputBlobUri');
     parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
@@ -384,8 +405,24 @@ class VirtualMachineRunCommandByVirtualMachine extends pulumi.CustomResource {
     runAsUser = registerOutput<String?>('runAsUser');
     source = registerOutput<VirtualMachineRunCommandScriptSourceResponse?>(
       'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualMachineRunCommandScriptSourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     timeoutInSeconds = registerOutput<int?>('timeoutInSeconds');
     treatFailureAsDeploymentFailure = registerOutput<bool?>(

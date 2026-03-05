@@ -84,7 +84,16 @@ class FirewallComputeV1 extends pulumi.CustomResource {
     direction = registerOutput<String>('direction');
     disabled = registerOutput<bool>('disabled');
     kind = registerOutput<String>('kind');
-    logConfig = registerOutput<FirewallLogConfigResponseComputeV1>('logConfig');
+    logConfig = registerOutput<FirewallLogConfigResponseComputeV1>(
+      'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FirewallLogConfigResponseComputeV1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     priority = registerOutput<int>('priority');

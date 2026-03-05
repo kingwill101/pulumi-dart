@@ -886,8 +886,26 @@ class FluxConfiguration extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    azureBlob = registerOutput<AzureBlobDefinitionResponse?>('azureBlob');
-    bucket = registerOutput<BucketDefinitionResponse?>('bucket');
+    azureBlob = registerOutput<AzureBlobDefinitionResponse?>(
+      'azureBlob',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AzureBlobDefinitionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    bucket = registerOutput<BucketDefinitionResponse?>(
+      'bucket',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketDefinitionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     complianceState = registerOutput<String>('complianceState');
     configurationProtectedSettings = registerOutput<Map<String, String>?>(
       'configurationProtectedSettings',
@@ -895,10 +913,28 @@ class FluxConfiguration extends pulumi.CustomResource {
     errorMessage = registerOutput<String>('errorMessage');
     gitRepository = registerOutput<GitRepositoryDefinitionResponse?>(
       'gitRepository',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GitRepositoryDefinitionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     kustomizations =
         registerOutput<Map<String, KustomizationDefinitionResponse>?>(
           'kustomizations',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return pulumi
+                .Input.decodeMapValues<KustomizationDefinitionResponse>(
+              guardedValue,
+              (value) => KustomizationDefinitionResponse.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     namespace = registerOutput<String?>('namespace');
@@ -914,7 +950,16 @@ class FluxConfiguration extends pulumi.CustomResource {
     statusUpdatedAt = registerOutput<String>('statusUpdatedAt');
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
     suspend = registerOutput<bool?>('suspend');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     waitForReconciliation = registerOutput<bool?>('waitForReconciliation');
   }

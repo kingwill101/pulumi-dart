@@ -1744,7 +1744,16 @@ class Service extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     applicationId = registerOutput<String>('applicationId');
-    attributes = registerOutput<ServiceAttributes?>('attributes');
+    attributes = registerOutput<ServiceAttributes?>(
+      'attributes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceAttributes.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     discoveredService = registerOutput<String>('discoveredService');
@@ -1788,7 +1797,16 @@ class Service extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     applicationId = registerOutput<String>('applicationId');
-    attributes = registerOutput<ServiceAttributes?>('attributes');
+    attributes = registerOutput<ServiceAttributes?>(
+      'attributes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceAttributes.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     discoveredService = registerOutput<String>('discoveredService');

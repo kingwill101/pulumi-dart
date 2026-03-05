@@ -1909,7 +1909,16 @@ class InstantSnapshotIamMember extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<InstantSnapshotIamMemberCondition?>('condition');
+    condition = registerOutput<InstantSnapshotIamMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstantSnapshotIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     member = registerOutput<String>('member');
     this.name = registerOutput<String>('name');
@@ -1941,7 +1950,16 @@ class InstantSnapshotIamMember extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<InstantSnapshotIamMemberCondition?>('condition');
+    condition = registerOutput<InstantSnapshotIamMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstantSnapshotIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     member = registerOutput<String>('member');
     this.name = registerOutput<String>('name');

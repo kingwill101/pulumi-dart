@@ -241,27 +241,78 @@ class Table extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     capacitySpecification = registerOutput<TableCapacitySpecification>(
       'capacitySpecification',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TableCapacitySpecification.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clientSideTimestamps = registerOutput<TableClientSideTimestamps?>(
       'clientSideTimestamps',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TableClientSideTimestamps.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    comment = registerOutput<TableComment>('comment');
+    comment = registerOutput<TableComment>(
+      'comment',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TableComment.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     defaultTimeToLive = registerOutput<int?>('defaultTimeToLive');
     encryptionSpecification = registerOutput<TableEncryptionSpecification>(
       'encryptionSpecification',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TableEncryptionSpecification.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     keyspaceName = registerOutput<String>('keyspaceName');
     pointInTimeRecovery = registerOutput<TablePointInTimeRecovery>(
       'pointInTimeRecovery',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TablePointInTimeRecovery.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     schemaDefinition = registerOutput<TableSchemaDefinition>(
       'schemaDefinition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TableSchemaDefinition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tableName = registerOutput<String>('tableName');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    ttl = registerOutput<TableTtl?>('ttl');
+    ttl = registerOutput<TableTtl?>(
+      'ttl',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TableTtl.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
   }
 
   /// Gets an existing [Table] resource's state with the given [name] and [id].
@@ -286,26 +337,77 @@ class Table extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     capacitySpecification = registerOutput<TableCapacitySpecification>(
       'capacitySpecification',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TableCapacitySpecification.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clientSideTimestamps = registerOutput<TableClientSideTimestamps?>(
       'clientSideTimestamps',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TableClientSideTimestamps.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    comment = registerOutput<TableComment>('comment');
+    comment = registerOutput<TableComment>(
+      'comment',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TableComment.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     defaultTimeToLive = registerOutput<int?>('defaultTimeToLive');
     encryptionSpecification = registerOutput<TableEncryptionSpecification>(
       'encryptionSpecification',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TableEncryptionSpecification.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     keyspaceName = registerOutput<String>('keyspaceName');
     pointInTimeRecovery = registerOutput<TablePointInTimeRecovery>(
       'pointInTimeRecovery',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TablePointInTimeRecovery.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     schemaDefinition = registerOutput<TableSchemaDefinition>(
       'schemaDefinition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TableSchemaDefinition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tableName = registerOutput<String>('tableName');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    ttl = registerOutput<TableTtl?>('ttl');
+    ttl = registerOutput<TableTtl?>(
+      'ttl',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TableTtl.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
   }
 }

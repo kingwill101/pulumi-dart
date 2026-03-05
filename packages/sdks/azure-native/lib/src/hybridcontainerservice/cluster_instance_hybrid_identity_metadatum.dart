@@ -173,7 +173,16 @@ class ClusterInstanceHybridIdentityMetadatum extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     publicKey = registerOutput<String?>('publicKey');
     resourceUid = registerOutput<String?>('resourceUid');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

@@ -56,7 +56,16 @@ class MetricDescriptor extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     labels = registerOutput<List<Map<String, dynamic>>>('labels');
     launchStage = registerOutput<String>('launchStage');
-    metadata = registerOutput<MetricDescriptorMetadataResponse>('metadata');
+    metadata = registerOutput<MetricDescriptorMetadataResponse>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MetricDescriptorMetadataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     metricKind = registerOutput<String>('metricKind');
     monitoredResourceTypes = registerOutput<List<String>>(
       'monitoredResourceTypes',

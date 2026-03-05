@@ -50,6 +50,16 @@ class WebAppConnectionStrings extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     properties = registerOutput<Map<String, ConnStringValueTypePairResponse>>(
       'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeMapValues<ConnStringValueTypePairResponse>(
+          guardedValue,
+          (value) => ConnStringValueTypePairResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      },
     );
     type = registerOutput<String>('type');
   }

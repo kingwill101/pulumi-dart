@@ -1162,17 +1162,51 @@ class Scraper extends pulumi.CustomResource {
        ) {
     alias = registerOutput<String?>('alias');
     arn = registerOutput<String>('arn');
-    destination = registerOutput<ScraperDestination>('destination');
+    destination = registerOutput<ScraperDestination>(
+      'destination',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScraperDestination.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     roleConfiguration = registerOutput<ScraperRoleConfiguration?>(
       'roleConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScraperRoleConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     scrapeConfiguration = registerOutput<String>('scrapeConfiguration');
-    source = registerOutput<ScraperSource?>('source');
+    source = registerOutput<ScraperSource?>(
+      'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScraperSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ScraperTimeouts?>('timeouts');
+    timeouts = registerOutput<ScraperTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScraperTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Scraper] resource's state with the given [name] and [id].
@@ -1200,16 +1234,50 @@ class Scraper extends pulumi.CustomResource {
        ) {
     alias = registerOutput<String?>('alias');
     arn = registerOutput<String>('arn');
-    destination = registerOutput<ScraperDestination>('destination');
+    destination = registerOutput<ScraperDestination>(
+      'destination',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScraperDestination.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     roleConfiguration = registerOutput<ScraperRoleConfiguration?>(
       'roleConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScraperRoleConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     scrapeConfiguration = registerOutput<String>('scrapeConfiguration');
-    source = registerOutput<ScraperSource?>('source');
+    source = registerOutput<ScraperSource?>(
+      'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScraperSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ScraperTimeouts?>('timeouts');
+    timeouts = registerOutput<ScraperTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScraperTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

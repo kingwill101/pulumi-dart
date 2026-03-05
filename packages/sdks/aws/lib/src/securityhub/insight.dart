@@ -924,7 +924,16 @@ class Insight extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    filters = registerOutput<InsightFilters>('filters');
+    filters = registerOutput<InsightFilters>(
+      'filters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InsightFilters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     groupByAttribute = registerOutput<String>('groupByAttribute');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -954,7 +963,16 @@ class Insight extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    filters = registerOutput<InsightFilters>('filters');
+    filters = registerOutput<InsightFilters>(
+      'filters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InsightFilters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     groupByAttribute = registerOutput<String>('groupByAttribute');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

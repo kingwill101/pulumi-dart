@@ -1901,6 +1901,13 @@ class ScheduledQuery extends pulumi.CustomResource {
     errorReportConfiguration =
         registerOutput<ScheduledQueryErrorReportConfiguration>(
           'errorReportConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ScheduledQueryErrorReportConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     executionRoleArn = registerOutput<String>('executionRoleArn');
     kmsKeyId = registerOutput<String?>('kmsKeyId');
@@ -1912,6 +1919,13 @@ class ScheduledQuery extends pulumi.CustomResource {
     notificationConfiguration =
         registerOutput<ScheduledQueryNotificationConfiguration>(
           'notificationConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ScheduledQueryNotificationConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     previousInvocationTime = registerOutput<String>('previousInvocationTime');
     queryString = registerOutput<String>('queryString');
@@ -1921,14 +1935,37 @@ class ScheduledQuery extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     scheduleConfiguration = registerOutput<ScheduledQueryScheduleConfiguration>(
       'scheduleConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduledQueryScheduleConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     state = registerOutput<String>('state');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     targetConfiguration = registerOutput<ScheduledQueryTargetConfiguration>(
       'targetConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduledQueryTargetConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    timeouts = registerOutput<ScheduledQueryTimeouts?>('timeouts');
+    timeouts = registerOutput<ScheduledQueryTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduledQueryTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [ScheduledQuery] resource's state with the given [name] and [id].
@@ -1959,6 +1996,13 @@ class ScheduledQuery extends pulumi.CustomResource {
     errorReportConfiguration =
         registerOutput<ScheduledQueryErrorReportConfiguration>(
           'errorReportConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ScheduledQueryErrorReportConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     executionRoleArn = registerOutput<String>('executionRoleArn');
     kmsKeyId = registerOutput<String?>('kmsKeyId');
@@ -1970,6 +2014,13 @@ class ScheduledQuery extends pulumi.CustomResource {
     notificationConfiguration =
         registerOutput<ScheduledQueryNotificationConfiguration>(
           'notificationConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ScheduledQueryNotificationConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     previousInvocationTime = registerOutput<String>('previousInvocationTime');
     queryString = registerOutput<String>('queryString');
@@ -1979,13 +2030,36 @@ class ScheduledQuery extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     scheduleConfiguration = registerOutput<ScheduledQueryScheduleConfiguration>(
       'scheduleConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduledQueryScheduleConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.state = registerOutput<String>('state');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     targetConfiguration = registerOutput<ScheduledQueryTargetConfiguration>(
       'targetConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduledQueryTargetConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    timeouts = registerOutput<ScheduledQueryTimeouts?>('timeouts');
+    timeouts = registerOutput<ScheduledQueryTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduledQueryTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

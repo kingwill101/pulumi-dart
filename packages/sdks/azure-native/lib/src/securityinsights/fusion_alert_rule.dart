@@ -442,7 +442,16 @@ class FusionAlertRule extends pulumi.CustomResource {
     lastModifiedUtc = registerOutput<String>('lastModifiedUtc');
     this.name = registerOutput<String>('name');
     severity = registerOutput<String>('severity');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tactics = registerOutput<List<String>>('tactics');
     techniques = registerOutput<List<String>>('techniques');
     type = registerOutput<String>('type');

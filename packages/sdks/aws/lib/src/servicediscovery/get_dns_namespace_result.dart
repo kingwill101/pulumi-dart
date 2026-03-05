@@ -1,18 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getDnsNamespace.
 class GetDnsNamespaceResult {
   /// ARN of the namespace.
   final String arn;
+
   /// Description of the namespace.
   final String description;
+
   /// ID for the hosted zone that Amazon Route 53 creates when you create a namespace.
   final String hostedZone;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
   final String region;
+
   /// Map of tags for the resource.
   final Map<String, String> tags;
   final String type;
@@ -63,4 +66,3 @@ class GetDnsNamespaceResult {
     );
   }
 }
-

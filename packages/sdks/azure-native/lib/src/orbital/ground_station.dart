@@ -285,14 +285,32 @@ class GroundStation extends pulumi.CustomResource {
     globalCommunicationsSite =
         registerOutput<
           GroundStationsPropertiesResponseGlobalCommunicationsSite
-        >('globalCommunicationsSite');
+        >(
+          'globalCommunicationsSite',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GroundStationsPropertiesResponseGlobalCommunicationsSite.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     latitudeDegrees = registerOutput<double?>('latitudeDegrees');
     location = registerOutput<String>('location');
     longitudeDegrees = registerOutput<double?>('longitudeDegrees');
     this.name = registerOutput<String>('name');
     providerName = registerOutput<String?>('providerName');
     releaseMode = registerOutput<String>('releaseMode');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

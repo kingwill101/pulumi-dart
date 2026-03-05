@@ -111,6 +111,13 @@ class Backup extends pulumi.CustomResource {
     backupPlanId = registerOutput<String>('backupPlanId');
     clusterMetadata = registerOutput<ClusterMetadataResponse>(
       'clusterMetadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterMetadataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     completeTime = registerOutput<String>('completeTime');
     configBackupSizeBytes = registerOutput<String>('configBackupSizeBytes');
@@ -120,7 +127,16 @@ class Backup extends pulumi.CustomResource {
     deleteLockDays = registerOutput<int>('deleteLockDays');
     deleteLockExpireTime = registerOutput<String>('deleteLockExpireTime');
     description = registerOutput<String>('description');
-    encryptionKey = registerOutput<EncryptionKeyResponse>('encryptionKey');
+    encryptionKey = registerOutput<EncryptionKeyResponse>(
+      'encryptionKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EncryptionKeyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
@@ -133,9 +149,23 @@ class Backup extends pulumi.CustomResource {
     retainExpireTime = registerOutput<String>('retainExpireTime');
     selectedApplications = registerOutput<NamespacedNamesResponse>(
       'selectedApplications',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NamespacedNamesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     selectedNamespaces = registerOutput<NamespacesResponse>(
       'selectedNamespaces',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NamespacesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sizeBytes = registerOutput<String>('sizeBytes');
     state = registerOutput<String>('state');

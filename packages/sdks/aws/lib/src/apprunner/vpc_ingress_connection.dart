@@ -204,6 +204,13 @@ class VpcIngressConnection extends pulumi.CustomResource {
     ingressVpcConfiguration =
         registerOutput<VpcIngressConnectionIngressVpcConfiguration>(
           'ingressVpcConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VpcIngressConnectionIngressVpcConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -241,6 +248,13 @@ class VpcIngressConnection extends pulumi.CustomResource {
     ingressVpcConfiguration =
         registerOutput<VpcIngressConnectionIngressVpcConfiguration>(
           'ingressVpcConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VpcIngressConnectionIngressVpcConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

@@ -177,7 +177,16 @@ class DeviceFleet extends pulumi.CustomResource {
     deviceFleetName = registerOutput<String>('deviceFleetName');
     enableIotRoleAlias = registerOutput<bool?>('enableIotRoleAlias');
     iotRoleAlias = registerOutput<String>('iotRoleAlias');
-    outputConfig = registerOutput<DeviceFleetOutputConfig>('outputConfig');
+    outputConfig = registerOutput<DeviceFleetOutputConfig>(
+      'outputConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeviceFleetOutputConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -212,7 +221,16 @@ class DeviceFleet extends pulumi.CustomResource {
     deviceFleetName = registerOutput<String>('deviceFleetName');
     enableIotRoleAlias = registerOutput<bool?>('enableIotRoleAlias');
     iotRoleAlias = registerOutput<String>('iotRoleAlias');
-    outputConfig = registerOutput<DeviceFleetOutputConfig>('outputConfig');
+    outputConfig = registerOutput<DeviceFleetOutputConfig>(
+      'outputConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeviceFleetOutputConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     tags = registerOutput<Map<String, String>?>('tags');

@@ -110,12 +110,33 @@ class Version extends pulumi.CustomResource {
     acceleratorConfig =
         registerOutput<GoogleCloudMlV1AcceleratorConfigResponse>(
           'acceleratorConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudMlV1AcceleratorConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     autoScaling = registerOutput<GoogleCloudMlV1AutoScalingResponse>(
       'autoScaling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudMlV1AutoScalingResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     container = registerOutput<GoogleCloudMlV1ContainerSpecResponse>(
       'container',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudMlV1ContainerSpecResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     deploymentUri = registerOutput<String>('deploymentUri');
@@ -125,6 +146,13 @@ class Version extends pulumi.CustomResource {
     explanationConfig =
         registerOutput<GoogleCloudMlV1ExplanationConfigResponse>(
           'explanationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudMlV1ExplanationConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     framework = registerOutput<String>('framework');
     isDefault = registerOutput<bool>('isDefault');
@@ -135,6 +163,13 @@ class Version extends pulumi.CustomResource {
     machineType = registerOutput<String>('machineType');
     manualScaling = registerOutput<GoogleCloudMlV1ManualScalingResponse>(
       'manualScaling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudMlV1ManualScalingResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     modelId = registerOutput<String>('modelId');
     this.name = registerOutput<String>('name');
@@ -145,8 +180,24 @@ class Version extends pulumi.CustomResource {
     requestLoggingConfig =
         registerOutput<GoogleCloudMlV1RequestLoggingConfigResponse>(
           'requestLoggingConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudMlV1RequestLoggingConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    routes = registerOutput<GoogleCloudMlV1RouteMapResponse>('routes');
+    routes = registerOutput<GoogleCloudMlV1RouteMapResponse>(
+      'routes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudMlV1RouteMapResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     runtimeVersion = registerOutput<String>('runtimeVersion');
     serviceAccount = registerOutput<String>('serviceAccount');
     state = registerOutput<String>('state');

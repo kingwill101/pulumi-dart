@@ -66,14 +66,37 @@ class CloneJob extends pulumi.CustomResource {
     computeEngineDisksTargetDetails =
         registerOutput<ComputeEngineDisksTargetDetailsResponse>(
           'computeEngineDisksTargetDetails',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ComputeEngineDisksTargetDetailsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     computeEngineTargetDetails =
         registerOutput<ComputeEngineTargetDetailsResponse>(
           'computeEngineTargetDetails',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ComputeEngineTargetDetailsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     createTime = registerOutput<String>('createTime');
     endTime = registerOutput<String>('endTime');
-    error = registerOutput<StatusResponse>('error');
+    error = registerOutput<StatusResponse>(
+      'error',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     migratingVmId = registerOutput<String>('migratingVmId');
     this.name = registerOutput<String>('name');

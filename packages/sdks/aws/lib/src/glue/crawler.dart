@@ -1063,21 +1063,51 @@ class Crawler extends pulumi.CustomResource {
     lakeFormationConfiguration =
         registerOutput<CrawlerLakeFormationConfiguration?>(
           'lakeFormationConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CrawlerLakeFormationConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     lineageConfiguration = registerOutput<CrawlerLineageConfiguration?>(
       'lineageConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CrawlerLineageConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     mongodbTargets = registerOutput<List<Map<String, dynamic>>?>(
       'mongodbTargets',
     );
     this.name = registerOutput<String>('name');
-    recrawlPolicy = registerOutput<CrawlerRecrawlPolicy?>('recrawlPolicy');
+    recrawlPolicy = registerOutput<CrawlerRecrawlPolicy?>(
+      'recrawlPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CrawlerRecrawlPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     role = registerOutput<String>('role');
     s3Targets = registerOutput<List<Map<String, dynamic>>?>('s3Targets');
     schedule = registerOutput<String?>('schedule');
     schemaChangePolicy = registerOutput<CrawlerSchemaChangePolicy?>(
       'schemaChangePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CrawlerSchemaChangePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     securityConfiguration = registerOutput<String?>('securityConfiguration');
     tablePrefix = registerOutput<String?>('tablePrefix');
@@ -1128,21 +1158,51 @@ class Crawler extends pulumi.CustomResource {
     lakeFormationConfiguration =
         registerOutput<CrawlerLakeFormationConfiguration?>(
           'lakeFormationConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CrawlerLakeFormationConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     lineageConfiguration = registerOutput<CrawlerLineageConfiguration?>(
       'lineageConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CrawlerLineageConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     mongodbTargets = registerOutput<List<Map<String, dynamic>>?>(
       'mongodbTargets',
     );
     this.name = registerOutput<String>('name');
-    recrawlPolicy = registerOutput<CrawlerRecrawlPolicy?>('recrawlPolicy');
+    recrawlPolicy = registerOutput<CrawlerRecrawlPolicy?>(
+      'recrawlPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CrawlerRecrawlPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     role = registerOutput<String>('role');
     s3Targets = registerOutput<List<Map<String, dynamic>>?>('s3Targets');
     schedule = registerOutput<String?>('schedule');
     schemaChangePolicy = registerOutput<CrawlerSchemaChangePolicy?>(
       'schemaChangePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CrawlerSchemaChangePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     securityConfiguration = registerOutput<String?>('securityConfiguration');
     tablePrefix = registerOutput<String?>('tablePrefix');

@@ -337,7 +337,16 @@ class Application extends pulumi.CustomResource {
     applicationId = registerOutput<String>('applicationId');
     arn = registerOutput<String>('arn');
     currentVersion = registerOutput<int>('currentVersion');
-    definition = registerOutput<ApplicationDefinition>('definition');
+    definition = registerOutput<ApplicationDefinition>(
+      'definition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationDefinition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     engineType = registerOutput<String>('engineType');
     kmsKeyId = registerOutput<String?>('kmsKeyId');
@@ -346,7 +355,16 @@ class Application extends pulumi.CustomResource {
     roleArn = registerOutput<String?>('roleArn');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ApplicationTimeouts?>('timeouts');
+    timeouts = registerOutput<ApplicationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Application] resource's state with the given [name] and [id].
@@ -375,7 +393,16 @@ class Application extends pulumi.CustomResource {
     applicationId = registerOutput<String>('applicationId');
     arn = registerOutput<String>('arn');
     currentVersion = registerOutput<int>('currentVersion');
-    definition = registerOutput<ApplicationDefinition>('definition');
+    definition = registerOutput<ApplicationDefinition>(
+      'definition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationDefinition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     engineType = registerOutput<String>('engineType');
     kmsKeyId = registerOutput<String?>('kmsKeyId');
@@ -384,6 +411,15 @@ class Application extends pulumi.CustomResource {
     roleArn = registerOutput<String?>('roleArn');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ApplicationTimeouts?>('timeouts');
+    timeouts = registerOutput<ApplicationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

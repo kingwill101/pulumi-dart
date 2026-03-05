@@ -645,7 +645,16 @@ class Template extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     permissions = registerOutput<List<Map<String, dynamic>>?>('permissions');
     region = registerOutput<String>('region');
-    sourceEntity = registerOutput<TemplateSourceEntity?>('sourceEntity');
+    sourceEntity = registerOutput<TemplateSourceEntity?>(
+      'sourceEntity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TemplateSourceEntity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sourceEntityArn = registerOutput<String>('sourceEntityArn');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -685,7 +694,16 @@ class Template extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     permissions = registerOutput<List<Map<String, dynamic>>?>('permissions');
     region = registerOutput<String>('region');
-    sourceEntity = registerOutput<TemplateSourceEntity?>('sourceEntity');
+    sourceEntity = registerOutput<TemplateSourceEntity?>(
+      'sourceEntity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TemplateSourceEntity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sourceEntityArn = registerOutput<String>('sourceEntityArn');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');

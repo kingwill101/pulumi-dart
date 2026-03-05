@@ -1805,6 +1805,13 @@ class Launch extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     scheduledSplitsConfig = registerOutput<LaunchScheduledSplitsConfig?>(
       'scheduledSplitsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LaunchScheduledSplitsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     status = registerOutput<String>('status');
     statusReason = registerOutput<String>('statusReason');
@@ -1851,6 +1858,13 @@ class Launch extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     scheduledSplitsConfig = registerOutput<LaunchScheduledSplitsConfig?>(
       'scheduledSplitsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LaunchScheduledSplitsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     status = registerOutput<String>('status');
     statusReason = registerOutput<String>('statusReason');

@@ -1,18 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getVault.
 class GetVaultResult {
   /// ARN of the vault.
   final String arn;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Server-side encryption key that is used to protect your backups.
   final String kmsKeyArn;
   final String name;
+
   /// Number of recovery points that are stored in a backup vault.
   final int recoveryPoints;
   final String region;
+
   /// Metadata that you can assign to help organize the resources that you create.
   final Map<String, String> tags;
 
@@ -58,4 +61,3 @@ class GetVaultResult {
     );
   }
 }
-

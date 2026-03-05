@@ -276,11 +276,27 @@ class AccessGrant extends pulumi.CustomResource {
     accessGrantsLocationConfiguration =
         registerOutput<AccessGrantAccessGrantsLocationConfiguration?>(
           'accessGrantsLocationConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AccessGrantAccessGrantsLocationConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     accessGrantsLocationId = registerOutput<String>('accessGrantsLocationId');
     accountId = registerOutput<String>('accountId');
     grantScope = registerOutput<String>('grantScope');
-    grantee = registerOutput<AccessGrantGrantee>('grantee');
+    grantee = registerOutput<AccessGrantGrantee>(
+      'grantee',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccessGrantGrantee.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     permission = registerOutput<String>('permission');
     region = registerOutput<String>('region');
     s3PrefixType = registerOutput<String?>('s3PrefixType');
@@ -316,11 +332,27 @@ class AccessGrant extends pulumi.CustomResource {
     accessGrantsLocationConfiguration =
         registerOutput<AccessGrantAccessGrantsLocationConfiguration?>(
           'accessGrantsLocationConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AccessGrantAccessGrantsLocationConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     accessGrantsLocationId = registerOutput<String>('accessGrantsLocationId');
     accountId = registerOutput<String>('accountId');
     grantScope = registerOutput<String>('grantScope');
-    grantee = registerOutput<AccessGrantGrantee>('grantee');
+    grantee = registerOutput<AccessGrantGrantee>(
+      'grantee',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccessGrantGrantee.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     permission = registerOutput<String>('permission');
     region = registerOutput<String>('region');
     s3PrefixType = registerOutput<String?>('s3PrefixType');

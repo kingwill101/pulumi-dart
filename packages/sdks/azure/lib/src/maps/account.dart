@@ -231,9 +231,27 @@ class Account extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    cors = registerOutput<AccountCors?>('cors');
+    cors = registerOutput<AccountCors?>(
+      'cors',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountCors.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dataStores = registerOutput<List<Map<String, dynamic>>?>('dataStores');
-    identity = registerOutput<AccountIdentity?>('identity');
+    identity = registerOutput<AccountIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     localAuthenticationEnabled = registerOutput<bool?>(
       'localAuthenticationEnabled',
     );
@@ -270,9 +288,27 @@ class Account extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    cors = registerOutput<AccountCors?>('cors');
+    cors = registerOutput<AccountCors?>(
+      'cors',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountCors.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dataStores = registerOutput<List<Map<String, dynamic>>?>('dataStores');
-    identity = registerOutput<AccountIdentity?>('identity');
+    identity = registerOutput<AccountIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     localAuthenticationEnabled = registerOutput<bool?>(
       'localAuthenticationEnabled',
     );

@@ -692,11 +692,25 @@ class ServerGroup extends pulumi.CustomResource {
        ) {
     connectionDrainConfig = registerOutput<ServerGroupConnectionDrainConfig>(
       'connectionDrainConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerGroupConnectionDrainConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     dryRun = registerOutput<bool?>('dryRun');
     healthCheckConfig = registerOutput<ServerGroupHealthCheckConfig>(
       'healthCheckConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerGroupHealthCheckConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     protocol = registerOutput<String>('protocol');
     resourceGroupId = registerOutput<String>('resourceGroupId');
@@ -734,11 +748,25 @@ class ServerGroup extends pulumi.CustomResource {
        ) {
     connectionDrainConfig = registerOutput<ServerGroupConnectionDrainConfig>(
       'connectionDrainConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerGroupConnectionDrainConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     dryRun = registerOutput<bool?>('dryRun');
     healthCheckConfig = registerOutput<ServerGroupHealthCheckConfig>(
       'healthCheckConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerGroupHealthCheckConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     protocol = registerOutput<String>('protocol');
     resourceGroupId = registerOutput<String>('resourceGroupId');

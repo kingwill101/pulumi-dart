@@ -276,6 +276,13 @@ class OriginGroup extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     healthProbeSettings = registerOutput<HealthProbeParametersResponse?>(
       'healthProbeSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HealthProbeParametersResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     origins = registerOutput<List<Map<String, dynamic>>?>('origins');
@@ -284,8 +291,24 @@ class OriginGroup extends pulumi.CustomResource {
     responseBasedOriginErrorDetectionSettings =
         registerOutput<ResponseBasedOriginErrorDetectionParametersResponse?>(
           'responseBasedOriginErrorDetectionSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResponseBasedOriginErrorDetectionParametersResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     trafficRestorationTimeToHealedOrNewEndpointsInMinutes =
         registerOutput<int?>(
           'trafficRestorationTimeToHealedOrNewEndpointsInMinutes',

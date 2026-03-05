@@ -3424,6 +3424,13 @@ class ServiceAttachment extends pulumi.CustomResource {
     targetService = registerOutput<String>('targetService');
     tunnelingConfig = registerOutput<ServiceAttachmentTunnelingConfig?>(
       'tunnelingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceAttachmentTunnelingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -3481,6 +3488,13 @@ class ServiceAttachment extends pulumi.CustomResource {
     targetService = registerOutput<String>('targetService');
     tunnelingConfig = registerOutput<ServiceAttachmentTunnelingConfig?>(
       'tunnelingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceAttachmentTunnelingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

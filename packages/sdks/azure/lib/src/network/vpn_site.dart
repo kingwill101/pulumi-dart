@@ -295,7 +295,16 @@ class VpnSite extends pulumi.CustomResource {
     links = registerOutput<List<Map<String, dynamic>>?>('links');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    o365Policy = registerOutput<VpnSiteO365Policy>('o365Policy');
+    o365Policy = registerOutput<VpnSiteO365Policy>(
+      'o365Policy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpnSiteO365Policy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
     virtualWanId = registerOutput<String>('virtualWanId');
@@ -330,7 +339,16 @@ class VpnSite extends pulumi.CustomResource {
     links = registerOutput<List<Map<String, dynamic>>?>('links');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    o365Policy = registerOutput<VpnSiteO365Policy>('o365Policy');
+    o365Policy = registerOutput<VpnSiteO365Policy>(
+      'o365Policy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpnSiteO365Policy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
     virtualWanId = registerOutput<String>('virtualWanId');

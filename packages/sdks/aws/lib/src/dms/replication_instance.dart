@@ -641,6 +641,13 @@ class ReplicationInstance extends pulumi.CustomResource {
     kerberosAuthenticationSettings =
         registerOutput<ReplicationInstanceKerberosAuthenticationSettings?>(
           'kerberosAuthenticationSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ReplicationInstanceKerberosAuthenticationSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     kmsKeyArn = registerOutput<String>('kmsKeyArn');
     multiAz = registerOutput<bool>('multiAz');
@@ -704,6 +711,13 @@ class ReplicationInstance extends pulumi.CustomResource {
     kerberosAuthenticationSettings =
         registerOutput<ReplicationInstanceKerberosAuthenticationSettings?>(
           'kerberosAuthenticationSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ReplicationInstanceKerberosAuthenticationSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     kmsKeyArn = registerOutput<String>('kmsKeyArn');
     multiAz = registerOutput<bool>('multiAz');

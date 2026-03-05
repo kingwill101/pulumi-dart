@@ -256,6 +256,13 @@ class Namespace extends pulumi.CustomResource {
     capacity = registerOutput<int?>('capacity');
     customerManagedKey = registerOutput<NamespaceCustomerManagedKey?>(
       'customerManagedKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NamespaceCustomerManagedKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     defaultPrimaryConnectionString = registerOutput<String>(
       'defaultPrimaryConnectionString',
@@ -266,12 +273,30 @@ class Namespace extends pulumi.CustomResource {
     );
     defaultSecondaryKey = registerOutput<String>('defaultSecondaryKey');
     endpoint = registerOutput<String>('endpoint');
-    identity = registerOutput<NamespaceIdentity?>('identity');
+    identity = registerOutput<NamespaceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NamespaceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
     location = registerOutput<String>('location');
     minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
     this.name = registerOutput<String>('name');
-    networkRuleSet = registerOutput<NamespaceNetworkRuleSet>('networkRuleSet');
+    networkRuleSet = registerOutput<NamespaceNetworkRuleSet>(
+      'networkRuleSet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NamespaceNetworkRuleSet.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     premiumMessagingPartitions = registerOutput<int?>(
       'premiumMessagingPartitions',
     );
@@ -309,6 +334,13 @@ class Namespace extends pulumi.CustomResource {
     capacity = registerOutput<int?>('capacity');
     customerManagedKey = registerOutput<NamespaceCustomerManagedKey?>(
       'customerManagedKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NamespaceCustomerManagedKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     defaultPrimaryConnectionString = registerOutput<String>(
       'defaultPrimaryConnectionString',
@@ -319,12 +351,30 @@ class Namespace extends pulumi.CustomResource {
     );
     defaultSecondaryKey = registerOutput<String>('defaultSecondaryKey');
     endpoint = registerOutput<String>('endpoint');
-    identity = registerOutput<NamespaceIdentity?>('identity');
+    identity = registerOutput<NamespaceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NamespaceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
     location = registerOutput<String>('location');
     minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
     this.name = registerOutput<String>('name');
-    networkRuleSet = registerOutput<NamespaceNetworkRuleSet>('networkRuleSet');
+    networkRuleSet = registerOutput<NamespaceNetworkRuleSet>(
+      'networkRuleSet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NamespaceNetworkRuleSet.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     premiumMessagingPartitions = registerOutput<int?>(
       'premiumMessagingPartitions',
     );

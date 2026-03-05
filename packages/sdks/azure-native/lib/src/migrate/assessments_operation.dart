@@ -566,10 +566,28 @@ class AssessmentsOperation extends pulumi.CustomResource {
     stage = registerOutput<String>('stage');
     status = registerOutput<String>('status');
     suitabilitySummary = registerOutput<Map<String, int>>('suitabilitySummary');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     timeRange = registerOutput<String?>('timeRange');
     type = registerOutput<String>('type');
     updatedTimestamp = registerOutput<String>('updatedTimestamp');
-    vmUptime = registerOutput<VmUptimeResponse?>('vmUptime');
+    vmUptime = registerOutput<VmUptimeResponse?>(
+      'vmUptime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VmUptimeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

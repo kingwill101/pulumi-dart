@@ -390,6 +390,13 @@ class Application extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     diagnostics = registerOutput<DiagnosticsDescriptionResponse?>(
       'diagnostics',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiagnosticsDescriptionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     healthState = registerOutput<String>('healthState');
     location = registerOutput<String>('location');

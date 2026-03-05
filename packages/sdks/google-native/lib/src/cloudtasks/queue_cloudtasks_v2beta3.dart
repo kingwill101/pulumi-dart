@@ -64,9 +64,23 @@ class QueueCloudtasksV2beta3 extends pulumi.CustomResource {
        ) {
     appEngineHttpQueue = registerOutput<AppEngineHttpQueueResponse>(
       'appEngineHttpQueue',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppEngineHttpQueueResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     httpTarget = registerOutput<HttpTargetResponseCloudtasksV2beta3>(
       'httpTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HttpTargetResponseCloudtasksV2beta3.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -74,16 +88,46 @@ class QueueCloudtasksV2beta3 extends pulumi.CustomResource {
     purgeTime = registerOutput<String>('purgeTime');
     rateLimits = registerOutput<RateLimitsResponseCloudtasksV2beta3>(
       'rateLimits',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RateLimitsResponseCloudtasksV2beta3.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     retryConfig = registerOutput<RetryConfigResponseCloudtasksV2beta3>(
       'retryConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RetryConfigResponseCloudtasksV2beta3.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     stackdriverLoggingConfig =
         registerOutput<StackdriverLoggingConfigResponseCloudtasksV2beta3>(
           'stackdriverLoggingConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return StackdriverLoggingConfigResponseCloudtasksV2beta3.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     state = registerOutput<String>('state');
-    stats = registerOutput<QueueStatsResponseCloudtasksV2beta3>('stats');
+    stats = registerOutput<QueueStatsResponseCloudtasksV2beta3>(
+      'stats',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return QueueStatsResponseCloudtasksV2beta3.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     taskTtl = registerOutput<String>('taskTtl');
     tombstoneTtl = registerOutput<String>('tombstoneTtl');
     type = registerOutput<String>('type');

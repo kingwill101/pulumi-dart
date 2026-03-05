@@ -159,7 +159,16 @@ class UserProfile extends pulumi.CustomResource {
     domainIdentifier = registerOutput<String>('domainIdentifier');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    timeouts = registerOutput<UserProfileTimeouts?>('timeouts');
+    timeouts = registerOutput<UserProfileTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserProfileTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     userIdentifier = registerOutput<String>('userIdentifier');
     userType = registerOutput<String>('userType');
@@ -192,7 +201,16 @@ class UserProfile extends pulumi.CustomResource {
     domainIdentifier = registerOutput<String>('domainIdentifier');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    timeouts = registerOutput<UserProfileTimeouts?>('timeouts');
+    timeouts = registerOutput<UserProfileTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserProfileTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     userIdentifier = registerOutput<String>('userIdentifier');
     userType = registerOutput<String>('userType');

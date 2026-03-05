@@ -1,17 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAlias.
 class GetAliasResult {
   /// ARN identifying the Lambda function alias.
   final String arn;
+
   /// Description of the alias.
   final String description;
   final String functionName;
+
   /// Lambda function version which the alias uses.
   final String functionVersion;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// ARN to be used for invoking Lambda Function from API Gateway - to be used in `aws.apigateway.Integration`'s `uri`.
   final String invokeArn;
   final String name;
@@ -63,4 +66,3 @@ class GetAliasResult {
     );
   }
 }
-

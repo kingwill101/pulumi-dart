@@ -162,7 +162,16 @@ class MapType extends pulumi.CustomResource {
         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
         options ?? pulumi.CustomResourceOptions(),
       ) {
-    configuration = registerOutput<MapConfiguration>('configuration');
+    configuration = registerOutput<MapConfiguration>(
+      'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MapConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     mapArn = registerOutput<String>('mapArn');
@@ -192,7 +201,16 @@ class MapType extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    configuration = registerOutput<MapConfiguration>('configuration');
+    configuration = registerOutput<MapConfiguration>(
+      'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MapConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     mapArn = registerOutput<String>('mapArn');

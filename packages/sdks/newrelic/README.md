@@ -20,7 +20,7 @@ import 'package:pulumi_newrelic/pulumi_newrelic.dart' as provider;
 dependencies:
   pulumi_newrelic:
     git:
-      url: https://github.com/<owner>/<repo>.git
+      url: https://github.com/kingwill101/pulumi-dart.git
       path: packages/newrelic
       ref: main
 ~~~

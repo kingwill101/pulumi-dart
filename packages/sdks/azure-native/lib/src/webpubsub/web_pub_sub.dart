@@ -513,14 +513,39 @@ class WebPubSub extends pulumi.CustomResource {
     externalIP = registerOutput<String>('externalIP');
     hostName = registerOutput<String>('hostName');
     hostNamePrefix = registerOutput<String>('hostNamePrefix');
-    identity = registerOutput<ManagedIdentityResponse?>('identity');
+    identity = registerOutput<ManagedIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kind = registerOutput<String?>('kind');
     liveTraceConfiguration = registerOutput<LiveTraceConfigurationResponse?>(
       'liveTraceConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LiveTraceConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkACLs = registerOutput<WebPubSubNetworkACLsResponse?>('networkACLs');
+    networkACLs = registerOutput<WebPubSubNetworkACLsResponse?>(
+      'networkACLs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebPubSubNetworkACLsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
       'privateEndpointConnections',
     );
@@ -531,17 +556,60 @@ class WebPubSub extends pulumi.CustomResource {
     resourceLogConfiguration =
         registerOutput<ResourceLogConfigurationResponse?>(
           'resourceLogConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResourceLogConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     resourceStopped = registerOutput<String?>('resourceStopped');
     serverPort = registerOutput<int>('serverPort');
     sharedPrivateLinkResources = registerOutput<List<Map<String, dynamic>>>(
       'sharedPrivateLinkResources',
     );
-    sku = registerOutput<ResourceSkuResponse?>('sku');
-    socketIO = registerOutput<WebPubSubSocketIOSettingsResponse?>('socketIO');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    sku = registerOutput<ResourceSkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceSkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    socketIO = registerOutput<WebPubSubSocketIOSettingsResponse?>(
+      'socketIO',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebPubSubSocketIOSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
-    tls = registerOutput<WebPubSubTlsSettingsResponse?>('tls');
+    tls = registerOutput<WebPubSubTlsSettingsResponse?>(
+      'tls',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebPubSubTlsSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     version = registerOutput<String>('version');
   }

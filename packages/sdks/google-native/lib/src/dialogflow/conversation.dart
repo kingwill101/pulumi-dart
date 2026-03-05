@@ -60,6 +60,13 @@ class Conversation extends pulumi.CustomResource {
     phoneNumber =
         registerOutput<GoogleCloudDialogflowV2ConversationPhoneNumberResponse>(
           'phoneNumber',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowV2ConversationPhoneNumberResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     project = registerOutput<String>('project');
     startTime = registerOutput<String>('startTime');

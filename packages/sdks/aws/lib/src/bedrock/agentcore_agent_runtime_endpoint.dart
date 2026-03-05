@@ -172,6 +172,13 @@ class AgentcoreAgentRuntimeEndpoint extends pulumi.CustomResource {
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     timeouts = registerOutput<AgentcoreAgentRuntimeEndpointTimeouts?>(
       'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentcoreAgentRuntimeEndpointTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -209,6 +216,13 @@ class AgentcoreAgentRuntimeEndpoint extends pulumi.CustomResource {
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     timeouts = registerOutput<AgentcoreAgentRuntimeEndpointTimeouts?>(
       'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentcoreAgentRuntimeEndpointTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

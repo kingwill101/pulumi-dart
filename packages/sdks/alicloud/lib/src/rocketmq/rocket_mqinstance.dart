@@ -131,7 +131,16 @@ class RocketMQInstance extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    aclInfo = registerOutput<RocketMQInstanceAclInfo>('aclInfo');
+    aclInfo = registerOutput<RocketMQInstanceAclInfo>(
+      'aclInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RocketMQInstanceAclInfo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     autoRenew = registerOutput<bool?>('autoRenew');
     autoRenewPeriod = registerOutput<int?>('autoRenewPeriod');
     autoRenewPeriodUnit = registerOutput<String>('autoRenewPeriodUnit');
@@ -139,17 +148,44 @@ class RocketMQInstance extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     instanceName = registerOutput<String?>('instanceName');
     ipWhitelists = registerOutput<List<String>>('ipWhitelists');
-    networkInfo = registerOutput<RocketMQInstanceNetworkInfo>('networkInfo');
+    networkInfo = registerOutput<RocketMQInstanceNetworkInfo>(
+      'networkInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RocketMQInstanceNetworkInfo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     paymentType = registerOutput<String>('paymentType');
     period = registerOutput<int?>('period');
     periodUnit = registerOutput<String>('periodUnit');
-    productInfo = registerOutput<RocketMQInstanceProductInfo?>('productInfo');
+    productInfo = registerOutput<RocketMQInstanceProductInfo?>(
+      'productInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RocketMQInstanceProductInfo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     regionId = registerOutput<String>('regionId');
     remark = registerOutput<String?>('remark');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     seriesCode = registerOutput<String>('seriesCode');
     serviceCode = registerOutput<String>('serviceCode');
-    software = registerOutput<RocketMQInstanceSoftware>('software');
+    software = registerOutput<RocketMQInstanceSoftware>(
+      'software',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RocketMQInstanceSoftware.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String>('status');
     subSeriesCode = registerOutput<String>('subSeriesCode');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -178,7 +214,16 @@ class RocketMQInstance extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    aclInfo = registerOutput<RocketMQInstanceAclInfo>('aclInfo');
+    aclInfo = registerOutput<RocketMQInstanceAclInfo>(
+      'aclInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RocketMQInstanceAclInfo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     autoRenew = registerOutput<bool?>('autoRenew');
     autoRenewPeriod = registerOutput<int?>('autoRenewPeriod');
     autoRenewPeriodUnit = registerOutput<String>('autoRenewPeriodUnit');
@@ -186,17 +231,44 @@ class RocketMQInstance extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     instanceName = registerOutput<String?>('instanceName');
     ipWhitelists = registerOutput<List<String>>('ipWhitelists');
-    networkInfo = registerOutput<RocketMQInstanceNetworkInfo>('networkInfo');
+    networkInfo = registerOutput<RocketMQInstanceNetworkInfo>(
+      'networkInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RocketMQInstanceNetworkInfo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     paymentType = registerOutput<String>('paymentType');
     period = registerOutput<int?>('period');
     periodUnit = registerOutput<String>('periodUnit');
-    productInfo = registerOutput<RocketMQInstanceProductInfo?>('productInfo');
+    productInfo = registerOutput<RocketMQInstanceProductInfo?>(
+      'productInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RocketMQInstanceProductInfo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     regionId = registerOutput<String>('regionId');
     remark = registerOutput<String?>('remark');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     seriesCode = registerOutput<String>('seriesCode');
     serviceCode = registerOutput<String>('serviceCode');
-    software = registerOutput<RocketMQInstanceSoftware>('software');
+    software = registerOutput<RocketMQInstanceSoftware>(
+      'software',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RocketMQInstanceSoftware.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String>('status');
     subSeriesCode = registerOutput<String>('subSeriesCode');
     tags = registerOutput<Map<String, String>?>('tags');

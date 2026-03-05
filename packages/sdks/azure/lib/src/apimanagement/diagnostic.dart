@@ -607,15 +607,45 @@ class Diagnostic extends pulumi.CustomResource {
     alwaysLogErrors = registerOutput<bool>('alwaysLogErrors');
     apiManagementLoggerId = registerOutput<String>('apiManagementLoggerId');
     apiManagementName = registerOutput<String>('apiManagementName');
-    backendRequest = registerOutput<DiagnosticBackendRequest>('backendRequest');
+    backendRequest = registerOutput<DiagnosticBackendRequest>(
+      'backendRequest',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiagnosticBackendRequest.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     backendResponse = registerOutput<DiagnosticBackendResponse>(
       'backendResponse',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiagnosticBackendResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     frontendRequest = registerOutput<DiagnosticFrontendRequest>(
       'frontendRequest',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiagnosticFrontendRequest.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     frontendResponse = registerOutput<DiagnosticFrontendResponse>(
       'frontendResponse',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiagnosticFrontendResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     httpCorrelationProtocol = registerOutput<String>('httpCorrelationProtocol');
     identifier = registerOutput<String>('identifier');
@@ -652,15 +682,45 @@ class Diagnostic extends pulumi.CustomResource {
     alwaysLogErrors = registerOutput<bool>('alwaysLogErrors');
     apiManagementLoggerId = registerOutput<String>('apiManagementLoggerId');
     apiManagementName = registerOutput<String>('apiManagementName');
-    backendRequest = registerOutput<DiagnosticBackendRequest>('backendRequest');
+    backendRequest = registerOutput<DiagnosticBackendRequest>(
+      'backendRequest',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiagnosticBackendRequest.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     backendResponse = registerOutput<DiagnosticBackendResponse>(
       'backendResponse',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiagnosticBackendResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     frontendRequest = registerOutput<DiagnosticFrontendRequest>(
       'frontendRequest',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiagnosticFrontendRequest.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     frontendResponse = registerOutput<DiagnosticFrontendResponse>(
       'frontendResponse',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiagnosticFrontendResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     httpCorrelationProtocol = registerOutput<String>('httpCorrelationProtocol');
     identifier = registerOutput<String>('identifier');

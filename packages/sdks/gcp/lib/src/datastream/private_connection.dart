@@ -555,11 +555,25 @@ class PrivateConnection extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     pscInterfaceConfig = registerOutput<PrivateConnectionPscInterfaceConfig?>(
       'pscInterfaceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PrivateConnectionPscInterfaceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     state = registerOutput<String>('state');
     vpcPeeringConfig = registerOutput<PrivateConnectionVpcPeeringConfig?>(
       'vpcPeeringConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PrivateConnectionVpcPeeringConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -597,11 +611,25 @@ class PrivateConnection extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     pscInterfaceConfig = registerOutput<PrivateConnectionPscInterfaceConfig?>(
       'pscInterfaceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PrivateConnectionPscInterfaceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     this.state = registerOutput<String>('state');
     vpcPeeringConfig = registerOutput<PrivateConnectionVpcPeeringConfig?>(
       'vpcPeeringConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PrivateConnectionVpcPeeringConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

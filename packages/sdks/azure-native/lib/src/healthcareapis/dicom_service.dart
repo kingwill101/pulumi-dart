@@ -248,17 +248,47 @@ class DicomService extends pulumi.CustomResource {
     authenticationConfiguration =
         registerOutput<DicomServiceAuthenticationConfigurationResponse?>(
           'authenticationConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DicomServiceAuthenticationConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     corsConfiguration = registerOutput<CorsConfigurationResponse?>(
       'corsConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CorsConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     enableDataPartitions = registerOutput<bool?>('enableDataPartitions');
-    encryption = registerOutput<EncryptionResponse?>('encryption');
+    encryption = registerOutput<EncryptionResponse?>(
+      'encryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EncryptionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String?>('etag');
     eventState = registerOutput<String>('eventState');
     identity = registerOutput<ServiceManagedIdentityResponseIdentity?>(
       'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceManagedIdentityResponseIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
@@ -270,8 +300,24 @@ class DicomService extends pulumi.CustomResource {
     serviceUrl = registerOutput<String>('serviceUrl');
     storageConfiguration = registerOutput<StorageConfigurationResponse?>(
       'storageConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StorageConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

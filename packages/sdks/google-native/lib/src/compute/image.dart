@@ -141,7 +141,16 @@ class Image extends pulumi.CustomResource {
     architecture = registerOutput<String>('architecture');
     archiveSizeBytes = registerOutput<String>('archiveSizeBytes');
     creationTimestamp = registerOutput<String>('creationTimestamp');
-    deprecated = registerOutput<DeprecationStatusResponse>('deprecated');
+    deprecated = registerOutput<DeprecationStatusResponse>(
+      'deprecated',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeprecationStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String>('description');
     diskSizeGb = registerOutput<String>('diskSizeGb');
     enableConfidentialCompute = registerOutput<bool>(
@@ -154,6 +163,13 @@ class Image extends pulumi.CustomResource {
     );
     imageEncryptionKey = registerOutput<CustomerEncryptionKeyResponse>(
       'imageEncryptionKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomerEncryptionKeyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     kind = registerOutput<String>('kind');
     labelFingerprint = registerOutput<String>('labelFingerprint');
@@ -163,28 +179,74 @@ class Image extends pulumi.CustomResource {
     locked = registerOutput<bool>('locked');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    rawDisk = registerOutput<ImageRawDiskResponse>('rawDisk');
+    rawDisk = registerOutput<ImageRawDiskResponse>(
+      'rawDisk',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImageRawDiskResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     requestId = registerOutput<String?>('requestId');
-    rolloutOverride = registerOutput<RolloutPolicyResponse>('rolloutOverride');
+    rolloutOverride = registerOutput<RolloutPolicyResponse>(
+      'rolloutOverride',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RolloutPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
     selfLink = registerOutput<String>('selfLink');
     selfLinkWithId = registerOutput<String>('selfLinkWithId');
     shieldedInstanceInitialState = registerOutput<InitialStateConfigResponse>(
       'shieldedInstanceInitialState',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InitialStateConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sourceDisk = registerOutput<String>('sourceDisk');
     sourceDiskEncryptionKey = registerOutput<CustomerEncryptionKeyResponse>(
       'sourceDiskEncryptionKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomerEncryptionKeyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sourceDiskId = registerOutput<String>('sourceDiskId');
     sourceImage = registerOutput<String>('sourceImage');
     sourceImageEncryptionKey = registerOutput<CustomerEncryptionKeyResponse>(
       'sourceImageEncryptionKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomerEncryptionKeyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sourceImageId = registerOutput<String>('sourceImageId');
     sourceSnapshot = registerOutput<String>('sourceSnapshot');
     sourceSnapshotEncryptionKey = registerOutput<CustomerEncryptionKeyResponse>(
       'sourceSnapshotEncryptionKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomerEncryptionKeyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sourceSnapshotId = registerOutput<String>('sourceSnapshotId');
     sourceType = registerOutput<String>('sourceType');

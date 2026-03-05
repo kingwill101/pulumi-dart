@@ -769,6 +769,13 @@ class ResourceConfiguration extends pulumi.CustomResource {
     resourceConfigurationDefinition =
         registerOutput<ResourceConfigurationResourceConfigurationDefinition?>(
           'resourceConfigurationDefinition',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResourceConfigurationResourceConfigurationDefinition.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     resourceConfigurationGroupId = registerOutput<String?>(
       'resourceConfigurationGroupId',
@@ -778,7 +785,16 @@ class ResourceConfiguration extends pulumi.CustomResource {
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ResourceConfigurationTimeouts?>('timeouts');
+    timeouts = registerOutput<ResourceConfigurationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceConfigurationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 
@@ -822,6 +838,13 @@ class ResourceConfiguration extends pulumi.CustomResource {
     resourceConfigurationDefinition =
         registerOutput<ResourceConfigurationResourceConfigurationDefinition?>(
           'resourceConfigurationDefinition',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResourceConfigurationResourceConfigurationDefinition.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     resourceConfigurationGroupId = registerOutput<String?>(
       'resourceConfigurationGroupId',
@@ -831,7 +854,16 @@ class ResourceConfiguration extends pulumi.CustomResource {
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ResourceConfigurationTimeouts?>('timeouts');
+    timeouts = registerOutput<ResourceConfigurationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceConfigurationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

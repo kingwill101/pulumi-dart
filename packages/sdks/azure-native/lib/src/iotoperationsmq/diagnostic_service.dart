@@ -318,8 +318,24 @@ class DiagnosticService extends pulumi.CustomResource {
     );
     extendedLocation = registerOutput<ExtendedLocationPropertyResponse>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationPropertyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    image = registerOutput<ContainerImageResponse>('image');
+    image = registerOutput<ContainerImageResponse>(
+      'image',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContainerImageResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     logFormat = registerOutput<String?>('logFormat');
     logLevel = registerOutput<String?>('logLevel');
@@ -331,7 +347,16 @@ class DiagnosticService extends pulumi.CustomResource {
     );
     provisioningState = registerOutput<String>('provisioningState');
     staleDataTimeoutSeconds = registerOutput<int?>('staleDataTimeoutSeconds');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

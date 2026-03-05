@@ -842,6 +842,13 @@ class ScalingPlan extends pulumi.CustomResource {
        ) {
     applicationSource = registerOutput<ScalingPlanApplicationSource>(
       'applicationSource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScalingPlanApplicationSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -876,6 +883,13 @@ class ScalingPlan extends pulumi.CustomResource {
        ) {
     applicationSource = registerOutput<ScalingPlanApplicationSource>(
       'applicationSource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScalingPlanApplicationSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

@@ -465,7 +465,14 @@ class Index extends pulumi.CustomResource {
       ) {
     push = registerOutput<bool?>('push');
     ref = registerOutput<String>('ref');
-    registry = registerOutput<Registry?>('registry');
+    registry = registerOutput<Registry?>(
+      'registry',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return Registry.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     sources = registerOutput<List<String>>('sources');
     tag = registerOutput<String>('tag');
   }

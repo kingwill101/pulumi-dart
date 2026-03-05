@@ -153,21 +153,51 @@ class Volume extends pulumi.CustomResource {
     azureVmwareDataStoreEnabled = registerOutput<bool?>(
       'azureVmwareDataStoreEnabled',
     );
-    coolAccess = registerOutput<VolumeCoolAccess?>('coolAccess');
+    coolAccess = registerOutput<VolumeCoolAccess?>(
+      'coolAccess',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VolumeCoolAccess.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createFromSnapshotResourceId = registerOutput<String?>(
       'createFromSnapshotResourceId',
     );
     dataProtectionBackupPolicy =
         registerOutput<VolumeDataProtectionBackupPolicy?>(
           'dataProtectionBackupPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VolumeDataProtectionBackupPolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dataProtectionReplication =
         registerOutput<VolumeDataProtectionReplication?>(
           'dataProtectionReplication',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VolumeDataProtectionReplication.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dataProtectionSnapshotPolicy =
         registerOutput<VolumeDataProtectionSnapshotPolicy?>(
           'dataProtectionSnapshotPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VolumeDataProtectionSnapshotPolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     encryptionKeySource = registerOutput<String>('encryptionKeySource');
     exportPolicyRules = registerOutput<List<Map<String, dynamic>>?>(
@@ -238,21 +268,51 @@ class Volume extends pulumi.CustomResource {
     azureVmwareDataStoreEnabled = registerOutput<bool?>(
       'azureVmwareDataStoreEnabled',
     );
-    coolAccess = registerOutput<VolumeCoolAccess?>('coolAccess');
+    coolAccess = registerOutput<VolumeCoolAccess?>(
+      'coolAccess',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VolumeCoolAccess.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createFromSnapshotResourceId = registerOutput<String?>(
       'createFromSnapshotResourceId',
     );
     dataProtectionBackupPolicy =
         registerOutput<VolumeDataProtectionBackupPolicy?>(
           'dataProtectionBackupPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VolumeDataProtectionBackupPolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dataProtectionReplication =
         registerOutput<VolumeDataProtectionReplication?>(
           'dataProtectionReplication',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VolumeDataProtectionReplication.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dataProtectionSnapshotPolicy =
         registerOutput<VolumeDataProtectionSnapshotPolicy?>(
           'dataProtectionSnapshotPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VolumeDataProtectionSnapshotPolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     encryptionKeySource = registerOutput<String>('encryptionKeySource');
     exportPolicyRules = registerOutput<List<Map<String, dynamic>>?>(

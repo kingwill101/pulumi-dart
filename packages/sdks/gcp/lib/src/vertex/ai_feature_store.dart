@@ -604,6 +604,13 @@ class AiFeatureStore extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     encryptionSpec = registerOutput<AiFeatureStoreEncryptionSpec?>(
       'encryptionSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiFeatureStoreEncryptionSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     forceDestroy = registerOutput<bool?>('forceDestroy');
@@ -611,6 +618,13 @@ class AiFeatureStore extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     onlineServingConfig = registerOutput<AiFeatureStoreOnlineServingConfig?>(
       'onlineServingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiFeatureStoreOnlineServingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     onlineStorageTtlDays = registerOutput<int?>('onlineStorageTtlDays');
     project = registerOutput<String>('project');
@@ -646,6 +660,13 @@ class AiFeatureStore extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     encryptionSpec = registerOutput<AiFeatureStoreEncryptionSpec?>(
       'encryptionSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiFeatureStoreEncryptionSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     forceDestroy = registerOutput<bool?>('forceDestroy');
@@ -653,6 +674,13 @@ class AiFeatureStore extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     onlineServingConfig = registerOutput<AiFeatureStoreOnlineServingConfig?>(
       'onlineServingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiFeatureStoreOnlineServingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     onlineStorageTtlDays = registerOutput<int?>('onlineStorageTtlDays');
     project = registerOutput<String>('project');

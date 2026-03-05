@@ -1527,12 +1527,26 @@ class Application extends pulumi.CustomResource {
     applicationConfiguration =
         registerOutput<ApplicationApplicationConfiguration>(
           'applicationConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ApplicationApplicationConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     applicationMode = registerOutput<String>('applicationMode');
     arn = registerOutput<String>('arn');
     cloudwatchLoggingOptions =
         registerOutput<ApplicationCloudwatchLoggingOptions?>(
           'cloudwatchLoggingOptions',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ApplicationCloudwatchLoggingOptions.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     createTimestamp = registerOutput<String>('createTimestamp');
     description = registerOutput<String?>('description');
@@ -1575,12 +1589,26 @@ class Application extends pulumi.CustomResource {
     applicationConfiguration =
         registerOutput<ApplicationApplicationConfiguration>(
           'applicationConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ApplicationApplicationConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     applicationMode = registerOutput<String>('applicationMode');
     arn = registerOutput<String>('arn');
     cloudwatchLoggingOptions =
         registerOutput<ApplicationCloudwatchLoggingOptions?>(
           'cloudwatchLoggingOptions',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ApplicationCloudwatchLoggingOptions.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     createTimestamp = registerOutput<String>('createTimestamp');
     description = registerOutput<String?>('description');

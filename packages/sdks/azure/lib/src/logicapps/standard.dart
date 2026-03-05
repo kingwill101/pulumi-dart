@@ -771,7 +771,16 @@ class Standard extends pulumi.CustomResource {
       'ftpPublishBasicAuthenticationEnabled',
     );
     httpsOnly = registerOutput<bool?>('httpsOnly');
-    identity = registerOutput<StandardIdentity?>('identity');
+    identity = registerOutput<StandardIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StandardIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -784,7 +793,16 @@ class Standard extends pulumi.CustomResource {
     scmPublishBasicAuthenticationEnabled = registerOutput<bool?>(
       'scmPublishBasicAuthenticationEnabled',
     );
-    siteConfig = registerOutput<StandardSiteConfig>('siteConfig');
+    siteConfig = registerOutput<StandardSiteConfig>(
+      'siteConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StandardSiteConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     siteCredentials = registerOutput<List<Map<String, dynamic>>>(
       'siteCredentials',
     );
@@ -838,7 +856,16 @@ class Standard extends pulumi.CustomResource {
       'ftpPublishBasicAuthenticationEnabled',
     );
     httpsOnly = registerOutput<bool?>('httpsOnly');
-    identity = registerOutput<StandardIdentity?>('identity');
+    identity = registerOutput<StandardIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StandardIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -851,7 +878,16 @@ class Standard extends pulumi.CustomResource {
     scmPublishBasicAuthenticationEnabled = registerOutput<bool?>(
       'scmPublishBasicAuthenticationEnabled',
     );
-    siteConfig = registerOutput<StandardSiteConfig>('siteConfig');
+    siteConfig = registerOutput<StandardSiteConfig>(
+      'siteConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StandardSiteConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     siteCredentials = registerOutput<List<Map<String, dynamic>>>(
       'siteCredentials',
     );

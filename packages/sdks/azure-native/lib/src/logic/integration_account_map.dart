@@ -618,7 +618,16 @@ class IntegrationAccountMap extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     changedTime = registerOutput<String>('changedTime');
     content = registerOutput<String?>('content');
-    contentLink = registerOutput<ContentLinkResponse>('contentLink');
+    contentLink = registerOutput<ContentLinkResponse>(
+      'contentLink',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContentLinkResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     contentType = registerOutput<String?>('contentType');
     createdTime = registerOutput<String>('createdTime');
     location = registerOutput<String?>('location');
@@ -628,7 +637,16 @@ class IntegrationAccountMap extends pulumi.CustomResource {
     parametersSchema =
         registerOutput<
           IntegrationAccountMapPropertiesResponseParametersSchema?
-        >('parametersSchema');
+        >(
+          'parametersSchema',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return IntegrationAccountMapPropertiesResponseParametersSchema.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

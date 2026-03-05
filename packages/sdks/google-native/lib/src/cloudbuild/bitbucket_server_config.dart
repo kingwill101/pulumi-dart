@@ -70,7 +70,16 @@ class BitbucketServerConfig extends pulumi.CustomResource {
     peeredNetwork = registerOutput<String>('peeredNetwork');
     peeredNetworkIpRange = registerOutput<String>('peeredNetworkIpRange');
     project = registerOutput<String>('project');
-    secrets = registerOutput<BitbucketServerSecretsResponse>('secrets');
+    secrets = registerOutput<BitbucketServerSecretsResponse>(
+      'secrets',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BitbucketServerSecretsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sslCa = registerOutput<String>('sslCa');
     username = registerOutput<String>('username');
     webhookKey = registerOutput<String>('webhookKey');

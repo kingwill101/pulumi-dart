@@ -683,7 +683,16 @@ class ScheduledQueryRulesAlert extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    action = registerOutput<ScheduledQueryRulesAlertAction>('action');
+    action = registerOutput<ScheduledQueryRulesAlertAction>(
+      'action',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduledQueryRulesAlertAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     authorizedResourceIds = registerOutput<List<String>?>(
       'authorizedResourceIds',
     );
@@ -701,7 +710,16 @@ class ScheduledQueryRulesAlert extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     throttling = registerOutput<int?>('throttling');
     timeWindow = registerOutput<int>('timeWindow');
-    trigger = registerOutput<ScheduledQueryRulesAlertTrigger>('trigger');
+    trigger = registerOutput<ScheduledQueryRulesAlertTrigger>(
+      'trigger',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduledQueryRulesAlertTrigger.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [ScheduledQueryRulesAlert] resource's state with the given [name] and [id].
@@ -727,7 +745,16 @@ class ScheduledQueryRulesAlert extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    action = registerOutput<ScheduledQueryRulesAlertAction>('action');
+    action = registerOutput<ScheduledQueryRulesAlertAction>(
+      'action',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduledQueryRulesAlertAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     authorizedResourceIds = registerOutput<List<String>?>(
       'authorizedResourceIds',
     );
@@ -745,6 +772,15 @@ class ScheduledQueryRulesAlert extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     throttling = registerOutput<int?>('throttling');
     timeWindow = registerOutput<int>('timeWindow');
-    trigger = registerOutput<ScheduledQueryRulesAlertTrigger>('trigger');
+    trigger = registerOutput<ScheduledQueryRulesAlertTrigger>(
+      'trigger',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduledQueryRulesAlertTrigger.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

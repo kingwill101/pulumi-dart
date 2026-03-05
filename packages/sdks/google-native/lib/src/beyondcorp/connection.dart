@@ -62,12 +62,28 @@ class Connection extends pulumi.CustomResource {
        ) {
     applicationEndpoint = registerOutput<ApplicationEndpointResponse>(
       'applicationEndpoint',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationEndpointResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     connectionId = registerOutput<String?>('connectionId');
     connectors = registerOutput<List<String>>('connectors');
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
-    gateway = registerOutput<GatewayResponse>('gateway');
+    gateway = registerOutput<GatewayResponse>(
+      'gateway',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GatewayResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

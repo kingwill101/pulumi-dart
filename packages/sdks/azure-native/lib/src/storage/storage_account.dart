@@ -3540,12 +3540,35 @@ class StorageAccount extends pulumi.CustomResource {
     azureFilesIdentityBasedAuthentication =
         registerOutput<AzureFilesIdentityBasedAuthenticationResponse?>(
           'azureFilesIdentityBasedAuthentication',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AzureFilesIdentityBasedAuthenticationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     blobRestoreStatus = registerOutput<BlobRestoreStatusResponse>(
       'blobRestoreStatus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BlobRestoreStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     creationTime = registerOutput<String>('creationTime');
-    customDomain = registerOutput<CustomDomainResponse>('customDomain');
+    customDomain = registerOutput<CustomDomainResponse>(
+      'customDomain',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomDomainResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     defaultToOAuthAuthentication = registerOutput<bool?>(
       'defaultToOAuthAuthentication',
     );
@@ -3553,18 +3576,57 @@ class StorageAccount extends pulumi.CustomResource {
     enableExtendedGroups = registerOutput<bool?>('enableExtendedGroups');
     enableHttpsTrafficOnly = registerOutput<bool?>('enableHttpsTrafficOnly');
     enableNfsV3 = registerOutput<bool?>('enableNfsV3');
-    encryption = registerOutput<EncryptionResponse>('encryption');
+    encryption = registerOutput<EncryptionResponse>(
+      'encryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EncryptionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     extendedLocation = registerOutput<ExtendedLocationResponse?>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     failoverInProgress = registerOutput<bool>('failoverInProgress');
     geoReplicationStats = registerOutput<GeoReplicationStatsResponse>(
       'geoReplicationStats',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GeoReplicationStatsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    identity = registerOutput<IdentityResponse?>('identity');
+    identity = registerOutput<IdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     immutableStorageWithVersioning =
         registerOutput<ImmutableStorageAccountResponse?>(
           'immutableStorageWithVersioning',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ImmutableStorageAccountResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     isHnsEnabled = registerOutput<bool?>('isHnsEnabled');
     isLocalUserEnabled = registerOutput<bool?>('isLocalUserEnabled');
@@ -3572,16 +3634,50 @@ class StorageAccount extends pulumi.CustomResource {
     isSkuConversionBlocked = registerOutput<bool>('isSkuConversionBlocked');
     keyCreationTime = registerOutput<KeyCreationTimeResponse>(
       'keyCreationTime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KeyCreationTimeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    keyPolicy = registerOutput<KeyPolicyResponse>('keyPolicy');
+    keyPolicy = registerOutput<KeyPolicyResponse>(
+      'keyPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KeyPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kind = registerOutput<String>('kind');
     largeFileSharesState = registerOutput<String?>('largeFileSharesState');
     lastGeoFailoverTime = registerOutput<String>('lastGeoFailoverTime');
     location = registerOutput<String>('location');
     minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
     this.name = registerOutput<String>('name');
-    networkRuleSet = registerOutput<NetworkRuleSetResponse>('networkRuleSet');
-    primaryEndpoints = registerOutput<EndpointsResponse>('primaryEndpoints');
+    networkRuleSet = registerOutput<NetworkRuleSetResponse>(
+      'networkRuleSet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkRuleSetResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    primaryEndpoints = registerOutput<EndpointsResponse>(
+      'primaryEndpoints',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     primaryLocation = registerOutput<String>('primaryLocation');
     privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
       'privateEndpointConnections',
@@ -3590,18 +3686,57 @@ class StorageAccount extends pulumi.CustomResource {
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     routingPreference = registerOutput<RoutingPreferenceResponse?>(
       'routingPreference',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RoutingPreferenceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    sasPolicy = registerOutput<SasPolicyResponse>('sasPolicy');
+    sasPolicy = registerOutput<SasPolicyResponse>(
+      'sasPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SasPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     secondaryEndpoints = registerOutput<EndpointsResponse>(
       'secondaryEndpoints',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     secondaryLocation = registerOutput<String>('secondaryLocation');
-    sku = registerOutput<SkuResponse>('sku');
+    sku = registerOutput<SkuResponse>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     statusOfPrimary = registerOutput<String>('statusOfPrimary');
     statusOfSecondary = registerOutput<String>('statusOfSecondary');
     storageAccountSkuConversionStatus =
         registerOutput<StorageAccountSkuConversionStatusResponse?>(
           'storageAccountSkuConversionStatus',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return StorageAccountSkuConversionStatusResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

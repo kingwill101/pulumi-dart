@@ -241,7 +241,16 @@ class Powershell72Module extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     automationAccountId = registerOutput<String>('automationAccountId');
-    moduleLink = registerOutput<Powershell72ModuleModuleLink>('moduleLink');
+    moduleLink = registerOutput<Powershell72ModuleModuleLink>(
+      'moduleLink',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return Powershell72ModuleModuleLink.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     tags = registerOutput<Map<String, String>?>('tags');
   }
@@ -270,7 +279,16 @@ class Powershell72Module extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     automationAccountId = registerOutput<String>('automationAccountId');
-    moduleLink = registerOutput<Powershell72ModuleModuleLink>('moduleLink');
+    moduleLink = registerOutput<Powershell72ModuleModuleLink>(
+      'moduleLink',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return Powershell72ModuleModuleLink.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     tags = registerOutput<Map<String, String>?>('tags');
   }

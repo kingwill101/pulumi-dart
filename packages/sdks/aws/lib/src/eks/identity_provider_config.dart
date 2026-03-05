@@ -171,7 +171,16 @@ class IdentityProviderConfig extends pulumi.CustomResource {
        ) {
     arn = registerOutput<String>('arn');
     clusterName = registerOutput<String>('clusterName');
-    oidc = registerOutput<IdentityProviderConfigOidc>('oidc');
+    oidc = registerOutput<IdentityProviderConfigOidc>(
+      'oidc',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IdentityProviderConfigOidc.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -203,7 +212,16 @@ class IdentityProviderConfig extends pulumi.CustomResource {
        ) {
     arn = registerOutput<String>('arn');
     clusterName = registerOutput<String>('clusterName');
-    oidc = registerOutput<IdentityProviderConfigOidc>('oidc');
+    oidc = registerOutput<IdentityProviderConfigOidc>(
+      'oidc',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IdentityProviderConfigOidc.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');

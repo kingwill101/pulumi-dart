@@ -315,12 +315,26 @@ class AuthConfig extends pulumi.CustomResource {
     certificateId = registerOutput<String>('certificateId');
     clientCertificate = registerOutput<AuthConfigClientCertificate?>(
       'clientCertificate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AuthConfigClientCertificate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     creatorEmail = registerOutput<String>('creatorEmail');
     credentialType = registerOutput<String>('credentialType');
     decryptedCredential = registerOutput<AuthConfigDecryptedCredential?>(
       'decryptedCredential',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AuthConfigDecryptedCredential.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
@@ -366,12 +380,26 @@ class AuthConfig extends pulumi.CustomResource {
     certificateId = registerOutput<String>('certificateId');
     clientCertificate = registerOutput<AuthConfigClientCertificate?>(
       'clientCertificate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AuthConfigClientCertificate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     creatorEmail = registerOutput<String>('creatorEmail');
     credentialType = registerOutput<String>('credentialType');
     decryptedCredential = registerOutput<AuthConfigDecryptedCredential?>(
       'decryptedCredential',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AuthConfigDecryptedCredential.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');

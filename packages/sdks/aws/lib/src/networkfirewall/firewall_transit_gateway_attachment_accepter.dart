@@ -135,6 +135,13 @@ class FirewallTransitGatewayAttachmentAccepter extends pulumi.CustomResource {
     timeouts =
         registerOutput<FirewallTransitGatewayAttachmentAccepterTimeouts?>(
           'timeouts',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FirewallTransitGatewayAttachmentAccepterTimeouts.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     transitGatewayAttachmentId = registerOutput<String>(
       'transitGatewayAttachmentId',
@@ -168,6 +175,13 @@ class FirewallTransitGatewayAttachmentAccepter extends pulumi.CustomResource {
     timeouts =
         registerOutput<FirewallTransitGatewayAttachmentAccepterTimeouts?>(
           'timeouts',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FirewallTransitGatewayAttachmentAccepterTimeouts.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     transitGatewayAttachmentId = registerOutput<String>(
       'transitGatewayAttachmentId',

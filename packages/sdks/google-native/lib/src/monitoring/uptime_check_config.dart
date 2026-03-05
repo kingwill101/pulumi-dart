@@ -74,23 +74,64 @@ class UptimeCheckConfig extends pulumi.CustomResource {
       'contentMatchers',
     );
     displayName = registerOutput<String>('displayName');
-    httpCheck = registerOutput<HttpCheckResponse>('httpCheck');
+    httpCheck = registerOutput<HttpCheckResponse>(
+      'httpCheck',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HttpCheckResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     internalCheckers = registerOutput<List<Map<String, dynamic>>>(
       'internalCheckers',
     );
     isInternal = registerOutput<bool>('isInternal');
     monitoredResource = registerOutput<MonitoredResourceResponseMonitoringV3>(
       'monitoredResource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MonitoredResourceResponseMonitoringV3.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     period = registerOutput<String>('period');
     project = registerOutput<String>('project');
-    resourceGroup = registerOutput<ResourceGroupResponse>('resourceGroup');
+    resourceGroup = registerOutput<ResourceGroupResponse>(
+      'resourceGroup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceGroupResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     selectedRegions = registerOutput<List<String>>('selectedRegions');
     syntheticMonitor = registerOutput<SyntheticMonitorTargetResponse>(
       'syntheticMonitor',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SyntheticMonitorTargetResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    tcpCheck = registerOutput<TcpCheckResponse>('tcpCheck');
+    tcpCheck = registerOutput<TcpCheckResponse>(
+      'tcpCheck',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TcpCheckResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     timeout = registerOutput<String>('timeout');
     userLabels = registerOutput<Map<String, String>>('userLabels');
   }

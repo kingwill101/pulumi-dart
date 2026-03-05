@@ -1475,7 +1475,16 @@ class NamespaceAsset extends pulumi.CustomResource {
       'defaultStreamsDestinations',
     );
     description = registerOutput<String?>('description');
-    deviceRef = registerOutput<DeviceRefResponse>('deviceRef');
+    deviceRef = registerOutput<DeviceRefResponse>(
+      'deviceRef',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeviceRefResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     discoveredAssetRefs = registerOutput<List<String>?>('discoveredAssetRefs');
     displayName = registerOutput<String?>('displayName');
     documentationUri = registerOutput<String?>('documentationUri');
@@ -1483,6 +1492,13 @@ class NamespaceAsset extends pulumi.CustomResource {
     events = registerOutput<List<Map<String, dynamic>>?>('events');
     extendedLocation = registerOutput<ExtendedLocationResponse>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     externalAssetId = registerOutput<String?>('externalAssetId');
     hardwareRevision = registerOutput<String?>('hardwareRevision');
@@ -1499,9 +1515,27 @@ class NamespaceAsset extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     serialNumber = registerOutput<String?>('serialNumber');
     softwareRevision = registerOutput<String?>('softwareRevision');
-    status = registerOutput<NamespaceAssetStatusResponse>('status');
+    status = registerOutput<NamespaceAssetStatusResponse>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NamespaceAssetStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     streams = registerOutput<List<Map<String, dynamic>>?>('streams');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     uuid = registerOutput<String>('uuid');

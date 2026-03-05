@@ -1034,6 +1034,13 @@ class InterconnectAttachment extends pulumi.CustomResource {
     );
     l2Forwarding = registerOutput<InterconnectAttachmentL2Forwarding?>(
       'l2Forwarding',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InterconnectAttachmentL2Forwarding.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     labelFingerprint = registerOutput<String>('labelFingerprint');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -1113,6 +1120,13 @@ class InterconnectAttachment extends pulumi.CustomResource {
     );
     l2Forwarding = registerOutput<InterconnectAttachmentL2Forwarding?>(
       'l2Forwarding',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InterconnectAttachmentL2Forwarding.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     labelFingerprint = registerOutput<String>('labelFingerprint');
     labels = registerOutput<Map<String, String>?>('labels');

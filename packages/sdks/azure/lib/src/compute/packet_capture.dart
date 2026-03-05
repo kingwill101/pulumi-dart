@@ -749,6 +749,13 @@ class PacketCapture extends pulumi.CustomResource {
     networkWatcherId = registerOutput<String>('networkWatcherId');
     storageLocation = registerOutput<PacketCaptureStorageLocation>(
       'storageLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PacketCaptureStorageLocation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     virtualMachineId = registerOutput<String>('virtualMachineId');
   }
@@ -786,6 +793,13 @@ class PacketCapture extends pulumi.CustomResource {
     networkWatcherId = registerOutput<String>('networkWatcherId');
     storageLocation = registerOutput<PacketCaptureStorageLocation>(
       'storageLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PacketCaptureStorageLocation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     virtualMachineId = registerOutput<String>('virtualMachineId');
   }

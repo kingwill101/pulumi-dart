@@ -376,17 +376,60 @@ class FileSystem extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    encryptionKey = registerOutput<FileSystemEncryptionKey?>('encryptionKey');
-    hsmSetting = registerOutput<FileSystemHsmSetting?>('hsmSetting');
-    identity = registerOutput<FileSystemIdentity?>('identity');
+    encryptionKey = registerOutput<FileSystemEncryptionKey?>(
+      'encryptionKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FileSystemEncryptionKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    hsmSetting = registerOutput<FileSystemHsmSetting?>(
+      'hsmSetting',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FileSystemHsmSetting.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    identity = registerOutput<FileSystemIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FileSystemIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     maintenanceWindow = registerOutput<FileSystemMaintenanceWindow>(
       'maintenanceWindow',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FileSystemMaintenanceWindow.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     mgsAddress = registerOutput<String>('mgsAddress');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    rootSquash = registerOutput<FileSystemRootSquash?>('rootSquash');
+    rootSquash = registerOutput<FileSystemRootSquash?>(
+      'rootSquash',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FileSystemRootSquash.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     skuName = registerOutput<String>('skuName');
     storageCapacityInTb = registerOutput<int>('storageCapacityInTb');
     subnetId = registerOutput<String>('subnetId');
@@ -417,17 +460,60 @@ class FileSystem extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    encryptionKey = registerOutput<FileSystemEncryptionKey?>('encryptionKey');
-    hsmSetting = registerOutput<FileSystemHsmSetting?>('hsmSetting');
-    identity = registerOutput<FileSystemIdentity?>('identity');
+    encryptionKey = registerOutput<FileSystemEncryptionKey?>(
+      'encryptionKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FileSystemEncryptionKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    hsmSetting = registerOutput<FileSystemHsmSetting?>(
+      'hsmSetting',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FileSystemHsmSetting.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    identity = registerOutput<FileSystemIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FileSystemIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     maintenanceWindow = registerOutput<FileSystemMaintenanceWindow>(
       'maintenanceWindow',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FileSystemMaintenanceWindow.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     mgsAddress = registerOutput<String>('mgsAddress');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    rootSquash = registerOutput<FileSystemRootSquash?>('rootSquash');
+    rootSquash = registerOutput<FileSystemRootSquash?>(
+      'rootSquash',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FileSystemRootSquash.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     skuName = registerOutput<String>('skuName');
     storageCapacityInTb = registerOutput<int>('storageCapacityInTb');
     subnetId = registerOutput<String>('subnetId');

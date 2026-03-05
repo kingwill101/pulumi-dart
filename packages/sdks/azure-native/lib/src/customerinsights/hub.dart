@@ -207,6 +207,13 @@ class Hub extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     hubBillingInfo = registerOutput<HubBillingInfoFormatResponse?>(
       'hubBillingInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HubBillingInfoFormatResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');

@@ -239,8 +239,26 @@ class JobSchedule extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');
     runOn = registerOutput<String?>('runOn');
-    runbook = registerOutput<RunbookAssociationPropertyResponse?>('runbook');
-    schedule = registerOutput<ScheduleAssociationPropertyResponse?>('schedule');
+    runbook = registerOutput<RunbookAssociationPropertyResponse?>(
+      'runbook',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RunbookAssociationPropertyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    schedule = registerOutput<ScheduleAssociationPropertyResponse?>(
+      'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduleAssociationPropertyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

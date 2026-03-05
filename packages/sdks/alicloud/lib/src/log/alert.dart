@@ -1832,6 +1832,13 @@ class Alert extends pulumi.CustomResource {
     dashboard = registerOutput<String?>('dashboard');
     groupConfiguration = registerOutput<AlertGroupConfiguration?>(
       'groupConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlertGroupConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     joinConfigurations = registerOutput<List<Map<String, dynamic>>?>(
       'joinConfigurations',
@@ -1846,10 +1853,26 @@ class Alert extends pulumi.CustomResource {
     notifyThreshold = registerOutput<int?>('notifyThreshold');
     policyConfiguration = registerOutput<AlertPolicyConfiguration?>(
       'policyConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlertPolicyConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     projectName = registerOutput<String>('projectName');
     queryLists = registerOutput<List<Map<String, dynamic>>?>('queryLists');
-    schedule = registerOutput<AlertSchedule?>('schedule');
+    schedule = registerOutput<AlertSchedule?>(
+      'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlertSchedule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     scheduleInterval = registerOutput<String>('scheduleInterval');
     scheduleType = registerOutput<String>('scheduleType');
     sendResolved = registerOutput<bool?>('sendResolved');
@@ -1858,6 +1881,13 @@ class Alert extends pulumi.CustomResource {
     );
     templateConfiguration = registerOutput<AlertTemplateConfiguration?>(
       'templateConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlertTemplateConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     threshold = registerOutput<int>('threshold');
     throttling = registerOutput<String?>('throttling');
@@ -1893,6 +1923,13 @@ class Alert extends pulumi.CustomResource {
     dashboard = registerOutput<String?>('dashboard');
     groupConfiguration = registerOutput<AlertGroupConfiguration?>(
       'groupConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlertGroupConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     joinConfigurations = registerOutput<List<Map<String, dynamic>>?>(
       'joinConfigurations',
@@ -1907,10 +1944,26 @@ class Alert extends pulumi.CustomResource {
     notifyThreshold = registerOutput<int?>('notifyThreshold');
     policyConfiguration = registerOutput<AlertPolicyConfiguration?>(
       'policyConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlertPolicyConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     projectName = registerOutput<String>('projectName');
     queryLists = registerOutput<List<Map<String, dynamic>>?>('queryLists');
-    schedule = registerOutput<AlertSchedule?>('schedule');
+    schedule = registerOutput<AlertSchedule?>(
+      'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlertSchedule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     scheduleInterval = registerOutput<String>('scheduleInterval');
     scheduleType = registerOutput<String>('scheduleType');
     sendResolved = registerOutput<bool?>('sendResolved');
@@ -1919,6 +1972,13 @@ class Alert extends pulumi.CustomResource {
     );
     templateConfiguration = registerOutput<AlertTemplateConfiguration?>(
       'templateConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlertTemplateConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     threshold = registerOutput<int>('threshold');
     throttling = registerOutput<String?>('throttling');

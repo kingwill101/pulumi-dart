@@ -77,7 +77,8 @@ Future<GetJitRequestResult> getJitRequest(
 /// Other available API versions: 2023-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native solutions [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_solutions_list_application_allowed_upgrade_plans_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListApplicationAllowedUpgradePlansResult> listApplicationAllowedUpgradePlans(
+Future<ListApplicationAllowedUpgradePlansResult>
+listApplicationAllowedUpgradePlans(
   ListApplicationAllowedUpgradePlansArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

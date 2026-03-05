@@ -307,9 +307,25 @@ class V2modelsBotLocale extends pulumi.CustomResource {
     );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    timeouts = registerOutput<V2modelsBotLocaleTimeouts?>('timeouts');
+    timeouts = registerOutput<V2modelsBotLocaleTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2modelsBotLocaleTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     voiceSettings = registerOutput<V2modelsBotLocaleVoiceSettings?>(
       'voiceSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2modelsBotLocaleVoiceSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -345,9 +361,25 @@ class V2modelsBotLocale extends pulumi.CustomResource {
     );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    timeouts = registerOutput<V2modelsBotLocaleTimeouts?>('timeouts');
+    timeouts = registerOutput<V2modelsBotLocaleTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2modelsBotLocaleTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     voiceSettings = registerOutput<V2modelsBotLocaleVoiceSettings?>(
       'voiceSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2modelsBotLocaleVoiceSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

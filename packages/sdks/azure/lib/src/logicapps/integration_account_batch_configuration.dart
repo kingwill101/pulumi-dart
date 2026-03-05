@@ -266,6 +266,13 @@ class IntegrationAccountBatchConfiguration extends pulumi.CustomResource {
     releaseCriteria =
         registerOutput<IntegrationAccountBatchConfigurationReleaseCriteria>(
           'releaseCriteria',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return IntegrationAccountBatchConfigurationReleaseCriteria.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     resourceGroupName = registerOutput<String>('resourceGroupName');
   }
@@ -300,6 +307,13 @@ class IntegrationAccountBatchConfiguration extends pulumi.CustomResource {
     releaseCriteria =
         registerOutput<IntegrationAccountBatchConfigurationReleaseCriteria>(
           'releaseCriteria',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return IntegrationAccountBatchConfigurationReleaseCriteria.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     resourceGroupName = registerOutput<String>('resourceGroupName');
   }

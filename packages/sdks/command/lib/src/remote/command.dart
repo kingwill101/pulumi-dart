@@ -483,11 +483,27 @@ class Command extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     addPreviousOutputInEnv = registerOutput<bool?>('addPreviousOutputInEnv');
-    connection = registerOutput<Connection>('connection');
+    connection = registerOutput<Connection>(
+      'connection',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return Connection.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     create = registerOutput<String?>('create');
     delete = registerOutput<String?>('delete');
     environment = registerOutput<Map<String, String>?>('environment');
-    logging = registerOutput<Logging?>('logging');
+    logging = registerOutput<Logging?>(
+      'logging',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return Logging.fromValue(guardedValue as String);
+      },
+    );
     stderr = registerOutput<String>('stderr');
     stdin = registerOutput<String?>('stdin');
     stdout = registerOutput<String>('stdout');

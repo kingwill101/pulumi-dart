@@ -55,13 +55,47 @@ class Task extends pulumi.CustomResource {
       ) {
     appEngineHttpRequest = registerOutput<AppEngineHttpRequestResponse>(
       'appEngineHttpRequest',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppEngineHttpRequestResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     dispatchCount = registerOutput<int>('dispatchCount');
     dispatchDeadline = registerOutput<String>('dispatchDeadline');
-    firstAttempt = registerOutput<AttemptResponse>('firstAttempt');
-    httpRequest = registerOutput<HttpRequestResponse>('httpRequest');
-    lastAttempt = registerOutput<AttemptResponse>('lastAttempt');
+    firstAttempt = registerOutput<AttemptResponse>(
+      'firstAttempt',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AttemptResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    httpRequest = registerOutput<HttpRequestResponse>(
+      'httpRequest',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HttpRequestResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    lastAttempt = registerOutput<AttemptResponse>(
+      'lastAttempt',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AttemptResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

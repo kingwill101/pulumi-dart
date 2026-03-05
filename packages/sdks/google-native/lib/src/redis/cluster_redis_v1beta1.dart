@@ -83,7 +83,16 @@ class ClusterRedisV1beta1 extends pulumi.CustomResource {
     shardCount = registerOutput<int>('shardCount');
     sizeGb = registerOutput<int>('sizeGb');
     state = registerOutput<String>('state');
-    stateInfo = registerOutput<StateInfoResponseRedisV1beta1>('stateInfo');
+    stateInfo = registerOutput<StateInfoResponseRedisV1beta1>(
+      'stateInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StateInfoResponseRedisV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     transitEncryptionMode = registerOutput<String>('transitEncryptionMode');
     uid = registerOutput<String>('uid');
   }

@@ -57,15 +57,45 @@ class WebAppDiagnosticLogsConfigurationSlot extends pulumi.CustomResource {
        ) {
     applicationLogs = registerOutput<ApplicationLogsConfigResponse?>(
       'applicationLogs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationLogsConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     detailedErrorMessages = registerOutput<EnabledConfigResponse?>(
       'detailedErrorMessages',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnabledConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     failedRequestsTracing = registerOutput<EnabledConfigResponse?>(
       'failedRequestsTracing',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnabledConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    httpLogs = registerOutput<HttpLogsConfigResponse?>('httpLogs');
+    httpLogs = registerOutput<HttpLogsConfigResponse?>(
+      'httpLogs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HttpLogsConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kind = registerOutput<String?>('kind');
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');

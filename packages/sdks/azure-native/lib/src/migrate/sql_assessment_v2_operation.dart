@@ -526,12 +526,33 @@ class SqlAssessmentV2Operation extends pulumi.CustomResource {
     );
     azureSqlDatabaseSettings = registerOutput<SqlDbSettingsResponse?>(
       'azureSqlDatabaseSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SqlDbSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     azureSqlManagedInstanceSettings = registerOutput<SqlMiSettingsResponse?>(
       'azureSqlManagedInstanceSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SqlMiSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     azureSqlVmSettings = registerOutput<SqlVmSettingsResponse?>(
       'azureSqlVmSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SqlVmSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     confidenceRatingInPercentage = registerOutput<double?>(
       'confidenceRatingInPercentage',
@@ -544,7 +565,16 @@ class SqlAssessmentV2Operation extends pulumi.CustomResource {
     discountPercentage = registerOutput<double?>('discountPercentage');
     eaSubscriptionId = registerOutput<String?>('eaSubscriptionId');
     enableHadrAssessment = registerOutput<bool?>('enableHadrAssessment');
-    entityUptime = registerOutput<EntityUptimeResponse?>('entityUptime');
+    entityUptime = registerOutput<EntityUptimeResponse?>(
+      'entityUptime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EntityUptimeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     environmentType = registerOutput<String?>('environmentType');
     groupType = registerOutput<String?>('groupType');
     isInternetAccessAvailable = registerOutput<bool?>(
@@ -567,7 +597,16 @@ class SqlAssessmentV2Operation extends pulumi.CustomResource {
     sqlServerLicense = registerOutput<String?>('sqlServerLicense');
     stage = registerOutput<String>('stage');
     status = registerOutput<String>('status');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     timeRange = registerOutput<String?>('timeRange');
     type = registerOutput<String>('type');
     updatedTimestamp = registerOutput<String>('updatedTimestamp');

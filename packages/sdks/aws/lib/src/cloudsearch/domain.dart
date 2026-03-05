@@ -287,13 +287,29 @@ class Domain extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     documentServiceEndpoint = registerOutput<String>('documentServiceEndpoint');
     domainId = registerOutput<String>('domainId');
-    endpointOptions = registerOutput<DomainEndpointOptions>('endpointOptions');
+    endpointOptions = registerOutput<DomainEndpointOptions>(
+      'endpointOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainEndpointOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     indexFields = registerOutput<List<Map<String, dynamic>>?>('indexFields');
     multiAz = registerOutput<bool>('multiAz');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     scalingParameters = registerOutput<DomainScalingParameters>(
       'scalingParameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainScalingParameters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     searchServiceEndpoint = registerOutput<String>('searchServiceEndpoint');
   }
@@ -324,13 +340,29 @@ class Domain extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     documentServiceEndpoint = registerOutput<String>('documentServiceEndpoint');
     domainId = registerOutput<String>('domainId');
-    endpointOptions = registerOutput<DomainEndpointOptions>('endpointOptions');
+    endpointOptions = registerOutput<DomainEndpointOptions>(
+      'endpointOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainEndpointOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     indexFields = registerOutput<List<Map<String, dynamic>>?>('indexFields');
     multiAz = registerOutput<bool>('multiAz');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     scalingParameters = registerOutput<DomainScalingParameters>(
       'scalingParameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainScalingParameters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     searchServiceEndpoint = registerOutput<String>('searchServiceEndpoint');
   }

@@ -282,38 +282,141 @@ class RoleAssignment extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     conflationPolicies = registerOutput<ResourceSetDescriptionResponse?>(
       'conflationPolicies',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceSetDescriptionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    connectors = registerOutput<ResourceSetDescriptionResponse?>('connectors');
+    connectors = registerOutput<ResourceSetDescriptionResponse?>(
+      'connectors',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceSetDescriptionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<Map<String, String>?>('description');
     displayName = registerOutput<Map<String, String>?>('displayName');
     interactions = registerOutput<ResourceSetDescriptionResponse?>(
       'interactions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceSetDescriptionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    kpis = registerOutput<ResourceSetDescriptionResponse?>('kpis');
-    links = registerOutput<ResourceSetDescriptionResponse?>('links');
+    kpis = registerOutput<ResourceSetDescriptionResponse?>(
+      'kpis',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceSetDescriptionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    links = registerOutput<ResourceSetDescriptionResponse?>(
+      'links',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceSetDescriptionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     principals = registerOutput<List<Map<String, dynamic>>>('principals');
-    profiles = registerOutput<ResourceSetDescriptionResponse?>('profiles');
+    profiles = registerOutput<ResourceSetDescriptionResponse?>(
+      'profiles',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceSetDescriptionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     provisioningState = registerOutput<String>('provisioningState');
     relationshipLinks = registerOutput<ResourceSetDescriptionResponse?>(
       'relationshipLinks',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceSetDescriptionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     relationships = registerOutput<ResourceSetDescriptionResponse?>(
       'relationships',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceSetDescriptionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     role = registerOutput<String>('role');
     roleAssignments = registerOutput<ResourceSetDescriptionResponse?>(
       'roleAssignments',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceSetDescriptionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sasPolicies = registerOutput<ResourceSetDescriptionResponse?>(
       'sasPolicies',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceSetDescriptionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    segments = registerOutput<ResourceSetDescriptionResponse?>('segments');
+    segments = registerOutput<ResourceSetDescriptionResponse?>(
+      'segments',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceSetDescriptionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tenantId = registerOutput<String>('tenantId');
     type = registerOutput<String>('type');
-    views = registerOutput<ResourceSetDescriptionResponse?>('views');
+    views = registerOutput<ResourceSetDescriptionResponse?>(
+      'views',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceSetDescriptionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     widgetTypes = registerOutput<ResourceSetDescriptionResponse?>(
       'widgetTypes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceSetDescriptionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

@@ -109,7 +109,16 @@ class Version extends pulumi.CustomResource {
     cloudLoggingDetails =
         registerOutput<
           GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponse
-        >('cloudLoggingDetails');
+        >(
+          'cloudLoggingDetails',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     createSampleIntegrations = registerOutput<bool?>(
       'createSampleIntegrations',
     );
@@ -128,7 +137,16 @@ class Version extends pulumi.CustomResource {
     integrationParametersInternal =
         registerOutput<
           EnterpriseCrmFrontendsEventbusProtoWorkflowParametersResponse
-        >('integrationParametersInternal');
+        >(
+          'integrationParametersInternal',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EnterpriseCrmFrontendsEventbusProtoWorkflowParametersResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     lastModifierEmail = registerOutput<String>('lastModifierEmail');
     location = registerOutput<String>('location');
     lockHolder = registerOutput<String>('lockHolder');
@@ -148,6 +166,13 @@ class Version extends pulumi.CustomResource {
     );
     teardown = registerOutput<EnterpriseCrmEventbusProtoTeardownResponse>(
       'teardown',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnterpriseCrmEventbusProtoTeardownResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     triggerConfigs = registerOutput<List<Map<String, dynamic>>>(
       'triggerConfigs',

@@ -247,7 +247,16 @@ class Account extends pulumi.CustomResource {
     awsExternalId = registerOutput<String>('awsExternalId');
     catalogEndpoint = registerOutput<String>('catalogEndpoint');
     guardianEndpoint = registerOutput<String>('guardianEndpoint');
-    identity = registerOutput<AccountIdentity>('identity');
+    identity = registerOutput<AccountIdentity>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     managedEventHubEnabled = registerOutput<bool?>('managedEventHubEnabled');
     managedResourceGroupName = registerOutput<String>(
@@ -295,7 +304,16 @@ class Account extends pulumi.CustomResource {
     awsExternalId = registerOutput<String>('awsExternalId');
     catalogEndpoint = registerOutput<String>('catalogEndpoint');
     guardianEndpoint = registerOutput<String>('guardianEndpoint');
-    identity = registerOutput<AccountIdentity>('identity');
+    identity = registerOutput<AccountIdentity>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     managedEventHubEnabled = registerOutput<bool?>('managedEventHubEnabled');
     managedResourceGroupName = registerOutput<String>(

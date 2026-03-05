@@ -685,17 +685,56 @@ class GlobalSecondaryIndex extends pulumi.CustomResource {
     onDemandThroughput =
         registerOutput<GlobalSecondaryIndexOnDemandThroughput?>(
           'onDemandThroughput',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GlobalSecondaryIndexOnDemandThroughput.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    projection = registerOutput<GlobalSecondaryIndexProjection?>('projection');
+    projection = registerOutput<GlobalSecondaryIndexProjection?>(
+      'projection',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GlobalSecondaryIndexProjection.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     provisionedThroughput =
         registerOutput<GlobalSecondaryIndexProvisionedThroughput?>(
           'provisionedThroughput',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GlobalSecondaryIndexProvisionedThroughput.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     tableName = registerOutput<String>('tableName');
-    timeouts = registerOutput<GlobalSecondaryIndexTimeouts?>('timeouts');
+    timeouts = registerOutput<GlobalSecondaryIndexTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GlobalSecondaryIndexTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     warmThroughput = registerOutput<GlobalSecondaryIndexWarmThroughput>(
       'warmThroughput',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GlobalSecondaryIndexWarmThroughput.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -728,17 +767,56 @@ class GlobalSecondaryIndex extends pulumi.CustomResource {
     onDemandThroughput =
         registerOutput<GlobalSecondaryIndexOnDemandThroughput?>(
           'onDemandThroughput',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GlobalSecondaryIndexOnDemandThroughput.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    projection = registerOutput<GlobalSecondaryIndexProjection?>('projection');
+    projection = registerOutput<GlobalSecondaryIndexProjection?>(
+      'projection',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GlobalSecondaryIndexProjection.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     provisionedThroughput =
         registerOutput<GlobalSecondaryIndexProvisionedThroughput?>(
           'provisionedThroughput',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GlobalSecondaryIndexProvisionedThroughput.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     tableName = registerOutput<String>('tableName');
-    timeouts = registerOutput<GlobalSecondaryIndexTimeouts?>('timeouts');
+    timeouts = registerOutput<GlobalSecondaryIndexTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GlobalSecondaryIndexTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     warmThroughput = registerOutput<GlobalSecondaryIndexWarmThroughput>(
       'warmThroughput',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GlobalSecondaryIndexWarmThroughput.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

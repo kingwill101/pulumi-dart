@@ -45,10 +45,26 @@ class StatusMetaV1 extends pulumi.CustomResource {
        ) {
     apiVersion = registerOutput<String>('apiVersion');
     code = registerOutput<int>('code');
-    details = registerOutput<StatusDetails>('details');
+    details = registerOutput<StatusDetails>(
+      'details',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StatusDetails.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kind = registerOutput<String>('kind');
     message = registerOutput<String>('message');
-    metadata = registerOutput<ListMeta>('metadata');
+    metadata = registerOutput<ListMeta>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ListMeta.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     reason = registerOutput<String>('reason');
     status = registerOutput<String?>('status');
   }

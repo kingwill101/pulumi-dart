@@ -278,6 +278,13 @@ class EventHub extends pulumi.CustomResource {
        ) {
     captureDescription = registerOutput<EventHubCaptureDescription?>(
       'captureDescription',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventHubCaptureDescription.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     messageRetention = registerOutput<int>('messageRetention');
     this.name = registerOutput<String>('name');
@@ -288,6 +295,13 @@ class EventHub extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     retentionDescription = registerOutput<EventHubRetentionDescription>(
       'retentionDescription',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventHubRetentionDescription.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     status = registerOutput<String?>('status');
   }
@@ -317,6 +331,13 @@ class EventHub extends pulumi.CustomResource {
        ) {
     captureDescription = registerOutput<EventHubCaptureDescription?>(
       'captureDescription',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventHubCaptureDescription.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     messageRetention = registerOutput<int>('messageRetention');
     this.name = registerOutput<String>('name');
@@ -327,6 +348,13 @@ class EventHub extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     retentionDescription = registerOutput<EventHubRetentionDescription>(
       'retentionDescription',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventHubRetentionDescription.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     status = registerOutput<String?>('status');
   }

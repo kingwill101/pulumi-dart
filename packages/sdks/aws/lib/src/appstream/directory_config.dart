@@ -203,6 +203,13 @@ class DirectoryConfig extends pulumi.CustomResource {
     certificateBasedAuthProperties =
         registerOutput<DirectoryConfigCertificateBasedAuthProperties?>(
           'certificateBasedAuthProperties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DirectoryConfigCertificateBasedAuthProperties.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     createdTime = registerOutput<String>('createdTime');
     directoryName = registerOutput<String>('directoryName');
@@ -213,6 +220,13 @@ class DirectoryConfig extends pulumi.CustomResource {
     serviceAccountCredentials =
         registerOutput<DirectoryConfigServiceAccountCredentials>(
           'serviceAccountCredentials',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DirectoryConfigServiceAccountCredentials.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 
@@ -242,6 +256,13 @@ class DirectoryConfig extends pulumi.CustomResource {
     certificateBasedAuthProperties =
         registerOutput<DirectoryConfigCertificateBasedAuthProperties?>(
           'certificateBasedAuthProperties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DirectoryConfigCertificateBasedAuthProperties.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     createdTime = registerOutput<String>('createdTime');
     directoryName = registerOutput<String>('directoryName');
@@ -252,6 +273,13 @@ class DirectoryConfig extends pulumi.CustomResource {
     serviceAccountCredentials =
         registerOutput<DirectoryConfigServiceAccountCredentials>(
           'serviceAccountCredentials',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DirectoryConfigServiceAccountCredentials.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

@@ -1109,11 +1109,29 @@ class Domain extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     rootDomainUnitId = registerOutput<String>('rootDomainUnitId');
     serviceRole = registerOutput<String?>('serviceRole');
-    singleSignOn = registerOutput<DomainSingleSignOn?>('singleSignOn');
+    singleSignOn = registerOutput<DomainSingleSignOn?>(
+      'singleSignOn',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainSingleSignOn.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     skipDeletionCheck = registerOutput<bool?>('skipDeletionCheck');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<DomainTimeouts?>('timeouts');
+    timeouts = registerOutput<DomainTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Domain] resource's state with the given [name] and [id].
@@ -1149,10 +1167,28 @@ class Domain extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     rootDomainUnitId = registerOutput<String>('rootDomainUnitId');
     serviceRole = registerOutput<String?>('serviceRole');
-    singleSignOn = registerOutput<DomainSingleSignOn?>('singleSignOn');
+    singleSignOn = registerOutput<DomainSingleSignOn?>(
+      'singleSignOn',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainSingleSignOn.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     skipDeletionCheck = registerOutput<bool?>('skipDeletionCheck');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<DomainTimeouts?>('timeouts');
+    timeouts = registerOutput<DomainTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

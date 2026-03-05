@@ -9295,7 +9295,16 @@ class Stream extends pulumi.CustomResource {
         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
         options ?? pulumi.CustomResourceOptions(),
       ) {
-    backfillAll = registerOutput<StreamBackfillAll?>('backfillAll');
+    backfillAll = registerOutput<StreamBackfillAll?>(
+      'backfillAll',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StreamBackfillAll.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     backfillNone = registerOutput<Map<String, dynamic>?>('backfillNone');
     createWithoutValidation = registerOutput<bool?>('createWithoutValidation');
     customerManagedEncryptionKey = registerOutput<String?>(
@@ -9304,6 +9313,13 @@ class Stream extends pulumi.CustomResource {
     desiredState = registerOutput<String?>('desiredState');
     destinationConfig = registerOutput<StreamDestinationConfig>(
       'destinationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StreamDestinationConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -9313,7 +9329,16 @@ class Stream extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     ruleSets = registerOutput<List<Map<String, dynamic>>?>('ruleSets');
-    sourceConfig = registerOutput<StreamSourceConfig>('sourceConfig');
+    sourceConfig = registerOutput<StreamSourceConfig>(
+      'sourceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StreamSourceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     state = registerOutput<String>('state');
     streamId = registerOutput<String>('streamId');
   }
@@ -9341,7 +9366,16 @@ class Stream extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    backfillAll = registerOutput<StreamBackfillAll?>('backfillAll');
+    backfillAll = registerOutput<StreamBackfillAll?>(
+      'backfillAll',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StreamBackfillAll.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     backfillNone = registerOutput<Map<String, dynamic>?>('backfillNone');
     createWithoutValidation = registerOutput<bool?>('createWithoutValidation');
     customerManagedEncryptionKey = registerOutput<String?>(
@@ -9350,6 +9384,13 @@ class Stream extends pulumi.CustomResource {
     desiredState = registerOutput<String?>('desiredState');
     destinationConfig = registerOutput<StreamDestinationConfig>(
       'destinationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StreamDestinationConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -9359,7 +9400,16 @@ class Stream extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     ruleSets = registerOutput<List<Map<String, dynamic>>?>('ruleSets');
-    sourceConfig = registerOutput<StreamSourceConfig>('sourceConfig');
+    sourceConfig = registerOutput<StreamSourceConfig>(
+      'sourceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StreamSourceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.state = registerOutput<String>('state');
     streamId = registerOutput<String>('streamId');
   }

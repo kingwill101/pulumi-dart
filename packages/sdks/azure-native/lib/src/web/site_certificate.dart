@@ -263,6 +263,13 @@ class SiteCertificate extends pulumi.CustomResource {
     hostingEnvironmentProfile =
         registerOutput<HostingEnvironmentProfileResponse>(
           'hostingEnvironmentProfile',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return HostingEnvironmentProfileResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     issueDate = registerOutput<String>('issueDate');
     issuer = registerOutput<String>('issuer');

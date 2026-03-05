@@ -278,6 +278,13 @@ class AssessmentMetadataInSubscription extends pulumi.CustomResource {
     partnerData =
         registerOutput<SecurityAssessmentMetadataPartnerDataResponse?>(
           'partnerData',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SecurityAssessmentMetadataPartnerDataResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     plannedDeprecationDate = registerOutput<String?>('plannedDeprecationDate');
     policyDefinitionId = registerOutput<String>('policyDefinitionId');
@@ -285,7 +292,16 @@ class AssessmentMetadataInSubscription extends pulumi.CustomResource {
     publishDates =
         registerOutput<
           SecurityAssessmentMetadataPropertiesResponseResponsePublishDates?
-        >('publishDates');
+        >(
+          'publishDates',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SecurityAssessmentMetadataPropertiesResponseResponsePublishDates.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     remediationDescription = registerOutput<String?>('remediationDescription');
     severity = registerOutput<String>('severity');
     tactics = registerOutput<List<String>?>('tactics');

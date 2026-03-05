@@ -2058,12 +2058,26 @@ class CxWebhook extends pulumi.CustomResource {
     );
     genericWebService = registerOutput<CxWebhookGenericWebService?>(
       'genericWebService',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxWebhookGenericWebService.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     parent = registerOutput<String?>('parent');
     securitySettings = registerOutput<String?>('securitySettings');
     serviceDirectory = registerOutput<CxWebhookServiceDirectory?>(
       'serviceDirectory',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxWebhookServiceDirectory.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     startFlow = registerOutput<String>('startFlow');
     timeout = registerOutput<String?>('timeout');
@@ -2100,12 +2114,26 @@ class CxWebhook extends pulumi.CustomResource {
     );
     genericWebService = registerOutput<CxWebhookGenericWebService?>(
       'genericWebService',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxWebhookGenericWebService.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     parent = registerOutput<String?>('parent');
     securitySettings = registerOutput<String?>('securitySettings');
     serviceDirectory = registerOutput<CxWebhookServiceDirectory?>(
       'serviceDirectory',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxWebhookServiceDirectory.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     startFlow = registerOutput<String>('startFlow');
     timeout = registerOutput<String?>('timeout');

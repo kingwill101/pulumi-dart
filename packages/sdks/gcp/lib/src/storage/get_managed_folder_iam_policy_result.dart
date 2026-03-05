@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getManagedFolderIamPolicy.
 class GetManagedFolderIamPolicyResult {
   final String bucket;
   final String etag;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String managedFolder;
@@ -44,4 +44,3 @@ class GetManagedFolderIamPolicyResult {
     );
   }
 }
-

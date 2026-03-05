@@ -234,7 +234,16 @@ class Lake extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
-    metastore = registerOutput<LakeMetastore?>('metastore');
+    metastore = registerOutput<LakeMetastore?>(
+      'metastore',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LakeMetastore.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     metastoreStatuses = registerOutput<List<Map<String, dynamic>>>(
       'metastoreStatuses',
     );
@@ -273,7 +282,16 @@ class Lake extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
-    metastore = registerOutput<LakeMetastore?>('metastore');
+    metastore = registerOutput<LakeMetastore?>(
+      'metastore',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LakeMetastore.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     metastoreStatuses = registerOutput<List<Map<String, dynamic>>>(
       'metastoreStatuses',
     );

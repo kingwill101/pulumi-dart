@@ -290,9 +290,25 @@ class EventEndpoint extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     replicationConfig = registerOutput<EventEndpointReplicationConfig?>(
       'replicationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventEndpointReplicationConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     roleArn = registerOutput<String?>('roleArn');
-    routingConfig = registerOutput<EventEndpointRoutingConfig>('routingConfig');
+    routingConfig = registerOutput<EventEndpointRoutingConfig>(
+      'routingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventEndpointRoutingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [EventEndpoint] resource's state with the given [name] and [id].
@@ -326,8 +342,24 @@ class EventEndpoint extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     replicationConfig = registerOutput<EventEndpointReplicationConfig?>(
       'replicationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventEndpointReplicationConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     roleArn = registerOutput<String?>('roleArn');
-    routingConfig = registerOutput<EventEndpointRoutingConfig>('routingConfig');
+    routingConfig = registerOutput<EventEndpointRoutingConfig>(
+      'routingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventEndpointRoutingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

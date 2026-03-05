@@ -1,15 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getDedicatedHost.
 class GetDedicatedHostResult {
   final String dedicatedHostGroupName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The location where the Dedicated Host exists.
   final String location;
   final String name;
   final String resourceGroupName;
+
   /// A mapping of tags assigned to the Dedicated Host.
   final Map<String, String> tags;
 
@@ -51,4 +53,3 @@ class GetDedicatedHostResult {
     );
   }
 }
-

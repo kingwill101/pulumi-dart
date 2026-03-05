@@ -60,20 +60,52 @@ class Page extends pulumi.CustomResource {
     advancedSettings =
         registerOutput<GoogleCloudDialogflowCxV3AdvancedSettingsResponse>(
           'advancedSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowCxV3AdvancedSettingsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     agentId = registerOutput<String>('agentId');
     displayName = registerOutput<String>('displayName');
     entryFulfillment =
         registerOutput<GoogleCloudDialogflowCxV3FulfillmentResponse>(
           'entryFulfillment',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowCxV3FulfillmentResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     eventHandlers = registerOutput<List<Map<String, dynamic>>>('eventHandlers');
     flowId = registerOutput<String>('flowId');
-    form = registerOutput<GoogleCloudDialogflowCxV3FormResponse>('form');
+    form = registerOutput<GoogleCloudDialogflowCxV3FormResponse>(
+      'form',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudDialogflowCxV3FormResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     knowledgeConnectorSettings =
         registerOutput<
           GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsResponse
-        >('knowledgeConnectorSettings');
+        >(
+          'knowledgeConnectorSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     languageCode = registerOutput<String?>('languageCode');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

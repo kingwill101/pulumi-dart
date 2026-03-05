@@ -262,6 +262,13 @@ class AlertsSuppressionRule extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     suppressionAlertsScope = registerOutput<SuppressionAlertsScopeResponse?>(
       'suppressionAlertsScope',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SuppressionAlertsScopeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     type = registerOutput<String>('type');
   }

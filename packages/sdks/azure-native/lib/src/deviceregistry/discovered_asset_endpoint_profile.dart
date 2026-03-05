@@ -296,6 +296,13 @@ class DiscoveredAssetEndpointProfile extends pulumi.CustomResource {
     endpointProfileType = registerOutput<String>('endpointProfileType');
     extendedLocation = registerOutput<ExtendedLocationResponse>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -303,7 +310,16 @@ class DiscoveredAssetEndpointProfile extends pulumi.CustomResource {
     supportedAuthenticationMethods = registerOutput<List<String>?>(
       'supportedAuthenticationMethods',
     );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     targetAddress = registerOutput<String>('targetAddress');
     type = registerOutput<String>('type');

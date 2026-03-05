@@ -95,32 +95,130 @@ class JobDataprocV1beta2 extends pulumi.CustomResource {
     done = registerOutput<bool>('done');
     driverControlFilesUri = registerOutput<String>('driverControlFilesUri');
     driverOutputResourceUri = registerOutput<String>('driverOutputResourceUri');
-    hadoopJob = registerOutput<HadoopJobResponseDataprocV1beta2>('hadoopJob');
-    hiveJob = registerOutput<HiveJobResponseDataprocV1beta2>('hiveJob');
+    hadoopJob = registerOutput<HadoopJobResponseDataprocV1beta2>(
+      'hadoopJob',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HadoopJobResponseDataprocV1beta2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    hiveJob = registerOutput<HiveJobResponseDataprocV1beta2>(
+      'hiveJob',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HiveJobResponseDataprocV1beta2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     jobUuid = registerOutput<String>('jobUuid');
     labels = registerOutput<Map<String, String>>('labels');
-    pigJob = registerOutput<PigJobResponseDataprocV1beta2>('pigJob');
+    pigJob = registerOutput<PigJobResponseDataprocV1beta2>(
+      'pigJob',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PigJobResponseDataprocV1beta2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     placement = registerOutput<JobPlacementResponseDataprocV1beta2>(
       'placement',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobPlacementResponseDataprocV1beta2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    prestoJob = registerOutput<PrestoJobResponseDataprocV1beta2>('prestoJob');
+    prestoJob = registerOutput<PrestoJobResponseDataprocV1beta2>(
+      'prestoJob',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PrestoJobResponseDataprocV1beta2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     pysparkJob = registerOutput<PySparkJobResponseDataprocV1beta2>(
       'pysparkJob',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PySparkJobResponseDataprocV1beta2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     reference = registerOutput<JobReferenceResponseDataprocV1beta2>(
       'reference',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobReferenceResponseDataprocV1beta2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     scheduling = registerOutput<JobSchedulingResponseDataprocV1beta2>(
       'scheduling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobSchedulingResponseDataprocV1beta2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    sparkJob = registerOutput<SparkJobResponseDataprocV1beta2>('sparkJob');
-    sparkRJob = registerOutput<SparkRJobResponseDataprocV1beta2>('sparkRJob');
+    sparkJob = registerOutput<SparkJobResponseDataprocV1beta2>(
+      'sparkJob',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkJobResponseDataprocV1beta2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    sparkRJob = registerOutput<SparkRJobResponseDataprocV1beta2>(
+      'sparkRJob',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkRJobResponseDataprocV1beta2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sparkSqlJob = registerOutput<SparkSqlJobResponseDataprocV1beta2>(
       'sparkSqlJob',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkSqlJobResponseDataprocV1beta2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    status = registerOutput<JobStatusResponseDataprocV1beta2>('status');
+    status = registerOutput<JobStatusResponseDataprocV1beta2>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobStatusResponseDataprocV1beta2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     statusHistory = registerOutput<List<Map<String, dynamic>>>('statusHistory');
     submittedBy = registerOutput<String>('submittedBy');
     yarnApplications = registerOutput<List<Map<String, dynamic>>>(

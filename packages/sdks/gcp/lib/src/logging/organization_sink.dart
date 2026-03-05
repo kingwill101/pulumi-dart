@@ -272,6 +272,13 @@ class OrganizationSink extends pulumi.CustomResource {
        ) {
     bigqueryOptions = registerOutput<OrganizationSinkBigqueryOptions>(
       'bigqueryOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrganizationSinkBigqueryOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     destination = registerOutput<String>('destination');
@@ -310,6 +317,13 @@ class OrganizationSink extends pulumi.CustomResource {
        ) {
     bigqueryOptions = registerOutput<OrganizationSinkBigqueryOptions>(
       'bigqueryOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrganizationSinkBigqueryOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     destination = registerOutput<String>('destination');

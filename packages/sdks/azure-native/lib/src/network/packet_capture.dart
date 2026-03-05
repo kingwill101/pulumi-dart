@@ -289,15 +289,38 @@ class PacketCapture extends pulumi.CustomResource {
     );
     captureSettings = registerOutput<PacketCaptureSettingsResponse?>(
       'captureSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PacketCaptureSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     continuousCapture = registerOutput<bool?>('continuousCapture');
     etag = registerOutput<String>('etag');
     filters = registerOutput<List<Map<String, dynamic>>?>('filters');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    scope = registerOutput<PacketCaptureMachineScopeResponse?>('scope');
+    scope = registerOutput<PacketCaptureMachineScopeResponse?>(
+      'scope',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PacketCaptureMachineScopeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     storageLocation = registerOutput<PacketCaptureStorageLocationResponse>(
       'storageLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PacketCaptureStorageLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     target = registerOutput<String>('target');
     targetType = registerOutput<String?>('targetType');

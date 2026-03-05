@@ -49,7 +49,16 @@ class PriorityClassPatchResource extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     globalDefault = registerOutput<bool?>('globalDefault');
     kind = registerOutput<String?>('kind');
-    metadata = registerOutput<ObjectMetaPatch?>('metadata');
+    metadata = registerOutput<ObjectMetaPatch?>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMetaPatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     preemptionPolicy = registerOutput<String?>('preemptionPolicy');
     value = registerOutput<int?>('value');
   }

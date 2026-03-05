@@ -37,7 +37,8 @@ Future<GetApplicationResult> getApplication(
 /// Uses Azure REST API version 2023-11-14-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_integrationspaces_get_application_business_process_development_artifact_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetApplicationBusinessProcessDevelopmentArtifactResult> getApplicationBusinessProcessDevelopmentArtifact(
+Future<GetApplicationBusinessProcessDevelopmentArtifactResult>
+getApplicationBusinessProcessDevelopmentArtifact(
   GetApplicationBusinessProcessDevelopmentArtifactArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -127,7 +128,8 @@ Future<GetSpaceResult> getSpace(
 /// Uses Azure REST API version 2023-11-14-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_integrationspaces_list_application_business_process_development_artifacts_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListApplicationBusinessProcessDevelopmentArtifactsResult> listApplicationBusinessProcessDevelopmentArtifacts(
+Future<ListApplicationBusinessProcessDevelopmentArtifactsResult>
+listApplicationBusinessProcessDevelopmentArtifacts(
   ListApplicationBusinessProcessDevelopmentArtifactsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -137,5 +139,7 @@ Future<ListApplicationBusinessProcessDevelopmentArtifactsResult> listApplication
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return ListApplicationBusinessProcessDevelopmentArtifactsResult.fromMap(result);
+  return ListApplicationBusinessProcessDevelopmentArtifactsResult.fromMap(
+    result,
+  );
 }

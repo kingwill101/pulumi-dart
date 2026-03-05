@@ -815,6 +815,13 @@ class GameServerGroup extends pulumi.CustomResource {
     autoScalingGroupArn = registerOutput<String>('autoScalingGroupArn');
     autoScalingPolicy = registerOutput<GameServerGroupAutoScalingPolicy?>(
       'autoScalingPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GameServerGroupAutoScalingPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     balancingStrategy = registerOutput<String>('balancingStrategy');
     gameServerGroupName = registerOutput<String>('gameServerGroupName');
@@ -826,6 +833,13 @@ class GameServerGroup extends pulumi.CustomResource {
     );
     launchTemplate = registerOutput<GameServerGroupLaunchTemplate>(
       'launchTemplate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GameServerGroupLaunchTemplate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     maxSize = registerOutput<int>('maxSize');
     minSize = registerOutput<int>('minSize');
@@ -863,6 +877,13 @@ class GameServerGroup extends pulumi.CustomResource {
     autoScalingGroupArn = registerOutput<String>('autoScalingGroupArn');
     autoScalingPolicy = registerOutput<GameServerGroupAutoScalingPolicy?>(
       'autoScalingPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GameServerGroupAutoScalingPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     balancingStrategy = registerOutput<String>('balancingStrategy');
     gameServerGroupName = registerOutput<String>('gameServerGroupName');
@@ -874,6 +895,13 @@ class GameServerGroup extends pulumi.CustomResource {
     );
     launchTemplate = registerOutput<GameServerGroupLaunchTemplate>(
       'launchTemplate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GameServerGroupLaunchTemplate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     maxSize = registerOutput<int>('maxSize');
     minSize = registerOutput<int>('minSize');

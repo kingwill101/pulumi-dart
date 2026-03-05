@@ -307,21 +307,51 @@ class AFDOriginGroup extends pulumi.CustomResource {
        ) {
     authentication = registerOutput<OriginAuthenticationPropertiesResponse?>(
       'authentication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OriginAuthenticationPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     deploymentStatus = registerOutput<String>('deploymentStatus');
     healthProbeSettings = registerOutput<HealthProbeParametersResponse?>(
       'healthProbeSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HealthProbeParametersResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     loadBalancingSettings =
         registerOutput<LoadBalancingSettingsParametersResponse?>(
           'loadBalancingSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LoadBalancingSettingsParametersResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     profileName = registerOutput<String>('profileName');
     provisioningState = registerOutput<String>('provisioningState');
     sessionAffinityState = registerOutput<String?>('sessionAffinityState');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     trafficRestorationTimeToHealedOrNewEndpointsInMinutes =
         registerOutput<int?>(
           'trafficRestorationTimeToHealedOrNewEndpointsInMinutes',

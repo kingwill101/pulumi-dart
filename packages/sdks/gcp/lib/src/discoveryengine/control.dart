@@ -424,20 +424,65 @@ class Control extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    boostAction = registerOutput<ControlBoostAction?>('boostAction');
+    boostAction = registerOutput<ControlBoostAction?>(
+      'boostAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ControlBoostAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     collectionId = registerOutput<String?>('collectionId');
     conditions = registerOutput<List<Map<String, dynamic>>?>('conditions');
     controlId = registerOutput<String>('controlId');
     displayName = registerOutput<String>('displayName');
     engineId = registerOutput<String>('engineId');
-    filterAction = registerOutput<ControlFilterAction?>('filterAction');
+    filterAction = registerOutput<ControlFilterAction?>(
+      'filterAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ControlFilterAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    promoteAction = registerOutput<ControlPromoteAction?>('promoteAction');
-    redirectAction = registerOutput<ControlRedirectAction?>('redirectAction');
+    promoteAction = registerOutput<ControlPromoteAction?>(
+      'promoteAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ControlPromoteAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    redirectAction = registerOutput<ControlRedirectAction?>(
+      'redirectAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ControlRedirectAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     solutionType = registerOutput<String>('solutionType');
-    synonymsAction = registerOutput<ControlSynonymsAction?>('synonymsAction');
+    synonymsAction = registerOutput<ControlSynonymsAction?>(
+      'synonymsAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ControlSynonymsAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     useCases = registerOutput<List<String>?>('useCases');
   }
 
@@ -464,20 +509,65 @@ class Control extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    boostAction = registerOutput<ControlBoostAction?>('boostAction');
+    boostAction = registerOutput<ControlBoostAction?>(
+      'boostAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ControlBoostAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     collectionId = registerOutput<String?>('collectionId');
     conditions = registerOutput<List<Map<String, dynamic>>?>('conditions');
     controlId = registerOutput<String>('controlId');
     displayName = registerOutput<String>('displayName');
     engineId = registerOutput<String>('engineId');
-    filterAction = registerOutput<ControlFilterAction?>('filterAction');
+    filterAction = registerOutput<ControlFilterAction?>(
+      'filterAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ControlFilterAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    promoteAction = registerOutput<ControlPromoteAction?>('promoteAction');
-    redirectAction = registerOutput<ControlRedirectAction?>('redirectAction');
+    promoteAction = registerOutput<ControlPromoteAction?>(
+      'promoteAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ControlPromoteAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    redirectAction = registerOutput<ControlRedirectAction?>(
+      'redirectAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ControlRedirectAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     solutionType = registerOutput<String>('solutionType');
-    synonymsAction = registerOutput<ControlSynonymsAction?>('synonymsAction');
+    synonymsAction = registerOutput<ControlSynonymsAction?>(
+      'synonymsAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ControlSynonymsAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     useCases = registerOutput<List<String>?>('useCases');
   }
 }

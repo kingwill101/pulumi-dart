@@ -691,6 +691,13 @@ class UserSettings extends pulumi.CustomResource {
     cookieSynchronizationConfiguration =
         registerOutput<UserSettingsCookieSynchronizationConfiguration?>(
           'cookieSynchronizationConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return UserSettingsCookieSynchronizationConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     copyAllowed = registerOutput<String>('copyAllowed');
     customerManagedKey = registerOutput<String?>('customerManagedKey');
@@ -709,6 +716,13 @@ class UserSettings extends pulumi.CustomResource {
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     toolbarConfiguration = registerOutput<UserSettingsToolbarConfiguration?>(
       'toolbarConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserSettingsToolbarConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     uploadAllowed = registerOutput<String>('uploadAllowed');
     userSettingsArn = registerOutput<String>('userSettingsArn');
@@ -744,6 +758,13 @@ class UserSettings extends pulumi.CustomResource {
     cookieSynchronizationConfiguration =
         registerOutput<UserSettingsCookieSynchronizationConfiguration?>(
           'cookieSynchronizationConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return UserSettingsCookieSynchronizationConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     copyAllowed = registerOutput<String>('copyAllowed');
     customerManagedKey = registerOutput<String?>('customerManagedKey');
@@ -762,6 +783,13 @@ class UserSettings extends pulumi.CustomResource {
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     toolbarConfiguration = registerOutput<UserSettingsToolbarConfiguration?>(
       'toolbarConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserSettingsToolbarConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     uploadAllowed = registerOutput<String>('uploadAllowed');
     userSettingsArn = registerOutput<String>('userSettingsArn');

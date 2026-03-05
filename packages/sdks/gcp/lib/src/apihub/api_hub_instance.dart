@@ -381,7 +381,16 @@ class ApiHubInstance extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     apiHubInstanceId = registerOutput<String?>('apiHubInstanceId');
-    config = registerOutput<ApiHubInstanceConfig>('config');
+    config = registerOutput<ApiHubInstanceConfig>(
+      'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiHubInstanceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -419,7 +428,16 @@ class ApiHubInstance extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     apiHubInstanceId = registerOutput<String?>('apiHubInstanceId');
-    config = registerOutput<ApiHubInstanceConfig>('config');
+    config = registerOutput<ApiHubInstanceConfig>(
+      'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiHubInstanceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

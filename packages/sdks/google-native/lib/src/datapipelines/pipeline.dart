@@ -66,6 +66,13 @@ class Pipeline extends pulumi.CustomResource {
     scheduleInfo =
         registerOutput<GoogleCloudDatapipelinesV1ScheduleSpecResponse>(
           'scheduleInfo',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDatapipelinesV1ScheduleSpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     schedulerServiceAccountEmail = registerOutput<String>(
       'schedulerServiceAccountEmail',
@@ -74,6 +81,13 @@ class Pipeline extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     workload = registerOutput<GoogleCloudDatapipelinesV1WorkloadResponse>(
       'workload',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudDatapipelinesV1WorkloadResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

@@ -502,21 +502,64 @@ class Job extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    configuration = registerOutput<JobConfigurationResponse?>('configuration');
+    configuration = registerOutput<JobConfigurationResponse?>(
+      'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     environmentId = registerOutput<String?>('environmentId');
     eventStreamEndpoint = registerOutput<String>('eventStreamEndpoint');
     extendedLocation = registerOutput<ExtendedLocationResponse?>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    identity = registerOutput<ManagedServiceIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedServiceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     outboundIpAddresses = registerOutput<List<String>>('outboundIpAddresses');
     provisioningState = registerOutput<String>('provisioningState');
     runningState = registerOutput<String>('runningState');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
-    template = registerOutput<JobTemplateResponse?>('template');
+    template = registerOutput<JobTemplateResponse?>(
+      'template',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobTemplateResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     workloadProfileName = registerOutput<String?>('workloadProfileName');
   }

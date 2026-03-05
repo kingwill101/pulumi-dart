@@ -243,12 +243,28 @@ class RepositoryAssociation extends pulumi.CustomResource {
     connectionArn = registerOutput<String>('connectionArn');
     kmsKeyDetails = registerOutput<RepositoryAssociationKmsKeyDetails?>(
       'kmsKeyDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RepositoryAssociationKmsKeyDetails.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     owner = registerOutput<String>('owner');
     providerType = registerOutput<String>('providerType');
     region = registerOutput<String>('region');
-    repository = registerOutput<RepositoryAssociationRepository>('repository');
+    repository = registerOutput<RepositoryAssociationRepository>(
+      'repository',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RepositoryAssociationRepository.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     s3RepositoryDetails = registerOutput<List<Map<String, dynamic>>>(
       's3RepositoryDetails',
     );
@@ -286,12 +302,28 @@ class RepositoryAssociation extends pulumi.CustomResource {
     connectionArn = registerOutput<String>('connectionArn');
     kmsKeyDetails = registerOutput<RepositoryAssociationKmsKeyDetails?>(
       'kmsKeyDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RepositoryAssociationKmsKeyDetails.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     owner = registerOutput<String>('owner');
     providerType = registerOutput<String>('providerType');
     region = registerOutput<String>('region');
-    repository = registerOutput<RepositoryAssociationRepository>('repository');
+    repository = registerOutput<RepositoryAssociationRepository>(
+      'repository',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RepositoryAssociationRepository.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     s3RepositoryDetails = registerOutput<List<Map<String, dynamic>>>(
       's3RepositoryDetails',
     );

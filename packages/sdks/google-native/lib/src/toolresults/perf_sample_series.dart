@@ -33,6 +33,13 @@ class PerfSampleSeries extends pulumi.CustomResource {
        ) {
     basicPerfSampleSeries = registerOutput<BasicPerfSampleSeriesResponse>(
       'basicPerfSampleSeries',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BasicPerfSampleSeriesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     executionId = registerOutput<String>('executionId');
     historyId = registerOutput<String>('historyId');

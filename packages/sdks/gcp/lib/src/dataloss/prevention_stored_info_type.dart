@@ -763,15 +763,38 @@ class PreventionStoredInfoType extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     dictionary = registerOutput<PreventionStoredInfoTypeDictionary?>(
       'dictionary',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PreventionStoredInfoTypeDictionary.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     displayName = registerOutput<String?>('displayName');
     largeCustomDictionary =
         registerOutput<PreventionStoredInfoTypeLargeCustomDictionary?>(
           'largeCustomDictionary',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PreventionStoredInfoTypeLargeCustomDictionary.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
-    regex = registerOutput<PreventionStoredInfoTypeRegex?>('regex');
+    regex = registerOutput<PreventionStoredInfoTypeRegex?>(
+      'regex',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PreventionStoredInfoTypeRegex.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     storedInfoTypeId = registerOutput<String>('storedInfoTypeId');
   }
 
@@ -801,15 +824,38 @@ class PreventionStoredInfoType extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     dictionary = registerOutput<PreventionStoredInfoTypeDictionary?>(
       'dictionary',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PreventionStoredInfoTypeDictionary.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     displayName = registerOutput<String?>('displayName');
     largeCustomDictionary =
         registerOutput<PreventionStoredInfoTypeLargeCustomDictionary?>(
           'largeCustomDictionary',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PreventionStoredInfoTypeLargeCustomDictionary.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
-    regex = registerOutput<PreventionStoredInfoTypeRegex?>('regex');
+    regex = registerOutput<PreventionStoredInfoTypeRegex?>(
+      'regex',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PreventionStoredInfoTypeRegex.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     storedInfoTypeId = registerOutput<String>('storedInfoTypeId');
   }
 }

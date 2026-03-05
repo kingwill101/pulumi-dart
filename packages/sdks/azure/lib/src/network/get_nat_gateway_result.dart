@@ -1,26 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getNatGateway.
 class GetNatGatewayResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The idle timeout in minutes which is used for the NAT Gateway.
   final int idleTimeoutInMinutes;
+
   /// The location where the NAT Gateway exists.
   final String location;
   final String name;
+
   /// A list of existing Public IP Address resource IDs which the NAT Gateway is using.
   final List<String> publicIpAddressIds;
+
   /// A list of existing Public IP Prefix resource IDs which the NAT Gateway is using.
   final List<String> publicIpPrefixIds;
   final String resourceGroupName;
+
   /// The Resource GUID of the NAT Gateway.
   final String resourceGuid;
+
   /// The SKU used by the NAT Gateway.
   final String skuName;
+
   /// A mapping of tags assigned to the resource.
   final Map<String, String> tags;
+
   /// A list of Availability Zones which the NAT Gateway exists in.
   final List<String> zones;
 
@@ -82,4 +89,3 @@ class GetNatGatewayResult {
     );
   }
 }
-

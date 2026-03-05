@@ -1122,6 +1122,13 @@ class Workspace extends pulumi.CustomResource {
        ) {
     azureDevopsRepo = registerOutput<WorkspaceAzureDevopsRepo?>(
       'azureDevopsRepo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkspaceAzureDevopsRepo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     azureadAuthenticationOnly = registerOutput<bool?>(
       'azureadAuthenticationOnly',
@@ -1132,12 +1139,37 @@ class Workspace extends pulumi.CustomResource {
     );
     customerManagedKey = registerOutput<WorkspaceCustomerManagedKey?>(
       'customerManagedKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkspaceCustomerManagedKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dataExfiltrationProtectionEnabled = registerOutput<bool?>(
       'dataExfiltrationProtectionEnabled',
     );
-    githubRepo = registerOutput<WorkspaceGithubRepo?>('githubRepo');
-    identity = registerOutput<WorkspaceIdentity?>('identity');
+    githubRepo = registerOutput<WorkspaceGithubRepo?>(
+      'githubRepo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkspaceGithubRepo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    identity = registerOutput<WorkspaceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkspaceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     linkingAllowedForAadTenantIds = registerOutput<List<String>?>(
       'linkingAllowedForAadTenantIds',
     );
@@ -1192,6 +1224,13 @@ class Workspace extends pulumi.CustomResource {
        ) {
     azureDevopsRepo = registerOutput<WorkspaceAzureDevopsRepo?>(
       'azureDevopsRepo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkspaceAzureDevopsRepo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     azureadAuthenticationOnly = registerOutput<bool?>(
       'azureadAuthenticationOnly',
@@ -1202,12 +1241,37 @@ class Workspace extends pulumi.CustomResource {
     );
     customerManagedKey = registerOutput<WorkspaceCustomerManagedKey?>(
       'customerManagedKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkspaceCustomerManagedKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dataExfiltrationProtectionEnabled = registerOutput<bool?>(
       'dataExfiltrationProtectionEnabled',
     );
-    githubRepo = registerOutput<WorkspaceGithubRepo?>('githubRepo');
-    identity = registerOutput<WorkspaceIdentity?>('identity');
+    githubRepo = registerOutput<WorkspaceGithubRepo?>(
+      'githubRepo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkspaceGithubRepo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    identity = registerOutput<WorkspaceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkspaceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     linkingAllowedForAadTenantIds = registerOutput<List<String>?>(
       'linkingAllowedForAadTenantIds',
     );

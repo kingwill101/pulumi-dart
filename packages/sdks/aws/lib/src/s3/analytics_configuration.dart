@@ -409,12 +409,28 @@ class AnalyticsConfiguration extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     bucket = registerOutput<String>('bucket');
-    filter = registerOutput<AnalyticsConfigurationFilter?>('filter');
+    filter = registerOutput<AnalyticsConfigurationFilter?>(
+      'filter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AnalyticsConfigurationFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     storageClassAnalysis =
         registerOutput<AnalyticsConfigurationStorageClassAnalysis?>(
           'storageClassAnalysis',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AnalyticsConfigurationStorageClassAnalysis.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 
@@ -442,12 +458,28 @@ class AnalyticsConfiguration extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     bucket = registerOutput<String>('bucket');
-    filter = registerOutput<AnalyticsConfigurationFilter?>('filter');
+    filter = registerOutput<AnalyticsConfigurationFilter?>(
+      'filter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AnalyticsConfigurationFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     storageClassAnalysis =
         registerOutput<AnalyticsConfigurationStorageClassAnalysis?>(
           'storageClassAnalysis',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AnalyticsConfigurationStorageClassAnalysis.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

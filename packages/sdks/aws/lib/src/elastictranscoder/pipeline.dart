@@ -232,18 +232,43 @@ class Pipeline extends pulumi.CustomResource {
        ) {
     arn = registerOutput<String>('arn');
     awsKmsKeyArn = registerOutput<String?>('awsKmsKeyArn');
-    contentConfig = registerOutput<PipelineContentConfig>('contentConfig');
+    contentConfig = registerOutput<PipelineContentConfig>(
+      'contentConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineContentConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     contentConfigPermissions = registerOutput<List<Map<String, dynamic>>?>(
       'contentConfigPermissions',
     );
     inputBucket = registerOutput<String>('inputBucket');
     this.name = registerOutput<String>('name');
-    notifications = registerOutput<PipelineNotifications?>('notifications');
+    notifications = registerOutput<PipelineNotifications?>(
+      'notifications',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineNotifications.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     outputBucket = registerOutput<String>('outputBucket');
     region = registerOutput<String>('region');
     role = registerOutput<String>('role');
     thumbnailConfig = registerOutput<PipelineThumbnailConfig>(
       'thumbnailConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineThumbnailConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     thumbnailConfigPermissions = registerOutput<List<Map<String, dynamic>>?>(
       'thumbnailConfigPermissions',
@@ -275,18 +300,43 @@ class Pipeline extends pulumi.CustomResource {
        ) {
     arn = registerOutput<String>('arn');
     awsKmsKeyArn = registerOutput<String?>('awsKmsKeyArn');
-    contentConfig = registerOutput<PipelineContentConfig>('contentConfig');
+    contentConfig = registerOutput<PipelineContentConfig>(
+      'contentConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineContentConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     contentConfigPermissions = registerOutput<List<Map<String, dynamic>>?>(
       'contentConfigPermissions',
     );
     inputBucket = registerOutput<String>('inputBucket');
     this.name = registerOutput<String>('name');
-    notifications = registerOutput<PipelineNotifications?>('notifications');
+    notifications = registerOutput<PipelineNotifications?>(
+      'notifications',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineNotifications.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     outputBucket = registerOutput<String>('outputBucket');
     region = registerOutput<String>('region');
     role = registerOutput<String>('role');
     thumbnailConfig = registerOutput<PipelineThumbnailConfig>(
       'thumbnailConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineThumbnailConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     thumbnailConfigPermissions = registerOutput<List<Map<String, dynamic>>?>(
       'thumbnailConfigPermissions',

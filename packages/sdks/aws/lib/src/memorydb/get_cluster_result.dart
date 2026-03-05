@@ -8,56 +8,81 @@ import 'get_cluster_shard.dart';
 class GetClusterResult {
   /// Name of the Access Control List associated with the cluster.
   final String aclName;
+
   /// ARN of the cluster.
   final String arn;
+
   /// True when the cluster allows automatic minor version upgrades.
   final bool autoMinorVersionUpgrade;
   final List<GetClusterClusterEndpoint> clusterEndpoints;
+
   /// True when data tiering is enabled.
   final bool dataTiering;
+
   /// Description for the cluster.
   final String description;
+
   /// Engine that will run on cluster nodes.
   final String engine;
+
   /// Patch version number of the engine used by the cluster.
   final String enginePatchVersion;
+
   /// Version number of the engine used by the cluster.
   final String engineVersion;
+
   /// Name of the final cluster snapshot to be created when this resource is deleted. If omitted, no final snapshot will be made.
   final String finalSnapshotName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// ARN of the KMS key used to encrypt the cluster at rest.
   final String kmsKeyArn;
+
   /// Weekly time range during which maintenance on the cluster is performed. Specify as a range in the format `ddd:hh24:mi-ddd:hh24:mi` (24H Clock UTC). Example: `sun:23:00-mon:01:30`.
   final String maintenanceWindow;
+
   /// Name of this node.
   final String name;
+
   /// Compute and memory capacity of the nodes in the cluster.
   final String nodeType;
+
   /// The number of replicas to apply to each shard.
   final int numReplicasPerShard;
+
   /// Number of shards in the cluster.
   final int numShards;
+
   /// The name of the parameter group associated with the cluster.
   final String parameterGroupName;
+
   /// Port number that this node is listening on.
   final int port;
   final String region;
+
   /// Set of VPC Security Group ID-s associated with this cluster.
   final List<String> securityGroupIds;
+
   /// Set of shards in this cluster.
   final List<GetClusterShard> shards;
+
   /// The number of days for which MemoryDB retains automatic snapshots before deleting them. When set to `0`, automatic backups are disabled.
   final int snapshotRetentionLimit;
+
   /// Daily time range (in UTC) during which MemoryDB begins taking a daily snapshot of your shard. Example: `05:00-09:00`.
   final String snapshotWindow;
+
   /// ARN of the SNS topic to which cluster notifications are sent.
   final String snsTopicArn;
+
   /// The name of the subnet group used for the cluster.
   final String subnetGroupName;
+
   /// Map of tags assigned to the cluster.
   final Map<String, String> tags;
+
   /// When true, in-transit encryption is enabled for the cluster.
   final bool tlsEnabled;
 
@@ -126,7 +151,11 @@ class GetClusterResult {
       'aclName': aclName,
       'arn': arn,
       'autoMinorVersionUpgrade': autoMinorVersionUpgrade,
-      'clusterEndpoints': pulumi.Input.encodeList<GetClusterClusterEndpoint, Map<String, dynamic>>(clusterEndpoints, (value) => value.toMap()),
+      'clusterEndpoints':
+          pulumi.Input.encodeList<
+            GetClusterClusterEndpoint,
+            Map<String, dynamic>
+          >(clusterEndpoints, (value) => value.toMap()),
       'dataTiering': dataTiering,
       'description': description,
       'engine': engine,
@@ -144,7 +173,10 @@ class GetClusterResult {
       'port': port,
       'region': region,
       'securityGroupIds': securityGroupIds,
-      'shards': pulumi.Input.encodeList<GetClusterShard, Map<String, dynamic>>(shards, (value) => value.toMap()),
+      'shards': pulumi.Input.encodeList<GetClusterShard, Map<String, dynamic>>(
+        shards,
+        (value) => value.toMap(),
+      ),
       'snapshotRetentionLimit': snapshotRetentionLimit,
       'snapshotWindow': snapshotWindow,
       'snsTopicArn': snsTopicArn,
@@ -159,7 +191,12 @@ class GetClusterResult {
       aclName: map['aclName'] as String,
       arn: map['arn'] as String,
       autoMinorVersionUpgrade: map['autoMinorVersionUpgrade'] as bool,
-      clusterEndpoints: pulumi.Input.decodeList<GetClusterClusterEndpoint>(map['clusterEndpoints']!, (value) => GetClusterClusterEndpoint.fromMap((value as Map).cast<String, dynamic>())),
+      clusterEndpoints: pulumi.Input.decodeList<GetClusterClusterEndpoint>(
+        map['clusterEndpoints']!,
+        (value) => GetClusterClusterEndpoint.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       dataTiering: map['dataTiering'] as bool,
       description: map['description'] as String,
       engine: map['engine'] as String,
@@ -177,7 +214,11 @@ class GetClusterResult {
       port: map['port'] as int,
       region: map['region'] as String,
       securityGroupIds: (map['securityGroupIds'] as List).cast<String>(),
-      shards: pulumi.Input.decodeList<GetClusterShard>(map['shards']!, (value) => GetClusterShard.fromMap((value as Map).cast<String, dynamic>())),
+      shards: pulumi.Input.decodeList<GetClusterShard>(
+        map['shards']!,
+        (value) =>
+            GetClusterShard.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       snapshotRetentionLimit: map['snapshotRetentionLimit'] as int,
       snapshotWindow: map['snapshotWindow'] as String,
       snsTopicArn: map['snsTopicArn'] as String,
@@ -187,4 +228,3 @@ class GetClusterResult {
     );
   }
 }
-

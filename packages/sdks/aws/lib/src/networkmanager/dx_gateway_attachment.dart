@@ -196,7 +196,16 @@ class DxGatewayAttachment extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<DxGatewayAttachmentTimeouts?>('timeouts');
+    timeouts = registerOutput<DxGatewayAttachmentTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DxGatewayAttachmentTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [DxGatewayAttachment] resource's state with the given [name] and [id].
@@ -237,6 +246,15 @@ class DxGatewayAttachment extends pulumi.CustomResource {
     this.state = registerOutput<String>('state');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<DxGatewayAttachmentTimeouts?>('timeouts');
+    timeouts = registerOutput<DxGatewayAttachmentTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DxGatewayAttachmentTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

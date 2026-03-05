@@ -429,7 +429,8 @@ Future<ListScheduleApplicableResult> listScheduleApplicable(
 /// Uses Azure REST API version 2018-09-15.
 /// [args] Arguments passed to this invoke. {@macro pulumi_devtestlab_list_service_fabric_applicable_schedules_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListServiceFabricApplicableSchedulesResult> listServiceFabricApplicableSchedules(
+Future<ListServiceFabricApplicableSchedulesResult>
+listServiceFabricApplicableSchedules(
   ListServiceFabricApplicableSchedulesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -447,7 +448,8 @@ Future<ListServiceFabricApplicableSchedulesResult> listServiceFabricApplicableSc
 /// Uses Azure REST API version 2018-09-15.
 /// [args] Arguments passed to this invoke. {@macro pulumi_devtestlab_list_virtual_machine_applicable_schedules_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListVirtualMachineApplicableSchedulesResult> listVirtualMachineApplicableSchedules(
+Future<ListVirtualMachineApplicableSchedulesResult>
+listVirtualMachineApplicableSchedules(
   ListVirtualMachineApplicableSchedulesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

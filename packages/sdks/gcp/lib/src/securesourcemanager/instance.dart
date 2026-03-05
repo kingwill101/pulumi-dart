@@ -3337,7 +3337,16 @@ class Instance extends pulumi.CustomResource {
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    privateConfig = registerOutput<InstancePrivateConfig?>('privateConfig');
+    privateConfig = registerOutput<InstancePrivateConfig?>(
+      'privateConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstancePrivateConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     state = registerOutput<String>('state');
@@ -3346,6 +3355,13 @@ class Instance extends pulumi.CustomResource {
     workforceIdentityFederationConfig =
         registerOutput<InstanceWorkforceIdentityFederationConfig?>(
           'workforceIdentityFederationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceWorkforceIdentityFederationConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 
@@ -3381,7 +3397,16 @@ class Instance extends pulumi.CustomResource {
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    privateConfig = registerOutput<InstancePrivateConfig?>('privateConfig');
+    privateConfig = registerOutput<InstancePrivateConfig?>(
+      'privateConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstancePrivateConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     this.state = registerOutput<String>('state');
@@ -3390,6 +3415,13 @@ class Instance extends pulumi.CustomResource {
     workforceIdentityFederationConfig =
         registerOutput<InstanceWorkforceIdentityFederationConfig?>(
           'workforceIdentityFederationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceWorkforceIdentityFederationConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

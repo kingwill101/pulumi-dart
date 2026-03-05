@@ -77,15 +77,38 @@ class BareMetalNodePool extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     nodePoolConfig = registerOutput<BareMetalNodePoolConfigResponse>(
       'nodePoolConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalNodePoolConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     reconciling = registerOutput<bool>('reconciling');
     state = registerOutput<String>('state');
-    status = registerOutput<ResourceStatusResponse>('status');
+    status = registerOutput<ResourceStatusResponse>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
     upgradePolicy = registerOutput<BareMetalNodePoolUpgradePolicyResponse>(
       'upgradePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalNodePoolUpgradePolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

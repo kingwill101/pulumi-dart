@@ -247,8 +247,26 @@ class Experiment extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
     enabledState = registerOutput<String?>('enabledState');
-    endpointA = registerOutput<EndpointResponse?>('endpointA');
-    endpointB = registerOutput<EndpointResponse?>('endpointB');
+    endpointA = registerOutput<EndpointResponse?>(
+      'endpointA',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    endpointB = registerOutput<EndpointResponse?>(
+      'endpointB',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     resourceState = registerOutput<String>('resourceState');

@@ -265,10 +265,24 @@ class LinkedServiceAzureSqlDatabase extends pulumi.CustomResource {
     keyVaultConnectionString =
         registerOutput<LinkedServiceAzureSqlDatabaseKeyVaultConnectionString?>(
           'keyVaultConnectionString',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinkedServiceAzureSqlDatabaseKeyVaultConnectionString.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     keyVaultPassword =
         registerOutput<LinkedServiceAzureSqlDatabaseKeyVaultPassword?>(
           'keyVaultPassword',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinkedServiceAzureSqlDatabaseKeyVaultPassword.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');
@@ -313,10 +327,24 @@ class LinkedServiceAzureSqlDatabase extends pulumi.CustomResource {
     keyVaultConnectionString =
         registerOutput<LinkedServiceAzureSqlDatabaseKeyVaultConnectionString?>(
           'keyVaultConnectionString',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinkedServiceAzureSqlDatabaseKeyVaultConnectionString.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     keyVaultPassword =
         registerOutput<LinkedServiceAzureSqlDatabaseKeyVaultPassword?>(
           'keyVaultPassword',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinkedServiceAzureSqlDatabaseKeyVaultPassword.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');

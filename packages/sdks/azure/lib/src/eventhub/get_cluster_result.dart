@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getCluster.
 class GetClusterResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Location of the EventHub Cluster.
   final String location;
   final String name;
   final String resourceGroupName;
+
   /// SKU name of the EventHub Cluster.
   final String skuName;
 
@@ -46,4 +47,3 @@ class GetClusterResult {
     );
   }
 }
-

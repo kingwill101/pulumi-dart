@@ -199,6 +199,13 @@ class RestoreTestingPlan extends pulumi.CustomResource {
     recoveryPointSelection =
         registerOutput<RestoreTestingPlanRecoveryPointSelection>(
           'recoveryPointSelection',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RestoreTestingPlanRecoveryPointSelection.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     scheduleExpression = registerOutput<String>('scheduleExpression');
@@ -238,6 +245,13 @@ class RestoreTestingPlan extends pulumi.CustomResource {
     recoveryPointSelection =
         registerOutput<RestoreTestingPlanRecoveryPointSelection>(
           'recoveryPointSelection',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RestoreTestingPlanRecoveryPointSelection.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     scheduleExpression = registerOutput<String>('scheduleExpression');

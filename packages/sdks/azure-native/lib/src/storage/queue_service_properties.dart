@@ -481,7 +481,16 @@ class QueueServiceProperties extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    cors = registerOutput<CorsRulesResponse?>('cors');
+    cors = registerOutput<CorsRulesResponse?>(
+      'cors',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CorsRulesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');
   }

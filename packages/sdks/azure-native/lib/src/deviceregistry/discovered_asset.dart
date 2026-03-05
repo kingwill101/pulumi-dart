@@ -589,12 +589,28 @@ class DiscoveredAsset extends pulumi.CustomResource {
     defaultEventsConfiguration = registerOutput<String?>(
       'defaultEventsConfiguration',
     );
-    defaultTopic = registerOutput<TopicResponse?>('defaultTopic');
+    defaultTopic = registerOutput<TopicResponse?>(
+      'defaultTopic',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TopicResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     discoveryId = registerOutput<String>('discoveryId');
     documentationUri = registerOutput<String?>('documentationUri');
     events = registerOutput<List<Map<String, dynamic>>?>('events');
     extendedLocation = registerOutput<ExtendedLocationResponse>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     hardwareRevision = registerOutput<String?>('hardwareRevision');
     location = registerOutput<String>('location');
@@ -606,7 +622,16 @@ class DiscoveredAsset extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     serialNumber = registerOutput<String?>('serialNumber');
     softwareRevision = registerOutput<String?>('softwareRevision');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     version = registerOutput<double>('version');

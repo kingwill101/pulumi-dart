@@ -195,7 +195,16 @@ class ApiTool extends pulumi.CustomResource {
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
     operationId = registerOutput<String?>('operationId');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

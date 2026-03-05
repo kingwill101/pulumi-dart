@@ -89,10 +89,26 @@ class RedisEnterprise extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     encryption = registerOutput<ClusterPropertiesResponseEncryption?>(
       'encryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterPropertiesResponseEncryption.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     highAvailability = registerOutput<String?>('highAvailability');
     hostName = registerOutput<String>('hostName');
-    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    identity = registerOutput<ManagedServiceIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedServiceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
     minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
@@ -104,7 +120,16 @@ class RedisEnterprise extends pulumi.CustomResource {
     redisVersion = registerOutput<String>('redisVersion');
     redundancyMode = registerOutput<String>('redundancyMode');
     resourceState = registerOutput<String>('resourceState');
-    sku = registerOutput<SkuResponse>('sku');
+    sku = registerOutput<SkuResponse>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     zones = registerOutput<List<String>?>('zones');

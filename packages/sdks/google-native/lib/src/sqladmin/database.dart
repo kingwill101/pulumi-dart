@@ -50,6 +50,13 @@ class Database extends pulumi.CustomResource {
     selfLink = registerOutput<String>('selfLink');
     sqlserverDatabaseDetails = registerOutput<SqlServerDatabaseDetailsResponse>(
       'sqlserverDatabaseDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SqlServerDatabaseDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

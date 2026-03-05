@@ -657,6 +657,13 @@ class SubscriptionRule extends pulumi.CustomResource {
     action = registerOutput<String?>('action');
     correlationFilter = registerOutput<SubscriptionRuleCorrelationFilter?>(
       'correlationFilter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubscriptionRuleCorrelationFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     filterType = registerOutput<String>('filterType');
     this.name = registerOutput<String>('name');
@@ -693,6 +700,13 @@ class SubscriptionRule extends pulumi.CustomResource {
     action = registerOutput<String?>('action');
     correlationFilter = registerOutput<SubscriptionRuleCorrelationFilter?>(
       'correlationFilter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubscriptionRuleCorrelationFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     filterType = registerOutput<String>('filterType');
     this.name = registerOutput<String>('name');

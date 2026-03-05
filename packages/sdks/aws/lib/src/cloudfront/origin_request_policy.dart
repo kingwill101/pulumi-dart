@@ -283,14 +283,35 @@ class OriginRequestPolicy extends pulumi.CustomResource {
     comment = registerOutput<String?>('comment');
     cookiesConfig = registerOutput<OriginRequestPolicyCookiesConfig>(
       'cookiesConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OriginRequestPolicyCookiesConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     headersConfig = registerOutput<OriginRequestPolicyHeadersConfig>(
       'headersConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OriginRequestPolicyHeadersConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     queryStringsConfig = registerOutput<OriginRequestPolicyQueryStringsConfig>(
       'queryStringsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OriginRequestPolicyQueryStringsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -321,14 +342,35 @@ class OriginRequestPolicy extends pulumi.CustomResource {
     comment = registerOutput<String?>('comment');
     cookiesConfig = registerOutput<OriginRequestPolicyCookiesConfig>(
       'cookiesConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OriginRequestPolicyCookiesConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     headersConfig = registerOutput<OriginRequestPolicyHeadersConfig>(
       'headersConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OriginRequestPolicyHeadersConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     queryStringsConfig = registerOutput<OriginRequestPolicyQueryStringsConfig>(
       'queryStringsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OriginRequestPolicyQueryStringsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

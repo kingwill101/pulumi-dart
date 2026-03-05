@@ -39,8 +39,26 @@ class Subscription extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    deliveryConfig = registerOutput<DeliveryConfigResponse>('deliveryConfig');
-    exportConfig = registerOutput<ExportConfigResponse>('exportConfig');
+    deliveryConfig = registerOutput<DeliveryConfigResponse>(
+      'deliveryConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeliveryConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    exportConfig = registerOutput<ExportConfigResponse>(
+      'exportConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExportConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

@@ -283,7 +283,16 @@ class Cluster extends pulumi.CustomResource {
     );
     agentVersion = registerOutput<String>('agentVersion');
     distribution = registerOutput<String>('distribution');
-    identity = registerOutput<ClusterIdentity>('identity');
+    identity = registerOutput<ClusterIdentity>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     infrastructure = registerOutput<String>('infrastructure');
     kubernetesVersion = registerOutput<String>('kubernetesVersion');
     location = registerOutput<String>('location');
@@ -323,7 +332,16 @@ class Cluster extends pulumi.CustomResource {
     );
     agentVersion = registerOutput<String>('agentVersion');
     distribution = registerOutput<String>('distribution');
-    identity = registerOutput<ClusterIdentity>('identity');
+    identity = registerOutput<ClusterIdentity>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     infrastructure = registerOutput<String>('infrastructure');
     kubernetesVersion = registerOutput<String>('kubernetesVersion');
     location = registerOutput<String>('location');

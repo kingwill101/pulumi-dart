@@ -641,14 +641,39 @@ class Dashboard extends pulumi.CustomResource {
     dashboardId = registerOutput<String>('dashboardId');
     dashboardPublishOptions = registerOutput<DashboardDashboardPublishOptions>(
       'dashboardPublishOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DashboardDashboardPublishOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     lastPublishedTime = registerOutput<String>('lastPublishedTime');
     lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<DashboardParameters>('parameters');
+    parameters = registerOutput<DashboardParameters>(
+      'parameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DashboardParameters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     permissions = registerOutput<List<Map<String, dynamic>>?>('permissions');
     region = registerOutput<String>('region');
-    sourceEntity = registerOutput<DashboardSourceEntity?>('sourceEntity');
+    sourceEntity = registerOutput<DashboardSourceEntity?>(
+      'sourceEntity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DashboardSourceEntity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sourceEntityArn = registerOutput<String>('sourceEntityArn');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -687,14 +712,39 @@ class Dashboard extends pulumi.CustomResource {
     dashboardId = registerOutput<String>('dashboardId');
     dashboardPublishOptions = registerOutput<DashboardDashboardPublishOptions>(
       'dashboardPublishOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DashboardDashboardPublishOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     lastPublishedTime = registerOutput<String>('lastPublishedTime');
     lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<DashboardParameters>('parameters');
+    parameters = registerOutput<DashboardParameters>(
+      'parameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DashboardParameters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     permissions = registerOutput<List<Map<String, dynamic>>?>('permissions');
     region = registerOutput<String>('region');
-    sourceEntity = registerOutput<DashboardSourceEntity?>('sourceEntity');
+    sourceEntity = registerOutput<DashboardSourceEntity?>(
+      'sourceEntity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DashboardSourceEntity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sourceEntityArn = registerOutput<String>('sourceEntityArn');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');

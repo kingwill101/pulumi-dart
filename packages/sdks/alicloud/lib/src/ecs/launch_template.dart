@@ -593,7 +593,16 @@ class LaunchTemplate extends pulumi.CustomResource {
     httpPutResponseHopLimit = registerOutput<int>('httpPutResponseHopLimit');
     httpTokens = registerOutput<String>('httpTokens');
     imageId = registerOutput<String?>('imageId');
-    imageOptions = registerOutput<LaunchTemplateImageOptions>('imageOptions');
+    imageOptions = registerOutput<LaunchTemplateImageOptions>(
+      'imageOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LaunchTemplateImageOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     imageOwnerAlias = registerOutput<String?>('imageOwnerAlias');
     instanceChargeType = registerOutput<String?>('instanceChargeType');
     instanceName = registerOutput<String?>('instanceName');
@@ -608,6 +617,13 @@ class LaunchTemplate extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkInterfaces = registerOutput<LaunchTemplateNetworkInterfaces?>(
       'networkInterfaces',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LaunchTemplateNetworkInterfaces.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     networkType = registerOutput<String?>('networkType');
     passwordInherit = registerOutput<bool?>('passwordInherit');
@@ -624,7 +640,16 @@ class LaunchTemplate extends pulumi.CustomResource {
     spotDuration = registerOutput<String?>('spotDuration');
     spotPriceLimit = registerOutput<double?>('spotPriceLimit');
     spotStrategy = registerOutput<String?>('spotStrategy');
-    systemDisk = registerOutput<LaunchTemplateSystemDisk>('systemDisk');
+    systemDisk = registerOutput<LaunchTemplateSystemDisk>(
+      'systemDisk',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LaunchTemplateSystemDisk.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     systemDiskCategory = registerOutput<String>('systemDiskCategory');
     systemDiskDescription = registerOutput<String>('systemDiskDescription');
     systemDiskName = registerOutput<String>('systemDiskName');
@@ -681,7 +706,16 @@ class LaunchTemplate extends pulumi.CustomResource {
     httpPutResponseHopLimit = registerOutput<int>('httpPutResponseHopLimit');
     httpTokens = registerOutput<String>('httpTokens');
     imageId = registerOutput<String?>('imageId');
-    imageOptions = registerOutput<LaunchTemplateImageOptions>('imageOptions');
+    imageOptions = registerOutput<LaunchTemplateImageOptions>(
+      'imageOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LaunchTemplateImageOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     imageOwnerAlias = registerOutput<String?>('imageOwnerAlias');
     instanceChargeType = registerOutput<String?>('instanceChargeType');
     instanceName = registerOutput<String?>('instanceName');
@@ -696,6 +730,13 @@ class LaunchTemplate extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkInterfaces = registerOutput<LaunchTemplateNetworkInterfaces?>(
       'networkInterfaces',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LaunchTemplateNetworkInterfaces.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     networkType = registerOutput<String?>('networkType');
     passwordInherit = registerOutput<bool?>('passwordInherit');
@@ -712,7 +753,16 @@ class LaunchTemplate extends pulumi.CustomResource {
     spotDuration = registerOutput<String?>('spotDuration');
     spotPriceLimit = registerOutput<double?>('spotPriceLimit');
     spotStrategy = registerOutput<String?>('spotStrategy');
-    systemDisk = registerOutput<LaunchTemplateSystemDisk>('systemDisk');
+    systemDisk = registerOutput<LaunchTemplateSystemDisk>(
+      'systemDisk',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LaunchTemplateSystemDisk.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     systemDiskCategory = registerOutput<String>('systemDiskCategory');
     systemDiskDescription = registerOutput<String>('systemDiskDescription');
     systemDiskName = registerOutput<String>('systemDiskName');

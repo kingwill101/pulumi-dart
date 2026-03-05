@@ -74,9 +74,27 @@ class VvpInstance extends pulumi.CustomResource {
     pricingCycle = registerOutput<String?>('pricingCycle');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     resourceId = registerOutput<String>('resourceId');
-    resourceSpec = registerOutput<VvpInstanceResourceSpec>('resourceSpec');
+    resourceSpec = registerOutput<VvpInstanceResourceSpec>(
+      'resourceSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VvpInstanceResourceSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String>('status');
-    storage = registerOutput<VvpInstanceStorage>('storage');
+    storage = registerOutput<VvpInstanceStorage>(
+      'storage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VvpInstanceStorage.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     vpcId = registerOutput<String>('vpcId');
     vswitchIds = registerOutput<List<String>>('vswitchIds');
@@ -113,9 +131,27 @@ class VvpInstance extends pulumi.CustomResource {
     pricingCycle = registerOutput<String?>('pricingCycle');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     resourceId = registerOutput<String>('resourceId');
-    resourceSpec = registerOutput<VvpInstanceResourceSpec>('resourceSpec');
+    resourceSpec = registerOutput<VvpInstanceResourceSpec>(
+      'resourceSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VvpInstanceResourceSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String>('status');
-    storage = registerOutput<VvpInstanceStorage>('storage');
+    storage = registerOutput<VvpInstanceStorage>(
+      'storage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VvpInstanceStorage.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     vpcId = registerOutput<String>('vpcId');
     vswitchIds = registerOutput<List<String>>('vswitchIds');

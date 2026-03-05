@@ -237,6 +237,13 @@ class ManagedPrivateEndpoint extends pulumi.CustomResource {
     connectionState =
         registerOutput<ManagedPrivateEndpointConnectionStateResponse>(
           'connectionState',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ManagedPrivateEndpointConnectionStateResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     groupIds = registerOutput<List<String>?>('groupIds');
     location = registerOutput<String>('location');
@@ -251,7 +258,16 @@ class ManagedPrivateEndpoint extends pulumi.CustomResource {
     privateLinkServiceUrl = registerOutput<String?>('privateLinkServiceUrl');
     provisioningState = registerOutput<String>('provisioningState');
     requestMessage = registerOutput<String?>('requestMessage');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

@@ -365,12 +365,35 @@ class ServiceIntegration extends pulumi.CustomResource {
     kmsServerSideEncryption =
         registerOutput<ServiceIntegrationKmsServerSideEncryption>(
           'kmsServerSideEncryption',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ServiceIntegrationKmsServerSideEncryption.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     logsAnomalyDetection =
         registerOutput<ServiceIntegrationLogsAnomalyDetection>(
           'logsAnomalyDetection',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ServiceIntegrationLogsAnomalyDetection.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    opsCenter = registerOutput<ServiceIntegrationOpsCenter>('opsCenter');
+    opsCenter = registerOutput<ServiceIntegrationOpsCenter>(
+      'opsCenter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceIntegrationOpsCenter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
   }
 
@@ -400,12 +423,35 @@ class ServiceIntegration extends pulumi.CustomResource {
     kmsServerSideEncryption =
         registerOutput<ServiceIntegrationKmsServerSideEncryption>(
           'kmsServerSideEncryption',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ServiceIntegrationKmsServerSideEncryption.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     logsAnomalyDetection =
         registerOutput<ServiceIntegrationLogsAnomalyDetection>(
           'logsAnomalyDetection',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ServiceIntegrationLogsAnomalyDetection.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    opsCenter = registerOutput<ServiceIntegrationOpsCenter>('opsCenter');
+    opsCenter = registerOutput<ServiceIntegrationOpsCenter>(
+      'opsCenter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceIntegrationOpsCenter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
   }
 }

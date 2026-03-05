@@ -930,6 +930,13 @@ class Datapolicyv2DataPolicyIamMember extends pulumi.CustomResource {
        ) {
     condition = registerOutput<Datapolicyv2DataPolicyIamMemberCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return Datapolicyv2DataPolicyIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dataPolicyId = registerOutput<String>('dataPolicyId');
     etag = registerOutput<String>('etag');
@@ -964,6 +971,13 @@ class Datapolicyv2DataPolicyIamMember extends pulumi.CustomResource {
        ) {
     condition = registerOutput<Datapolicyv2DataPolicyIamMemberCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return Datapolicyv2DataPolicyIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dataPolicyId = registerOutput<String>('dataPolicyId');
     etag = registerOutput<String>('etag');

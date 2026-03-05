@@ -1,18 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getHciStoragePath.
 class GetHciStoragePathResult {
   /// The ID of the Custom Location where the Stack HCI Storage Path exists.
   final String customLocationId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The Azure Region where the Stack HCI Storage Path exists.
   final String location;
   final String name;
+
   /// The file path on the disk where the Stack HCI Storage Path was created.
   final String path;
   final String resourceGroupName;
+
   /// A mapping of tags assigned to the Stack HCI Storage Path.
   final Map<String, String> tags;
 
@@ -58,4 +61,3 @@ class GetHciStoragePathResult {
     );
   }
 }
-

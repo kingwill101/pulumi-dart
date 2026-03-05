@@ -116,16 +116,39 @@ class JobJobsV4 extends pulumi.CustomResource {
     addresses = registerOutput<List<String>>('addresses');
     applicationInfo = registerOutput<ApplicationInfoResponseJobsV4>(
       'applicationInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationInfoResponseJobsV4.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     company = registerOutput<String>('company');
     companyDisplayName = registerOutput<String>('companyDisplayName');
     compensationInfo = registerOutput<CompensationInfoResponseJobsV4>(
       'compensationInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CompensationInfoResponseJobsV4.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     customAttributes = registerOutput<Map<String, String>>('customAttributes');
     degreeTypes = registerOutput<List<String>>('degreeTypes');
     department = registerOutput<String>('department');
-    derivedInfo = registerOutput<JobDerivedInfoResponseJobsV4>('derivedInfo');
+    derivedInfo = registerOutput<JobDerivedInfoResponseJobsV4>(
+      'derivedInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobDerivedInfoResponseJobsV4.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String>('description');
     employmentTypes = registerOutput<List<String>>('employmentTypes');
     incentives = registerOutput<String>('incentives');
@@ -142,6 +165,13 @@ class JobJobsV4 extends pulumi.CustomResource {
     postingUpdateTime = registerOutput<String>('postingUpdateTime');
     processingOptions = registerOutput<ProcessingOptionsResponseJobsV4>(
       'processingOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProcessingOptionsResponseJobsV4.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     promotionValue = registerOutput<int>('promotionValue');

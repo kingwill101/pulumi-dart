@@ -68,6 +68,13 @@ class ConnectivityTestNetworkmanagementV1beta1 extends pulumi.CustomResource {
     description = registerOutput<String>('description');
     destination = registerOutput<EndpointResponseNetworkmanagementV1beta1>(
       'destination',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointResponseNetworkmanagementV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     displayName = registerOutput<String>('displayName');
     labels = registerOutput<Map<String, String>>('labels');
@@ -75,15 +82,38 @@ class ConnectivityTestNetworkmanagementV1beta1 extends pulumi.CustomResource {
     probingDetails =
         registerOutput<ProbingDetailsResponseNetworkmanagementV1beta1>(
           'probingDetails',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ProbingDetailsResponseNetworkmanagementV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     project = registerOutput<String>('project');
     protocol = registerOutput<String>('protocol');
     reachabilityDetails =
         registerOutput<ReachabilityDetailsResponseNetworkmanagementV1beta1>(
           'reachabilityDetails',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ReachabilityDetailsResponseNetworkmanagementV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     relatedProjects = registerOutput<List<String>>('relatedProjects');
-    source = registerOutput<EndpointResponseNetworkmanagementV1beta1>('source');
+    source = registerOutput<EndpointResponseNetworkmanagementV1beta1>(
+      'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointResponseNetworkmanagementV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     testId = registerOutput<String>('testId');
     updateTime = registerOutput<String>('updateTime');
   }

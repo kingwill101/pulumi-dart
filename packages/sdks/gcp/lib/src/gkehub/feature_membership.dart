@@ -2667,14 +2667,37 @@ class FeatureMembership extends pulumi.CustomResource {
        ) {
     configmanagement = registerOutput<FeatureMembershipConfigmanagement?>(
       'configmanagement',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FeatureMembershipConfigmanagement.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     feature = registerOutput<String>('feature');
     location = registerOutput<String>('location');
     membership = registerOutput<String>('membership');
     membershipLocation = registerOutput<String?>('membershipLocation');
-    mesh = registerOutput<FeatureMembershipMesh?>('mesh');
+    mesh = registerOutput<FeatureMembershipMesh?>(
+      'mesh',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FeatureMembershipMesh.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     policycontroller = registerOutput<FeatureMembershipPolicycontroller?>(
       'policycontroller',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FeatureMembershipPolicycontroller.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
   }
@@ -2704,14 +2727,37 @@ class FeatureMembership extends pulumi.CustomResource {
        ) {
     configmanagement = registerOutput<FeatureMembershipConfigmanagement?>(
       'configmanagement',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FeatureMembershipConfigmanagement.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     feature = registerOutput<String>('feature');
     location = registerOutput<String>('location');
     membership = registerOutput<String>('membership');
     membershipLocation = registerOutput<String?>('membershipLocation');
-    mesh = registerOutput<FeatureMembershipMesh?>('mesh');
+    mesh = registerOutput<FeatureMembershipMesh?>(
+      'mesh',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FeatureMembershipMesh.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     policycontroller = registerOutput<FeatureMembershipPolicycontroller?>(
       'policycontroller',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FeatureMembershipPolicycontroller.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
   }

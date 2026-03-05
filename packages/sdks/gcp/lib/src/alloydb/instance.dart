@@ -1058,10 +1058,24 @@ class Instance extends pulumi.CustomResource {
     availabilityType = registerOutput<String>('availabilityType');
     clientConnectionConfig = registerOutput<InstanceClientConnectionConfig>(
       'clientConnectionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceClientConnectionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     cluster = registerOutput<String>('cluster');
     connectionPoolConfig = registerOutput<InstanceConnectionPoolConfig?>(
       'connectionPoolConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceConnectionPoolConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     databaseFlags = registerOutput<Map<String, String>>('databaseFlags');
@@ -1075,24 +1089,72 @@ class Instance extends pulumi.CustomResource {
     instanceType = registerOutput<String>('instanceType');
     ipAddress = registerOutput<String>('ipAddress');
     labels = registerOutput<Map<String, String>?>('labels');
-    machineConfig = registerOutput<InstanceMachineConfig>('machineConfig');
+    machineConfig = registerOutput<InstanceMachineConfig>(
+      'machineConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceMachineConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
-    networkConfig = registerOutput<InstanceNetworkConfig>('networkConfig');
+    networkConfig = registerOutput<InstanceNetworkConfig>(
+      'networkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceNetworkConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     observabilityConfig = registerOutput<InstanceObservabilityConfig>(
       'observabilityConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceObservabilityConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     outboundPublicIpAddresses = registerOutput<List<String>>(
       'outboundPublicIpAddresses',
     );
     pscInstanceConfig = registerOutput<InstancePscInstanceConfig>(
       'pscInstanceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstancePscInstanceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     publicIpAddress = registerOutput<String>('publicIpAddress');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     queryInsightsConfig = registerOutput<InstanceQueryInsightsConfig>(
       'queryInsightsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceQueryInsightsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    readPoolConfig = registerOutput<InstanceReadPoolConfig?>('readPoolConfig');
+    readPoolConfig = registerOutput<InstanceReadPoolConfig?>(
+      'readPoolConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceReadPoolConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     reconciling = registerOutput<bool>('reconciling');
     state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
@@ -1127,10 +1189,24 @@ class Instance extends pulumi.CustomResource {
     availabilityType = registerOutput<String>('availabilityType');
     clientConnectionConfig = registerOutput<InstanceClientConnectionConfig>(
       'clientConnectionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceClientConnectionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     cluster = registerOutput<String>('cluster');
     connectionPoolConfig = registerOutput<InstanceConnectionPoolConfig?>(
       'connectionPoolConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceConnectionPoolConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     databaseFlags = registerOutput<Map<String, String>>('databaseFlags');
@@ -1144,24 +1220,72 @@ class Instance extends pulumi.CustomResource {
     instanceType = registerOutput<String>('instanceType');
     ipAddress = registerOutput<String>('ipAddress');
     labels = registerOutput<Map<String, String>?>('labels');
-    machineConfig = registerOutput<InstanceMachineConfig>('machineConfig');
+    machineConfig = registerOutput<InstanceMachineConfig>(
+      'machineConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceMachineConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
-    networkConfig = registerOutput<InstanceNetworkConfig>('networkConfig');
+    networkConfig = registerOutput<InstanceNetworkConfig>(
+      'networkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceNetworkConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     observabilityConfig = registerOutput<InstanceObservabilityConfig>(
       'observabilityConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceObservabilityConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     outboundPublicIpAddresses = registerOutput<List<String>>(
       'outboundPublicIpAddresses',
     );
     pscInstanceConfig = registerOutput<InstancePscInstanceConfig>(
       'pscInstanceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstancePscInstanceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     publicIpAddress = registerOutput<String>('publicIpAddress');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     queryInsightsConfig = registerOutput<InstanceQueryInsightsConfig>(
       'queryInsightsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceQueryInsightsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    readPoolConfig = registerOutput<InstanceReadPoolConfig?>('readPoolConfig');
+    readPoolConfig = registerOutput<InstanceReadPoolConfig?>(
+      'readPoolConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceReadPoolConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     reconciling = registerOutput<bool>('reconciling');
     this.state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');

@@ -43,6 +43,13 @@ class Alias extends pulumi.CustomResource {
     alias = registerOutput<String>('alias');
     certsInfo = registerOutput<GoogleCloudApigeeV1CertificateResponse>(
       'certsInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudApigeeV1CertificateResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     environmentId = registerOutput<String>('environmentId');
     format = registerOutput<String>('format');

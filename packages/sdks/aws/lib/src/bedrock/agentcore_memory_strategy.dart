@@ -978,6 +978,13 @@ class AgentcoreMemoryStrategy extends pulumi.CustomResource {
        ) {
     configuration = registerOutput<AgentcoreMemoryStrategyConfiguration?>(
       'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentcoreMemoryStrategyConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     memoryExecutionRoleArn = registerOutput<String?>('memoryExecutionRoleArn');
@@ -986,7 +993,16 @@ class AgentcoreMemoryStrategy extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     namespaces = registerOutput<List<String>>('namespaces');
     region = registerOutput<String>('region');
-    timeouts = registerOutput<AgentcoreMemoryStrategyTimeouts?>('timeouts');
+    timeouts = registerOutput<AgentcoreMemoryStrategyTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentcoreMemoryStrategyTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 
@@ -1015,6 +1031,13 @@ class AgentcoreMemoryStrategy extends pulumi.CustomResource {
        ) {
     configuration = registerOutput<AgentcoreMemoryStrategyConfiguration?>(
       'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentcoreMemoryStrategyConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     memoryExecutionRoleArn = registerOutput<String?>('memoryExecutionRoleArn');
@@ -1023,7 +1046,16 @@ class AgentcoreMemoryStrategy extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     namespaces = registerOutput<List<String>>('namespaces');
     region = registerOutput<String>('region');
-    timeouts = registerOutput<AgentcoreMemoryStrategyTimeouts?>('timeouts');
+    timeouts = registerOutput<AgentcoreMemoryStrategyTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentcoreMemoryStrategyTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

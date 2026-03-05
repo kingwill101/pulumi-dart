@@ -39,7 +39,14 @@ class TeamEnvironmentPermission extends pulumi.CustomResource {
     environment = registerOutput<String?>('environment');
     maxOpenDuration = registerOutput<String?>('maxOpenDuration');
     organization = registerOutput<String?>('organization');
-    permission = registerOutput<EnvironmentPermission?>('permission');
+    permission = registerOutput<EnvironmentPermission?>(
+      'permission',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnvironmentPermission.fromValue(guardedValue as String);
+      },
+    );
     project = registerOutput<String?>('project');
     team = registerOutput<String?>('team');
   }

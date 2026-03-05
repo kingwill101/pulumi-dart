@@ -221,6 +221,13 @@ class QuickConnect extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     quickConnectConfig = registerOutput<QuickConnectQuickConnectConfig>(
       'quickConnectConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return QuickConnectQuickConnectConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     quickConnectId = registerOutput<String>('quickConnectId');
     region = registerOutput<String>('region');
@@ -257,6 +264,13 @@ class QuickConnect extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     quickConnectConfig = registerOutput<QuickConnectQuickConnectConfig>(
       'quickConnectConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return QuickConnectQuickConnectConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     quickConnectId = registerOutput<String>('quickConnectId');
     region = registerOutput<String>('region');

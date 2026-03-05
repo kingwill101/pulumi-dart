@@ -183,7 +183,16 @@ class TagInheritanceSetting extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<TagInheritancePropertiesResponse>('properties');
+    properties = registerOutput<TagInheritancePropertiesResponse>(
+      'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TagInheritancePropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

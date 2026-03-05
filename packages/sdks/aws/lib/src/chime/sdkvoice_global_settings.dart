@@ -134,6 +134,13 @@ class SdkvoiceGlobalSettings extends pulumi.CustomResource {
        ) {
     voiceConnector = registerOutput<SdkvoiceGlobalSettingsVoiceConnector>(
       'voiceConnector',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SdkvoiceGlobalSettingsVoiceConnector.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -162,6 +169,13 @@ class SdkvoiceGlobalSettings extends pulumi.CustomResource {
        ) {
     voiceConnector = registerOutput<SdkvoiceGlobalSettingsVoiceConnector>(
       'voiceConnector',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SdkvoiceGlobalSettingsVoiceConnector.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

@@ -457,9 +457,23 @@ class WebAppAssessmentV2Operation extends pulumi.CustomResource {
        ) {
     appSvcContainerSettings = registerOutput<AppSvcContainerSettingsResponse?>(
       'appSvcContainerSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppSvcContainerSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     appSvcNativeSettings = registerOutput<AppSvcNativeSettingsResponse?>(
       'appSvcNativeSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppSvcNativeSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     assessmentType = registerOutput<String?>('assessmentType');
     azureApiVersion = registerOutput<String>('azureApiVersion');
@@ -477,9 +491,25 @@ class WebAppAssessmentV2Operation extends pulumi.CustomResource {
     discoveredEntityLightSummary =
         registerOutput<DiscoveredEntityLightSummaryResponse?>(
           'discoveredEntityLightSummary',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DiscoveredEntityLightSummaryResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     eaSubscriptionId = registerOutput<String?>('eaSubscriptionId');
-    entityUptime = registerOutput<EntityUptimeResponse?>('entityUptime');
+    entityUptime = registerOutput<EntityUptimeResponse?>(
+      'entityUptime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EntityUptimeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     environmentType = registerOutput<String?>('environmentType');
     groupType = registerOutput<String?>('groupType');
     this.name = registerOutput<String>('name');
@@ -494,7 +524,16 @@ class WebAppAssessmentV2Operation extends pulumi.CustomResource {
     sizingCriterion = registerOutput<String?>('sizingCriterion');
     stage = registerOutput<String>('stage');
     status = registerOutput<String>('status');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     timeRange = registerOutput<String?>('timeRange');
     type = registerOutput<String>('type');
     updatedTimestamp = registerOutput<String>('updatedTimestamp');

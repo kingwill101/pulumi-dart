@@ -390,7 +390,16 @@ class Unit extends pulumi.CustomResource {
     );
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
-    maintenance = registerOutput<UnitMaintenance?>('maintenance');
+    maintenance = registerOutput<UnitMaintenance?>(
+      'maintenance',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UnitMaintenance.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     managementMode = registerOutput<String?>('managementMode');
     this.name = registerOutput<String>('name');
     ongoingOperations = registerOutput<List<String>>('ongoingOperations');
@@ -445,7 +454,16 @@ class Unit extends pulumi.CustomResource {
     );
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
-    maintenance = registerOutput<UnitMaintenance?>('maintenance');
+    maintenance = registerOutput<UnitMaintenance?>(
+      'maintenance',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UnitMaintenance.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     managementMode = registerOutput<String?>('managementMode');
     this.name = registerOutput<String>('name');
     ongoingOperations = registerOutput<List<String>>('ongoingOperations');

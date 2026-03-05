@@ -62,6 +62,13 @@ class CompanyJobsV4 extends pulumi.CustomResource {
     careerSiteUri = registerOutput<String>('careerSiteUri');
     derivedInfo = registerOutput<CompanyDerivedInfoResponseJobsV4>(
       'derivedInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CompanyDerivedInfoResponseJobsV4.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     displayName = registerOutput<String>('displayName');
     eeoText = registerOutput<String>('eeoText');

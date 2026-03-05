@@ -147,11 +147,27 @@ class Instance extends pulumi.CustomResource {
        ) {
     acceleratorConfig = registerOutput<AcceleratorConfigResponse>(
       'acceleratorConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AcceleratorConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     bootDiskSizeGb = registerOutput<String>('bootDiskSizeGb');
     bootDiskType = registerOutput<String>('bootDiskType');
     canIpForward = registerOutput<bool>('canIpForward');
-    containerImage = registerOutput<ContainerImageResponse>('containerImage');
+    containerImage = registerOutput<ContainerImageResponse>(
+      'containerImage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContainerImageResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     creator = registerOutput<String>('creator');
     customGpuDriverPath = registerOutput<String>('customGpuDriverPath');
@@ -164,6 +180,13 @@ class Instance extends pulumi.CustomResource {
     instanceMigrationEligibility =
         registerOutput<InstanceMigrationEligibilityResponse>(
           'instanceMigrationEligibility',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceMigrationEligibilityResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     instanceOwners = registerOutput<List<String>>('instanceOwners');
     kmsKey = registerOutput<String>('kmsKey');
@@ -183,11 +206,25 @@ class Instance extends pulumi.CustomResource {
     proxyUri = registerOutput<String>('proxyUri');
     reservationAffinity = registerOutput<ReservationAffinityResponse>(
       'reservationAffinity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReservationAffinityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     serviceAccount = registerOutput<String>('serviceAccount');
     serviceAccountScopes = registerOutput<List<String>>('serviceAccountScopes');
     shieldedInstanceConfig = registerOutput<ShieldedInstanceConfigResponse>(
       'shieldedInstanceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ShieldedInstanceConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     state = registerOutput<String>('state');
     subnet = registerOutput<String>('subnet');
@@ -196,6 +233,15 @@ class Instance extends pulumi.CustomResource {
     upgradeHistory = registerOutput<List<Map<String, dynamic>>>(
       'upgradeHistory',
     );
-    vmImage = registerOutput<VmImageResponse>('vmImage');
+    vmImage = registerOutput<VmImageResponse>(
+      'vmImage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VmImageResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

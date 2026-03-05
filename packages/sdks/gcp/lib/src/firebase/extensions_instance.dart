@@ -404,7 +404,16 @@ class ExtensionsInstance extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    config = registerOutput<ExtensionsInstanceConfig>('config');
+    config = registerOutput<ExtensionsInstanceConfig>(
+      'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtensionsInstanceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     errorStatuses = registerOutput<List<Map<String, dynamic>>>('errorStatuses');
     etag = registerOutput<String>('etag');
@@ -442,7 +451,16 @@ class ExtensionsInstance extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    config = registerOutput<ExtensionsInstanceConfig>('config');
+    config = registerOutput<ExtensionsInstanceConfig>(
+      'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtensionsInstanceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     errorStatuses = registerOutput<List<Map<String, dynamic>>>('errorStatuses');
     etag = registerOutput<String>('etag');

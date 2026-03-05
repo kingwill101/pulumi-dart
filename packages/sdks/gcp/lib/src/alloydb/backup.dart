@@ -895,6 +895,13 @@ class Backup extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     encryptionConfig = registerOutput<BackupEncryptionConfig?>(
       'encryptionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackupEncryptionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     encryptionInfos = registerOutput<List<Map<String, dynamic>>>(
       'encryptionInfos',
@@ -954,6 +961,13 @@ class Backup extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     encryptionConfig = registerOutput<BackupEncryptionConfig?>(
       'encryptionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackupEncryptionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     encryptionInfos = registerOutput<List<Map<String, dynamic>>>(
       'encryptionInfos',

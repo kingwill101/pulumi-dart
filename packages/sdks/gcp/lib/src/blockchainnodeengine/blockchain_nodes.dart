@@ -533,6 +533,13 @@ class BlockchainNodes extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     ethereumDetails = registerOutput<BlockchainNodesEthereumDetails?>(
       'ethereumDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BlockchainNodesEthereumDetails.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
@@ -574,6 +581,13 @@ class BlockchainNodes extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     ethereumDetails = registerOutput<BlockchainNodesEthereumDetails?>(
       'ethereumDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BlockchainNodesEthereumDetails.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');

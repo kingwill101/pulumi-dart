@@ -254,11 +254,36 @@ class Hub extends pulumi.CustomResource {
         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
         options ?? pulumi.CustomResourceOptions(),
       ) {
-    apnsCredential = registerOutput<HubApnsCredential?>('apnsCredential');
+    apnsCredential = registerOutput<HubApnsCredential?>(
+      'apnsCredential',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HubApnsCredential.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     browserCredential = registerOutput<HubBrowserCredential?>(
       'browserCredential',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HubBrowserCredential.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    gcmCredential = registerOutput<HubGcmCredential?>('gcmCredential');
+    gcmCredential = registerOutput<HubGcmCredential?>(
+      'gcmCredential',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HubGcmCredential.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     namespaceName = registerOutput<String>('namespaceName');
@@ -285,11 +310,36 @@ class Hub extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    apnsCredential = registerOutput<HubApnsCredential?>('apnsCredential');
+    apnsCredential = registerOutput<HubApnsCredential?>(
+      'apnsCredential',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HubApnsCredential.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     browserCredential = registerOutput<HubBrowserCredential?>(
       'browserCredential',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HubBrowserCredential.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    gcmCredential = registerOutput<HubGcmCredential?>('gcmCredential');
+    gcmCredential = registerOutput<HubGcmCredential?>(
+      'gcmCredential',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HubGcmCredential.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     namespaceName = registerOutput<String>('namespaceName');

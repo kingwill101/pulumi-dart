@@ -236,9 +236,25 @@ class Application extends pulumi.CustomResource {
     defaultHostname = registerOutput<String>('defaultHostname');
     featureSettings = registerOutput<ApplicationFeatureSettings>(
       'featureSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationFeatureSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     gcrDomain = registerOutput<String>('gcrDomain');
-    iap = registerOutput<ApplicationIap>('iap');
+    iap = registerOutput<ApplicationIap>(
+      'iap',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationIap.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     locationId = registerOutput<String>('locationId');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -280,9 +296,25 @@ class Application extends pulumi.CustomResource {
     defaultHostname = registerOutput<String>('defaultHostname');
     featureSettings = registerOutput<ApplicationFeatureSettings>(
       'featureSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationFeatureSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     gcrDomain = registerOutput<String>('gcrDomain');
-    iap = registerOutput<ApplicationIap>('iap');
+    iap = registerOutput<ApplicationIap>(
+      'iap',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationIap.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     locationId = registerOutput<String>('locationId');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

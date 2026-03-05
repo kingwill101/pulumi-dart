@@ -979,7 +979,16 @@ class VolumeAttach extends pulumi.CustomResource {
     multiattach = registerOutput<bool?>('multiattach');
     region = registerOutput<String>('region');
     tag = registerOutput<String?>('tag');
-    vendorOptions = registerOutput<VolumeAttachVendorOptions?>('vendorOptions');
+    vendorOptions = registerOutput<VolumeAttachVendorOptions?>(
+      'vendorOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VolumeAttachVendorOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     volumeId = registerOutput<String>('volumeId');
   }
 
@@ -1011,7 +1020,16 @@ class VolumeAttach extends pulumi.CustomResource {
     multiattach = registerOutput<bool?>('multiattach');
     region = registerOutput<String>('region');
     tag = registerOutput<String?>('tag');
-    vendorOptions = registerOutput<VolumeAttachVendorOptions?>('vendorOptions');
+    vendorOptions = registerOutput<VolumeAttachVendorOptions?>(
+      'vendorOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VolumeAttachVendorOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     volumeId = registerOutput<String>('volumeId');
   }
 }

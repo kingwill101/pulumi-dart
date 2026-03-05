@@ -87,8 +87,6 @@ class MysqlConfig {
   }
 
   bool get usernameIsSecret => _isSecret('username');
-
 }
 
 final config = MysqlConfig();
-

@@ -207,6 +207,13 @@ class LogMetricFilter extends pulumi.CustomResource {
     logGroupName = registerOutput<String>('logGroupName');
     metricTransformation = registerOutput<LogMetricFilterMetricTransformation>(
       'metricTransformation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LogMetricFilterMetricTransformation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     pattern = registerOutput<String>('pattern');
@@ -240,6 +247,13 @@ class LogMetricFilter extends pulumi.CustomResource {
     logGroupName = registerOutput<String>('logGroupName');
     metricTransformation = registerOutput<LogMetricFilterMetricTransformation>(
       'metricTransformation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LogMetricFilterMetricTransformation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     pattern = registerOutput<String>('pattern');

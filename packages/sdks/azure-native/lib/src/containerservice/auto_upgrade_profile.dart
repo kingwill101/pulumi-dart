@@ -195,9 +195,25 @@ class AutoUpgradeProfile extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     nodeImageSelection = registerOutput<AutoUpgradeNodeImageSelectionResponse?>(
       'nodeImageSelection',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AutoUpgradeNodeImageSelectionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     updateStrategyId = registerOutput<String?>('updateStrategyId');
   }

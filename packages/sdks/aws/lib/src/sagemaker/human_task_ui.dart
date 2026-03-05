@@ -183,7 +183,16 @@ class HumanTaskUI extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    uiTemplate = registerOutput<HumanTaskUIUiTemplate>('uiTemplate');
+    uiTemplate = registerOutput<HumanTaskUIUiTemplate>(
+      'uiTemplate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HumanTaskUIUiTemplate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [HumanTaskUI] resource's state with the given [name] and [id].
@@ -214,6 +223,15 @@ class HumanTaskUI extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    uiTemplate = registerOutput<HumanTaskUIUiTemplate>('uiTemplate');
+    uiTemplate = registerOutput<HumanTaskUIUiTemplate>(
+      'uiTemplate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HumanTaskUIUiTemplate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

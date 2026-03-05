@@ -57,7 +57,8 @@ Future<GetIotDpsResourceResult> getIotDpsResource(
 /// Other available API versions: 2020-03-01, 2020-09-01-preview, 2021-10-15, 2022-02-05, 2022-12-12, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceprovisioningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_deviceprovisioningservices_get_iot_dps_resource_private_endpoint_connection_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetIotDpsResourcePrivateEndpointConnectionResult> getIotDpsResourcePrivateEndpointConnection(
+Future<GetIotDpsResourcePrivateEndpointConnectionResult>
+getIotDpsResourcePrivateEndpointConnection(
   GetIotDpsResourcePrivateEndpointConnectionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

@@ -550,9 +550,23 @@ class AppFlexConsumption extends pulumi.CustomResource {
     appSettings = registerOutput<Map<String, String>?>('appSettings');
     authSettings = registerOutput<AppFlexConsumptionAuthSettings?>(
       'authSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppFlexConsumptionAuthSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     authSettingsV2 = registerOutput<AppFlexConsumptionAuthSettingsV2?>(
       'authSettingsV2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppFlexConsumptionAuthSettingsV2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clientCertificateEnabled = registerOutput<bool?>(
       'clientCertificateEnabled',
@@ -572,7 +586,16 @@ class AppFlexConsumption extends pulumi.CustomResource {
     hostingEnvironmentId = registerOutput<String>('hostingEnvironmentId');
     httpConcurrency = registerOutput<int?>('httpConcurrency');
     httpsOnly = registerOutput<bool?>('httpsOnly');
-    identity = registerOutput<AppFlexConsumptionIdentity?>('identity');
+    identity = registerOutput<AppFlexConsumptionIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppFlexConsumptionIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     instanceMemoryInMb = registerOutput<int?>('instanceMemoryInMb');
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
@@ -595,12 +618,28 @@ class AppFlexConsumption extends pulumi.CustomResource {
     runtimeName = registerOutput<String>('runtimeName');
     runtimeVersion = registerOutput<String>('runtimeVersion');
     servicePlanId = registerOutput<String>('servicePlanId');
-    siteConfig = registerOutput<AppFlexConsumptionSiteConfig>('siteConfig');
+    siteConfig = registerOutput<AppFlexConsumptionSiteConfig>(
+      'siteConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppFlexConsumptionSiteConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     siteCredentials = registerOutput<List<Map<String, dynamic>>>(
       'siteCredentials',
     );
     stickySettings = registerOutput<AppFlexConsumptionStickySettings?>(
       'stickySettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppFlexConsumptionStickySettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     storageAccessKey = registerOutput<String?>('storageAccessKey');
     storageAuthenticationType = registerOutput<String>(
@@ -650,9 +689,23 @@ class AppFlexConsumption extends pulumi.CustomResource {
     appSettings = registerOutput<Map<String, String>?>('appSettings');
     authSettings = registerOutput<AppFlexConsumptionAuthSettings?>(
       'authSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppFlexConsumptionAuthSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     authSettingsV2 = registerOutput<AppFlexConsumptionAuthSettingsV2?>(
       'authSettingsV2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppFlexConsumptionAuthSettingsV2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clientCertificateEnabled = registerOutput<bool?>(
       'clientCertificateEnabled',
@@ -672,7 +725,16 @@ class AppFlexConsumption extends pulumi.CustomResource {
     hostingEnvironmentId = registerOutput<String>('hostingEnvironmentId');
     httpConcurrency = registerOutput<int?>('httpConcurrency');
     httpsOnly = registerOutput<bool?>('httpsOnly');
-    identity = registerOutput<AppFlexConsumptionIdentity?>('identity');
+    identity = registerOutput<AppFlexConsumptionIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppFlexConsumptionIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     instanceMemoryInMb = registerOutput<int?>('instanceMemoryInMb');
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
@@ -695,12 +757,28 @@ class AppFlexConsumption extends pulumi.CustomResource {
     runtimeName = registerOutput<String>('runtimeName');
     runtimeVersion = registerOutput<String>('runtimeVersion');
     servicePlanId = registerOutput<String>('servicePlanId');
-    siteConfig = registerOutput<AppFlexConsumptionSiteConfig>('siteConfig');
+    siteConfig = registerOutput<AppFlexConsumptionSiteConfig>(
+      'siteConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppFlexConsumptionSiteConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     siteCredentials = registerOutput<List<Map<String, dynamic>>>(
       'siteCredentials',
     );
     stickySettings = registerOutput<AppFlexConsumptionStickySettings?>(
       'stickySettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppFlexConsumptionStickySettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     storageAccessKey = registerOutput<String?>('storageAccessKey');
     storageAuthenticationType = registerOutput<String>(

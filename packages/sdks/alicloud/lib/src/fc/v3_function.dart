@@ -692,16 +692,48 @@ class V3Function extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    code = registerOutput<V3FunctionCode?>('code');
+    code = registerOutput<V3FunctionCode?>(
+      'code',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V3FunctionCode.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     codeSize = registerOutput<int>('codeSize');
     cpu = registerOutput<double>('cpu');
     createTime = registerOutput<String>('createTime');
     customContainerConfig = registerOutput<V3FunctionCustomContainerConfig?>(
       'customContainerConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V3FunctionCustomContainerConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    customDns = registerOutput<V3FunctionCustomDns?>('customDns');
+    customDns = registerOutput<V3FunctionCustomDns?>(
+      'customDns',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V3FunctionCustomDns.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     customRuntimeConfig = registerOutput<V3FunctionCustomRuntimeConfig?>(
       'customRuntimeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V3FunctionCustomRuntimeConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     diskSize = registerOutput<int>('diskSize');
@@ -711,7 +743,16 @@ class V3Function extends pulumi.CustomResource {
     functionArn = registerOutput<String>('functionArn');
     functionId = registerOutput<String>('functionId');
     functionName = registerOutput<String>('functionName');
-    gpuConfig = registerOutput<V3FunctionGpuConfig?>('gpuConfig');
+    gpuConfig = registerOutput<V3FunctionGpuConfig?>(
+      'gpuConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V3FunctionGpuConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     handler = registerOutput<String>('handler');
     idleTimeout = registerOutput<int?>('idleTimeout');
     instanceConcurrency = registerOutput<int>('instanceConcurrency');
@@ -719,10 +760,24 @@ class V3Function extends pulumi.CustomResource {
     instanceLifecycleConfig =
         registerOutput<V3FunctionInstanceLifecycleConfig?>(
           'instanceLifecycleConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return V3FunctionInstanceLifecycleConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     internetAccess = registerOutput<bool>('internetAccess');
     invocationRestriction = registerOutput<V3FunctionInvocationRestriction?>(
       'invocationRestriction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V3FunctionInvocationRestriction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     lastUpdateStatus = registerOutput<String>('lastUpdateStatus');
@@ -731,10 +786,37 @@ class V3Function extends pulumi.CustomResource {
       'lastUpdateStatusReasonCode',
     );
     layers = registerOutput<List<String>?>('layers');
-    logConfig = registerOutput<V3FunctionLogConfig?>('logConfig');
+    logConfig = registerOutput<V3FunctionLogConfig?>(
+      'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V3FunctionLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     memorySize = registerOutput<int>('memorySize');
-    nasConfig = registerOutput<V3FunctionNasConfig>('nasConfig');
-    ossMountConfig = registerOutput<V3FunctionOssMountConfig>('ossMountConfig');
+    nasConfig = registerOutput<V3FunctionNasConfig>(
+      'nasConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V3FunctionNasConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    ossMountConfig = registerOutput<V3FunctionOssMountConfig>(
+      'ossMountConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V3FunctionOssMountConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupId = registerOutput<String>('resourceGroupId');
     role = registerOutput<String?>('role');
     runtime = registerOutput<String>('runtime');
@@ -745,8 +827,26 @@ class V3Function extends pulumi.CustomResource {
     stateReasonCode = registerOutput<String>('stateReasonCode');
     tags = registerOutput<Map<String, String>?>('tags');
     timeout = registerOutput<int>('timeout');
-    tracingConfig = registerOutput<V3FunctionTracingConfig>('tracingConfig');
-    vpcConfig = registerOutput<V3FunctionVpcConfig>('vpcConfig');
+    tracingConfig = registerOutput<V3FunctionTracingConfig>(
+      'tracingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V3FunctionTracingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    vpcConfig = registerOutput<V3FunctionVpcConfig>(
+      'vpcConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V3FunctionVpcConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [V3Function] resource's state with the given [name] and [id].
@@ -772,16 +872,48 @@ class V3Function extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    code = registerOutput<V3FunctionCode?>('code');
+    code = registerOutput<V3FunctionCode?>(
+      'code',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V3FunctionCode.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     codeSize = registerOutput<int>('codeSize');
     cpu = registerOutput<double>('cpu');
     createTime = registerOutput<String>('createTime');
     customContainerConfig = registerOutput<V3FunctionCustomContainerConfig?>(
       'customContainerConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V3FunctionCustomContainerConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    customDns = registerOutput<V3FunctionCustomDns?>('customDns');
+    customDns = registerOutput<V3FunctionCustomDns?>(
+      'customDns',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V3FunctionCustomDns.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     customRuntimeConfig = registerOutput<V3FunctionCustomRuntimeConfig?>(
       'customRuntimeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V3FunctionCustomRuntimeConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     diskSize = registerOutput<int>('diskSize');
@@ -791,7 +923,16 @@ class V3Function extends pulumi.CustomResource {
     functionArn = registerOutput<String>('functionArn');
     functionId = registerOutput<String>('functionId');
     functionName = registerOutput<String>('functionName');
-    gpuConfig = registerOutput<V3FunctionGpuConfig?>('gpuConfig');
+    gpuConfig = registerOutput<V3FunctionGpuConfig?>(
+      'gpuConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V3FunctionGpuConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     handler = registerOutput<String>('handler');
     idleTimeout = registerOutput<int?>('idleTimeout');
     instanceConcurrency = registerOutput<int>('instanceConcurrency');
@@ -799,10 +940,24 @@ class V3Function extends pulumi.CustomResource {
     instanceLifecycleConfig =
         registerOutput<V3FunctionInstanceLifecycleConfig?>(
           'instanceLifecycleConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return V3FunctionInstanceLifecycleConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     internetAccess = registerOutput<bool>('internetAccess');
     invocationRestriction = registerOutput<V3FunctionInvocationRestriction?>(
       'invocationRestriction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V3FunctionInvocationRestriction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     lastUpdateStatus = registerOutput<String>('lastUpdateStatus');
@@ -811,10 +966,37 @@ class V3Function extends pulumi.CustomResource {
       'lastUpdateStatusReasonCode',
     );
     layers = registerOutput<List<String>?>('layers');
-    logConfig = registerOutput<V3FunctionLogConfig?>('logConfig');
+    logConfig = registerOutput<V3FunctionLogConfig?>(
+      'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V3FunctionLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     memorySize = registerOutput<int>('memorySize');
-    nasConfig = registerOutput<V3FunctionNasConfig>('nasConfig');
-    ossMountConfig = registerOutput<V3FunctionOssMountConfig>('ossMountConfig');
+    nasConfig = registerOutput<V3FunctionNasConfig>(
+      'nasConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V3FunctionNasConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    ossMountConfig = registerOutput<V3FunctionOssMountConfig>(
+      'ossMountConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V3FunctionOssMountConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupId = registerOutput<String>('resourceGroupId');
     role = registerOutput<String?>('role');
     runtime = registerOutput<String>('runtime');
@@ -825,7 +1007,25 @@ class V3Function extends pulumi.CustomResource {
     stateReasonCode = registerOutput<String>('stateReasonCode');
     tags = registerOutput<Map<String, String>?>('tags');
     timeout = registerOutput<int>('timeout');
-    tracingConfig = registerOutput<V3FunctionTracingConfig>('tracingConfig');
-    vpcConfig = registerOutput<V3FunctionVpcConfig>('vpcConfig');
+    tracingConfig = registerOutput<V3FunctionTracingConfig>(
+      'tracingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V3FunctionTracingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    vpcConfig = registerOutput<V3FunctionVpcConfig>(
+      'vpcConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V3FunctionVpcConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

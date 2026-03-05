@@ -170,7 +170,16 @@ class Alias extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    routingStrategy = registerOutput<AliasRoutingStrategy>('routingStrategy');
+    routingStrategy = registerOutput<AliasRoutingStrategy>(
+      'routingStrategy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AliasRoutingStrategy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
@@ -198,7 +207,16 @@ class Alias extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    routingStrategy = registerOutput<AliasRoutingStrategy>('routingStrategy');
+    routingStrategy = registerOutput<AliasRoutingStrategy>(
+      'routingStrategy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AliasRoutingStrategy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }

@@ -316,7 +316,16 @@ class S3Location extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');
     s3BucketArn = registerOutput<String>('s3BucketArn');
-    s3Config = registerOutput<S3LocationS3Config>('s3Config');
+    s3Config = registerOutput<S3LocationS3Config>(
+      's3Config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return S3LocationS3Config.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     s3StorageClass = registerOutput<String>('s3StorageClass');
     subdirectory = registerOutput<String>('subdirectory');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -351,7 +360,16 @@ class S3Location extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');
     s3BucketArn = registerOutput<String>('s3BucketArn');
-    s3Config = registerOutput<S3LocationS3Config>('s3Config');
+    s3Config = registerOutput<S3LocationS3Config>(
+      's3Config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return S3LocationS3Config.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     s3StorageClass = registerOutput<String>('s3StorageClass');
     subdirectory = registerOutput<String>('subdirectory');
     tags = registerOutput<Map<String, String>?>('tags');

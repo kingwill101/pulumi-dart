@@ -1774,7 +1774,16 @@ class LkeCluster extends pulumi.CustomResource {
        ) {
     apiEndpoints = registerOutput<List<String>>('apiEndpoints');
     aplEnabled = registerOutput<bool>('aplEnabled');
-    controlPlane = registerOutput<LkeClusterControlPlane>('controlPlane');
+    controlPlane = registerOutput<LkeClusterControlPlane>(
+      'controlPlane',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LkeClusterControlPlane.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dashboardUrl = registerOutput<String>('dashboardUrl');
     externalPoolTags = registerOutput<List<String>?>('externalPoolTags');
     k8sVersion = registerOutput<String>('k8sVersion');
@@ -1815,7 +1824,16 @@ class LkeCluster extends pulumi.CustomResource {
        ) {
     apiEndpoints = registerOutput<List<String>>('apiEndpoints');
     aplEnabled = registerOutput<bool>('aplEnabled');
-    controlPlane = registerOutput<LkeClusterControlPlane>('controlPlane');
+    controlPlane = registerOutput<LkeClusterControlPlane>(
+      'controlPlane',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LkeClusterControlPlane.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dashboardUrl = registerOutput<String>('dashboardUrl');
     externalPoolTags = registerOutput<List<String>?>('externalPoolTags');
     k8sVersion = registerOutput<String>('k8sVersion');

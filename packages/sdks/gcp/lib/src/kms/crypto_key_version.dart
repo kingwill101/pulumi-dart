@@ -238,6 +238,13 @@ class CryptoKeyVersion extends pulumi.CustomResource {
     externalProtectionLevelOptions =
         registerOutput<CryptoKeyVersionExternalProtectionLevelOptions?>(
           'externalProtectionLevelOptions',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CryptoKeyVersionExternalProtectionLevelOptions.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     generateTime = registerOutput<String>('generateTime');
     this.name = registerOutput<String>('name');
@@ -274,6 +281,13 @@ class CryptoKeyVersion extends pulumi.CustomResource {
     externalProtectionLevelOptions =
         registerOutput<CryptoKeyVersionExternalProtectionLevelOptions?>(
           'externalProtectionLevelOptions',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CryptoKeyVersionExternalProtectionLevelOptions.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     generateTime = registerOutput<String>('generateTime');
     this.name = registerOutput<String>('name');

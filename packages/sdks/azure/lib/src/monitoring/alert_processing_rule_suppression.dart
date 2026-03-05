@@ -424,6 +424,13 @@ class AlertProcessingRuleSuppression extends pulumi.CustomResource {
        ) {
     condition = registerOutput<AlertProcessingRuleSuppressionCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlertProcessingRuleSuppressionCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
@@ -431,6 +438,13 @@ class AlertProcessingRuleSuppression extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     schedule = registerOutput<AlertProcessingRuleSuppressionSchedule?>(
       'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlertProcessingRuleSuppressionSchedule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     scopes = registerOutput<List<String>>('scopes');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -461,6 +475,13 @@ class AlertProcessingRuleSuppression extends pulumi.CustomResource {
        ) {
     condition = registerOutput<AlertProcessingRuleSuppressionCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlertProcessingRuleSuppressionCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
@@ -468,6 +489,13 @@ class AlertProcessingRuleSuppression extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     schedule = registerOutput<AlertProcessingRuleSuppressionSchedule?>(
       'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlertProcessingRuleSuppressionSchedule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     scopes = registerOutput<List<String>>('scopes');
     tags = registerOutput<Map<String, String>?>('tags');

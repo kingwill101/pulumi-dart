@@ -325,16 +325,46 @@ class VirtualMachine extends pulumi.CustomResource {
     customResourceName = registerOutput<String>('customResourceName');
     extendedLocation = registerOutput<ExtendedLocationResponse?>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     firmwareType = registerOutput<String?>('firmwareType');
     folderPath = registerOutput<String>('folderPath');
     guestAgentProfile = registerOutput<GuestAgentProfileResponse?>(
       'guestAgentProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GuestAgentProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     hardwareProfile = registerOutput<HardwareProfileResponse?>(
       'hardwareProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HardwareProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    identity = registerOutput<IdentityResponse?>('identity');
+    identity = registerOutput<IdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     instanceUuid = registerOutput<String>('instanceUuid');
     inventoryItemId = registerOutput<String?>('inventoryItemId');
     kind = registerOutput<String?>('kind');
@@ -342,21 +372,71 @@ class VirtualMachine extends pulumi.CustomResource {
     moName = registerOutput<String>('moName');
     moRefId = registerOutput<String?>('moRefId');
     this.name = registerOutput<String>('name');
-    networkProfile = registerOutput<NetworkProfileResponse?>('networkProfile');
-    osProfile = registerOutput<OsProfileResponse?>('osProfile');
+    networkProfile = registerOutput<NetworkProfileResponse?>(
+      'networkProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    osProfile = registerOutput<OsProfileResponse?>(
+      'osProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OsProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     placementProfile = registerOutput<PlacementProfileResponse?>(
       'placementProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PlacementProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     powerState = registerOutput<String>('powerState');
     provisioningState = registerOutput<String>('provisioningState');
     resourcePoolId = registerOutput<String?>('resourcePoolId');
     securityProfile = registerOutput<SecurityProfileResponse?>(
       'securityProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     smbiosUuid = registerOutput<String?>('smbiosUuid');
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
-    storageProfile = registerOutput<StorageProfileResponse?>('storageProfile');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    storageProfile = registerOutput<StorageProfileResponse?>(
+      'storageProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StorageProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     templateId = registerOutput<String?>('templateId');
     type = registerOutput<String>('type');

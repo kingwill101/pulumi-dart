@@ -782,11 +782,27 @@ class DiJob extends pulumi.CustomResource {
     );
     diJobId = registerOutput<int>('diJobId');
     jobName = registerOutput<String>('jobName');
-    jobSettings = registerOutput<DiJobJobSettings?>('jobSettings');
+    jobSettings = registerOutput<DiJobJobSettings?>(
+      'jobSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiJobJobSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     migrationType = registerOutput<String>('migrationType');
     projectId = registerOutput<int>('projectId');
     resourceSettings = registerOutput<DiJobResourceSettings>(
       'resourceSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiJobResourceSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sourceDataSourceSettings = registerOutput<List<Map<String, dynamic>>>(
       'sourceDataSourceSettings',
@@ -826,11 +842,27 @@ class DiJob extends pulumi.CustomResource {
     );
     diJobId = registerOutput<int>('diJobId');
     jobName = registerOutput<String>('jobName');
-    jobSettings = registerOutput<DiJobJobSettings?>('jobSettings');
+    jobSettings = registerOutput<DiJobJobSettings?>(
+      'jobSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiJobJobSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     migrationType = registerOutput<String>('migrationType');
     projectId = registerOutput<int>('projectId');
     resourceSettings = registerOutput<DiJobResourceSettings>(
       'resourceSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiJobResourceSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sourceDataSourceSettings = registerOutput<List<Map<String, dynamic>>>(
       'sourceDataSourceSettings',

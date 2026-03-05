@@ -67,19 +67,49 @@ class PacketMirroringComputeBeta extends pulumi.CustomResource {
     collectorIlb =
         registerOutput<PacketMirroringForwardingRuleInfoResponseComputeBeta>(
           'collectorIlb',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PacketMirroringForwardingRuleInfoResponseComputeBeta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');
     enable = registerOutput<String>('enable');
-    filter = registerOutput<PacketMirroringFilterResponseComputeBeta>('filter');
+    filter = registerOutput<PacketMirroringFilterResponseComputeBeta>(
+      'filter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PacketMirroringFilterResponseComputeBeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kind = registerOutput<String>('kind');
     mirroredResources =
         registerOutput<PacketMirroringMirroredResourceInfoResponseComputeBeta>(
           'mirroredResources',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PacketMirroringMirroredResourceInfoResponseComputeBeta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     network = registerOutput<PacketMirroringNetworkInfoResponseComputeBeta>(
       'network',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PacketMirroringNetworkInfoResponseComputeBeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     priority = registerOutput<int>('priority');
     project = registerOutput<String>('project');

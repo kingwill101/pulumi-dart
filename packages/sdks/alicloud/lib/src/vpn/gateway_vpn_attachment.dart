@@ -1081,7 +1081,16 @@ class GatewayVpnAttachment extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    bgpConfig = registerOutput<GatewayVpnAttachmentBgpConfig>('bgpConfig');
+    bgpConfig = registerOutput<GatewayVpnAttachmentBgpConfig>(
+      'bgpConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GatewayVpnAttachmentBgpConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     customerGatewayId = registerOutput<String?>('customerGatewayId');
     effectImmediately = registerOutput<bool>('effectImmediately');
@@ -1090,10 +1099,33 @@ class GatewayVpnAttachment extends pulumi.CustomResource {
     enableTunnelsBgp = registerOutput<bool>('enableTunnelsBgp');
     healthCheckConfig = registerOutput<GatewayVpnAttachmentHealthCheckConfig>(
       'healthCheckConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GatewayVpnAttachmentHealthCheckConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    ikeConfig = registerOutput<GatewayVpnAttachmentIkeConfig>('ikeConfig');
+    ikeConfig = registerOutput<GatewayVpnAttachmentIkeConfig>(
+      'ikeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GatewayVpnAttachmentIkeConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ipsecConfig = registerOutput<GatewayVpnAttachmentIpsecConfig>(
       'ipsecConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GatewayVpnAttachmentIpsecConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     localSubnet = registerOutput<String>('localSubnet');
     networkType = registerOutput<String>('networkType');
@@ -1130,7 +1162,16 @@ class GatewayVpnAttachment extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    bgpConfig = registerOutput<GatewayVpnAttachmentBgpConfig>('bgpConfig');
+    bgpConfig = registerOutput<GatewayVpnAttachmentBgpConfig>(
+      'bgpConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GatewayVpnAttachmentBgpConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     customerGatewayId = registerOutput<String?>('customerGatewayId');
     effectImmediately = registerOutput<bool>('effectImmediately');
@@ -1139,10 +1180,33 @@ class GatewayVpnAttachment extends pulumi.CustomResource {
     enableTunnelsBgp = registerOutput<bool>('enableTunnelsBgp');
     healthCheckConfig = registerOutput<GatewayVpnAttachmentHealthCheckConfig>(
       'healthCheckConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GatewayVpnAttachmentHealthCheckConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    ikeConfig = registerOutput<GatewayVpnAttachmentIkeConfig>('ikeConfig');
+    ikeConfig = registerOutput<GatewayVpnAttachmentIkeConfig>(
+      'ikeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GatewayVpnAttachmentIkeConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ipsecConfig = registerOutput<GatewayVpnAttachmentIpsecConfig>(
       'ipsecConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GatewayVpnAttachmentIpsecConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     localSubnet = registerOutput<String>('localSubnet');
     networkType = registerOutput<String>('networkType');

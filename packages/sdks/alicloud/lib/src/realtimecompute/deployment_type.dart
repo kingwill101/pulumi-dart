@@ -510,14 +510,37 @@ class DeploymentType extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    artifact = registerOutput<DeploymentArtifact>('artifact');
+    artifact = registerOutput<DeploymentArtifact>(
+      'artifact',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentArtifact.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     batchResourceSetting = registerOutput<DeploymentBatchResourceSetting?>(
       'batchResourceSetting',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentBatchResourceSetting.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     deploymentId = registerOutput<String>('deploymentId');
     deploymentName = registerOutput<String>('deploymentName');
     deploymentTarget = registerOutput<DeploymentDeploymentTarget>(
       'deploymentTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentDeploymentTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     engineVersion = registerOutput<String>('engineVersion');
@@ -527,12 +550,28 @@ class DeploymentType extends pulumi.CustomResource {
     localVariables = registerOutput<List<Map<String, dynamic>>?>(
       'localVariables',
     );
-    logging = registerOutput<DeploymentLogging>('logging');
+    logging = registerOutput<DeploymentLogging>(
+      'logging',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentLogging.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     namespace = registerOutput<String>('namespace');
     resourceId = registerOutput<String>('resourceId');
     streamingResourceSetting =
         registerOutput<DeploymentStreamingResourceSetting>(
           'streamingResourceSetting',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DeploymentStreamingResourceSetting.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 
@@ -559,14 +598,37 @@ class DeploymentType extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    artifact = registerOutput<DeploymentArtifact>('artifact');
+    artifact = registerOutput<DeploymentArtifact>(
+      'artifact',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentArtifact.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     batchResourceSetting = registerOutput<DeploymentBatchResourceSetting?>(
       'batchResourceSetting',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentBatchResourceSetting.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     deploymentId = registerOutput<String>('deploymentId');
     deploymentName = registerOutput<String>('deploymentName');
     deploymentTarget = registerOutput<DeploymentDeploymentTarget>(
       'deploymentTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentDeploymentTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     engineVersion = registerOutput<String>('engineVersion');
@@ -576,12 +638,28 @@ class DeploymentType extends pulumi.CustomResource {
     localVariables = registerOutput<List<Map<String, dynamic>>?>(
       'localVariables',
     );
-    logging = registerOutput<DeploymentLogging>('logging');
+    logging = registerOutput<DeploymentLogging>(
+      'logging',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentLogging.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     namespace = registerOutput<String>('namespace');
     resourceId = registerOutput<String>('resourceId');
     streamingResourceSetting =
         registerOutput<DeploymentStreamingResourceSetting>(
           'streamingResourceSetting',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DeploymentStreamingResourceSetting.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

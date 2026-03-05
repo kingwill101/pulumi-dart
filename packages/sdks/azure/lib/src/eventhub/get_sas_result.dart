@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getSas.
 class GetSasResult {
   final String connectionString;
   final String expiry;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The computed Event Hub Shared Access Signature (SAS).
   final String sas;
 
@@ -40,4 +41,3 @@ class GetSasResult {
     );
   }
 }
-

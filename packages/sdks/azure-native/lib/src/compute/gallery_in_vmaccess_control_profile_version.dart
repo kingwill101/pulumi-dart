@@ -452,9 +452,34 @@ class GalleryInVMAccessControlProfileVersion extends pulumi.CustomResource {
     publishedDate = registerOutput<String>('publishedDate');
     replicationStatus = registerOutput<ReplicationStatusResponse>(
       'replicationStatus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReplicationStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    rules = registerOutput<AccessControlRulesResponse?>('rules');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    rules = registerOutput<AccessControlRulesResponse?>(
+      'rules',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccessControlRulesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     targetLocations = registerOutput<List<Map<String, dynamic>>?>(
       'targetLocations',

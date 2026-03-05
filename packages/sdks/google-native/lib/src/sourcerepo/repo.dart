@@ -31,7 +31,16 @@ class Repo extends pulumi.CustomResource {
         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
         options ?? pulumi.CustomResourceOptions(),
       ) {
-    mirrorConfig = registerOutput<MirrorConfigResponse>('mirrorConfig');
+    mirrorConfig = registerOutput<MirrorConfigResponse>(
+      'mirrorConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MirrorConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pubsubConfigs = registerOutput<Map<String, String>>('pubsubConfigs');

@@ -553,7 +553,16 @@ class ExpressRouteConnection extends pulumi.CustomResource {
     privateLinkFastPathEnabled = registerOutput<bool?>(
       'privateLinkFastPathEnabled',
     );
-    routing = registerOutput<ExpressRouteConnectionRouting>('routing');
+    routing = registerOutput<ExpressRouteConnectionRouting>(
+      'routing',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExpressRouteConnectionRouting.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     routingWeight = registerOutput<int?>('routingWeight');
   }
 
@@ -593,7 +602,16 @@ class ExpressRouteConnection extends pulumi.CustomResource {
     privateLinkFastPathEnabled = registerOutput<bool?>(
       'privateLinkFastPathEnabled',
     );
-    routing = registerOutput<ExpressRouteConnectionRouting>('routing');
+    routing = registerOutput<ExpressRouteConnectionRouting>(
+      'routing',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExpressRouteConnectionRouting.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     routingWeight = registerOutput<int?>('routingWeight');
   }
 }

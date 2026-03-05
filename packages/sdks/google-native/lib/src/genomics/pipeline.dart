@@ -44,7 +44,16 @@ class Pipeline extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     description = registerOutput<String>('description');
-    docker = registerOutput<DockerExecutorResponse>('docker');
+    docker = registerOutput<DockerExecutorResponse>(
+      'docker',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DockerExecutorResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     inputParameters = registerOutput<List<Map<String, dynamic>>>(
       'inputParameters',
     );
@@ -54,6 +63,15 @@ class Pipeline extends pulumi.CustomResource {
     );
     pipelineId = registerOutput<String>('pipelineId');
     project = registerOutput<String>('project');
-    resources = registerOutput<PipelineResourcesResponse>('resources');
+    resources = registerOutput<PipelineResourcesResponse>(
+      'resources',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineResourcesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

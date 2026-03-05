@@ -194,7 +194,16 @@ class HybridRunbookWorker extends pulumi.CustomResource {
     lastSeenDateTime = registerOutput<String?>('lastSeenDateTime');
     this.name = registerOutput<String>('name');
     registeredDateTime = registerOutput<String?>('registeredDateTime');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     vmResourceId = registerOutput<String?>('vmResourceId');
     workerName = registerOutput<String?>('workerName');

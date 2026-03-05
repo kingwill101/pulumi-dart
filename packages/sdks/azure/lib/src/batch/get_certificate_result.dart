@@ -1,19 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getCertificate.
 class GetCertificateResult {
   final String accountName;
+
   /// The format of the certificate, such as `Cer` or `Pfx`.
   final String format;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
+
   /// The public key of the certificate.
   final String publicData;
   final String resourceGroupName;
+
   /// The thumbprint of the certificate.
   final String thumbprint;
+
   /// The algorithm of the certificate thumbprint.
   final String thumbprintAlgorithm;
 
@@ -63,4 +67,3 @@ class GetCertificateResult {
     );
   }
 }
-

@@ -541,7 +541,16 @@ class V2QueuedResource extends pulumi.CustomResource {
        ) {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    tpu = registerOutput<V2QueuedResourceTpu?>('tpu');
+    tpu = registerOutput<V2QueuedResourceTpu?>(
+      'tpu',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2QueuedResourceTpu.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     zone = registerOutput<String>('zone');
   }
 
@@ -570,7 +579,16 @@ class V2QueuedResource extends pulumi.CustomResource {
        ) {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    tpu = registerOutput<V2QueuedResourceTpu?>('tpu');
+    tpu = registerOutput<V2QueuedResourceTpu?>(
+      'tpu',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2QueuedResourceTpu.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     zone = registerOutput<String>('zone');
   }
 }

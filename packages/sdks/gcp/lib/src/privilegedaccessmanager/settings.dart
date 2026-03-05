@@ -339,6 +339,13 @@ class Settings extends pulumi.CustomResource {
     emailNotificationSettings =
         registerOutput<SettingsEmailNotificationSettings?>(
           'emailNotificationSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SettingsEmailNotificationSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
@@ -347,6 +354,13 @@ class Settings extends pulumi.CustomResource {
     serviceAccountApproverSettings =
         registerOutput<SettingsServiceAccountApproverSettings?>(
           'serviceAccountApproverSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SettingsServiceAccountApproverSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     updateTime = registerOutput<String>('updateTime');
   }
@@ -378,6 +392,13 @@ class Settings extends pulumi.CustomResource {
     emailNotificationSettings =
         registerOutput<SettingsEmailNotificationSettings?>(
           'emailNotificationSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SettingsEmailNotificationSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
@@ -386,6 +407,13 @@ class Settings extends pulumi.CustomResource {
     serviceAccountApproverSettings =
         registerOutput<SettingsServiceAccountApproverSettings?>(
           'serviceAccountApproverSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SettingsServiceAccountApproverSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     updateTime = registerOutput<String>('updateTime');
   }

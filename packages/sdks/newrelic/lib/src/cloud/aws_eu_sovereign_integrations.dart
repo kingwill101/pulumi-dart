@@ -458,12 +458,37 @@ class AwsEuSovereignIntegrations extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     accountId = registerOutput<String>('accountId');
-    billing = registerOutput<AwsEuSovereignIntegrationsBilling?>('billing');
+    billing = registerOutput<AwsEuSovereignIntegrationsBilling?>(
+      'billing',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsEuSovereignIntegrationsBilling.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     cloudtrail = registerOutput<AwsEuSovereignIntegrationsCloudtrail?>(
       'cloudtrail',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsEuSovereignIntegrationsCloudtrail.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     linkedAccountId = registerOutput<String>('linkedAccountId');
-    xRay = registerOutput<AwsEuSovereignIntegrationsXRay?>('xRay');
+    xRay = registerOutput<AwsEuSovereignIntegrationsXRay?>(
+      'xRay',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsEuSovereignIntegrationsXRay.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [AwsEuSovereignIntegrations] resource's state with the given [name] and [id].
@@ -490,11 +515,36 @@ class AwsEuSovereignIntegrations extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     accountId = registerOutput<String>('accountId');
-    billing = registerOutput<AwsEuSovereignIntegrationsBilling?>('billing');
+    billing = registerOutput<AwsEuSovereignIntegrationsBilling?>(
+      'billing',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsEuSovereignIntegrationsBilling.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     cloudtrail = registerOutput<AwsEuSovereignIntegrationsCloudtrail?>(
       'cloudtrail',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsEuSovereignIntegrationsCloudtrail.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     linkedAccountId = registerOutput<String>('linkedAccountId');
-    xRay = registerOutput<AwsEuSovereignIntegrationsXRay?>('xRay');
+    xRay = registerOutput<AwsEuSovereignIntegrationsXRay?>(
+      'xRay',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsEuSovereignIntegrationsXRay.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

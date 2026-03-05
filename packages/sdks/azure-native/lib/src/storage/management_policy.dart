@@ -3026,7 +3026,16 @@ class ManagementPolicy extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     this.name = registerOutput<String>('name');
-    policy = registerOutput<ManagementPolicySchemaResponse>('policy');
+    policy = registerOutput<ManagementPolicySchemaResponse>(
+      'policy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagementPolicySchemaResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

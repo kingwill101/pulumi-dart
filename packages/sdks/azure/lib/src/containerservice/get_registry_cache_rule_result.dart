@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getRegistryCacheRule.
 class GetRegistryCacheRuleResult {
   final String containerRegistryId;
+
   /// The ARM resource ID of the credential store which is associated with the cache rule.
   final String credentialSetId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
+
   /// The name of the source repository path.
   final String sourceRepo;
+
   /// The name of the new repository path to store artifacts.
   final String targetRepo;
 
@@ -52,4 +55,3 @@ class GetRegistryCacheRuleResult {
     );
   }
 }
-

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getEventHub.
 class GetEventHubResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
   final String namespaceName;
+
   /// The number of partitions in the EventHub.
   final int partitionCount;
+
   /// The identifiers for the partitions of this EventHub.
   final List<String> partitionIds;
   final String resourceGroupName;
@@ -51,4 +52,3 @@ class GetEventHubResult {
     );
   }
 }
-

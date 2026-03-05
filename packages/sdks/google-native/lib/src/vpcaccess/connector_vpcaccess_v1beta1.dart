@@ -69,6 +69,15 @@ class ConnectorVpcaccessV1beta1 extends pulumi.CustomResource {
     network = registerOutput<String>('network');
     project = registerOutput<String>('project');
     state = registerOutput<String>('state');
-    subnet = registerOutput<SubnetResponseVpcaccessV1beta1>('subnet');
+    subnet = registerOutput<SubnetResponseVpcaccessV1beta1>(
+      'subnet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubnetResponseVpcaccessV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

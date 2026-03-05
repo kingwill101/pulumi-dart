@@ -71,6 +71,13 @@ class WebAppSourceControl extends pulumi.CustomResource {
     gitHubActionConfiguration =
         registerOutput<GitHubActionConfigurationResponse?>(
           'gitHubActionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GitHubActionConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     isGitHubAction = registerOutput<bool?>('isGitHubAction');
     isManualIntegration = registerOutput<bool?>('isManualIntegration');

@@ -760,6 +760,13 @@ class Workflow extends pulumi.CustomResource {
     generationLanguage = registerOutput<String?>('generationLanguage');
     githubWorkflowProfile = registerOutput<GitHubWorkflowProfileResponse?>(
       'githubWorkflowProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GitHubWorkflowProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     imageName = registerOutput<String?>('imageName');
     imageTag = registerOutput<String?>('imageTag');
@@ -773,7 +780,16 @@ class Workflow extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     namespace = registerOutput<String?>('namespace');
     port = registerOutput<String?>('port');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

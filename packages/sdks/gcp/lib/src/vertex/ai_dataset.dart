@@ -193,7 +193,16 @@ class AiDataset extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    encryptionSpec = registerOutput<AiDatasetEncryptionSpec?>('encryptionSpec');
+    encryptionSpec = registerOutput<AiDatasetEncryptionSpec?>(
+      'encryptionSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiDatasetEncryptionSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>?>('labels');
     metadataSchemaUri = registerOutput<String>('metadataSchemaUri');
     this.name = registerOutput<String>('name');
@@ -229,7 +238,16 @@ class AiDataset extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    encryptionSpec = registerOutput<AiDatasetEncryptionSpec?>('encryptionSpec');
+    encryptionSpec = registerOutput<AiDatasetEncryptionSpec?>(
+      'encryptionSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiDatasetEncryptionSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>?>('labels');
     metadataSchemaUri = registerOutput<String>('metadataSchemaUri');
     this.name = registerOutput<String>('name');

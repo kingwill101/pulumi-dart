@@ -944,7 +944,16 @@ class Network extends pulumi.CustomResource {
     networkId = registerOutput<String>('networkId');
     networkProfile = registerOutput<String?>('networkProfile');
     numericId = registerOutput<String>('numericId');
-    params = registerOutput<NetworkParams?>('params');
+    params = registerOutput<NetworkParams?>(
+      'params',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkParams.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     routingMode = registerOutput<String>('routingMode');
     selfLink = registerOutput<String>('selfLink');
@@ -997,7 +1006,16 @@ class Network extends pulumi.CustomResource {
     networkId = registerOutput<String>('networkId');
     networkProfile = registerOutput<String?>('networkProfile');
     numericId = registerOutput<String>('numericId');
-    params = registerOutput<NetworkParams?>('params');
+    params = registerOutput<NetworkParams?>(
+      'params',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkParams.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     routingMode = registerOutput<String>('routingMode');
     selfLink = registerOutput<String>('selfLink');

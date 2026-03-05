@@ -223,9 +223,25 @@ class BucketMetadataConfiguration extends pulumi.CustomResource {
     metadataConfiguration =
         registerOutput<BucketMetadataConfigurationMetadataConfiguration>(
           'metadataConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return BucketMetadataConfigurationMetadataConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
-    timeouts = registerOutput<BucketMetadataConfigurationTimeouts?>('timeouts');
+    timeouts = registerOutput<BucketMetadataConfigurationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketMetadataConfigurationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [BucketMetadataConfiguration] resource's state with the given [name] and [id].
@@ -256,8 +272,24 @@ class BucketMetadataConfiguration extends pulumi.CustomResource {
     metadataConfiguration =
         registerOutput<BucketMetadataConfigurationMetadataConfiguration>(
           'metadataConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return BucketMetadataConfigurationMetadataConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
-    timeouts = registerOutput<BucketMetadataConfigurationTimeouts?>('timeouts');
+    timeouts = registerOutput<BucketMetadataConfigurationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketMetadataConfigurationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

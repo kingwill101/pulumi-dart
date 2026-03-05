@@ -1,62 +1,86 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getCluster.
 class GetClusterResult {
   /// COE API address.
   final String apiAddress;
+
   /// The UUID of the V1 Container Infra cluster template.
   final String clusterTemplateId;
+
   /// COE software version.
   final String coeVersion;
   final String containerVersion;
+
   /// The timeout (in minutes) for creating the cluster.
   final int createTimeout;
+
   /// The time at which cluster was created.
   final String createdAt;
+
   /// The URL used for cluster node discovery.
   final String discoveryUrl;
+
   /// The size (in GB) of the Docker volume.
   final int dockerVolumeSize;
+
   /// The fixed network that is attached to the cluster.
   final String fixedNetwork;
+
   /// The fixed subnet that is attached to the cluster.
   final String fixedSubnet;
+
   /// The flavor for the nodes of the cluster.
   final String flavor;
   final bool floatingIpEnabled;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The name of the Compute service SSH keypair.
   final String keypair;
+
   /// The Kubernetes cluster's credentials
   final Map<String, String> kubeconfig;
+
   /// The list of key value pairs representing additional properties of
   /// the cluster.
   final Map<String, String> labels;
+
   /// IP addresses of the master node of the cluster.
   final List<String> masterAddresses;
+
   /// The number of master nodes for the cluster.
   final int masterCount;
+
   /// The flavor for the master nodes.
   final String masterFlavor;
+
   /// Whether a load balancer is created for the master
   /// cluster nodes.
   final bool masterLbEnabled;
+
   /// See Argument Reference above.
   final String name;
+
   /// IP addresses of the node of the cluster.
   final List<String> nodeAddresses;
+
   /// The number of nodes for the cluster.
   final int nodeCount;
+
   /// The project of the cluster.
   final String projectId;
+
   /// See Argument Reference above.
   final String region;
+
   /// UUID of the Orchestration service stack.
   final String stackId;
+
   /// The time at which cluster was updated.
   final String updatedAt;
+
   /// The user of the cluster.
   final String userId;
 
@@ -186,4 +210,3 @@ class GetClusterResult {
     );
   }
 }
-

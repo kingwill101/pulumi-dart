@@ -508,6 +508,13 @@ class Workspace extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkAccessControl = registerOutput<WorkspaceNetworkAccessControl?>(
       'networkAccessControl',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkspaceNetworkAccessControl.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     notificationDestinations = registerOutput<List<String>?>(
       'notificationDestinations',
@@ -523,6 +530,13 @@ class Workspace extends pulumi.CustomResource {
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     vpcConfiguration = registerOutput<WorkspaceVpcConfiguration?>(
       'vpcConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkspaceVpcConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -562,6 +576,13 @@ class Workspace extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkAccessControl = registerOutput<WorkspaceNetworkAccessControl?>(
       'networkAccessControl',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkspaceNetworkAccessControl.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     notificationDestinations = registerOutput<List<String>?>(
       'notificationDestinations',
@@ -577,6 +598,13 @@ class Workspace extends pulumi.CustomResource {
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     vpcConfiguration = registerOutput<WorkspaceVpcConfiguration?>(
       'vpcConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkspaceVpcConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

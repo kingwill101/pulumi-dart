@@ -771,7 +771,16 @@ class ConnectPeer extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    bgpOptions = registerOutput<ConnectPeerBgpOptions>('bgpOptions');
+    bgpOptions = registerOutput<ConnectPeerBgpOptions>(
+      'bgpOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectPeerBgpOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     configurations = registerOutput<List<Map<String, dynamic>>>(
       'configurations',
     );
@@ -813,7 +822,16 @@ class ConnectPeer extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    bgpOptions = registerOutput<ConnectPeerBgpOptions>('bgpOptions');
+    bgpOptions = registerOutput<ConnectPeerBgpOptions>(
+      'bgpOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectPeerBgpOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     configurations = registerOutput<List<Map<String, dynamic>>>(
       'configurations',
     );

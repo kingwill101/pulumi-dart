@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getNetworkPeering.
 class GetNetworkPeeringResult {
   final bool exportCustomRoutes;
   final bool exportSubnetRoutesWithPublicIp;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final bool importCustomRoutes;
@@ -65,10 +65,12 @@ class GetNetworkPeeringResult {
   factory GetNetworkPeeringResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkPeeringResult(
       exportCustomRoutes: map['exportCustomRoutes'] as bool,
-      exportSubnetRoutesWithPublicIp: map['exportSubnetRoutesWithPublicIp'] as bool,
+      exportSubnetRoutesWithPublicIp:
+          map['exportSubnetRoutesWithPublicIp'] as bool,
       id: map['id'] as String,
       importCustomRoutes: map['importCustomRoutes'] as bool,
-      importSubnetRoutesWithPublicIp: map['importSubnetRoutesWithPublicIp'] as bool,
+      importSubnetRoutesWithPublicIp:
+          map['importSubnetRoutesWithPublicIp'] as bool,
       name: map['name'] as String,
       network: map['network'] as String,
       peerNetwork: map['peerNetwork'] as String,
@@ -79,4 +81,3 @@ class GetNetworkPeeringResult {
     );
   }
 }
-

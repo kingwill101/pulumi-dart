@@ -68,6 +68,13 @@ class WorkerPoolCloudbuildV1beta1 extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkConfig = registerOutput<NetworkConfigResponseCloudbuildV1beta1>(
       'networkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkConfigResponseCloudbuildV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     state = registerOutput<String>('state');
@@ -75,6 +82,13 @@ class WorkerPoolCloudbuildV1beta1 extends pulumi.CustomResource {
     updateTime = registerOutput<String>('updateTime');
     workerConfig = registerOutput<WorkerConfigResponseCloudbuildV1beta1>(
       'workerConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkerConfigResponseCloudbuildV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     workerPoolId = registerOutput<String>('workerPoolId');
   }

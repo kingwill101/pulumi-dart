@@ -381,7 +381,16 @@ class SqlPool extends pulumi.CustomResource {
     geoBackupPolicyEnabled = registerOutput<bool?>('geoBackupPolicyEnabled');
     this.name = registerOutput<String>('name');
     recoveryDatabaseId = registerOutput<String?>('recoveryDatabaseId');
-    restore = registerOutput<SqlPoolRestore?>('restore');
+    restore = registerOutput<SqlPoolRestore?>(
+      'restore',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SqlPoolRestore.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     skuName = registerOutput<String>('skuName');
     storageAccountType = registerOutput<String>('storageAccountType');
     synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
@@ -417,7 +426,16 @@ class SqlPool extends pulumi.CustomResource {
     geoBackupPolicyEnabled = registerOutput<bool?>('geoBackupPolicyEnabled');
     this.name = registerOutput<String>('name');
     recoveryDatabaseId = registerOutput<String?>('recoveryDatabaseId');
-    restore = registerOutput<SqlPoolRestore?>('restore');
+    restore = registerOutput<SqlPoolRestore?>(
+      'restore',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SqlPoolRestore.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     skuName = registerOutput<String>('skuName');
     storageAccountType = registerOutput<String>('storageAccountType');
     synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');

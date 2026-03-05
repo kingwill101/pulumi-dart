@@ -231,7 +231,16 @@ class Group extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    resourceQuery = registerOutput<GroupResourceQuery?>('resourceQuery');
+    resourceQuery = registerOutput<GroupResourceQuery?>(
+      'resourceQuery',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupResourceQuery.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
@@ -262,7 +271,16 @@ class Group extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    resourceQuery = registerOutput<GroupResourceQuery?>('resourceQuery');
+    resourceQuery = registerOutput<GroupResourceQuery?>(
+      'resourceQuery',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupResourceQuery.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }

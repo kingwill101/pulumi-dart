@@ -1745,12 +1745,37 @@ class AwsCluster extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
-    authorization = registerOutput<AwsClusterAuthorization>('authorization');
+    authorization = registerOutput<AwsClusterAuthorization>(
+      'authorization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsClusterAuthorization.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     awsRegion = registerOutput<String>('awsRegion');
     binaryAuthorization = registerOutput<AwsClusterBinaryAuthorization>(
       'binaryAuthorization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsClusterBinaryAuthorization.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    controlPlane = registerOutput<AwsClusterControlPlane>('controlPlane');
+    controlPlane = registerOutput<AwsClusterControlPlane>(
+      'controlPlane',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsClusterControlPlane.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     effectiveAnnotations = registerOutput<Map<String, String>>(
@@ -1758,11 +1783,38 @@ class AwsCluster extends pulumi.CustomResource {
     );
     endpoint = registerOutput<String>('endpoint');
     etag = registerOutput<String>('etag');
-    fleet = registerOutput<AwsClusterFleet>('fleet');
+    fleet = registerOutput<AwsClusterFleet>(
+      'fleet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsClusterFleet.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
-    loggingConfig = registerOutput<AwsClusterLoggingConfig>('loggingConfig');
+    loggingConfig = registerOutput<AwsClusterLoggingConfig>(
+      'loggingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsClusterLoggingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
-    networking = registerOutput<AwsClusterNetworking>('networking');
+    networking = registerOutput<AwsClusterNetworking>(
+      'networking',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsClusterNetworking.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     reconciling = registerOutput<bool>('reconciling');
     state = registerOutput<String>('state');
@@ -1797,12 +1849,37 @@ class AwsCluster extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
-    authorization = registerOutput<AwsClusterAuthorization>('authorization');
+    authorization = registerOutput<AwsClusterAuthorization>(
+      'authorization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsClusterAuthorization.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     awsRegion = registerOutput<String>('awsRegion');
     binaryAuthorization = registerOutput<AwsClusterBinaryAuthorization>(
       'binaryAuthorization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsClusterBinaryAuthorization.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    controlPlane = registerOutput<AwsClusterControlPlane>('controlPlane');
+    controlPlane = registerOutput<AwsClusterControlPlane>(
+      'controlPlane',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsClusterControlPlane.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     effectiveAnnotations = registerOutput<Map<String, String>>(
@@ -1810,11 +1887,38 @@ class AwsCluster extends pulumi.CustomResource {
     );
     endpoint = registerOutput<String>('endpoint');
     etag = registerOutput<String>('etag');
-    fleet = registerOutput<AwsClusterFleet>('fleet');
+    fleet = registerOutput<AwsClusterFleet>(
+      'fleet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsClusterFleet.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
-    loggingConfig = registerOutput<AwsClusterLoggingConfig>('loggingConfig');
+    loggingConfig = registerOutput<AwsClusterLoggingConfig>(
+      'loggingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsClusterLoggingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
-    networking = registerOutput<AwsClusterNetworking>('networking');
+    networking = registerOutput<AwsClusterNetworking>(
+      'networking',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsClusterNetworking.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     reconciling = registerOutput<bool>('reconciling');
     this.state = registerOutput<String>('state');

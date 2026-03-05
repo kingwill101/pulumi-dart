@@ -433,6 +433,13 @@ class BackupSchedule extends pulumi.CustomResource {
     retention = registerOutput<String>('retention');
     weeklyRecurrence = registerOutput<BackupScheduleWeeklyRecurrence?>(
       'weeklyRecurrence',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackupScheduleWeeklyRecurrence.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -466,6 +473,13 @@ class BackupSchedule extends pulumi.CustomResource {
     retention = registerOutput<String>('retention');
     weeklyRecurrence = registerOutput<BackupScheduleWeeklyRecurrence?>(
       'weeklyRecurrence',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackupScheduleWeeklyRecurrence.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

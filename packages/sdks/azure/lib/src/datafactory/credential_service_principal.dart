@@ -551,6 +551,13 @@ class CredentialServicePrincipal extends pulumi.CustomResource {
     servicePrincipalKey =
         registerOutput<CredentialServicePrincipalServicePrincipalKey?>(
           'servicePrincipalKey',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CredentialServicePrincipalServicePrincipalKey.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tenantId = registerOutput<String>('tenantId');
   }
@@ -586,6 +593,13 @@ class CredentialServicePrincipal extends pulumi.CustomResource {
     servicePrincipalKey =
         registerOutput<CredentialServicePrincipalServicePrincipalKey?>(
           'servicePrincipalKey',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CredentialServicePrincipalServicePrincipalKey.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tenantId = registerOutput<String>('tenantId');
   }

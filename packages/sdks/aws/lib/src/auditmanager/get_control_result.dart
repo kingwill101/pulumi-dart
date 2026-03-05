@@ -48,7 +48,11 @@ class GetControlResult {
       'actionPlanInstructions': actionPlanInstructions,
       'actionPlanTitle': actionPlanTitle,
       'arn': arn,
-      'controlMappingSources': pulumi.Input.encodeList<GetControlControlMappingSource, Map<String, dynamic>>(controlMappingSources, (value) => value.toMap()),
+      'controlMappingSources':
+          pulumi.Input.encodeList<
+            GetControlControlMappingSource,
+            Map<String, dynamic>
+          >(controlMappingSources, (value) => value.toMap()),
       'description': description,
       'id': id,
       'name': name,
@@ -64,7 +68,13 @@ class GetControlResult {
       actionPlanInstructions: map['actionPlanInstructions'] as String,
       actionPlanTitle: map['actionPlanTitle'] as String,
       arn: map['arn'] as String,
-      controlMappingSources: pulumi.Input.decodeList<GetControlControlMappingSource>(map['controlMappingSources']!, (value) => GetControlControlMappingSource.fromMap((value as Map).cast<String, dynamic>())),
+      controlMappingSources:
+          pulumi.Input.decodeList<GetControlControlMappingSource>(
+            map['controlMappingSources']!,
+            (value) => GetControlControlMappingSource.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       description: map['description'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
@@ -75,4 +85,3 @@ class GetControlResult {
     );
   }
 }
-

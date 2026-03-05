@@ -308,7 +308,16 @@ class DigitalTwin extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdTime = registerOutput<String>('createdTime');
     hostName = registerOutput<String>('hostName');
-    identity = registerOutput<DigitalTwinsIdentityResponse?>('identity');
+    identity = registerOutput<DigitalTwinsIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DigitalTwinsIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -317,7 +326,16 @@ class DigitalTwin extends pulumi.CustomResource {
     );
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

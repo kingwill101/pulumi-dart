@@ -89,7 +89,16 @@ class Restore extends pulumi.CustomResource {
     resourcesExcludedCount = registerOutput<int>('resourcesExcludedCount');
     resourcesFailedCount = registerOutput<int>('resourcesFailedCount');
     resourcesRestoredCount = registerOutput<int>('resourcesRestoredCount');
-    restoreConfig = registerOutput<RestoreConfigResponse>('restoreConfig');
+    restoreConfig = registerOutput<RestoreConfigResponse>(
+      'restoreConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RestoreConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     restoreId = registerOutput<String>('restoreId');
     restorePlanId = registerOutput<String>('restorePlanId');
     state = registerOutput<String>('state');

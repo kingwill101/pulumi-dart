@@ -397,6 +397,13 @@ class ExpressRouteConnectionNetwork extends pulumi.CustomResource {
     expressRouteCircuitPeering =
         registerOutput<ExpressRouteCircuitPeeringIdResponse>(
           'expressRouteCircuitPeering',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ExpressRouteCircuitPeeringIdResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     expressRouteGatewayBypass = registerOutput<bool?>(
       'expressRouteGatewayBypass',
@@ -405,6 +412,13 @@ class ExpressRouteConnectionNetwork extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     routingConfiguration = registerOutput<RoutingConfigurationResponse?>(
       'routingConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RoutingConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     routingWeight = registerOutput<int?>('routingWeight');
   }

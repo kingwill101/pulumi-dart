@@ -64,6 +64,13 @@ class Lake extends pulumi.CustomResource {
       ) {
     assetStatus = registerOutput<GoogleCloudDataplexV1AssetStatusResponse>(
       'assetStatus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudDataplexV1AssetStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
@@ -73,10 +80,24 @@ class Lake extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     metastore = registerOutput<GoogleCloudDataplexV1LakeMetastoreResponse>(
       'metastore',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudDataplexV1LakeMetastoreResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     metastoreStatus =
         registerOutput<GoogleCloudDataplexV1LakeMetastoreStatusResponse>(
           'metastoreStatus',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDataplexV1LakeMetastoreStatusResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

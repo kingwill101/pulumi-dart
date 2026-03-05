@@ -172,7 +172,16 @@ class Script extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    storageLocation = registerOutput<ScriptStorageLocation>('storageLocation');
+    storageLocation = registerOutput<ScriptStorageLocation>(
+      'storageLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScriptStorageLocation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     version = registerOutput<String?>('version');
@@ -205,7 +214,16 @@ class Script extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    storageLocation = registerOutput<ScriptStorageLocation>('storageLocation');
+    storageLocation = registerOutput<ScriptStorageLocation>(
+      'storageLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScriptStorageLocation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     version = registerOutput<String?>('version');

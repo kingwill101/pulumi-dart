@@ -182,6 +182,13 @@ class ServiceNetworkResourceAssociation extends pulumi.CustomResource {
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     timeouts = registerOutput<ServiceNetworkResourceAssociationTimeouts?>(
       'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceNetworkResourceAssociationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -222,6 +229,13 @@ class ServiceNetworkResourceAssociation extends pulumi.CustomResource {
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     timeouts = registerOutput<ServiceNetworkResourceAssociationTimeouts?>(
       'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceNetworkResourceAssociationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

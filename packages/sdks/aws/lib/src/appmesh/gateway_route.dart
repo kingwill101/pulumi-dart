@@ -279,7 +279,16 @@ class GatewayRoute extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     resourceOwner = registerOutput<String>('resourceOwner');
-    spec = registerOutput<GatewayRouteSpec>('spec');
+    spec = registerOutput<GatewayRouteSpec>(
+      'spec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GatewayRouteSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     virtualGatewayName = registerOutput<String>('virtualGatewayName');
@@ -316,7 +325,16 @@ class GatewayRoute extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     resourceOwner = registerOutput<String>('resourceOwner');
-    spec = registerOutput<GatewayRouteSpec>('spec');
+    spec = registerOutput<GatewayRouteSpec>(
+      'spec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GatewayRouteSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     virtualGatewayName = registerOutput<String>('virtualGatewayName');

@@ -531,10 +531,24 @@ class SecurityGateway extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     proxyProtocolConfig = registerOutput<SecurityGatewayProxyProtocolConfig?>(
       'proxyProtocolConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityGatewayProxyProtocolConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     securityGatewayId = registerOutput<String>('securityGatewayId');
     serviceDiscovery = registerOutput<SecurityGatewayServiceDiscovery?>(
       'serviceDiscovery',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityGatewayServiceDiscovery.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
@@ -575,10 +589,24 @@ class SecurityGateway extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     proxyProtocolConfig = registerOutput<SecurityGatewayProxyProtocolConfig?>(
       'proxyProtocolConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityGatewayProxyProtocolConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     securityGatewayId = registerOutput<String>('securityGatewayId');
     serviceDiscovery = registerOutput<SecurityGatewayServiceDiscovery?>(
       'serviceDiscovery',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityGatewayServiceDiscovery.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');

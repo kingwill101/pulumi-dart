@@ -100,11 +100,27 @@ class AgentDialogflowV3beta1 extends pulumi.CustomResource {
     advancedSettings =
         registerOutput<GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse>(
           'advancedSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     answerFeedbackSettings =
         registerOutput<
           GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettingsResponse
-        >('answerFeedbackSettings');
+        >(
+          'answerFeedbackSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettingsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     avatarUri = registerOutput<String>('avatarUri');
     defaultLanguageCode = registerOutput<String>('defaultLanguageCode');
     description = registerOutput<String>('description');
@@ -114,11 +130,29 @@ class AgentDialogflowV3beta1 extends pulumi.CustomResource {
     genAppBuilderSettings =
         registerOutput<
           GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettingsResponse
-        >('genAppBuilderSettings');
+        >(
+          'genAppBuilderSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettingsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     gitIntegrationSettings =
         registerOutput<
           GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsResponse
-        >('gitIntegrationSettings');
+        >(
+          'gitIntegrationSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     location = registerOutput<String>('location');
     locked = registerOutput<bool>('locked');
     this.name = registerOutput<String>('name');
@@ -127,7 +161,16 @@ class AgentDialogflowV3beta1 extends pulumi.CustomResource {
     speechToTextSettings =
         registerOutput<
           GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsResponse
-        >('speechToTextSettings');
+        >(
+          'speechToTextSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     startFlow = registerOutput<String>('startFlow');
     supportedLanguageCodes = registerOutput<List<String>>(
       'supportedLanguageCodes',
@@ -135,7 +178,16 @@ class AgentDialogflowV3beta1 extends pulumi.CustomResource {
     textToSpeechSettings =
         registerOutput<
           GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsResponse
-        >('textToSpeechSettings');
+        >(
+          'textToSpeechSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     timeZone = registerOutput<String>('timeZone');
   }
 }

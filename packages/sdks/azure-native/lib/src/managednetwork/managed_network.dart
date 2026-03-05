@@ -376,12 +376,28 @@ class ManagedNetwork extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     connectivity = registerOutput<ConnectivityCollectionResponse>(
       'connectivity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectivityCollectionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    scope = registerOutput<ScopeResponse?>('scope');
+    scope = registerOutput<ScopeResponse?>(
+      'scope',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScopeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

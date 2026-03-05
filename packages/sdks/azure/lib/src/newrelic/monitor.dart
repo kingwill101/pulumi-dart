@@ -445,15 +445,42 @@ class Monitor extends pulumi.CustomResource {
        ) {
     accountCreationSource = registerOutput<String?>('accountCreationSource');
     accountId = registerOutput<String>('accountId');
-    identity = registerOutput<MonitorIdentity?>('identity');
+    identity = registerOutput<MonitorIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MonitorIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ingestionKey = registerOutput<String?>('ingestionKey');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     orgCreationSource = registerOutput<String?>('orgCreationSource');
     organizationId = registerOutput<String>('organizationId');
-    plan = registerOutput<MonitorPlan>('plan');
+    plan = registerOutput<MonitorPlan>(
+      'plan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MonitorPlan.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    user = registerOutput<MonitorUser>('user');
+    user = registerOutput<MonitorUser>(
+      'user',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MonitorUser.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     userId = registerOutput<String?>('userId');
   }
 
@@ -482,15 +509,42 @@ class Monitor extends pulumi.CustomResource {
        ) {
     accountCreationSource = registerOutput<String?>('accountCreationSource');
     accountId = registerOutput<String>('accountId');
-    identity = registerOutput<MonitorIdentity?>('identity');
+    identity = registerOutput<MonitorIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MonitorIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ingestionKey = registerOutput<String?>('ingestionKey');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     orgCreationSource = registerOutput<String?>('orgCreationSource');
     organizationId = registerOutput<String>('organizationId');
-    plan = registerOutput<MonitorPlan>('plan');
+    plan = registerOutput<MonitorPlan>(
+      'plan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MonitorPlan.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    user = registerOutput<MonitorUser>('user');
+    user = registerOutput<MonitorUser>(
+      'user',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MonitorUser.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     userId = registerOutput<String?>('userId');
   }
 }

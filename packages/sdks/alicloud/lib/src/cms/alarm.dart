@@ -630,6 +630,13 @@ class Alarm extends pulumi.CustomResource {
       ) {
     compositeExpression = registerOutput<AlarmCompositeExpression?>(
       'compositeExpression',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlarmCompositeExpression.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     contactGroups = registerOutput<List<String>>('contactGroups');
     dimensions = registerOutput<Map<String, String>>('dimensions');
@@ -638,9 +645,34 @@ class Alarm extends pulumi.CustomResource {
     endTime = registerOutput<int?>('endTime');
     escalationsCritical = registerOutput<AlarmEscalationsCritical>(
       'escalationsCritical',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlarmEscalationsCritical.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    escalationsInfo = registerOutput<AlarmEscalationsInfo>('escalationsInfo');
-    escalationsWarn = registerOutput<AlarmEscalationsWarn>('escalationsWarn');
+    escalationsInfo = registerOutput<AlarmEscalationsInfo>(
+      'escalationsInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlarmEscalationsInfo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    escalationsWarn = registerOutput<AlarmEscalationsWarn>(
+      'escalationsWarn',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlarmEscalationsWarn.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     metric = registerOutput<String>('metric');
     metricDimensions = registerOutput<String>('metricDimensions');
     this.name = registerOutput<String>('name');
@@ -676,6 +708,13 @@ class Alarm extends pulumi.CustomResource {
        ) {
     compositeExpression = registerOutput<AlarmCompositeExpression?>(
       'compositeExpression',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlarmCompositeExpression.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     contactGroups = registerOutput<List<String>>('contactGroups');
     dimensions = registerOutput<Map<String, String>>('dimensions');
@@ -684,9 +723,34 @@ class Alarm extends pulumi.CustomResource {
     endTime = registerOutput<int?>('endTime');
     escalationsCritical = registerOutput<AlarmEscalationsCritical>(
       'escalationsCritical',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlarmEscalationsCritical.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    escalationsInfo = registerOutput<AlarmEscalationsInfo>('escalationsInfo');
-    escalationsWarn = registerOutput<AlarmEscalationsWarn>('escalationsWarn');
+    escalationsInfo = registerOutput<AlarmEscalationsInfo>(
+      'escalationsInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlarmEscalationsInfo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    escalationsWarn = registerOutput<AlarmEscalationsWarn>(
+      'escalationsWarn',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlarmEscalationsWarn.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     metric = registerOutput<String>('metric');
     metricDimensions = registerOutput<String>('metricDimensions');
     this.name = registerOutput<String>('name');

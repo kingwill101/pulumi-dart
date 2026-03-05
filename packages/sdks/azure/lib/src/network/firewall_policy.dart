@@ -243,15 +243,56 @@ class FirewallPolicy extends pulumi.CustomResource {
     );
     basePolicyId = registerOutput<String?>('basePolicyId');
     childPolicies = registerOutput<List<String>>('childPolicies');
-    dns = registerOutput<FirewallPolicyDns?>('dns');
+    dns = registerOutput<FirewallPolicyDns?>(
+      'dns',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FirewallPolicyDns.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     explicitProxy = registerOutput<FirewallPolicyExplicitProxy?>(
       'explicitProxy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FirewallPolicyExplicitProxy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     firewalls = registerOutput<List<String>>('firewalls');
-    identity = registerOutput<FirewallPolicyIdentity?>('identity');
-    insights = registerOutput<FirewallPolicyInsights?>('insights');
+    identity = registerOutput<FirewallPolicyIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FirewallPolicyIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    insights = registerOutput<FirewallPolicyInsights?>(
+      'insights',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FirewallPolicyInsights.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     intrusionDetection = registerOutput<FirewallPolicyIntrusionDetection?>(
       'intrusionDetection',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FirewallPolicyIntrusionDetection.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -264,10 +305,24 @@ class FirewallPolicy extends pulumi.CustomResource {
     threatIntelligenceAllowlist =
         registerOutput<FirewallPolicyThreatIntelligenceAllowlist?>(
           'threatIntelligenceAllowlist',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FirewallPolicyThreatIntelligenceAllowlist.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     threatIntelligenceMode = registerOutput<String?>('threatIntelligenceMode');
     tlsCertificate = registerOutput<FirewallPolicyTlsCertificate?>(
       'tlsCertificate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FirewallPolicyTlsCertificate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -299,15 +354,56 @@ class FirewallPolicy extends pulumi.CustomResource {
     );
     basePolicyId = registerOutput<String?>('basePolicyId');
     childPolicies = registerOutput<List<String>>('childPolicies');
-    dns = registerOutput<FirewallPolicyDns?>('dns');
+    dns = registerOutput<FirewallPolicyDns?>(
+      'dns',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FirewallPolicyDns.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     explicitProxy = registerOutput<FirewallPolicyExplicitProxy?>(
       'explicitProxy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FirewallPolicyExplicitProxy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     firewalls = registerOutput<List<String>>('firewalls');
-    identity = registerOutput<FirewallPolicyIdentity?>('identity');
-    insights = registerOutput<FirewallPolicyInsights?>('insights');
+    identity = registerOutput<FirewallPolicyIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FirewallPolicyIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    insights = registerOutput<FirewallPolicyInsights?>(
+      'insights',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FirewallPolicyInsights.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     intrusionDetection = registerOutput<FirewallPolicyIntrusionDetection?>(
       'intrusionDetection',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FirewallPolicyIntrusionDetection.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -320,10 +416,24 @@ class FirewallPolicy extends pulumi.CustomResource {
     threatIntelligenceAllowlist =
         registerOutput<FirewallPolicyThreatIntelligenceAllowlist?>(
           'threatIntelligenceAllowlist',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FirewallPolicyThreatIntelligenceAllowlist.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     threatIntelligenceMode = registerOutput<String?>('threatIntelligenceMode');
     tlsCertificate = registerOutput<FirewallPolicyTlsCertificate?>(
       'tlsCertificate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FirewallPolicyTlsCertificate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

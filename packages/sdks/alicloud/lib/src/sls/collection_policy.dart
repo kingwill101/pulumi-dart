@@ -1273,16 +1273,48 @@ class CollectionPolicy extends pulumi.CustomResource {
        ) {
     centralizeConfig = registerOutput<CollectionPolicyCentralizeConfig>(
       'centralizeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CollectionPolicyCentralizeConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     centralizeEnabled = registerOutput<bool?>('centralizeEnabled');
     dataCode = registerOutput<String>('dataCode');
-    dataConfig = registerOutput<CollectionPolicyDataConfig>('dataConfig');
+    dataConfig = registerOutput<CollectionPolicyDataConfig>(
+      'dataConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CollectionPolicyDataConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     enabled = registerOutput<bool>('enabled');
-    policyConfig = registerOutput<CollectionPolicyPolicyConfig>('policyConfig');
+    policyConfig = registerOutput<CollectionPolicyPolicyConfig>(
+      'policyConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CollectionPolicyPolicyConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     policyName = registerOutput<String>('policyName');
     productCode = registerOutput<String>('productCode');
     resourceDirectory = registerOutput<CollectionPolicyResourceDirectory>(
       'resourceDirectory',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CollectionPolicyResourceDirectory.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -1311,16 +1343,48 @@ class CollectionPolicy extends pulumi.CustomResource {
        ) {
     centralizeConfig = registerOutput<CollectionPolicyCentralizeConfig>(
       'centralizeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CollectionPolicyCentralizeConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     centralizeEnabled = registerOutput<bool?>('centralizeEnabled');
     dataCode = registerOutput<String>('dataCode');
-    dataConfig = registerOutput<CollectionPolicyDataConfig>('dataConfig');
+    dataConfig = registerOutput<CollectionPolicyDataConfig>(
+      'dataConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CollectionPolicyDataConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     enabled = registerOutput<bool>('enabled');
-    policyConfig = registerOutput<CollectionPolicyPolicyConfig>('policyConfig');
+    policyConfig = registerOutput<CollectionPolicyPolicyConfig>(
+      'policyConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CollectionPolicyPolicyConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     policyName = registerOutput<String>('policyName');
     productCode = registerOutput<String>('productCode');
     resourceDirectory = registerOutput<CollectionPolicyResourceDirectory>(
       'resourceDirectory',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CollectionPolicyResourceDirectory.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

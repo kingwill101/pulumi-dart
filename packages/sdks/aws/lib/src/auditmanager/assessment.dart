@@ -281,6 +281,13 @@ class Assessment extends pulumi.CustomResource {
     assessmentReportsDestination =
         registerOutput<AssessmentAssessmentReportsDestination?>(
           'assessmentReportsDestination',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AssessmentAssessmentReportsDestination.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String?>('description');
     frameworkId = registerOutput<String>('frameworkId');
@@ -288,7 +295,16 @@ class Assessment extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     roles = registerOutput<List<Map<String, dynamic>>>('roles');
     rolesAlls = registerOutput<List<Map<String, dynamic>>>('rolesAlls');
-    scope = registerOutput<AssessmentScope?>('scope');
+    scope = registerOutput<AssessmentScope?>(
+      'scope',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AssessmentScope.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -321,6 +337,13 @@ class Assessment extends pulumi.CustomResource {
     assessmentReportsDestination =
         registerOutput<AssessmentAssessmentReportsDestination?>(
           'assessmentReportsDestination',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AssessmentAssessmentReportsDestination.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String?>('description');
     frameworkId = registerOutput<String>('frameworkId');
@@ -328,7 +351,16 @@ class Assessment extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     roles = registerOutput<List<Map<String, dynamic>>>('roles');
     rolesAlls = registerOutput<List<Map<String, dynamic>>>('rolesAlls');
-    scope = registerOutput<AssessmentScope?>('scope');
+    scope = registerOutput<AssessmentScope?>(
+      'scope',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AssessmentScope.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

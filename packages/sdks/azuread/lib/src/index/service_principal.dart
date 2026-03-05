@@ -794,6 +794,13 @@ class ServicePrincipal extends pulumi.CustomResource {
     samlMetadataUrl = registerOutput<String>('samlMetadataUrl');
     samlSingleSignOn = registerOutput<ServicePrincipalSamlSingleSignOn?>(
       'samlSingleSignOn',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServicePrincipalSamlSingleSignOn.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     servicePrincipalNames = registerOutput<List<String>>(
       'servicePrincipalNames',
@@ -862,6 +869,13 @@ class ServicePrincipal extends pulumi.CustomResource {
     samlMetadataUrl = registerOutput<String>('samlMetadataUrl');
     samlSingleSignOn = registerOutput<ServicePrincipalSamlSingleSignOn?>(
       'samlSingleSignOn',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServicePrincipalSamlSingleSignOn.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     servicePrincipalNames = registerOutput<List<String>>(
       'servicePrincipalNames',

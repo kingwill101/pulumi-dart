@@ -64,11 +64,25 @@ class Content extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     notebook = registerOutput<GoogleCloudDataplexV1ContentNotebookResponse>(
       'notebook',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudDataplexV1ContentNotebookResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     path = registerOutput<String>('path');
     project = registerOutput<String>('project');
     sqlScript = registerOutput<GoogleCloudDataplexV1ContentSqlScriptResponse>(
       'sqlScript',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudDataplexV1ContentSqlScriptResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');

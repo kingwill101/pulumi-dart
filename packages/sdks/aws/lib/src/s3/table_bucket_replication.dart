@@ -176,7 +176,16 @@ class TableBucketReplication extends pulumi.CustomResource {
        ) {
     region = registerOutput<String>('region');
     role = registerOutput<String>('role');
-    rule = registerOutput<TableBucketReplicationRule?>('rule');
+    rule = registerOutput<TableBucketReplicationRule?>(
+      'rule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TableBucketReplicationRule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tableBucketArn = registerOutput<String>('tableBucketArn');
     versionToken = registerOutput<String>('versionToken');
   }
@@ -206,7 +215,16 @@ class TableBucketReplication extends pulumi.CustomResource {
        ) {
     region = registerOutput<String>('region');
     role = registerOutput<String>('role');
-    rule = registerOutput<TableBucketReplicationRule?>('rule');
+    rule = registerOutput<TableBucketReplicationRule?>(
+      'rule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TableBucketReplicationRule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tableBucketArn = registerOutput<String>('tableBucketArn');
     versionToken = registerOutput<String>('versionToken');
   }

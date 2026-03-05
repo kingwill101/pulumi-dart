@@ -878,17 +878,40 @@ class AnalyticsApplication extends pulumi.CustomResource {
     cloudwatchLoggingOptions =
         registerOutput<AnalyticsApplicationCloudwatchLoggingOptions?>(
           'cloudwatchLoggingOptions',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AnalyticsApplicationCloudwatchLoggingOptions.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     code = registerOutput<String?>('code');
     createTimestamp = registerOutput<String>('createTimestamp');
     description = registerOutput<String?>('description');
-    inputs = registerOutput<AnalyticsApplicationInputs?>('inputs');
+    inputs = registerOutput<AnalyticsApplicationInputs?>(
+      'inputs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AnalyticsApplicationInputs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     lastUpdateTimestamp = registerOutput<String>('lastUpdateTimestamp');
     this.name = registerOutput<String>('name');
     outputs = registerOutput<List<Map<String, dynamic>>?>('outputs');
     referenceDataSources =
         registerOutput<AnalyticsApplicationReferenceDataSources?>(
           'referenceDataSources',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AnalyticsApplicationReferenceDataSources.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     startApplication = registerOutput<bool?>('startApplication');
@@ -925,17 +948,40 @@ class AnalyticsApplication extends pulumi.CustomResource {
     cloudwatchLoggingOptions =
         registerOutput<AnalyticsApplicationCloudwatchLoggingOptions?>(
           'cloudwatchLoggingOptions',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AnalyticsApplicationCloudwatchLoggingOptions.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     code = registerOutput<String?>('code');
     createTimestamp = registerOutput<String>('createTimestamp');
     description = registerOutput<String?>('description');
-    inputs = registerOutput<AnalyticsApplicationInputs?>('inputs');
+    inputs = registerOutput<AnalyticsApplicationInputs?>(
+      'inputs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AnalyticsApplicationInputs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     lastUpdateTimestamp = registerOutput<String>('lastUpdateTimestamp');
     this.name = registerOutput<String>('name');
     outputs = registerOutput<List<Map<String, dynamic>>?>('outputs');
     referenceDataSources =
         registerOutput<AnalyticsApplicationReferenceDataSources?>(
           'referenceDataSources',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AnalyticsApplicationReferenceDataSources.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     startApplication = registerOutput<bool?>('startApplication');

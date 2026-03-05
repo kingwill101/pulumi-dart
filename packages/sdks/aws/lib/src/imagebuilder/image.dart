@@ -213,15 +213,36 @@ class Image extends pulumi.CustomResource {
     imageScanningConfiguration =
         registerOutput<ImageImageScanningConfiguration>(
           'imageScanningConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ImageImageScanningConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     imageTestsConfiguration = registerOutput<ImageImageTestsConfiguration>(
       'imageTestsConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImageImageTestsConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     infrastructureConfigurationArn = registerOutput<String>(
       'infrastructureConfigurationArn',
     );
     loggingConfiguration = registerOutput<ImageLoggingConfiguration?>(
       'loggingConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImageLoggingConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     osVersion = registerOutput<String>('osVersion');
@@ -269,15 +290,36 @@ class Image extends pulumi.CustomResource {
     imageScanningConfiguration =
         registerOutput<ImageImageScanningConfiguration>(
           'imageScanningConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ImageImageScanningConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     imageTestsConfiguration = registerOutput<ImageImageTestsConfiguration>(
       'imageTestsConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImageImageTestsConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     infrastructureConfigurationArn = registerOutput<String>(
       'infrastructureConfigurationArn',
     );
     loggingConfiguration = registerOutput<ImageLoggingConfiguration?>(
       'loggingConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImageLoggingConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     osVersion = registerOutput<String>('osVersion');

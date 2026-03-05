@@ -56,7 +56,16 @@ class RegionInstanceTemplate extends pulumi.CustomResource {
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    properties = registerOutput<InstancePropertiesResponse>('properties');
+    properties = registerOutput<InstancePropertiesResponse>(
+      'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstancePropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     requestId = registerOutput<String?>('requestId');
     selfLink = registerOutput<String>('selfLink');
@@ -64,6 +73,13 @@ class RegionInstanceTemplate extends pulumi.CustomResource {
     sourceInstance = registerOutput<String>('sourceInstance');
     sourceInstanceParams = registerOutput<SourceInstanceParamsResponse>(
       'sourceInstanceParams',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SourceInstanceParamsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

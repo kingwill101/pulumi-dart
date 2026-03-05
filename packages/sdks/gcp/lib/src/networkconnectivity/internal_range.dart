@@ -1459,6 +1459,13 @@ class InternalRange extends pulumi.CustomResource {
        ) {
     allocationOptions = registerOutput<InternalRangeAllocationOptions?>(
       'allocationOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InternalRangeAllocationOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -1466,7 +1473,16 @@ class InternalRange extends pulumi.CustomResource {
     immutable = registerOutput<bool?>('immutable');
     ipCidrRange = registerOutput<String>('ipCidrRange');
     labels = registerOutput<Map<String, String>?>('labels');
-    migration = registerOutput<InternalRangeMigration?>('migration');
+    migration = registerOutput<InternalRangeMigration?>(
+      'migration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InternalRangeMigration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     overlaps = registerOutput<List<String>?>('overlaps');
@@ -1504,6 +1520,13 @@ class InternalRange extends pulumi.CustomResource {
        ) {
     allocationOptions = registerOutput<InternalRangeAllocationOptions?>(
       'allocationOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InternalRangeAllocationOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -1511,7 +1534,16 @@ class InternalRange extends pulumi.CustomResource {
     immutable = registerOutput<bool?>('immutable');
     ipCidrRange = registerOutput<String>('ipCidrRange');
     labels = registerOutput<Map<String, String>?>('labels');
-    migration = registerOutput<InternalRangeMigration?>('migration');
+    migration = registerOutput<InternalRangeMigration?>(
+      'migration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InternalRangeMigration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     overlaps = registerOutput<List<String>?>('overlaps');

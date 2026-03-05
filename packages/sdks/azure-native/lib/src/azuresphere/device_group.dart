@@ -212,7 +212,16 @@ class DeviceGroup extends pulumi.CustomResource {
     osFeedType = registerOutput<String?>('osFeedType');
     provisioningState = registerOutput<String>('provisioningState');
     regionalDataBoundary = registerOutput<String?>('regionalDataBoundary');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     updatePolicy = registerOutput<String?>('updatePolicy');
   }

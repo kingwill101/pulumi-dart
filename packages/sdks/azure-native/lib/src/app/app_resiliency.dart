@@ -429,20 +429,75 @@ class AppResiliency extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     circuitBreakerPolicy = registerOutput<CircuitBreakerPolicyResponse?>(
       'circuitBreakerPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CircuitBreakerPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     httpConnectionPool = registerOutput<HttpConnectionPoolResponse?>(
       'httpConnectionPool',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HttpConnectionPoolResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     httpRetryPolicy = registerOutput<HttpRetryPolicyResponse?>(
       'httpRetryPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HttpRetryPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tcpConnectionPool = registerOutput<TcpConnectionPoolResponse?>(
       'tcpConnectionPool',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TcpConnectionPoolResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    tcpRetryPolicy = registerOutput<TcpRetryPolicyResponse?>('tcpRetryPolicy');
-    timeoutPolicy = registerOutput<TimeoutPolicyResponse?>('timeoutPolicy');
+    tcpRetryPolicy = registerOutput<TcpRetryPolicyResponse?>(
+      'tcpRetryPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TcpRetryPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    timeoutPolicy = registerOutput<TimeoutPolicyResponse?>(
+      'timeoutPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TimeoutPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

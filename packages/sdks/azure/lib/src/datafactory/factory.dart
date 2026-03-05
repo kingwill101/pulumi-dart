@@ -217,11 +217,27 @@ class Factory extends pulumi.CustomResource {
     );
     githubConfiguration = registerOutput<FactoryGithubConfiguration?>(
       'githubConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FactoryGithubConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     globalParameters = registerOutput<List<Map<String, dynamic>>?>(
       'globalParameters',
     );
-    identity = registerOutput<FactoryIdentity?>('identity');
+    identity = registerOutput<FactoryIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FactoryIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     managedVirtualNetworkEnabled = registerOutput<bool?>(
       'managedVirtualNetworkEnabled',
@@ -233,6 +249,13 @@ class Factory extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     vstsConfiguration = registerOutput<FactoryVstsConfiguration?>(
       'vstsConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FactoryVstsConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -265,11 +288,27 @@ class Factory extends pulumi.CustomResource {
     );
     githubConfiguration = registerOutput<FactoryGithubConfiguration?>(
       'githubConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FactoryGithubConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     globalParameters = registerOutput<List<Map<String, dynamic>>?>(
       'globalParameters',
     );
-    identity = registerOutput<FactoryIdentity?>('identity');
+    identity = registerOutput<FactoryIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FactoryIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     managedVirtualNetworkEnabled = registerOutput<bool?>(
       'managedVirtualNetworkEnabled',
@@ -281,6 +320,13 @@ class Factory extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     vstsConfiguration = registerOutput<FactoryVstsConfiguration?>(
       'vstsConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FactoryVstsConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

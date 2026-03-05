@@ -184,7 +184,16 @@ class Secret extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<SecretPropertiesResponse>('properties');
+    properties = registerOutput<SecretPropertiesResponse>(
+      'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecretPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>>('tags');
     type = registerOutput<String>('type');
   }

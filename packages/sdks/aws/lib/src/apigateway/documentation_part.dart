@@ -194,7 +194,16 @@ class DocumentationPart extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     documentationPartId = registerOutput<String>('documentationPartId');
-    location = registerOutput<DocumentationPartLocation>('location');
+    location = registerOutput<DocumentationPartLocation>(
+      'location',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DocumentationPartLocation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     properties = registerOutput<String>('properties');
     region = registerOutput<String>('region');
     restApiId = registerOutput<String>('restApiId');
@@ -224,7 +233,16 @@ class DocumentationPart extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     documentationPartId = registerOutput<String>('documentationPartId');
-    location = registerOutput<DocumentationPartLocation>('location');
+    location = registerOutput<DocumentationPartLocation>(
+      'location',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DocumentationPartLocation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     properties = registerOutput<String>('properties');
     region = registerOutput<String>('region');
     restApiId = registerOutput<String>('restApiId');

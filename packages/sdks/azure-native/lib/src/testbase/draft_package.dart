@@ -293,13 +293,34 @@ class DraftPackage extends pulumi.CustomResource {
     );
     inplaceUpgradeOSPair = registerOutput<InplaceUpgradeOSInfoResponse?>(
       'inplaceUpgradeOSPair',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InplaceUpgradeOSInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     intuneEnrollmentMetadata =
         registerOutput<IntuneEnrollmentMetadataResponse?>(
           'intuneEnrollmentMetadata',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return IntuneEnrollmentMetadataResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     intuneMetadata = registerOutput<DraftPackageIntuneAppMetadataResponse?>(
       'intuneMetadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DraftPackageIntuneAppMetadataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     this.name = registerOutput<String>('name');
@@ -308,8 +329,26 @@ class DraftPackage extends pulumi.CustomResource {
     processName = registerOutput<String?>('processName');
     provisioningState = registerOutput<String>('provisioningState');
     sourceType = registerOutput<String?>('sourceType');
-    systemData = registerOutput<SystemDataResponse>('systemData');
-    tabState = registerOutput<TabStateResponse?>('tabState');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    tabState = registerOutput<TabStateResponse?>(
+      'tabState',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TabStateResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     targetOSList = registerOutput<List<Map<String, dynamic>>?>('targetOSList');
     testTypes = registerOutput<List<String>?>('testTypes');
     tests = registerOutput<List<Map<String, dynamic>>?>('tests');

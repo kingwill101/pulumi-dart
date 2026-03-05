@@ -341,18 +341,57 @@ class AvailabilitySet extends pulumi.CustomResource {
     );
     proximityPlacementGroup = registerOutput<SubResourceResponse?>(
       'proximityPlacementGroup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     scheduledEventsPolicy = registerOutput<ScheduledEventsPolicyResponse?>(
       'scheduledEventsPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduledEventsPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    sku = registerOutput<SkuResponse?>('sku');
+    sku = registerOutput<SkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     virtualMachineScaleSetMigrationInfo =
         registerOutput<VirtualMachineScaleSetMigrationInfoResponse>(
           'virtualMachineScaleSetMigrationInfo',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VirtualMachineScaleSetMigrationInfoResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     virtualMachines = registerOutput<List<Map<String, dynamic>>?>(
       'virtualMachines',

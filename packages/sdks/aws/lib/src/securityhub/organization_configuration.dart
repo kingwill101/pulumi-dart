@@ -435,6 +435,13 @@ class OrganizationConfiguration extends pulumi.CustomResource {
     organizationConfiguration =
         registerOutput<OrganizationConfigurationOrganizationConfiguration>(
           'organizationConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return OrganizationConfigurationOrganizationConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
   }
@@ -467,6 +474,13 @@ class OrganizationConfiguration extends pulumi.CustomResource {
     organizationConfiguration =
         registerOutput<OrganizationConfigurationOrganizationConfiguration>(
           'organizationConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return OrganizationConfigurationOrganizationConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
   }

@@ -336,6 +336,13 @@ class VpcBlockPublicAccessExclusion extends pulumi.CustomResource {
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     timeouts = registerOutput<VpcBlockPublicAccessExclusionTimeouts?>(
       'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpcBlockPublicAccessExclusionTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     vpcId = registerOutput<String?>('vpcId');
   }
@@ -373,6 +380,13 @@ class VpcBlockPublicAccessExclusion extends pulumi.CustomResource {
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     timeouts = registerOutput<VpcBlockPublicAccessExclusionTimeouts?>(
       'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpcBlockPublicAccessExclusionTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     vpcId = registerOutput<String?>('vpcId');
   }

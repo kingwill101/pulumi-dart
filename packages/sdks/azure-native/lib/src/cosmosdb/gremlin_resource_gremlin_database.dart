@@ -212,9 +212,23 @@ class GremlinResourceGremlinDatabase extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     this.options = registerOutput<GremlinDatabaseGetPropertiesResponseOptions?>(
       'options',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GremlinDatabaseGetPropertiesResponseOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     resource = registerOutput<GremlinDatabaseGetPropertiesResponseResource?>(
       'resource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GremlinDatabaseGetPropertiesResponseResource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

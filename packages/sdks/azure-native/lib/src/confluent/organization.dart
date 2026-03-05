@@ -328,13 +328,40 @@ class Organization extends pulumi.CustomResource {
     createdTime = registerOutput<String>('createdTime');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    offerDetail = registerOutput<OfferDetailResponse>('offerDetail');
+    offerDetail = registerOutput<OfferDetailResponse>(
+      'offerDetail',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OfferDetailResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     organizationId = registerOutput<String>('organizationId');
     provisioningState = registerOutput<String>('provisioningState');
     ssoUrl = registerOutput<String>('ssoUrl');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    userDetail = registerOutput<UserDetailResponse>('userDetail');
+    userDetail = registerOutput<UserDetailResponse>(
+      'userDetail',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserDetailResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

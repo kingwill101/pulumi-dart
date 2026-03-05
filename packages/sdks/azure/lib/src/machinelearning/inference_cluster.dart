@@ -709,14 +709,32 @@ class InferenceCluster extends pulumi.CustomResource {
        ) {
     clusterPurpose = registerOutput<String?>('clusterPurpose');
     description = registerOutput<String?>('description');
-    identity = registerOutput<InferenceClusterIdentity?>('identity');
+    identity = registerOutput<InferenceClusterIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InferenceClusterIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kubernetesClusterId = registerOutput<String>('kubernetesClusterId');
     location = registerOutput<String>('location');
     machineLearningWorkspaceId = registerOutput<String>(
       'machineLearningWorkspaceId',
     );
     this.name = registerOutput<String>('name');
-    ssl = registerOutput<InferenceClusterSsl?>('ssl');
+    ssl = registerOutput<InferenceClusterSsl?>(
+      'ssl',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InferenceClusterSsl.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
   }
 
@@ -745,14 +763,32 @@ class InferenceCluster extends pulumi.CustomResource {
        ) {
     clusterPurpose = registerOutput<String?>('clusterPurpose');
     description = registerOutput<String?>('description');
-    identity = registerOutput<InferenceClusterIdentity?>('identity');
+    identity = registerOutput<InferenceClusterIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InferenceClusterIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kubernetesClusterId = registerOutput<String>('kubernetesClusterId');
     location = registerOutput<String>('location');
     machineLearningWorkspaceId = registerOutput<String>(
       'machineLearningWorkspaceId',
     );
     this.name = registerOutput<String>('name');
-    ssl = registerOutput<InferenceClusterSsl?>('ssl');
+    ssl = registerOutput<InferenceClusterSsl?>(
+      'ssl',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InferenceClusterSsl.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
   }
 }

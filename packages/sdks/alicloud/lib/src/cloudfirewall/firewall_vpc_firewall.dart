@@ -343,9 +343,27 @@ class FirewallVpcFirewall extends pulumi.CustomResource {
     bandwidth = registerOutput<int>('bandwidth');
     connectType = registerOutput<String>('connectType');
     lang = registerOutput<String?>('lang');
-    localVpc = registerOutput<FirewallVpcFirewallLocalVpc>('localVpc');
+    localVpc = registerOutput<FirewallVpcFirewallLocalVpc>(
+      'localVpc',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FirewallVpcFirewallLocalVpc.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     memberUid = registerOutput<String?>('memberUid');
-    peerVpc = registerOutput<FirewallVpcFirewallPeerVpc>('peerVpc');
+    peerVpc = registerOutput<FirewallVpcFirewallPeerVpc>(
+      'peerVpc',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FirewallVpcFirewallPeerVpc.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     regionStatus = registerOutput<String>('regionStatus');
     status = registerOutput<String>('status');
     vpcFirewallId = registerOutput<String>('vpcFirewallId');
@@ -378,9 +396,27 @@ class FirewallVpcFirewall extends pulumi.CustomResource {
     bandwidth = registerOutput<int>('bandwidth');
     connectType = registerOutput<String>('connectType');
     lang = registerOutput<String?>('lang');
-    localVpc = registerOutput<FirewallVpcFirewallLocalVpc>('localVpc');
+    localVpc = registerOutput<FirewallVpcFirewallLocalVpc>(
+      'localVpc',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FirewallVpcFirewallLocalVpc.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     memberUid = registerOutput<String?>('memberUid');
-    peerVpc = registerOutput<FirewallVpcFirewallPeerVpc>('peerVpc');
+    peerVpc = registerOutput<FirewallVpcFirewallPeerVpc>(
+      'peerVpc',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FirewallVpcFirewallPeerVpc.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     regionStatus = registerOutput<String>('regionStatus');
     status = registerOutput<String>('status');
     vpcFirewallId = registerOutput<String>('vpcFirewallId');

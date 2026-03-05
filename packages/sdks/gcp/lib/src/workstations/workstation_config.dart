@@ -3641,7 +3641,16 @@ class WorkstationConfig extends pulumi.CustomResource {
     allowedPorts = registerOutput<List<Map<String, dynamic>>>('allowedPorts');
     annotations = registerOutput<Map<String, String>?>('annotations');
     conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
-    container = registerOutput<WorkstationConfigContainer>('container');
+    container = registerOutput<WorkstationConfigContainer>(
+      'container',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkstationConfigContainer.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     degraded = registerOutput<bool>('degraded');
     disableTcpConnections = registerOutput<bool?>('disableTcpConnections');
@@ -3653,12 +3662,28 @@ class WorkstationConfig extends pulumi.CustomResource {
     enableAuditAgent = registerOutput<bool?>('enableAuditAgent');
     encryptionKey = registerOutput<WorkstationConfigEncryptionKey?>(
       'encryptionKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkstationConfigEncryptionKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     ephemeralDirectories = registerOutput<List<Map<String, dynamic>>>(
       'ephemeralDirectories',
     );
     etag = registerOutput<String>('etag');
-    host = registerOutput<WorkstationConfigHost>('host');
+    host = registerOutput<WorkstationConfigHost>(
+      'host',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkstationConfigHost.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     idleTimeout = registerOutput<String?>('idleTimeout');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
@@ -3705,7 +3730,16 @@ class WorkstationConfig extends pulumi.CustomResource {
     allowedPorts = registerOutput<List<Map<String, dynamic>>>('allowedPorts');
     annotations = registerOutput<Map<String, String>?>('annotations');
     conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
-    container = registerOutput<WorkstationConfigContainer>('container');
+    container = registerOutput<WorkstationConfigContainer>(
+      'container',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkstationConfigContainer.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     degraded = registerOutput<bool>('degraded');
     disableTcpConnections = registerOutput<bool?>('disableTcpConnections');
@@ -3717,12 +3751,28 @@ class WorkstationConfig extends pulumi.CustomResource {
     enableAuditAgent = registerOutput<bool?>('enableAuditAgent');
     encryptionKey = registerOutput<WorkstationConfigEncryptionKey?>(
       'encryptionKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkstationConfigEncryptionKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     ephemeralDirectories = registerOutput<List<Map<String, dynamic>>>(
       'ephemeralDirectories',
     );
     etag = registerOutput<String>('etag');
-    host = registerOutput<WorkstationConfigHost>('host');
+    host = registerOutput<WorkstationConfigHost>(
+      'host',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkstationConfigHost.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     idleTimeout = registerOutput<String?>('idleTimeout');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');

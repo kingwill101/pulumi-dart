@@ -741,6 +741,13 @@ class PrivateEndpoint extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     extendedLocation = registerOutput<ExtendedLocationResponse?>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     ipConfigurations = registerOutput<List<Map<String, dynamic>>?>(
       'ipConfigurations',
@@ -758,7 +765,16 @@ class PrivateEndpoint extends pulumi.CustomResource {
       'privateLinkServiceConnections',
     );
     provisioningState = registerOutput<String>('provisioningState');
-    subnet = registerOutput<SubnetResponse?>('subnet');
+    subnet = registerOutput<SubnetResponse?>(
+      'subnet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubnetResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

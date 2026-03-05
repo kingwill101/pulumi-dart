@@ -576,7 +576,16 @@ class MethodSettings extends pulumi.CustomResource {
     methodPath = registerOutput<String>('methodPath');
     region = registerOutput<String>('region');
     restApi = registerOutput<String>('restApi');
-    settings = registerOutput<MethodSettingsSettings>('settings');
+    settings = registerOutput<MethodSettingsSettings>(
+      'settings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MethodSettingsSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     stageName = registerOutput<String>('stageName');
   }
 
@@ -606,7 +615,16 @@ class MethodSettings extends pulumi.CustomResource {
     methodPath = registerOutput<String>('methodPath');
     region = registerOutput<String>('region');
     restApi = registerOutput<String>('restApi');
-    settings = registerOutput<MethodSettingsSettings>('settings');
+    settings = registerOutput<MethodSettingsSettings>(
+      'settings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MethodSettingsSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     stageName = registerOutput<String>('stageName');
   }
 }

@@ -189,8 +189,26 @@ class Policy extends pulumi.CustomResource {
       ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<PolicyModelPropertiesResponse>('properties');
-    systemData = registerOutput<PolicyModelResponseSystemData>('systemData');
+    properties = registerOutput<PolicyModelPropertiesResponse>(
+      'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyModelPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<PolicyModelResponseSystemData>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyModelResponseSystemData.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

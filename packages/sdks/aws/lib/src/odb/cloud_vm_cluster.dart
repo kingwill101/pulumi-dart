@@ -604,6 +604,13 @@ class CloudVmCluster extends pulumi.CustomResource {
     createdAt = registerOutput<String>('createdAt');
     dataCollectionOptions = registerOutput<CloudVmClusterDataCollectionOptions>(
       'dataCollectionOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CloudVmClusterDataCollectionOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dataStorageSizeInTbs = registerOutput<double>('dataStorageSizeInTbs');
     dbNodeStorageSizeInGbs = registerOutput<int>('dbNodeStorageSizeInGbs');
@@ -646,7 +653,16 @@ class CloudVmCluster extends pulumi.CustomResource {
     systemVersion = registerOutput<String>('systemVersion');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<CloudVmClusterTimeouts?>('timeouts');
+    timeouts = registerOutput<CloudVmClusterTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CloudVmClusterTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     timezone = registerOutput<String>('timezone');
     vipIds = registerOutput<List<String>>('vipIds');
   }
@@ -687,6 +703,13 @@ class CloudVmCluster extends pulumi.CustomResource {
     createdAt = registerOutput<String>('createdAt');
     dataCollectionOptions = registerOutput<CloudVmClusterDataCollectionOptions>(
       'dataCollectionOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CloudVmClusterDataCollectionOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dataStorageSizeInTbs = registerOutput<double>('dataStorageSizeInTbs');
     dbNodeStorageSizeInGbs = registerOutput<int>('dbNodeStorageSizeInGbs');
@@ -729,7 +752,16 @@ class CloudVmCluster extends pulumi.CustomResource {
     systemVersion = registerOutput<String>('systemVersion');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<CloudVmClusterTimeouts?>('timeouts');
+    timeouts = registerOutput<CloudVmClusterTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CloudVmClusterTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     timezone = registerOutput<String>('timezone');
     vipIds = registerOutput<List<String>>('vipIds');
   }

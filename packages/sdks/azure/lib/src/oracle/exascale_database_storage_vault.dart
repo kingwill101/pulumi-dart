@@ -266,6 +266,13 @@ class ExascaleDatabaseStorageVault extends pulumi.CustomResource {
     highCapacityDatabaseStorage =
         registerOutput<ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage>(
           'highCapacityDatabaseStorage',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -306,6 +313,13 @@ class ExascaleDatabaseStorageVault extends pulumi.CustomResource {
     highCapacityDatabaseStorage =
         registerOutput<ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage>(
           'highCapacityDatabaseStorage',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

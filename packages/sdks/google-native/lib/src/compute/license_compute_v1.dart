@@ -59,6 +59,13 @@ class LicenseComputeV1 extends pulumi.CustomResource {
     resourceRequirements =
         registerOutput<LicenseResourceRequirementsResponseComputeV1>(
           'resourceRequirements',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LicenseResourceRequirementsResponseComputeV1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     selfLink = registerOutput<String>('selfLink');
     transferable = registerOutput<bool>('transferable');

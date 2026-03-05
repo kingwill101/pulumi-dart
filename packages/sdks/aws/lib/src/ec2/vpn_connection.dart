@@ -1003,6 +1003,13 @@ class VpnConnection extends pulumi.CustomResource {
     tunnel1InsideIpv6Cidr = registerOutput<String>('tunnel1InsideIpv6Cidr');
     tunnel1LogOptions = registerOutput<VpnConnectionTunnel1LogOptions>(
       'tunnel1LogOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpnConnectionTunnel1LogOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tunnel1Phase1DhGroupNumbers = registerOutput<List<int>?>(
       'tunnel1Phase1DhGroupNumbers',
@@ -1054,6 +1061,13 @@ class VpnConnection extends pulumi.CustomResource {
     tunnel2InsideIpv6Cidr = registerOutput<String>('tunnel2InsideIpv6Cidr');
     tunnel2LogOptions = registerOutput<VpnConnectionTunnel2LogOptions>(
       'tunnel2LogOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpnConnectionTunnel2LogOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tunnel2Phase1DhGroupNumbers = registerOutput<List<int>?>(
       'tunnel2Phase1DhGroupNumbers',
@@ -1167,6 +1181,13 @@ class VpnConnection extends pulumi.CustomResource {
     tunnel1InsideIpv6Cidr = registerOutput<String>('tunnel1InsideIpv6Cidr');
     tunnel1LogOptions = registerOutput<VpnConnectionTunnel1LogOptions>(
       'tunnel1LogOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpnConnectionTunnel1LogOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tunnel1Phase1DhGroupNumbers = registerOutput<List<int>?>(
       'tunnel1Phase1DhGroupNumbers',
@@ -1218,6 +1239,13 @@ class VpnConnection extends pulumi.CustomResource {
     tunnel2InsideIpv6Cidr = registerOutput<String>('tunnel2InsideIpv6Cidr');
     tunnel2LogOptions = registerOutput<VpnConnectionTunnel2LogOptions>(
       'tunnel2LogOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpnConnectionTunnel2LogOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tunnel2Phase1DhGroupNumbers = registerOutput<List<int>?>(
       'tunnel2Phase1DhGroupNumbers',

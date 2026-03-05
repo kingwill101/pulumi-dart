@@ -320,31 +320,80 @@ class DataQualityJobDefinition extends pulumi.CustomResource {
     dataQualityAppSpecification =
         registerOutput<DataQualityJobDefinitionDataQualityAppSpecification>(
           'dataQualityAppSpecification',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataQualityJobDefinitionDataQualityAppSpecification.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dataQualityBaselineConfig =
         registerOutput<DataQualityJobDefinitionDataQualityBaselineConfig?>(
           'dataQualityBaselineConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataQualityJobDefinitionDataQualityBaselineConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dataQualityJobInput =
         registerOutput<DataQualityJobDefinitionDataQualityJobInput>(
           'dataQualityJobInput',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataQualityJobDefinitionDataQualityJobInput.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dataQualityJobOutputConfig =
         registerOutput<DataQualityJobDefinitionDataQualityJobOutputConfig>(
           'dataQualityJobOutputConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataQualityJobDefinitionDataQualityJobOutputConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     jobResources = registerOutput<DataQualityJobDefinitionJobResources>(
       'jobResources',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataQualityJobDefinitionJobResources.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     networkConfig = registerOutput<DataQualityJobDefinitionNetworkConfig?>(
       'networkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataQualityJobDefinitionNetworkConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     stoppingCondition =
         registerOutput<DataQualityJobDefinitionStoppingCondition>(
           'stoppingCondition',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataQualityJobDefinitionStoppingCondition.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -377,31 +426,80 @@ class DataQualityJobDefinition extends pulumi.CustomResource {
     dataQualityAppSpecification =
         registerOutput<DataQualityJobDefinitionDataQualityAppSpecification>(
           'dataQualityAppSpecification',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataQualityJobDefinitionDataQualityAppSpecification.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dataQualityBaselineConfig =
         registerOutput<DataQualityJobDefinitionDataQualityBaselineConfig?>(
           'dataQualityBaselineConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataQualityJobDefinitionDataQualityBaselineConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dataQualityJobInput =
         registerOutput<DataQualityJobDefinitionDataQualityJobInput>(
           'dataQualityJobInput',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataQualityJobDefinitionDataQualityJobInput.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dataQualityJobOutputConfig =
         registerOutput<DataQualityJobDefinitionDataQualityJobOutputConfig>(
           'dataQualityJobOutputConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataQualityJobDefinitionDataQualityJobOutputConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     jobResources = registerOutput<DataQualityJobDefinitionJobResources>(
       'jobResources',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataQualityJobDefinitionJobResources.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     networkConfig = registerOutput<DataQualityJobDefinitionNetworkConfig?>(
       'networkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataQualityJobDefinitionNetworkConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     stoppingCondition =
         registerOutput<DataQualityJobDefinitionStoppingCondition>(
           'stoppingCondition',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataQualityJobDefinitionStoppingCondition.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

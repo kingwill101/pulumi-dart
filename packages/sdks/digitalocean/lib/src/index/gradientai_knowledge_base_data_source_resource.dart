@@ -32,10 +32,24 @@ class GradientaiKnowledgeBaseDataSourceResource extends pulumi.CustomResource {
     spacesDataSource =
         registerOutput<GradientaiKnowledgeBaseDataSourceSpacesDataSource?>(
           'spacesDataSource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GradientaiKnowledgeBaseDataSourceSpacesDataSource.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     webCrawlerDataSource =
         registerOutput<GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource?>(
           'webCrawlerDataSource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 
@@ -66,10 +80,24 @@ class GradientaiKnowledgeBaseDataSourceResource extends pulumi.CustomResource {
     spacesDataSource =
         registerOutput<GradientaiKnowledgeBaseDataSourceSpacesDataSource?>(
           'spacesDataSource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GradientaiKnowledgeBaseDataSourceSpacesDataSource.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     webCrawlerDataSource =
         registerOutput<GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource?>(
           'webCrawlerDataSource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

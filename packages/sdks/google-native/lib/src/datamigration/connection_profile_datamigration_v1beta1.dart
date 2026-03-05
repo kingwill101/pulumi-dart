@@ -65,15 +65,38 @@ class ConnectionProfileDatamigrationV1beta1 extends pulumi.CustomResource {
     cloudsql =
         registerOutput<CloudSqlConnectionProfileResponseDatamigrationV1beta1>(
           'cloudsql',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CloudSqlConnectionProfileResponseDatamigrationV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     connectionProfileId = registerOutput<String>('connectionProfileId');
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
-    error = registerOutput<StatusResponseDatamigrationV1beta1>('error');
+    error = registerOutput<StatusResponseDatamigrationV1beta1>(
+      'error',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StatusResponseDatamigrationV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
     mysql = registerOutput<MySqlConnectionProfileResponseDatamigrationV1beta1>(
       'mysql',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MySqlConnectionProfileResponseDatamigrationV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

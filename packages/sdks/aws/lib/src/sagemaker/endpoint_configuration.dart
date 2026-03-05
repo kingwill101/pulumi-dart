@@ -221,9 +221,23 @@ class EndpointConfiguration extends pulumi.CustomResource {
     asyncInferenceConfig =
         registerOutput<EndpointConfigurationAsyncInferenceConfig?>(
           'asyncInferenceConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EndpointConfigurationAsyncInferenceConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dataCaptureConfig = registerOutput<EndpointConfigurationDataCaptureConfig?>(
       'dataCaptureConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointConfigurationDataCaptureConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     executionRoleArn = registerOutput<String?>('executionRoleArn');
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
@@ -267,9 +281,23 @@ class EndpointConfiguration extends pulumi.CustomResource {
     asyncInferenceConfig =
         registerOutput<EndpointConfigurationAsyncInferenceConfig?>(
           'asyncInferenceConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EndpointConfigurationAsyncInferenceConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dataCaptureConfig = registerOutput<EndpointConfigurationDataCaptureConfig?>(
       'dataCaptureConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointConfigurationDataCaptureConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     executionRoleArn = registerOutput<String?>('executionRoleArn');
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');

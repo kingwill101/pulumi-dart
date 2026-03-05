@@ -82,6 +82,13 @@ class FhirStore extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     notificationConfig = registerOutput<NotificationConfigResponse>(
       'notificationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NotificationConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     notificationConfigs = registerOutput<List<Map<String, dynamic>>>(
       'notificationConfigs',
@@ -90,6 +97,13 @@ class FhirStore extends pulumi.CustomResource {
     streamConfigs = registerOutput<List<Map<String, dynamic>>>('streamConfigs');
     validationConfig = registerOutput<ValidationConfigResponse>(
       'validationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ValidationConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     version = registerOutput<String>('version');
   }

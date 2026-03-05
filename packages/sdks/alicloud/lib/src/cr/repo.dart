@@ -225,7 +225,16 @@ class Repo extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     detail = registerOutput<String?>('detail');
-    domainList = registerOutput<RepoDomainList>('domainList');
+    domainList = registerOutput<RepoDomainList>(
+      'domainList',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RepoDomainList.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     namespace = registerOutput<String>('namespace');
     repoType = registerOutput<String>('repoType');
@@ -252,7 +261,16 @@ class Repo extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     detail = registerOutput<String?>('detail');
-    domainList = registerOutput<RepoDomainList>('domainList');
+    domainList = registerOutput<RepoDomainList>(
+      'domainList',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RepoDomainList.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     namespace = registerOutput<String>('namespace');
     repoType = registerOutput<String>('repoType');

@@ -69,15 +69,40 @@ class BuildxBuilder extends pulumi.CustomResource {
     buildkitFlags = registerOutput<String?>('buildkitFlags');
     dockerContainer = registerOutput<BuildxBuilderDockerContainer?>(
       'dockerContainer',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BuildxBuilderDockerContainer.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     driver = registerOutput<String?>('driver');
     driverOptions = registerOutput<Map<String, String>?>('driverOptions');
     endpoint = registerOutput<String?>('endpoint');
-    kubernetes = registerOutput<BuildxBuilderKubernetes?>('kubernetes');
+    kubernetes = registerOutput<BuildxBuilderKubernetes?>(
+      'kubernetes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BuildxBuilderKubernetes.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     node = registerOutput<String?>('node');
     platforms = registerOutput<List<String>?>('platforms');
-    remote = registerOutput<BuildxBuilderRemote?>('remote');
+    remote = registerOutput<BuildxBuilderRemote?>(
+      'remote',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BuildxBuilderRemote.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     use = registerOutput<bool?>('use');
   }
 
@@ -110,15 +135,40 @@ class BuildxBuilder extends pulumi.CustomResource {
     buildkitFlags = registerOutput<String?>('buildkitFlags');
     dockerContainer = registerOutput<BuildxBuilderDockerContainer?>(
       'dockerContainer',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BuildxBuilderDockerContainer.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     driver = registerOutput<String?>('driver');
     driverOptions = registerOutput<Map<String, String>?>('driverOptions');
     endpoint = registerOutput<String?>('endpoint');
-    kubernetes = registerOutput<BuildxBuilderKubernetes?>('kubernetes');
+    kubernetes = registerOutput<BuildxBuilderKubernetes?>(
+      'kubernetes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BuildxBuilderKubernetes.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     node = registerOutput<String?>('node');
     platforms = registerOutput<List<String>?>('platforms');
-    remote = registerOutput<BuildxBuilderRemote?>('remote');
+    remote = registerOutput<BuildxBuilderRemote?>(
+      'remote',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BuildxBuilderRemote.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     use = registerOutput<bool?>('use');
   }
 }

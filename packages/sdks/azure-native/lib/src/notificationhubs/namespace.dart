@@ -385,8 +385,26 @@ class Namespace extends pulumi.CustomResource {
     metricId = registerOutput<String>('metricId');
     this.name = registerOutput<String>('name');
     namespaceType = registerOutput<String?>('namespaceType');
-    networkAcls = registerOutput<NetworkAclsResponse?>('networkAcls');
-    pnsCredentials = registerOutput<PnsCredentialsResponse?>('pnsCredentials');
+    networkAcls = registerOutput<NetworkAclsResponse?>(
+      'networkAcls',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkAclsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    pnsCredentials = registerOutput<PnsCredentialsResponse?>(
+      'pnsCredentials',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PnsCredentialsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
       'privateEndpointConnections',
     );
@@ -396,10 +414,28 @@ class Namespace extends pulumi.CustomResource {
     replicationRegion = registerOutput<String?>('replicationRegion');
     scaleUnit = registerOutput<String?>('scaleUnit');
     serviceBusEndpoint = registerOutput<String>('serviceBusEndpoint');
-    sku = registerOutput<SkuResponse>('sku');
+    sku = registerOutput<SkuResponse>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String?>('status');
     subscriptionId = registerOutput<String>('subscriptionId');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     updatedAt = registerOutput<String>('updatedAt');

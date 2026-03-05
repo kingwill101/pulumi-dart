@@ -416,10 +416,33 @@ class AccountQueuePropertiesStorage extends pulumi.CustomResource {
     corsRules = registerOutput<List<Map<String, dynamic>>?>('corsRules');
     hourMetrics = registerOutput<AccountQueuePropertiesHourMetrics>(
       'hourMetrics',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountQueuePropertiesHourMetrics.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    logging = registerOutput<AccountQueuePropertiesLogging>('logging');
+    logging = registerOutput<AccountQueuePropertiesLogging>(
+      'logging',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountQueuePropertiesLogging.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     minuteMetrics = registerOutput<AccountQueuePropertiesMinuteMetrics>(
       'minuteMetrics',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountQueuePropertiesMinuteMetrics.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     storageAccountId = registerOutput<String>('storageAccountId');
   }
@@ -450,10 +473,33 @@ class AccountQueuePropertiesStorage extends pulumi.CustomResource {
     corsRules = registerOutput<List<Map<String, dynamic>>?>('corsRules');
     hourMetrics = registerOutput<AccountQueuePropertiesHourMetrics>(
       'hourMetrics',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountQueuePropertiesHourMetrics.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    logging = registerOutput<AccountQueuePropertiesLogging>('logging');
+    logging = registerOutput<AccountQueuePropertiesLogging>(
+      'logging',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountQueuePropertiesLogging.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     minuteMetrics = registerOutput<AccountQueuePropertiesMinuteMetrics>(
       'minuteMetrics',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountQueuePropertiesMinuteMetrics.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     storageAccountId = registerOutput<String>('storageAccountId');
   }

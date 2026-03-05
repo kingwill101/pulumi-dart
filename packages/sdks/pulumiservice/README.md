@@ -20,7 +20,7 @@ import 'package:pulumi_pulumiservice/pulumi_pulumiservice.dart' as provider;
 dependencies:
   pulumi_pulumiservice:
     git:
-      url: https://github.com/<owner>/<repo>.git
+      url: https://github.com/kingwill101/pulumi-dart.git
       path: packages/pulumiservice
       ref: main
 ~~~

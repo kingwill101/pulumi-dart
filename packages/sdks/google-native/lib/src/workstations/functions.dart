@@ -55,7 +55,8 @@ Future<GetWorkstationClusterResult> getWorkstationCluster(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_workstations_v1_get_workstation_cluster_workstation_config_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetWorkstationClusterWorkstationConfigIamPolicyResult> getWorkstationClusterWorkstationConfigIamPolicy(
+Future<GetWorkstationClusterWorkstationConfigIamPolicyResult>
+getWorkstationClusterWorkstationConfigIamPolicy(
   GetWorkstationClusterWorkstationConfigIamPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -71,7 +72,8 @@ Future<GetWorkstationClusterWorkstationConfigIamPolicyResult> getWorkstationClus
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_workstations_v1_get_workstation_cluster_workstation_config_workstation_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetWorkstationClusterWorkstationConfigWorkstationIamPolicyResult> getWorkstationClusterWorkstationConfigWorkstationIamPolicy(
+Future<GetWorkstationClusterWorkstationConfigWorkstationIamPolicyResult>
+getWorkstationClusterWorkstationConfigWorkstationIamPolicy(
   GetWorkstationClusterWorkstationConfigWorkstationIamPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -81,7 +83,9 @@ Future<GetWorkstationClusterWorkstationConfigWorkstationIamPolicyResult> getWork
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetWorkstationClusterWorkstationConfigWorkstationIamPolicyResult.fromMap(result);
+  return GetWorkstationClusterWorkstationConfigWorkstationIamPolicyResult.fromMap(
+    result,
+  );
 }
 
 /// Returns the requested workstation configuration.
@@ -119,7 +123,8 @@ Future<GetWorkstationWorkstationsV1betaResult> getWorkstationWorkstationsV1beta(
 /// Returns the requested workstation cluster.
 /// [args] Arguments passed to this invoke. {@macro pulumi_workstations_v1beta_get_workstation_cluster_workstations_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetWorkstationClusterWorkstationsV1betaResult> getWorkstationClusterWorkstationsV1beta(
+Future<GetWorkstationClusterWorkstationsV1betaResult>
+getWorkstationClusterWorkstationsV1beta(
   GetWorkstationClusterWorkstationsV1betaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -135,7 +140,8 @@ Future<GetWorkstationClusterWorkstationsV1betaResult> getWorkstationClusterWorks
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_workstations_v1beta_get_workstation_cluster_workstation_config_iam_policy_workstations_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetWorkstationClusterWorkstationConfigIamPolicyWorkstationsV1betaResult> getWorkstationClusterWorkstationConfigIamPolicyWorkstationsV1beta(
+Future<GetWorkstationClusterWorkstationConfigIamPolicyWorkstationsV1betaResult>
+getWorkstationClusterWorkstationConfigIamPolicyWorkstationsV1beta(
   GetWorkstationClusterWorkstationConfigIamPolicyWorkstationsV1betaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -145,14 +151,20 @@ Future<GetWorkstationClusterWorkstationConfigIamPolicyWorkstationsV1betaResult> 
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetWorkstationClusterWorkstationConfigIamPolicyWorkstationsV1betaResult.fromMap(result);
+  return GetWorkstationClusterWorkstationConfigIamPolicyWorkstationsV1betaResult.fromMap(
+    result,
+  );
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_workstations_v1beta_get_workstation_cluster_workstation_config_workstation_iam_policy_workstations_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetWorkstationClusterWorkstationConfigWorkstationIamPolicyWorkstationsV1betaResult> getWorkstationClusterWorkstationConfigWorkstationIamPolicyWorkstationsV1beta(
-  GetWorkstationClusterWorkstationConfigWorkstationIamPolicyWorkstationsV1betaArgs args, {
+Future<
+  GetWorkstationClusterWorkstationConfigWorkstationIamPolicyWorkstationsV1betaResult
+>
+getWorkstationClusterWorkstationConfigWorkstationIamPolicyWorkstationsV1beta(
+  GetWorkstationClusterWorkstationConfigWorkstationIamPolicyWorkstationsV1betaArgs
+  args, {
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
@@ -161,13 +173,16 @@ Future<GetWorkstationClusterWorkstationConfigWorkstationIamPolicyWorkstationsV1b
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetWorkstationClusterWorkstationConfigWorkstationIamPolicyWorkstationsV1betaResult.fromMap(result);
+  return GetWorkstationClusterWorkstationConfigWorkstationIamPolicyWorkstationsV1betaResult.fromMap(
+    result,
+  );
 }
 
 /// Returns the requested workstation configuration.
 /// [args] Arguments passed to this invoke. {@macro pulumi_workstations_v1beta_get_workstation_config_workstations_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetWorkstationConfigWorkstationsV1betaResult> getWorkstationConfigWorkstationsV1beta(
+Future<GetWorkstationConfigWorkstationsV1betaResult>
+getWorkstationConfigWorkstationsV1beta(
   GetWorkstationConfigWorkstationsV1betaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

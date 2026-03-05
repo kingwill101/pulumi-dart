@@ -643,6 +643,13 @@ class RegionPerInstanceConfig extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     preservedState = registerOutput<RegionPerInstanceConfigPreservedState?>(
       'preservedState',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegionPerInstanceConfigPreservedState.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
@@ -685,6 +692,13 @@ class RegionPerInstanceConfig extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     preservedState = registerOutput<RegionPerInstanceConfigPreservedState?>(
       'preservedState',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegionPerInstanceConfigPreservedState.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');

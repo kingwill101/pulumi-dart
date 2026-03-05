@@ -139,7 +139,16 @@ class SasTrail extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     createTime = registerOutput<int>('createTime');
-    serviceTrail = registerOutput<SasTrailServiceTrail>('serviceTrail');
+    serviceTrail = registerOutput<SasTrailServiceTrail>(
+      'serviceTrail',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SasTrailServiceTrail.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [SasTrail] resource's state with the given [name] and [id].
@@ -166,6 +175,15 @@ class SasTrail extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     createTime = registerOutput<int>('createTime');
-    serviceTrail = registerOutput<SasTrailServiceTrail>('serviceTrail');
+    serviceTrail = registerOutput<SasTrailServiceTrail>(
+      'serviceTrail',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SasTrailServiceTrail.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

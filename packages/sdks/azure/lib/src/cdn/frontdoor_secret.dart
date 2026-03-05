@@ -58,7 +58,16 @@ class FrontdoorSecret extends pulumi.CustomResource {
     cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
     cdnFrontdoorProfileName = registerOutput<String>('cdnFrontdoorProfileName');
     this.name = registerOutput<String>('name');
-    secret = registerOutput<FrontdoorSecretSecret>('secret');
+    secret = registerOutput<FrontdoorSecretSecret>(
+      'secret',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FrontdoorSecretSecret.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [FrontdoorSecret] resource's state with the given [name] and [id].
@@ -87,6 +96,15 @@ class FrontdoorSecret extends pulumi.CustomResource {
     cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
     cdnFrontdoorProfileName = registerOutput<String>('cdnFrontdoorProfileName');
     this.name = registerOutput<String>('name');
-    secret = registerOutput<FrontdoorSecretSecret>('secret');
+    secret = registerOutput<FrontdoorSecretSecret>(
+      'secret',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FrontdoorSecretSecret.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

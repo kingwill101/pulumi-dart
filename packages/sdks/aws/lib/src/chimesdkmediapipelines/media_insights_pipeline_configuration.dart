@@ -1886,7 +1886,16 @@ class MediaInsightsPipelineConfiguration extends pulumi.CustomResource {
     realTimeAlertConfiguration =
         registerOutput<
           MediaInsightsPipelineConfigurationRealTimeAlertConfiguration?
-        >('realTimeAlertConfiguration');
+        >(
+          'realTimeAlertConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MediaInsightsPipelineConfigurationRealTimeAlertConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     region = registerOutput<String>('region');
     resourceAccessRoleArn = registerOutput<String>('resourceAccessRoleArn');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -1922,7 +1931,16 @@ class MediaInsightsPipelineConfiguration extends pulumi.CustomResource {
     realTimeAlertConfiguration =
         registerOutput<
           MediaInsightsPipelineConfigurationRealTimeAlertConfiguration?
-        >('realTimeAlertConfiguration');
+        >(
+          'realTimeAlertConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MediaInsightsPipelineConfigurationRealTimeAlertConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     region = registerOutput<String>('region');
     resourceAccessRoleArn = registerOutput<String>('resourceAccessRoleArn');
     tags = registerOutput<Map<String, String>?>('tags');

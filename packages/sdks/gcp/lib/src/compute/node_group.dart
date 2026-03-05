@@ -883,6 +883,13 @@ class NodeGroup extends pulumi.CustomResource {
        ) {
     autoscalingPolicy = registerOutput<NodeGroupAutoscalingPolicy>(
       'autoscalingPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodeGroupAutoscalingPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String?>('description');
@@ -891,12 +898,28 @@ class NodeGroup extends pulumi.CustomResource {
     maintenancePolicy = registerOutput<String?>('maintenancePolicy');
     maintenanceWindow = registerOutput<NodeGroupMaintenanceWindow?>(
       'maintenanceWindow',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodeGroupMaintenanceWindow.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     nodeTemplate = registerOutput<String>('nodeTemplate');
     project = registerOutput<String>('project');
     selfLink = registerOutput<String>('selfLink');
-    shareSettings = registerOutput<NodeGroupShareSettings>('shareSettings');
+    shareSettings = registerOutput<NodeGroupShareSettings>(
+      'shareSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodeGroupShareSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     size = registerOutput<int>('size');
     zone = registerOutput<String>('zone');
   }
@@ -926,6 +949,13 @@ class NodeGroup extends pulumi.CustomResource {
        ) {
     autoscalingPolicy = registerOutput<NodeGroupAutoscalingPolicy>(
       'autoscalingPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodeGroupAutoscalingPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String?>('description');
@@ -934,12 +964,28 @@ class NodeGroup extends pulumi.CustomResource {
     maintenancePolicy = registerOutput<String?>('maintenancePolicy');
     maintenanceWindow = registerOutput<NodeGroupMaintenanceWindow?>(
       'maintenanceWindow',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodeGroupMaintenanceWindow.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     nodeTemplate = registerOutput<String>('nodeTemplate');
     project = registerOutput<String>('project');
     selfLink = registerOutput<String>('selfLink');
-    shareSettings = registerOutput<NodeGroupShareSettings>('shareSettings');
+    shareSettings = registerOutput<NodeGroupShareSettings>(
+      'shareSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodeGroupShareSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     size = registerOutput<int>('size');
     zone = registerOutput<String>('zone');
   }

@@ -43,6 +43,13 @@ class AutoscalingPolicyDataprocV1beta2 extends pulumi.CustomResource {
     basicAlgorithm =
         registerOutput<BasicAutoscalingAlgorithmResponseDataprocV1beta2>(
           'basicAlgorithm',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return BasicAutoscalingAlgorithmResponseDataprocV1beta2.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -50,10 +57,28 @@ class AutoscalingPolicyDataprocV1beta2 extends pulumi.CustomResource {
     secondaryWorkerConfig =
         registerOutput<
           InstanceGroupAutoscalingPolicyConfigResponseDataprocV1beta2
-        >('secondaryWorkerConfig');
+        >(
+          'secondaryWorkerConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceGroupAutoscalingPolicyConfigResponseDataprocV1beta2.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     workerConfig =
         registerOutput<
           InstanceGroupAutoscalingPolicyConfigResponseDataprocV1beta2
-        >('workerConfig');
+        >(
+          'workerConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceGroupAutoscalingPolicyConfigResponseDataprocV1beta2.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
   }
 }

@@ -58,6 +58,13 @@ class TestCase extends pulumi.CustomResource {
     lastTestResult =
         registerOutput<GoogleCloudDialogflowCxV3TestCaseResultResponse>(
           'lastTestResult',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowCxV3TestCaseResultResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -69,6 +76,13 @@ class TestCase extends pulumi.CustomResource {
     );
     testConfig = registerOutput<GoogleCloudDialogflowCxV3TestConfigResponse>(
       'testConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudDialogflowCxV3TestConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

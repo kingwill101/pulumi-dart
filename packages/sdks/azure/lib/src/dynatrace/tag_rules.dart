@@ -441,8 +441,26 @@ class TagRules extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    logRule = registerOutput<TagRulesLogRule?>('logRule');
-    metricRule = registerOutput<TagRulesMetricRule?>('metricRule');
+    logRule = registerOutput<TagRulesLogRule?>(
+      'logRule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TagRulesLogRule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    metricRule = registerOutput<TagRulesMetricRule?>(
+      'metricRule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TagRulesMetricRule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     monitorId = registerOutput<String>('monitorId');
     this.name = registerOutput<String>('name');
   }
@@ -470,8 +488,26 @@ class TagRules extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    logRule = registerOutput<TagRulesLogRule?>('logRule');
-    metricRule = registerOutput<TagRulesMetricRule?>('metricRule');
+    logRule = registerOutput<TagRulesLogRule?>(
+      'logRule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TagRulesLogRule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    metricRule = registerOutput<TagRulesMetricRule?>(
+      'metricRule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TagRulesMetricRule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     monitorId = registerOutput<String>('monitorId');
     this.name = registerOutput<String>('name');
   }

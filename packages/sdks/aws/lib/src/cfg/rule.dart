@@ -890,8 +890,24 @@ class Rule extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     ruleId = registerOutput<String>('ruleId');
-    scope = registerOutput<RuleScope?>('scope');
-    source = registerOutput<RuleSource>('source');
+    scope = registerOutput<RuleScope?>(
+      'scope',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RuleScope.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
+    source = registerOutput<RuleSource>(
+      'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RuleSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
@@ -927,8 +943,24 @@ class Rule extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     ruleId = registerOutput<String>('ruleId');
-    scope = registerOutput<RuleScope?>('scope');
-    source = registerOutput<RuleSource>('source');
+    scope = registerOutput<RuleScope?>(
+      'scope',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RuleScope.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
+    source = registerOutput<RuleSource>(
+      'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RuleSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }

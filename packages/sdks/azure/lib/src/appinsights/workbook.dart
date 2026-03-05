@@ -326,7 +326,16 @@ class Workbook extends pulumi.CustomResource {
     dataJson = registerOutput<String>('dataJson');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    identity = registerOutput<WorkbookIdentity?>('identity');
+    identity = registerOutput<WorkbookIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkbookIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -362,7 +371,16 @@ class Workbook extends pulumi.CustomResource {
     dataJson = registerOutput<String>('dataJson');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    identity = registerOutput<WorkbookIdentity?>('identity');
+    identity = registerOutput<WorkbookIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkbookIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

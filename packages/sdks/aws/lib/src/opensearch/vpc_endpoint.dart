@@ -193,7 +193,16 @@ class VpcEndpoint extends pulumi.CustomResource {
     domainArn = registerOutput<String>('domainArn');
     endpoint = registerOutput<String>('endpoint');
     region = registerOutput<String>('region');
-    vpcOptions = registerOutput<VpcEndpointVpcOptions>('vpcOptions');
+    vpcOptions = registerOutput<VpcEndpointVpcOptions>(
+      'vpcOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpcEndpointVpcOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [VpcEndpoint] resource's state with the given [name] and [id].
@@ -222,6 +231,15 @@ class VpcEndpoint extends pulumi.CustomResource {
     domainArn = registerOutput<String>('domainArn');
     endpoint = registerOutput<String>('endpoint');
     region = registerOutput<String>('region');
-    vpcOptions = registerOutput<VpcEndpointVpcOptions>('vpcOptions');
+    vpcOptions = registerOutput<VpcEndpointVpcOptions>(
+      'vpcOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpcEndpointVpcOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

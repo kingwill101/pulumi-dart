@@ -192,6 +192,13 @@ class Workgroup extends pulumi.CustomResource {
     port = registerOutput<int>('port');
     pricePerformanceTarget = registerOutput<WorkgroupPricePerformanceTarget>(
       'pricePerformanceTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkgroupPricePerformanceTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     publiclyAccessible = registerOutput<bool?>('publiclyAccessible');
     region = registerOutput<String>('region');
@@ -239,6 +246,13 @@ class Workgroup extends pulumi.CustomResource {
     port = registerOutput<int>('port');
     pricePerformanceTarget = registerOutput<WorkgroupPricePerformanceTarget>(
       'pricePerformanceTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkgroupPricePerformanceTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     publiclyAccessible = registerOutput<bool?>('publiclyAccessible');
     region = registerOutput<String>('region');

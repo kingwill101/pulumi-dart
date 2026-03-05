@@ -772,13 +772,45 @@ class StandardAppVersion extends pulumi.CustomResource {
     appEngineApis = registerOutput<bool?>('appEngineApis');
     automaticScaling = registerOutput<StandardAppVersionAutomaticScaling?>(
       'automaticScaling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StandardAppVersionAutomaticScaling.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     basicScaling = registerOutput<StandardAppVersionBasicScaling?>(
       'basicScaling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StandardAppVersionBasicScaling.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     deleteServiceOnDestroy = registerOutput<bool?>('deleteServiceOnDestroy');
-    deployment = registerOutput<StandardAppVersionDeployment>('deployment');
-    entrypoint = registerOutput<StandardAppVersionEntrypoint>('entrypoint');
+    deployment = registerOutput<StandardAppVersionDeployment>(
+      'deployment',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StandardAppVersionDeployment.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    entrypoint = registerOutput<StandardAppVersionEntrypoint>(
+      'entrypoint',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StandardAppVersionEntrypoint.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     envVariables = registerOutput<Map<String, String>?>('envVariables');
     handlers = registerOutput<List<Map<String, dynamic>>>('handlers');
     inboundServices = registerOutput<List<String>?>('inboundServices');
@@ -786,6 +818,13 @@ class StandardAppVersion extends pulumi.CustomResource {
     libraries = registerOutput<List<Map<String, dynamic>>?>('libraries');
     manualScaling = registerOutput<StandardAppVersionManualScaling?>(
       'manualScaling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StandardAppVersionManualScaling.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     noopOnDestroy = registerOutput<bool?>('noopOnDestroy');
@@ -798,6 +837,13 @@ class StandardAppVersion extends pulumi.CustomResource {
     versionId = registerOutput<String?>('versionId');
     vpcAccessConnector = registerOutput<StandardAppVersionVpcAccessConnector?>(
       'vpcAccessConnector',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StandardAppVersionVpcAccessConnector.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -827,13 +873,45 @@ class StandardAppVersion extends pulumi.CustomResource {
     appEngineApis = registerOutput<bool?>('appEngineApis');
     automaticScaling = registerOutput<StandardAppVersionAutomaticScaling?>(
       'automaticScaling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StandardAppVersionAutomaticScaling.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     basicScaling = registerOutput<StandardAppVersionBasicScaling?>(
       'basicScaling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StandardAppVersionBasicScaling.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     deleteServiceOnDestroy = registerOutput<bool?>('deleteServiceOnDestroy');
-    deployment = registerOutput<StandardAppVersionDeployment>('deployment');
-    entrypoint = registerOutput<StandardAppVersionEntrypoint>('entrypoint');
+    deployment = registerOutput<StandardAppVersionDeployment>(
+      'deployment',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StandardAppVersionDeployment.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    entrypoint = registerOutput<StandardAppVersionEntrypoint>(
+      'entrypoint',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StandardAppVersionEntrypoint.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     envVariables = registerOutput<Map<String, String>?>('envVariables');
     handlers = registerOutput<List<Map<String, dynamic>>>('handlers');
     inboundServices = registerOutput<List<String>?>('inboundServices');
@@ -841,6 +919,13 @@ class StandardAppVersion extends pulumi.CustomResource {
     libraries = registerOutput<List<Map<String, dynamic>>?>('libraries');
     manualScaling = registerOutput<StandardAppVersionManualScaling?>(
       'manualScaling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StandardAppVersionManualScaling.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     noopOnDestroy = registerOutput<bool?>('noopOnDestroy');
@@ -853,6 +938,13 @@ class StandardAppVersion extends pulumi.CustomResource {
     versionId = registerOutput<String?>('versionId');
     vpcAccessConnector = registerOutput<StandardAppVersionVpcAccessConnector?>(
       'vpcAccessConnector',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StandardAppVersionVpcAccessConnector.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

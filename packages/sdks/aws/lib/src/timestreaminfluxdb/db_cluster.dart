@@ -1122,6 +1122,13 @@ class DbCluster extends pulumi.CustomResource {
     logDeliveryConfiguration =
         registerOutput<DbClusterLogDeliveryConfiguration?>(
           'logDeliveryConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DbClusterLogDeliveryConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     networkType = registerOutput<String>('networkType');
@@ -1133,7 +1140,16 @@ class DbCluster extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<DbClusterTimeouts?>('timeouts');
+    timeouts = registerOutput<DbClusterTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DbClusterTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     username = registerOutput<String?>('username');
     vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds');
     vpcSubnetIds = registerOutput<List<String>>('vpcSubnetIds');
@@ -1180,6 +1196,13 @@ class DbCluster extends pulumi.CustomResource {
     logDeliveryConfiguration =
         registerOutput<DbClusterLogDeliveryConfiguration?>(
           'logDeliveryConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DbClusterLogDeliveryConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     networkType = registerOutput<String>('networkType');
@@ -1191,7 +1214,16 @@ class DbCluster extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<DbClusterTimeouts?>('timeouts');
+    timeouts = registerOutput<DbClusterTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DbClusterTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     username = registerOutput<String?>('username');
     vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds');
     vpcSubnetIds = registerOutput<List<String>>('vpcSubnetIds');

@@ -418,7 +418,16 @@ class ReportGroup extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     created = registerOutput<String>('created');
     deleteReports = registerOutput<bool?>('deleteReports');
-    exportConfig = registerOutput<ReportGroupExportConfig>('exportConfig');
+    exportConfig = registerOutput<ReportGroupExportConfig>(
+      'exportConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReportGroupExportConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -452,7 +461,16 @@ class ReportGroup extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     created = registerOutput<String>('created');
     deleteReports = registerOutput<bool?>('deleteReports');
-    exportConfig = registerOutput<ReportGroupExportConfig>('exportConfig');
+    exportConfig = registerOutput<ReportGroupExportConfig>(
+      'exportConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReportGroupExportConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');

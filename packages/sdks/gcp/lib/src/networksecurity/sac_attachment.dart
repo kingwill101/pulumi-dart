@@ -237,6 +237,13 @@ class SacAttachment extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     symantecOptions = registerOutput<SacAttachmentSymantecOptions?>(
       'symantecOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SacAttachmentSymantecOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     timeZone = registerOutput<String?>('timeZone');
     updateTime = registerOutput<String>('updateTime');
@@ -278,6 +285,13 @@ class SacAttachment extends pulumi.CustomResource {
     this.state = registerOutput<String>('state');
     symantecOptions = registerOutput<SacAttachmentSymantecOptions?>(
       'symantecOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SacAttachmentSymantecOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     timeZone = registerOutput<String?>('timeZone');
     updateTime = registerOutput<String>('updateTime');

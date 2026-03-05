@@ -247,7 +247,16 @@ class ReservedCacheNode extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ReservedCacheNodeTimeouts?>('timeouts');
+    timeouts = registerOutput<ReservedCacheNodeTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReservedCacheNodeTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     usagePrice = registerOutput<double>('usagePrice');
   }
 
@@ -292,7 +301,16 @@ class ReservedCacheNode extends pulumi.CustomResource {
     this.state = registerOutput<String>('state');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ReservedCacheNodeTimeouts?>('timeouts');
+    timeouts = registerOutput<ReservedCacheNodeTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReservedCacheNodeTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     usagePrice = registerOutput<double>('usagePrice');
   }
 }

@@ -672,6 +672,13 @@ class ManagedInstance extends pulumi.CustomResource {
     administrators =
         registerOutput<ManagedInstanceExternalAdministratorResponse?>(
           'administrators',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ManagedInstanceExternalAdministratorResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     authenticationMetadata = registerOutput<String?>('authenticationMetadata');
     azureApiVersion = registerOutput<String>('azureApiVersion');
@@ -692,7 +699,16 @@ class ManagedInstance extends pulumi.CustomResource {
     hybridSecondaryUsageDetected = registerOutput<String>(
       'hybridSecondaryUsageDetected',
     );
-    identity = registerOutput<ResourceIdentityResponse?>('identity');
+    identity = registerOutput<ResourceIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     instancePoolId = registerOutput<String?>('instancePoolId');
     isGeneralPurposeV2 = registerOutput<bool?>('isGeneralPurposeV2');
     keyId = registerOutput<String?>('keyId');
@@ -720,8 +736,24 @@ class ManagedInstance extends pulumi.CustomResource {
     );
     servicePrincipal = registerOutput<ServicePrincipalResponse?>(
       'servicePrincipal',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServicePrincipalResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    sku = registerOutput<SkuResponse?>('sku');
+    sku = registerOutput<SkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     state = registerOutput<String>('state');
     storageIOps = registerOutput<int?>('storageIOps');
     storageSizeInGB = registerOutput<int?>('storageSizeInGB');

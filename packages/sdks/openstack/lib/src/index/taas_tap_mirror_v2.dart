@@ -196,7 +196,16 @@ class TaasTapMirrorV2 extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     description = registerOutput<String?>('description');
-    directions = registerOutput<TaasTapMirrorV2Directions>('directions');
+    directions = registerOutput<TaasTapMirrorV2Directions>(
+      'directions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TaasTapMirrorV2Directions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     mirrorType = registerOutput<String>('mirrorType');
     this.name = registerOutput<String>('name');
     portId = registerOutput<String>('portId');
@@ -230,7 +239,16 @@ class TaasTapMirrorV2 extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     description = registerOutput<String?>('description');
-    directions = registerOutput<TaasTapMirrorV2Directions>('directions');
+    directions = registerOutput<TaasTapMirrorV2Directions>(
+      'directions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TaasTapMirrorV2Directions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     mirrorType = registerOutput<String>('mirrorType');
     this.name = registerOutput<String>('name');
     portId = registerOutput<String>('portId');

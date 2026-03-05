@@ -733,12 +733,42 @@ class Blueprint extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, ParameterDefinitionResponse>?>(
       'parameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeMapValues<ParameterDefinitionResponse>(
+          guardedValue,
+          (value) => ParameterDefinitionResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      },
     );
     resourceGroups =
         registerOutput<Map<String, ResourceGroupDefinitionResponse>?>(
           'resourceGroups',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return pulumi
+                .Input.decodeMapValues<ResourceGroupDefinitionResponse>(
+              guardedValue,
+              (value) => ResourceGroupDefinitionResponse.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            );
+          },
         );
-    status = registerOutput<BlueprintStatusResponse>('status');
+    status = registerOutput<BlueprintStatusResponse>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BlueprintStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     targetScope = registerOutput<String>('targetScope');
     type = registerOutput<String>('type');
     versions = registerOutput<dynamic>('versions');

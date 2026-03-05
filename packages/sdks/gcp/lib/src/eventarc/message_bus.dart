@@ -378,7 +378,16 @@ class MessageBus extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
-    loggingConfig = registerOutput<MessageBusLoggingConfig>('loggingConfig');
+    loggingConfig = registerOutput<MessageBusLoggingConfig>(
+      'loggingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MessageBusLoggingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     messageBusId = registerOutput<String>('messageBusId');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -421,7 +430,16 @@ class MessageBus extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
-    loggingConfig = registerOutput<MessageBusLoggingConfig>('loggingConfig');
+    loggingConfig = registerOutput<MessageBusLoggingConfig>(
+      'loggingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MessageBusLoggingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     messageBusId = registerOutput<String>('messageBusId');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

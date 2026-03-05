@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getTableEntity.
 class GetTableEntityResult {
   /// A map of key/value pairs that describe the entity to be stored in the storage table.
   final Map<String, String> entity;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String partitionKey;
@@ -45,4 +45,3 @@ class GetTableEntityResult {
     );
   }
 }
-

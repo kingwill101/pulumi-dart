@@ -58,11 +58,25 @@ class UserSqladminV1beta4 extends pulumi.CustomResource {
     passwordPolicy =
         registerOutput<UserPasswordValidationPolicyResponseSqladminV1beta4>(
           'passwordPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return UserPasswordValidationPolicyResponseSqladminV1beta4.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     project = registerOutput<String>('project');
     sqlserverUserDetails =
         registerOutput<SqlServerUserDetailsResponseSqladminV1beta4>(
           'sqlserverUserDetails',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SqlServerUserDetailsResponseSqladminV1beta4.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     type = registerOutput<String>('type');
   }

@@ -74,13 +74,36 @@ class BackupRun extends pulumi.CustomResource {
     diskEncryptionConfiguration =
         registerOutput<DiskEncryptionConfigurationResponse>(
           'diskEncryptionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DiskEncryptionConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     diskEncryptionStatus = registerOutput<DiskEncryptionStatusResponse>(
       'diskEncryptionStatus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiskEncryptionStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     endTime = registerOutput<String>('endTime');
     enqueuedTime = registerOutput<String>('enqueuedTime');
-    error = registerOutput<OperationErrorResponse>('error');
+    error = registerOutput<OperationErrorResponse>(
+      'error',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OperationErrorResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     instance = registerOutput<String>('instance');
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');

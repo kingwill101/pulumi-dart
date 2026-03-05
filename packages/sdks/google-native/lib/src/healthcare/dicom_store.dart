@@ -44,6 +44,13 @@ class DicomStore extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     notificationConfig = registerOutput<NotificationConfigResponse>(
       'notificationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NotificationConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     streamConfigs = registerOutput<List<Map<String, dynamic>>>('streamConfigs');

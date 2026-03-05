@@ -505,11 +505,27 @@ class ConnectCluster extends pulumi.CustomResource {
        ) {
     capacityConfig = registerOutput<ConnectClusterCapacityConfig>(
       'capacityConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectClusterCapacityConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     connectClusterId = registerOutput<String>('connectClusterId');
     createTime = registerOutput<String>('createTime');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    gcpConfig = registerOutput<ConnectClusterGcpConfig>('gcpConfig');
+    gcpConfig = registerOutput<ConnectClusterGcpConfig>(
+      'gcpConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectClusterGcpConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kafkaCluster = registerOutput<String>('kafkaCluster');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
@@ -545,11 +561,27 @@ class ConnectCluster extends pulumi.CustomResource {
        ) {
     capacityConfig = registerOutput<ConnectClusterCapacityConfig>(
       'capacityConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectClusterCapacityConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     connectClusterId = registerOutput<String>('connectClusterId');
     createTime = registerOutput<String>('createTime');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    gcpConfig = registerOutput<ConnectClusterGcpConfig>('gcpConfig');
+    gcpConfig = registerOutput<ConnectClusterGcpConfig>(
+      'gcpConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectClusterGcpConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kafkaCluster = registerOutput<String>('kafkaCluster');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');

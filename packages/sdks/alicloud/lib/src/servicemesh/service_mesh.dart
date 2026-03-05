@@ -99,12 +99,46 @@ class ServiceMesh extends pulumi.CustomResource {
     edition = registerOutput<String?>('edition');
     extraConfiguration = registerOutput<ServiceMeshExtraConfiguration>(
       'extraConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceMeshExtraConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     force = registerOutput<bool?>('force');
     kubeconfig = registerOutput<String>('kubeconfig');
-    loadBalancer = registerOutput<ServiceMeshLoadBalancer>('loadBalancer');
-    meshConfig = registerOutput<ServiceMeshMeshConfig>('meshConfig');
-    network = registerOutput<ServiceMeshNetwork>('network');
+    loadBalancer = registerOutput<ServiceMeshLoadBalancer>(
+      'loadBalancer',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceMeshLoadBalancer.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    meshConfig = registerOutput<ServiceMeshMeshConfig>(
+      'meshConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceMeshMeshConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    network = registerOutput<ServiceMeshNetwork>(
+      'network',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceMeshNetwork.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     prometheusUrl = registerOutput<String?>('prometheusUrl');
     serviceMeshName = registerOutput<String?>('serviceMeshName');
     status = registerOutput<String>('status');
@@ -142,12 +176,46 @@ class ServiceMesh extends pulumi.CustomResource {
     edition = registerOutput<String?>('edition');
     extraConfiguration = registerOutput<ServiceMeshExtraConfiguration>(
       'extraConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceMeshExtraConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     force = registerOutput<bool?>('force');
     kubeconfig = registerOutput<String>('kubeconfig');
-    loadBalancer = registerOutput<ServiceMeshLoadBalancer>('loadBalancer');
-    meshConfig = registerOutput<ServiceMeshMeshConfig>('meshConfig');
-    network = registerOutput<ServiceMeshNetwork>('network');
+    loadBalancer = registerOutput<ServiceMeshLoadBalancer>(
+      'loadBalancer',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceMeshLoadBalancer.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    meshConfig = registerOutput<ServiceMeshMeshConfig>(
+      'meshConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceMeshMeshConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    network = registerOutput<ServiceMeshNetwork>(
+      'network',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceMeshNetwork.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     prometheusUrl = registerOutput<String?>('prometheusUrl');
     serviceMeshName = registerOutput<String?>('serviceMeshName');
     status = registerOutput<String>('status');

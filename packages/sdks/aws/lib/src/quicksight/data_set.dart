@@ -1481,6 +1481,13 @@ class DataSet extends pulumi.CustomResource {
     dataSetUsageConfiguration =
         registerOutput<DataSetDataSetUsageConfiguration>(
           'dataSetUsageConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataSetDataSetUsageConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     fieldFolders = registerOutput<List<Map<String, dynamic>>?>('fieldFolders');
     importMode = registerOutput<String>('importMode');
@@ -1495,15 +1502,36 @@ class DataSet extends pulumi.CustomResource {
     );
     refreshProperties = registerOutput<DataSetRefreshProperties?>(
       'refreshProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataSetRefreshProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     rowLevelPermissionDataSet =
         registerOutput<DataSetRowLevelPermissionDataSet?>(
           'rowLevelPermissionDataSet',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataSetRowLevelPermissionDataSet.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     rowLevelPermissionTagConfiguration =
         registerOutput<DataSetRowLevelPermissionTagConfiguration?>(
           'rowLevelPermissionTagConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataSetRowLevelPermissionTagConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -1543,6 +1571,13 @@ class DataSet extends pulumi.CustomResource {
     dataSetUsageConfiguration =
         registerOutput<DataSetDataSetUsageConfiguration>(
           'dataSetUsageConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataSetDataSetUsageConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     fieldFolders = registerOutput<List<Map<String, dynamic>>?>('fieldFolders');
     importMode = registerOutput<String>('importMode');
@@ -1557,15 +1592,36 @@ class DataSet extends pulumi.CustomResource {
     );
     refreshProperties = registerOutput<DataSetRefreshProperties?>(
       'refreshProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataSetRefreshProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     rowLevelPermissionDataSet =
         registerOutput<DataSetRowLevelPermissionDataSet?>(
           'rowLevelPermissionDataSet',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataSetRowLevelPermissionDataSet.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     rowLevelPermissionTagConfiguration =
         registerOutput<DataSetRowLevelPermissionTagConfiguration?>(
           'rowLevelPermissionTagConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataSetRowLevelPermissionTagConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

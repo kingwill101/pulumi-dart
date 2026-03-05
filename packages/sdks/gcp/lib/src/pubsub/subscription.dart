@@ -3670,12 +3670,33 @@ class Subscription extends pulumi.CustomResource {
     ackDeadlineSeconds = registerOutput<int>('ackDeadlineSeconds');
     bigqueryConfig = registerOutput<SubscriptionBigqueryConfig?>(
       'bigqueryConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubscriptionBigqueryConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     cloudStorageConfig = registerOutput<SubscriptionCloudStorageConfig?>(
       'cloudStorageConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubscriptionCloudStorageConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     deadLetterPolicy = registerOutput<SubscriptionDeadLetterPolicy?>(
       'deadLetterPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubscriptionDeadLetterPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     enableExactlyOnceDelivery = registerOutput<bool?>(
@@ -3684,6 +3705,13 @@ class Subscription extends pulumi.CustomResource {
     enableMessageOrdering = registerOutput<bool?>('enableMessageOrdering');
     expirationPolicy = registerOutput<SubscriptionExpirationPolicy>(
       'expirationPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubscriptionExpirationPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     filter = registerOutput<String?>('filter');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -3696,9 +3724,27 @@ class Subscription extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    pushConfig = registerOutput<SubscriptionPushConfig?>('pushConfig');
+    pushConfig = registerOutput<SubscriptionPushConfig?>(
+      'pushConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubscriptionPushConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     retainAckedMessages = registerOutput<bool?>('retainAckedMessages');
-    retryPolicy = registerOutput<SubscriptionRetryPolicy?>('retryPolicy');
+    retryPolicy = registerOutput<SubscriptionRetryPolicy?>(
+      'retryPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubscriptionRetryPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     topic = registerOutput<String>('topic');
   }
@@ -3729,12 +3775,33 @@ class Subscription extends pulumi.CustomResource {
     ackDeadlineSeconds = registerOutput<int>('ackDeadlineSeconds');
     bigqueryConfig = registerOutput<SubscriptionBigqueryConfig?>(
       'bigqueryConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubscriptionBigqueryConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     cloudStorageConfig = registerOutput<SubscriptionCloudStorageConfig?>(
       'cloudStorageConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubscriptionCloudStorageConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     deadLetterPolicy = registerOutput<SubscriptionDeadLetterPolicy?>(
       'deadLetterPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubscriptionDeadLetterPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     enableExactlyOnceDelivery = registerOutput<bool?>(
@@ -3743,6 +3810,13 @@ class Subscription extends pulumi.CustomResource {
     enableMessageOrdering = registerOutput<bool?>('enableMessageOrdering');
     expirationPolicy = registerOutput<SubscriptionExpirationPolicy>(
       'expirationPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubscriptionExpirationPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     filter = registerOutput<String?>('filter');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -3755,9 +3829,27 @@ class Subscription extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    pushConfig = registerOutput<SubscriptionPushConfig?>('pushConfig');
+    pushConfig = registerOutput<SubscriptionPushConfig?>(
+      'pushConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubscriptionPushConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     retainAckedMessages = registerOutput<bool?>('retainAckedMessages');
-    retryPolicy = registerOutput<SubscriptionRetryPolicy?>('retryPolicy');
+    retryPolicy = registerOutput<SubscriptionRetryPolicy?>(
+      'retryPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubscriptionRetryPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     topic = registerOutput<String>('topic');
   }

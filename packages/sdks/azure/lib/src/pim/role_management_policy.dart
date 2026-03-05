@@ -348,19 +348,47 @@ class RoleManagementPolicy extends pulumi.CustomResource {
        ) {
     activationRules = registerOutput<RoleManagementPolicyActivationRules>(
       'activationRules',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RoleManagementPolicyActivationRules.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     activeAssignmentRules =
         registerOutput<RoleManagementPolicyActiveAssignmentRules>(
           'activeAssignmentRules',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RoleManagementPolicyActiveAssignmentRules.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String>('description');
     eligibleAssignmentRules =
         registerOutput<RoleManagementPolicyEligibleAssignmentRules>(
           'eligibleAssignmentRules',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RoleManagementPolicyEligibleAssignmentRules.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     notificationRules = registerOutput<RoleManagementPolicyNotificationRules>(
       'notificationRules',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RoleManagementPolicyNotificationRules.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     roleDefinitionId = registerOutput<String>('roleDefinitionId');
     scope = registerOutput<String>('scope');
@@ -391,19 +419,47 @@ class RoleManagementPolicy extends pulumi.CustomResource {
        ) {
     activationRules = registerOutput<RoleManagementPolicyActivationRules>(
       'activationRules',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RoleManagementPolicyActivationRules.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     activeAssignmentRules =
         registerOutput<RoleManagementPolicyActiveAssignmentRules>(
           'activeAssignmentRules',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RoleManagementPolicyActiveAssignmentRules.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String>('description');
     eligibleAssignmentRules =
         registerOutput<RoleManagementPolicyEligibleAssignmentRules>(
           'eligibleAssignmentRules',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RoleManagementPolicyEligibleAssignmentRules.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     notificationRules = registerOutput<RoleManagementPolicyNotificationRules>(
       'notificationRules',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RoleManagementPolicyNotificationRules.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     roleDefinitionId = registerOutput<String>('roleDefinitionId');
     scope = registerOutput<String>('scope');

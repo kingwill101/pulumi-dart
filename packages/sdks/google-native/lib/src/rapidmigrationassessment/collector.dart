@@ -81,7 +81,16 @@ class Collector extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     eulaUri = registerOutput<String>('eulaUri');
     expectedAssetCount = registerOutput<String>('expectedAssetCount');
-    guestOsScan = registerOutput<GuestOsScanResponse>('guestOsScan');
+    guestOsScan = registerOutput<GuestOsScanResponse>(
+      'guestOsScan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GuestOsScanResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -90,6 +99,15 @@ class Collector extends pulumi.CustomResource {
     serviceAccount = registerOutput<String>('serviceAccount');
     state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
-    vsphereScan = registerOutput<VSphereScanResponse>('vsphereScan');
+    vsphereScan = registerOutput<VSphereScanResponse>(
+      'vsphereScan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VSphereScanResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

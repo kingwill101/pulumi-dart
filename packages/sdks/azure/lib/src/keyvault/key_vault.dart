@@ -353,7 +353,16 @@ class KeyVault extends pulumi.CustomResource {
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkAcls = registerOutput<KeyVaultNetworkAcls>('networkAcls');
+    networkAcls = registerOutput<KeyVaultNetworkAcls>(
+      'networkAcls',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KeyVaultNetworkAcls.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     publicNetworkAccessEnabled = registerOutput<bool?>(
       'publicNetworkAccessEnabled',
     );
@@ -404,7 +413,16 @@ class KeyVault extends pulumi.CustomResource {
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkAcls = registerOutput<KeyVaultNetworkAcls>('networkAcls');
+    networkAcls = registerOutput<KeyVaultNetworkAcls>(
+      'networkAcls',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KeyVaultNetworkAcls.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     publicNetworkAccessEnabled = registerOutput<bool?>(
       'publicNetworkAccessEnabled',
     );

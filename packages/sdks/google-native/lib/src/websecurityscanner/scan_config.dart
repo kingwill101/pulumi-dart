@@ -59,7 +59,16 @@ class ScanConfig extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    authentication = registerOutput<AuthenticationResponse>('authentication');
+    authentication = registerOutput<AuthenticationResponse>(
+      'authentication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AuthenticationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     blacklistPatterns = registerOutput<List<String>>('blacklistPatterns');
     displayName = registerOutput<String>('displayName');
     exportToSecurityCommandCenter = registerOutput<String>(
@@ -71,7 +80,16 @@ class ScanConfig extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     riskLevel = registerOutput<String>('riskLevel');
-    schedule = registerOutput<ScheduleResponse>('schedule');
+    schedule = registerOutput<ScheduleResponse>(
+      'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduleResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     startingUrls = registerOutput<List<String>>('startingUrls');
     staticIpScan = registerOutput<bool>('staticIpScan');
     userAgent = registerOutput<String>('userAgent');

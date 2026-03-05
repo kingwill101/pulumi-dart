@@ -69,13 +69,31 @@ class AppConnector extends pulumi.CustomResource {
     principalInfo =
         registerOutput<
           GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoResponse
-        >('principalInfo');
+        >(
+          'principalInfo',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');
     resourceInfo =
         registerOutput<
           GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponse
-        >('resourceInfo');
+        >(
+          'resourceInfo',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');

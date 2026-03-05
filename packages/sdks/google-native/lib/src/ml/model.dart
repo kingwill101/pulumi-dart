@@ -42,6 +42,13 @@ class Model extends pulumi.CustomResource {
       ) {
     defaultVersion = registerOutput<GoogleCloudMlV1VersionResponse>(
       'defaultVersion',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudMlV1VersionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String>('description');
     etag = registerOutput<String>('etag');

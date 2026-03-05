@@ -71,7 +71,8 @@ Future<GetEnterpriseCustomerOperationResult> getEnterpriseCustomerOperation(
 /// Other available API versions: 2024-11-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedcache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_connectedcache_get_enterprise_mcc_cache_nodes_operation_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetEnterpriseMccCacheNodesOperationResult> getEnterpriseMccCacheNodesOperation(
+Future<GetEnterpriseMccCacheNodesOperationResult>
+getEnterpriseMccCacheNodesOperation(
   GetEnterpriseMccCacheNodesOperationArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -89,7 +90,8 @@ Future<GetEnterpriseMccCacheNodesOperationResult> getEnterpriseMccCacheNodesOper
 /// Uses Azure REST API version 2024-11-30-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_connectedcache_get_enterprise_mcc_cache_nodes_operation_cache_node_auto_update_history_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetEnterpriseMccCacheNodesOperationCacheNodeAutoUpdateHistoryResult> getEnterpriseMccCacheNodesOperationCacheNodeAutoUpdateHistory(
+Future<GetEnterpriseMccCacheNodesOperationCacheNodeAutoUpdateHistoryResult>
+getEnterpriseMccCacheNodesOperationCacheNodeAutoUpdateHistory(
   GetEnterpriseMccCacheNodesOperationCacheNodeAutoUpdateHistoryArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -99,7 +101,9 @@ Future<GetEnterpriseMccCacheNodesOperationCacheNodeAutoUpdateHistoryResult> getE
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetEnterpriseMccCacheNodesOperationCacheNodeAutoUpdateHistoryResult.fromMap(result);
+  return GetEnterpriseMccCacheNodesOperationCacheNodeAutoUpdateHistoryResult.fromMap(
+    result,
+  );
 }
 
 /// This api gets secrets of the ispCacheNode resource install details
@@ -109,7 +113,8 @@ Future<GetEnterpriseMccCacheNodesOperationCacheNodeAutoUpdateHistoryResult> getE
 /// Other available API versions: 2024-11-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedcache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_connectedcache_get_enterprise_mcc_cache_nodes_operation_cache_node_install_details_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsResult> getEnterpriseMccCacheNodesOperationCacheNodeInstallDetails(
+Future<GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsResult>
+getEnterpriseMccCacheNodesOperationCacheNodeInstallDetails(
   GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -119,7 +124,9 @@ Future<GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsResult> getEnte
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsResult.fromMap(result);
+  return GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsResult.fromMap(
+    result,
+  );
 }
 
 /// This api gets ispCacheNode resource issues details histrory information
@@ -127,7 +134,8 @@ Future<GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsResult> getEnte
 /// Uses Azure REST API version 2024-11-30-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_connectedcache_get_enterprise_mcc_cache_nodes_operation_cache_node_mcc_issue_details_history_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetEnterpriseMccCacheNodesOperationCacheNodeMccIssueDetailsHistoryResult> getEnterpriseMccCacheNodesOperationCacheNodeMccIssueDetailsHistory(
+Future<GetEnterpriseMccCacheNodesOperationCacheNodeMccIssueDetailsHistoryResult>
+getEnterpriseMccCacheNodesOperationCacheNodeMccIssueDetailsHistory(
   GetEnterpriseMccCacheNodesOperationCacheNodeMccIssueDetailsHistoryArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -137,7 +145,9 @@ Future<GetEnterpriseMccCacheNodesOperationCacheNodeMccIssueDetailsHistoryResult>
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetEnterpriseMccCacheNodesOperationCacheNodeMccIssueDetailsHistoryResult.fromMap(result);
+  return GetEnterpriseMccCacheNodesOperationCacheNodeMccIssueDetailsHistoryResult.fromMap(
+    result,
+  );
 }
 
 /// This api gets ispCacheNode resource tls certificate histrory information
@@ -145,7 +155,8 @@ Future<GetEnterpriseMccCacheNodesOperationCacheNodeMccIssueDetailsHistoryResult>
 /// Uses Azure REST API version 2024-11-30-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_connectedcache_get_enterprise_mcc_cache_nodes_operation_cache_node_tls_certificate_history_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHistoryResult> getEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHistory(
+Future<GetEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHistoryResult>
+getEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHistory(
   GetEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHistoryArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -155,7 +166,9 @@ Future<GetEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHistoryResult> 
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHistoryResult.fromMap(result);
+  return GetEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHistoryResult.fromMap(
+    result,
+  );
 }
 
 /// Gets the enterprise mcc customer resource information using this get call
@@ -205,7 +218,8 @@ Future<GetIspCacheNodesOperationResult> getIspCacheNodesOperation(
 /// Other available API versions: 2024-11-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedcache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_connectedcache_get_isp_cache_nodes_operation_bgp_cidrs_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetIspCacheNodesOperationBgpCidrsResult> getIspCacheNodesOperationBgpCidrs(
+Future<GetIspCacheNodesOperationBgpCidrsResult>
+getIspCacheNodesOperationBgpCidrs(
   GetIspCacheNodesOperationBgpCidrsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -223,7 +237,8 @@ Future<GetIspCacheNodesOperationBgpCidrsResult> getIspCacheNodesOperationBgpCidr
 /// Uses Azure REST API version 2024-11-30-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_connectedcache_get_isp_cache_nodes_operation_cache_node_auto_update_history_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetIspCacheNodesOperationCacheNodeAutoUpdateHistoryResult> getIspCacheNodesOperationCacheNodeAutoUpdateHistory(
+Future<GetIspCacheNodesOperationCacheNodeAutoUpdateHistoryResult>
+getIspCacheNodesOperationCacheNodeAutoUpdateHistory(
   GetIspCacheNodesOperationCacheNodeAutoUpdateHistoryArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -233,7 +248,9 @@ Future<GetIspCacheNodesOperationCacheNodeAutoUpdateHistoryResult> getIspCacheNod
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetIspCacheNodesOperationCacheNodeAutoUpdateHistoryResult.fromMap(result);
+  return GetIspCacheNodesOperationCacheNodeAutoUpdateHistoryResult.fromMap(
+    result,
+  );
 }
 
 /// This api gets secrets of the ispCacheNode resource install details
@@ -243,7 +260,8 @@ Future<GetIspCacheNodesOperationCacheNodeAutoUpdateHistoryResult> getIspCacheNod
 /// Other available API versions: 2024-11-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedcache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_connectedcache_get_isp_cache_nodes_operation_cache_node_install_details_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetIspCacheNodesOperationCacheNodeInstallDetailsResult> getIspCacheNodesOperationCacheNodeInstallDetails(
+Future<GetIspCacheNodesOperationCacheNodeInstallDetailsResult>
+getIspCacheNodesOperationCacheNodeInstallDetails(
   GetIspCacheNodesOperationCacheNodeInstallDetailsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -261,7 +279,8 @@ Future<GetIspCacheNodesOperationCacheNodeInstallDetailsResult> getIspCacheNodesO
 /// Uses Azure REST API version 2024-11-30-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_connectedcache_get_isp_cache_nodes_operation_cache_node_mcc_issue_details_history_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetIspCacheNodesOperationCacheNodeMccIssueDetailsHistoryResult> getIspCacheNodesOperationCacheNodeMccIssueDetailsHistory(
+Future<GetIspCacheNodesOperationCacheNodeMccIssueDetailsHistoryResult>
+getIspCacheNodesOperationCacheNodeMccIssueDetailsHistory(
   GetIspCacheNodesOperationCacheNodeMccIssueDetailsHistoryArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -271,7 +290,9 @@ Future<GetIspCacheNodesOperationCacheNodeMccIssueDetailsHistoryResult> getIspCac
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetIspCacheNodesOperationCacheNodeMccIssueDetailsHistoryResult.fromMap(result);
+  return GetIspCacheNodesOperationCacheNodeMccIssueDetailsHistoryResult.fromMap(
+    result,
+  );
 }
 
 /// Gets the ispCustomer resource information using this get call

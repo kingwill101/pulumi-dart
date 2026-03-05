@@ -46,6 +46,13 @@ class Datastore extends pulumi.CustomResource {
     datastoreConfig =
         registerOutput<GoogleCloudApigeeV1DatastoreConfigResponse>(
           'datastoreConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudApigeeV1DatastoreConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     displayName = registerOutput<String>('displayName');
     lastUpdateTime = registerOutput<String>('lastUpdateTime');

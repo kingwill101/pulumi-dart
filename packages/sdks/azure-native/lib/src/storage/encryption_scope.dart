@@ -299,6 +299,13 @@ class EncryptionScope extends pulumi.CustomResource {
     keyVaultProperties =
         registerOutput<EncryptionScopeKeyVaultPropertiesResponse?>(
           'keyVaultProperties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EncryptionScopeKeyVaultPropertiesResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     this.name = registerOutput<String>('name');

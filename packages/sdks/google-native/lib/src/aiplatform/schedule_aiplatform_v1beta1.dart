@@ -86,7 +86,16 @@ class ScheduleAiplatformV1beta1 extends pulumi.CustomResource {
     createPipelineJobRequest =
         registerOutput<
           GoogleCloudAiplatformV1beta1CreatePipelineJobRequestResponse
-        >('createPipelineJobRequest');
+        >(
+          'createPipelineJobRequest',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1beta1CreatePipelineJobRequestResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     createTime = registerOutput<String>('createTime');
     cron = registerOutput<String>('cron');
     displayName = registerOutput<String>('displayName');
@@ -96,6 +105,13 @@ class ScheduleAiplatformV1beta1 extends pulumi.CustomResource {
     lastScheduledRunResponse =
         registerOutput<GoogleCloudAiplatformV1beta1ScheduleRunResponseResponse>(
           'lastScheduledRunResponse',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1beta1ScheduleRunResponseResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     location = registerOutput<String>('location');
     maxConcurrentRunCount = registerOutput<String>('maxConcurrentRunCount');

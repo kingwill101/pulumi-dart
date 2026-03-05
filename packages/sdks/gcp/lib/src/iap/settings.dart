@@ -594,9 +594,25 @@ class Settings extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    accessSettings = registerOutput<SettingsAccessSettings?>('accessSettings');
+    accessSettings = registerOutput<SettingsAccessSettings?>(
+      'accessSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SettingsAccessSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     applicationSettings = registerOutput<SettingsApplicationSettings?>(
       'applicationSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SettingsApplicationSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
   }
@@ -624,9 +640,25 @@ class Settings extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    accessSettings = registerOutput<SettingsAccessSettings?>('accessSettings');
+    accessSettings = registerOutput<SettingsAccessSettings?>(
+      'accessSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SettingsAccessSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     applicationSettings = registerOutput<SettingsApplicationSettings?>(
       'applicationSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SettingsApplicationSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
   }

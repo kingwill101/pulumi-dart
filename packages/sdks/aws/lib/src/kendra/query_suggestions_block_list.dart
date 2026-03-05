@@ -210,6 +210,13 @@ class QuerySuggestionsBlockList extends pulumi.CustomResource {
     roleArn = registerOutput<String>('roleArn');
     sourceS3Path = registerOutput<QuerySuggestionsBlockListSourceS3Path>(
       'sourceS3Path',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return QuerySuggestionsBlockListSourceS3Path.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -250,6 +257,13 @@ class QuerySuggestionsBlockList extends pulumi.CustomResource {
     roleArn = registerOutput<String>('roleArn');
     sourceS3Path = registerOutput<QuerySuggestionsBlockListSourceS3Path>(
       'sourceS3Path',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return QuerySuggestionsBlockListSourceS3Path.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');

@@ -59,6 +59,13 @@ class WorkflowTemplateDataprocV1beta2 extends pulumi.CustomResource {
     placement =
         registerOutput<WorkflowTemplatePlacementResponseDataprocV1beta2>(
           'placement',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WorkflowTemplatePlacementResponseDataprocV1beta2.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     project = registerOutput<String>('project');
     updateTime = registerOutput<String>('updateTime');

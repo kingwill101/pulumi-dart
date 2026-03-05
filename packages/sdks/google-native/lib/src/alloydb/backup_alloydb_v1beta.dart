@@ -105,13 +105,34 @@ class BackupAlloydbV1beta extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     encryptionConfig = registerOutput<EncryptionConfigResponseAlloydbV1beta>(
       'encryptionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EncryptionConfigResponseAlloydbV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     encryptionInfo = registerOutput<EncryptionInfoResponseAlloydbV1beta>(
       'encryptionInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EncryptionInfoResponseAlloydbV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     expiryQuantity = registerOutput<QuantityBasedExpiryResponseAlloydbV1beta>(
       'expiryQuantity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return QuantityBasedExpiryResponseAlloydbV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     expiryTime = registerOutput<String>('expiryTime');
     labels = registerOutput<Map<String, String>>('labels');

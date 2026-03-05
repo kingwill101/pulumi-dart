@@ -60,7 +60,16 @@ class EvaluationJob extends pulumi.CustomResource {
     evaluationJobConfig =
         registerOutput<
           GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse
-        >('evaluationJobConfig');
+        >(
+          'evaluationJobConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     labelMissingGroundTruth = registerOutput<bool>('labelMissingGroundTruth');
     modelVersion = registerOutput<String>('modelVersion');
     this.name = registerOutput<String>('name');

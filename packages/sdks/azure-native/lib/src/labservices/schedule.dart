@@ -244,13 +244,36 @@ class Schedule extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     recurrencePattern = registerOutput<RecurrencePatternResponse?>(
       'recurrencePattern',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RecurrencePatternResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     resourceOperationError = registerOutput<ResourceOperationErrorResponse>(
       'resourceOperationError',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceOperationErrorResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     startAt = registerOutput<String?>('startAt');
     stopAt = registerOutput<String>('stopAt');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     timeZoneId = registerOutput<String>('timeZoneId');
     type = registerOutput<String>('type');
   }

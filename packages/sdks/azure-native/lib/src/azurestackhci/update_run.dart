@@ -330,7 +330,16 @@ class UpdateRun extends pulumi.CustomResource {
     state = registerOutput<String?>('state');
     status = registerOutput<String?>('status');
     steps = registerOutput<List<Map<String, dynamic>>?>('steps');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     timeStarted = registerOutput<String?>('timeStarted');
     type = registerOutput<String>('type');
   }

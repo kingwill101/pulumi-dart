@@ -343,6 +343,13 @@ class L3IsolationDomain extends pulumi.CustomResource {
     aggregateRouteConfiguration =
         registerOutput<AggregateRouteConfigurationResponse?>(
           'aggregateRouteConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AggregateRouteConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     annotation = registerOutput<String?>('annotation');
     azureApiVersion = registerOutput<String>('azureApiVersion');
@@ -350,6 +357,13 @@ class L3IsolationDomain extends pulumi.CustomResource {
     connectedSubnetRoutePolicy =
         registerOutput<ConnectedSubnetRoutePolicyResponse?>(
           'connectedSubnetRoutePolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConnectedSubnetRoutePolicyResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -361,7 +375,16 @@ class L3IsolationDomain extends pulumi.CustomResource {
     redistributeStaticRoutes = registerOutput<String?>(
       'redistributeStaticRoutes',
     );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

@@ -218,7 +218,16 @@ class Accelerator extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    attributes = registerOutput<AcceleratorAttributes?>('attributes');
+    attributes = registerOutput<AcceleratorAttributes?>(
+      'attributes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AcceleratorAttributes.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dnsName = registerOutput<String>('dnsName');
     dualStackDnsName = registerOutput<String>('dualStackDnsName');
     enabled = registerOutput<bool?>('enabled');
@@ -255,7 +264,16 @@ class Accelerator extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    attributes = registerOutput<AcceleratorAttributes?>('attributes');
+    attributes = registerOutput<AcceleratorAttributes?>(
+      'attributes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AcceleratorAttributes.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dnsName = registerOutput<String>('dnsName');
     dualStackDnsName = registerOutput<String>('dualStackDnsName');
     enabled = registerOutput<bool?>('enabled');

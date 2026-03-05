@@ -1,23 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getPool.
 class GetPoolResult {
   final String accountName;
+
   /// Whether the NetApp Pool can hold cool access enabled volumes.
   final bool coolAccessEnabled;
+
   /// The custom throughput for the pool in MiB/s.
   final int customThroughputMibps;
+
   /// The encryption type of the pool.
   final String encryptionType;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The Azure Region where the NetApp Pool exists.
   final String location;
   final String name;
   final String resourceGroupName;
+
   /// The service level of the file system.
   final String serviceLevel;
+
   /// Provisioned size of the pool in TB.
   final int sizeInTb;
 
@@ -75,4 +81,3 @@ class GetPoolResult {
     );
   }
 }
-

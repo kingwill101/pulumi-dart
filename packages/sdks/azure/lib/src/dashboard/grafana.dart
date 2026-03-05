@@ -296,7 +296,16 @@ class Grafana extends pulumi.CustomResource {
     endpoint = registerOutput<String>('endpoint');
     grafanaMajorVersion = registerOutput<String>('grafanaMajorVersion');
     grafanaVersion = registerOutput<String>('grafanaVersion');
-    identity = registerOutput<GrafanaIdentity?>('identity');
+    identity = registerOutput<GrafanaIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GrafanaIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     outboundIps = registerOutput<List<String>>('outboundIps');
@@ -305,7 +314,16 @@ class Grafana extends pulumi.CustomResource {
     );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String?>('sku');
-    smtp = registerOutput<GrafanaSmtp?>('smtp');
+    smtp = registerOutput<GrafanaSmtp?>(
+      'smtp',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GrafanaSmtp.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     zoneRedundancyEnabled = registerOutput<bool?>('zoneRedundancyEnabled');
   }
@@ -347,7 +365,16 @@ class Grafana extends pulumi.CustomResource {
     endpoint = registerOutput<String>('endpoint');
     grafanaMajorVersion = registerOutput<String>('grafanaMajorVersion');
     grafanaVersion = registerOutput<String>('grafanaVersion');
-    identity = registerOutput<GrafanaIdentity?>('identity');
+    identity = registerOutput<GrafanaIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GrafanaIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     outboundIps = registerOutput<List<String>>('outboundIps');
@@ -356,7 +383,16 @@ class Grafana extends pulumi.CustomResource {
     );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String?>('sku');
-    smtp = registerOutput<GrafanaSmtp?>('smtp');
+    smtp = registerOutput<GrafanaSmtp?>(
+      'smtp',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GrafanaSmtp.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     zoneRedundancyEnabled = registerOutput<bool?>('zoneRedundancyEnabled');
   }

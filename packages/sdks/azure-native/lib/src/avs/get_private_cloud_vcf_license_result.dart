@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getPrivateCloudVcfLicense.
 class GetPrivateCloudVcfLicenseResult {
   /// License kind
   final String kind;
+
   /// The state of the license provisioning
   final String provisioningState;
 
@@ -30,4 +30,3 @@ class GetPrivateCloudVcfLicenseResult {
     );
   }
 }
-

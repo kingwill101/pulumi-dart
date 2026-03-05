@@ -1427,24 +1427,74 @@ class StreamProcessor extends pulumi.CustomResource {
     dataSharingPreference =
         registerOutput<StreamProcessorDataSharingPreference?>(
           'dataSharingPreference',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return StreamProcessorDataSharingPreference.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    input = registerOutput<StreamProcessorInput>('input');
+    input = registerOutput<StreamProcessorInput>(
+      'input',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StreamProcessorInput.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kmsKeyId = registerOutput<String?>('kmsKeyId');
     this.name = registerOutput<String>('name');
     notificationChannel = registerOutput<StreamProcessorNotificationChannel?>(
       'notificationChannel',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StreamProcessorNotificationChannel.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    output = registerOutput<StreamProcessorOutput>('output');
+    output = registerOutput<StreamProcessorOutput>(
+      'output',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StreamProcessorOutput.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     regionsOfInterests = registerOutput<List<Map<String, dynamic>>?>(
       'regionsOfInterests',
     );
     roleArn = registerOutput<String>('roleArn');
-    settings = registerOutput<StreamProcessorSettings>('settings');
+    settings = registerOutput<StreamProcessorSettings>(
+      'settings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StreamProcessorSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     streamProcessorArn = registerOutput<String>('streamProcessorArn');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<StreamProcessorTimeouts?>('timeouts');
+    timeouts = registerOutput<StreamProcessorTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StreamProcessorTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [StreamProcessor] resource's state with the given [name] and [id].
@@ -1474,23 +1524,73 @@ class StreamProcessor extends pulumi.CustomResource {
     dataSharingPreference =
         registerOutput<StreamProcessorDataSharingPreference?>(
           'dataSharingPreference',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return StreamProcessorDataSharingPreference.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    input = registerOutput<StreamProcessorInput>('input');
+    input = registerOutput<StreamProcessorInput>(
+      'input',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StreamProcessorInput.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kmsKeyId = registerOutput<String?>('kmsKeyId');
     this.name = registerOutput<String>('name');
     notificationChannel = registerOutput<StreamProcessorNotificationChannel?>(
       'notificationChannel',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StreamProcessorNotificationChannel.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    output = registerOutput<StreamProcessorOutput>('output');
+    output = registerOutput<StreamProcessorOutput>(
+      'output',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StreamProcessorOutput.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     regionsOfInterests = registerOutput<List<Map<String, dynamic>>?>(
       'regionsOfInterests',
     );
     roleArn = registerOutput<String>('roleArn');
-    settings = registerOutput<StreamProcessorSettings>('settings');
+    settings = registerOutput<StreamProcessorSettings>(
+      'settings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StreamProcessorSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     streamProcessorArn = registerOutput<String>('streamProcessorArn');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<StreamProcessorTimeouts?>('timeouts');
+    timeouts = registerOutput<StreamProcessorTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StreamProcessorTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

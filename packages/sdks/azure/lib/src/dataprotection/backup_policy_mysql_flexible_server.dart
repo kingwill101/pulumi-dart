@@ -601,6 +601,13 @@ class BackupPolicyMysqlFlexibleServer extends pulumi.CustomResource {
     defaultRetentionRule =
         registerOutput<BackupPolicyMysqlFlexibleServerDefaultRetentionRule>(
           'defaultRetentionRule',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return BackupPolicyMysqlFlexibleServerDefaultRetentionRule.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     retentionRules = registerOutput<List<Map<String, dynamic>>?>(
@@ -639,6 +646,13 @@ class BackupPolicyMysqlFlexibleServer extends pulumi.CustomResource {
     defaultRetentionRule =
         registerOutput<BackupPolicyMysqlFlexibleServerDefaultRetentionRule>(
           'defaultRetentionRule',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return BackupPolicyMysqlFlexibleServerDefaultRetentionRule.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     retentionRules = registerOutput<List<Map<String, dynamic>>?>(

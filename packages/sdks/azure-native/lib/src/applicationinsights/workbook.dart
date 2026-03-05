@@ -270,7 +270,16 @@ class Workbook extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String?>('etag');
-    identity = registerOutput<WorkbookResourceResponseIdentity?>('identity');
+    identity = registerOutput<WorkbookResourceResponseIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkbookResourceResponseIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kind = registerOutput<String?>('kind');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -278,7 +287,16 @@ class Workbook extends pulumi.CustomResource {
     serializedData = registerOutput<String>('serializedData');
     sourceId = registerOutput<String?>('sourceId');
     storageUri = registerOutput<String?>('storageUri');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     timeModified = registerOutput<String>('timeModified');
     type = registerOutput<String>('type');

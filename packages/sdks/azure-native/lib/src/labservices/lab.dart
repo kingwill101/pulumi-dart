@@ -475,10 +475,24 @@ class Lab extends pulumi.CustomResource {
       ) {
     autoShutdownProfile = registerOutput<AutoShutdownProfileResponse>(
       'autoShutdownProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AutoShutdownProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     connectionProfile = registerOutput<ConnectionProfileResponse>(
       'connectionProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     labPlanId = registerOutput<String?>('labPlanId');
@@ -486,22 +500,68 @@ class Lab extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkProfile = registerOutput<LabNetworkProfileResponse?>(
       'networkProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LabNetworkProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     provisioningState = registerOutput<String>('provisioningState');
     resourceOperationError = registerOutput<ResourceOperationErrorResponse>(
       'resourceOperationError',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceOperationErrorResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    rosterProfile = registerOutput<RosterProfileResponse?>('rosterProfile');
+    rosterProfile = registerOutput<RosterProfileResponse?>(
+      'rosterProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RosterProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     securityProfile = registerOutput<SecurityProfileResponse>(
       'securityProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     state = registerOutput<String>('state');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     title = registerOutput<String?>('title');
     type = registerOutput<String>('type');
     virtualMachineProfile = registerOutput<VirtualMachineProfileResponse>(
       'virtualMachineProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualMachineProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

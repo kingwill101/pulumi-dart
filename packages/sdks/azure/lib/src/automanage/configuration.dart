@@ -565,14 +565,39 @@ class Configuration extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    antimalware = registerOutput<ConfigurationAntimalware?>('antimalware');
+    antimalware = registerOutput<ConfigurationAntimalware?>(
+      'antimalware',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigurationAntimalware.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     automationAccountEnabled = registerOutput<bool?>(
       'automationAccountEnabled',
     );
     azureSecurityBaseline = registerOutput<ConfigurationAzureSecurityBaseline?>(
       'azureSecurityBaseline',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigurationAzureSecurityBaseline.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    backup = registerOutput<ConfigurationBackup?>('backup');
+    backup = registerOutput<ConfigurationBackup?>(
+      'backup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigurationBackup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     bootDiagnosticsEnabled = registerOutput<bool?>('bootDiagnosticsEnabled');
     defenderForCloudEnabled = registerOutput<bool?>('defenderForCloudEnabled');
     guestConfigurationEnabled = registerOutput<bool?>(
@@ -611,14 +636,39 @@ class Configuration extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    antimalware = registerOutput<ConfigurationAntimalware?>('antimalware');
+    antimalware = registerOutput<ConfigurationAntimalware?>(
+      'antimalware',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigurationAntimalware.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     automationAccountEnabled = registerOutput<bool?>(
       'automationAccountEnabled',
     );
     azureSecurityBaseline = registerOutput<ConfigurationAzureSecurityBaseline?>(
       'azureSecurityBaseline',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigurationAzureSecurityBaseline.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    backup = registerOutput<ConfigurationBackup?>('backup');
+    backup = registerOutput<ConfigurationBackup?>(
+      'backup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigurationBackup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     bootDiagnosticsEnabled = registerOutput<bool?>('bootDiagnosticsEnabled');
     defenderForCloudEnabled = registerOutput<bool?>('defenderForCloudEnabled');
     guestConfigurationEnabled = registerOutput<bool?>(

@@ -63,13 +63,31 @@ class Certificate extends pulumi.CustomResource {
     expireTime = registerOutput<String>('expireTime');
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
-    managed = registerOutput<ManagedCertificateResponse>('managed');
+    managed = registerOutput<ManagedCertificateResponse>(
+      'managed',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedCertificateResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     pemCertificate = registerOutput<String>('pemCertificate');
     project = registerOutput<String>('project');
     sanDnsnames = registerOutput<List<String>>('sanDnsnames');
     scope = registerOutput<String>('scope');
-    selfManaged = registerOutput<SelfManagedCertificateResponse>('selfManaged');
+    selfManaged = registerOutput<SelfManagedCertificateResponse>(
+      'selfManaged',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SelfManagedCertificateResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     updateTime = registerOutput<String>('updateTime');
   }
 }

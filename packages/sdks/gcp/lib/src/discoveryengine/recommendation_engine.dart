@@ -590,6 +590,13 @@ class RecommendationEngine extends pulumi.CustomResource {
        ) {
     commonConfig = registerOutput<RecommendationEngineCommonConfig?>(
       'commonConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RecommendationEngineCommonConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     dataStoreIds = registerOutput<List<String>>('dataStoreIds');
@@ -600,6 +607,13 @@ class RecommendationEngine extends pulumi.CustomResource {
     mediaRecommendationEngineConfig =
         registerOutput<RecommendationEngineMediaRecommendationEngineConfig?>(
           'mediaRecommendationEngineConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RecommendationEngineMediaRecommendationEngineConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -631,6 +645,13 @@ class RecommendationEngine extends pulumi.CustomResource {
        ) {
     commonConfig = registerOutput<RecommendationEngineCommonConfig?>(
       'commonConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RecommendationEngineCommonConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     dataStoreIds = registerOutput<List<String>>('dataStoreIds');
@@ -641,6 +662,13 @@ class RecommendationEngine extends pulumi.CustomResource {
     mediaRecommendationEngineConfig =
         registerOutput<RecommendationEngineMediaRecommendationEngineConfig?>(
           'mediaRecommendationEngineConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RecommendationEngineMediaRecommendationEngineConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

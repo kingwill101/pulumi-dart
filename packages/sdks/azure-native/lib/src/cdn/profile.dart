@@ -219,18 +219,54 @@ class Profile extends pulumi.CustomResource {
       'extendedProperties',
     );
     frontDoorId = registerOutput<String>('frontDoorId');
-    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    identity = registerOutput<ManagedServiceIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedServiceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
-    logScrubbing = registerOutput<ProfileLogScrubbingResponse?>('logScrubbing');
+    logScrubbing = registerOutput<ProfileLogScrubbingResponse?>(
+      'logScrubbing',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProfileLogScrubbingResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     originResponseTimeoutSeconds = registerOutput<int?>(
       'originResponseTimeoutSeconds',
     );
     provisioningState = registerOutput<String>('provisioningState');
     resourceState = registerOutput<String>('resourceState');
-    sku = registerOutput<SkuResponse>('sku');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    sku = registerOutput<SkuResponse>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

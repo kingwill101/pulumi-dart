@@ -2315,20 +2315,64 @@ class Image extends pulumi.CustomResource {
     addHosts = registerOutput<List<String>?>('addHosts');
     buildArgs = registerOutput<Map<String, String>?>('buildArgs');
     buildOnPreview = registerOutput<bool?>('buildOnPreview');
-    builder = registerOutput<BuilderConfig?>('builder');
+    builder = registerOutput<BuilderConfig?>(
+      'builder',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BuilderConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     cacheFrom = registerOutput<List<Map<String, dynamic>>?>('cacheFrom');
     cacheTo = registerOutput<List<Map<String, dynamic>>?>('cacheTo');
-    context = registerOutput<BuildContext?>('context');
+    context = registerOutput<BuildContext?>(
+      'context',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BuildContext.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     contextHash = registerOutput<String>('contextHash');
     digest = registerOutput<String>('digest');
-    dockerfile = registerOutput<Dockerfile?>('dockerfile');
+    dockerfile = registerOutput<Dockerfile?>(
+      'dockerfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return Dockerfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     exec = registerOutput<bool?>('exec');
     exports = registerOutput<List<Map<String, dynamic>>?>('exports');
     labels = registerOutput<Map<String, String>?>('labels');
     load = registerOutput<bool?>('load');
-    network = registerOutput<NetworkMode?>('network');
+    network = registerOutput<NetworkMode?>(
+      'network',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkMode.fromValue(guardedValue as String);
+      },
+    );
     noCache = registerOutput<bool?>('noCache');
-    platforms = registerOutput<List<Platform>?>('platforms');
+    platforms = registerOutput<List<Platform>?>(
+      'platforms',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<Platform>(
+          guardedValue,
+          (value) => Platform.fromValue(value as String),
+        );
+      },
+    );
     pull = registerOutput<bool?>('pull');
     push = registerOutput<bool>('push');
     ref = registerOutput<String>('ref');

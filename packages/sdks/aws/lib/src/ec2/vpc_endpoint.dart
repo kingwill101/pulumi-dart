@@ -1413,7 +1413,16 @@ class VpcEndpoint extends pulumi.CustomResource {
     autoAccept = registerOutput<bool?>('autoAccept');
     cidrBlocks = registerOutput<List<String>>('cidrBlocks');
     dnsEntries = registerOutput<List<Map<String, dynamic>>>('dnsEntries');
-    dnsOptions = registerOutput<VpcEndpointDnsOptions>('dnsOptions');
+    dnsOptions = registerOutput<VpcEndpointDnsOptions>(
+      'dnsOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpcEndpointDnsOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ipAddressType = registerOutput<String>('ipAddressType');
     networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds');
     ownerId = registerOutput<String>('ownerId');
@@ -1468,7 +1477,16 @@ class VpcEndpoint extends pulumi.CustomResource {
     autoAccept = registerOutput<bool?>('autoAccept');
     cidrBlocks = registerOutput<List<String>>('cidrBlocks');
     dnsEntries = registerOutput<List<Map<String, dynamic>>>('dnsEntries');
-    dnsOptions = registerOutput<VpcEndpointDnsOptions>('dnsOptions');
+    dnsOptions = registerOutput<VpcEndpointDnsOptions>(
+      'dnsOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpcEndpointDnsOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ipAddressType = registerOutput<String>('ipAddressType');
     networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds');
     ownerId = registerOutput<String>('ownerId');

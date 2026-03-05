@@ -46,11 +46,29 @@ class Analysis extends pulumi.CustomResource {
     analysisResult =
         registerOutput<
           GoogleCloudContactcenterinsightsV1AnalysisResultResponse
-        >('analysisResult');
+        >(
+          'analysisResult',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudContactcenterinsightsV1AnalysisResultResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     annotatorSelector =
         registerOutput<
           GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse
-        >('annotatorSelector');
+        >(
+          'annotatorSelector',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     conversationId = registerOutput<String>('conversationId');
     createTime = registerOutput<String>('createTime');
     location = registerOutput<String>('location');

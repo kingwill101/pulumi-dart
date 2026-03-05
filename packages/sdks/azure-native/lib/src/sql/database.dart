@@ -2810,7 +2810,16 @@ class Database extends pulumi.CustomResource {
     currentServiceObjectiveName = registerOutput<String>(
       'currentServiceObjectiveName',
     );
-    currentSku = registerOutput<SkuResponse>('currentSku');
+    currentSku = registerOutput<SkuResponse>(
+      'currentSku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     databaseId = registerOutput<String>('databaseId');
     defaultSecondaryLocation = registerOutput<String>(
       'defaultSecondaryLocation',
@@ -2829,10 +2838,31 @@ class Database extends pulumi.CustomResource {
     highAvailabilityReplicaCount = registerOutput<int?>(
       'highAvailabilityReplicaCount',
     );
-    identity = registerOutput<DatabaseIdentityResponse?>('identity');
+    identity = registerOutput<DatabaseIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     isInfraEncryptionEnabled = registerOutput<bool>('isInfraEncryptionEnabled');
     isLedgerOn = registerOutput<bool?>('isLedgerOn');
-    keys = registerOutput<Map<String, DatabaseKeyResponse>?>('keys');
+    keys = registerOutput<Map<String, DatabaseKeyResponse>?>(
+      'keys',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeMapValues<DatabaseKeyResponse>(
+          guardedValue,
+          (value) => DatabaseKeyResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      },
+    );
     kind = registerOutput<String>('kind');
     licenseType = registerOutput<String?>('licenseType');
     location = registerOutput<String>('location');
@@ -2857,7 +2887,16 @@ class Database extends pulumi.CustomResource {
     );
     resumedDate = registerOutput<String>('resumedDate');
     secondaryType = registerOutput<String?>('secondaryType');
-    sku = registerOutput<SkuResponse?>('sku');
+    sku = registerOutput<SkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

@@ -101,10 +101,8 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
 ///
 /// Other available API versions: 2022-09-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native botservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [options] Invoke options controlling this call.
-Future<ListBotConnectionServiceProvidersResult> listBotConnectionServiceProviders(
-  {
-  pulumi.InvokeOptions? options,
-}) async {
+Future<ListBotConnectionServiceProvidersResult>
+listBotConnectionServiceProviders({pulumi.InvokeOptions? options}) async {
   final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'azure-native:botservice:listBotConnectionServiceProviders',

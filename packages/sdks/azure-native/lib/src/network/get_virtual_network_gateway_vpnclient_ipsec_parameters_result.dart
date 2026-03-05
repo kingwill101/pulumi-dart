@@ -1,22 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getVirtualNetworkGatewayVpnclientIpsecParameters.
 class GetVirtualNetworkGatewayVpnclientIpsecParametersResult {
   /// The DH Group used in IKE Phase 1 for initial SA.
   final String dhGroup;
+
   /// The IKE encryption algorithm (IKE phase 2).
   final String ikeEncryption;
+
   /// The IKE integrity algorithm (IKE phase 2).
   final String ikeIntegrity;
+
   /// The IPSec encryption algorithm (IKE phase 1).
   final String ipsecEncryption;
+
   /// The IPSec integrity algorithm (IKE phase 1).
   final String ipsecIntegrity;
+
   /// The Pfs Group used in IKE Phase 2 for new child SA.
   final String pfsGroup;
+
   /// The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB for P2S client..
   final int saDataSizeKilobytes;
+
   /// The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds for P2S client.
   final int saLifeTimeSeconds;
 
@@ -53,7 +59,9 @@ class GetVirtualNetworkGatewayVpnclientIpsecParametersResult {
     };
   }
 
-  factory GetVirtualNetworkGatewayVpnclientIpsecParametersResult.fromMap(Map<String, dynamic> map) {
+  factory GetVirtualNetworkGatewayVpnclientIpsecParametersResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVirtualNetworkGatewayVpnclientIpsecParametersResult(
       dhGroup: map['dhGroup'] as String,
       ikeEncryption: map['ikeEncryption'] as String,
@@ -66,4 +74,3 @@ class GetVirtualNetworkGatewayVpnclientIpsecParametersResult {
     );
   }
 }
-

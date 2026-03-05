@@ -44,6 +44,13 @@ class ResponsePolicyRule extends pulumi.CustomResource {
     kind = registerOutput<String>('kind');
     localData = registerOutput<ResponsePolicyRuleLocalDataResponseDnsV1beta2>(
       'localData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResponsePolicyRuleLocalDataResponseDnsV1beta2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     responsePolicy = registerOutput<String>('responsePolicy');

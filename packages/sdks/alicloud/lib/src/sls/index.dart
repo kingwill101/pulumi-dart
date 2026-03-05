@@ -531,7 +531,14 @@ class Index extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     keys = registerOutput<String?>('keys');
-    line = registerOutput<IndexLine?>('line');
+    line = registerOutput<IndexLine?>(
+      'line',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IndexLine.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     logReduce = registerOutput<bool?>('logReduce');
     logReduceBlackLists = registerOutput<List<String>?>('logReduceBlackLists');
     logReduceWhiteLists = registerOutput<List<String>?>('logReduceWhiteLists');
@@ -560,7 +567,14 @@ class Index extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     keys = registerOutput<String?>('keys');
-    line = registerOutput<IndexLine?>('line');
+    line = registerOutput<IndexLine?>(
+      'line',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IndexLine.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     logReduce = registerOutput<bool?>('logReduce');
     logReduceBlackLists = registerOutput<List<String>?>('logReduceBlackLists');
     logReduceWhiteLists = registerOutput<List<String>?>('logReduceWhiteLists');

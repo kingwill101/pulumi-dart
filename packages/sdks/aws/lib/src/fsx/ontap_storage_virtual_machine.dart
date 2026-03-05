@@ -425,6 +425,13 @@ class OntapStorageVirtualMachine extends pulumi.CustomResource {
     activeDirectoryConfiguration =
         registerOutput<OntapStorageVirtualMachineActiveDirectoryConfiguration?>(
           'activeDirectoryConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return OntapStorageVirtualMachineActiveDirectoryConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     arn = registerOutput<String>('arn');
     endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
@@ -467,6 +474,13 @@ class OntapStorageVirtualMachine extends pulumi.CustomResource {
     activeDirectoryConfiguration =
         registerOutput<OntapStorageVirtualMachineActiveDirectoryConfiguration?>(
           'activeDirectoryConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return OntapStorageVirtualMachineActiveDirectoryConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     arn = registerOutput<String>('arn');
     endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');

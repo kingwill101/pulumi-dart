@@ -49,6 +49,13 @@ class Fleet extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     defaultClusterConfig = registerOutput<DefaultClusterConfigResponse>(
       'defaultClusterConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DefaultClusterConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     deleteTime = registerOutput<String>('deleteTime');
     displayName = registerOutput<String>('displayName');
@@ -56,7 +63,16 @@ class Fleet extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    state = registerOutput<FleetLifecycleStateResponse>('state');
+    state = registerOutput<FleetLifecycleStateResponse>(
+      'state',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FleetLifecycleStateResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }

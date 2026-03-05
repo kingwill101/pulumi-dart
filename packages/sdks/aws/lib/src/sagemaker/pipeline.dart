@@ -248,11 +248,25 @@ class Pipeline extends pulumi.CustomResource {
     parallelismConfiguration =
         registerOutput<PipelineParallelismConfiguration?>(
           'parallelismConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PipelineParallelismConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     pipelineDefinition = registerOutput<String?>('pipelineDefinition');
     pipelineDefinitionS3Location =
         registerOutput<PipelinePipelineDefinitionS3Location?>(
           'pipelineDefinitionS3Location',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PipelinePipelineDefinitionS3Location.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     pipelineDescription = registerOutput<String?>('pipelineDescription');
     pipelineDisplayName = registerOutput<String>('pipelineDisplayName');
@@ -290,11 +304,25 @@ class Pipeline extends pulumi.CustomResource {
     parallelismConfiguration =
         registerOutput<PipelineParallelismConfiguration?>(
           'parallelismConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PipelineParallelismConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     pipelineDefinition = registerOutput<String?>('pipelineDefinition');
     pipelineDefinitionS3Location =
         registerOutput<PipelinePipelineDefinitionS3Location?>(
           'pipelineDefinitionS3Location',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PipelinePipelineDefinitionS3Location.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     pipelineDescription = registerOutput<String?>('pipelineDescription');
     pipelineDisplayName = registerOutput<String>('pipelineDisplayName');

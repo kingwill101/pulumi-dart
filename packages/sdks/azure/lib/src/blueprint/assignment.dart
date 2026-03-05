@@ -606,7 +606,16 @@ class Assignment extends pulumi.CustomResource {
     blueprintName = registerOutput<String>('blueprintName');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
-    identity = registerOutput<AssignmentIdentity>('identity');
+    identity = registerOutput<AssignmentIdentity>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AssignmentIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     lockExcludeActions = registerOutput<List<String>?>('lockExcludeActions');
     lockExcludePrincipals = registerOutput<List<String>?>(
@@ -647,7 +656,16 @@ class Assignment extends pulumi.CustomResource {
     blueprintName = registerOutput<String>('blueprintName');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
-    identity = registerOutput<AssignmentIdentity>('identity');
+    identity = registerOutput<AssignmentIdentity>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AssignmentIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     lockExcludeActions = registerOutput<List<String>?>('lockExcludeActions');
     lockExcludePrincipals = registerOutput<List<String>?>(

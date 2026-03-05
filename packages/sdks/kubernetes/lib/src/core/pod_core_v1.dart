@@ -374,8 +374,31 @@ class PodCoreV1 extends pulumi.CustomResource {
       ) {
     apiVersion = registerOutput<String>('apiVersion');
     kind = registerOutput<String>('kind');
-    metadata = registerOutput<ObjectMeta>('metadata');
-    spec = registerOutput<PodSpec>('spec');
-    status = registerOutput<PodStatus?>('status');
+    metadata = registerOutput<ObjectMeta>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    spec = registerOutput<PodSpec>(
+      'spec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PodSpec.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
+    status = registerOutput<PodStatus?>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PodStatus.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
   }
 }

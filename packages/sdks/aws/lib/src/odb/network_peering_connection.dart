@@ -209,7 +209,16 @@ class NetworkPeeringConnection extends pulumi.CustomResource {
     statusReason = registerOutput<String>('statusReason');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<NetworkPeeringConnectionTimeouts?>('timeouts');
+    timeouts = registerOutput<NetworkPeeringConnectionTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkPeeringConnectionTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [NetworkPeeringConnection] resource's state with the given [name] and [id].
@@ -251,6 +260,15 @@ class NetworkPeeringConnection extends pulumi.CustomResource {
     statusReason = registerOutput<String>('statusReason');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<NetworkPeeringConnectionTimeouts?>('timeouts');
+    timeouts = registerOutput<NetworkPeeringConnectionTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkPeeringConnectionTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

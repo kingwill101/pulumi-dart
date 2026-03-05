@@ -1327,6 +1327,13 @@ class VirtualNetworkGatewayConnection extends pulumi.CustomResource {
     customBgpAddresses =
         registerOutput<VirtualNetworkGatewayConnectionCustomBgpAddresses?>(
           'customBgpAddresses',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VirtualNetworkGatewayConnectionCustomBgpAddresses.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dpdTimeoutSeconds = registerOutput<int?>('dpdTimeoutSeconds');
     egressNatRuleIds = registerOutput<List<String>?>('egressNatRuleIds');
@@ -1338,6 +1345,13 @@ class VirtualNetworkGatewayConnection extends pulumi.CustomResource {
     ingressNatRuleIds = registerOutput<List<String>?>('ingressNatRuleIds');
     ipsecPolicy = registerOutput<VirtualNetworkGatewayConnectionIpsecPolicy?>(
       'ipsecPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualNetworkGatewayConnectionIpsecPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     localAzureIpAddressEnabled = registerOutput<bool?>(
       'localAzureIpAddressEnabled',
@@ -1358,6 +1372,13 @@ class VirtualNetworkGatewayConnection extends pulumi.CustomResource {
     trafficSelectorPolicy =
         registerOutput<VirtualNetworkGatewayConnectionTrafficSelectorPolicy?>(
           'trafficSelectorPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VirtualNetworkGatewayConnectionTrafficSelectorPolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     type = registerOutput<String>('type');
     usePolicyBasedTrafficSelectors = registerOutput<bool>(
@@ -1395,6 +1416,13 @@ class VirtualNetworkGatewayConnection extends pulumi.CustomResource {
     customBgpAddresses =
         registerOutput<VirtualNetworkGatewayConnectionCustomBgpAddresses?>(
           'customBgpAddresses',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VirtualNetworkGatewayConnectionCustomBgpAddresses.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dpdTimeoutSeconds = registerOutput<int?>('dpdTimeoutSeconds');
     egressNatRuleIds = registerOutput<List<String>?>('egressNatRuleIds');
@@ -1406,6 +1434,13 @@ class VirtualNetworkGatewayConnection extends pulumi.CustomResource {
     ingressNatRuleIds = registerOutput<List<String>?>('ingressNatRuleIds');
     ipsecPolicy = registerOutput<VirtualNetworkGatewayConnectionIpsecPolicy?>(
       'ipsecPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualNetworkGatewayConnectionIpsecPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     localAzureIpAddressEnabled = registerOutput<bool?>(
       'localAzureIpAddressEnabled',
@@ -1426,6 +1461,13 @@ class VirtualNetworkGatewayConnection extends pulumi.CustomResource {
     trafficSelectorPolicy =
         registerOutput<VirtualNetworkGatewayConnectionTrafficSelectorPolicy?>(
           'trafficSelectorPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VirtualNetworkGatewayConnectionTrafficSelectorPolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     type = registerOutput<String>('type');
     usePolicyBasedTrafficSelectors = registerOutput<bool>(

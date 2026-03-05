@@ -124,19 +124,47 @@ class ClusterAlloydbV1beta extends pulumi.CustomResource {
     automatedBackupPolicy =
         registerOutput<AutomatedBackupPolicyResponseAlloydbV1beta>(
           'automatedBackupPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AutomatedBackupPolicyResponseAlloydbV1beta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     backupSource = registerOutput<BackupSourceResponseAlloydbV1beta>(
       'backupSource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackupSourceResponseAlloydbV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clusterId = registerOutput<String>('clusterId');
     clusterType = registerOutput<String>('clusterType');
     continuousBackupConfig =
         registerOutput<ContinuousBackupConfigResponseAlloydbV1beta>(
           'continuousBackupConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ContinuousBackupConfigResponseAlloydbV1beta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     continuousBackupInfo =
         registerOutput<ContinuousBackupInfoResponseAlloydbV1beta>(
           'continuousBackupInfo',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ContinuousBackupInfoResponseAlloydbV1beta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     createTime = registerOutput<String>('createTime');
     databaseVersion = registerOutput<String>('databaseVersion');
@@ -144,34 +172,92 @@ class ClusterAlloydbV1beta extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     encryptionConfig = registerOutput<EncryptionConfigResponseAlloydbV1beta>(
       'encryptionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EncryptionConfigResponseAlloydbV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     encryptionInfo = registerOutput<EncryptionInfoResponseAlloydbV1beta>(
       'encryptionInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EncryptionInfoResponseAlloydbV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     initialUser = registerOutput<UserPasswordResponseAlloydbV1beta>(
       'initialUser',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserPasswordResponseAlloydbV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
     migrationSource = registerOutput<MigrationSourceResponseAlloydbV1beta>(
       'migrationSource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MigrationSourceResponseAlloydbV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     networkConfig = registerOutput<NetworkConfigResponseAlloydbV1beta>(
       'networkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkConfigResponseAlloydbV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     primaryConfig = registerOutput<PrimaryConfigResponseAlloydbV1beta>(
       'primaryConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PrimaryConfigResponseAlloydbV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     reconciling = registerOutput<bool>('reconciling');
     requestId = registerOutput<String?>('requestId');
     secondaryConfig = registerOutput<SecondaryConfigResponseAlloydbV1beta>(
       'secondaryConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecondaryConfigResponseAlloydbV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    sslConfig = registerOutput<SslConfigResponseAlloydbV1beta>('sslConfig');
+    sslConfig = registerOutput<SslConfigResponseAlloydbV1beta>(
+      'sslConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SslConfigResponseAlloydbV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');

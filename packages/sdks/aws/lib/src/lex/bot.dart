@@ -347,12 +347,28 @@ class Bot extends pulumi.CustomResource {
         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
         options ?? pulumi.CustomResourceOptions(),
       ) {
-    abortStatement = registerOutput<BotAbortStatement>('abortStatement');
+    abortStatement = registerOutput<BotAbortStatement>(
+      'abortStatement',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BotAbortStatement.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     arn = registerOutput<String>('arn');
     checksum = registerOutput<String>('checksum');
     childDirected = registerOutput<bool>('childDirected');
     clarificationPrompt = registerOutput<BotClarificationPrompt?>(
       'clarificationPrompt',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BotClarificationPrompt.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createVersion = registerOutput<bool?>('createVersion');
     createdDate = registerOutput<String>('createdDate');
@@ -394,12 +410,28 @@ class Bot extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    abortStatement = registerOutput<BotAbortStatement>('abortStatement');
+    abortStatement = registerOutput<BotAbortStatement>(
+      'abortStatement',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BotAbortStatement.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     arn = registerOutput<String>('arn');
     checksum = registerOutput<String>('checksum');
     childDirected = registerOutput<bool>('childDirected');
     clarificationPrompt = registerOutput<BotClarificationPrompt?>(
       'clarificationPrompt',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BotClarificationPrompt.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createVersion = registerOutput<bool?>('createVersion');
     createdDate = registerOutput<String>('createdDate');

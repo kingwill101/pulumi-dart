@@ -183,7 +183,16 @@ class Rdns extends pulumi.CustomResource {
       ) {
     address = registerOutput<String>('address');
     rdns = registerOutput<String>('rdns');
-    timeouts = registerOutput<RdnsTimeouts?>('timeouts');
+    timeouts = registerOutput<RdnsTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RdnsTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     waitForAvailable = registerOutput<bool>('waitForAvailable');
   }
 
@@ -208,7 +217,16 @@ class Rdns extends pulumi.CustomResource {
        ) {
     address = registerOutput<String>('address');
     rdns = registerOutput<String>('rdns');
-    timeouts = registerOutput<RdnsTimeouts?>('timeouts');
+    timeouts = registerOutput<RdnsTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RdnsTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     waitForAvailable = registerOutput<bool>('waitForAvailable');
   }
 }

@@ -775,7 +775,16 @@ class V3Trigger extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     functionName = registerOutput<String>('functionName');
-    httpTrigger = registerOutput<V3TriggerHttpTrigger>('httpTrigger');
+    httpTrigger = registerOutput<V3TriggerHttpTrigger>(
+      'httpTrigger',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V3TriggerHttpTrigger.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     invocationRole = registerOutput<String?>('invocationRole');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     qualifier = registerOutput<String>('qualifier');
@@ -814,7 +823,16 @@ class V3Trigger extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     functionName = registerOutput<String>('functionName');
-    httpTrigger = registerOutput<V3TriggerHttpTrigger>('httpTrigger');
+    httpTrigger = registerOutput<V3TriggerHttpTrigger>(
+      'httpTrigger',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V3TriggerHttpTrigger.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     invocationRole = registerOutput<String?>('invocationRole');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     qualifier = registerOutput<String>('qualifier');

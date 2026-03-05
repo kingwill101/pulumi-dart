@@ -527,11 +527,29 @@ class ActivityCustomEntityQuery extends pulumi.CustomResource {
     queryDefinitions =
         registerOutput<
           ActivityEntityQueriesPropertiesResponseQueryDefinitions?
-        >('queryDefinitions');
+        >(
+          'queryDefinitions',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ActivityEntityQueriesPropertiesResponseQueryDefinitions.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     requiredInputFieldsSets = registerOutput<List<Map<String, dynamic>>?>(
       'requiredInputFieldsSets',
     );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     templateName = registerOutput<String?>('templateName');
     title = registerOutput<String?>('title');
     type = registerOutput<String>('type');

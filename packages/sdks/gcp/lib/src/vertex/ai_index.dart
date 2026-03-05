@@ -856,12 +856,30 @@ class AiIndex extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    encryptionSpec = registerOutput<AiIndexEncryptionSpec?>('encryptionSpec');
+    encryptionSpec = registerOutput<AiIndexEncryptionSpec?>(
+      'encryptionSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiIndexEncryptionSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     indexStats = registerOutput<List<Map<String, dynamic>>>('indexStats');
     indexUpdateMethod = registerOutput<String?>('indexUpdateMethod');
     labels = registerOutput<Map<String, String>?>('labels');
-    metadata = registerOutput<AiIndexMetadata>('metadata');
+    metadata = registerOutput<AiIndexMetadata>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiIndexMetadata.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     metadataSchemaUri = registerOutput<String>('metadataSchemaUri');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -900,12 +918,30 @@ class AiIndex extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    encryptionSpec = registerOutput<AiIndexEncryptionSpec?>('encryptionSpec');
+    encryptionSpec = registerOutput<AiIndexEncryptionSpec?>(
+      'encryptionSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiIndexEncryptionSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     indexStats = registerOutput<List<Map<String, dynamic>>>('indexStats');
     indexUpdateMethod = registerOutput<String?>('indexUpdateMethod');
     labels = registerOutput<Map<String, String>?>('labels');
-    metadata = registerOutput<AiIndexMetadata>('metadata');
+    metadata = registerOutput<AiIndexMetadata>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiIndexMetadata.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     metadataSchemaUri = registerOutput<String>('metadataSchemaUri');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

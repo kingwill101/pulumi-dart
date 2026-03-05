@@ -198,9 +198,36 @@ class Volume extends pulumi.CustomResource {
     labels = registerOutput<Map<String, String>>('labels');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    status = registerOutput<ResourceOperationalStatusResponse>('status');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    status = registerOutput<ResourceOperationalStatusResponse>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceOperationalStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
-    volumeType = registerOutput<VolumeTypeResponse>('volumeType');
+    volumeType = registerOutput<VolumeTypeResponse>(
+      'volumeType',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VolumeTypeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

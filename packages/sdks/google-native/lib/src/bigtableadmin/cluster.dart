@@ -45,11 +45,27 @@ class Cluster extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    clusterConfig = registerOutput<ClusterConfigResponse>('clusterConfig');
+    clusterConfig = registerOutput<ClusterConfigResponse>(
+      'clusterConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     clusterId = registerOutput<String>('clusterId');
     defaultStorageType = registerOutput<String>('defaultStorageType');
     encryptionConfig = registerOutput<EncryptionConfigResponse>(
       'encryptionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EncryptionConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     instanceId = registerOutput<String>('instanceId');
     location = registerOutput<String>('location');

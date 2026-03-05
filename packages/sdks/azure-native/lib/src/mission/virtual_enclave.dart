@@ -105,29 +105,73 @@ class VirtualEnclave extends pulumi.CustomResource {
     communityResourceId = registerOutput<String>('communityResourceId');
     enclaveAddressSpaces = registerOutput<EnclaveAddressSpacesModelResponse>(
       'enclaveAddressSpaces',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnclaveAddressSpacesModelResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     enclaveDefaultSettings =
         registerOutput<EnclaveDefaultSettingsModelResponse?>(
           'enclaveDefaultSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EnclaveDefaultSettingsModelResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     enclaveRoleAssignments = registerOutput<List<Map<String, dynamic>>?>(
       'enclaveRoleAssignments',
     );
     enclaveVirtualNetwork = registerOutput<EnclaveVirtualNetworkModelResponse>(
       'enclaveVirtualNetwork',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnclaveVirtualNetworkModelResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     governedServiceList = registerOutput<List<Map<String, dynamic>>?>(
       'governedServiceList',
     );
-    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    identity = registerOutput<ManagedServiceIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedServiceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     maintenanceModeConfiguration =
         registerOutput<MaintenanceModeConfigurationModelResponse?>(
           'maintenanceModeConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MaintenanceModeConfigurationModelResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     managedOnBehalfOfConfiguration =
         registerOutput<ManagedOnBehalfOfConfigurationResponse>(
           'managedOnBehalfOfConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ManagedOnBehalfOfConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     managedResourceGroupName = registerOutput<String>(
       'managedResourceGroupName',
@@ -135,7 +179,16 @@ class VirtualEnclave extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     resourceCollection = registerOutput<List<String>>('resourceCollection');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     workloadRoleAssignments = registerOutput<List<Map<String, dynamic>>?>(

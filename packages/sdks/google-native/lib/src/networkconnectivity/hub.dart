@@ -62,7 +62,16 @@ class Hub extends pulumi.CustomResource {
     requestId = registerOutput<String?>('requestId');
     routeTables = registerOutput<List<String>>('routeTables');
     routingVpcs = registerOutput<List<Map<String, dynamic>>>('routingVpcs');
-    spokeSummary = registerOutput<SpokeSummaryResponse>('spokeSummary');
+    spokeSummary = registerOutput<SpokeSummaryResponse>(
+      'spokeSummary',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpokeSummaryResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     state = registerOutput<String>('state');
     uniqueId = registerOutput<String>('uniqueId');
     updateTime = registerOutput<String>('updateTime');

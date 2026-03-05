@@ -404,8 +404,26 @@ class AppService extends pulumi.CustomResource {
        ) {
     appServicePlanId = registerOutput<String>('appServicePlanId');
     appSettings = registerOutput<Map<String, String>>('appSettings');
-    authSettings = registerOutput<AppServiceAuthSettings>('authSettings');
-    backup = registerOutput<AppServiceBackup?>('backup');
+    authSettings = registerOutput<AppServiceAuthSettings>(
+      'authSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppServiceAuthSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    backup = registerOutput<AppServiceBackup?>(
+      'backup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppServiceBackup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     clientAffinityEnabled = registerOutput<bool?>('clientAffinityEnabled');
     clientCertEnabled = registerOutput<bool?>('clientCertEnabled');
     clientCertMode = registerOutput<String>('clientCertMode');
@@ -418,12 +436,30 @@ class AppService extends pulumi.CustomResource {
     defaultSiteHostname = registerOutput<String>('defaultSiteHostname');
     enabled = registerOutput<bool?>('enabled');
     httpsOnly = registerOutput<bool?>('httpsOnly');
-    identity = registerOutput<AppServiceIdentity?>('identity');
+    identity = registerOutput<AppServiceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppServiceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     keyVaultReferenceIdentityId = registerOutput<String>(
       'keyVaultReferenceIdentityId',
     );
     location = registerOutput<String>('location');
-    logs = registerOutput<AppServiceLogs>('logs');
+    logs = registerOutput<AppServiceLogs>(
+      'logs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppServiceLogs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     outboundIpAddressLists = registerOutput<List<String>>(
       'outboundIpAddressLists',
@@ -436,11 +472,29 @@ class AppService extends pulumi.CustomResource {
       'possibleOutboundIpAddresses',
     );
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    siteConfig = registerOutput<AppServiceSiteConfig>('siteConfig');
+    siteConfig = registerOutput<AppServiceSiteConfig>(
+      'siteConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppServiceSiteConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     siteCredentials = registerOutput<List<Map<String, dynamic>>>(
       'siteCredentials',
     );
-    sourceControl = registerOutput<AppServiceSourceControl>('sourceControl');
+    sourceControl = registerOutput<AppServiceSourceControl>(
+      'sourceControl',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppServiceSourceControl.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     storageAccounts = registerOutput<List<Map<String, dynamic>>>(
       'storageAccounts',
     );
@@ -472,8 +526,26 @@ class AppService extends pulumi.CustomResource {
        ) {
     appServicePlanId = registerOutput<String>('appServicePlanId');
     appSettings = registerOutput<Map<String, String>>('appSettings');
-    authSettings = registerOutput<AppServiceAuthSettings>('authSettings');
-    backup = registerOutput<AppServiceBackup?>('backup');
+    authSettings = registerOutput<AppServiceAuthSettings>(
+      'authSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppServiceAuthSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    backup = registerOutput<AppServiceBackup?>(
+      'backup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppServiceBackup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     clientAffinityEnabled = registerOutput<bool?>('clientAffinityEnabled');
     clientCertEnabled = registerOutput<bool?>('clientCertEnabled');
     clientCertMode = registerOutput<String>('clientCertMode');
@@ -486,12 +558,30 @@ class AppService extends pulumi.CustomResource {
     defaultSiteHostname = registerOutput<String>('defaultSiteHostname');
     enabled = registerOutput<bool?>('enabled');
     httpsOnly = registerOutput<bool?>('httpsOnly');
-    identity = registerOutput<AppServiceIdentity?>('identity');
+    identity = registerOutput<AppServiceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppServiceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     keyVaultReferenceIdentityId = registerOutput<String>(
       'keyVaultReferenceIdentityId',
     );
     location = registerOutput<String>('location');
-    logs = registerOutput<AppServiceLogs>('logs');
+    logs = registerOutput<AppServiceLogs>(
+      'logs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppServiceLogs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     outboundIpAddressLists = registerOutput<List<String>>(
       'outboundIpAddressLists',
@@ -504,11 +594,29 @@ class AppService extends pulumi.CustomResource {
       'possibleOutboundIpAddresses',
     );
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    siteConfig = registerOutput<AppServiceSiteConfig>('siteConfig');
+    siteConfig = registerOutput<AppServiceSiteConfig>(
+      'siteConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppServiceSiteConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     siteCredentials = registerOutput<List<Map<String, dynamic>>>(
       'siteCredentials',
     );
-    sourceControl = registerOutput<AppServiceSourceControl>('sourceControl');
+    sourceControl = registerOutput<AppServiceSourceControl>(
+      'sourceControl',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppServiceSourceControl.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     storageAccounts = registerOutput<List<Map<String, dynamic>>>(
       'storageAccounts',
     );

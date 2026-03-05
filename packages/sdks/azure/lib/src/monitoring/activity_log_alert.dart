@@ -407,7 +407,16 @@ class ActivityLogAlert extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     actions = registerOutput<List<Map<String, dynamic>>?>('actions');
-    criteria = registerOutput<ActivityLogAlertCriteria>('criteria');
+    criteria = registerOutput<ActivityLogAlertCriteria>(
+      'criteria',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ActivityLogAlertCriteria.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
     location = registerOutput<String>('location');
@@ -441,7 +450,16 @@ class ActivityLogAlert extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     actions = registerOutput<List<Map<String, dynamic>>?>('actions');
-    criteria = registerOutput<ActivityLogAlertCriteria>('criteria');
+    criteria = registerOutput<ActivityLogAlertCriteria>(
+      'criteria',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ActivityLogAlertCriteria.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
     location = registerOutput<String>('location');

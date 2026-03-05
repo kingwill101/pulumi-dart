@@ -610,7 +610,16 @@ class SecurityStandard extends pulumi.CustomResource {
     cloudProviders = registerOutput<List<String>?>('cloudProviders');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
-    metadata = registerOutput<StandardMetadataResponse?>('metadata');
+    metadata = registerOutput<StandardMetadataResponse?>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StandardMetadataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     policySetDefinitionId = registerOutput<String?>('policySetDefinitionId');
     standardType = registerOutput<String>('standardType');

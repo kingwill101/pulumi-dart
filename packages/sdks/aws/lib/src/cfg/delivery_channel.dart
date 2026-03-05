@@ -480,6 +480,13 @@ class DeliveryChannel extends pulumi.CustomResource {
     snapshotDeliveryProperties =
         registerOutput<DeliveryChannelSnapshotDeliveryProperties?>(
           'snapshotDeliveryProperties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DeliveryChannelSnapshotDeliveryProperties.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     snsTopicArn = registerOutput<String?>('snsTopicArn');
   }
@@ -515,6 +522,13 @@ class DeliveryChannel extends pulumi.CustomResource {
     snapshotDeliveryProperties =
         registerOutput<DeliveryChannelSnapshotDeliveryProperties?>(
           'snapshotDeliveryProperties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DeliveryChannelSnapshotDeliveryProperties.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     snsTopicArn = registerOutput<String?>('snsTopicArn');
   }

@@ -175,6 +175,13 @@ class ServiceNetworkVpcAssociation extends pulumi.CustomResource {
     createdBy = registerOutput<String>('createdBy');
     dnsOptions = registerOutput<ServiceNetworkVpcAssociationDnsOptions?>(
       'dnsOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceNetworkVpcAssociationDnsOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     privateDnsEnabled = registerOutput<bool>('privateDnsEnabled');
     region = registerOutput<String>('region');
@@ -215,6 +222,13 @@ class ServiceNetworkVpcAssociation extends pulumi.CustomResource {
     createdBy = registerOutput<String>('createdBy');
     dnsOptions = registerOutput<ServiceNetworkVpcAssociationDnsOptions?>(
       'dnsOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceNetworkVpcAssociationDnsOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     privateDnsEnabled = registerOutput<bool>('privateDnsEnabled');
     region = registerOutput<String>('region');

@@ -241,10 +241,37 @@ class Execution extends pulumi.CustomResource {
     extendedLocation =
         registerOutput<
           AzureResourceManagerCommonTypesExtendedLocationResponse?
-        >('extendedLocation');
+        >(
+          'extendedLocation',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AzureResourceManagerCommonTypesExtendedLocationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     this.name = registerOutput<String>('name');
-    properties = registerOutput<ExecutionPropertiesResponse>('properties');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    properties = registerOutput<ExecutionPropertiesResponse>(
+      'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExecutionPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

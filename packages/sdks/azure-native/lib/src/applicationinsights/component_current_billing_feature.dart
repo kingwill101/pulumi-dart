@@ -204,6 +204,13 @@ class ComponentCurrentBillingFeature extends pulumi.CustomResource {
     dataVolumeCap =
         registerOutput<ApplicationInsightsComponentDataVolumeCapResponse?>(
           'dataVolumeCap',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ApplicationInsightsComponentDataVolumeCapResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

@@ -49,6 +49,13 @@ class CompositeTypeDeploymentmanagerV2beta extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     operation = registerOutput<OperationResponseDeploymentmanagerV2beta>(
       'operation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OperationResponseDeploymentmanagerV2beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     selfLink = registerOutput<String>('selfLink');
@@ -56,6 +63,13 @@ class CompositeTypeDeploymentmanagerV2beta extends pulumi.CustomResource {
     templateContents =
         registerOutput<TemplateContentsResponseDeploymentmanagerV2beta>(
           'templateContents',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return TemplateContentsResponseDeploymentmanagerV2beta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

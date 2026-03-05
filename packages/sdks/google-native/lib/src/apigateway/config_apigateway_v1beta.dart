@@ -67,6 +67,13 @@ class ConfigApigatewayV1beta extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     gatewayConfig = registerOutput<ApigatewayGatewayConfigResponse>(
       'gatewayConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApigatewayGatewayConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     gatewayServiceAccount = registerOutput<String>('gatewayServiceAccount');
     grpcServices = registerOutput<List<Map<String, dynamic>>>('grpcServices');

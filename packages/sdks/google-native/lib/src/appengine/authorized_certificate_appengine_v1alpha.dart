@@ -52,6 +52,13 @@ class AuthorizedCertificateAppengineV1alpha extends pulumi.CustomResource {
     certificateRawData =
         registerOutput<CertificateRawDataResponseAppengineV1alpha>(
           'certificateRawData',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CertificateRawDataResponseAppengineV1alpha.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     displayName = registerOutput<String>('displayName');
     domainMappingsCount = registerOutput<int>('domainMappingsCount');
@@ -60,6 +67,13 @@ class AuthorizedCertificateAppengineV1alpha extends pulumi.CustomResource {
     managedCertificate =
         registerOutput<ManagedCertificateResponseAppengineV1alpha>(
           'managedCertificate',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ManagedCertificateResponseAppengineV1alpha.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     visibleDomainMappings = registerOutput<List<String>>(

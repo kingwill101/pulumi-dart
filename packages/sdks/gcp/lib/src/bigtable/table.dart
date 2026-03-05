@@ -455,6 +455,13 @@ class Table extends pulumi.CustomResource {
       ) {
     automatedBackupPolicy = registerOutput<TableAutomatedBackupPolicy>(
       'automatedBackupPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TableAutomatedBackupPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     changeStreamRetention = registerOutput<String>('changeStreamRetention');
     columnFamilies = registerOutput<List<Map<String, dynamic>>?>(
@@ -489,6 +496,13 @@ class Table extends pulumi.CustomResource {
        ) {
     automatedBackupPolicy = registerOutput<TableAutomatedBackupPolicy>(
       'automatedBackupPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TableAutomatedBackupPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     changeStreamRetention = registerOutput<String>('changeStreamRetention');
     columnFamilies = registerOutput<List<Map<String, dynamic>>?>(

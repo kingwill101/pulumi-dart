@@ -291,12 +291,30 @@ class ResiliencyPolicy extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     estimatedCostTier = registerOutput<String>('estimatedCostTier');
     this.name = registerOutput<String>('name');
-    policy = registerOutput<ResiliencyPolicyPolicy?>('policy');
+    policy = registerOutput<ResiliencyPolicyPolicy?>(
+      'policy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResiliencyPolicyPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     tier = registerOutput<String>('tier');
-    timeouts = registerOutput<ResiliencyPolicyTimeouts?>('timeouts');
+    timeouts = registerOutput<ResiliencyPolicyTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResiliencyPolicyTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [ResiliencyPolicy] resource's state with the given [name] and [id].
@@ -327,11 +345,29 @@ class ResiliencyPolicy extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     estimatedCostTier = registerOutput<String>('estimatedCostTier');
     this.name = registerOutput<String>('name');
-    policy = registerOutput<ResiliencyPolicyPolicy?>('policy');
+    policy = registerOutput<ResiliencyPolicyPolicy?>(
+      'policy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResiliencyPolicyPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     tier = registerOutput<String>('tier');
-    timeouts = registerOutput<ResiliencyPolicyTimeouts?>('timeouts');
+    timeouts = registerOutput<ResiliencyPolicyTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResiliencyPolicyTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

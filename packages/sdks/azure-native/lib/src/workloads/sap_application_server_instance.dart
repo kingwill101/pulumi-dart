@@ -354,7 +354,16 @@ class SapApplicationServerInstance extends pulumi.CustomResource {
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     dispatcherStatus = registerOutput<String>('dispatcherStatus');
-    errors = registerOutput<SAPVirtualInstanceErrorResponse>('errors');
+    errors = registerOutput<SAPVirtualInstanceErrorResponse>(
+      'errors',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SAPVirtualInstanceErrorResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     gatewayPort = registerOutput<double>('gatewayPort');
     health = registerOutput<String>('health');
     hostname = registerOutput<String>('hostname');
@@ -366,13 +375,29 @@ class SapApplicationServerInstance extends pulumi.CustomResource {
     kernelVersion = registerOutput<String>('kernelVersion');
     loadBalancerDetails = registerOutput<LoadBalancerDetailsResponse>(
       'loadBalancerDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     status = registerOutput<String>('status');
     subnet = registerOutput<String>('subnet');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     vmDetails = registerOutput<List<Map<String, dynamic>>>('vmDetails');

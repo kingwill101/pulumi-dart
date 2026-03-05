@@ -11,7 +11,8 @@ import 'get_private_endpoint_connection_result.dart';
 /// Other available API versions: 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native onlineexperimentation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_onlineexperimentation_get_online_experimentation_workspace_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetOnlineExperimentationWorkspaceResult> getOnlineExperimentationWorkspace(
+Future<GetOnlineExperimentationWorkspaceResult>
+getOnlineExperimentationWorkspace(
   GetOnlineExperimentationWorkspaceArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

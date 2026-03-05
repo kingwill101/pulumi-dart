@@ -517,7 +517,16 @@ class RefreshSchedule extends pulumi.CustomResource {
     awsAccountId = registerOutput<String>('awsAccountId');
     dataSetId = registerOutput<String>('dataSetId');
     region = registerOutput<String>('region');
-    schedule = registerOutput<RefreshScheduleSchedule>('schedule');
+    schedule = registerOutput<RefreshScheduleSchedule>(
+      'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RefreshScheduleSchedule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     scheduleId = registerOutput<String>('scheduleId');
   }
 
@@ -548,7 +557,16 @@ class RefreshSchedule extends pulumi.CustomResource {
     awsAccountId = registerOutput<String>('awsAccountId');
     dataSetId = registerOutput<String>('dataSetId');
     region = registerOutput<String>('region');
-    schedule = registerOutput<RefreshScheduleSchedule>('schedule');
+    schedule = registerOutput<RefreshScheduleSchedule>(
+      'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RefreshScheduleSchedule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     scheduleId = registerOutput<String>('scheduleId');
   }
 }

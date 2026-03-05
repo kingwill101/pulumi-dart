@@ -440,9 +440,27 @@ class Volume extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     activeDirectory = registerOutput<String>('activeDirectory');
-    backupConfig = registerOutput<VolumeBackupConfig?>('backupConfig');
+    backupConfig = registerOutput<VolumeBackupConfig?>(
+      'backupConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VolumeBackupConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     blockDevices = registerOutput<List<Map<String, dynamic>>?>('blockDevices');
-    cacheParameters = registerOutput<VolumeCacheParameters?>('cacheParameters');
+    cacheParameters = registerOutput<VolumeCacheParameters?>(
+      'cacheParameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VolumeCacheParameters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     capacityGib = registerOutput<String>('capacityGib');
     coldTierSizeGib = registerOutput<String>('coldTierSizeGib');
     createTime = registerOutput<String>('createTime');
@@ -450,12 +468,28 @@ class Volume extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     encryptionType = registerOutput<String>('encryptionType');
-    exportPolicy = registerOutput<VolumeExportPolicy?>('exportPolicy');
+    exportPolicy = registerOutput<VolumeExportPolicy?>(
+      'exportPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VolumeExportPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     hasReplication = registerOutput<bool>('hasReplication');
     hotTierSizeUsedGib = registerOutput<String>('hotTierSizeUsedGib');
     hybridReplicationParameters =
         registerOutput<VolumeHybridReplicationParameters?>(
           'hybridReplicationParameters',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VolumeHybridReplicationParameters.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     kerberosEnabled = registerOutput<bool?>('kerberosEnabled');
     kmsConfig = registerOutput<String>('kmsConfig');
@@ -474,6 +508,13 @@ class Volume extends pulumi.CustomResource {
     replicaZone = registerOutput<String>('replicaZone');
     restoreParameters = registerOutput<VolumeRestoreParameters?>(
       'restoreParameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VolumeRestoreParameters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     restrictedActions = registerOutput<List<String>?>('restrictedActions');
     securityStyle = registerOutput<String>('securityStyle');
@@ -481,12 +522,30 @@ class Volume extends pulumi.CustomResource {
     shareName = registerOutput<String?>('shareName');
     smbSettings = registerOutput<List<String>>('smbSettings');
     snapshotDirectory = registerOutput<bool?>('snapshotDirectory');
-    snapshotPolicy = registerOutput<VolumeSnapshotPolicy?>('snapshotPolicy');
+    snapshotPolicy = registerOutput<VolumeSnapshotPolicy?>(
+      'snapshotPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VolumeSnapshotPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     state = registerOutput<String>('state');
     stateDetails = registerOutput<String>('stateDetails');
     storagePool = registerOutput<String>('storagePool');
     throughputMibps = registerOutput<double>('throughputMibps');
-    tieringPolicy = registerOutput<VolumeTieringPolicy?>('tieringPolicy');
+    tieringPolicy = registerOutput<VolumeTieringPolicy?>(
+      'tieringPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VolumeTieringPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     unixPermissions = registerOutput<String>('unixPermissions');
     usedGib = registerOutput<String>('usedGib');
     zone = registerOutput<String>('zone');
@@ -516,9 +575,27 @@ class Volume extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     activeDirectory = registerOutput<String>('activeDirectory');
-    backupConfig = registerOutput<VolumeBackupConfig?>('backupConfig');
+    backupConfig = registerOutput<VolumeBackupConfig?>(
+      'backupConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VolumeBackupConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     blockDevices = registerOutput<List<Map<String, dynamic>>?>('blockDevices');
-    cacheParameters = registerOutput<VolumeCacheParameters?>('cacheParameters');
+    cacheParameters = registerOutput<VolumeCacheParameters?>(
+      'cacheParameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VolumeCacheParameters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     capacityGib = registerOutput<String>('capacityGib');
     coldTierSizeGib = registerOutput<String>('coldTierSizeGib');
     createTime = registerOutput<String>('createTime');
@@ -526,12 +603,28 @@ class Volume extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     encryptionType = registerOutput<String>('encryptionType');
-    exportPolicy = registerOutput<VolumeExportPolicy?>('exportPolicy');
+    exportPolicy = registerOutput<VolumeExportPolicy?>(
+      'exportPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VolumeExportPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     hasReplication = registerOutput<bool>('hasReplication');
     hotTierSizeUsedGib = registerOutput<String>('hotTierSizeUsedGib');
     hybridReplicationParameters =
         registerOutput<VolumeHybridReplicationParameters?>(
           'hybridReplicationParameters',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VolumeHybridReplicationParameters.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     kerberosEnabled = registerOutput<bool?>('kerberosEnabled');
     kmsConfig = registerOutput<String>('kmsConfig');
@@ -550,6 +643,13 @@ class Volume extends pulumi.CustomResource {
     replicaZone = registerOutput<String>('replicaZone');
     restoreParameters = registerOutput<VolumeRestoreParameters?>(
       'restoreParameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VolumeRestoreParameters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     restrictedActions = registerOutput<List<String>?>('restrictedActions');
     securityStyle = registerOutput<String>('securityStyle');
@@ -557,12 +657,30 @@ class Volume extends pulumi.CustomResource {
     shareName = registerOutput<String?>('shareName');
     smbSettings = registerOutput<List<String>>('smbSettings');
     snapshotDirectory = registerOutput<bool?>('snapshotDirectory');
-    snapshotPolicy = registerOutput<VolumeSnapshotPolicy?>('snapshotPolicy');
+    snapshotPolicy = registerOutput<VolumeSnapshotPolicy?>(
+      'snapshotPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VolumeSnapshotPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.state = registerOutput<String>('state');
     stateDetails = registerOutput<String>('stateDetails');
     storagePool = registerOutput<String>('storagePool');
     throughputMibps = registerOutput<double>('throughputMibps');
-    tieringPolicy = registerOutput<VolumeTieringPolicy?>('tieringPolicy');
+    tieringPolicy = registerOutput<VolumeTieringPolicy?>(
+      'tieringPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VolumeTieringPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     unixPermissions = registerOutput<String>('unixPermissions');
     usedGib = registerOutput<String>('usedGib');
     zone = registerOutput<String>('zone');

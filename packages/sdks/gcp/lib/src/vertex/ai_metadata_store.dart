@@ -191,6 +191,13 @@ class AiMetadataStore extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     encryptionSpec = registerOutput<AiMetadataStoreEncryptionSpec?>(
       'encryptionSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiMetadataStoreEncryptionSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -226,6 +233,13 @@ class AiMetadataStore extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     encryptionSpec = registerOutput<AiMetadataStoreEncryptionSpec?>(
       'encryptionSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiMetadataStoreEncryptionSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

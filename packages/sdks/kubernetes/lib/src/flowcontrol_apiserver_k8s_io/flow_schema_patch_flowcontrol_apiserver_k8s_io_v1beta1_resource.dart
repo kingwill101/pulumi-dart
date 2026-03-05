@@ -48,13 +48,36 @@ class FlowSchemaPatchFlowcontrolApiserverK8sIoV1beta1Resource
        ) {
     apiVersion = registerOutput<String?>('apiVersion');
     kind = registerOutput<String?>('kind');
-    metadata = registerOutput<ObjectMetaPatch?>('metadata');
+    metadata = registerOutput<ObjectMetaPatch?>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMetaPatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     spec = registerOutput<FlowSchemaSpecPatchFlowcontrolApiserverK8sIoV1beta1?>(
       'spec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FlowSchemaSpecPatchFlowcontrolApiserverK8sIoV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     status =
         registerOutput<FlowSchemaStatusPatchFlowcontrolApiserverK8sIoV1beta1?>(
           'status',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FlowSchemaStatusPatchFlowcontrolApiserverK8sIoV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

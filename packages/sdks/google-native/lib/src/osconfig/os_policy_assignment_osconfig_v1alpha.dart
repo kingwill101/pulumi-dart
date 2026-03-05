@@ -74,6 +74,13 @@ class OsPolicyAssignmentOsconfigV1alpha extends pulumi.CustomResource {
     instanceFilter =
         registerOutput<OSPolicyAssignmentInstanceFilterResponseOsconfigV1alpha>(
           'instanceFilter',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return OSPolicyAssignmentInstanceFilterResponseOsconfigV1alpha.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -85,6 +92,13 @@ class OsPolicyAssignmentOsconfigV1alpha extends pulumi.CustomResource {
     revisionId = registerOutput<String>('revisionId');
     rollout = registerOutput<OSPolicyAssignmentRolloutResponseOsconfigV1alpha>(
       'rollout',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OSPolicyAssignmentRolloutResponseOsconfigV1alpha.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     rolloutState = registerOutput<String>('rolloutState');
     uid = registerOutput<String>('uid');

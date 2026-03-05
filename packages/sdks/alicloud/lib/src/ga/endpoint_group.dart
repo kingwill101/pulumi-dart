@@ -575,6 +575,13 @@ class EndpointGroup extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     portOverrides = registerOutput<EndpointGroupPortOverrides?>(
       'portOverrides',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointGroupPortOverrides.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -626,6 +633,13 @@ class EndpointGroup extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     portOverrides = registerOutput<EndpointGroupPortOverrides?>(
       'portOverrides',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointGroupPortOverrides.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');

@@ -81,7 +81,8 @@ Future<GetPolicyIamPolicyResult> getPolicyIamPolicy(
 /// Gets an attestor. Returns NOT_FOUND if the attestor does not exist.
 /// [args] Arguments passed to this invoke. {@macro pulumi_binaryauthorization_v1beta1_get_attestor_binaryauthorization_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetAttestorBinaryauthorizationV1beta1Result> getAttestorBinaryauthorizationV1beta1(
+Future<GetAttestorBinaryauthorizationV1beta1Result>
+getAttestorBinaryauthorizationV1beta1(
   GetAttestorBinaryauthorizationV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -97,7 +98,8 @@ Future<GetAttestorBinaryauthorizationV1beta1Result> getAttestorBinaryauthorizati
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_binaryauthorization_v1beta1_get_attestor_iam_policy_binaryauthorization_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetAttestorIamPolicyBinaryauthorizationV1beta1Result> getAttestorIamPolicyBinaryauthorizationV1beta1(
+Future<GetAttestorIamPolicyBinaryauthorizationV1beta1Result>
+getAttestorIamPolicyBinaryauthorizationV1beta1(
   GetAttestorIamPolicyBinaryauthorizationV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -113,7 +115,8 @@ Future<GetAttestorIamPolicyBinaryauthorizationV1beta1Result> getAttestorIamPolic
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_binaryauthorization_v1beta1_get_policy_iam_policy_binaryauthorization_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetPolicyIamPolicyBinaryauthorizationV1beta1Result> getPolicyIamPolicyBinaryauthorizationV1beta1(
+Future<GetPolicyIamPolicyBinaryauthorizationV1beta1Result>
+getPolicyIamPolicyBinaryauthorizationV1beta1(
   GetPolicyIamPolicyBinaryauthorizationV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {

@@ -1,21 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getTag.
 class GetTagResult {
   /// A count of the database clusters that the tag is applied to.
   final int databasesCount;
+
   /// A count of the Droplets the tag is applied to.
   final int dropletsCount;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A count of the images that the tag is applied to.
   final int imagesCount;
   final String name;
+
   /// A count of the total number of resources that the tag is applied to.
   final int totalResourceCount;
+
   /// A count of the volume snapshots that the tag is applied to.
   final int volumeSnapshotsCount;
+
   /// A count of the volumes that the tag is applied to.
   final int volumesCount;
 
@@ -65,4 +70,3 @@ class GetTagResult {
     );
   }
 }
-

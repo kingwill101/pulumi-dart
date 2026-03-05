@@ -205,7 +205,16 @@ class Instance extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     hostName = registerOutput<String>('hostName');
-    identity = registerOutput<InstanceIdentity?>('identity');
+    identity = registerOutput<InstanceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -236,7 +245,16 @@ class Instance extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     hostName = registerOutput<String>('hostName');
-    identity = registerOutput<InstanceIdentity?>('identity');
+    identity = registerOutput<InstanceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

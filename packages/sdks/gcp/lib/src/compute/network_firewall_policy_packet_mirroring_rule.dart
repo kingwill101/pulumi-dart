@@ -708,6 +708,13 @@ class NetworkFirewallPolicyPacketMirroringRule extends pulumi.CustomResource {
     kind = registerOutput<String>('kind');
     match = registerOutput<NetworkFirewallPolicyPacketMirroringRuleMatch>(
       'match',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkFirewallPolicyPacketMirroringRuleMatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     priority = registerOutput<int>('priority');
     project = registerOutput<String>('project');
@@ -752,6 +759,13 @@ class NetworkFirewallPolicyPacketMirroringRule extends pulumi.CustomResource {
     kind = registerOutput<String>('kind');
     match = registerOutput<NetworkFirewallPolicyPacketMirroringRuleMatch>(
       'match',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkFirewallPolicyPacketMirroringRuleMatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     priority = registerOutput<int>('priority');
     project = registerOutput<String>('project');

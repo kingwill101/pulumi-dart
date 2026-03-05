@@ -56,9 +56,27 @@ class ResourceClaimParametersPatchResourceK8sIoV1alpha2
     generatedFrom =
         registerOutput<
           ResourceClaimParametersReferencePatchResourceK8sIoV1alpha2?
-        >('generatedFrom');
+        >(
+          'generatedFrom',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResourceClaimParametersReferencePatchResourceK8sIoV1alpha2.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     kind = registerOutput<String?>('kind');
-    metadata = registerOutput<ObjectMetaPatch?>('metadata');
+    metadata = registerOutput<ObjectMetaPatch?>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMetaPatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     shareable = registerOutput<bool?>('shareable');
   }
 }

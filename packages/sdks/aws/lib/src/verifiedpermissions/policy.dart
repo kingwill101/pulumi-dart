@@ -164,7 +164,16 @@ class Policy extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     createdDate = registerOutput<String>('createdDate');
-    definition = registerOutput<PolicyDefinition>('definition');
+    definition = registerOutput<PolicyDefinition>(
+      'definition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyDefinition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     policyId = registerOutput<String>('policyId');
     policyStoreId = registerOutput<String>('policyStoreId');
     region = registerOutput<String>('region');
@@ -194,7 +203,16 @@ class Policy extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     createdDate = registerOutput<String>('createdDate');
-    definition = registerOutput<PolicyDefinition>('definition');
+    definition = registerOutput<PolicyDefinition>(
+      'definition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyDefinition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     policyId = registerOutput<String>('policyId');
     policyStoreId = registerOutput<String>('policyStoreId');
     region = registerOutput<String>('region');

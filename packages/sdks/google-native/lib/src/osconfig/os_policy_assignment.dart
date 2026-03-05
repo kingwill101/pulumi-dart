@@ -70,6 +70,13 @@ class OsPolicyAssignment extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     instanceFilter = registerOutput<OSPolicyAssignmentInstanceFilterResponse>(
       'instanceFilter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OSPolicyAssignmentInstanceFilterResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -79,7 +86,16 @@ class OsPolicyAssignment extends pulumi.CustomResource {
     reconciling = registerOutput<bool>('reconciling');
     revisionCreateTime = registerOutput<String>('revisionCreateTime');
     revisionId = registerOutput<String>('revisionId');
-    rollout = registerOutput<OSPolicyAssignmentRolloutResponse>('rollout');
+    rollout = registerOutput<OSPolicyAssignmentRolloutResponse>(
+      'rollout',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OSPolicyAssignmentRolloutResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     rolloutState = registerOutput<String>('rolloutState');
     uid = registerOutput<String>('uid');
   }

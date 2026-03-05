@@ -139,7 +139,16 @@ class DefaultCreditSpecification extends pulumi.CustomResource {
     cpuCredits = registerOutput<String>('cpuCredits');
     instanceFamily = registerOutput<String>('instanceFamily');
     region = registerOutput<String>('region');
-    timeouts = registerOutput<DefaultCreditSpecificationTimeouts?>('timeouts');
+    timeouts = registerOutput<DefaultCreditSpecificationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DefaultCreditSpecificationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [DefaultCreditSpecification] resource's state with the given [name] and [id].
@@ -168,6 +177,15 @@ class DefaultCreditSpecification extends pulumi.CustomResource {
     cpuCredits = registerOutput<String>('cpuCredits');
     instanceFamily = registerOutput<String>('instanceFamily');
     region = registerOutput<String>('region');
-    timeouts = registerOutput<DefaultCreditSpecificationTimeouts?>('timeouts');
+    timeouts = registerOutput<DefaultCreditSpecificationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DefaultCreditSpecificationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

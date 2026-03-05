@@ -331,6 +331,13 @@ class OperatorApiConnection extends pulumi.CustomResource {
     camaraApiName = registerOutput<String>('camaraApiName');
     configuredApplication = registerOutput<ApplicationPropertiesResponse?>(
       'configuredApplication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     gatewayId = registerOutput<String>('gatewayId');
     location = registerOutput<String>('location');
@@ -338,9 +345,36 @@ class OperatorApiConnection extends pulumi.CustomResource {
     operatorApiPlanId = registerOutput<String>('operatorApiPlanId');
     operatorName = registerOutput<String>('operatorName');
     provisioningState = registerOutput<String>('provisioningState');
-    saasProperties = registerOutput<SaasPropertiesResponse?>('saasProperties');
-    status = registerOutput<StatusResponse>('status');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    saasProperties = registerOutput<SaasPropertiesResponse?>(
+      'saasProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SaasPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    status = registerOutput<StatusResponse>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

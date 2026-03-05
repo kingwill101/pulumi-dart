@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getKnowledgeBase.
 class GetKnowledgeBaseDialogflowV2beta1Result {
   /// The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
   final String displayName;
+
   /// Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, this is populated for all non en-us languages. If not populated, the default language en-us applies.
   final String languageCode;
+
   /// The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
   final String name;
 
@@ -28,7 +29,9 @@ class GetKnowledgeBaseDialogflowV2beta1Result {
     };
   }
 
-  factory GetKnowledgeBaseDialogflowV2beta1Result.fromMap(Map<String, dynamic> map) {
+  factory GetKnowledgeBaseDialogflowV2beta1Result.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetKnowledgeBaseDialogflowV2beta1Result(
       displayName: map['displayName'] as String,
       languageCode: map['languageCode'] as String,
@@ -36,4 +39,3 @@ class GetKnowledgeBaseDialogflowV2beta1Result {
     );
   }
 }
-

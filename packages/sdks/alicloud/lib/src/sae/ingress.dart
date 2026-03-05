@@ -644,7 +644,16 @@ class Ingress extends pulumi.CustomResource {
        ) {
     certId = registerOutput<String?>('certId');
     certIds = registerOutput<String?>('certIds');
-    defaultRule = registerOutput<IngressDefaultRule?>('defaultRule');
+    defaultRule = registerOutput<IngressDefaultRule?>(
+      'defaultRule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IngressDefaultRule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     listenerPort = registerOutput<int>('listenerPort');
     listenerProtocol = registerOutput<String>('listenerProtocol');
@@ -679,7 +688,16 @@ class Ingress extends pulumi.CustomResource {
        ) {
     certId = registerOutput<String?>('certId');
     certIds = registerOutput<String?>('certIds');
-    defaultRule = registerOutput<IngressDefaultRule?>('defaultRule');
+    defaultRule = registerOutput<IngressDefaultRule?>(
+      'defaultRule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IngressDefaultRule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     listenerPort = registerOutput<int>('listenerPort');
     listenerProtocol = registerOutput<String>('listenerProtocol');

@@ -188,6 +188,13 @@ class SnapshotSettings extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     storageLocation = registerOutput<SnapshotSettingsStorageLocation>(
       'storageLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SnapshotSettingsStorageLocation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -217,6 +224,13 @@ class SnapshotSettings extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     storageLocation = registerOutput<SnapshotSettingsStorageLocation>(
       'storageLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SnapshotSettingsStorageLocation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

@@ -37,8 +37,26 @@ class AccessLevel extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     accessPolicyId = registerOutput<String>('accessPolicyId');
-    basic = registerOutput<BasicLevelResponse>('basic');
-    custom = registerOutput<CustomLevelResponse>('custom');
+    basic = registerOutput<BasicLevelResponse>(
+      'basic',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BasicLevelResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    custom = registerOutput<CustomLevelResponse>(
+      'custom',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomLevelResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String>('description');
     this.name = registerOutput<String>('name');
     title = registerOutput<String>('title');

@@ -1,26 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getHypervisorV2.
 class GetHypervisorV2Result {
   /// The amount in GigaBytes of local storage the hypervisor can provide
   final int disk;
+
   /// The IP address of the Hypervisor
   final String hostIp;
+
   /// See Argument Reference above.
   final String hostname;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The number in MegaBytes of memory the hypervisor can provide
   final int memory;
+
   /// See Argument Reference above.
   final String region;
+
   /// The state of the hypervisor (`up` or `down`)
   final String state;
+
   /// The status of the hypervisor (`enabled` or `disabled`)
   final String status;
+
   /// The type of the hypervisor (example: `QEMU`)
   final String type;
+
   /// The number of virtual CPUs the hypervisor can provide
   final int vcpus;
 
@@ -78,4 +86,3 @@ class GetHypervisorV2Result {
     );
   }
 }
-

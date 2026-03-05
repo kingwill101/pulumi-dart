@@ -884,7 +884,16 @@ class ContainerGroup extends pulumi.CustomResource {
     containerGroupName = registerOutput<String>('containerGroupName');
     containers = registerOutput<List<Map<String, dynamic>>>('containers');
     cpu = registerOutput<double>('cpu');
-    dnsConfig = registerOutput<ContainerGroupDnsConfig?>('dnsConfig');
+    dnsConfig = registerOutput<ContainerGroupDnsConfig?>(
+      'dnsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContainerGroupDnsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dnsPolicy = registerOutput<String>('dnsPolicy');
     eipBandwidth = registerOutput<int?>('eipBandwidth');
     eipInstanceId = registerOutput<String?>('eipInstanceId');
@@ -907,6 +916,13 @@ class ContainerGroup extends pulumi.CustomResource {
     restartPolicy = registerOutput<String>('restartPolicy');
     securityContext = registerOutput<ContainerGroupSecurityContext?>(
       'securityContext',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContainerGroupSecurityContext.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     securityGroupId = registerOutput<String>('securityGroupId');
     spotPriceLimit = registerOutput<double>('spotPriceLimit');
@@ -952,7 +968,16 @@ class ContainerGroup extends pulumi.CustomResource {
     containerGroupName = registerOutput<String>('containerGroupName');
     containers = registerOutput<List<Map<String, dynamic>>>('containers');
     cpu = registerOutput<double>('cpu');
-    dnsConfig = registerOutput<ContainerGroupDnsConfig?>('dnsConfig');
+    dnsConfig = registerOutput<ContainerGroupDnsConfig?>(
+      'dnsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContainerGroupDnsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dnsPolicy = registerOutput<String>('dnsPolicy');
     eipBandwidth = registerOutput<int?>('eipBandwidth');
     eipInstanceId = registerOutput<String?>('eipInstanceId');
@@ -975,6 +1000,13 @@ class ContainerGroup extends pulumi.CustomResource {
     restartPolicy = registerOutput<String>('restartPolicy');
     securityContext = registerOutput<ContainerGroupSecurityContext?>(
       'securityContext',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContainerGroupSecurityContext.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     securityGroupId = registerOutput<String>('securityGroupId');
     spotPriceLimit = registerOutput<double>('spotPriceLimit');

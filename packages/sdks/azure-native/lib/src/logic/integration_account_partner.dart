@@ -260,7 +260,16 @@ class IntegrationAccountPartner extends pulumi.CustomResource {
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     changedTime = registerOutput<String>('changedTime');
-    content = registerOutput<PartnerContentResponse>('content');
+    content = registerOutput<PartnerContentResponse>(
+      'content',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PartnerContentResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createdTime = registerOutput<String>('createdTime');
     location = registerOutput<String?>('location');
     metadata = registerOutput<dynamic>('metadata');

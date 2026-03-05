@@ -1946,7 +1946,16 @@ class Integration extends pulumi.CustomResource {
     responseTransferMode = registerOutput<String>('responseTransferMode');
     restApi = registerOutput<String>('restApi');
     timeoutMilliseconds = registerOutput<int?>('timeoutMilliseconds');
-    tlsConfig = registerOutput<IntegrationTlsConfig?>('tlsConfig');
+    tlsConfig = registerOutput<IntegrationTlsConfig?>(
+      'tlsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IntegrationTlsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     uri = registerOutput<String?>('uri');
   }
@@ -1993,7 +2002,16 @@ class Integration extends pulumi.CustomResource {
     responseTransferMode = registerOutput<String>('responseTransferMode');
     restApi = registerOutput<String>('restApi');
     timeoutMilliseconds = registerOutput<int?>('timeoutMilliseconds');
-    tlsConfig = registerOutput<IntegrationTlsConfig?>('tlsConfig');
+    tlsConfig = registerOutput<IntegrationTlsConfig?>(
+      'tlsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IntegrationTlsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     uri = registerOutput<String?>('uri');
   }

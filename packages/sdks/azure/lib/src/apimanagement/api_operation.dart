@@ -311,7 +311,16 @@ class ApiOperation extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     method = registerOutput<String>('method');
     operationId = registerOutput<String>('operationId');
-    request = registerOutput<ApiOperationRequest>('request');
+    request = registerOutput<ApiOperationRequest>(
+      'request',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiOperationRequest.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     responses = registerOutput<List<Map<String, dynamic>>?>('responses');
     templateParameters = registerOutput<List<Map<String, dynamic>>?>(
@@ -349,7 +358,16 @@ class ApiOperation extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     method = registerOutput<String>('method');
     operationId = registerOutput<String>('operationId');
-    request = registerOutput<ApiOperationRequest>('request');
+    request = registerOutput<ApiOperationRequest>(
+      'request',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiOperationRequest.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     responses = registerOutput<List<Map<String, dynamic>>?>('responses');
     templateParameters = registerOutput<List<Map<String, dynamic>>?>(

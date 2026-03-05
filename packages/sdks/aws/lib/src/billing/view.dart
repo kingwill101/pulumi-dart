@@ -188,6 +188,13 @@ class View extends pulumi.CustomResource {
     createdAt = registerOutput<String>('createdAt');
     dataFilterExpression = registerOutput<ViewDataFilterExpression?>(
       'dataFilterExpression',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ViewDataFilterExpression.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     derivedViewCount = registerOutput<int>('derivedViewCount');
     description = registerOutput<String?>('description');
@@ -198,7 +205,16 @@ class View extends pulumi.CustomResource {
     sourceViews = registerOutput<List<String>?>('sourceViews');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ViewTimeouts?>('timeouts');
+    timeouts = registerOutput<ViewTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ViewTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     updatedAt = registerOutput<String>('updatedAt');
     viewDefinitionLastUpdatedAt = registerOutput<String>(
       'viewDefinitionLastUpdatedAt',
@@ -229,6 +245,13 @@ class View extends pulumi.CustomResource {
     createdAt = registerOutput<String>('createdAt');
     dataFilterExpression = registerOutput<ViewDataFilterExpression?>(
       'dataFilterExpression',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ViewDataFilterExpression.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     derivedViewCount = registerOutput<int>('derivedViewCount');
     description = registerOutput<String?>('description');
@@ -239,7 +262,16 @@ class View extends pulumi.CustomResource {
     sourceViews = registerOutput<List<String>?>('sourceViews');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ViewTimeouts?>('timeouts');
+    timeouts = registerOutput<ViewTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ViewTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     updatedAt = registerOutput<String>('updatedAt');
     viewDefinitionLastUpdatedAt = registerOutput<String>(
       'viewDefinitionLastUpdatedAt',

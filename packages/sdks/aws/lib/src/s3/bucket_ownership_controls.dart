@@ -173,7 +173,16 @@ class BucketOwnershipControls extends pulumi.CustomResource {
        ) {
     bucket = registerOutput<String>('bucket');
     region = registerOutput<String>('region');
-    rule = registerOutput<BucketOwnershipControlsRule>('rule');
+    rule = registerOutput<BucketOwnershipControlsRule>(
+      'rule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketOwnershipControlsRule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [BucketOwnershipControls] resource's state with the given [name] and [id].
@@ -201,6 +210,15 @@ class BucketOwnershipControls extends pulumi.CustomResource {
        ) {
     bucket = registerOutput<String>('bucket');
     region = registerOutput<String>('region');
-    rule = registerOutput<BucketOwnershipControlsRule>('rule');
+    rule = registerOutput<BucketOwnershipControlsRule>(
+      'rule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketOwnershipControlsRule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

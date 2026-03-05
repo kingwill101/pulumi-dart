@@ -477,6 +477,13 @@ class EmailIdentity extends pulumi.CustomResource {
     configurationSetName = registerOutput<String?>('configurationSetName');
     dkimSigningAttributes = registerOutput<EmailIdentityDkimSigningAttributes>(
       'dkimSigningAttributes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EmailIdentityDkimSigningAttributes.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     emailIdentity = registerOutput<String>('emailIdentity');
     identityType = registerOutput<String>('identityType');
@@ -514,6 +521,13 @@ class EmailIdentity extends pulumi.CustomResource {
     configurationSetName = registerOutput<String?>('configurationSetName');
     dkimSigningAttributes = registerOutput<EmailIdentityDkimSigningAttributes>(
       'dkimSigningAttributes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EmailIdentityDkimSigningAttributes.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     emailIdentity = registerOutput<String>('emailIdentity');
     identityType = registerOutput<String>('identityType');

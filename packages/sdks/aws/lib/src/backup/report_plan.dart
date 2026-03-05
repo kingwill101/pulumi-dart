@@ -240,8 +240,24 @@ class ReportPlan extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     reportDeliveryChannel = registerOutput<ReportPlanReportDeliveryChannel>(
       'reportDeliveryChannel',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReportPlanReportDeliveryChannel.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    reportSetting = registerOutput<ReportPlanReportSetting>('reportSetting');
+    reportSetting = registerOutput<ReportPlanReportSetting>(
+      'reportSetting',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReportPlanReportSetting.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
@@ -277,8 +293,24 @@ class ReportPlan extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     reportDeliveryChannel = registerOutput<ReportPlanReportDeliveryChannel>(
       'reportDeliveryChannel',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReportPlanReportDeliveryChannel.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    reportSetting = registerOutput<ReportPlanReportSetting>('reportSetting');
+    reportSetting = registerOutput<ReportPlanReportSetting>(
+      'reportSetting',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReportPlanReportSetting.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }

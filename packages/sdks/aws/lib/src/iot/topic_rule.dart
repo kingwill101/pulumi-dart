@@ -559,7 +559,16 @@ class TopicRule extends pulumi.CustomResource {
       'elasticsearch',
     );
     enabled = registerOutput<bool>('enabled');
-    errorAction = registerOutput<TopicRuleErrorAction?>('errorAction');
+    errorAction = registerOutput<TopicRuleErrorAction?>(
+      'errorAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TopicRuleErrorAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     firehoses = registerOutput<List<Map<String, dynamic>>?>('firehoses');
     https = registerOutput<List<Map<String, dynamic>>?>('https');
     iotAnalytics = registerOutput<List<Map<String, dynamic>>?>('iotAnalytics');
@@ -623,7 +632,16 @@ class TopicRule extends pulumi.CustomResource {
       'elasticsearch',
     );
     enabled = registerOutput<bool>('enabled');
-    errorAction = registerOutput<TopicRuleErrorAction?>('errorAction');
+    errorAction = registerOutput<TopicRuleErrorAction?>(
+      'errorAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TopicRuleErrorAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     firehoses = registerOutput<List<Map<String, dynamic>>?>('firehoses');
     https = registerOutput<List<Map<String, dynamic>>?>('https');
     iotAnalytics = registerOutput<List<Map<String, dynamic>>?>('iotAnalytics');

@@ -205,7 +205,16 @@ class Key extends pulumi.CustomResource {
         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
         options ?? pulumi.CustomResourceOptions(),
       ) {
-    attributes = registerOutput<KeyAttributesResponse?>('attributes');
+    attributes = registerOutput<KeyAttributesResponse?>(
+      'attributes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KeyAttributesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     curveName = registerOutput<String?>('curveName');
     keyOps = registerOutput<List<String>?>('keyOps');
@@ -215,8 +224,26 @@ class Key extends pulumi.CustomResource {
     kty = registerOutput<String?>('kty');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    releasePolicy = registerOutput<KeyReleasePolicyResponse?>('releasePolicy');
-    rotationPolicy = registerOutput<RotationPolicyResponse?>('rotationPolicy');
+    releasePolicy = registerOutput<KeyReleasePolicyResponse?>(
+      'releasePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KeyReleasePolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    rotationPolicy = registerOutput<RotationPolicyResponse?>(
+      'rotationPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RotationPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>>('tags');
     type = registerOutput<String>('type');
   }

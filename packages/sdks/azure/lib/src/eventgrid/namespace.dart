@@ -218,7 +218,16 @@ class Namespace extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     capacity = registerOutput<int?>('capacity');
-    identity = registerOutput<NamespaceIdentity?>('identity');
+    identity = registerOutput<NamespaceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NamespaceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     inboundIpRules = registerOutput<List<Map<String, dynamic>>?>(
       'inboundIpRules',
     );
@@ -257,7 +266,16 @@ class Namespace extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     capacity = registerOutput<int?>('capacity');
-    identity = registerOutput<NamespaceIdentity?>('identity');
+    identity = registerOutput<NamespaceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NamespaceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     inboundIpRules = registerOutput<List<Map<String, dynamic>>?>(
       'inboundIpRules',
     );

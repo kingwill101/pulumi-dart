@@ -1981,7 +1981,16 @@ class LogViewIamBinding extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     bucket = registerOutput<String>('bucket');
-    condition = registerOutput<LogViewIamBindingCondition?>('condition');
+    condition = registerOutput<LogViewIamBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LogViewIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
     members = registerOutput<List<String>>('members');
@@ -2014,7 +2023,16 @@ class LogViewIamBinding extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     bucket = registerOutput<String>('bucket');
-    condition = registerOutput<LogViewIamBindingCondition?>('condition');
+    condition = registerOutput<LogViewIamBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LogViewIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
     members = registerOutput<List<String>>('members');

@@ -266,16 +266,57 @@ class ServiceGateway extends pulumi.CustomResource {
     routeTargetAddress =
         registerOutput<RouteTargetAddressPropertiesFormatResponse?>(
           'routeTargetAddress',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RouteTargetAddressPropertiesFormatResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     routeTargetAddressV6 =
         registerOutput<RouteTargetAddressPropertiesFormatResponse?>(
           'routeTargetAddressV6',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RouteTargetAddressPropertiesFormatResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    sku = registerOutput<ServiceGatewaySkuResponse?>('sku');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    sku = registerOutput<ServiceGatewaySkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceGatewaySkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    virtualNetwork = registerOutput<VirtualNetworkResponse?>('virtualNetwork');
+    virtualNetwork = registerOutput<VirtualNetworkResponse?>(
+      'virtualNetwork',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualNetworkResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     zones = registerOutput<List<String>?>('zones');
   }
 }

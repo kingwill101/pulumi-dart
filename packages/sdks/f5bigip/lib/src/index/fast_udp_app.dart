@@ -262,7 +262,16 @@ class FastUdpApp extends pulumi.CustomResource {
     fastUdpJson = registerOutput<String>('fastUdpJson');
     irules = registerOutput<List<String>?>('irules');
     loadBalancingMode = registerOutput<String?>('loadBalancingMode');
-    monitor = registerOutput<FastUdpAppMonitor?>('monitor');
+    monitor = registerOutput<FastUdpAppMonitor?>(
+      'monitor',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FastUdpAppMonitor.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     persistenceProfile = registerOutput<String?>('persistenceProfile');
     persistenceType = registerOutput<String?>('persistenceType');
     poolMembers = registerOutput<List<Map<String, dynamic>>?>('poolMembers');
@@ -270,7 +279,16 @@ class FastUdpApp extends pulumi.CustomResource {
     slowRampTime = registerOutput<int?>('slowRampTime');
     snatPoolAddresses = registerOutput<List<String>?>('snatPoolAddresses');
     tenant = registerOutput<String>('tenant');
-    virtualServer = registerOutput<FastUdpAppVirtualServer?>('virtualServer');
+    virtualServer = registerOutput<FastUdpAppVirtualServer?>(
+      'virtualServer',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FastUdpAppVirtualServer.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vlansAlloweds = registerOutput<List<String>?>('vlansAlloweds');
     vlansRejecteds = registerOutput<List<String>?>('vlansRejecteds');
   }
@@ -308,7 +326,16 @@ class FastUdpApp extends pulumi.CustomResource {
     fastUdpJson = registerOutput<String>('fastUdpJson');
     irules = registerOutput<List<String>?>('irules');
     loadBalancingMode = registerOutput<String?>('loadBalancingMode');
-    monitor = registerOutput<FastUdpAppMonitor?>('monitor');
+    monitor = registerOutput<FastUdpAppMonitor?>(
+      'monitor',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FastUdpAppMonitor.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     persistenceProfile = registerOutput<String?>('persistenceProfile');
     persistenceType = registerOutput<String?>('persistenceType');
     poolMembers = registerOutput<List<Map<String, dynamic>>?>('poolMembers');
@@ -316,7 +343,16 @@ class FastUdpApp extends pulumi.CustomResource {
     slowRampTime = registerOutput<int?>('slowRampTime');
     snatPoolAddresses = registerOutput<List<String>?>('snatPoolAddresses');
     tenant = registerOutput<String>('tenant');
-    virtualServer = registerOutput<FastUdpAppVirtualServer?>('virtualServer');
+    virtualServer = registerOutput<FastUdpAppVirtualServer?>(
+      'virtualServer',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FastUdpAppVirtualServer.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vlansAlloweds = registerOutput<List<String>?>('vlansAlloweds');
     vlansRejecteds = registerOutput<List<String>?>('vlansRejecteds');
   }

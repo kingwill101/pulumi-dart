@@ -502,7 +502,16 @@ class Runbook extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     creationTime = registerOutput<String?>('creationTime');
     description = registerOutput<String?>('description');
-    draft = registerOutput<RunbookDraftResponse?>('draft');
+    draft = registerOutput<RunbookDraftResponse?>(
+      'draft',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RunbookDraftResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String?>('etag');
     jobCount = registerOutput<int?>('jobCount');
     lastModifiedBy = registerOutput<String?>('lastModifiedBy');
@@ -515,6 +524,16 @@ class Runbook extends pulumi.CustomResource {
     outputTypes = registerOutput<List<String>?>('outputTypes');
     parameters = registerOutput<Map<String, RunbookParameterResponse>?>(
       'parameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeMapValues<RunbookParameterResponse>(
+          guardedValue,
+          (value) => RunbookParameterResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      },
     );
     provisioningState = registerOutput<String?>('provisioningState');
     runbookType = registerOutput<String?>('runbookType');

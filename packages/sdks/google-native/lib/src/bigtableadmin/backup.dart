@@ -51,7 +51,16 @@ class Backup extends pulumi.CustomResource {
       ) {
     backupId = registerOutput<String>('backupId');
     clusterId = registerOutput<String>('clusterId');
-    encryptionInfo = registerOutput<EncryptionInfoResponse>('encryptionInfo');
+    encryptionInfo = registerOutput<EncryptionInfoResponse>(
+      'encryptionInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EncryptionInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     endTime = registerOutput<String>('endTime');
     expireTime = registerOutput<String>('expireTime');
     instanceId = registerOutput<String>('instanceId');

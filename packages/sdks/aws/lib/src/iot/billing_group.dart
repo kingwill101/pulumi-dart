@@ -175,7 +175,16 @@ class BillingGroup extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     metadatas = registerOutput<List<Map<String, dynamic>>>('metadatas');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<BillingGroupProperties?>('properties');
+    properties = registerOutput<BillingGroupProperties?>(
+      'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BillingGroupProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -208,7 +217,16 @@ class BillingGroup extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     metadatas = registerOutput<List<Map<String, dynamic>>>('metadatas');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<BillingGroupProperties?>('properties');
+    properties = registerOutput<BillingGroupProperties?>(
+      'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BillingGroupProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

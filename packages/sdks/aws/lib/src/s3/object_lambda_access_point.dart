@@ -277,6 +277,13 @@ class ObjectLambdaAccessPoint extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     configuration = registerOutput<ObjectLambdaAccessPointConfiguration>(
       'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectLambdaAccessPointConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -310,6 +317,13 @@ class ObjectLambdaAccessPoint extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     configuration = registerOutput<ObjectLambdaAccessPointConfiguration>(
       'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectLambdaAccessPointConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

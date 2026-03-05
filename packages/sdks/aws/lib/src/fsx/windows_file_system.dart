@@ -680,6 +680,13 @@ class WindowsFileSystem extends pulumi.CustomResource {
     auditLogConfiguration =
         registerOutput<WindowsFileSystemAuditLogConfiguration>(
           'auditLogConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WindowsFileSystemAuditLogConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     automaticBackupRetentionDays = registerOutput<int?>(
       'automaticBackupRetentionDays',
@@ -693,6 +700,13 @@ class WindowsFileSystem extends pulumi.CustomResource {
     diskIopsConfiguration =
         registerOutput<WindowsFileSystemDiskIopsConfiguration>(
           'diskIopsConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WindowsFileSystemDiskIopsConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dnsName = registerOutput<String>('dnsName');
     finalBackupTags = registerOutput<Map<String, String>?>('finalBackupTags');
@@ -709,6 +723,13 @@ class WindowsFileSystem extends pulumi.CustomResource {
     selfManagedActiveDirectory =
         registerOutput<WindowsFileSystemSelfManagedActiveDirectory?>(
           'selfManagedActiveDirectory',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WindowsFileSystemSelfManagedActiveDirectory.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     skipFinalBackup = registerOutput<bool?>('skipFinalBackup');
     storageCapacity = registerOutput<int>('storageCapacity');
@@ -752,6 +773,13 @@ class WindowsFileSystem extends pulumi.CustomResource {
     auditLogConfiguration =
         registerOutput<WindowsFileSystemAuditLogConfiguration>(
           'auditLogConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WindowsFileSystemAuditLogConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     automaticBackupRetentionDays = registerOutput<int?>(
       'automaticBackupRetentionDays',
@@ -765,6 +793,13 @@ class WindowsFileSystem extends pulumi.CustomResource {
     diskIopsConfiguration =
         registerOutput<WindowsFileSystemDiskIopsConfiguration>(
           'diskIopsConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WindowsFileSystemDiskIopsConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dnsName = registerOutput<String>('dnsName');
     finalBackupTags = registerOutput<Map<String, String>?>('finalBackupTags');
@@ -781,6 +816,13 @@ class WindowsFileSystem extends pulumi.CustomResource {
     selfManagedActiveDirectory =
         registerOutput<WindowsFileSystemSelfManagedActiveDirectory?>(
           'selfManagedActiveDirectory',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WindowsFileSystemSelfManagedActiveDirectory.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     skipFinalBackup = registerOutput<bool?>('skipFinalBackup');
     storageCapacity = registerOutput<int>('storageCapacity');

@@ -191,6 +191,13 @@ class SqlDatabase extends pulumi.CustomResource {
     accountName = registerOutput<String>('accountName');
     autoscaleSettings = registerOutput<SqlDatabaseAutoscaleSettings?>(
       'autoscaleSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SqlDatabaseAutoscaleSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -223,6 +230,13 @@ class SqlDatabase extends pulumi.CustomResource {
     accountName = registerOutput<String>('accountName');
     autoscaleSettings = registerOutput<SqlDatabaseAutoscaleSettings?>(
       'autoscaleSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SqlDatabaseAutoscaleSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

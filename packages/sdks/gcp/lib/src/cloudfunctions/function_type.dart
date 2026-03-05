@@ -758,7 +758,16 @@ class FunctionType extends pulumi.CustomResource {
     environmentVariables = registerOutput<Map<String, String>?>(
       'environmentVariables',
     );
-    eventTrigger = registerOutput<FunctionEventTrigger>('eventTrigger');
+    eventTrigger = registerOutput<FunctionEventTrigger>(
+      'eventTrigger',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionEventTrigger.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     httpsTriggerSecurityLevel = registerOutput<String>(
       'httpsTriggerSecurityLevel',
     );
@@ -771,6 +780,13 @@ class FunctionType extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     onDeployUpdatePolicy = registerOutput<FunctionOnDeployUpdatePolicy?>(
       'onDeployUpdatePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionOnDeployUpdatePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
@@ -787,6 +803,13 @@ class FunctionType extends pulumi.CustomResource {
     sourceArchiveObject = registerOutput<String?>('sourceArchiveObject');
     sourceRepository = registerOutput<FunctionSourceRepository?>(
       'sourceRepository',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionSourceRepository.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     status = registerOutput<String>('status');
     timeout = registerOutput<int?>('timeout');
@@ -838,7 +861,16 @@ class FunctionType extends pulumi.CustomResource {
     environmentVariables = registerOutput<Map<String, String>?>(
       'environmentVariables',
     );
-    eventTrigger = registerOutput<FunctionEventTrigger>('eventTrigger');
+    eventTrigger = registerOutput<FunctionEventTrigger>(
+      'eventTrigger',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionEventTrigger.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     httpsTriggerSecurityLevel = registerOutput<String>(
       'httpsTriggerSecurityLevel',
     );
@@ -851,6 +883,13 @@ class FunctionType extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     onDeployUpdatePolicy = registerOutput<FunctionOnDeployUpdatePolicy?>(
       'onDeployUpdatePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionOnDeployUpdatePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
@@ -867,6 +906,13 @@ class FunctionType extends pulumi.CustomResource {
     sourceArchiveObject = registerOutput<String?>('sourceArchiveObject');
     sourceRepository = registerOutput<FunctionSourceRepository?>(
       'sourceRepository',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionSourceRepository.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     status = registerOutput<String>('status');
     timeout = registerOutput<int?>('timeout');

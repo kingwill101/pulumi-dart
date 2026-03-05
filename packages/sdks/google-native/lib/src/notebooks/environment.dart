@@ -46,7 +46,16 @@ class Environment extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    containerImage = registerOutput<ContainerImageResponse>('containerImage');
+    containerImage = registerOutput<ContainerImageResponse>(
+      'containerImage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContainerImageResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
@@ -55,6 +64,15 @@ class Environment extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     postStartupScript = registerOutput<String>('postStartupScript');
     project = registerOutput<String>('project');
-    vmImage = registerOutput<VmImageResponse>('vmImage');
+    vmImage = registerOutput<VmImageResponse>(
+      'vmImage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VmImageResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

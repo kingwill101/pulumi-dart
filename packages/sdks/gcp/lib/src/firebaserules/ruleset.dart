@@ -339,7 +339,16 @@ class Ruleset extends pulumi.CustomResource {
     metadatas = registerOutput<List<Map<String, dynamic>>>('metadatas');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    source = registerOutput<RulesetSource>('source');
+    source = registerOutput<RulesetSource>(
+      'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RulesetSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Ruleset] resource's state with the given [name] and [id].
@@ -369,6 +378,15 @@ class Ruleset extends pulumi.CustomResource {
     metadatas = registerOutput<List<Map<String, dynamic>>>('metadatas');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    source = registerOutput<RulesetSource>('source');
+    source = registerOutput<RulesetSource>(
+      'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RulesetSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

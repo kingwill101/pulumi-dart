@@ -8,18 +8,24 @@ import 'get_plan_scan_setting.dart';
 class GetPlanResult {
   /// ARN of the backup plan.
   final String arn;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Display name of a backup plan.
   final String name;
   final String planId;
   final String region;
+
   /// Rules of a backup plan.
   final List<GetPlanRule> rules;
+
   /// Scanning configuration for the backup rule.
   final List<GetPlanScanSetting> scanSettings;
+
   /// Metadata that you can assign to help organize the plans you create.
   final Map<String, String> tags;
+
   /// Unique, randomly generated, Unicode, UTF-8 encoded string that serves as the version ID of the backup plan.
   final String version;
 
@@ -52,8 +58,15 @@ class GetPlanResult {
       'name': name,
       'planId': planId,
       'region': region,
-      'rules': pulumi.Input.encodeList<GetPlanRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
-      'scanSettings': pulumi.Input.encodeList<GetPlanScanSetting, Map<String, dynamic>>(scanSettings, (value) => value.toMap()),
+      'rules': pulumi.Input.encodeList<GetPlanRule, Map<String, dynamic>>(
+        rules,
+        (value) => value.toMap(),
+      ),
+      'scanSettings':
+          pulumi.Input.encodeList<GetPlanScanSetting, Map<String, dynamic>>(
+            scanSettings,
+            (value) => value.toMap(),
+          ),
       'tags': tags,
       'version': version,
     };
@@ -66,11 +79,17 @@ class GetPlanResult {
       name: map['name'] as String,
       planId: map['planId'] as String,
       region: map['region'] as String,
-      rules: pulumi.Input.decodeList<GetPlanRule>(map['rules']!, (value) => GetPlanRule.fromMap((value as Map).cast<String, dynamic>())),
-      scanSettings: pulumi.Input.decodeList<GetPlanScanSetting>(map['scanSettings']!, (value) => GetPlanScanSetting.fromMap((value as Map).cast<String, dynamic>())),
+      rules: pulumi.Input.decodeList<GetPlanRule>(
+        map['rules']!,
+        (value) => GetPlanRule.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      scanSettings: pulumi.Input.decodeList<GetPlanScanSetting>(
+        map['scanSettings']!,
+        (value) =>
+            GetPlanScanSetting.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       tags: (map['tags'] as Map).cast<String, String>(),
       version: map['version'] as String,
     );
   }
 }
-

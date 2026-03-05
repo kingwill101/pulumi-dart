@@ -590,14 +590,32 @@ class Application extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     applicationId = registerOutput<String>('applicationId');
-    attributes = registerOutput<ApplicationAttributes?>('attributes');
+    attributes = registerOutput<ApplicationAttributes?>(
+      'attributes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationAttributes.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    scope = registerOutput<ApplicationScope>('scope');
+    scope = registerOutput<ApplicationScope>(
+      'scope',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationScope.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
@@ -627,14 +645,32 @@ class Application extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     applicationId = registerOutput<String>('applicationId');
-    attributes = registerOutput<ApplicationAttributes?>('attributes');
+    attributes = registerOutput<ApplicationAttributes?>(
+      'attributes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationAttributes.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    scope = registerOutput<ApplicationScope>('scope');
+    scope = registerOutput<ApplicationScope>(
+      'scope',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationScope.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');

@@ -173,6 +173,13 @@ class ExtensionAzureMonitorStatus extends pulumi.CustomResource {
     selectedConfigurations =
         registerOutput<AzureMonitorSelectedConfigurationsResponse?>(
           'selectedConfigurations',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AzureMonitorSelectedConfigurationsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     workspaceId = registerOutput<String?>('workspaceId');
   }

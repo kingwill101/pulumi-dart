@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getTopic.
 class GetTopicResult {
   /// ARN of the found topic, suitable for referencing in other resources that support SNS topics.
   final String arn;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
   final String region;
+
   /// Map of tags for the resource.
   final Map<String, String> tags;
 
@@ -46,4 +47,3 @@ class GetTopicResult {
     );
   }
 }
-

@@ -633,6 +633,13 @@ class Webhook extends pulumi.CustomResource {
     authenticationConfiguration =
         registerOutput<WebhookAuthenticationConfiguration?>(
           'authenticationConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WebhookAuthenticationConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     filters = registerOutput<List<Map<String, dynamic>>>('filters');
     this.name = registerOutput<String>('name');
@@ -672,6 +679,13 @@ class Webhook extends pulumi.CustomResource {
     authenticationConfiguration =
         registerOutput<WebhookAuthenticationConfiguration?>(
           'authenticationConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WebhookAuthenticationConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     filters = registerOutput<List<Map<String, dynamic>>>('filters');
     this.name = registerOutput<String>('name');

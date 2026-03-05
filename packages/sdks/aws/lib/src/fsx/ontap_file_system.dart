@@ -726,6 +726,13 @@ class OntapFileSystem extends pulumi.CustomResource {
     diskIopsConfiguration =
         registerOutput<OntapFileSystemDiskIopsConfiguration>(
           'diskIopsConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return OntapFileSystemDiskIopsConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dnsName = registerOutput<String>('dnsName');
     endpointIpAddressRange = registerOutput<String>('endpointIpAddressRange');
@@ -788,6 +795,13 @@ class OntapFileSystem extends pulumi.CustomResource {
     diskIopsConfiguration =
         registerOutput<OntapFileSystemDiskIopsConfiguration>(
           'diskIopsConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return OntapFileSystemDiskIopsConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dnsName = registerOutput<String>('dnsName');
     endpointIpAddressRange = registerOutput<String>('endpointIpAddressRange');

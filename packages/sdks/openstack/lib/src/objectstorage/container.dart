@@ -850,6 +850,13 @@ class Container extends pulumi.CustomResource {
     versioning = registerOutput<bool?>('versioning');
     versioningLegacy = registerOutput<ContainerVersioningLegacy?>(
       'versioningLegacy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContainerVersioningLegacy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -890,6 +897,13 @@ class Container extends pulumi.CustomResource {
     versioning = registerOutput<bool?>('versioning');
     versioningLegacy = registerOutput<ContainerVersioningLegacy?>(
       'versioningLegacy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContainerVersioningLegacy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

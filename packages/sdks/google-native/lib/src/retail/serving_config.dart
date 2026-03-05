@@ -100,7 +100,16 @@ class ServingConfig extends pulumi.CustomResource {
     dynamicFacetSpec =
         registerOutput<
           GoogleCloudRetailV2SearchRequestDynamicFacetSpecResponse
-        >('dynamicFacetSpec');
+        >(
+          'dynamicFacetSpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudRetailV2SearchRequestDynamicFacetSpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     enableCategoryFilterLevel = registerOutput<String>(
       'enableCategoryFilterLevel',
     );
@@ -116,7 +125,16 @@ class ServingConfig extends pulumi.CustomResource {
     personalizationSpec =
         registerOutput<
           GoogleCloudRetailV2SearchRequestPersonalizationSpecResponse
-        >('personalizationSpec');
+        >(
+          'personalizationSpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudRetailV2SearchRequestPersonalizationSpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     priceRerankingLevel = registerOutput<String>('priceRerankingLevel');
     project = registerOutput<String>('project');
     redirectControlIds = registerOutput<List<String>>('redirectControlIds');

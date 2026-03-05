@@ -429,6 +429,13 @@ class BastionHost extends pulumi.CustomResource {
     fileCopyEnabled = registerOutput<bool?>('fileCopyEnabled');
     ipConfiguration = registerOutput<BastionHostIpConfiguration?>(
       'ipConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BastionHostIpConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     ipConnectEnabled = registerOutput<bool?>('ipConnectEnabled');
     kerberosEnabled = registerOutput<bool?>('kerberosEnabled');
@@ -473,6 +480,13 @@ class BastionHost extends pulumi.CustomResource {
     fileCopyEnabled = registerOutput<bool?>('fileCopyEnabled');
     ipConfiguration = registerOutput<BastionHostIpConfiguration?>(
       'ipConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BastionHostIpConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     ipConnectEnabled = registerOutput<bool?>('ipConnectEnabled');
     kerberosEnabled = registerOutput<bool?>('kerberosEnabled');

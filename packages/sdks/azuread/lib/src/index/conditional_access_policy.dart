@@ -969,14 +969,35 @@ class ConditionalAccessPolicy extends pulumi.CustomResource {
        ) {
     conditions = registerOutput<ConditionalAccessPolicyConditions>(
       'conditions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConditionalAccessPolicyConditions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     displayName = registerOutput<String>('displayName');
     grantControls = registerOutput<ConditionalAccessPolicyGrantControls?>(
       'grantControls',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConditionalAccessPolicyGrantControls.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     objectId = registerOutput<String>('objectId');
     sessionControls = registerOutput<ConditionalAccessPolicySessionControls?>(
       'sessionControls',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConditionalAccessPolicySessionControls.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     state = registerOutput<String>('state');
   }
@@ -1006,14 +1027,35 @@ class ConditionalAccessPolicy extends pulumi.CustomResource {
        ) {
     conditions = registerOutput<ConditionalAccessPolicyConditions>(
       'conditions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConditionalAccessPolicyConditions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     displayName = registerOutput<String>('displayName');
     grantControls = registerOutput<ConditionalAccessPolicyGrantControls?>(
       'grantControls',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConditionalAccessPolicyGrantControls.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     objectId = registerOutput<String>('objectId');
     sessionControls = registerOutput<ConditionalAccessPolicySessionControls?>(
       'sessionControls',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConditionalAccessPolicySessionControls.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.state = registerOutput<String>('state');
   }

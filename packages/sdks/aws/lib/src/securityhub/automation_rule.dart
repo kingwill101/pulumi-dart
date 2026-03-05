@@ -326,7 +326,16 @@ class AutomationRule extends pulumi.CustomResource {
        ) {
     actions = registerOutput<List<Map<String, dynamic>>>('actions');
     arn = registerOutput<String>('arn');
-    criteria = registerOutput<AutomationRuleCriteria>('criteria');
+    criteria = registerOutput<AutomationRuleCriteria>(
+      'criteria',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AutomationRuleCriteria.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String>('description');
     isTerminal = registerOutput<bool>('isTerminal');
     region = registerOutput<String>('region');
@@ -362,7 +371,16 @@ class AutomationRule extends pulumi.CustomResource {
        ) {
     actions = registerOutput<List<Map<String, dynamic>>>('actions');
     arn = registerOutput<String>('arn');
-    criteria = registerOutput<AutomationRuleCriteria>('criteria');
+    criteria = registerOutput<AutomationRuleCriteria>(
+      'criteria',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AutomationRuleCriteria.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String>('description');
     isTerminal = registerOutput<bool>('isTerminal');
     region = registerOutput<String>('region');

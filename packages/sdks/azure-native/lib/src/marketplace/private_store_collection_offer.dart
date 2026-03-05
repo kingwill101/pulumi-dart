@@ -234,7 +234,16 @@ class PrivateStoreCollectionOffer extends pulumi.CustomResource {
     specificPlanIdsLimitation = registerOutput<List<String>?>(
       'specificPlanIdsLimitation',
     );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     uniqueOfferId = registerOutput<String>('uniqueOfferId');
     updateSuppressedDueIdempotence = registerOutput<bool?>(

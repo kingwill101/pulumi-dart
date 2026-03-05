@@ -2495,6 +2495,13 @@ class ApiManagementService extends pulumi.CustomResource {
     );
     apiVersionConstraint = registerOutput<ApiVersionConstraintResponse?>(
       'apiVersionConstraint',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiVersionConstraintResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     certificates = registerOutput<List<Map<String, dynamic>>?>('certificates');
@@ -2511,6 +2518,13 @@ class ApiManagementService extends pulumi.CustomResource {
     );
     identity = registerOutput<ApiManagementServiceIdentityResponse?>(
       'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiManagementServiceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     managementApiUrl = registerOutput<String>('managementApiUrl');
@@ -2536,14 +2550,39 @@ class ApiManagementService extends pulumi.CustomResource {
     publisherName = registerOutput<String>('publisherName');
     restore = registerOutput<bool?>('restore');
     scmUrl = registerOutput<String>('scmUrl');
-    sku = registerOutput<ApiManagementServiceSkuPropertiesResponse>('sku');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    sku = registerOutput<ApiManagementServiceSkuPropertiesResponse>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiManagementServiceSkuPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     targetProvisioningState = registerOutput<String>('targetProvisioningState');
     type = registerOutput<String>('type');
     virtualNetworkConfiguration =
         registerOutput<VirtualNetworkConfigurationResponse?>(
           'virtualNetworkConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VirtualNetworkConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     virtualNetworkType = registerOutput<String?>('virtualNetworkType');
     zones = registerOutput<List<String>?>('zones');

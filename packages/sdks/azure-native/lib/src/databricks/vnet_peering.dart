@@ -245,21 +245,53 @@ class VNetPeering extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     databricksAddressSpace = registerOutput<AddressSpaceResponse?>(
       'databricksAddressSpace',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AddressSpaceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     databricksVirtualNetwork =
         registerOutput<
           VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetwork?
-        >('databricksVirtualNetwork');
+        >(
+          'databricksVirtualNetwork',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetwork.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     this.name = registerOutput<String>('name');
     peeringState = registerOutput<String>('peeringState');
     provisioningState = registerOutput<String>('provisioningState');
     remoteAddressSpace = registerOutput<AddressSpaceResponse?>(
       'remoteAddressSpace',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AddressSpaceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     remoteVirtualNetwork =
         registerOutput<
           VirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetwork
-        >('remoteVirtualNetwork');
+        >(
+          'remoteVirtualNetwork',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetwork.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     type = registerOutput<String>('type');
     useRemoteGateways = registerOutput<bool?>('useRemoteGateways');
   }

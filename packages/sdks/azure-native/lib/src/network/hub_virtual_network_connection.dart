@@ -474,9 +474,23 @@ class HubVirtualNetworkConnection extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     remoteVirtualNetwork = registerOutput<SubResourceResponse?>(
       'remoteVirtualNetwork',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     routingConfiguration = registerOutput<RoutingConfigurationResponse?>(
       'routingConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RoutingConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

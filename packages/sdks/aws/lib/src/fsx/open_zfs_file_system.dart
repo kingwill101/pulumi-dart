@@ -352,6 +352,13 @@ class OpenZfsFileSystem extends pulumi.CustomResource {
     diskIopsConfiguration =
         registerOutput<OpenZfsFileSystemDiskIopsConfiguration>(
           'diskIopsConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return OpenZfsFileSystemDiskIopsConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dnsName = registerOutput<String>('dnsName');
     endpointIpAddress = registerOutput<String>('endpointIpAddress');
@@ -364,11 +371,25 @@ class OpenZfsFileSystem extends pulumi.CustomResource {
     readCacheConfiguration =
         registerOutput<OpenZfsFileSystemReadCacheConfiguration?>(
           'readCacheConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return OpenZfsFileSystemReadCacheConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     rootVolumeConfiguration =
         registerOutput<OpenZfsFileSystemRootVolumeConfiguration>(
           'rootVolumeConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return OpenZfsFileSystemRootVolumeConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     rootVolumeId = registerOutput<String>('rootVolumeId');
     routeTableIds = registerOutput<List<String>>('routeTableIds');
@@ -424,6 +445,13 @@ class OpenZfsFileSystem extends pulumi.CustomResource {
     diskIopsConfiguration =
         registerOutput<OpenZfsFileSystemDiskIopsConfiguration>(
           'diskIopsConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return OpenZfsFileSystemDiskIopsConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dnsName = registerOutput<String>('dnsName');
     endpointIpAddress = registerOutput<String>('endpointIpAddress');
@@ -436,11 +464,25 @@ class OpenZfsFileSystem extends pulumi.CustomResource {
     readCacheConfiguration =
         registerOutput<OpenZfsFileSystemReadCacheConfiguration?>(
           'readCacheConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return OpenZfsFileSystemReadCacheConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     rootVolumeConfiguration =
         registerOutput<OpenZfsFileSystemRootVolumeConfiguration>(
           'rootVolumeConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return OpenZfsFileSystemRootVolumeConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     rootVolumeId = registerOutput<String>('rootVolumeId');
     routeTableIds = registerOutput<List<String>>('routeTableIds');

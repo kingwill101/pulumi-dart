@@ -493,6 +493,13 @@ class LoadBalancer extends pulumi.CustomResource {
        ) {
     adaptiveRouting = registerOutput<LoadBalancerAdaptiveRouting>(
       'adaptiveRouting',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerAdaptiveRouting.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     defaultPools = registerOutput<List<int>>('defaultPools');
     description = registerOutput<String?>('description');
@@ -500,9 +507,25 @@ class LoadBalancer extends pulumi.CustomResource {
     fallbackPool = registerOutput<int>('fallbackPool');
     loadBalancerId = registerOutput<int>('loadBalancerId');
     loadBalancerName = registerOutput<String>('loadBalancerName');
-    monitor = registerOutput<LoadBalancerMonitor>('monitor');
+    monitor = registerOutput<LoadBalancerMonitor>(
+      'monitor',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerMonitor.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     randomSteering = registerOutput<LoadBalancerRandomSteering?>(
       'randomSteering',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerRandomSteering.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     regionPools = registerOutput<String?>('regionPools');
     rules = registerOutput<List<Map<String, dynamic>>?>('rules');
@@ -539,6 +562,13 @@ class LoadBalancer extends pulumi.CustomResource {
        ) {
     adaptiveRouting = registerOutput<LoadBalancerAdaptiveRouting>(
       'adaptiveRouting',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerAdaptiveRouting.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     defaultPools = registerOutput<List<int>>('defaultPools');
     description = registerOutput<String?>('description');
@@ -546,9 +576,25 @@ class LoadBalancer extends pulumi.CustomResource {
     fallbackPool = registerOutput<int>('fallbackPool');
     loadBalancerId = registerOutput<int>('loadBalancerId');
     loadBalancerName = registerOutput<String>('loadBalancerName');
-    monitor = registerOutput<LoadBalancerMonitor>('monitor');
+    monitor = registerOutput<LoadBalancerMonitor>(
+      'monitor',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerMonitor.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     randomSteering = registerOutput<LoadBalancerRandomSteering?>(
       'randomSteering',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerRandomSteering.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     regionPools = registerOutput<String?>('regionPools');
     rules = registerOutput<List<Map<String, dynamic>>?>('rules');

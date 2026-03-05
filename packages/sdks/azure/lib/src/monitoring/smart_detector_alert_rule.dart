@@ -339,6 +339,13 @@ class SmartDetectorAlertRule extends pulumi.CustomResource {
        ) {
     actionGroup = registerOutput<SmartDetectorAlertRuleActionGroup>(
       'actionGroup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SmartDetectorAlertRuleActionGroup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     detectorType = registerOutput<String>('detectorType');
@@ -377,6 +384,13 @@ class SmartDetectorAlertRule extends pulumi.CustomResource {
        ) {
     actionGroup = registerOutput<SmartDetectorAlertRuleActionGroup>(
       'actionGroup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SmartDetectorAlertRuleActionGroup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     detectorType = registerOutput<String>('detectorType');

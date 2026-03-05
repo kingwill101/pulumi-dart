@@ -71,8 +71,26 @@ class Evaluation extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');
-    resourceFilter = registerOutput<ResourceFilterResponse>('resourceFilter');
-    resourceStatus = registerOutput<ResourceStatusResponse>('resourceStatus');
+    resourceFilter = registerOutput<ResourceFilterResponse>(
+      'resourceFilter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceFilterResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    resourceStatus = registerOutput<ResourceStatusResponse>(
+      'resourceStatus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ruleNames = registerOutput<List<String>>('ruleNames');
     ruleVersions = registerOutput<List<String>>('ruleVersions');
     schedule = registerOutput<String>('schedule');

@@ -448,7 +448,16 @@ class FunctionAppSlot extends pulumi.CustomResource {
        ) {
     appServicePlanId = registerOutput<String>('appServicePlanId');
     appSettings = registerOutput<Map<String, String>>('appSettings');
-    authSettings = registerOutput<FunctionAppSlotAuthSettings>('authSettings');
+    authSettings = registerOutput<FunctionAppSlotAuthSettings>(
+      'authSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionAppSlotAuthSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     connectionStrings = registerOutput<List<Map<String, dynamic>>>(
       'connectionStrings',
     );
@@ -458,7 +467,16 @@ class FunctionAppSlot extends pulumi.CustomResource {
     enabled = registerOutput<bool?>('enabled');
     functionAppName = registerOutput<String>('functionAppName');
     httpsOnly = registerOutput<bool?>('httpsOnly');
-    identity = registerOutput<FunctionAppSlotIdentity?>('identity');
+    identity = registerOutput<FunctionAppSlotIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionAppSlotIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -468,7 +486,16 @@ class FunctionAppSlot extends pulumi.CustomResource {
       'possibleOutboundIpAddresses',
     );
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    siteConfig = registerOutput<FunctionAppSlotSiteConfig>('siteConfig');
+    siteConfig = registerOutput<FunctionAppSlotSiteConfig>(
+      'siteConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionAppSlotSiteConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     siteCredentials = registerOutput<List<Map<String, dynamic>>>(
       'siteCredentials',
     );
@@ -503,7 +530,16 @@ class FunctionAppSlot extends pulumi.CustomResource {
        ) {
     appServicePlanId = registerOutput<String>('appServicePlanId');
     appSettings = registerOutput<Map<String, String>>('appSettings');
-    authSettings = registerOutput<FunctionAppSlotAuthSettings>('authSettings');
+    authSettings = registerOutput<FunctionAppSlotAuthSettings>(
+      'authSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionAppSlotAuthSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     connectionStrings = registerOutput<List<Map<String, dynamic>>>(
       'connectionStrings',
     );
@@ -513,7 +549,16 @@ class FunctionAppSlot extends pulumi.CustomResource {
     enabled = registerOutput<bool?>('enabled');
     functionAppName = registerOutput<String>('functionAppName');
     httpsOnly = registerOutput<bool?>('httpsOnly');
-    identity = registerOutput<FunctionAppSlotIdentity?>('identity');
+    identity = registerOutput<FunctionAppSlotIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionAppSlotIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -523,7 +568,16 @@ class FunctionAppSlot extends pulumi.CustomResource {
       'possibleOutboundIpAddresses',
     );
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    siteConfig = registerOutput<FunctionAppSlotSiteConfig>('siteConfig');
+    siteConfig = registerOutput<FunctionAppSlotSiteConfig>(
+      'siteConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionAppSlotSiteConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     siteCredentials = registerOutput<List<Map<String, dynamic>>>(
       'siteCredentials',
     );

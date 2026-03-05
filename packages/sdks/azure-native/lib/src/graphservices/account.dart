@@ -185,9 +185,23 @@ class Account extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     properties = registerOutput<AccountResourceResponseProperties>(
       'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountResourceResponseProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     systemData = registerOutput<AccountResourceResponseSystemData>(
       'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountResourceResponseSystemData.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

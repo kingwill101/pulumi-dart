@@ -58,7 +58,16 @@ class WebAppBackupConfigurationSlot extends pulumi.CustomResource {
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     backupName = registerOutput<String?>('backupName');
-    backupSchedule = registerOutput<BackupScheduleResponse?>('backupSchedule');
+    backupSchedule = registerOutput<BackupScheduleResponse?>(
+      'backupSchedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackupScheduleResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     databases = registerOutput<List<Map<String, dynamic>>?>('databases');
     enabled = registerOutput<bool?>('enabled');
     kind = registerOutput<String?>('kind');

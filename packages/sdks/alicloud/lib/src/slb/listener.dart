@@ -602,7 +602,16 @@ class Listener extends pulumi.CustomResource {
     stickySessionType = registerOutput<String?>('stickySessionType');
     tlsCipherPolicy = registerOutput<String?>('tlsCipherPolicy');
     unhealthyThreshold = registerOutput<int?>('unhealthyThreshold');
-    xForwardedFor = registerOutput<ListenerXForwardedFor>('xForwardedFor');
+    xForwardedFor = registerOutput<ListenerXForwardedFor>(
+      'xForwardedFor',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ListenerXForwardedFor.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Listener] resource's state with the given [name] and [id].
@@ -674,6 +683,15 @@ class Listener extends pulumi.CustomResource {
     stickySessionType = registerOutput<String?>('stickySessionType');
     tlsCipherPolicy = registerOutput<String?>('tlsCipherPolicy');
     unhealthyThreshold = registerOutput<int?>('unhealthyThreshold');
-    xForwardedFor = registerOutput<ListenerXForwardedFor>('xForwardedFor');
+    xForwardedFor = registerOutput<ListenerXForwardedFor>(
+      'xForwardedFor',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ListenerXForwardedFor.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

@@ -53,14 +53,32 @@ class WebhookDialogflowV3beta1 extends pulumi.CustomResource {
     genericWebService =
         registerOutput<
           GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse
-        >('genericWebService');
+        >(
+          'genericWebService',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     serviceDirectory =
         registerOutput<
           GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponse
-        >('serviceDirectory');
+        >(
+          'serviceDirectory',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     timeout = registerOutput<String>('timeout');
   }
 }

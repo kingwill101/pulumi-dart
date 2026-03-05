@@ -311,6 +311,13 @@ class EnterpriseSnapshotPolicy extends pulumi.CustomResource {
     crossRegionCopyInfo =
         registerOutput<EnterpriseSnapshotPolicyCrossRegionCopyInfo>(
           'crossRegionCopyInfo',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EnterpriseSnapshotPolicyCrossRegionCopyInfo.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     desc = registerOutput<String?>('desc');
     enterpriseSnapshotPolicyName = registerOutput<String>(
@@ -319,15 +326,45 @@ class EnterpriseSnapshotPolicy extends pulumi.CustomResource {
     resourceGroupId = registerOutput<String>('resourceGroupId');
     retainRule = registerOutput<EnterpriseSnapshotPolicyRetainRule>(
       'retainRule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnterpriseSnapshotPolicyRetainRule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    schedule = registerOutput<EnterpriseSnapshotPolicySchedule>('schedule');
+    schedule = registerOutput<EnterpriseSnapshotPolicySchedule>(
+      'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnterpriseSnapshotPolicySchedule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     specialRetainRules =
         registerOutput<EnterpriseSnapshotPolicySpecialRetainRules>(
           'specialRetainRules',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EnterpriseSnapshotPolicySpecialRetainRules.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     status = registerOutput<String>('status');
     storageRule = registerOutput<EnterpriseSnapshotPolicyStorageRule?>(
       'storageRule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnterpriseSnapshotPolicyStorageRule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     targetType = registerOutput<String>('targetType');
@@ -360,6 +397,13 @@ class EnterpriseSnapshotPolicy extends pulumi.CustomResource {
     crossRegionCopyInfo =
         registerOutput<EnterpriseSnapshotPolicyCrossRegionCopyInfo>(
           'crossRegionCopyInfo',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EnterpriseSnapshotPolicyCrossRegionCopyInfo.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     desc = registerOutput<String?>('desc');
     enterpriseSnapshotPolicyName = registerOutput<String>(
@@ -368,15 +412,45 @@ class EnterpriseSnapshotPolicy extends pulumi.CustomResource {
     resourceGroupId = registerOutput<String>('resourceGroupId');
     retainRule = registerOutput<EnterpriseSnapshotPolicyRetainRule>(
       'retainRule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnterpriseSnapshotPolicyRetainRule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    schedule = registerOutput<EnterpriseSnapshotPolicySchedule>('schedule');
+    schedule = registerOutput<EnterpriseSnapshotPolicySchedule>(
+      'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnterpriseSnapshotPolicySchedule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     specialRetainRules =
         registerOutput<EnterpriseSnapshotPolicySpecialRetainRules>(
           'specialRetainRules',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EnterpriseSnapshotPolicySpecialRetainRules.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     status = registerOutput<String>('status');
     storageRule = registerOutput<EnterpriseSnapshotPolicyStorageRule?>(
       'storageRule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnterpriseSnapshotPolicyStorageRule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     targetType = registerOutput<String>('targetType');

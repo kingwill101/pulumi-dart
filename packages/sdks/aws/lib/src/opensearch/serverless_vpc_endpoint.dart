@@ -159,7 +159,16 @@ class ServerlessVpcEndpoint extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     securityGroupIds = registerOutput<List<String>>('securityGroupIds');
     subnetIds = registerOutput<List<String>>('subnetIds');
-    timeouts = registerOutput<ServerlessVpcEndpointTimeouts?>('timeouts');
+    timeouts = registerOutput<ServerlessVpcEndpointTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerlessVpcEndpointTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vpcId = registerOutput<String>('vpcId');
   }
 
@@ -190,7 +199,16 @@ class ServerlessVpcEndpoint extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     securityGroupIds = registerOutput<List<String>>('securityGroupIds');
     subnetIds = registerOutput<List<String>>('subnetIds');
-    timeouts = registerOutput<ServerlessVpcEndpointTimeouts?>('timeouts');
+    timeouts = registerOutput<ServerlessVpcEndpointTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerlessVpcEndpointTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vpcId = registerOutput<String>('vpcId');
   }
 }

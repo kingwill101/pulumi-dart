@@ -63,18 +63,52 @@ class ConnectivityTest extends pulumi.CustomResource {
        ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
-    destination = registerOutput<EndpointResponse>('destination');
+    destination = registerOutput<EndpointResponse>(
+      'destination',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     displayName = registerOutput<String>('displayName');
     labels = registerOutput<Map<String, String>>('labels');
     this.name = registerOutput<String>('name');
-    probingDetails = registerOutput<ProbingDetailsResponse>('probingDetails');
+    probingDetails = registerOutput<ProbingDetailsResponse>(
+      'probingDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProbingDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     protocol = registerOutput<String>('protocol');
     reachabilityDetails = registerOutput<ReachabilityDetailsResponse>(
       'reachabilityDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReachabilityDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     relatedProjects = registerOutput<List<String>>('relatedProjects');
-    source = registerOutput<EndpointResponse>('source');
+    source = registerOutput<EndpointResponse>(
+      'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     testId = registerOutput<String>('testId');
     updateTime = registerOutput<String>('updateTime');
   }

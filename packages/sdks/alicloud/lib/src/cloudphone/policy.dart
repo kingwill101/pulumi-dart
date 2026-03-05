@@ -256,6 +256,13 @@ class Policy extends pulumi.CustomResource {
     lockResolution = registerOutput<String>('lockResolution');
     netRedirectPolicy = registerOutput<PolicyNetRedirectPolicy>(
       'netRedirectPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyNetRedirectPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     policyGroupName = registerOutput<String>('policyGroupName');
     resolutionHeight = registerOutput<int>('resolutionHeight');
@@ -290,6 +297,13 @@ class Policy extends pulumi.CustomResource {
     lockResolution = registerOutput<String>('lockResolution');
     netRedirectPolicy = registerOutput<PolicyNetRedirectPolicy>(
       'netRedirectPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyNetRedirectPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     policyGroupName = registerOutput<String>('policyGroupName');
     resolutionHeight = registerOutput<int>('resolutionHeight');

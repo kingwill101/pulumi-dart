@@ -250,9 +250,27 @@ class NamedLocation extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    country = registerOutput<NamedLocationCountry?>('country');
+    country = registerOutput<NamedLocationCountry?>(
+      'country',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NamedLocationCountry.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     displayName = registerOutput<String>('displayName');
-    ip = registerOutput<NamedLocationIp?>('ip');
+    ip = registerOutput<NamedLocationIp?>(
+      'ip',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NamedLocationIp.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     objectId = registerOutput<String>('objectId');
   }
 
@@ -279,9 +297,27 @@ class NamedLocation extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    country = registerOutput<NamedLocationCountry?>('country');
+    country = registerOutput<NamedLocationCountry?>(
+      'country',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NamedLocationCountry.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     displayName = registerOutput<String>('displayName');
-    ip = registerOutput<NamedLocationIp?>('ip');
+    ip = registerOutput<NamedLocationIp?>(
+      'ip',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NamedLocationIp.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     objectId = registerOutput<String>('objectId');
   }
 }

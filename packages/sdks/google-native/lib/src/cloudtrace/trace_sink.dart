@@ -29,7 +29,16 @@ class TraceSink extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     this.name = registerOutput<String>('name');
-    outputConfig = registerOutput<OutputConfigResponse>('outputConfig');
+    outputConfig = registerOutput<OutputConfigResponse>(
+      'outputConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OutputConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     writerIdentity = registerOutput<String>('writerIdentity');
   }

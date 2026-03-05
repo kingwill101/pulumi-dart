@@ -631,7 +631,16 @@ class ManagementFolderSecurityHealthAnalyticsCustomModule
     customConfig =
         registerOutput<
           ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig?
-        >('customConfig');
+        >(
+          'customConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     displayName = registerOutput<String?>('displayName');
     enablementState = registerOutput<String?>('enablementState');
     folder = registerOutput<String>('folder');
@@ -668,7 +677,16 @@ class ManagementFolderSecurityHealthAnalyticsCustomModule
     customConfig =
         registerOutput<
           ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig?
-        >('customConfig');
+        >(
+          'customConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     displayName = registerOutput<String?>('displayName');
     enablementState = registerOutput<String?>('enablementState');
     folder = registerOutput<String>('folder');

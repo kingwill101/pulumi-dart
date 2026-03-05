@@ -337,6 +337,13 @@ class Authorizer extends pulumi.CustomResource {
     identitySources = registerOutput<List<String>?>('identitySources');
     jwtConfiguration = registerOutput<AuthorizerJwtConfiguration?>(
       'jwtConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AuthorizerJwtConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -381,6 +388,13 @@ class Authorizer extends pulumi.CustomResource {
     identitySources = registerOutput<List<String>?>('identitySources');
     jwtConfiguration = registerOutput<AuthorizerJwtConfiguration?>(
       'jwtConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AuthorizerJwtConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

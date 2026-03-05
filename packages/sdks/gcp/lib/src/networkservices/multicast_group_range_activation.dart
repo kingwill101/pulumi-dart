@@ -518,6 +518,13 @@ class MulticastGroupRangeActivation extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     logConfig = registerOutput<MulticastGroupRangeActivationLogConfig?>(
       'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MulticastGroupRangeActivationLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     multicastDomainActivation = registerOutput<String>(
       'multicastDomainActivation',
@@ -568,6 +575,13 @@ class MulticastGroupRangeActivation extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     logConfig = registerOutput<MulticastGroupRangeActivationLogConfig?>(
       'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MulticastGroupRangeActivationLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     multicastDomainActivation = registerOutput<String>(
       'multicastDomainActivation',

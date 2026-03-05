@@ -349,21 +349,49 @@ class GroupRoleManagementPolicy extends pulumi.CustomResource {
        ) {
     activationRules = registerOutput<GroupRoleManagementPolicyActivationRules>(
       'activationRules',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupRoleManagementPolicyActivationRules.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     activeAssignmentRules =
         registerOutput<GroupRoleManagementPolicyActiveAssignmentRules>(
           'activeAssignmentRules',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GroupRoleManagementPolicyActiveAssignmentRules.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
     eligibleAssignmentRules =
         registerOutput<GroupRoleManagementPolicyEligibleAssignmentRules>(
           'eligibleAssignmentRules',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GroupRoleManagementPolicyEligibleAssignmentRules.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     groupId = registerOutput<String>('groupId');
     notificationRules =
         registerOutput<GroupRoleManagementPolicyNotificationRules>(
           'notificationRules',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GroupRoleManagementPolicyNotificationRules.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     roleId = registerOutput<String>('roleId');
   }
@@ -393,21 +421,49 @@ class GroupRoleManagementPolicy extends pulumi.CustomResource {
        ) {
     activationRules = registerOutput<GroupRoleManagementPolicyActivationRules>(
       'activationRules',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupRoleManagementPolicyActivationRules.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     activeAssignmentRules =
         registerOutput<GroupRoleManagementPolicyActiveAssignmentRules>(
           'activeAssignmentRules',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GroupRoleManagementPolicyActiveAssignmentRules.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
     eligibleAssignmentRules =
         registerOutput<GroupRoleManagementPolicyEligibleAssignmentRules>(
           'eligibleAssignmentRules',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GroupRoleManagementPolicyEligibleAssignmentRules.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     groupId = registerOutput<String>('groupId');
     notificationRules =
         registerOutput<GroupRoleManagementPolicyNotificationRules>(
           'notificationRules',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GroupRoleManagementPolicyNotificationRules.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     roleId = registerOutput<String>('roleId');
   }

@@ -584,7 +584,16 @@ class Certificate extends pulumi.CustomResource {
     keyAlgorithm = registerOutput<String>('keyAlgorithm');
     notAfter = registerOutput<String>('notAfter');
     notBefore = registerOutput<String>('notBefore');
-    this.options = registerOutput<CertificateOptions>('options');
+    this.options = registerOutput<CertificateOptions>(
+      'options',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CertificateOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     pendingRenewal = registerOutput<bool>('pendingRenewal');
     privateKey = registerOutput<String?>('privateKey');
     region = registerOutput<String>('region');
@@ -643,7 +652,16 @@ class Certificate extends pulumi.CustomResource {
     keyAlgorithm = registerOutput<String>('keyAlgorithm');
     notAfter = registerOutput<String>('notAfter');
     notBefore = registerOutput<String>('notBefore');
-    this.options = registerOutput<CertificateOptions>('options');
+    this.options = registerOutput<CertificateOptions>(
+      'options',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CertificateOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     pendingRenewal = registerOutput<bool>('pendingRenewal');
     privateKey = registerOutput<String?>('privateKey');
     region = registerOutput<String>('region');

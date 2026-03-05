@@ -1926,13 +1926,49 @@ class CxTool extends pulumi.CustomResource {
         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
         options ?? pulumi.CustomResourceOptions(),
       ) {
-    connectorSpec = registerOutput<CxToolConnectorSpec?>('connectorSpec');
-    dataStoreSpec = registerOutput<CxToolDataStoreSpec?>('dataStoreSpec');
+    connectorSpec = registerOutput<CxToolConnectorSpec?>(
+      'connectorSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxToolConnectorSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    dataStoreSpec = registerOutput<CxToolDataStoreSpec?>(
+      'dataStoreSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxToolDataStoreSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
-    functionSpec = registerOutput<CxToolFunctionSpec?>('functionSpec');
+    functionSpec = registerOutput<CxToolFunctionSpec?>(
+      'functionSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxToolFunctionSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
-    openApiSpec = registerOutput<CxToolOpenApiSpec?>('openApiSpec');
+    openApiSpec = registerOutput<CxToolOpenApiSpec?>(
+      'openApiSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxToolOpenApiSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     parent = registerOutput<String?>('parent');
     toolType = registerOutput<String>('toolType');
   }
@@ -1960,13 +1996,49 @@ class CxTool extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    connectorSpec = registerOutput<CxToolConnectorSpec?>('connectorSpec');
-    dataStoreSpec = registerOutput<CxToolDataStoreSpec?>('dataStoreSpec');
+    connectorSpec = registerOutput<CxToolConnectorSpec?>(
+      'connectorSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxToolConnectorSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    dataStoreSpec = registerOutput<CxToolDataStoreSpec?>(
+      'dataStoreSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxToolDataStoreSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
-    functionSpec = registerOutput<CxToolFunctionSpec?>('functionSpec');
+    functionSpec = registerOutput<CxToolFunctionSpec?>(
+      'functionSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxToolFunctionSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
-    openApiSpec = registerOutput<CxToolOpenApiSpec?>('openApiSpec');
+    openApiSpec = registerOutput<CxToolOpenApiSpec?>(
+      'openApiSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxToolOpenApiSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     parent = registerOutput<String?>('parent');
     toolType = registerOutput<String>('toolType');
   }

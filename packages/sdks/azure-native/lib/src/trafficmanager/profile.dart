@@ -1695,11 +1695,29 @@ class Profile extends pulumi.CustomResource {
       'allowedEndpointRecordTypes',
     );
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    dnsConfig = registerOutput<DnsConfigResponse?>('dnsConfig');
+    dnsConfig = registerOutput<DnsConfigResponse?>(
+      'dnsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DnsConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     endpoints = registerOutput<List<Map<String, dynamic>>?>('endpoints');
     location = registerOutput<String?>('location');
     maxReturn = registerOutput<double?>('maxReturn');
-    monitorConfig = registerOutput<MonitorConfigResponse?>('monitorConfig');
+    monitorConfig = registerOutput<MonitorConfigResponse?>(
+      'monitorConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MonitorConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String?>('name');
     profileStatus = registerOutput<String?>('profileStatus');
     tags = registerOutput<Map<String, String>?>('tags');

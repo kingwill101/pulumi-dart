@@ -762,23 +762,69 @@ class KafkaConnector extends pulumi.CustomResource {
     clientIdPrefix = registerOutput<String?>('clientIdPrefix');
     extendedLocation = registerOutput<ExtendedLocationPropertyResponse>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationPropertyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    image = registerOutput<ContainerImageResponse?>('image');
+    image = registerOutput<ContainerImageResponse?>(
+      'image',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContainerImageResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     instances = registerOutput<int?>('instances');
     kafkaConnection = registerOutput<KafkaRemoteBrokerConnectionSpecResponse>(
       'kafkaConnection',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KafkaRemoteBrokerConnectionSpecResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     localBrokerConnection = registerOutput<LocalBrokerConnectionSpecResponse?>(
       'localBrokerConnection',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LocalBrokerConnectionSpecResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     logLevel = registerOutput<String?>('logLevel');
     this.name = registerOutput<String>('name');
     nodeTolerations = registerOutput<NodeTolerationsResponse?>(
       'nodeTolerations',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodeTolerationsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

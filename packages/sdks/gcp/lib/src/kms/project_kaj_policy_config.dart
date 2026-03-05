@@ -361,7 +361,16 @@ class ProjectKajPolicyConfig extends pulumi.CustomResource {
     defaultKeyAccessJustificationPolicy =
         registerOutput<
           ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy?
-        >('defaultKeyAccessJustificationPolicy');
+        >(
+          'defaultKeyAccessJustificationPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     project = registerOutput<String>('project');
   }
 
@@ -391,7 +400,16 @@ class ProjectKajPolicyConfig extends pulumi.CustomResource {
     defaultKeyAccessJustificationPolicy =
         registerOutput<
           ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy?
-        >('defaultKeyAccessJustificationPolicy');
+        >(
+          'defaultKeyAccessJustificationPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     project = registerOutput<String>('project');
   }
 }

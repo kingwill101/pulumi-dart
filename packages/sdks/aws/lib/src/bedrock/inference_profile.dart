@@ -220,14 +220,32 @@ class InferenceProfile extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');
     description = registerOutput<String?>('description');
-    modelSource = registerOutput<InferenceProfileModelSource?>('modelSource');
+    modelSource = registerOutput<InferenceProfileModelSource?>(
+      'modelSource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InferenceProfileModelSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     models = registerOutput<List<Map<String, dynamic>>>('models');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<InferenceProfileTimeouts?>('timeouts');
+    timeouts = registerOutput<InferenceProfileTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InferenceProfileTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     updatedAt = registerOutput<String>('updatedAt');
   }
@@ -258,14 +276,32 @@ class InferenceProfile extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');
     description = registerOutput<String?>('description');
-    modelSource = registerOutput<InferenceProfileModelSource?>('modelSource');
+    modelSource = registerOutput<InferenceProfileModelSource?>(
+      'modelSource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InferenceProfileModelSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     models = registerOutput<List<Map<String, dynamic>>>('models');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<InferenceProfileTimeouts?>('timeouts');
+    timeouts = registerOutput<InferenceProfileTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InferenceProfileTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     updatedAt = registerOutput<String>('updatedAt');
   }

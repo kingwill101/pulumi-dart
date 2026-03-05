@@ -96,6 +96,13 @@ class Network extends pulumi.CustomResource {
     requestId = registerOutput<String?>('requestId');
     routingConfig = registerOutput<NetworkRoutingConfigResponse>(
       'routingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkRoutingConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     selfLink = registerOutput<String>('selfLink');
     selfLinkWithId = registerOutput<String>('selfLinkWithId');

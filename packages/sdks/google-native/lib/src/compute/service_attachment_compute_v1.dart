@@ -94,6 +94,13 @@ class ServiceAttachmentComputeV1 extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     pscServiceAttachmentId = registerOutput<Uint128ResponseComputeV1>(
       'pscServiceAttachmentId',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return Uint128ResponseComputeV1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     reconcileConnections = registerOutput<bool>('reconcileConnections');
     region = registerOutput<String>('region');

@@ -202,6 +202,13 @@ class PrivateEndpointConnection extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     properties = registerOutput<PrivateEndpointConnectionPropertiesResponse>(
       'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PrivateEndpointConnectionPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     type = registerOutput<String>('type');
   }

@@ -341,7 +341,16 @@ class DeploymentType extends pulumi.CustomResource {
        ) {
     app = registerOutput<String>('app');
     appVersion = registerOutput<String>('appVersion');
-    channelProfile = registerOutput<DeploymentChannelProfile>('channelProfile');
+    channelProfile = registerOutput<DeploymentChannelProfile>(
+      'channelProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentChannelProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String>('etag');
@@ -376,7 +385,16 @@ class DeploymentType extends pulumi.CustomResource {
        ) {
     app = registerOutput<String>('app');
     appVersion = registerOutput<String>('appVersion');
-    channelProfile = registerOutput<DeploymentChannelProfile>('channelProfile');
+    channelProfile = registerOutput<DeploymentChannelProfile>(
+      'channelProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentChannelProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String>('etag');

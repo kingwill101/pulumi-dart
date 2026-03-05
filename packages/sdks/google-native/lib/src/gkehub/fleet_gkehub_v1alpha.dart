@@ -54,6 +54,13 @@ class FleetGkehubV1alpha extends pulumi.CustomResource {
     defaultClusterConfig =
         registerOutput<DefaultClusterConfigResponseGkehubV1alpha>(
           'defaultClusterConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DefaultClusterConfigResponseGkehubV1alpha.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     deleteTime = registerOutput<String>('deleteTime');
     displayName = registerOutput<String>('displayName');
@@ -61,7 +68,16 @@ class FleetGkehubV1alpha extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    state = registerOutput<FleetLifecycleStateResponseGkehubV1alpha>('state');
+    state = registerOutput<FleetLifecycleStateResponseGkehubV1alpha>(
+      'state',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FleetLifecycleStateResponseGkehubV1alpha.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }

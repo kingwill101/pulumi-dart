@@ -346,7 +346,16 @@ class Authorization extends pulumi.CustomResource {
        ) {
     authorizationType = registerOutput<String?>('authorizationType');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    error = registerOutput<AuthorizationErrorResponse?>('error');
+    error = registerOutput<AuthorizationErrorResponse?>(
+      'error',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AuthorizationErrorResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     oAuth2GrantType = registerOutput<String?>('oAuth2GrantType');
     parameters = registerOutput<Map<String, String>?>('parameters');

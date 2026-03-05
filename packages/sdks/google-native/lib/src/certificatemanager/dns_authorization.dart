@@ -49,6 +49,13 @@ class DnsAuthorization extends pulumi.CustomResource {
     dnsAuthorizationId = registerOutput<String>('dnsAuthorizationId');
     dnsResourceRecord = registerOutput<DnsResourceRecordResponse>(
       'dnsResourceRecord',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DnsResourceRecordResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     domain = registerOutput<String>('domain');
     labels = registerOutput<Map<String, String>>('labels');

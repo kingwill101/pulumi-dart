@@ -224,6 +224,13 @@ class VirtualApplianceSite extends pulumi.CustomResource {
     this.name = registerOutput<String?>('name');
     o365Policy = registerOutput<Office365PolicyPropertiesResponse?>(
       'o365Policy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return Office365PolicyPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     provisioningState = registerOutput<String>('provisioningState');
     type = registerOutput<String>('type');

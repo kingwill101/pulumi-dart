@@ -83,6 +83,13 @@ class FutureReservationComputeBeta extends pulumi.CustomResource {
     autoCreatedReservationsDuration =
         registerOutput<DurationResponseComputeBeta>(
           'autoCreatedReservationsDuration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DurationResponseComputeBeta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     autoDeleteAutoCreatedReservations = registerOutput<bool>(
       'autoDeleteAutoCreatedReservations',
@@ -99,16 +106,46 @@ class FutureReservationComputeBeta extends pulumi.CustomResource {
     selfLinkWithId = registerOutput<String>('selfLinkWithId');
     shareSettings = registerOutput<ShareSettingsResponseComputeBeta>(
       'shareSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ShareSettingsResponseComputeBeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     specificSkuProperties =
         registerOutput<
           FutureReservationSpecificSKUPropertiesResponseComputeBeta
-        >('specificSkuProperties');
+        >(
+          'specificSkuProperties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FutureReservationSpecificSKUPropertiesResponseComputeBeta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     status = registerOutput<FutureReservationStatusResponseComputeBeta>(
       'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FutureReservationStatusResponseComputeBeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     timeWindow = registerOutput<FutureReservationTimeWindowResponseComputeBeta>(
       'timeWindow',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FutureReservationTimeWindowResponseComputeBeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     zone = registerOutput<String>('zone');
   }

@@ -48,7 +48,16 @@ class WorkerPool extends pulumi.CustomResource {
     autoscale =
         registerOutput<
           GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse
-        >('autoscale');
+        >(
+          'autoscale',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     channel = registerOutput<String>('channel');
     instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
@@ -57,7 +66,16 @@ class WorkerPool extends pulumi.CustomResource {
     workerConfig =
         registerOutput<
           GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse
-        >('workerConfig');
+        >(
+          'workerConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     workerCount = registerOutput<String>('workerCount');
   }
 }

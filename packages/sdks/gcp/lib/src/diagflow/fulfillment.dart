@@ -268,6 +268,13 @@ class Fulfillment extends pulumi.CustomResource {
     features = registerOutput<List<Map<String, dynamic>>?>('features');
     genericWebService = registerOutput<FulfillmentGenericWebService?>(
       'genericWebService',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FulfillmentGenericWebService.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -301,6 +308,13 @@ class Fulfillment extends pulumi.CustomResource {
     features = registerOutput<List<Map<String, dynamic>>?>('features');
     genericWebService = registerOutput<FulfillmentGenericWebService?>(
       'genericWebService',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FulfillmentGenericWebService.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

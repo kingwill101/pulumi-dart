@@ -292,6 +292,13 @@ class ManagedHardwareSecurityModule extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkAcls = registerOutput<ManagedHardwareSecurityModuleNetworkAcls>(
       'networkAcls',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedHardwareSecurityModuleNetworkAcls.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     publicNetworkAccessEnabled = registerOutput<bool?>(
       'publicNetworkAccessEnabled',
@@ -340,6 +347,13 @@ class ManagedHardwareSecurityModule extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkAcls = registerOutput<ManagedHardwareSecurityModuleNetworkAcls>(
       'networkAcls',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedHardwareSecurityModuleNetworkAcls.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     publicNetworkAccessEnabled = registerOutput<bool?>(
       'publicNetworkAccessEnabled',

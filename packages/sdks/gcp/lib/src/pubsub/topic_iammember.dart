@@ -885,7 +885,16 @@ class TopicIAMMember extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<TopicIAMMemberCondition?>('condition');
+    condition = registerOutput<TopicIAMMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TopicIAMMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     member = registerOutput<String>('member');
     project = registerOutput<String>('project');
@@ -916,7 +925,16 @@ class TopicIAMMember extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<TopicIAMMemberCondition?>('condition');
+    condition = registerOutput<TopicIAMMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TopicIAMMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     member = registerOutput<String>('member');
     project = registerOutput<String>('project');

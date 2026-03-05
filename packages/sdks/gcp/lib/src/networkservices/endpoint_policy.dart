@@ -488,6 +488,13 @@ class EndpointPolicy extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     endpointMatcher = registerOutput<EndpointPolicyEndpointMatcher>(
       'endpointMatcher',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointPolicyEndpointMatcher.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
@@ -496,6 +503,13 @@ class EndpointPolicy extends pulumi.CustomResource {
     serverTlsPolicy = registerOutput<String?>('serverTlsPolicy');
     trafficPortSelector = registerOutput<EndpointPolicyTrafficPortSelector?>(
       'trafficPortSelector',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointPolicyTrafficPortSelector.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     type = registerOutput<String>('type');
     updateTime = registerOutput<String>('updateTime');
@@ -531,6 +545,13 @@ class EndpointPolicy extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     endpointMatcher = registerOutput<EndpointPolicyEndpointMatcher>(
       'endpointMatcher',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointPolicyEndpointMatcher.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
@@ -539,6 +560,13 @@ class EndpointPolicy extends pulumi.CustomResource {
     serverTlsPolicy = registerOutput<String?>('serverTlsPolicy');
     trafficPortSelector = registerOutput<EndpointPolicyTrafficPortSelector?>(
       'trafficPortSelector',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointPolicyTrafficPortSelector.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     type = registerOutput<String>('type');
     updateTime = registerOutput<String>('updateTime');

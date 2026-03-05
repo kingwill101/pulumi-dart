@@ -212,9 +212,23 @@ class MongoDBResourceMongoDBDatabase extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     this.options = registerOutput<MongoDBDatabaseGetPropertiesResponseOptions?>(
       'options',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MongoDBDatabaseGetPropertiesResponseOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     resource = registerOutput<MongoDBDatabaseGetPropertiesResponseResource?>(
       'resource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MongoDBDatabaseGetPropertiesResponseResource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

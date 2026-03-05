@@ -246,6 +246,13 @@ class V2ProjectNotificationConfig extends pulumi.CustomResource {
     streamingConfig =
         registerOutput<V2ProjectNotificationConfigStreamingConfig>(
           'streamingConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return V2ProjectNotificationConfigStreamingConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 
@@ -282,6 +289,13 @@ class V2ProjectNotificationConfig extends pulumi.CustomResource {
     streamingConfig =
         registerOutput<V2ProjectNotificationConfigStreamingConfig>(
           'streamingConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return V2ProjectNotificationConfigStreamingConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

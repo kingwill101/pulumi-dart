@@ -661,13 +661,36 @@ class FlexibleServer extends pulumi.CustomResource {
     );
     authentication = registerOutput<FlexibleServerAuthentication>(
       'authentication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FlexibleServerAuthentication.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     autoGrowEnabled = registerOutput<bool?>('autoGrowEnabled');
     backupRetentionDays = registerOutput<int>('backupRetentionDays');
-    cluster = registerOutput<FlexibleServerCluster?>('cluster');
+    cluster = registerOutput<FlexibleServerCluster?>(
+      'cluster',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FlexibleServerCluster.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createMode = registerOutput<String?>('createMode');
     customerManagedKey = registerOutput<FlexibleServerCustomerManagedKey?>(
       'customerManagedKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FlexibleServerCustomerManagedKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     delegatedSubnetId = registerOutput<String?>('delegatedSubnetId');
     fqdn = registerOutput<String>('fqdn');
@@ -676,11 +699,34 @@ class FlexibleServer extends pulumi.CustomResource {
     );
     highAvailability = registerOutput<FlexibleServerHighAvailability?>(
       'highAvailability',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FlexibleServerHighAvailability.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    identity = registerOutput<FlexibleServerIdentity?>('identity');
+    identity = registerOutput<FlexibleServerIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FlexibleServerIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     maintenanceWindow = registerOutput<FlexibleServerMaintenanceWindow?>(
       'maintenanceWindow',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FlexibleServerMaintenanceWindow.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     pointInTimeRestoreTimeInUtc = registerOutput<String?>(
@@ -731,13 +777,36 @@ class FlexibleServer extends pulumi.CustomResource {
     );
     authentication = registerOutput<FlexibleServerAuthentication>(
       'authentication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FlexibleServerAuthentication.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     autoGrowEnabled = registerOutput<bool?>('autoGrowEnabled');
     backupRetentionDays = registerOutput<int>('backupRetentionDays');
-    cluster = registerOutput<FlexibleServerCluster?>('cluster');
+    cluster = registerOutput<FlexibleServerCluster?>(
+      'cluster',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FlexibleServerCluster.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createMode = registerOutput<String?>('createMode');
     customerManagedKey = registerOutput<FlexibleServerCustomerManagedKey?>(
       'customerManagedKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FlexibleServerCustomerManagedKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     delegatedSubnetId = registerOutput<String?>('delegatedSubnetId');
     fqdn = registerOutput<String>('fqdn');
@@ -746,11 +815,34 @@ class FlexibleServer extends pulumi.CustomResource {
     );
     highAvailability = registerOutput<FlexibleServerHighAvailability?>(
       'highAvailability',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FlexibleServerHighAvailability.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    identity = registerOutput<FlexibleServerIdentity?>('identity');
+    identity = registerOutput<FlexibleServerIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FlexibleServerIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     maintenanceWindow = registerOutput<FlexibleServerMaintenanceWindow?>(
       'maintenanceWindow',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FlexibleServerMaintenanceWindow.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     pointInTimeRestoreTimeInUtc = registerOutput<String?>(

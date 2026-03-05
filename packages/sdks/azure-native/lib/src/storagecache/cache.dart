@@ -505,35 +505,115 @@ class Cache extends pulumi.CustomResource {
     cacheSizeGB = registerOutput<int?>('cacheSizeGB');
     directoryServicesSettings = registerOutput<CacheDirectorySettingsResponse?>(
       'directoryServicesSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CacheDirectorySettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     encryptionSettings = registerOutput<CacheEncryptionSettingsResponse?>(
       'encryptionSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CacheEncryptionSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    health = registerOutput<CacheHealthResponse>('health');
-    identity = registerOutput<CacheIdentityResponse?>('identity');
+    health = registerOutput<CacheHealthResponse>(
+      'health',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CacheHealthResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    identity = registerOutput<CacheIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CacheIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String?>('location');
     mountAddresses = registerOutput<List<String>>('mountAddresses');
     this.name = registerOutput<String>('name');
     networkSettings = registerOutput<CacheNetworkSettingsResponse?>(
       'networkSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CacheNetworkSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     primingJobs = registerOutput<List<Map<String, dynamic>>>('primingJobs');
     provisioningState = registerOutput<String>('provisioningState');
     securitySettings = registerOutput<CacheSecuritySettingsResponse?>(
       'securitySettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CacheSecuritySettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    sku = registerOutput<CacheResponseSku?>('sku');
+    sku = registerOutput<CacheResponseSku?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CacheResponseSku.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     spaceAllocation = registerOutput<List<Map<String, dynamic>>>(
       'spaceAllocation',
     );
     subnet = registerOutput<String?>('subnet');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     upgradeSettings = registerOutput<CacheUpgradeSettingsResponse?>(
       'upgradeSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CacheUpgradeSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    upgradeStatus = registerOutput<CacheUpgradeStatusResponse>('upgradeStatus');
+    upgradeStatus = registerOutput<CacheUpgradeStatusResponse>(
+      'upgradeStatus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CacheUpgradeStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     zones = registerOutput<List<String>?>('zones');
   }
 }

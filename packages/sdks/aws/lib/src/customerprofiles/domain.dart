@@ -611,10 +611,26 @@ class Domain extends pulumi.CustomResource {
     defaultEncryptionKey = registerOutput<String?>('defaultEncryptionKey');
     defaultExpirationDays = registerOutput<int>('defaultExpirationDays');
     domainName = registerOutput<String>('domainName');
-    matching = registerOutput<DomainMatching?>('matching');
+    matching = registerOutput<DomainMatching?>(
+      'matching',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainMatching.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     ruleBasedMatching = registerOutput<DomainRuleBasedMatching?>(
       'ruleBasedMatching',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainRuleBasedMatching.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -648,10 +664,26 @@ class Domain extends pulumi.CustomResource {
     defaultEncryptionKey = registerOutput<String?>('defaultEncryptionKey');
     defaultExpirationDays = registerOutput<int>('defaultExpirationDays');
     domainName = registerOutput<String>('domainName');
-    matching = registerOutput<DomainMatching?>('matching');
+    matching = registerOutput<DomainMatching?>(
+      'matching',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainMatching.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     ruleBasedMatching = registerOutput<DomainRuleBasedMatching?>(
       'ruleBasedMatching',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainRuleBasedMatching.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

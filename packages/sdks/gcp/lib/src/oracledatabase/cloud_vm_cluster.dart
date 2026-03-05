@@ -1203,7 +1203,16 @@ class CloudVmCluster extends pulumi.CustomResource {
     odbNetwork = registerOutput<String>('odbNetwork');
     odbSubnet = registerOutput<String>('odbSubnet');
     project = registerOutput<String>('project');
-    properties = registerOutput<CloudVmClusterProperties?>('properties');
+    properties = registerOutput<CloudVmClusterProperties?>(
+      'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CloudVmClusterProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
   }
 
@@ -1247,7 +1256,16 @@ class CloudVmCluster extends pulumi.CustomResource {
     odbNetwork = registerOutput<String>('odbNetwork');
     odbSubnet = registerOutput<String>('odbSubnet');
     project = registerOutput<String>('project');
-    properties = registerOutput<CloudVmClusterProperties?>('properties');
+    properties = registerOutput<CloudVmClusterProperties?>(
+      'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CloudVmClusterProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
   }
 }

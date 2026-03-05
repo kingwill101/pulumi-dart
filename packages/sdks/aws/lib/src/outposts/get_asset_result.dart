@@ -1,18 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAsset.
 class GetAssetResult {
   final String arn;
   final String assetId;
+
   /// Type of the asset.
   final String assetType;
+
   /// Host ID of the Dedicated Hosts on the asset, if a Dedicated Host is provisioned.
   final String hostId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Position of an asset in a rack measured in rack units.
   final int rackElevation;
+
   /// Rack ID of the asset.
   final String rackId;
   final String region;
@@ -63,4 +67,3 @@ class GetAssetResult {
     );
   }
 }
-

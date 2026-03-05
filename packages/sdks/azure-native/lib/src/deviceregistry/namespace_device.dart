@@ -1227,10 +1227,26 @@ class NamespaceDevice extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     discoveredDeviceRef = registerOutput<String?>('discoveredDeviceRef');
     enabled = registerOutput<bool?>('enabled');
-    endpoints = registerOutput<MessagingEndpointsResponse?>('endpoints');
+    endpoints = registerOutput<MessagingEndpointsResponse?>(
+      'endpoints',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MessagingEndpointsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     extendedLocation = registerOutput<ExtendedLocationResponse?>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     externalDeviceId = registerOutput<String?>('externalDeviceId');
     lastTransitionTime = registerOutput<String>('lastTransitionTime');
@@ -1241,8 +1257,26 @@ class NamespaceDevice extends pulumi.CustomResource {
     operatingSystem = registerOutput<String?>('operatingSystem');
     operatingSystemVersion = registerOutput<String?>('operatingSystemVersion');
     provisioningState = registerOutput<String>('provisioningState');
-    status = registerOutput<DeviceStatusResponse>('status');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    status = registerOutput<DeviceStatusResponse>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeviceStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     uuid = registerOutput<String>('uuid');

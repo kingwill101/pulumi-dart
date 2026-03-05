@@ -279,7 +279,16 @@ class HoneypotPreset extends pulumi.CustomResource {
        ) {
     honeypotImageName = registerOutput<String>('honeypotImageName');
     honeypotPresetId = registerOutput<String>('honeypotPresetId');
-    meta = registerOutput<HoneypotPresetMeta>('meta');
+    meta = registerOutput<HoneypotPresetMeta>(
+      'meta',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HoneypotPresetMeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     nodeId = registerOutput<String>('nodeId');
     presetName = registerOutput<String>('presetName');
   }
@@ -309,7 +318,16 @@ class HoneypotPreset extends pulumi.CustomResource {
        ) {
     honeypotImageName = registerOutput<String>('honeypotImageName');
     honeypotPresetId = registerOutput<String>('honeypotPresetId');
-    meta = registerOutput<HoneypotPresetMeta>('meta');
+    meta = registerOutput<HoneypotPresetMeta>(
+      'meta',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HoneypotPresetMeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     nodeId = registerOutput<String>('nodeId');
     presetName = registerOutput<String>('presetName');
   }

@@ -698,14 +698,48 @@ class PacketMirroring extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    collectorIlb = registerOutput<PacketMirroringCollectorIlb>('collectorIlb');
+    collectorIlb = registerOutput<PacketMirroringCollectorIlb>(
+      'collectorIlb',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PacketMirroringCollectorIlb.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
-    filter = registerOutput<PacketMirroringFilter?>('filter');
+    filter = registerOutput<PacketMirroringFilter?>(
+      'filter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PacketMirroringFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     mirroredResources = registerOutput<PacketMirroringMirroredResources>(
       'mirroredResources',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PacketMirroringMirroredResources.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
-    network = registerOutput<PacketMirroringNetwork>('network');
+    network = registerOutput<PacketMirroringNetwork>(
+      'network',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PacketMirroringNetwork.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     priority = registerOutput<int>('priority');
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
@@ -734,14 +768,48 @@ class PacketMirroring extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    collectorIlb = registerOutput<PacketMirroringCollectorIlb>('collectorIlb');
+    collectorIlb = registerOutput<PacketMirroringCollectorIlb>(
+      'collectorIlb',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PacketMirroringCollectorIlb.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
-    filter = registerOutput<PacketMirroringFilter?>('filter');
+    filter = registerOutput<PacketMirroringFilter?>(
+      'filter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PacketMirroringFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     mirroredResources = registerOutput<PacketMirroringMirroredResources>(
       'mirroredResources',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PacketMirroringMirroredResources.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
-    network = registerOutput<PacketMirroringNetwork>('network');
+    network = registerOutput<PacketMirroringNetwork>(
+      'network',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PacketMirroringNetwork.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     priority = registerOutput<int>('priority');
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');

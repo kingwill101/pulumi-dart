@@ -364,16 +364,62 @@ class Cache extends pulumi.CustomResource {
     cacheSizeInGb = registerOutput<int>('cacheSizeInGb');
     defaultAccessPolicy = registerOutput<CacheDefaultAccessPolicy>(
       'defaultAccessPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CacheDefaultAccessPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     directoryActiveDirectory = registerOutput<CacheDirectoryActiveDirectory?>(
       'directoryActiveDirectory',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CacheDirectoryActiveDirectory.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     directoryFlatFile = registerOutput<CacheDirectoryFlatFile?>(
       'directoryFlatFile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CacheDirectoryFlatFile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    directoryLdap = registerOutput<CacheDirectoryLdap?>('directoryLdap');
-    dns = registerOutput<CacheDns?>('dns');
-    identity = registerOutput<CacheIdentity?>('identity');
+    directoryLdap = registerOutput<CacheDirectoryLdap?>(
+      'directoryLdap',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CacheDirectoryLdap.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    dns = registerOutput<CacheDns?>(
+      'dns',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CacheDns.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
+    identity = registerOutput<CacheIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CacheIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
     location = registerOutput<String>('location');
     mountAddresses = registerOutput<List<String>>('mountAddresses');
@@ -411,16 +457,62 @@ class Cache extends pulumi.CustomResource {
     cacheSizeInGb = registerOutput<int>('cacheSizeInGb');
     defaultAccessPolicy = registerOutput<CacheDefaultAccessPolicy>(
       'defaultAccessPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CacheDefaultAccessPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     directoryActiveDirectory = registerOutput<CacheDirectoryActiveDirectory?>(
       'directoryActiveDirectory',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CacheDirectoryActiveDirectory.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     directoryFlatFile = registerOutput<CacheDirectoryFlatFile?>(
       'directoryFlatFile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CacheDirectoryFlatFile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    directoryLdap = registerOutput<CacheDirectoryLdap?>('directoryLdap');
-    dns = registerOutput<CacheDns?>('dns');
-    identity = registerOutput<CacheIdentity?>('identity');
+    directoryLdap = registerOutput<CacheDirectoryLdap?>(
+      'directoryLdap',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CacheDirectoryLdap.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    dns = registerOutput<CacheDns?>(
+      'dns',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CacheDns.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
+    identity = registerOutput<CacheIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CacheIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
     location = registerOutput<String>('location');
     mountAddresses = registerOutput<List<String>>('mountAddresses');

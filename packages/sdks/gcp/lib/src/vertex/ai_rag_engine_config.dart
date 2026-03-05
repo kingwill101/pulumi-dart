@@ -71,6 +71,13 @@ class AiRagEngineConfig extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     ragManagedDbConfig = registerOutput<AiRagEngineConfigRagManagedDbConfig>(
       'ragManagedDbConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiRagEngineConfigRagManagedDbConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
   }
@@ -102,6 +109,13 @@ class AiRagEngineConfig extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     ragManagedDbConfig = registerOutput<AiRagEngineConfigRagManagedDbConfig>(
       'ragManagedDbConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiRagEngineConfigRagManagedDbConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
   }

@@ -293,7 +293,16 @@ class DnsZone extends pulumi.CustomResource {
     domain = registerOutput<String>('domain');
     this.name = registerOutput<String>('name');
     orgId = registerOutput<String>('orgId');
-    peeringConfig = registerOutput<DnsZonePeeringConfig>('peeringConfig');
+    peeringConfig = registerOutput<DnsZonePeeringConfig>(
+      'peeringConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DnsZonePeeringConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [DnsZone] resource's state with the given [name] and [id].
@@ -324,6 +333,15 @@ class DnsZone extends pulumi.CustomResource {
     domain = registerOutput<String>('domain');
     this.name = registerOutput<String>('name');
     orgId = registerOutput<String>('orgId');
-    peeringConfig = registerOutput<DnsZonePeeringConfig>('peeringConfig');
+    peeringConfig = registerOutput<DnsZonePeeringConfig>(
+      'peeringConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DnsZonePeeringConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

@@ -30,10 +30,24 @@ class GenaiKnowledgeBaseDataSource extends pulumi.CustomResource {
     spacesDataSource =
         registerOutput<GenaiKnowledgeBaseDataSourceSpacesDataSource?>(
           'spacesDataSource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GenaiKnowledgeBaseDataSourceSpacesDataSource.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     webCrawlerDataSource =
         registerOutput<GenaiKnowledgeBaseDataSourceWebCrawlerDataSource?>(
           'webCrawlerDataSource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GenaiKnowledgeBaseDataSourceWebCrawlerDataSource.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 
@@ -64,10 +78,24 @@ class GenaiKnowledgeBaseDataSource extends pulumi.CustomResource {
     spacesDataSource =
         registerOutput<GenaiKnowledgeBaseDataSourceSpacesDataSource?>(
           'spacesDataSource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GenaiKnowledgeBaseDataSourceSpacesDataSource.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     webCrawlerDataSource =
         registerOutput<GenaiKnowledgeBaseDataSourceWebCrawlerDataSource?>(
           'webCrawlerDataSource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GenaiKnowledgeBaseDataSourceWebCrawlerDataSource.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

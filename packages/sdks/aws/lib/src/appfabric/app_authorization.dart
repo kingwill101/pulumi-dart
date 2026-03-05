@@ -228,13 +228,31 @@ class AppAuthorization extends pulumi.CustomResource {
     authType = registerOutput<String>('authType');
     authUrl = registerOutput<String>('authUrl');
     createdAt = registerOutput<String>('createdAt');
-    credential = registerOutput<AppAuthorizationCredential>('credential');
+    credential = registerOutput<AppAuthorizationCredential>(
+      'credential',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppAuthorizationCredential.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     persona = registerOutput<String>('persona');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     tenants = registerOutput<List<Map<String, dynamic>>>('tenants');
-    timeouts = registerOutput<AppAuthorizationTimeouts?>('timeouts');
+    timeouts = registerOutput<AppAuthorizationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppAuthorizationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     updatedAt = registerOutput<String>('updatedAt');
   }
 
@@ -267,13 +285,31 @@ class AppAuthorization extends pulumi.CustomResource {
     authType = registerOutput<String>('authType');
     authUrl = registerOutput<String>('authUrl');
     createdAt = registerOutput<String>('createdAt');
-    credential = registerOutput<AppAuthorizationCredential>('credential');
+    credential = registerOutput<AppAuthorizationCredential>(
+      'credential',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppAuthorizationCredential.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     persona = registerOutput<String>('persona');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     tenants = registerOutput<List<Map<String, dynamic>>>('tenants');
-    timeouts = registerOutput<AppAuthorizationTimeouts?>('timeouts');
+    timeouts = registerOutput<AppAuthorizationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppAuthorizationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     updatedAt = registerOutput<String>('updatedAt');
   }
 }

@@ -420,6 +420,13 @@ class PolicyBinding extends pulumi.CustomResource {
        ) {
     advancedOptions = registerOutput<PolicyBindingAdvancedOptions>(
       'advancedOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyBindingAdvancedOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     crossAccountRoleName = registerOutput<String?>('crossAccountRoleName');
@@ -463,6 +470,13 @@ class PolicyBinding extends pulumi.CustomResource {
        ) {
     advancedOptions = registerOutput<PolicyBindingAdvancedOptions>(
       'advancedOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyBindingAdvancedOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     crossAccountRoleName = registerOutput<String?>('crossAccountRoleName');

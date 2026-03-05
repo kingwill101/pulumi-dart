@@ -508,12 +508,30 @@ class BudgetResourceGroup extends pulumi.CustomResource {
        ) {
     amount = registerOutput<double>('amount');
     etag = registerOutput<String>('etag');
-    filter = registerOutput<BudgetResourceGroupFilter?>('filter');
+    filter = registerOutput<BudgetResourceGroupFilter?>(
+      'filter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BudgetResourceGroupFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     notifications = registerOutput<List<Map<String, dynamic>>>('notifications');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     timeGrain = registerOutput<String?>('timeGrain');
-    timePeriod = registerOutput<BudgetResourceGroupTimePeriod>('timePeriod');
+    timePeriod = registerOutput<BudgetResourceGroupTimePeriod>(
+      'timePeriod',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BudgetResourceGroupTimePeriod.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [BudgetResourceGroup] resource's state with the given [name] and [id].
@@ -541,11 +559,29 @@ class BudgetResourceGroup extends pulumi.CustomResource {
        ) {
     amount = registerOutput<double>('amount');
     etag = registerOutput<String>('etag');
-    filter = registerOutput<BudgetResourceGroupFilter?>('filter');
+    filter = registerOutput<BudgetResourceGroupFilter?>(
+      'filter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BudgetResourceGroupFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     notifications = registerOutput<List<Map<String, dynamic>>>('notifications');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     timeGrain = registerOutput<String?>('timeGrain');
-    timePeriod = registerOutput<BudgetResourceGroupTimePeriod>('timePeriod');
+    timePeriod = registerOutput<BudgetResourceGroupTimePeriod>(
+      'timePeriod',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BudgetResourceGroupTimePeriod.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

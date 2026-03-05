@@ -223,7 +223,16 @@ class TeamsChannelConfiguration extends pulumi.CustomResource {
     teamId = registerOutput<String>('teamId');
     teamName = registerOutput<String>('teamName');
     tenantId = registerOutput<String>('tenantId');
-    timeouts = registerOutput<TeamsChannelConfigurationTimeouts?>('timeouts');
+    timeouts = registerOutput<TeamsChannelConfigurationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TeamsChannelConfigurationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     userAuthorizationRequired = registerOutput<bool>(
       'userAuthorizationRequired',
     );
@@ -266,7 +275,16 @@ class TeamsChannelConfiguration extends pulumi.CustomResource {
     teamId = registerOutput<String>('teamId');
     teamName = registerOutput<String>('teamName');
     tenantId = registerOutput<String>('tenantId');
-    timeouts = registerOutput<TeamsChannelConfigurationTimeouts?>('timeouts');
+    timeouts = registerOutput<TeamsChannelConfigurationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TeamsChannelConfigurationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     userAuthorizationRequired = registerOutput<bool>(
       'userAuthorizationRequired',
     );

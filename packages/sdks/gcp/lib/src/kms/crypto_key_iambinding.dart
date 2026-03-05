@@ -933,7 +933,16 @@ class CryptoKeyIAMBinding extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<CryptoKeyIAMBindingCondition?>('condition');
+    condition = registerOutput<CryptoKeyIAMBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CryptoKeyIAMBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     cryptoKeyId = registerOutput<String>('cryptoKeyId');
     etag = registerOutput<String>('etag');
     members = registerOutput<List<String>>('members');
@@ -963,7 +972,16 @@ class CryptoKeyIAMBinding extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<CryptoKeyIAMBindingCondition?>('condition');
+    condition = registerOutput<CryptoKeyIAMBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CryptoKeyIAMBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     cryptoKeyId = registerOutput<String>('cryptoKeyId');
     etag = registerOutput<String>('etag');
     members = registerOutput<List<String>>('members');

@@ -1054,6 +1054,13 @@ class Distribution extends pulumi.CustomResource {
     bundleId = registerOutput<String>('bundleId');
     cacheBehaviorSettings = registerOutput<DistributionCacheBehaviorSettings?>(
       'cacheBehaviorSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DistributionCacheBehaviorSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     cacheBehaviors = registerOutput<List<Map<String, dynamic>>?>(
       'cacheBehaviors',
@@ -1062,13 +1069,29 @@ class Distribution extends pulumi.CustomResource {
     createdAt = registerOutput<String>('createdAt');
     defaultCacheBehavior = registerOutput<DistributionDefaultCacheBehavior>(
       'defaultCacheBehavior',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DistributionDefaultCacheBehavior.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     domainName = registerOutput<String>('domainName');
     ipAddressType = registerOutput<String?>('ipAddressType');
     isEnabled = registerOutput<bool?>('isEnabled');
     locations = registerOutput<List<Map<String, dynamic>>>('locations');
     this.name = registerOutput<String>('name');
-    origin = registerOutput<DistributionOrigin>('origin');
+    origin = registerOutput<DistributionOrigin>(
+      'origin',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DistributionOrigin.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     originPublicDns = registerOutput<String>('originPublicDns');
     region = registerOutput<String>('region');
     resourceType = registerOutput<String>('resourceType');
@@ -1108,6 +1131,13 @@ class Distribution extends pulumi.CustomResource {
     bundleId = registerOutput<String>('bundleId');
     cacheBehaviorSettings = registerOutput<DistributionCacheBehaviorSettings?>(
       'cacheBehaviorSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DistributionCacheBehaviorSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     cacheBehaviors = registerOutput<List<Map<String, dynamic>>?>(
       'cacheBehaviors',
@@ -1116,13 +1146,29 @@ class Distribution extends pulumi.CustomResource {
     createdAt = registerOutput<String>('createdAt');
     defaultCacheBehavior = registerOutput<DistributionDefaultCacheBehavior>(
       'defaultCacheBehavior',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DistributionDefaultCacheBehavior.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     domainName = registerOutput<String>('domainName');
     ipAddressType = registerOutput<String?>('ipAddressType');
     isEnabled = registerOutput<bool?>('isEnabled');
     locations = registerOutput<List<Map<String, dynamic>>>('locations');
     this.name = registerOutput<String>('name');
-    origin = registerOutput<DistributionOrigin>('origin');
+    origin = registerOutput<DistributionOrigin>(
+      'origin',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DistributionOrigin.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     originPublicDns = registerOutput<String>('originPublicDns');
     region = registerOutput<String>('region');
     resourceType = registerOutput<String>('resourceType');

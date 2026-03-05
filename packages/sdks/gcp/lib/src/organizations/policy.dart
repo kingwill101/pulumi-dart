@@ -577,12 +577,39 @@ class Policy extends pulumi.CustomResource {
         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
         options ?? pulumi.CustomResourceOptions(),
       ) {
-    booleanPolicy = registerOutput<PolicyBooleanPolicy?>('booleanPolicy');
+    booleanPolicy = registerOutput<PolicyBooleanPolicy?>(
+      'booleanPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyBooleanPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     constraint = registerOutput<String>('constraint');
     etag = registerOutput<String>('etag');
-    listPolicy = registerOutput<PolicyListPolicy?>('listPolicy');
+    listPolicy = registerOutput<PolicyListPolicy?>(
+      'listPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyListPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     orgId = registerOutput<String>('orgId');
-    restorePolicy = registerOutput<PolicyRestorePolicy?>('restorePolicy');
+    restorePolicy = registerOutput<PolicyRestorePolicy?>(
+      'restorePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyRestorePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     updateTime = registerOutput<String>('updateTime');
     version = registerOutput<int>('version');
   }
@@ -610,12 +637,39 @@ class Policy extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    booleanPolicy = registerOutput<PolicyBooleanPolicy?>('booleanPolicy');
+    booleanPolicy = registerOutput<PolicyBooleanPolicy?>(
+      'booleanPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyBooleanPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     constraint = registerOutput<String>('constraint');
     etag = registerOutput<String>('etag');
-    listPolicy = registerOutput<PolicyListPolicy?>('listPolicy');
+    listPolicy = registerOutput<PolicyListPolicy?>(
+      'listPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyListPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     orgId = registerOutput<String>('orgId');
-    restorePolicy = registerOutput<PolicyRestorePolicy?>('restorePolicy');
+    restorePolicy = registerOutput<PolicyRestorePolicy?>(
+      'restorePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyRestorePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     updateTime = registerOutput<String>('updateTime');
     version = registerOutput<int>('version');
   }

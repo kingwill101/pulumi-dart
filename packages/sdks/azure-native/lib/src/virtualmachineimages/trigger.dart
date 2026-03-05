@@ -179,8 +179,26 @@ class Trigger extends pulumi.CustomResource {
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    status = registerOutput<TriggerStatusResponse>('status');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    status = registerOutput<TriggerStatusResponse>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TriggerStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

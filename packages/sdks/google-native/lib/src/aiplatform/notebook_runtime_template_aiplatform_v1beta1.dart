@@ -88,6 +88,13 @@ class NotebookRuntimeTemplateAiplatformV1beta1 extends pulumi.CustomResource {
     dataPersistentDiskSpec =
         registerOutput<GoogleCloudAiplatformV1beta1PersistentDiskSpecResponse>(
           'dataPersistentDiskSpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1beta1PersistentDiskSpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
@@ -95,22 +102,52 @@ class NotebookRuntimeTemplateAiplatformV1beta1 extends pulumi.CustomResource {
     eucConfig =
         registerOutput<GoogleCloudAiplatformV1beta1NotebookEucConfigResponse>(
           'eucConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1beta1NotebookEucConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     idleShutdownConfig =
         registerOutput<
           GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigResponse
-        >('idleShutdownConfig');
+        >(
+          'idleShutdownConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     isDefault = registerOutput<bool>('isDefault');
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
     machineSpec =
         registerOutput<GoogleCloudAiplatformV1beta1MachineSpecResponse>(
           'machineSpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1beta1MachineSpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     networkSpec =
         registerOutput<GoogleCloudAiplatformV1beta1NetworkSpecResponse>(
           'networkSpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1beta1NetworkSpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     notebookRuntimeTemplateId = registerOutput<String?>(
       'notebookRuntimeTemplateId',

@@ -293,6 +293,13 @@ class PostgresqlCluster extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     maintenanceWindow = registerOutput<PostgresqlClusterMaintenanceWindow?>(
       'maintenanceWindow',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PostgresqlClusterMaintenanceWindow.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     nodeCount = registerOutput<int>('nodeCount');
@@ -357,6 +364,13 @@ class PostgresqlCluster extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     maintenanceWindow = registerOutput<PostgresqlClusterMaintenanceWindow?>(
       'maintenanceWindow',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PostgresqlClusterMaintenanceWindow.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     nodeCount = registerOutput<int>('nodeCount');

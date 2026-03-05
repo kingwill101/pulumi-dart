@@ -326,15 +326,38 @@ class ReadWriteDatabase extends pulumi.CustomResource {
     isFollowed = registerOutput<bool>('isFollowed');
     keyVaultProperties = registerOutput<KeyVaultPropertiesResponse?>(
       'keyVaultProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KeyVaultPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     kind = registerOutput<String>('kind');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     softDeletePeriod = registerOutput<String?>('softDeletePeriod');
-    statistics = registerOutput<DatabaseStatisticsResponse>('statistics');
+    statistics = registerOutput<DatabaseStatisticsResponse>(
+      'statistics',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseStatisticsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     suspensionDetails = registerOutput<SuspensionDetailsResponse>(
       'suspensionDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SuspensionDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     type = registerOutput<String>('type');
   }

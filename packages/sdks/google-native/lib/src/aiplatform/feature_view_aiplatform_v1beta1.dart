@@ -73,14 +73,32 @@ class FeatureViewAiplatformV1beta1 extends pulumi.CustomResource {
     bigQuerySource =
         registerOutput<
           GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceResponse
-        >('bigQuerySource');
+        >(
+          'bigQuerySource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     createTime = registerOutput<String>('createTime');
     etag = registerOutput<String>('etag');
     featureOnlineStoreId = registerOutput<String>('featureOnlineStoreId');
     featureRegistrySource =
         registerOutput<
           GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceResponse
-        >('featureRegistrySource');
+        >(
+          'featureRegistrySource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     featureViewId = registerOutput<String>('featureViewId');
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
@@ -90,11 +108,29 @@ class FeatureViewAiplatformV1beta1 extends pulumi.CustomResource {
     syncConfig =
         registerOutput<
           GoogleCloudAiplatformV1beta1FeatureViewSyncConfigResponse
-        >('syncConfig');
+        >(
+          'syncConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1beta1FeatureViewSyncConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     updateTime = registerOutput<String>('updateTime');
     vectorSearchConfig =
         registerOutput<
           GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigResponse
-        >('vectorSearchConfig');
+        >(
+          'vectorSearchConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
   }
 }

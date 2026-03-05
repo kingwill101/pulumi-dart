@@ -816,6 +816,13 @@ class Account extends pulumi.CustomResource {
     );
     analyticalStorage = registerOutput<AccountAnalyticalStorage>(
       'analyticalStorage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountAnalyticalStorage.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     analyticalStorageEnabled = registerOutput<bool?>(
       'analyticalStorageEnabled',
@@ -823,20 +830,63 @@ class Account extends pulumi.CustomResource {
     automaticFailoverEnabled = registerOutput<bool?>(
       'automaticFailoverEnabled',
     );
-    backup = registerOutput<AccountBackup>('backup');
+    backup = registerOutput<AccountBackup>(
+      'backup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountBackup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     burstCapacityEnabled = registerOutput<bool?>('burstCapacityEnabled');
     capabilities = registerOutput<List<Map<String, dynamic>>>('capabilities');
-    capacity = registerOutput<AccountCapacity>('capacity');
+    capacity = registerOutput<AccountCapacity>(
+      'capacity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountCapacity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     consistencyPolicy = registerOutput<AccountConsistencyPolicy>(
       'consistencyPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountConsistencyPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    corsRule = registerOutput<AccountCorsRule?>('corsRule');
+    corsRule = registerOutput<AccountCorsRule?>(
+      'corsRule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountCorsRule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createMode = registerOutput<String>('createMode');
     defaultIdentityType = registerOutput<String?>('defaultIdentityType');
     endpoint = registerOutput<String>('endpoint');
     freeTierEnabled = registerOutput<bool?>('freeTierEnabled');
     geoLocations = registerOutput<List<Map<String, dynamic>>>('geoLocations');
-    identity = registerOutput<AccountIdentity?>('identity');
+    identity = registerOutput<AccountIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ipRangeFilters = registerOutput<List<String>?>('ipRangeFilters');
     isVirtualNetworkFilterEnabled = registerOutput<bool?>(
       'isVirtualNetworkFilterEnabled',
@@ -879,7 +929,16 @@ class Account extends pulumi.CustomResource {
     );
     readEndpoints = registerOutput<List<String>>('readEndpoints');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    restore = registerOutput<AccountRestore?>('restore');
+    restore = registerOutput<AccountRestore?>(
+      'restore',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountRestore.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     secondaryKey = registerOutput<String>('secondaryKey');
     secondaryMongodbConnectionString = registerOutput<String>(
       'secondaryMongodbConnectionString',
@@ -929,6 +988,13 @@ class Account extends pulumi.CustomResource {
     );
     analyticalStorage = registerOutput<AccountAnalyticalStorage>(
       'analyticalStorage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountAnalyticalStorage.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     analyticalStorageEnabled = registerOutput<bool?>(
       'analyticalStorageEnabled',
@@ -936,20 +1002,63 @@ class Account extends pulumi.CustomResource {
     automaticFailoverEnabled = registerOutput<bool?>(
       'automaticFailoverEnabled',
     );
-    backup = registerOutput<AccountBackup>('backup');
+    backup = registerOutput<AccountBackup>(
+      'backup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountBackup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     burstCapacityEnabled = registerOutput<bool?>('burstCapacityEnabled');
     capabilities = registerOutput<List<Map<String, dynamic>>>('capabilities');
-    capacity = registerOutput<AccountCapacity>('capacity');
+    capacity = registerOutput<AccountCapacity>(
+      'capacity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountCapacity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     consistencyPolicy = registerOutput<AccountConsistencyPolicy>(
       'consistencyPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountConsistencyPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    corsRule = registerOutput<AccountCorsRule?>('corsRule');
+    corsRule = registerOutput<AccountCorsRule?>(
+      'corsRule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountCorsRule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createMode = registerOutput<String>('createMode');
     defaultIdentityType = registerOutput<String?>('defaultIdentityType');
     endpoint = registerOutput<String>('endpoint');
     freeTierEnabled = registerOutput<bool?>('freeTierEnabled');
     geoLocations = registerOutput<List<Map<String, dynamic>>>('geoLocations');
-    identity = registerOutput<AccountIdentity?>('identity');
+    identity = registerOutput<AccountIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ipRangeFilters = registerOutput<List<String>?>('ipRangeFilters');
     isVirtualNetworkFilterEnabled = registerOutput<bool?>(
       'isVirtualNetworkFilterEnabled',
@@ -992,7 +1101,16 @@ class Account extends pulumi.CustomResource {
     );
     readEndpoints = registerOutput<List<String>>('readEndpoints');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    restore = registerOutput<AccountRestore?>('restore');
+    restore = registerOutput<AccountRestore?>(
+      'restore',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountRestore.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     secondaryKey = registerOutput<String>('secondaryKey');
     secondaryMongodbConnectionString = registerOutput<String>(
       'secondaryMongodbConnectionString',

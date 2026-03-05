@@ -195,7 +195,16 @@ class DomainMapping extends pulumi.CustomResource {
     resourceRecords = registerOutput<List<Map<String, dynamic>>>(
       'resourceRecords',
     );
-    sslSettings = registerOutput<DomainMappingSslSettings>('sslSettings');
+    sslSettings = registerOutput<DomainMappingSslSettings>(
+      'sslSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainMappingSslSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [DomainMapping] resource's state with the given [name] and [id].
@@ -228,6 +237,15 @@ class DomainMapping extends pulumi.CustomResource {
     resourceRecords = registerOutput<List<Map<String, dynamic>>>(
       'resourceRecords',
     );
-    sslSettings = registerOutput<DomainMappingSslSettings>('sslSettings');
+    sslSettings = registerOutput<DomainMappingSslSettings>(
+      'sslSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainMappingSslSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

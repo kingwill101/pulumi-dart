@@ -46,11 +46,27 @@ class Topic extends pulumi.CustomResource {
     );
     messageStoragePolicy = registerOutput<MessageStoragePolicyResponse>(
       'messageStoragePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MessageStoragePolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
-    schemaSettings = registerOutput<SchemaSettingsResponse>('schemaSettings');
+    schemaSettings = registerOutput<SchemaSettingsResponse>(
+      'schemaSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SchemaSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     topicId = registerOutput<String>('topicId');
   }
 }

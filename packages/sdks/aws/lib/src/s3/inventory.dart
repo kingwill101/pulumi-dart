@@ -493,14 +493,41 @@ class Inventory extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     bucket = registerOutput<String>('bucket');
-    destination = registerOutput<InventoryDestination>('destination');
+    destination = registerOutput<InventoryDestination>(
+      'destination',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InventoryDestination.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     enabled = registerOutput<bool?>('enabled');
-    filter = registerOutput<InventoryFilter?>('filter');
+    filter = registerOutput<InventoryFilter?>(
+      'filter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InventoryFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     includedObjectVersions = registerOutput<String>('includedObjectVersions');
     this.name = registerOutput<String>('name');
     optionalFields = registerOutput<List<String>?>('optionalFields');
     region = registerOutput<String>('region');
-    schedule = registerOutput<InventorySchedule>('schedule');
+    schedule = registerOutput<InventorySchedule>(
+      'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InventorySchedule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Inventory] resource's state with the given [name] and [id].
@@ -527,13 +554,40 @@ class Inventory extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     bucket = registerOutput<String>('bucket');
-    destination = registerOutput<InventoryDestination>('destination');
+    destination = registerOutput<InventoryDestination>(
+      'destination',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InventoryDestination.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     enabled = registerOutput<bool?>('enabled');
-    filter = registerOutput<InventoryFilter?>('filter');
+    filter = registerOutput<InventoryFilter?>(
+      'filter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InventoryFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     includedObjectVersions = registerOutput<String>('includedObjectVersions');
     this.name = registerOutput<String>('name');
     optionalFields = registerOutput<List<String>?>('optionalFields');
     region = registerOutput<String>('region');
-    schedule = registerOutput<InventorySchedule>('schedule');
+    schedule = registerOutput<InventorySchedule>(
+      'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InventorySchedule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

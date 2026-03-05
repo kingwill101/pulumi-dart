@@ -674,6 +674,13 @@ class BucketLoggingV2 extends pulumi.CustomResource {
     targetObjectKeyFormat =
         registerOutput<BucketLoggingV2TargetObjectKeyFormat?>(
           'targetObjectKeyFormat',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return BucketLoggingV2TargetObjectKeyFormat.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     targetPrefix = registerOutput<String>('targetPrefix');
   }
@@ -709,6 +716,13 @@ class BucketLoggingV2 extends pulumi.CustomResource {
     targetObjectKeyFormat =
         registerOutput<BucketLoggingV2TargetObjectKeyFormat?>(
           'targetObjectKeyFormat',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return BucketLoggingV2TargetObjectKeyFormat.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     targetPrefix = registerOutput<String>('targetPrefix');
   }

@@ -1331,6 +1331,13 @@ class AnomalySubscription extends pulumi.CustomResource {
     thresholdExpression =
         registerOutput<AnomalySubscriptionThresholdExpression>(
           'thresholdExpression',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AnomalySubscriptionThresholdExpression.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 
@@ -1368,6 +1375,13 @@ class AnomalySubscription extends pulumi.CustomResource {
     thresholdExpression =
         registerOutput<AnomalySubscriptionThresholdExpression>(
           'thresholdExpression',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AnomalySubscriptionThresholdExpression.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

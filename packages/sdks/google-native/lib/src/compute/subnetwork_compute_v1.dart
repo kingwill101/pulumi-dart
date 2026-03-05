@@ -102,6 +102,13 @@ class SubnetworkComputeV1 extends pulumi.CustomResource {
     kind = registerOutput<String>('kind');
     logConfig = registerOutput<SubnetworkLogConfigResponseComputeV1>(
       'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubnetworkLogConfigResponseComputeV1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');

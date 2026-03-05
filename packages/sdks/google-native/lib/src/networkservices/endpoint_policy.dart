@@ -63,6 +63,13 @@ class EndpointPolicy extends pulumi.CustomResource {
     description = registerOutput<String>('description');
     endpointMatcher = registerOutput<EndpointMatcherResponse>(
       'endpointMatcher',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointMatcherResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     endpointPolicyId = registerOutput<String>('endpointPolicyId');
     labels = registerOutput<Map<String, String>>('labels');
@@ -72,6 +79,13 @@ class EndpointPolicy extends pulumi.CustomResource {
     serverTlsPolicy = registerOutput<String>('serverTlsPolicy');
     trafficPortSelector = registerOutput<TrafficPortSelectorResponse>(
       'trafficPortSelector',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TrafficPortSelectorResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     type = registerOutput<String>('type');
     updateTime = registerOutput<String>('updateTime');

@@ -364,6 +364,13 @@ class ResourceDeploymentScriptAzureCli extends pulumi.CustomResource {
     commandLine = registerOutput<String?>('commandLine');
     container = registerOutput<ResourceDeploymentScriptAzureCliContainer?>(
       'container',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceDeploymentScriptAzureCliContainer.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     environmentVariables = registerOutput<List<Map<String, dynamic>>?>(
       'environmentVariables',
@@ -371,6 +378,13 @@ class ResourceDeploymentScriptAzureCli extends pulumi.CustomResource {
     forceUpdateTag = registerOutput<String?>('forceUpdateTag');
     identity = registerOutput<ResourceDeploymentScriptAzureCliIdentity?>(
       'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceDeploymentScriptAzureCliIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -382,6 +396,13 @@ class ResourceDeploymentScriptAzureCli extends pulumi.CustomResource {
     storageAccount =
         registerOutput<ResourceDeploymentScriptAzureCliStorageAccount?>(
           'storageAccount',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResourceDeploymentScriptAzureCliStorageAccount.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     supportingScriptUris = registerOutput<List<String>?>(
       'supportingScriptUris',
@@ -418,6 +439,13 @@ class ResourceDeploymentScriptAzureCli extends pulumi.CustomResource {
     commandLine = registerOutput<String?>('commandLine');
     container = registerOutput<ResourceDeploymentScriptAzureCliContainer?>(
       'container',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceDeploymentScriptAzureCliContainer.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     environmentVariables = registerOutput<List<Map<String, dynamic>>?>(
       'environmentVariables',
@@ -425,6 +453,13 @@ class ResourceDeploymentScriptAzureCli extends pulumi.CustomResource {
     forceUpdateTag = registerOutput<String?>('forceUpdateTag');
     identity = registerOutput<ResourceDeploymentScriptAzureCliIdentity?>(
       'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceDeploymentScriptAzureCliIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -436,6 +471,13 @@ class ResourceDeploymentScriptAzureCli extends pulumi.CustomResource {
     storageAccount =
         registerOutput<ResourceDeploymentScriptAzureCliStorageAccount?>(
           'storageAccount',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResourceDeploymentScriptAzureCliStorageAccount.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     supportingScriptUris = registerOutput<List<String>?>(
       'supportingScriptUris',

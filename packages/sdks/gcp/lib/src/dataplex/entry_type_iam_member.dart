@@ -929,7 +929,16 @@ class EntryTypeIamMember extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<EntryTypeIamMemberCondition?>('condition');
+    condition = registerOutput<EntryTypeIamMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EntryTypeIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     entryTypeId = registerOutput<String>('entryTypeId');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
@@ -961,7 +970,16 @@ class EntryTypeIamMember extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<EntryTypeIamMemberCondition?>('condition');
+    condition = registerOutput<EntryTypeIamMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EntryTypeIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     entryTypeId = registerOutput<String>('entryTypeId');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');

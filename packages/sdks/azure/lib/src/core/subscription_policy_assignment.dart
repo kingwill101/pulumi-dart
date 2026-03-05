@@ -322,6 +322,13 @@ class SubscriptionPolicyAssignment extends pulumi.CustomResource {
     enforce = registerOutput<bool?>('enforce');
     identity = registerOutput<SubscriptionPolicyAssignmentIdentity?>(
       'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubscriptionPolicyAssignmentIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     metadata = registerOutput<String>('metadata');
@@ -367,6 +374,13 @@ class SubscriptionPolicyAssignment extends pulumi.CustomResource {
     enforce = registerOutput<bool?>('enforce');
     identity = registerOutput<SubscriptionPolicyAssignmentIdentity?>(
       'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubscriptionPolicyAssignmentIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     metadata = registerOutput<String>('metadata');

@@ -45,9 +45,36 @@ class DomainMapping extends pulumi.CustomResource {
     dryRun = registerOutput<String?>('dryRun');
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
-    metadata = registerOutput<ObjectMetaResponse>('metadata');
+    metadata = registerOutput<ObjectMetaResponse>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMetaResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
-    spec = registerOutput<DomainMappingSpecResponse>('spec');
-    status = registerOutput<DomainMappingStatusResponse>('status');
+    spec = registerOutput<DomainMappingSpecResponse>(
+      'spec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainMappingSpecResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    status = registerOutput<DomainMappingStatusResponse>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainMappingStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

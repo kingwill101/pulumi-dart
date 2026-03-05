@@ -415,14 +415,39 @@ class DiskEncryptionSet extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    activeKey = registerOutput<KeyForDiskEncryptionSetResponse?>('activeKey');
+    activeKey = registerOutput<KeyForDiskEncryptionSetResponse?>(
+      'activeKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KeyForDiskEncryptionSetResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     autoKeyRotationError = registerOutput<ApiErrorResponse>(
       'autoKeyRotationError',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiErrorResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     encryptionType = registerOutput<String?>('encryptionType');
     federatedClientId = registerOutput<String?>('federatedClientId');
-    identity = registerOutput<EncryptionSetIdentityResponse?>('identity');
+    identity = registerOutput<EncryptionSetIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EncryptionSetIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     lastKeyRotationTimestamp = registerOutput<String>(
       'lastKeyRotationTimestamp',
     );
@@ -433,7 +458,16 @@ class DiskEncryptionSet extends pulumi.CustomResource {
     rotationToLatestKeyVersionEnabled = registerOutput<bool?>(
       'rotationToLatestKeyVersionEnabled',
     );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

@@ -2628,7 +2628,16 @@ class MetricAlert extends pulumi.CustomResource {
     criteria =
         registerOutput<
           MetricAlertMultipleResourceMultipleMetricCriteriaResponse
-        >('criteria');
+        >(
+          'criteria',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MetricAlertMultipleResourceMultipleMetricCriteriaResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool>('enabled');
     evaluationFrequency = registerOutput<String>('evaluationFrequency');

@@ -48,7 +48,16 @@ class Environment extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    config = registerOutput<EnvironmentConfigResponse>('config');
+    config = registerOutput<EnvironmentConfigResponse>(
+      'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnvironmentConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
@@ -56,7 +65,16 @@ class Environment extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
     state = registerOutput<String>('state');
-    storageConfig = registerOutput<StorageConfigResponse>('storageConfig');
+    storageConfig = registerOutput<StorageConfigResponse>(
+      'storageConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StorageConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     updateTime = registerOutput<String>('updateTime');
     uuid = registerOutput<String>('uuid');
   }

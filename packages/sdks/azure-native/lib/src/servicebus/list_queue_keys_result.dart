@@ -1,20 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by listQueueKeys.
 class ListQueueKeysResult {
   /// Primary connection string of the alias if GEO DR is enabled
   final String aliasPrimaryConnectionString;
+
   /// Secondary  connection string of the alias if GEO DR is enabled
   final String aliasSecondaryConnectionString;
+
   /// A string that describes the authorization rule.
   final String keyName;
+
   /// Primary connection string of the created namespace authorization rule.
   final String primaryConnectionString;
+
   /// A base64-encoded 256-bit primary key for signing and validating the SAS token.
   final String primaryKey;
+
   /// Secondary connection string of the created namespace authorization rule.
   final String secondaryConnectionString;
+
   /// A base64-encoded 256-bit primary key for signing and validating the SAS token.
   final String secondaryKey;
 
@@ -50,8 +55,10 @@ class ListQueueKeysResult {
 
   factory ListQueueKeysResult.fromMap(Map<String, dynamic> map) {
     return ListQueueKeysResult(
-      aliasPrimaryConnectionString: map['aliasPrimaryConnectionString'] as String,
-      aliasSecondaryConnectionString: map['aliasSecondaryConnectionString'] as String,
+      aliasPrimaryConnectionString:
+          map['aliasPrimaryConnectionString'] as String,
+      aliasSecondaryConnectionString:
+          map['aliasSecondaryConnectionString'] as String,
       keyName: map['keyName'] as String,
       primaryConnectionString: map['primaryConnectionString'] as String,
       primaryKey: map['primaryKey'] as String,
@@ -60,4 +67,3 @@ class ListQueueKeysResult {
     );
   }
 }
-

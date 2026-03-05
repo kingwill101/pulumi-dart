@@ -381,6 +381,13 @@ class OutputServiceBusQueue extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     serialization = registerOutput<OutputServiceBusQueueSerialization>(
       'serialization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OutputServiceBusQueueSerialization.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     servicebusNamespace = registerOutput<String>('servicebusNamespace');
     sharedAccessPolicyKey = registerOutput<String?>('sharedAccessPolicyKey');
@@ -421,6 +428,13 @@ class OutputServiceBusQueue extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     serialization = registerOutput<OutputServiceBusQueueSerialization>(
       'serialization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OutputServiceBusQueueSerialization.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     servicebusNamespace = registerOutput<String>('servicebusNamespace');
     sharedAccessPolicyKey = registerOutput<String?>('sharedAccessPolicyKey');

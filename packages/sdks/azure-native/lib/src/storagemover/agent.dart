@@ -830,6 +830,13 @@ class Agent extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     errorDetails = registerOutput<AgentPropertiesErrorDetailsResponse>(
       'errorDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentPropertiesErrorDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     lastStatusUpdate = registerOutput<String>('lastStatusUpdate');
     localIPAddress = registerOutput<String>('localIPAddress');
@@ -837,11 +844,27 @@ class Agent extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     numberOfCores = registerOutput<double>('numberOfCores');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     timeZone = registerOutput<String>('timeZone');
     type = registerOutput<String>('type');
     uploadLimitSchedule = registerOutput<UploadLimitScheduleResponse?>(
       'uploadLimitSchedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UploadLimitScheduleResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     uptimeInSeconds = registerOutput<double>('uptimeInSeconds');
   }

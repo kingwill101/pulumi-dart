@@ -587,18 +587,59 @@ class Backend extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     circuitBreaker = registerOutput<BackendCircuitBreakerResponse?>(
       'circuitBreaker',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackendCircuitBreakerResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     credentials = registerOutput<BackendCredentialsContractResponse?>(
       'credentials',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackendCredentialsContractResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<BackendPropertiesResponse>('properties');
+    properties = registerOutput<BackendPropertiesResponse>(
+      'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackendPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     protocol = registerOutput<String>('protocol');
-    proxy = registerOutput<BackendProxyContractResponse?>('proxy');
+    proxy = registerOutput<BackendProxyContractResponse?>(
+      'proxy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackendProxyContractResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceId = registerOutput<String?>('resourceId');
     title = registerOutput<String?>('title');
-    tls = registerOutput<BackendTlsPropertiesResponse?>('tls');
+    tls = registerOutput<BackendTlsPropertiesResponse?>(
+      'tls',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackendTlsPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     url = registerOutput<String>('url');
   }

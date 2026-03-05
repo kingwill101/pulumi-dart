@@ -4770,18 +4770,48 @@ class CxPage extends pulumi.CustomResource {
       ) {
     advancedSettings = registerOutput<CxPageAdvancedSettings?>(
       'advancedSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxPageAdvancedSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     displayName = registerOutput<String>('displayName');
     entryFulfillment = registerOutput<CxPageEntryFulfillment?>(
       'entryFulfillment',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxPageEntryFulfillment.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     eventHandlers = registerOutput<List<Map<String, dynamic>>?>(
       'eventHandlers',
     );
-    form = registerOutput<CxPageForm?>('form');
+    form = registerOutput<CxPageForm?>(
+      'form',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxPageForm.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     knowledgeConnectorSettings =
         registerOutput<CxPageKnowledgeConnectorSettings?>(
           'knowledgeConnectorSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CxPageKnowledgeConnectorSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     languageCode = registerOutput<String?>('languageCode');
     this.name = registerOutput<String>('name');
@@ -4819,18 +4849,48 @@ class CxPage extends pulumi.CustomResource {
        ) {
     advancedSettings = registerOutput<CxPageAdvancedSettings?>(
       'advancedSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxPageAdvancedSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     displayName = registerOutput<String>('displayName');
     entryFulfillment = registerOutput<CxPageEntryFulfillment?>(
       'entryFulfillment',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxPageEntryFulfillment.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     eventHandlers = registerOutput<List<Map<String, dynamic>>?>(
       'eventHandlers',
     );
-    form = registerOutput<CxPageForm?>('form');
+    form = registerOutput<CxPageForm?>(
+      'form',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxPageForm.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     knowledgeConnectorSettings =
         registerOutput<CxPageKnowledgeConnectorSettings?>(
           'knowledgeConnectorSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CxPageKnowledgeConnectorSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     languageCode = registerOutput<String?>('languageCode');
     this.name = registerOutput<String>('name');

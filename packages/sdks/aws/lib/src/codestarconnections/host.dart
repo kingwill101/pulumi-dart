@@ -164,6 +164,13 @@ class Host extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     vpcConfiguration = registerOutput<HostVpcConfiguration?>(
       'vpcConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HostVpcConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -194,6 +201,13 @@ class Host extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     vpcConfiguration = registerOutput<HostVpcConfiguration?>(
       'vpcConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HostVpcConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

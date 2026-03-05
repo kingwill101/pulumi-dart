@@ -284,7 +284,8 @@ Future<GetReplicationProtectionClusterResult> getReplicationProtectionCluster(
 /// Other available API versions: 2023-02-01, 2023-04-01, 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2025-01-01, 2025-02-01, 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native recoveryservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_recoveryservices_get_replication_protection_container_mapping_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetReplicationProtectionContainerMappingResult> getReplicationProtectionContainerMapping(
+Future<GetReplicationProtectionContainerMappingResult>
+getReplicationProtectionContainerMapping(
   GetReplicationProtectionContainerMappingArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -324,7 +325,8 @@ Future<GetReplicationRecoveryPlanResult> getReplicationRecoveryPlan(
 /// Other available API versions: 2023-02-01, 2023-04-01, 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2025-01-01, 2025-02-01, 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native recoveryservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_recoveryservices_get_replication_recovery_services_provider_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetReplicationRecoveryServicesProviderResult> getReplicationRecoveryServicesProvider(
+Future<GetReplicationRecoveryServicesProviderResult>
+getReplicationRecoveryServicesProvider(
   GetReplicationRecoveryServicesProviderArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -344,7 +346,8 @@ Future<GetReplicationRecoveryServicesProviderResult> getReplicationRecoveryServi
 /// Other available API versions: 2023-02-01, 2023-04-01, 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2025-01-01, 2025-02-01, 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native recoveryservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_recoveryservices_get_replication_storage_classification_mapping_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetReplicationStorageClassificationMappingResult> getReplicationStorageClassificationMapping(
+Future<GetReplicationStorageClassificationMappingResult>
+getReplicationStorageClassificationMapping(
   GetReplicationStorageClassificationMappingArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

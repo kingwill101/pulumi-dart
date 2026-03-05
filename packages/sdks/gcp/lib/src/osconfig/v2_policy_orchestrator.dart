@@ -459,10 +459,24 @@ class V2PolicyOrchestrator extends pulumi.CustomResource {
     orchestratedResource =
         registerOutput<V2PolicyOrchestratorOrchestratedResource>(
           'orchestratedResource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return V2PolicyOrchestratorOrchestratedResource.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     orchestrationScope =
         registerOutput<V2PolicyOrchestratorOrchestrationScope?>(
           'orchestrationScope',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return V2PolicyOrchestratorOrchestrationScope.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     orchestrationStates = registerOutput<List<Map<String, dynamic>>>(
       'orchestrationStates',
@@ -507,10 +521,24 @@ class V2PolicyOrchestrator extends pulumi.CustomResource {
     orchestratedResource =
         registerOutput<V2PolicyOrchestratorOrchestratedResource>(
           'orchestratedResource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return V2PolicyOrchestratorOrchestratedResource.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     orchestrationScope =
         registerOutput<V2PolicyOrchestratorOrchestrationScope?>(
           'orchestrationScope',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return V2PolicyOrchestratorOrchestrationScope.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     orchestrationStates = registerOutput<List<Map<String, dynamic>>>(
       'orchestrationStates',

@@ -280,7 +280,16 @@ class SystemTopic extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    identity = registerOutput<SystemTopicIdentity?>('identity');
+    identity = registerOutput<SystemTopicIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemTopicIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     metricArmResourceId = registerOutput<String>('metricArmResourceId');
     metricResourceId = registerOutput<String>('metricResourceId');
@@ -315,7 +324,16 @@ class SystemTopic extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    identity = registerOutput<SystemTopicIdentity?>('identity');
+    identity = registerOutput<SystemTopicIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemTopicIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     metricArmResourceId = registerOutput<String>('metricArmResourceId');
     metricResourceId = registerOutput<String>('metricResourceId');

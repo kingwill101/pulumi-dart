@@ -481,12 +481,28 @@ class MetricAlert extends pulumi.CustomResource {
     applicationInsightsWebTestLocationAvailabilityCriteria =
         registerOutput<
           MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria?
-        >('applicationInsightsWebTestLocationAvailabilityCriteria');
+        >(
+          'applicationInsightsWebTestLocationAvailabilityCriteria',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     autoMitigate = registerOutput<bool?>('autoMitigate');
     criterias = registerOutput<List<Map<String, dynamic>>?>('criterias');
     description = registerOutput<String?>('description');
     dynamicCriteria = registerOutput<MetricAlertDynamicCriteria?>(
       'dynamicCriteria',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MetricAlertDynamicCriteria.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     enabled = registerOutput<bool?>('enabled');
     frequency = registerOutput<String?>('frequency');
@@ -527,12 +543,28 @@ class MetricAlert extends pulumi.CustomResource {
     applicationInsightsWebTestLocationAvailabilityCriteria =
         registerOutput<
           MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria?
-        >('applicationInsightsWebTestLocationAvailabilityCriteria');
+        >(
+          'applicationInsightsWebTestLocationAvailabilityCriteria',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     autoMitigate = registerOutput<bool?>('autoMitigate');
     criterias = registerOutput<List<Map<String, dynamic>>?>('criterias');
     description = registerOutput<String?>('description');
     dynamicCriteria = registerOutput<MetricAlertDynamicCriteria?>(
       'dynamicCriteria',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MetricAlertDynamicCriteria.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     enabled = registerOutput<bool?>('enabled');
     frequency = registerOutput<String?>('frequency');

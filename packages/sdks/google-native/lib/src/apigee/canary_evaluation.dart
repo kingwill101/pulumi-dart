@@ -60,6 +60,13 @@ class CanaryEvaluation extends pulumi.CustomResource {
     metricLabels =
         registerOutput<GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse>(
           'metricLabels',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     organizationId = registerOutput<String>('organizationId');

@@ -165,7 +165,16 @@ class ResourceManagementPrivateLink extends pulumi.CustomResource {
     properties =
         registerOutput<
           ResourceManagementPrivateLinkEndpointConnectionsResponse
-        >('properties');
+        >(
+          'properties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResourceManagementPrivateLinkEndpointConnectionsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     type = registerOutput<String>('type');
   }
 }

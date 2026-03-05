@@ -253,7 +253,16 @@ class Student extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    budget = registerOutput<AmountResponse>('budget');
+    budget = registerOutput<AmountResponse>(
+      'budget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AmountResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     effectiveDate = registerOutput<String>('effectiveDate');
     email = registerOutput<String>('email');
     expirationDate = registerOutput<String>('expirationDate');
@@ -267,7 +276,16 @@ class Student extends pulumi.CustomResource {
     subscriptionInviteLastSentDate = registerOutput<String?>(
       'subscriptionInviteLastSentDate',
     );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

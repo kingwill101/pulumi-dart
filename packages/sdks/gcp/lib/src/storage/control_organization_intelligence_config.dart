@@ -247,6 +247,13 @@ class ControlOrganizationIntelligenceConfig extends pulumi.CustomResource {
     );
     filter = registerOutput<ControlOrganizationIntelligenceConfigFilter?>(
       'filter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ControlOrganizationIntelligenceConfigFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     trialConfigs = registerOutput<List<Map<String, dynamic>>>('trialConfigs');
@@ -282,6 +289,13 @@ class ControlOrganizationIntelligenceConfig extends pulumi.CustomResource {
     );
     filter = registerOutput<ControlOrganizationIntelligenceConfigFilter?>(
       'filter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ControlOrganizationIntelligenceConfigFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     trialConfigs = registerOutput<List<Map<String, dynamic>>>('trialConfigs');

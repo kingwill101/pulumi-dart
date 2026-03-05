@@ -1218,6 +1218,13 @@ class Reservation extends pulumi.CustomResource {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deleteAfterDuration = registerOutput<ReservationDeleteAfterDuration?>(
       'deleteAfterDuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReservationDeleteAfterDuration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     deleteAtTime = registerOutput<String>('deleteAtTime');
     description = registerOutput<String?>('description');
@@ -1232,15 +1239,38 @@ class Reservation extends pulumi.CustomResource {
     reservationSharingPolicy =
         registerOutput<ReservationReservationSharingPolicy>(
           'reservationSharingPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ReservationReservationSharingPolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     resourceStatuses = registerOutput<List<Map<String, dynamic>>>(
       'resourceStatuses',
     );
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
     selfLink = registerOutput<String>('selfLink');
-    shareSettings = registerOutput<ReservationShareSettings>('shareSettings');
+    shareSettings = registerOutput<ReservationShareSettings>(
+      'shareSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReservationShareSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     specificReservation = registerOutput<ReservationSpecificReservation>(
       'specificReservation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReservationSpecificReservation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     specificReservationRequired = registerOutput<bool?>(
       'specificReservationRequired',
@@ -1277,6 +1307,13 @@ class Reservation extends pulumi.CustomResource {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deleteAfterDuration = registerOutput<ReservationDeleteAfterDuration?>(
       'deleteAfterDuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReservationDeleteAfterDuration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     deleteAtTime = registerOutput<String>('deleteAtTime');
     description = registerOutput<String?>('description');
@@ -1291,15 +1328,38 @@ class Reservation extends pulumi.CustomResource {
     reservationSharingPolicy =
         registerOutput<ReservationReservationSharingPolicy>(
           'reservationSharingPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ReservationReservationSharingPolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     resourceStatuses = registerOutput<List<Map<String, dynamic>>>(
       'resourceStatuses',
     );
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
     selfLink = registerOutput<String>('selfLink');
-    shareSettings = registerOutput<ReservationShareSettings>('shareSettings');
+    shareSettings = registerOutput<ReservationShareSettings>(
+      'shareSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReservationShareSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     specificReservation = registerOutput<ReservationSpecificReservation>(
       'specificReservation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReservationSpecificReservation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     specificReservationRequired = registerOutput<bool?>(
       'specificReservationRequired',

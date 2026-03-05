@@ -57,10 +57,26 @@ class BlockchainNode extends pulumi.CustomResource {
        ) {
     blockchainNodeId = registerOutput<String>('blockchainNodeId');
     blockchainType = registerOutput<String>('blockchainType');
-    connectionInfo = registerOutput<ConnectionInfoResponse>('connectionInfo');
+    connectionInfo = registerOutput<ConnectionInfoResponse>(
+      'connectionInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     ethereumDetails = registerOutput<EthereumDetailsResponse>(
       'ethereumDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EthereumDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');

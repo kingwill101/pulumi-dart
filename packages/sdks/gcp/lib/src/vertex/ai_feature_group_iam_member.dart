@@ -890,7 +890,16 @@ class AiFeatureGroupIamMember extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<AiFeatureGroupIamMemberCondition?>('condition');
+    condition = registerOutput<AiFeatureGroupIamMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiFeatureGroupIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     featureGroup = registerOutput<String>('featureGroup');
     member = registerOutput<String>('member');
@@ -922,7 +931,16 @@ class AiFeatureGroupIamMember extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<AiFeatureGroupIamMemberCondition?>('condition');
+    condition = registerOutput<AiFeatureGroupIamMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiFeatureGroupIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     featureGroup = registerOutput<String>('featureGroup');
     member = registerOutput<String>('member');

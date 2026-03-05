@@ -393,6 +393,13 @@ class BackupPolicyKubernetesCluster extends pulumi.CustomResource {
     defaultRetentionRule =
         registerOutput<BackupPolicyKubernetesClusterDefaultRetentionRule>(
           'defaultRetentionRule',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return BackupPolicyKubernetesClusterDefaultRetentionRule.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -432,6 +439,13 @@ class BackupPolicyKubernetesCluster extends pulumi.CustomResource {
     defaultRetentionRule =
         registerOutput<BackupPolicyKubernetesClusterDefaultRetentionRule>(
           'defaultRetentionRule',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return BackupPolicyKubernetesClusterDefaultRetentionRule.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

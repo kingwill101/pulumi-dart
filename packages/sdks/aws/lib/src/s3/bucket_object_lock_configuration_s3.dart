@@ -263,7 +263,16 @@ class BucketObjectLockConfigurationS3 extends pulumi.CustomResource {
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
     objectLockEnabled = registerOutput<String?>('objectLockEnabled');
     region = registerOutput<String>('region');
-    rule = registerOutput<BucketObjectLockConfigurationRule?>('rule');
+    rule = registerOutput<BucketObjectLockConfigurationRule?>(
+      'rule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketObjectLockConfigurationRule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     token = registerOutput<String?>('token');
   }
 
@@ -294,7 +303,16 @@ class BucketObjectLockConfigurationS3 extends pulumi.CustomResource {
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
     objectLockEnabled = registerOutput<String?>('objectLockEnabled');
     region = registerOutput<String>('region');
-    rule = registerOutput<BucketObjectLockConfigurationRule?>('rule');
+    rule = registerOutput<BucketObjectLockConfigurationRule?>(
+      'rule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketObjectLockConfigurationRule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     token = registerOutput<String?>('token');
   }
 }

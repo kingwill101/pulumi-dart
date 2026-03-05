@@ -673,6 +673,13 @@ class BucketLoggingS3 extends pulumi.CustomResource {
     targetGrants = registerOutput<List<Map<String, dynamic>>?>('targetGrants');
     targetObjectKeyFormat = registerOutput<BucketLoggingTargetObjectKeyFormat?>(
       'targetObjectKeyFormat',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketLoggingTargetObjectKeyFormat.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     targetPrefix = registerOutput<String>('targetPrefix');
   }
@@ -707,6 +714,13 @@ class BucketLoggingS3 extends pulumi.CustomResource {
     targetGrants = registerOutput<List<Map<String, dynamic>>?>('targetGrants');
     targetObjectKeyFormat = registerOutput<BucketLoggingTargetObjectKeyFormat?>(
       'targetObjectKeyFormat',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketLoggingTargetObjectKeyFormat.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     targetPrefix = registerOutput<String>('targetPrefix');
   }

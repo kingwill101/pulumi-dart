@@ -315,6 +315,13 @@ class EngineModel extends pulumi.CustomResource {
        ) {
     defaultVersion = registerOutput<EngineModelDefaultVersion?>(
       'defaultVersion',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EngineModelDefaultVersion.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -354,6 +361,13 @@ class EngineModel extends pulumi.CustomResource {
        ) {
     defaultVersion = registerOutput<EngineModelDefaultVersion?>(
       'defaultVersion',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EngineModelDefaultVersion.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

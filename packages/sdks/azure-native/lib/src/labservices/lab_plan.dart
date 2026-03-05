@@ -356,24 +356,79 @@ class LabPlan extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     defaultAutoShutdownProfile = registerOutput<AutoShutdownProfileResponse?>(
       'defaultAutoShutdownProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AutoShutdownProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     defaultConnectionProfile = registerOutput<ConnectionProfileResponse?>(
       'defaultConnectionProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     defaultNetworkProfile = registerOutput<LabPlanNetworkProfileResponse?>(
       'defaultNetworkProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LabPlanNetworkProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    identity = registerOutput<IdentityResponse?>('identity');
+    identity = registerOutput<IdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     linkedLmsInstance = registerOutput<String?>('linkedLmsInstance');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     resourceOperationError = registerOutput<ResourceOperationErrorResponse>(
       'resourceOperationError',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceOperationErrorResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sharedGalleryId = registerOutput<String?>('sharedGalleryId');
-    supportInfo = registerOutput<SupportInfoResponse?>('supportInfo');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    supportInfo = registerOutput<SupportInfoResponse?>(
+      'supportInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SupportInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

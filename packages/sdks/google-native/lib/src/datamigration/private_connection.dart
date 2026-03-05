@@ -56,7 +56,16 @@ class PrivateConnection extends pulumi.CustomResource {
        ) {
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
-    error = registerOutput<StatusResponse>('error');
+    error = registerOutput<StatusResponse>(
+      'error',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -68,6 +77,13 @@ class PrivateConnection extends pulumi.CustomResource {
     updateTime = registerOutput<String>('updateTime');
     vpcPeeringConfig = registerOutput<VpcPeeringConfigResponse>(
       'vpcPeeringConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpcPeeringConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

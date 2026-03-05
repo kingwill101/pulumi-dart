@@ -575,10 +575,26 @@ class GroupMembership extends pulumi.CustomResource {
     );
     createTime = registerOutput<String>('createTime');
     group = registerOutput<String>('group');
-    memberKey = registerOutput<GroupMembershipMemberKey>('memberKey');
+    memberKey = registerOutput<GroupMembershipMemberKey>(
+      'memberKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupMembershipMemberKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     preferredMemberKey = registerOutput<GroupMembershipPreferredMemberKey>(
       'preferredMemberKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupMembershipPreferredMemberKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     roles = registerOutput<List<Map<String, dynamic>>>('roles');
     type = registerOutput<String>('type');
@@ -613,10 +629,26 @@ class GroupMembership extends pulumi.CustomResource {
     );
     createTime = registerOutput<String>('createTime');
     group = registerOutput<String>('group');
-    memberKey = registerOutput<GroupMembershipMemberKey>('memberKey');
+    memberKey = registerOutput<GroupMembershipMemberKey>(
+      'memberKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupMembershipMemberKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     preferredMemberKey = registerOutput<GroupMembershipPreferredMemberKey>(
       'preferredMemberKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupMembershipPreferredMemberKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     roles = registerOutput<List<Map<String, dynamic>>>('roles');
     type = registerOutput<String>('type');

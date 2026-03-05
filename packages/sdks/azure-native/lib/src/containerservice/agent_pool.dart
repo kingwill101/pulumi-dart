@@ -3960,7 +3960,16 @@ class AgentPool extends pulumi.CustomResource {
       'capacityReservationGroupID',
     );
     count = registerOutput<int?>('count');
-    creationData = registerOutput<CreationDataResponse?>('creationData');
+    creationData = registerOutput<CreationDataResponse?>(
+      'creationData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CreationDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     currentOrchestratorVersion = registerOutput<String>(
       'currentOrchestratorVersion',
     );
@@ -3972,15 +3981,56 @@ class AgentPool extends pulumi.CustomResource {
     enableUltraSSD = registerOutput<bool?>('enableUltraSSD');
     gatewayProfile = registerOutput<AgentPoolGatewayProfileResponse?>(
       'gatewayProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentPoolGatewayProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     gpuInstanceProfile = registerOutput<String?>('gpuInstanceProfile');
-    gpuProfile = registerOutput<GPUProfileResponse?>('gpuProfile');
+    gpuProfile = registerOutput<GPUProfileResponse?>(
+      'gpuProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GPUProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     hostGroupID = registerOutput<String?>('hostGroupID');
-    kubeletConfig = registerOutput<KubeletConfigResponse?>('kubeletConfig');
+    kubeletConfig = registerOutput<KubeletConfigResponse?>(
+      'kubeletConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KubeletConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kubeletDiskType = registerOutput<String?>('kubeletDiskType');
-    linuxOSConfig = registerOutput<LinuxOSConfigResponse?>('linuxOSConfig');
+    linuxOSConfig = registerOutput<LinuxOSConfigResponse?>(
+      'linuxOSConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinuxOSConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     localDNSProfile = registerOutput<LocalDNSProfileResponse?>(
       'localDNSProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LocalDNSProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     maxCount = registerOutput<int?>('maxCount');
     maxPods = registerOutput<int?>('maxPods');
@@ -3990,6 +4040,13 @@ class AgentPool extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkProfile = registerOutput<AgentPoolNetworkProfileResponse?>(
       'networkProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentPoolNetworkProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     nodeImageVersion = registerOutput<String>('nodeImageVersion');
     nodeLabels = registerOutput<Map<String, String>?>('nodeLabels');
@@ -4002,7 +4059,16 @@ class AgentPool extends pulumi.CustomResource {
     osType = registerOutput<String?>('osType');
     podIPAllocationMode = registerOutput<String?>('podIPAllocationMode');
     podSubnetID = registerOutput<String?>('podSubnetID');
-    powerState = registerOutput<PowerStateResponse?>('powerState');
+    powerState = registerOutput<PowerStateResponse?>(
+      'powerState',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PowerStateResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     provisioningState = registerOutput<String>('provisioningState');
     proximityPlacementGroupID = registerOutput<String?>(
       'proximityPlacementGroupID',
@@ -4012,24 +4078,61 @@ class AgentPool extends pulumi.CustomResource {
     scaleSetPriority = registerOutput<String?>('scaleSetPriority');
     securityProfile = registerOutput<AgentPoolSecurityProfileResponse?>(
       'securityProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentPoolSecurityProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     spotMaxPrice = registerOutput<double?>('spotMaxPrice');
-    status = registerOutput<AgentPoolStatusResponse?>('status');
+    status = registerOutput<AgentPoolStatusResponse?>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentPoolStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     upgradeSettings = registerOutput<AgentPoolUpgradeSettingsResponse?>(
       'upgradeSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentPoolUpgradeSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     virtualMachineNodesStatus = registerOutput<List<Map<String, dynamic>>?>(
       'virtualMachineNodesStatus',
     );
     virtualMachinesProfile = registerOutput<VirtualMachinesProfileResponse?>(
       'virtualMachinesProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualMachinesProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     vmSize = registerOutput<String?>('vmSize');
     vnetSubnetID = registerOutput<String?>('vnetSubnetID');
     windowsProfile = registerOutput<AgentPoolWindowsProfileResponse?>(
       'windowsProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentPoolWindowsProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     workloadRuntime = registerOutput<String?>('workloadRuntime');
   }

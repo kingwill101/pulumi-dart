@@ -473,22 +473,81 @@ class OpenShiftCluster extends pulumi.CustomResource {
        ) {
     apiserverProfile = registerOutput<APIServerProfileResponse?>(
       'apiserverProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return APIServerProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    clusterProfile = registerOutput<ClusterProfileResponse?>('clusterProfile');
-    consoleProfile = registerOutput<ConsoleProfileResponse?>('consoleProfile');
+    clusterProfile = registerOutput<ClusterProfileResponse?>(
+      'clusterProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    consoleProfile = registerOutput<ConsoleProfileResponse?>(
+      'consoleProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConsoleProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ingressProfiles = registerOutput<List<Map<String, dynamic>>?>(
       'ingressProfiles',
     );
     location = registerOutput<String>('location');
-    masterProfile = registerOutput<MasterProfileResponse?>('masterProfile');
+    masterProfile = registerOutput<MasterProfileResponse?>(
+      'masterProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MasterProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
-    networkProfile = registerOutput<NetworkProfileResponse?>('networkProfile');
+    networkProfile = registerOutput<NetworkProfileResponse?>(
+      'networkProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     provisioningState = registerOutput<String?>('provisioningState');
     servicePrincipalProfile = registerOutput<ServicePrincipalProfileResponse?>(
       'servicePrincipalProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServicePrincipalProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     workerProfiles = registerOutput<List<Map<String, dynamic>>?>(

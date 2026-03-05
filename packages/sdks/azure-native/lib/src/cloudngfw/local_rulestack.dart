@@ -500,6 +500,13 @@ class LocalRulestack extends pulumi.CustomResource {
     identity =
         registerOutput<AzureResourceManagerManagedIdentityPropertiesResponse?>(
           'identity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AzureResourceManagerManagedIdentityPropertiesResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     location = registerOutput<String>('location');
     minAppIdVersion = registerOutput<String?>('minAppIdVersion');
@@ -510,8 +517,24 @@ class LocalRulestack extends pulumi.CustomResource {
     scope = registerOutput<String?>('scope');
     securityServices = registerOutput<SecurityServicesResponse?>(
       'securityServices',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityServicesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

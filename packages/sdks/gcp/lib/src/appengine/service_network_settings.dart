@@ -378,6 +378,13 @@ class ServiceNetworkSettings extends pulumi.CustomResource {
        ) {
     networkSettings = registerOutput<ServiceNetworkSettingsNetworkSettings>(
       'networkSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceNetworkSettingsNetworkSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     service = registerOutput<String>('service');
@@ -408,6 +415,13 @@ class ServiceNetworkSettings extends pulumi.CustomResource {
        ) {
     networkSettings = registerOutput<ServiceNetworkSettingsNetworkSettings>(
       'networkSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceNetworkSettingsNetworkSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     service = registerOutput<String>('service');

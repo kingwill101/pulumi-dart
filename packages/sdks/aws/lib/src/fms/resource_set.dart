@@ -163,7 +163,16 @@ class ResourceSet extends pulumi.CustomResource {
     resourceSets = registerOutput<List<Map<String, dynamic>>?>('resourceSets');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ResourceSetTimeouts?>('timeouts');
+    timeouts = registerOutput<ResourceSetTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceSetTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [ResourceSet] resource's state with the given [name] and [id].
@@ -194,6 +203,15 @@ class ResourceSet extends pulumi.CustomResource {
     resourceSets = registerOutput<List<Map<String, dynamic>>?>('resourceSets');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ResourceSetTimeouts?>('timeouts');
+    timeouts = registerOutput<ResourceSetTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceSetTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

@@ -314,7 +314,16 @@ class NodePool extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    autoMode = registerOutput<NodePoolAutoMode>('autoMode');
+    autoMode = registerOutput<NodePoolAutoMode>(
+      'autoMode',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolAutoMode.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     autoRenew = registerOutput<bool?>('autoRenew');
     autoRenewPeriod = registerOutput<int?>('autoRenewPeriod');
     cisEnabled = registerOutput<bool?>('cisEnabled');
@@ -324,7 +333,16 @@ class NodePool extends pulumi.CustomResource {
     dataDisks = registerOutput<List<Map<String, dynamic>>?>('dataDisks');
     deploymentSetId = registerOutput<String?>('deploymentSetId');
     desiredSize = registerOutput<String?>('desiredSize');
-    efloNodeGroup = registerOutput<NodePoolEfloNodeGroup?>('efloNodeGroup');
+    efloNodeGroup = registerOutput<NodePoolEfloNodeGroup?>(
+      'efloNodeGroup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolEfloNodeGroup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     forceDelete = registerOutput<bool?>('forceDelete');
     formatDisk = registerOutput<bool>('formatDisk');
     imageId = registerOutput<String>('imageId');
@@ -333,6 +351,13 @@ class NodePool extends pulumi.CustomResource {
     instanceChargeType = registerOutput<String>('instanceChargeType');
     instanceMetadataOptions = registerOutput<NodePoolInstanceMetadataOptions>(
       'instanceMetadataOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolInstanceMetadataOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     instancePatterns = registerOutput<List<Map<String, dynamic>>?>(
       'instancePatterns',
@@ -349,10 +374,26 @@ class NodePool extends pulumi.CustomResource {
     );
     kubeletConfiguration = registerOutput<NodePoolKubeletConfiguration?>(
       'kubeletConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolKubeletConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     labels = registerOutput<List<Map<String, dynamic>>?>('labels');
     loginAsNonRoot = registerOutput<bool?>('loginAsNonRoot');
-    management = registerOutput<NodePoolManagement>('management');
+    management = registerOutput<NodePoolManagement>(
+      'management',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolManagement.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     multiAzPolicy = registerOutput<String>('multiAzPolicy');
     this.name = registerOutput<String>('name');
     nodeCount = registerOutput<int>('nodeCount');
@@ -370,14 +411,39 @@ class NodePool extends pulumi.CustomResource {
     preUserData = registerOutput<String?>('preUserData');
     privatePoolOptions = registerOutput<NodePoolPrivatePoolOptions?>(
       'privatePoolOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolPrivatePoolOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     ramRoleName = registerOutput<String>('ramRoleName');
     rdsInstances = registerOutput<List<String>?>('rdsInstances');
     resourceGroupId = registerOutput<String>('resourceGroupId');
-    rollingPolicy = registerOutput<NodePoolRollingPolicy?>('rollingPolicy');
+    rollingPolicy = registerOutput<NodePoolRollingPolicy?>(
+      'rollingPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolRollingPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     runtimeName = registerOutput<String>('runtimeName');
     runtimeVersion = registerOutput<String>('runtimeVersion');
-    scalingConfig = registerOutput<NodePoolScalingConfig>('scalingConfig');
+    scalingConfig = registerOutput<NodePoolScalingConfig>(
+      'scalingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolScalingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     scalingGroupId = registerOutput<String>('scalingGroupId');
     scalingPolicy = registerOutput<String>('scalingPolicy');
     securityGroupId = registerOutput<String>('securityGroupId');
@@ -412,11 +478,29 @@ class NodePool extends pulumi.CustomResource {
     );
     tags = registerOutput<Map<String, String>?>('tags');
     taints = registerOutput<List<Map<String, dynamic>>?>('taints');
-    teeConfig = registerOutput<NodePoolTeeConfig>('teeConfig');
+    teeConfig = registerOutput<NodePoolTeeConfig>(
+      'teeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolTeeConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     unschedulable = registerOutput<bool?>('unschedulable');
     updateNodes = registerOutput<bool?>('updateNodes');
-    upgradePolicy = registerOutput<NodePoolUpgradePolicy?>('upgradePolicy');
+    upgradePolicy = registerOutput<NodePoolUpgradePolicy?>(
+      'upgradePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolUpgradePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     userData = registerOutput<String?>('userData');
     vswitchIds = registerOutput<List<String>?>('vswitchIds');
   }
@@ -444,7 +528,16 @@ class NodePool extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    autoMode = registerOutput<NodePoolAutoMode>('autoMode');
+    autoMode = registerOutput<NodePoolAutoMode>(
+      'autoMode',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolAutoMode.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     autoRenew = registerOutput<bool?>('autoRenew');
     autoRenewPeriod = registerOutput<int?>('autoRenewPeriod');
     cisEnabled = registerOutput<bool?>('cisEnabled');
@@ -454,7 +547,16 @@ class NodePool extends pulumi.CustomResource {
     dataDisks = registerOutput<List<Map<String, dynamic>>?>('dataDisks');
     deploymentSetId = registerOutput<String?>('deploymentSetId');
     desiredSize = registerOutput<String?>('desiredSize');
-    efloNodeGroup = registerOutput<NodePoolEfloNodeGroup?>('efloNodeGroup');
+    efloNodeGroup = registerOutput<NodePoolEfloNodeGroup?>(
+      'efloNodeGroup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolEfloNodeGroup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     forceDelete = registerOutput<bool?>('forceDelete');
     formatDisk = registerOutput<bool>('formatDisk');
     imageId = registerOutput<String>('imageId');
@@ -463,6 +565,13 @@ class NodePool extends pulumi.CustomResource {
     instanceChargeType = registerOutput<String>('instanceChargeType');
     instanceMetadataOptions = registerOutput<NodePoolInstanceMetadataOptions>(
       'instanceMetadataOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolInstanceMetadataOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     instancePatterns = registerOutput<List<Map<String, dynamic>>?>(
       'instancePatterns',
@@ -479,10 +588,26 @@ class NodePool extends pulumi.CustomResource {
     );
     kubeletConfiguration = registerOutput<NodePoolKubeletConfiguration?>(
       'kubeletConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolKubeletConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     labels = registerOutput<List<Map<String, dynamic>>?>('labels');
     loginAsNonRoot = registerOutput<bool?>('loginAsNonRoot');
-    management = registerOutput<NodePoolManagement>('management');
+    management = registerOutput<NodePoolManagement>(
+      'management',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolManagement.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     multiAzPolicy = registerOutput<String>('multiAzPolicy');
     this.name = registerOutput<String>('name');
     nodeCount = registerOutput<int>('nodeCount');
@@ -500,14 +625,39 @@ class NodePool extends pulumi.CustomResource {
     preUserData = registerOutput<String?>('preUserData');
     privatePoolOptions = registerOutput<NodePoolPrivatePoolOptions?>(
       'privatePoolOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolPrivatePoolOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     ramRoleName = registerOutput<String>('ramRoleName');
     rdsInstances = registerOutput<List<String>?>('rdsInstances');
     resourceGroupId = registerOutput<String>('resourceGroupId');
-    rollingPolicy = registerOutput<NodePoolRollingPolicy?>('rollingPolicy');
+    rollingPolicy = registerOutput<NodePoolRollingPolicy?>(
+      'rollingPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolRollingPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     runtimeName = registerOutput<String>('runtimeName');
     runtimeVersion = registerOutput<String>('runtimeVersion');
-    scalingConfig = registerOutput<NodePoolScalingConfig>('scalingConfig');
+    scalingConfig = registerOutput<NodePoolScalingConfig>(
+      'scalingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolScalingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     scalingGroupId = registerOutput<String>('scalingGroupId');
     scalingPolicy = registerOutput<String>('scalingPolicy');
     securityGroupId = registerOutput<String>('securityGroupId');
@@ -542,11 +692,29 @@ class NodePool extends pulumi.CustomResource {
     );
     tags = registerOutput<Map<String, String>?>('tags');
     taints = registerOutput<List<Map<String, dynamic>>?>('taints');
-    teeConfig = registerOutput<NodePoolTeeConfig>('teeConfig');
+    teeConfig = registerOutput<NodePoolTeeConfig>(
+      'teeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolTeeConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     unschedulable = registerOutput<bool?>('unschedulable');
     updateNodes = registerOutput<bool?>('updateNodes');
-    upgradePolicy = registerOutput<NodePoolUpgradePolicy?>('upgradePolicy');
+    upgradePolicy = registerOutput<NodePoolUpgradePolicy?>(
+      'upgradePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolUpgradePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     userData = registerOutput<String?>('userData');
     vswitchIds = registerOutput<List<String>?>('vswitchIds');
   }

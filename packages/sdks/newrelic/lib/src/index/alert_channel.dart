@@ -988,7 +988,16 @@ class AlertChannel extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     accountId = registerOutput<String>('accountId');
-    config = registerOutput<AlertChannelConfig?>('config');
+    config = registerOutput<AlertChannelConfig?>(
+      'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlertChannelConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');
   }
@@ -1017,7 +1026,16 @@ class AlertChannel extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     accountId = registerOutput<String>('accountId');
-    config = registerOutput<AlertChannelConfig?>('config');
+    config = registerOutput<AlertChannelConfig?>(
+      'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlertChannelConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');
   }

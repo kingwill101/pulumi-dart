@@ -440,7 +440,16 @@ class EventHubEventSource extends pulumi.CustomResource {
     eventSourceResourceId = registerOutput<String>('eventSourceResourceId');
     keyName = registerOutput<String>('keyName');
     kind = registerOutput<String>('kind');
-    localTimestamp = registerOutput<LocalTimestampResponse?>('localTimestamp');
+    localTimestamp = registerOutput<LocalTimestampResponse?>(
+      'localTimestamp',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LocalTimestampResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');

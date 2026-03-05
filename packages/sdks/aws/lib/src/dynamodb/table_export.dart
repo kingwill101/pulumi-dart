@@ -555,6 +555,13 @@ class TableExport extends pulumi.CustomResource {
     incrementalExportSpecification =
         registerOutput<TableExportIncrementalExportSpecification?>(
           'incrementalExportSpecification',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return TableExportIncrementalExportSpecification.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     itemCount = registerOutput<int>('itemCount');
     manifestFilesS3Key = registerOutput<String>('manifestFilesS3Key');
@@ -601,6 +608,13 @@ class TableExport extends pulumi.CustomResource {
     incrementalExportSpecification =
         registerOutput<TableExportIncrementalExportSpecification?>(
           'incrementalExportSpecification',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return TableExportIncrementalExportSpecification.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     itemCount = registerOutput<int>('itemCount');
     manifestFilesS3Key = registerOutput<String>('manifestFilesS3Key');

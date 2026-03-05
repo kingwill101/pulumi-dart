@@ -20,7 +20,7 @@ import 'package:pulumi_command/pulumi_command.dart' as provider;
 dependencies:
   pulumi_command:
     git:
-      url: https://github.com/<owner>/<repo>.git
+      url: https://github.com/kingwill101/pulumi-dart.git
       path: packages/command
       ref: main
 ~~~

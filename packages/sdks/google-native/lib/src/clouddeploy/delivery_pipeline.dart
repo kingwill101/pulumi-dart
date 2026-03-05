@@ -61,7 +61,16 @@ class DeliveryPipeline extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     annotations = registerOutput<Map<String, String>>('annotations');
-    condition = registerOutput<PipelineConditionResponse>('condition');
+    condition = registerOutput<PipelineConditionResponse>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineConditionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     deliveryPipelineId = registerOutput<String>('deliveryPipelineId');
     description = registerOutput<String>('description');
@@ -71,7 +80,16 @@ class DeliveryPipeline extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');
-    serialPipeline = registerOutput<SerialPipelineResponse>('serialPipeline');
+    serialPipeline = registerOutput<SerialPipelineResponse>(
+      'serialPipeline',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SerialPipelineResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     suspended = registerOutput<bool>('suspended');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');

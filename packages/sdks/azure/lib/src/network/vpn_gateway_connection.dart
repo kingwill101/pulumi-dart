@@ -494,7 +494,16 @@ class VpnGatewayConnection extends pulumi.CustomResource {
     internetSecurityEnabled = registerOutput<bool?>('internetSecurityEnabled');
     this.name = registerOutput<String>('name');
     remoteVpnSiteId = registerOutput<String>('remoteVpnSiteId');
-    routing = registerOutput<VpnGatewayConnectionRouting>('routing');
+    routing = registerOutput<VpnGatewayConnectionRouting>(
+      'routing',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpnGatewayConnectionRouting.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     trafficSelectorPolicies = registerOutput<List<Map<String, dynamic>>?>(
       'trafficSelectorPolicies',
     );
@@ -528,7 +537,16 @@ class VpnGatewayConnection extends pulumi.CustomResource {
     internetSecurityEnabled = registerOutput<bool?>('internetSecurityEnabled');
     this.name = registerOutput<String>('name');
     remoteVpnSiteId = registerOutput<String>('remoteVpnSiteId');
-    routing = registerOutput<VpnGatewayConnectionRouting>('routing');
+    routing = registerOutput<VpnGatewayConnectionRouting>(
+      'routing',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpnGatewayConnectionRouting.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     trafficSelectorPolicies = registerOutput<List<Map<String, dynamic>>?>(
       'trafficSelectorPolicies',
     );

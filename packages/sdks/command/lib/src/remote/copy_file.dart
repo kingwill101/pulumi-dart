@@ -30,7 +30,16 @@ class CopyFile extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    connection = registerOutput<Connection>('connection');
+    connection = registerOutput<Connection>(
+      'connection',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return Connection.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     localPath = registerOutput<String>('localPath');
     remotePath = registerOutput<String>('remotePath');
     triggers = registerOutput<List<Map<String, dynamic>>?>('triggers');

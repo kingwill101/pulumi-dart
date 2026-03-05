@@ -927,7 +927,16 @@ class TargetGroup extends pulumi.CustomResource {
     arnSuffix = registerOutput<String>('arnSuffix');
     connectionTermination = registerOutput<bool>('connectionTermination');
     deregistrationDelay = registerOutput<int?>('deregistrationDelay');
-    healthCheck = registerOutput<TargetGroupHealthCheck>('healthCheck');
+    healthCheck = registerOutput<TargetGroupHealthCheck>(
+      'healthCheck',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TargetGroupHealthCheck.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ipAddressType = registerOutput<String>('ipAddressType');
     lambdaMultiValueHeadersEnabled = registerOutput<bool?>(
       'lambdaMultiValueHeadersEnabled',
@@ -951,7 +960,16 @@ class TargetGroup extends pulumi.CustomResource {
     proxyProtocolV2 = registerOutput<bool?>('proxyProtocolV2');
     region = registerOutput<String>('region');
     slowStart = registerOutput<int?>('slowStart');
-    stickiness = registerOutput<TargetGroupStickiness>('stickiness');
+    stickiness = registerOutput<TargetGroupStickiness>(
+      'stickiness',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TargetGroupStickiness.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     targetControlPort = registerOutput<int?>('targetControlPort');
@@ -960,6 +978,13 @@ class TargetGroup extends pulumi.CustomResource {
     );
     targetGroupHealth = registerOutput<TargetGroupTargetGroupHealth>(
       'targetGroupHealth',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TargetGroupTargetGroupHealth.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     targetHealthStates = registerOutput<List<Map<String, dynamic>>>(
       'targetHealthStates',
@@ -995,7 +1020,16 @@ class TargetGroup extends pulumi.CustomResource {
     arnSuffix = registerOutput<String>('arnSuffix');
     connectionTermination = registerOutput<bool>('connectionTermination');
     deregistrationDelay = registerOutput<int?>('deregistrationDelay');
-    healthCheck = registerOutput<TargetGroupHealthCheck>('healthCheck');
+    healthCheck = registerOutput<TargetGroupHealthCheck>(
+      'healthCheck',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TargetGroupHealthCheck.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ipAddressType = registerOutput<String>('ipAddressType');
     lambdaMultiValueHeadersEnabled = registerOutput<bool?>(
       'lambdaMultiValueHeadersEnabled',
@@ -1019,7 +1053,16 @@ class TargetGroup extends pulumi.CustomResource {
     proxyProtocolV2 = registerOutput<bool?>('proxyProtocolV2');
     region = registerOutput<String>('region');
     slowStart = registerOutput<int?>('slowStart');
-    stickiness = registerOutput<TargetGroupStickiness>('stickiness');
+    stickiness = registerOutput<TargetGroupStickiness>(
+      'stickiness',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TargetGroupStickiness.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     targetControlPort = registerOutput<int?>('targetControlPort');
@@ -1028,6 +1071,13 @@ class TargetGroup extends pulumi.CustomResource {
     );
     targetGroupHealth = registerOutput<TargetGroupTargetGroupHealth>(
       'targetGroupHealth',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TargetGroupTargetGroupHealth.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     targetHealthStates = registerOutput<List<Map<String, dynamic>>>(
       'targetHealthStates',

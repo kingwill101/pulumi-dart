@@ -223,6 +223,13 @@ class ReplicationProtectedItem extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     properties = registerOutput<ReplicationProtectedItemPropertiesResponse>(
       'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReplicationProtectedItemPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     type = registerOutput<String>('type');
   }

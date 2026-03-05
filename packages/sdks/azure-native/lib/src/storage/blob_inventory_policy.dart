@@ -1803,8 +1803,26 @@ class BlobInventoryPolicy extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     this.name = registerOutput<String>('name');
-    policy = registerOutput<BlobInventoryPolicySchemaResponse>('policy');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    policy = registerOutput<BlobInventoryPolicySchemaResponse>(
+      'policy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BlobInventoryPolicySchemaResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

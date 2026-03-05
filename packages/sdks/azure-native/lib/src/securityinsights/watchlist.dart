@@ -447,7 +447,16 @@ class Watchlist extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     contentType = registerOutput<String?>('contentType');
     created = registerOutput<String?>('created');
-    createdBy = registerOutput<WatchlistUserInfoResponse?>('createdBy');
+    createdBy = registerOutput<WatchlistUserInfoResponse?>(
+      'createdBy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WatchlistUserInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     defaultDuration = registerOutput<String?>('defaultDuration');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
@@ -462,11 +471,29 @@ class Watchlist extends pulumi.CustomResource {
     rawContent = registerOutput<String?>('rawContent');
     source = registerOutput<String?>('source');
     sourceType = registerOutput<String?>('sourceType');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tenantId = registerOutput<String?>('tenantId');
     type = registerOutput<String>('type');
     updated = registerOutput<String?>('updated');
-    updatedBy = registerOutput<WatchlistUserInfoResponse?>('updatedBy');
+    updatedBy = registerOutput<WatchlistUserInfoResponse?>(
+      'updatedBy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WatchlistUserInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     uploadStatus = registerOutput<String?>('uploadStatus');
     watchlistAlias = registerOutput<String?>('watchlistAlias');
     watchlistId = registerOutput<String?>('watchlistId');

@@ -368,6 +368,13 @@ class NotificationChannel extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     sensitiveLabels = registerOutput<NotificationChannelSensitiveLabels?>(
       'sensitiveLabels',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NotificationChannelSensitiveLabels.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     type = registerOutput<String>('type');
     userLabels = registerOutput<Map<String, String>?>('userLabels');
@@ -406,6 +413,13 @@ class NotificationChannel extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     sensitiveLabels = registerOutput<NotificationChannelSensitiveLabels?>(
       'sensitiveLabels',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NotificationChannelSensitiveLabels.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     type = registerOutput<String>('type');
     userLabels = registerOutput<Map<String, String>?>('userLabels');

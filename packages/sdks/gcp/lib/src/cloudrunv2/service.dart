@@ -4404,8 +4404,24 @@ class Service extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     binaryAuthorization = registerOutput<ServiceBinaryAuthorization?>(
       'binaryAuthorization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceBinaryAuthorization.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    buildConfig = registerOutput<ServiceBuildConfig?>('buildConfig');
+    buildConfig = registerOutput<ServiceBuildConfig?>(
+      'buildConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceBuildConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     client = registerOutput<String?>('client');
     clientVersion = registerOutput<String?>('clientVersion');
     conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
@@ -4434,14 +4450,39 @@ class Service extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     multiRegionSettings = registerOutput<ServiceMultiRegionSettings?>(
       'multiRegionSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceMultiRegionSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     observedGeneration = registerOutput<String>('observedGeneration');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     reconciling = registerOutput<bool>('reconciling');
-    scaling = registerOutput<ServiceScaling>('scaling');
-    template = registerOutput<ServiceTemplate>('template');
+    scaling = registerOutput<ServiceScaling>(
+      'scaling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceScaling.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    template = registerOutput<ServiceTemplate>(
+      'template',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceTemplate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     terminalConditions = registerOutput<List<Map<String, dynamic>>>(
       'terminalConditions',
     );
@@ -4481,8 +4522,24 @@ class Service extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     binaryAuthorization = registerOutput<ServiceBinaryAuthorization?>(
       'binaryAuthorization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceBinaryAuthorization.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    buildConfig = registerOutput<ServiceBuildConfig?>('buildConfig');
+    buildConfig = registerOutput<ServiceBuildConfig?>(
+      'buildConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceBuildConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     client = registerOutput<String?>('client');
     clientVersion = registerOutput<String?>('clientVersion');
     conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
@@ -4511,14 +4568,39 @@ class Service extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     multiRegionSettings = registerOutput<ServiceMultiRegionSettings?>(
       'multiRegionSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceMultiRegionSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     observedGeneration = registerOutput<String>('observedGeneration');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     reconciling = registerOutput<bool>('reconciling');
-    scaling = registerOutput<ServiceScaling>('scaling');
-    template = registerOutput<ServiceTemplate>('template');
+    scaling = registerOutput<ServiceScaling>(
+      'scaling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceScaling.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    template = registerOutput<ServiceTemplate>(
+      'template',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceTemplate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     terminalConditions = registerOutput<List<Map<String, dynamic>>>(
       'terminalConditions',
     );

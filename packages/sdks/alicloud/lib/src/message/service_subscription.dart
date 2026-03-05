@@ -261,7 +261,16 @@ class ServiceSubscription extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     createTime = registerOutput<int>('createTime');
-    dlqPolicy = registerOutput<ServiceSubscriptionDlqPolicy>('dlqPolicy');
+    dlqPolicy = registerOutput<ServiceSubscriptionDlqPolicy>(
+      'dlqPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceSubscriptionDlqPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     endpoint = registerOutput<String>('endpoint');
     filterTag = registerOutput<String?>('filterTag');
     notifyContentFormat = registerOutput<String>('notifyContentFormat');
@@ -296,7 +305,16 @@ class ServiceSubscription extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     createTime = registerOutput<int>('createTime');
-    dlqPolicy = registerOutput<ServiceSubscriptionDlqPolicy>('dlqPolicy');
+    dlqPolicy = registerOutput<ServiceSubscriptionDlqPolicy>(
+      'dlqPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceSubscriptionDlqPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     endpoint = registerOutput<String>('endpoint');
     filterTag = registerOutput<String?>('filterTag');
     notifyContentFormat = registerOutput<String>('notifyContentFormat');

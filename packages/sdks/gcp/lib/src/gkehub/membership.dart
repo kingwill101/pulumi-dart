@@ -700,9 +700,27 @@ class Membership extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    authority = registerOutput<MembershipAuthority?>('authority');
+    authority = registerOutput<MembershipAuthority?>(
+      'authority',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MembershipAuthority.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    endpoint = registerOutput<MembershipEndpoint?>('endpoint');
+    endpoint = registerOutput<MembershipEndpoint?>(
+      'endpoint',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MembershipEndpoint.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String?>('location');
     membershipId = registerOutput<String>('membershipId');
@@ -734,9 +752,27 @@ class Membership extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    authority = registerOutput<MembershipAuthority?>('authority');
+    authority = registerOutput<MembershipAuthority?>(
+      'authority',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MembershipAuthority.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    endpoint = registerOutput<MembershipEndpoint?>('endpoint');
+    endpoint = registerOutput<MembershipEndpoint?>(
+      'endpoint',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MembershipEndpoint.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String?>('location');
     membershipId = registerOutput<String>('membershipId');

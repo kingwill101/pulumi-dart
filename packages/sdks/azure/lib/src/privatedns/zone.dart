@@ -197,7 +197,16 @@ class Zone extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     numberOfRecordSets = registerOutput<int>('numberOfRecordSets');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    soaRecord = registerOutput<ZoneSoaRecord>('soaRecord');
+    soaRecord = registerOutput<ZoneSoaRecord>(
+      'soaRecord',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ZoneSoaRecord.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
   }
 
@@ -230,7 +239,16 @@ class Zone extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     numberOfRecordSets = registerOutput<int>('numberOfRecordSets');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    soaRecord = registerOutput<ZoneSoaRecord>('soaRecord');
+    soaRecord = registerOutput<ZoneSoaRecord>(
+      'soaRecord',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ZoneSoaRecord.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
   }
 }

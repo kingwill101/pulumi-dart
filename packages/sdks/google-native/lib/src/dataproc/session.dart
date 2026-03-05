@@ -78,15 +78,49 @@ class Session extends pulumi.CustomResource {
     creator = registerOutput<String>('creator');
     environmentConfig = registerOutput<EnvironmentConfigResponse>(
       'environmentConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnvironmentConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    jupyterSession = registerOutput<JupyterConfigResponse>('jupyterSession');
+    jupyterSession = registerOutput<JupyterConfigResponse>(
+      'jupyterSession',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JupyterConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');
-    runtimeConfig = registerOutput<RuntimeConfigResponse>('runtimeConfig');
-    runtimeInfo = registerOutput<RuntimeInfoResponse>('runtimeInfo');
+    runtimeConfig = registerOutput<RuntimeConfigResponse>(
+      'runtimeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RuntimeConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    runtimeInfo = registerOutput<RuntimeInfoResponse>(
+      'runtimeInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RuntimeInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sessionId = registerOutput<String>('sessionId');
     sessionTemplate = registerOutput<String>('sessionTemplate');
     state = registerOutput<String>('state');

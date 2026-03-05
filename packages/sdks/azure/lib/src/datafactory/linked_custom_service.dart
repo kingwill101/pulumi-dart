@@ -401,6 +401,13 @@ class LinkedCustomService extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     integrationRuntime = registerOutput<LinkedCustomServiceIntegrationRuntime?>(
       'integrationRuntime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinkedCustomServiceIntegrationRuntime.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');
@@ -439,6 +446,13 @@ class LinkedCustomService extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     integrationRuntime = registerOutput<LinkedCustomServiceIntegrationRuntime?>(
       'integrationRuntime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinkedCustomServiceIntegrationRuntime.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');

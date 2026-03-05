@@ -97,24 +97,123 @@ class Network extends pulumi.CustomResource {
          registerPackageRequest: package_registration.registerPackageRequest,
        ) {
     autostart = registerOutput<bool>('autostart');
-    bandwidth = registerOutput<NetworkBandwidth?>('bandwidth');
-    bridge = registerOutput<NetworkBridge?>('bridge');
-    dns = registerOutput<NetworkDns?>('dns');
-    domain = registerOutput<NetworkDomain?>('domain');
-    forward = registerOutput<NetworkForward?>('forward');
+    bandwidth = registerOutput<NetworkBandwidth?>(
+      'bandwidth',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkBandwidth.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    bridge = registerOutput<NetworkBridge?>(
+      'bridge',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkBridge.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    dns = registerOutput<NetworkDns?>(
+      'dns',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkDns.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    domain = registerOutput<NetworkDomain?>(
+      'domain',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkDomain.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    forward = registerOutput<NetworkForward?>(
+      'forward',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkForward.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ips = registerOutput<List<Map<String, dynamic>>?>('ips');
     ipv6 = registerOutput<String?>('ipv6');
-    mac = registerOutput<NetworkMac?>('mac');
-    metadata = registerOutput<NetworkMetadata?>('metadata');
-    mtu = registerOutput<NetworkMtu?>('mtu');
+    mac = registerOutput<NetworkMac?>(
+      'mac',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkMac.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    metadata = registerOutput<NetworkMetadata?>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkMetadata.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    mtu = registerOutput<NetworkMtu?>(
+      'mtu',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkMtu.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     portGroups = registerOutput<List<Map<String, dynamic>>?>('portGroups');
-    portOptions = registerOutput<NetworkPortOptions?>('portOptions');
+    portOptions = registerOutput<NetworkPortOptions?>(
+      'portOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkPortOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     routes = registerOutput<List<Map<String, dynamic>>?>('routes');
     trustGuestRxFilters = registerOutput<String?>('trustGuestRxFilters');
     uuid = registerOutput<String>('uuid');
-    virtualPort = registerOutput<NetworkVirtualPort?>('virtualPort');
-    vlan = registerOutput<NetworkVlan?>('vlan');
+    virtualPort = registerOutput<NetworkVirtualPort?>(
+      'virtualPort',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkVirtualPort.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    vlan = registerOutput<NetworkVlan?>(
+      'vlan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkVlan.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Network] resource's state with the given [name] and [id].
@@ -141,23 +240,122 @@ class Network extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     autostart = registerOutput<bool>('autostart');
-    bandwidth = registerOutput<NetworkBandwidth?>('bandwidth');
-    bridge = registerOutput<NetworkBridge?>('bridge');
-    dns = registerOutput<NetworkDns?>('dns');
-    domain = registerOutput<NetworkDomain?>('domain');
-    forward = registerOutput<NetworkForward?>('forward');
+    bandwidth = registerOutput<NetworkBandwidth?>(
+      'bandwidth',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkBandwidth.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    bridge = registerOutput<NetworkBridge?>(
+      'bridge',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkBridge.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    dns = registerOutput<NetworkDns?>(
+      'dns',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkDns.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    domain = registerOutput<NetworkDomain?>(
+      'domain',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkDomain.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    forward = registerOutput<NetworkForward?>(
+      'forward',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkForward.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ips = registerOutput<List<Map<String, dynamic>>?>('ips');
     ipv6 = registerOutput<String?>('ipv6');
-    mac = registerOutput<NetworkMac?>('mac');
-    metadata = registerOutput<NetworkMetadata?>('metadata');
-    mtu = registerOutput<NetworkMtu?>('mtu');
+    mac = registerOutput<NetworkMac?>(
+      'mac',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkMac.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    metadata = registerOutput<NetworkMetadata?>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkMetadata.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    mtu = registerOutput<NetworkMtu?>(
+      'mtu',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkMtu.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     portGroups = registerOutput<List<Map<String, dynamic>>?>('portGroups');
-    portOptions = registerOutput<NetworkPortOptions?>('portOptions');
+    portOptions = registerOutput<NetworkPortOptions?>(
+      'portOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkPortOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     routes = registerOutput<List<Map<String, dynamic>>?>('routes');
     trustGuestRxFilters = registerOutput<String?>('trustGuestRxFilters');
     uuid = registerOutput<String>('uuid');
-    virtualPort = registerOutput<NetworkVirtualPort?>('virtualPort');
-    vlan = registerOutput<NetworkVlan?>('vlan');
+    virtualPort = registerOutput<NetworkVirtualPort?>(
+      'virtualPort',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkVirtualPort.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    vlan = registerOutput<NetworkVlan?>(
+      'vlan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkVlan.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

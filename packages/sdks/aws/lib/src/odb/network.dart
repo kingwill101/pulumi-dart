@@ -159,7 +159,16 @@ class Network extends pulumi.CustomResource {
     stsPolicyDocument = registerOutput<String?>('stsPolicyDocument');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<NetworkTimeouts?>('timeouts');
+    timeouts = registerOutput<NetworkTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     zeroEtlAccess = registerOutput<String>('zeroEtlAccess');
   }
 
@@ -222,7 +231,16 @@ class Network extends pulumi.CustomResource {
     stsPolicyDocument = registerOutput<String?>('stsPolicyDocument');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<NetworkTimeouts?>('timeouts');
+    timeouts = registerOutput<NetworkTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     zeroEtlAccess = registerOutput<String>('zeroEtlAccess');
   }
 }

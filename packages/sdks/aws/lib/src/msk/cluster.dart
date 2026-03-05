@@ -1281,23 +1281,80 @@ class Cluster extends pulumi.CustomResource {
     );
     brokerNodeGroupInfo = registerOutput<ClusterBrokerNodeGroupInfo>(
       'brokerNodeGroupInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterBrokerNodeGroupInfo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clientAuthentication = registerOutput<ClusterClientAuthentication?>(
       'clientAuthentication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterClientAuthentication.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clusterName = registerOutput<String>('clusterName');
     clusterUuid = registerOutput<String>('clusterUuid');
     configurationInfo = registerOutput<ClusterConfigurationInfo?>(
       'configurationInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterConfigurationInfo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     currentVersion = registerOutput<String>('currentVersion');
-    encryptionInfo = registerOutput<ClusterEncryptionInfo?>('encryptionInfo');
+    encryptionInfo = registerOutput<ClusterEncryptionInfo?>(
+      'encryptionInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterEncryptionInfo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     enhancedMonitoring = registerOutput<String?>('enhancedMonitoring');
     kafkaVersion = registerOutput<String>('kafkaVersion');
-    loggingInfo = registerOutput<ClusterLoggingInfo?>('loggingInfo');
+    loggingInfo = registerOutput<ClusterLoggingInfo?>(
+      'loggingInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterLoggingInfo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     numberOfBrokerNodes = registerOutput<int>('numberOfBrokerNodes');
-    openMonitoring = registerOutput<ClusterOpenMonitoring?>('openMonitoring');
-    rebalancing = registerOutput<ClusterRebalancing>('rebalancing');
+    openMonitoring = registerOutput<ClusterOpenMonitoring?>(
+      'openMonitoring',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterOpenMonitoring.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    rebalancing = registerOutput<ClusterRebalancing>(
+      'rebalancing',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterRebalancing.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     storageMode = registerOutput<String>('storageMode');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -1358,23 +1415,80 @@ class Cluster extends pulumi.CustomResource {
     );
     brokerNodeGroupInfo = registerOutput<ClusterBrokerNodeGroupInfo>(
       'brokerNodeGroupInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterBrokerNodeGroupInfo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clientAuthentication = registerOutput<ClusterClientAuthentication?>(
       'clientAuthentication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterClientAuthentication.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clusterName = registerOutput<String>('clusterName');
     clusterUuid = registerOutput<String>('clusterUuid');
     configurationInfo = registerOutput<ClusterConfigurationInfo?>(
       'configurationInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterConfigurationInfo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     currentVersion = registerOutput<String>('currentVersion');
-    encryptionInfo = registerOutput<ClusterEncryptionInfo?>('encryptionInfo');
+    encryptionInfo = registerOutput<ClusterEncryptionInfo?>(
+      'encryptionInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterEncryptionInfo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     enhancedMonitoring = registerOutput<String?>('enhancedMonitoring');
     kafkaVersion = registerOutput<String>('kafkaVersion');
-    loggingInfo = registerOutput<ClusterLoggingInfo?>('loggingInfo');
+    loggingInfo = registerOutput<ClusterLoggingInfo?>(
+      'loggingInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterLoggingInfo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     numberOfBrokerNodes = registerOutput<int>('numberOfBrokerNodes');
-    openMonitoring = registerOutput<ClusterOpenMonitoring?>('openMonitoring');
-    rebalancing = registerOutput<ClusterRebalancing>('rebalancing');
+    openMonitoring = registerOutput<ClusterOpenMonitoring?>(
+      'openMonitoring',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterOpenMonitoring.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    rebalancing = registerOutput<ClusterRebalancing>(
+      'rebalancing',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterRebalancing.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     storageMode = registerOutput<String>('storageMode');
     tags = registerOutput<Map<String, String>?>('tags');

@@ -856,18 +856,75 @@ class ContainerAppsAuthConfig extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     encryptionSettings = registerOutput<EncryptionSettingsResponse?>(
       'encryptionSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EncryptionSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     globalValidation = registerOutput<GlobalValidationResponse?>(
       'globalValidation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GlobalValidationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    httpSettings = registerOutput<HttpSettingsResponse?>('httpSettings');
+    httpSettings = registerOutput<HttpSettingsResponse?>(
+      'httpSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HttpSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     identityProviders = registerOutput<IdentityProvidersResponse?>(
       'identityProviders',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IdentityProvidersResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    login = registerOutput<LoginResponse?>('login');
+    login = registerOutput<LoginResponse?>(
+      'login',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoginResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
-    platform = registerOutput<AuthPlatformResponse?>('platform');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    platform = registerOutput<AuthPlatformResponse?>(
+      'platform',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AuthPlatformResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

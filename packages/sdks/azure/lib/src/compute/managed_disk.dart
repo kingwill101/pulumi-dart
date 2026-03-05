@@ -618,6 +618,13 @@ class ManagedDisk extends pulumi.CustomResource {
     edgeZone = registerOutput<String?>('edgeZone');
     encryptionSettings = registerOutput<ManagedDiskEncryptionSettings?>(
       'encryptionSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedDiskEncryptionSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     galleryImageReferenceId = registerOutput<String?>(
       'galleryImageReferenceId',
@@ -688,6 +695,13 @@ class ManagedDisk extends pulumi.CustomResource {
     edgeZone = registerOutput<String?>('edgeZone');
     encryptionSettings = registerOutput<ManagedDiskEncryptionSettings?>(
       'encryptionSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedDiskEncryptionSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     galleryImageReferenceId = registerOutput<String?>(
       'galleryImageReferenceId',

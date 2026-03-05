@@ -582,10 +582,24 @@ class Webhook extends pulumi.CustomResource {
     projectName = registerOutput<String>('projectName');
     pullRequestBuildPolicy = registerOutput<WebhookPullRequestBuildPolicy>(
       'pullRequestBuildPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebhookPullRequestBuildPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     scopeConfiguration = registerOutput<WebhookScopeConfiguration?>(
       'scopeConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebhookScopeConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     secret = registerOutput<String>('secret');
     url = registerOutput<String>('url');
@@ -622,10 +636,24 @@ class Webhook extends pulumi.CustomResource {
     projectName = registerOutput<String>('projectName');
     pullRequestBuildPolicy = registerOutput<WebhookPullRequestBuildPolicy>(
       'pullRequestBuildPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebhookPullRequestBuildPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     scopeConfiguration = registerOutput<WebhookScopeConfiguration?>(
       'scopeConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebhookScopeConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     secret = registerOutput<String>('secret');
     url = registerOutput<String>('url');

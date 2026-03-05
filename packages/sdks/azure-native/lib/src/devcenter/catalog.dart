@@ -390,18 +390,54 @@ class Catalog extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    adoGit = registerOutput<GitCatalogResponse?>('adoGit');
+    adoGit = registerOutput<GitCatalogResponse?>(
+      'adoGit',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GitCatalogResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     connectionState = registerOutput<String>('connectionState');
-    gitHub = registerOutput<GitCatalogResponse?>('gitHub');
+    gitHub = registerOutput<GitCatalogResponse?>(
+      'gitHub',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GitCatalogResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     lastConnectionTime = registerOutput<String>('lastConnectionTime');
-    lastSyncStats = registerOutput<SyncStatsResponse>('lastSyncStats');
+    lastSyncStats = registerOutput<SyncStatsResponse>(
+      'lastSyncStats',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SyncStatsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     lastSyncTime = registerOutput<String>('lastSyncTime');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     syncState = registerOutput<String>('syncState');
     syncType = registerOutput<String?>('syncType');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

@@ -65,6 +65,13 @@ class CustomPermissions extends pulumi.CustomResource {
     awsAccountId = registerOutput<String>('awsAccountId');
     capabilities = registerOutput<CustomPermissionsCapabilities>(
       'capabilities',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomPermissionsCapabilities.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     customPermissionsName = registerOutput<String>('customPermissionsName');
     region = registerOutput<String>('region');
@@ -99,6 +106,13 @@ class CustomPermissions extends pulumi.CustomResource {
     awsAccountId = registerOutput<String>('awsAccountId');
     capabilities = registerOutput<CustomPermissionsCapabilities>(
       'capabilities',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomPermissionsCapabilities.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     customPermissionsName = registerOutput<String>('customPermissionsName');
     region = registerOutput<String>('region');

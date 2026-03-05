@@ -191,19 +191,53 @@ class VolumeGroup extends pulumi.CustomResource {
     encryption = registerOutput<String?>('encryption');
     encryptionProperties = registerOutput<EncryptionPropertiesResponse?>(
       'encryptionProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EncryptionPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     enforceDataIntegrityCheckForIscsi = registerOutput<bool?>(
       'enforceDataIntegrityCheckForIscsi',
     );
-    identity = registerOutput<IdentityResponse?>('identity');
+    identity = registerOutput<IdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
-    networkAcls = registerOutput<NetworkRuleSetResponse?>('networkAcls');
+    networkAcls = registerOutput<NetworkRuleSetResponse?>(
+      'networkAcls',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkRuleSetResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
       'privateEndpointConnections',
     );
     protocolType = registerOutput<String?>('protocolType');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

@@ -482,10 +482,24 @@ class IntegrationAccountAgreement extends pulumi.CustomResource {
     content = registerOutput<String>('content');
     guestIdentity = registerOutput<IntegrationAccountAgreementGuestIdentity>(
       'guestIdentity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IntegrationAccountAgreementGuestIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     guestPartnerName = registerOutput<String>('guestPartnerName');
     hostIdentity = registerOutput<IntegrationAccountAgreementHostIdentity>(
       'hostIdentity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IntegrationAccountAgreementHostIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     hostPartnerName = registerOutput<String>('hostPartnerName');
     integrationAccountName = registerOutput<String>('integrationAccountName');
@@ -521,10 +535,24 @@ class IntegrationAccountAgreement extends pulumi.CustomResource {
     content = registerOutput<String>('content');
     guestIdentity = registerOutput<IntegrationAccountAgreementGuestIdentity>(
       'guestIdentity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IntegrationAccountAgreementGuestIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     guestPartnerName = registerOutput<String>('guestPartnerName');
     hostIdentity = registerOutput<IntegrationAccountAgreementHostIdentity>(
       'hostIdentity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IntegrationAccountAgreementHostIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     hostPartnerName = registerOutput<String>('hostPartnerName');
     integrationAccountName = registerOutput<String>('integrationAccountName');

@@ -238,8 +238,26 @@ class FleetUpdateStrategy extends pulumi.CustomResource {
     eTag = registerOutput<String>('eTag');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    strategy = registerOutput<UpdateRunStrategyResponse>('strategy');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    strategy = registerOutput<UpdateRunStrategyResponse>(
+      'strategy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UpdateRunStrategyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

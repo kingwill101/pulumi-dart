@@ -231,6 +231,13 @@ class OrganizationBucketConfig extends pulumi.CustomResource {
     bucketId = registerOutput<String>('bucketId');
     cmekSettings = registerOutput<OrganizationBucketConfigCmekSettings?>(
       'cmekSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrganizationBucketConfigCmekSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String>('description');
     indexConfigs = registerOutput<List<Map<String, dynamic>>>('indexConfigs');
@@ -267,6 +274,13 @@ class OrganizationBucketConfig extends pulumi.CustomResource {
     bucketId = registerOutput<String>('bucketId');
     cmekSettings = registerOutput<OrganizationBucketConfigCmekSettings?>(
       'cmekSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrganizationBucketConfigCmekSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String>('description');
     indexConfigs = registerOutput<List<Map<String, dynamic>>>('indexConfigs');

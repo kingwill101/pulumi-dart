@@ -52,7 +52,16 @@ class CustomConnectorVersion extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    authConfig = registerOutput<AuthConfigResponse>('authConfig');
+    authConfig = registerOutput<AuthConfigResponse>(
+      'authConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AuthConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     customConnectorId = registerOutput<String>('customConnectorId');
     customConnectorVersionId = registerOutput<String>(
@@ -60,6 +69,13 @@ class CustomConnectorVersion extends pulumi.CustomResource {
     );
     destinationConfig = registerOutput<DestinationConfigResponse>(
       'destinationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DestinationConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     enableBackendDestinationConfig = registerOutput<bool>(
       'enableBackendDestinationConfig',

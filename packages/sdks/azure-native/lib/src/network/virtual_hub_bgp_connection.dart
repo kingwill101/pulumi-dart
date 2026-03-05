@@ -210,6 +210,13 @@ class VirtualHubBgpConnection extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     hubVirtualNetworkConnection = registerOutput<SubResourceResponse?>(
       'hubVirtualNetworkConnection',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String?>('name');
     peerAsn = registerOutput<double?>('peerAsn');

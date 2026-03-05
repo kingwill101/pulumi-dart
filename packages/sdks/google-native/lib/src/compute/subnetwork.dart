@@ -134,7 +134,16 @@ class Subnetwork extends pulumi.CustomResource {
     ipv6AccessType = registerOutput<String>('ipv6AccessType');
     ipv6CidrRange = registerOutput<String>('ipv6CidrRange');
     kind = registerOutput<String>('kind');
-    logConfig = registerOutput<SubnetworkLogConfigResponse>('logConfig');
+    logConfig = registerOutput<SubnetworkLogConfigResponse>(
+      'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubnetworkLogConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     metadata = registerOutput<String>('metadata');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');

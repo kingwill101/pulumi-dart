@@ -203,6 +203,13 @@ class Environment extends pulumi.CustomResource {
        ) {
     containerImage = registerOutput<EnvironmentContainerImage?>(
       'containerImage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnvironmentContainerImage.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
@@ -211,7 +218,16 @@ class Environment extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     postStartupScript = registerOutput<String?>('postStartupScript');
     project = registerOutput<String>('project');
-    vmImage = registerOutput<EnvironmentVmImage?>('vmImage');
+    vmImage = registerOutput<EnvironmentVmImage?>(
+      'vmImage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnvironmentVmImage.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Environment] resource's state with the given [name] and [id].
@@ -239,6 +255,13 @@ class Environment extends pulumi.CustomResource {
        ) {
     containerImage = registerOutput<EnvironmentContainerImage?>(
       'containerImage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnvironmentContainerImage.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
@@ -247,6 +270,15 @@ class Environment extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     postStartupScript = registerOutput<String?>('postStartupScript');
     project = registerOutput<String>('project');
-    vmImage = registerOutput<EnvironmentVmImage?>('vmImage');
+    vmImage = registerOutput<EnvironmentVmImage?>(
+      'vmImage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnvironmentVmImage.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

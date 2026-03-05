@@ -92,7 +92,16 @@ class CassandraCluster extends pulumi.CustomResource {
       'externalSeedNodeIpAddresses',
     );
     hoursBetweenBackups = registerOutput<int?>('hoursBetweenBackups');
-    identity = registerOutput<CassandraClusterIdentity?>('identity');
+    identity = registerOutput<CassandraClusterIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CassandraClusterIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     repairEnabled = registerOutput<bool?>('repairEnabled');
@@ -139,7 +148,16 @@ class CassandraCluster extends pulumi.CustomResource {
       'externalSeedNodeIpAddresses',
     );
     hoursBetweenBackups = registerOutput<int?>('hoursBetweenBackups');
-    identity = registerOutput<CassandraClusterIdentity?>('identity');
+    identity = registerOutput<CassandraClusterIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CassandraClusterIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     repairEnabled = registerOutput<bool?>('repairEnabled');

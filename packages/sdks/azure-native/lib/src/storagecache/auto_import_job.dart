@@ -305,6 +305,13 @@ class AutoImportJob extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     blobSyncEvents = registerOutput<AutoImportJobResponseBlobSyncEvents>(
       'blobSyncEvents',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AutoImportJobResponseBlobSyncEvents.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     conflictResolutionMode = registerOutput<String?>('conflictResolutionMode');
     enableDeletions = registerOutput<bool?>('enableDeletions');
@@ -327,7 +334,16 @@ class AutoImportJob extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     statusCode = registerOutput<String>('statusCode');
     statusMessage = registerOutput<String>('statusMessage');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     totalBlobsImported = registerOutput<double>('totalBlobsImported');
     totalBlobsWalked = registerOutput<double>('totalBlobsWalked');

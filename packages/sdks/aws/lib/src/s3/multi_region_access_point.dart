@@ -247,7 +247,16 @@ class MultiRegionAccessPoint extends pulumi.CustomResource {
     accountId = registerOutput<String>('accountId');
     alias = registerOutput<String>('alias');
     arn = registerOutput<String>('arn');
-    details = registerOutput<MultiRegionAccessPointDetails>('details');
+    details = registerOutput<MultiRegionAccessPointDetails>(
+      'details',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MultiRegionAccessPointDetails.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     domainName = registerOutput<String>('domainName');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
@@ -279,7 +288,16 @@ class MultiRegionAccessPoint extends pulumi.CustomResource {
     accountId = registerOutput<String>('accountId');
     alias = registerOutput<String>('alias');
     arn = registerOutput<String>('arn');
-    details = registerOutput<MultiRegionAccessPointDetails>('details');
+    details = registerOutput<MultiRegionAccessPointDetails>(
+      'details',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MultiRegionAccessPointDetails.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     domainName = registerOutput<String>('domainName');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');

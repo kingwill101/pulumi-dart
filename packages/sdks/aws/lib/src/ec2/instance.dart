@@ -1567,10 +1567,33 @@ class Instance extends pulumi.CustomResource {
     capacityReservationSpecification =
         registerOutput<InstanceCapacityReservationSpecification>(
           'capacityReservationSpecification',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceCapacityReservationSpecification.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    cpuOptions = registerOutput<InstanceCpuOptions>('cpuOptions');
+    cpuOptions = registerOutput<InstanceCpuOptions>(
+      'cpuOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceCpuOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     creditSpecification = registerOutput<InstanceCreditSpecification?>(
       'creditSpecification',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceCreditSpecification.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     disableApiStop = registerOutput<bool>('disableApiStop');
     disableApiTermination = registerOutput<bool>('disableApiTermination');
@@ -1579,7 +1602,16 @@ class Instance extends pulumi.CustomResource {
     );
     ebsOptimized = registerOutput<bool>('ebsOptimized');
     enablePrimaryIpv6 = registerOutput<bool>('enablePrimaryIpv6');
-    enclaveOptions = registerOutput<InstanceEnclaveOptions>('enclaveOptions');
+    enclaveOptions = registerOutput<InstanceEnclaveOptions>(
+      'enclaveOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceEnclaveOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ephemeralBlockDevices = registerOutput<List<Map<String, dynamic>>>(
       'ephemeralBlockDevices',
     );
@@ -1595,18 +1627,48 @@ class Instance extends pulumi.CustomResource {
     instanceLifecycle = registerOutput<String>('instanceLifecycle');
     instanceMarketOptions = registerOutput<InstanceInstanceMarketOptions>(
       'instanceMarketOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceInstanceMarketOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     instanceState = registerOutput<String>('instanceState');
     instanceType = registerOutput<String>('instanceType');
     ipv6AddressCount = registerOutput<int>('ipv6AddressCount');
     ipv6Addresses = registerOutput<List<String>>('ipv6Addresses');
     keyName = registerOutput<String>('keyName');
-    launchTemplate = registerOutput<InstanceLaunchTemplate?>('launchTemplate');
+    launchTemplate = registerOutput<InstanceLaunchTemplate?>(
+      'launchTemplate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceLaunchTemplate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     maintenanceOptions = registerOutput<InstanceMaintenanceOptions>(
       'maintenanceOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceMaintenanceOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     metadataOptions = registerOutput<InstanceMetadataOptions>(
       'metadataOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceMetadataOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     monitoring = registerOutput<bool>('monitoring');
     networkInterfaces = registerOutput<List<Map<String, dynamic>>>(
@@ -1619,6 +1681,13 @@ class Instance extends pulumi.CustomResource {
     placementPartitionNumber = registerOutput<int>('placementPartitionNumber');
     primaryNetworkInterface = registerOutput<InstancePrimaryNetworkInterface>(
       'primaryNetworkInterface',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstancePrimaryNetworkInterface.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     primaryNetworkInterfaceId = registerOutput<String>(
       'primaryNetworkInterfaceId',
@@ -1626,6 +1695,13 @@ class Instance extends pulumi.CustomResource {
     privateDns = registerOutput<String>('privateDns');
     privateDnsNameOptions = registerOutput<InstancePrivateDnsNameOptions>(
       'privateDnsNameOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstancePrivateDnsNameOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     privateIp = registerOutput<String>('privateIp');
     publicDns = registerOutput<String>('publicDns');
@@ -1633,6 +1709,13 @@ class Instance extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     rootBlockDevice = registerOutput<InstanceRootBlockDevice>(
       'rootBlockDevice',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceRootBlockDevice.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     secondaryNetworkInterfaces = registerOutput<List<Map<String, dynamic>>>(
       'secondaryNetworkInterfaces',
@@ -1682,10 +1765,33 @@ class Instance extends pulumi.CustomResource {
     capacityReservationSpecification =
         registerOutput<InstanceCapacityReservationSpecification>(
           'capacityReservationSpecification',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceCapacityReservationSpecification.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    cpuOptions = registerOutput<InstanceCpuOptions>('cpuOptions');
+    cpuOptions = registerOutput<InstanceCpuOptions>(
+      'cpuOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceCpuOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     creditSpecification = registerOutput<InstanceCreditSpecification?>(
       'creditSpecification',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceCreditSpecification.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     disableApiStop = registerOutput<bool>('disableApiStop');
     disableApiTermination = registerOutput<bool>('disableApiTermination');
@@ -1694,7 +1800,16 @@ class Instance extends pulumi.CustomResource {
     );
     ebsOptimized = registerOutput<bool>('ebsOptimized');
     enablePrimaryIpv6 = registerOutput<bool>('enablePrimaryIpv6');
-    enclaveOptions = registerOutput<InstanceEnclaveOptions>('enclaveOptions');
+    enclaveOptions = registerOutput<InstanceEnclaveOptions>(
+      'enclaveOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceEnclaveOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ephemeralBlockDevices = registerOutput<List<Map<String, dynamic>>>(
       'ephemeralBlockDevices',
     );
@@ -1710,18 +1825,48 @@ class Instance extends pulumi.CustomResource {
     instanceLifecycle = registerOutput<String>('instanceLifecycle');
     instanceMarketOptions = registerOutput<InstanceInstanceMarketOptions>(
       'instanceMarketOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceInstanceMarketOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     instanceState = registerOutput<String>('instanceState');
     instanceType = registerOutput<String>('instanceType');
     ipv6AddressCount = registerOutput<int>('ipv6AddressCount');
     ipv6Addresses = registerOutput<List<String>>('ipv6Addresses');
     keyName = registerOutput<String>('keyName');
-    launchTemplate = registerOutput<InstanceLaunchTemplate?>('launchTemplate');
+    launchTemplate = registerOutput<InstanceLaunchTemplate?>(
+      'launchTemplate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceLaunchTemplate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     maintenanceOptions = registerOutput<InstanceMaintenanceOptions>(
       'maintenanceOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceMaintenanceOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     metadataOptions = registerOutput<InstanceMetadataOptions>(
       'metadataOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceMetadataOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     monitoring = registerOutput<bool>('monitoring');
     networkInterfaces = registerOutput<List<Map<String, dynamic>>>(
@@ -1734,6 +1879,13 @@ class Instance extends pulumi.CustomResource {
     placementPartitionNumber = registerOutput<int>('placementPartitionNumber');
     primaryNetworkInterface = registerOutput<InstancePrimaryNetworkInterface>(
       'primaryNetworkInterface',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstancePrimaryNetworkInterface.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     primaryNetworkInterfaceId = registerOutput<String>(
       'primaryNetworkInterfaceId',
@@ -1741,6 +1893,13 @@ class Instance extends pulumi.CustomResource {
     privateDns = registerOutput<String>('privateDns');
     privateDnsNameOptions = registerOutput<InstancePrivateDnsNameOptions>(
       'privateDnsNameOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstancePrivateDnsNameOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     privateIp = registerOutput<String>('privateIp');
     publicDns = registerOutput<String>('publicDns');
@@ -1748,6 +1907,13 @@ class Instance extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     rootBlockDevice = registerOutput<InstanceRootBlockDevice>(
       'rootBlockDevice',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceRootBlockDevice.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     secondaryNetworkInterfaces = registerOutput<List<Map<String, dynamic>>>(
       'secondaryNetworkInterfaces',

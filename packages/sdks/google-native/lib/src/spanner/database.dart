@@ -65,6 +65,13 @@ class Database extends pulumi.CustomResource {
     enableDropProtection = registerOutput<bool>('enableDropProtection');
     encryptionConfig = registerOutput<EncryptionConfigResponse>(
       'encryptionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EncryptionConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     encryptionInfo = registerOutput<List<Map<String, dynamic>>>(
       'encryptionInfo',
@@ -73,7 +80,16 @@ class Database extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     reconciling = registerOutput<bool>('reconciling');
-    restoreInfo = registerOutput<RestoreInfoResponse>('restoreInfo');
+    restoreInfo = registerOutput<RestoreInfoResponse>(
+      'restoreInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RestoreInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     state = registerOutput<String>('state');
     versionRetentionPeriod = registerOutput<String>('versionRetentionPeriod');
   }

@@ -234,9 +234,23 @@ class FeatureGroup extends pulumi.CustomResource {
     featureGroupName = registerOutput<String>('featureGroupName');
     offlineStoreConfig = registerOutput<FeatureGroupOfflineStoreConfig?>(
       'offlineStoreConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FeatureGroupOfflineStoreConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     onlineStoreConfig = registerOutput<FeatureGroupOnlineStoreConfig?>(
       'onlineStoreConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FeatureGroupOnlineStoreConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     recordIdentifierFeatureName = registerOutput<String>(
       'recordIdentifierFeatureName',
@@ -247,6 +261,13 @@ class FeatureGroup extends pulumi.CustomResource {
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     throughputConfig = registerOutput<FeatureGroupThroughputConfig>(
       'throughputConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FeatureGroupThroughputConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -282,9 +303,23 @@ class FeatureGroup extends pulumi.CustomResource {
     featureGroupName = registerOutput<String>('featureGroupName');
     offlineStoreConfig = registerOutput<FeatureGroupOfflineStoreConfig?>(
       'offlineStoreConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FeatureGroupOfflineStoreConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     onlineStoreConfig = registerOutput<FeatureGroupOnlineStoreConfig?>(
       'onlineStoreConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FeatureGroupOnlineStoreConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     recordIdentifierFeatureName = registerOutput<String>(
       'recordIdentifierFeatureName',
@@ -295,6 +330,13 @@ class FeatureGroup extends pulumi.CustomResource {
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     throughputConfig = registerOutput<FeatureGroupThroughputConfig>(
       'throughputConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FeatureGroupThroughputConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

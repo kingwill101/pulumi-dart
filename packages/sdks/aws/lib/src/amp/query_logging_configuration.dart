@@ -231,7 +231,16 @@ class QueryLoggingConfiguration extends pulumi.CustomResource {
        ) {
     destinations = registerOutput<List<Map<String, dynamic>>>('destinations');
     region = registerOutput<String>('region');
-    timeouts = registerOutput<QueryLoggingConfigurationTimeouts?>('timeouts');
+    timeouts = registerOutput<QueryLoggingConfigurationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return QueryLoggingConfigurationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     workspaceId = registerOutput<String>('workspaceId');
   }
 
@@ -260,7 +269,16 @@ class QueryLoggingConfiguration extends pulumi.CustomResource {
        ) {
     destinations = registerOutput<List<Map<String, dynamic>>>('destinations');
     region = registerOutput<String>('region');
-    timeouts = registerOutput<QueryLoggingConfigurationTimeouts?>('timeouts');
+    timeouts = registerOutput<QueryLoggingConfigurationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return QueryLoggingConfigurationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     workspaceId = registerOutput<String>('workspaceId');
   }
 }

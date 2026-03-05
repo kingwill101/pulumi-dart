@@ -59,6 +59,13 @@ class ImportJob extends pulumi.CustomResource {
        ) {
     attestation = registerOutput<KeyOperationAttestationResponse>(
       'attestation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KeyOperationAttestationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     expireEventTime = registerOutput<String>('expireEventTime');
@@ -71,7 +78,16 @@ class ImportJob extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     protectionLevel = registerOutput<String>('protectionLevel');
-    publicKey = registerOutput<WrappingPublicKeyResponse>('publicKey');
+    publicKey = registerOutput<WrappingPublicKeyResponse>(
+      'publicKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WrappingPublicKeyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     state = registerOutput<String>('state');
   }
 }

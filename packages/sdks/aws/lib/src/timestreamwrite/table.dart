@@ -434,12 +434,35 @@ class Table extends pulumi.CustomResource {
     magneticStoreWriteProperties =
         registerOutput<TableMagneticStoreWriteProperties>(
           'magneticStoreWriteProperties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return TableMagneticStoreWriteProperties.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     retentionProperties = registerOutput<TableRetentionProperties>(
       'retentionProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TableRetentionProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    schema = registerOutput<TableSchema>('schema');
+    schema = registerOutput<TableSchema>(
+      'schema',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TableSchema.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tableName = registerOutput<String>('tableName');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -469,12 +492,35 @@ class Table extends pulumi.CustomResource {
     magneticStoreWriteProperties =
         registerOutput<TableMagneticStoreWriteProperties>(
           'magneticStoreWriteProperties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return TableMagneticStoreWriteProperties.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     retentionProperties = registerOutput<TableRetentionProperties>(
       'retentionProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TableRetentionProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    schema = registerOutput<TableSchema>('schema');
+    schema = registerOutput<TableSchema>(
+      'schema',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TableSchema.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tableName = registerOutput<String>('tableName');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

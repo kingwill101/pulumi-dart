@@ -162,7 +162,16 @@ class CapacityReservation extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     targetDpus = registerOutput<int>('targetDpus');
-    timeouts = registerOutput<CapacityReservationTimeouts?>('timeouts');
+    timeouts = registerOutput<CapacityReservationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CapacityReservationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [CapacityReservation] resource's state with the given [name] and [id].
@@ -196,6 +205,15 @@ class CapacityReservation extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     targetDpus = registerOutput<int>('targetDpus');
-    timeouts = registerOutput<CapacityReservationTimeouts?>('timeouts');
+    timeouts = registerOutput<CapacityReservationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CapacityReservationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

@@ -47,7 +47,8 @@ Future<GetHybridConnectionResult> getHybridConnection(
 /// Other available API versions: 2021-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native relay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_relay_get_hybrid_connection_authorization_rule_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetHybridConnectionAuthorizationRuleResult> getHybridConnectionAuthorizationRule(
+Future<GetHybridConnectionAuthorizationRuleResult>
+getHybridConnectionAuthorizationRule(
   GetHybridConnectionAuthorizationRuleArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

@@ -303,7 +303,8 @@ Future<GetIssueResult> getIssue(
 /// Uses Azure REST API version 2021-05-01-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_monitor_get_management_group_diagnostic_setting_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetManagementGroupDiagnosticSettingResult> getManagementGroupDiagnosticSetting(
+Future<GetManagementGroupDiagnosticSettingResult>
+getManagementGroupDiagnosticSetting(
   GetManagementGroupDiagnosticSettingArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

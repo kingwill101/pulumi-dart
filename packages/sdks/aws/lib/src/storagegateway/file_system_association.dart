@@ -570,6 +570,13 @@ class FileSystemAssociation extends pulumi.CustomResource {
     auditDestinationArn = registerOutput<String?>('auditDestinationArn');
     cacheAttributes = registerOutput<FileSystemAssociationCacheAttributes?>(
       'cacheAttributes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FileSystemAssociationCacheAttributes.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     gatewayArn = registerOutput<String>('gatewayArn');
     locationArn = registerOutput<String>('locationArn');
@@ -607,6 +614,13 @@ class FileSystemAssociation extends pulumi.CustomResource {
     auditDestinationArn = registerOutput<String?>('auditDestinationArn');
     cacheAttributes = registerOutput<FileSystemAssociationCacheAttributes?>(
       'cacheAttributes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FileSystemAssociationCacheAttributes.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     gatewayArn = registerOutput<String>('gatewayArn');
     locationArn = registerOutput<String>('locationArn');

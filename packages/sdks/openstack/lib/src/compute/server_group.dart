@@ -458,7 +458,16 @@ class ServerGroup extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     policies = registerOutput<String?>('policies');
     region = registerOutput<String>('region');
-    rules = registerOutput<ServerGroupRules>('rules');
+    rules = registerOutput<ServerGroupRules>(
+      'rules',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerGroupRules.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
   }
 
@@ -489,7 +498,16 @@ class ServerGroup extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     policies = registerOutput<String?>('policies');
     region = registerOutput<String>('region');
-    rules = registerOutput<ServerGroupRules>('rules');
+    rules = registerOutput<ServerGroupRules>(
+      'rules',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerGroupRules.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
   }
 }

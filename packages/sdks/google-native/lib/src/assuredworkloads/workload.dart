@@ -110,7 +110,16 @@ class Workload extends pulumi.CustomResource {
     complianceStatus =
         registerOutput<
           GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse
-        >('complianceStatus');
+        >(
+          'complianceStatus',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     compliantButDisallowedServices = registerOutput<List<String>>(
       'compliantButDisallowedServices',
     );
@@ -119,7 +128,16 @@ class Workload extends pulumi.CustomResource {
     ekmProvisioningResponse =
         registerOutput<
           GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponse
-        >('ekmProvisioningResponse');
+        >(
+          'ekmProvisioningResponse',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     enableSovereignControls = registerOutput<bool>('enableSovereignControls');
     etag = registerOutput<String>('etag');
     externalId = registerOutput<String?>('externalId');
@@ -127,7 +145,16 @@ class Workload extends pulumi.CustomResource {
     kmsSettings =
         registerOutput<
           GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse
-        >('kmsSettings');
+        >(
+          'kmsSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -136,7 +163,16 @@ class Workload extends pulumi.CustomResource {
     partnerPermissions =
         registerOutput<
           GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponse
-        >('partnerPermissions');
+        >(
+          'partnerPermissions',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     provisionedResourcesParent = registerOutput<String>(
       'provisionedResourcesParent',
     );
@@ -150,7 +186,16 @@ class Workload extends pulumi.CustomResource {
     saaEnrollmentResponse =
         registerOutput<
           GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse
-        >('saaEnrollmentResponse');
+        >(
+          'saaEnrollmentResponse',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     violationNotificationsEnabled = registerOutput<bool>(
       'violationNotificationsEnabled',
     );

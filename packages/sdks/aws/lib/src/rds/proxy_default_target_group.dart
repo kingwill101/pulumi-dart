@@ -51,6 +51,13 @@ class ProxyDefaultTargetGroup extends pulumi.CustomResource {
     connectionPoolConfig =
         registerOutput<ProxyDefaultTargetGroupConnectionPoolConfig>(
           'connectionPoolConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ProxyDefaultTargetGroupConnectionPoolConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dbProxyName = registerOutput<String>('dbProxyName');
     this.name = registerOutput<String>('name');
@@ -84,6 +91,13 @@ class ProxyDefaultTargetGroup extends pulumi.CustomResource {
     connectionPoolConfig =
         registerOutput<ProxyDefaultTargetGroupConnectionPoolConfig>(
           'connectionPoolConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ProxyDefaultTargetGroupConnectionPoolConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dbProxyName = registerOutput<String>('dbProxyName');
     this.name = registerOutput<String>('name');

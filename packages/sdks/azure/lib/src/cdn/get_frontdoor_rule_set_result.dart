@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getFrontdoorRuleSet.
 class GetFrontdoorRuleSetResult {
   /// The ID of the Front Door Profile within which this Front Door Rule Set exists.
   final String cdnFrontdoorProfileId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -45,4 +45,3 @@ class GetFrontdoorRuleSetResult {
     );
   }
 }
-

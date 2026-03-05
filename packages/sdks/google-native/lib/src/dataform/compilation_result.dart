@@ -50,6 +50,13 @@ class CompilationResult extends pulumi.CustomResource {
        ) {
     codeCompilationConfig = registerOutput<CodeCompilationConfigResponse>(
       'codeCompilationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CodeCompilationConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     compilationErrors = registerOutput<List<Map<String, dynamic>>>(
       'compilationErrors',

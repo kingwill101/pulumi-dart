@@ -111,7 +111,16 @@ class ActionGroupMonitor extends pulumi.CustomResource {
       'eventHubReceivers',
     );
     groupShortName = registerOutput<String>('groupShortName');
-    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    identity = registerOutput<ManagedServiceIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedServiceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     incidentReceivers = registerOutput<List<Map<String, dynamic>>?>(
       'incidentReceivers',
     );

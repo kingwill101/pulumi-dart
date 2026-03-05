@@ -325,7 +325,16 @@ class WorkforcePoolProviderKey extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     expireTime = registerOutput<String>('expireTime');
-    keyData = registerOutput<WorkforcePoolProviderKeyKeyData>('keyData');
+    keyData = registerOutput<WorkforcePoolProviderKeyKeyData>(
+      'keyData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkforcePoolProviderKeyKeyData.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     keyId = registerOutput<String>('keyId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -359,7 +368,16 @@ class WorkforcePoolProviderKey extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     expireTime = registerOutput<String>('expireTime');
-    keyData = registerOutput<WorkforcePoolProviderKeyKeyData>('keyData');
+    keyData = registerOutput<WorkforcePoolProviderKeyKeyData>(
+      'keyData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkforcePoolProviderKeyKeyData.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     keyId = registerOutput<String>('keyId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

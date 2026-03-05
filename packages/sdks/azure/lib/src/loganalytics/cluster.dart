@@ -215,7 +215,16 @@ class Cluster extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     clusterId = registerOutput<String>('clusterId');
-    identity = registerOutput<ClusterIdentity>('identity');
+    identity = registerOutput<ClusterIdentity>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -247,7 +256,16 @@ class Cluster extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     clusterId = registerOutput<String>('clusterId');
-    identity = registerOutput<ClusterIdentity>('identity');
+    identity = registerOutput<ClusterIdentity>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

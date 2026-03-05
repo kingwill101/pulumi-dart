@@ -942,12 +942,28 @@ class ServerTlsPolicy extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String?>('location');
-    mtlsPolicy = registerOutput<ServerTlsPolicyMtlsPolicy?>('mtlsPolicy');
+    mtlsPolicy = registerOutput<ServerTlsPolicyMtlsPolicy?>(
+      'mtlsPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerTlsPolicyMtlsPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     serverCertificate = registerOutput<ServerTlsPolicyServerCertificate?>(
       'serverCertificate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerTlsPolicyServerCertificate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     updateTime = registerOutput<String>('updateTime');
   }
@@ -981,12 +997,28 @@ class ServerTlsPolicy extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String?>('location');
-    mtlsPolicy = registerOutput<ServerTlsPolicyMtlsPolicy?>('mtlsPolicy');
+    mtlsPolicy = registerOutput<ServerTlsPolicyMtlsPolicy?>(
+      'mtlsPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerTlsPolicyMtlsPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     serverCertificate = registerOutput<ServerTlsPolicyServerCertificate?>(
       'serverCertificate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerTlsPolicyServerCertificate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     updateTime = registerOutput<String>('updateTime');
   }

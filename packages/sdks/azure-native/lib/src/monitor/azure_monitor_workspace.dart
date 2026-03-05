@@ -197,17 +197,42 @@ class AzureMonitorWorkspace extends pulumi.CustomResource {
     defaultIngestionSettings =
         registerOutput<AzureMonitorWorkspaceResponseDefaultIngestionSettings>(
           'defaultIngestionSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AzureMonitorWorkspaceResponseDefaultIngestionSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
-    metrics = registerOutput<AzureMonitorWorkspaceResponseMetrics>('metrics');
+    metrics = registerOutput<AzureMonitorWorkspaceResponseMetrics>(
+      'metrics',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AzureMonitorWorkspaceResponseMetrics.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
       'privateEndpointConnections',
     );
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

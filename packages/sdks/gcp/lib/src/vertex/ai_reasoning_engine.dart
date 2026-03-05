@@ -2051,11 +2051,27 @@ class AiReasoningEngine extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     encryptionSpec = registerOutput<AiReasoningEngineEncryptionSpec?>(
       'encryptionSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiReasoningEngineEncryptionSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     region = registerOutput<String?>('region');
-    spec = registerOutput<AiReasoningEngineSpec?>('spec');
+    spec = registerOutput<AiReasoningEngineSpec?>(
+      'spec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiReasoningEngineSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -2087,11 +2103,27 @@ class AiReasoningEngine extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     encryptionSpec = registerOutput<AiReasoningEngineEncryptionSpec?>(
       'encryptionSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiReasoningEngineEncryptionSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     region = registerOutput<String?>('region');
-    spec = registerOutput<AiReasoningEngineSpec?>('spec');
+    spec = registerOutput<AiReasoningEngineSpec?>(
+      'spec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiReasoningEngineSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     updateTime = registerOutput<String>('updateTime');
   }
 }

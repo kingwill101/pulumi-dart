@@ -928,9 +928,27 @@ class VolumeGroup extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     elasticSanId = registerOutput<String>('elasticSanId');
-    encryption = registerOutput<VolumeGroupEncryption?>('encryption');
+    encryption = registerOutput<VolumeGroupEncryption?>(
+      'encryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VolumeGroupEncryption.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     encryptionType = registerOutput<String?>('encryptionType');
-    identity = registerOutput<VolumeGroupIdentity?>('identity');
+    identity = registerOutput<VolumeGroupIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VolumeGroupIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     networkRules = registerOutput<List<Map<String, dynamic>>?>('networkRules');
     protocolType = registerOutput<String?>('protocolType');
@@ -960,9 +978,27 @@ class VolumeGroup extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     elasticSanId = registerOutput<String>('elasticSanId');
-    encryption = registerOutput<VolumeGroupEncryption?>('encryption');
+    encryption = registerOutput<VolumeGroupEncryption?>(
+      'encryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VolumeGroupEncryption.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     encryptionType = registerOutput<String?>('encryptionType');
-    identity = registerOutput<VolumeGroupIdentity?>('identity');
+    identity = registerOutput<VolumeGroupIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VolumeGroupIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     networkRules = registerOutput<List<Map<String, dynamic>>?>('networkRules');
     protocolType = registerOutput<String?>('protocolType');

@@ -1758,6 +1758,13 @@ class AiEndpointWithModelGardenDeployment extends pulumi.CustomResource {
     deployConfig =
         registerOutput<AiEndpointWithModelGardenDeploymentDeployConfig?>(
           'deployConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AiEndpointWithModelGardenDeploymentDeployConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     deployedModelDisplayName = registerOutput<String>(
       'deployedModelDisplayName',
@@ -1767,12 +1774,26 @@ class AiEndpointWithModelGardenDeployment extends pulumi.CustomResource {
     endpointConfig =
         registerOutput<AiEndpointWithModelGardenDeploymentEndpointConfig?>(
           'endpointConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AiEndpointWithModelGardenDeploymentEndpointConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     huggingFaceModelId = registerOutput<String?>('huggingFaceModelId');
     location = registerOutput<String>('location');
     modelConfig =
         registerOutput<AiEndpointWithModelGardenDeploymentModelConfig?>(
           'modelConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AiEndpointWithModelGardenDeploymentModelConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     project = registerOutput<String>('project');
     publisherModelName = registerOutput<String?>('publisherModelName');
@@ -1804,6 +1825,13 @@ class AiEndpointWithModelGardenDeployment extends pulumi.CustomResource {
     deployConfig =
         registerOutput<AiEndpointWithModelGardenDeploymentDeployConfig?>(
           'deployConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AiEndpointWithModelGardenDeploymentDeployConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     deployedModelDisplayName = registerOutput<String>(
       'deployedModelDisplayName',
@@ -1813,12 +1841,26 @@ class AiEndpointWithModelGardenDeployment extends pulumi.CustomResource {
     endpointConfig =
         registerOutput<AiEndpointWithModelGardenDeploymentEndpointConfig?>(
           'endpointConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AiEndpointWithModelGardenDeploymentEndpointConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     huggingFaceModelId = registerOutput<String?>('huggingFaceModelId');
     location = registerOutput<String>('location');
     modelConfig =
         registerOutput<AiEndpointWithModelGardenDeploymentModelConfig?>(
           'modelConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AiEndpointWithModelGardenDeploymentModelConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     project = registerOutput<String>('project');
     publisherModelName = registerOutput<String?>('publisherModelName');

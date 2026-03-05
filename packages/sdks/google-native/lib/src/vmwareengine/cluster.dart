@@ -65,6 +65,13 @@ class Cluster extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     stretchedClusterConfig = registerOutput<StretchedClusterConfigResponse>(
       'stretchedClusterConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StretchedClusterConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');

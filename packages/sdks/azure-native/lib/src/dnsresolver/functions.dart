@@ -113,7 +113,8 @@ Future<GetDnsResolverPolicyResult> getDnsResolverPolicy(
 /// Other available API versions: 2025-05-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dnsresolver [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dnsresolver_get_dns_resolver_policy_virtual_network_link_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDnsResolverPolicyVirtualNetworkLinkResult> getDnsResolverPolicyVirtualNetworkLink(
+Future<GetDnsResolverPolicyVirtualNetworkLinkResult>
+getDnsResolverPolicyVirtualNetworkLink(
   GetDnsResolverPolicyVirtualNetworkLinkArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -213,7 +214,8 @@ Future<GetOutboundEndpointResult> getOutboundEndpoint(
 /// Other available API versions: 2020-04-01-preview, 2022-07-01, 2025-05-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dnsresolver [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dnsresolver_get_private_resolver_virtual_network_link_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetPrivateResolverVirtualNetworkLinkResult> getPrivateResolverVirtualNetworkLink(
+Future<GetPrivateResolverVirtualNetworkLinkResult>
+getPrivateResolverVirtualNetworkLink(
   GetPrivateResolverVirtualNetworkLinkArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -233,7 +235,8 @@ Future<GetPrivateResolverVirtualNetworkLinkResult> getPrivateResolverVirtualNetw
 /// Other available API versions: 2020-04-01-preview, 2022-07-01, 2025-05-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dnsresolver [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dnsresolver_list_dns_forwarding_ruleset_by_virtual_network_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListDnsForwardingRulesetByVirtualNetworkResult> listDnsForwardingRulesetByVirtualNetwork(
+Future<ListDnsForwardingRulesetByVirtualNetworkResult>
+listDnsForwardingRulesetByVirtualNetwork(
   ListDnsForwardingRulesetByVirtualNetworkArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -273,7 +276,8 @@ Future<ListDnsResolverByVirtualNetworkResult> listDnsResolverByVirtualNetwork(
 /// Other available API versions: 2025-05-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dnsresolver [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dnsresolver_list_dns_resolver_policy_by_virtual_network_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListDnsResolverPolicyByVirtualNetworkResult> listDnsResolverPolicyByVirtualNetwork(
+Future<ListDnsResolverPolicyByVirtualNetworkResult>
+listDnsResolverPolicyByVirtualNetwork(
   ListDnsResolverPolicyByVirtualNetworkArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

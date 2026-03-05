@@ -97,20 +97,50 @@ class TransferConfig extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     emailPreferences = registerOutput<EmailPreferencesResponse>(
       'emailPreferences',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EmailPreferencesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     encryptionConfiguration = registerOutput<EncryptionConfigurationResponse>(
       'encryptionConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EncryptionConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     nextRunTime = registerOutput<String>('nextRunTime');
     notificationPubsubTopic = registerOutput<String>('notificationPubsubTopic');
-    ownerInfo = registerOutput<UserInfoResponse>('ownerInfo');
+    ownerInfo = registerOutput<UserInfoResponse>(
+      'ownerInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     params = registerOutput<Map<String, String>>('params');
     project = registerOutput<String>('project');
     schedule = registerOutput<String>('schedule');
     scheduleOptions = registerOutput<ScheduleOptionsResponse>(
       'scheduleOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduleOptionsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     serviceAccountName = registerOutput<String?>('serviceAccountName');
     state = registerOutput<String>('state');

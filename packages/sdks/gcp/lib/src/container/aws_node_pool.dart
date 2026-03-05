@@ -2695,19 +2695,62 @@ class AwsNodePool extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
-    autoscaling = registerOutput<AwsNodePoolAutoscaling>('autoscaling');
+    autoscaling = registerOutput<AwsNodePoolAutoscaling>(
+      'autoscaling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsNodePoolAutoscaling.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     cluster = registerOutput<String>('cluster');
-    config = registerOutput<AwsNodePoolConfig>('config');
+    config = registerOutput<AwsNodePoolConfig>(
+      'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsNodePoolConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     effectiveAnnotations = registerOutput<Map<String, String>>(
       'effectiveAnnotations',
     );
     etag = registerOutput<String>('etag');
-    kubeletConfig = registerOutput<AwsNodePoolKubeletConfig>('kubeletConfig');
+    kubeletConfig = registerOutput<AwsNodePoolKubeletConfig>(
+      'kubeletConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsNodePoolKubeletConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
-    management = registerOutput<AwsNodePoolManagement>('management');
+    management = registerOutput<AwsNodePoolManagement>(
+      'management',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsNodePoolManagement.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     maxPodsConstraint = registerOutput<AwsNodePoolMaxPodsConstraint>(
       'maxPodsConstraint',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsNodePoolMaxPodsConstraint.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -2717,6 +2760,13 @@ class AwsNodePool extends pulumi.CustomResource {
     uid = registerOutput<String>('uid');
     updateSettings = registerOutput<AwsNodePoolUpdateSettings>(
       'updateSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsNodePoolUpdateSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     updateTime = registerOutput<String>('updateTime');
     version = registerOutput<String>('version');
@@ -2746,19 +2796,62 @@ class AwsNodePool extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
-    autoscaling = registerOutput<AwsNodePoolAutoscaling>('autoscaling');
+    autoscaling = registerOutput<AwsNodePoolAutoscaling>(
+      'autoscaling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsNodePoolAutoscaling.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     cluster = registerOutput<String>('cluster');
-    config = registerOutput<AwsNodePoolConfig>('config');
+    config = registerOutput<AwsNodePoolConfig>(
+      'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsNodePoolConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     effectiveAnnotations = registerOutput<Map<String, String>>(
       'effectiveAnnotations',
     );
     etag = registerOutput<String>('etag');
-    kubeletConfig = registerOutput<AwsNodePoolKubeletConfig>('kubeletConfig');
+    kubeletConfig = registerOutput<AwsNodePoolKubeletConfig>(
+      'kubeletConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsNodePoolKubeletConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
-    management = registerOutput<AwsNodePoolManagement>('management');
+    management = registerOutput<AwsNodePoolManagement>(
+      'management',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsNodePoolManagement.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     maxPodsConstraint = registerOutput<AwsNodePoolMaxPodsConstraint>(
       'maxPodsConstraint',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsNodePoolMaxPodsConstraint.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -2768,6 +2861,13 @@ class AwsNodePool extends pulumi.CustomResource {
     uid = registerOutput<String>('uid');
     updateSettings = registerOutput<AwsNodePoolUpdateSettings>(
       'updateSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsNodePoolUpdateSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     updateTime = registerOutput<String>('updateTime');
     version = registerOutput<String>('version');

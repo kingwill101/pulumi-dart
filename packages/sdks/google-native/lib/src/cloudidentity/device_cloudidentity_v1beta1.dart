@@ -119,6 +119,13 @@ class DeviceCloudidentityV1beta1 extends pulumi.CustomResource {
        ) {
     androidSpecificAttributes = registerOutput<AndroidAttributesResponse>(
       'androidSpecificAttributes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AndroidAttributesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     assetTag = registerOutput<String>('assetTag');
     basebandVersion = registerOutput<String>('basebandVersion');
@@ -136,6 +143,13 @@ class DeviceCloudidentityV1beta1 extends pulumi.CustomResource {
     endpointVerificationSpecificAttributes =
         registerOutput<EndpointVerificationSpecificAttributesResponse>(
           'endpointVerificationSpecificAttributes',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EndpointVerificationSpecificAttributesResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     hostname = registerOutput<String>('hostname');
     imei = registerOutput<String>('imei');

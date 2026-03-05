@@ -47,8 +47,24 @@ class WorkflowInvocation extends pulumi.CustomResource {
     compilationResult = registerOutput<String>('compilationResult');
     invocationConfig = registerOutput<InvocationConfigResponse>(
       'invocationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InvocationConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    invocationTiming = registerOutput<IntervalResponse>('invocationTiming');
+    invocationTiming = registerOutput<IntervalResponse>(
+      'invocationTiming',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IntervalResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

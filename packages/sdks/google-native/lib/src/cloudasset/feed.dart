@@ -42,10 +42,26 @@ class Feed extends pulumi.CustomResource {
       ) {
     assetNames = registerOutput<List<String>>('assetNames');
     assetTypes = registerOutput<List<String>>('assetTypes');
-    condition = registerOutput<ExprResponse>('condition');
+    condition = registerOutput<ExprResponse>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExprResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     contentType = registerOutput<String>('contentType');
     feedOutputConfig = registerOutput<FeedOutputConfigResponse>(
       'feedOutputConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FeedOutputConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     relationshipTypes = registerOutput<List<String>>('relationshipTypes');

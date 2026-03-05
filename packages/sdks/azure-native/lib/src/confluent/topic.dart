@@ -268,18 +268,61 @@ class Topic extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    configs = registerOutput<TopicsRelatedLinkResponse?>('configs');
+    configs = registerOutput<TopicsRelatedLinkResponse?>(
+      'configs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TopicsRelatedLinkResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     inputConfigs = registerOutput<List<Map<String, dynamic>>?>('inputConfigs');
     kind = registerOutput<String?>('kind');
-    metadata = registerOutput<TopicMetadataEntityResponse?>('metadata');
+    metadata = registerOutput<TopicMetadataEntityResponse?>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TopicMetadataEntityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
-    partitions = registerOutput<TopicsRelatedLinkResponse?>('partitions');
+    partitions = registerOutput<TopicsRelatedLinkResponse?>(
+      'partitions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TopicsRelatedLinkResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     partitionsCount = registerOutput<String?>('partitionsCount');
     partitionsReassignments = registerOutput<TopicsRelatedLinkResponse?>(
       'partitionsReassignments',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TopicsRelatedLinkResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     replicationFactor = registerOutput<String?>('replicationFactor');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     topicId = registerOutput<String?>('topicId');
     type = registerOutput<String>('type');
   }

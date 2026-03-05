@@ -373,15 +373,40 @@ class Alert extends pulumi.CustomResource {
       ) {
     alertRuleProperties = registerOutput<AlertRulePropertiesResponse?>(
       'alertRuleProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlertRulePropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     alertRuleResourceId = registerOutput<String>('alertRuleResourceId');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    errors = registerOutput<ErrorDetailResponse>('errors');
+    errors = registerOutput<ErrorDetailResponse>(
+      'errors',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ErrorDetailResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     providerNames = registerOutput<List<String>?>('providerNames');
     providerType = registerOutput<String?>('providerType');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     templateName = registerOutput<String?>('templateName');
     type = registerOutput<String>('type');
   }

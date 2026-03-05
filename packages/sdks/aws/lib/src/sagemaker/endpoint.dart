@@ -165,6 +165,13 @@ class Endpoint extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     deploymentConfig = registerOutput<EndpointDeploymentConfig?>(
       'deploymentConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointDeploymentConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     endpointConfigName = registerOutput<String>('endpointConfigName');
     this.name = registerOutput<String>('name');
@@ -199,6 +206,13 @@ class Endpoint extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     deploymentConfig = registerOutput<EndpointDeploymentConfig?>(
       'deploymentConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointDeploymentConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     endpointConfigName = registerOutput<String>('endpointConfigName');
     this.name = registerOutput<String>('name');

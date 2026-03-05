@@ -443,6 +443,13 @@ class ConnectorMapping extends pulumi.CustomResource {
     lastModified = registerOutput<String>('lastModified');
     mappingProperties = registerOutput<ConnectorMappingPropertiesResponse>(
       'mappingProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectorMappingPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     nextRunTime = registerOutput<String>('nextRunTime');

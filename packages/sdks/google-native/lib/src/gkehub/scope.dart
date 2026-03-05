@@ -53,7 +53,16 @@ class Scope extends pulumi.CustomResource {
     namespaceLabels = registerOutput<Map<String, String>>('namespaceLabels');
     project = registerOutput<String>('project');
     scopeId = registerOutput<String>('scopeId');
-    state = registerOutput<ScopeLifecycleStateResponse>('state');
+    state = registerOutput<ScopeLifecycleStateResponse>(
+      'state',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScopeLifecycleStateResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }

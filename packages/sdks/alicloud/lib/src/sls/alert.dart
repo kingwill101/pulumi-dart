@@ -1009,12 +1009,30 @@ class Alert extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     alertName = registerOutput<String>('alertName');
-    configuration = registerOutput<AlertConfiguration>('configuration');
+    configuration = registerOutput<AlertConfiguration>(
+      'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlertConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<int>('createTime');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     projectName = registerOutput<String>('projectName');
-    schedule = registerOutput<AlertSchedule>('schedule');
+    schedule = registerOutput<AlertSchedule>(
+      'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlertSchedule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String>('status');
   }
 
@@ -1038,12 +1056,30 @@ class Alert extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     alertName = registerOutput<String>('alertName');
-    configuration = registerOutput<AlertConfiguration>('configuration');
+    configuration = registerOutput<AlertConfiguration>(
+      'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlertConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<int>('createTime');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     projectName = registerOutput<String>('projectName');
-    schedule = registerOutput<AlertSchedule>('schedule');
+    schedule = registerOutput<AlertSchedule>(
+      'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlertSchedule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String>('status');
   }
 }

@@ -202,6 +202,13 @@ class ManagementAssociation extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     properties = registerOutput<ManagementAssociationPropertiesResponse>(
       'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagementAssociationPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     type = registerOutput<String>('type');
   }

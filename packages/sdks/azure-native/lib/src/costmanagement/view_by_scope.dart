@@ -479,7 +479,16 @@ class ViewByScope extends pulumi.CustomResource {
     chart = registerOutput<String?>('chart');
     createdOn = registerOutput<String>('createdOn');
     currency = registerOutput<String>('currency');
-    dataSet = registerOutput<ReportConfigDatasetResponse?>('dataSet');
+    dataSet = registerOutput<ReportConfigDatasetResponse?>(
+      'dataSet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReportConfigDatasetResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dateRange = registerOutput<String?>('dateRange');
     displayName = registerOutput<String?>('displayName');
     eTag = registerOutput<String?>('eTag');
@@ -492,7 +501,16 @@ class ViewByScope extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     pivots = registerOutput<List<Map<String, dynamic>>?>('pivots');
     scope = registerOutput<String?>('scope');
-    timePeriod = registerOutput<ReportConfigTimePeriodResponse?>('timePeriod');
+    timePeriod = registerOutput<ReportConfigTimePeriodResponse?>(
+      'timePeriod',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReportConfigTimePeriodResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     timeframe = registerOutput<String>('timeframe');
     type = registerOutput<String>('type');
   }

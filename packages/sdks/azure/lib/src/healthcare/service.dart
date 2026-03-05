@@ -397,18 +397,41 @@ class Service extends pulumi.CustomResource {
     authenticationConfiguration =
         registerOutput<ServiceAuthenticationConfiguration>(
           'authenticationConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ServiceAuthenticationConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     configurationExportStorageAccountName = registerOutput<String?>(
       'configurationExportStorageAccountName',
     );
     corsConfiguration = registerOutput<ServiceCorsConfiguration>(
       'corsConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceCorsConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     cosmosdbKeyVaultKeyVersionlessId = registerOutput<String?>(
       'cosmosdbKeyVaultKeyVersionlessId',
     );
     cosmosdbThroughput = registerOutput<int?>('cosmosdbThroughput');
-    identity = registerOutput<ServiceIdentity?>('identity');
+    identity = registerOutput<ServiceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kind = registerOutput<String?>('kind');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -448,18 +471,41 @@ class Service extends pulumi.CustomResource {
     authenticationConfiguration =
         registerOutput<ServiceAuthenticationConfiguration>(
           'authenticationConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ServiceAuthenticationConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     configurationExportStorageAccountName = registerOutput<String?>(
       'configurationExportStorageAccountName',
     );
     corsConfiguration = registerOutput<ServiceCorsConfiguration>(
       'corsConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceCorsConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     cosmosdbKeyVaultKeyVersionlessId = registerOutput<String?>(
       'cosmosdbKeyVaultKeyVersionlessId',
     );
     cosmosdbThroughput = registerOutput<int?>('cosmosdbThroughput');
-    identity = registerOutput<ServiceIdentity?>('identity');
+    identity = registerOutput<ServiceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kind = registerOutput<String?>('kind');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

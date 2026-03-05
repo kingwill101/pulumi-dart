@@ -371,9 +371,23 @@ class MigrateAgent extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     properties = registerOutput<MigrateAgentModelPropertiesResponse>(
       'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MigrateAgentModelPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     systemData = registerOutput<MigrateAgentModelResponseSystemData>(
       'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MigrateAgentModelResponseSystemData.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

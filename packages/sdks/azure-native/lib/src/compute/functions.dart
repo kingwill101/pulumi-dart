@@ -237,7 +237,8 @@ Future<GetDiskAccessResult> getDiskAccess(
 /// Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02, 2025-01-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_disk_access_aprivate_endpoint_connection_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDiskAccessAPrivateEndpointConnectionResult> getDiskAccessAPrivateEndpointConnection(
+Future<GetDiskAccessAPrivateEndpointConnectionResult>
+getDiskAccessAPrivateEndpointConnection(
   GetDiskAccessAPrivateEndpointConnectionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -377,7 +378,8 @@ Future<GetGalleryImageVersionResult> getGalleryImageVersion(
 /// Other available API versions: 2025-03-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_gallery_in_vmaccess_control_profile_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetGalleryInVMAccessControlProfileResult> getGalleryInVMAccessControlProfile(
+Future<GetGalleryInVMAccessControlProfileResult>
+getGalleryInVMAccessControlProfile(
   GetGalleryInVMAccessControlProfileArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -397,7 +399,8 @@ Future<GetGalleryInVMAccessControlProfileResult> getGalleryInVMAccessControlProf
 /// Other available API versions: 2025-03-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_gallery_in_vmaccess_control_profile_version_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetGalleryInVMAccessControlProfileVersionResult> getGalleryInVMAccessControlProfileVersion(
+Future<GetGalleryInVMAccessControlProfileVersionResult>
+getGalleryInVMAccessControlProfileVersion(
   GetGalleryInVMAccessControlProfileVersionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -473,7 +476,8 @@ Future<GetImageResult> getImage(
 /// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_log_analytic_export_request_rate_by_interval_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetLogAnalyticExportRequestRateByIntervalResult> getLogAnalyticExportRequestRateByInterval(
+Future<GetLogAnalyticExportRequestRateByIntervalResult>
+getLogAnalyticExportRequestRateByInterval(
   GetLogAnalyticExportRequestRateByIntervalArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -493,7 +497,8 @@ Future<GetLogAnalyticExportRequestRateByIntervalResult> getLogAnalyticExportRequ
 /// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_log_analytic_export_throttled_requests_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetLogAnalyticExportThrottledRequestsResult> getLogAnalyticExportThrottledRequests(
+Future<GetLogAnalyticExportThrottledRequestsResult>
+getLogAnalyticExportThrottledRequests(
   GetLogAnalyticExportThrottledRequestsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -653,7 +658,8 @@ Future<GetVirtualMachineExtensionResult> getVirtualMachineExtension(
 /// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_virtual_machine_run_command_by_virtual_machine_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetVirtualMachineRunCommandByVirtualMachineResult> getVirtualMachineRunCommandByVirtualMachine(
+Future<GetVirtualMachineRunCommandByVirtualMachineResult>
+getVirtualMachineRunCommandByVirtualMachine(
   GetVirtualMachineRunCommandByVirtualMachineArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -693,7 +699,8 @@ Future<GetVirtualMachineScaleSetResult> getVirtualMachineScaleSet(
 /// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_virtual_machine_scale_set_extension_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetVirtualMachineScaleSetExtensionResult> getVirtualMachineScaleSetExtension(
+Future<GetVirtualMachineScaleSetExtensionResult>
+getVirtualMachineScaleSetExtension(
   GetVirtualMachineScaleSetExtensionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -733,7 +740,8 @@ Future<GetVirtualMachineScaleSetVMResult> getVirtualMachineScaleSetVM(
 /// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_virtual_machine_scale_set_vmextension_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetVirtualMachineScaleSetVMExtensionResult> getVirtualMachineScaleSetVMExtension(
+Future<GetVirtualMachineScaleSetVMExtensionResult>
+getVirtualMachineScaleSetVMExtension(
   GetVirtualMachineScaleSetVMExtensionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -753,7 +761,8 @@ Future<GetVirtualMachineScaleSetVMExtensionResult> getVirtualMachineScaleSetVMEx
 /// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_virtual_machine_scale_set_vmrun_command_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetVirtualMachineScaleSetVMRunCommandResult> getVirtualMachineScaleSetVMRunCommand(
+Future<GetVirtualMachineScaleSetVMRunCommandResult>
+getVirtualMachineScaleSetVMRunCommand(
   GetVirtualMachineScaleSetVMRunCommandArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

@@ -294,6 +294,13 @@ class ContainerServiceDeploymentVersion extends pulumi.CustomResource {
     publicEndpoint =
         registerOutput<ContainerServiceDeploymentVersionPublicEndpoint?>(
           'publicEndpoint',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ContainerServiceDeploymentVersionPublicEndpoint.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     serviceName = registerOutput<String>('serviceName');
@@ -329,6 +336,13 @@ class ContainerServiceDeploymentVersion extends pulumi.CustomResource {
     publicEndpoint =
         registerOutput<ContainerServiceDeploymentVersionPublicEndpoint?>(
           'publicEndpoint',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ContainerServiceDeploymentVersionPublicEndpoint.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     serviceName = registerOutput<String>('serviceName');

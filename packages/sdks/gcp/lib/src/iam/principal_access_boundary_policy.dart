@@ -438,7 +438,16 @@ class PrincipalAccessBoundaryPolicy extends pulumi.CustomResource {
        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
     createTime = registerOutput<String>('createTime');
-    details = registerOutput<PrincipalAccessBoundaryPolicyDetails>('details');
+    details = registerOutput<PrincipalAccessBoundaryPolicyDetails>(
+      'details',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PrincipalAccessBoundaryPolicyDetails.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     displayName = registerOutput<String?>('displayName');
     effectiveAnnotations = registerOutput<Map<String, String>>(
       'effectiveAnnotations',
@@ -479,7 +488,16 @@ class PrincipalAccessBoundaryPolicy extends pulumi.CustomResource {
        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
     createTime = registerOutput<String>('createTime');
-    details = registerOutput<PrincipalAccessBoundaryPolicyDetails>('details');
+    details = registerOutput<PrincipalAccessBoundaryPolicyDetails>(
+      'details',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PrincipalAccessBoundaryPolicyDetails.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     displayName = registerOutput<String?>('displayName');
     effectiveAnnotations = registerOutput<Map<String, String>>(
       'effectiveAnnotations',

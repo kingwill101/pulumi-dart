@@ -71,7 +71,8 @@ class KubernetesConfig {
     return (raw).toBool();
   }
 
-  bool get enableConfigMapMutableIsSecret => _isSecret('enableConfigMapMutable');
+  bool get enableConfigMapMutableIsSecret =>
+      _isSecret('enableConfigMapMutable');
 
   /// Obsolete. This option has no effect.
   bool? get enableReplaceCRD {
@@ -165,7 +166,8 @@ class KubernetesConfig {
     return (raw).toBool();
   }
 
-  bool get suppressDeprecationWarningsIsSecret => _isSecret('suppressDeprecationWarnings');
+  bool get suppressDeprecationWarningsIsSecret =>
+      _isSecret('suppressDeprecationWarnings');
 
   /// If present and set to true, suppress unsupported Helm hook warnings from the CLI.
   ///
@@ -177,9 +179,8 @@ class KubernetesConfig {
     return (raw).toBool();
   }
 
-  bool get suppressHelmHookWarningsIsSecret => _isSecret('suppressHelmHookWarnings');
-
+  bool get suppressHelmHookWarningsIsSecret =>
+      _isSecret('suppressHelmHookWarnings');
 }
 
 final config = KubernetesConfig();
-

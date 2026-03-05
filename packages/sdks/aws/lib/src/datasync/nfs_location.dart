@@ -184,8 +184,26 @@ class NfsLocation extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    mountOptions = registerOutput<NfsLocationMountOptions?>('mountOptions');
-    onPremConfig = registerOutput<NfsLocationOnPremConfig>('onPremConfig');
+    mountOptions = registerOutput<NfsLocationMountOptions?>(
+      'mountOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NfsLocationMountOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    onPremConfig = registerOutput<NfsLocationOnPremConfig>(
+      'onPremConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NfsLocationOnPremConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     serverHostname = registerOutput<String>('serverHostname');
     subdirectory = registerOutput<String>('subdirectory');
@@ -218,8 +236,26 @@ class NfsLocation extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    mountOptions = registerOutput<NfsLocationMountOptions?>('mountOptions');
-    onPremConfig = registerOutput<NfsLocationOnPremConfig>('onPremConfig');
+    mountOptions = registerOutput<NfsLocationMountOptions?>(
+      'mountOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NfsLocationMountOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    onPremConfig = registerOutput<NfsLocationOnPremConfig>(
+      'onPremConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NfsLocationOnPremConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     serverHostname = registerOutput<String>('serverHostname');
     subdirectory = registerOutput<String>('subdirectory');

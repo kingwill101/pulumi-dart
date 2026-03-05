@@ -594,6 +594,13 @@ class CustomHttpsConfiguration extends pulumi.CustomResource {
     customHttpsConfiguration =
         registerOutput<CustomHttpsConfigurationCustomHttpsConfiguration?>(
           'customHttpsConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CustomHttpsConfigurationCustomHttpsConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     customHttpsProvisioningEnabled = registerOutput<bool>(
       'customHttpsProvisioningEnabled',
@@ -627,6 +634,13 @@ class CustomHttpsConfiguration extends pulumi.CustomResource {
     customHttpsConfiguration =
         registerOutput<CustomHttpsConfigurationCustomHttpsConfiguration?>(
           'customHttpsConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CustomHttpsConfigurationCustomHttpsConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     customHttpsProvisioningEnabled = registerOutput<bool>(
       'customHttpsProvisioningEnabled',

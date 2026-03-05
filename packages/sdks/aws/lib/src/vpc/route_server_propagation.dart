@@ -140,7 +140,16 @@ class RouteServerPropagation extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     routeServerId = registerOutput<String>('routeServerId');
     routeTableId = registerOutput<String>('routeTableId');
-    timeouts = registerOutput<RouteServerPropagationTimeouts?>('timeouts');
+    timeouts = registerOutput<RouteServerPropagationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RouteServerPropagationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [RouteServerPropagation] resource's state with the given [name] and [id].
@@ -169,6 +178,15 @@ class RouteServerPropagation extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     routeServerId = registerOutput<String>('routeServerId');
     routeTableId = registerOutput<String>('routeTableId');
-    timeouts = registerOutput<RouteServerPropagationTimeouts?>('timeouts');
+    timeouts = registerOutput<RouteServerPropagationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RouteServerPropagationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

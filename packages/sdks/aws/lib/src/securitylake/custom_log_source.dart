@@ -239,6 +239,13 @@ class CustomLogSource extends pulumi.CustomResource {
     attributes = registerOutput<List<Map<String, dynamic>>>('attributes');
     configuration = registerOutput<CustomLogSourceConfiguration>(
       'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomLogSourceConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     eventClasses = registerOutput<List<String>?>('eventClasses');
     providerDetails = registerOutput<List<Map<String, dynamic>>>(
@@ -275,6 +282,13 @@ class CustomLogSource extends pulumi.CustomResource {
     attributes = registerOutput<List<Map<String, dynamic>>>('attributes');
     configuration = registerOutput<CustomLogSourceConfiguration>(
       'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomLogSourceConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     eventClasses = registerOutput<List<String>?>('eventClasses');
     providerDetails = registerOutput<List<Map<String, dynamic>>>(

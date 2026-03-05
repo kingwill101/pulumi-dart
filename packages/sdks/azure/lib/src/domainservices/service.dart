@@ -998,14 +998,48 @@ class Service extends pulumi.CustomResource {
     filteredSyncEnabled = registerOutput<bool?>('filteredSyncEnabled');
     initialReplicaSet = registerOutput<ServiceInitialReplicaSet>(
       'initialReplicaSet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceInitialReplicaSet.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    notifications = registerOutput<ServiceNotifications>('notifications');
+    notifications = registerOutput<ServiceNotifications>(
+      'notifications',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceNotifications.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     resourceId = registerOutput<String>('resourceId');
-    secureLdap = registerOutput<ServiceSecureLdap>('secureLdap');
-    security = registerOutput<ServiceSecurity>('security');
+    secureLdap = registerOutput<ServiceSecureLdap>(
+      'secureLdap',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceSecureLdap.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    security = registerOutput<ServiceSecurity>(
+      'security',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceSecurity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sku = registerOutput<String>('sku');
     syncOwner = registerOutput<String>('syncOwner');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -1044,14 +1078,48 @@ class Service extends pulumi.CustomResource {
     filteredSyncEnabled = registerOutput<bool?>('filteredSyncEnabled');
     initialReplicaSet = registerOutput<ServiceInitialReplicaSet>(
       'initialReplicaSet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceInitialReplicaSet.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    notifications = registerOutput<ServiceNotifications>('notifications');
+    notifications = registerOutput<ServiceNotifications>(
+      'notifications',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceNotifications.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     resourceId = registerOutput<String>('resourceId');
-    secureLdap = registerOutput<ServiceSecureLdap>('secureLdap');
-    security = registerOutput<ServiceSecurity>('security');
+    secureLdap = registerOutput<ServiceSecureLdap>(
+      'secureLdap',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceSecureLdap.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    security = registerOutput<ServiceSecurity>(
+      'security',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceSecurity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sku = registerOutput<String>('sku');
     syncOwner = registerOutput<String>('syncOwner');
     tags = registerOutput<Map<String, String>?>('tags');

@@ -279,10 +279,28 @@ class InboundSamlConfig extends pulumi.CustomResource {
        ) {
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool?>('enabled');
-    idpConfig = registerOutput<InboundSamlConfigIdpConfig>('idpConfig');
+    idpConfig = registerOutput<InboundSamlConfigIdpConfig>(
+      'idpConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InboundSamlConfigIdpConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    spConfig = registerOutput<InboundSamlConfigSpConfig>('spConfig');
+    spConfig = registerOutput<InboundSamlConfigSpConfig>(
+      'spConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InboundSamlConfigSpConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [InboundSamlConfig] resource's state with the given [name] and [id].
@@ -310,9 +328,27 @@ class InboundSamlConfig extends pulumi.CustomResource {
        ) {
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool?>('enabled');
-    idpConfig = registerOutput<InboundSamlConfigIdpConfig>('idpConfig');
+    idpConfig = registerOutput<InboundSamlConfigIdpConfig>(
+      'idpConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InboundSamlConfigIdpConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    spConfig = registerOutput<InboundSamlConfigSpConfig>('spConfig');
+    spConfig = registerOutput<InboundSamlConfigSpConfig>(
+      'spConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InboundSamlConfigSpConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

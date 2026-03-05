@@ -75,7 +75,16 @@ class CryptoKey extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     nextRotationTime = registerOutput<String>('nextRotationTime');
-    primary = registerOutput<CryptoKeyVersionResponse>('primary');
+    primary = registerOutput<CryptoKeyVersionResponse>(
+      'primary',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CryptoKeyVersionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     purpose = registerOutput<String>('purpose');
     rotationPeriod = registerOutput<String>('rotationPeriod');
@@ -84,6 +93,13 @@ class CryptoKey extends pulumi.CustomResource {
     );
     versionTemplate = registerOutput<CryptoKeyVersionTemplateResponse>(
       'versionTemplate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CryptoKeyVersionTemplateResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

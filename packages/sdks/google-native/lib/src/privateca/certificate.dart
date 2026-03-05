@@ -82,10 +82,26 @@ class Certificate extends pulumi.CustomResource {
     caPoolId = registerOutput<String>('caPoolId');
     certificateDescription = registerOutput<CertificateDescriptionResponse>(
       'certificateDescription',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CertificateDescriptionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     certificateId = registerOutput<String?>('certificateId');
     certificateTemplate = registerOutput<String>('certificateTemplate');
-    config = registerOutput<CertificateConfigResponse>('config');
+    config = registerOutput<CertificateConfigResponse>(
+      'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CertificateConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     issuerCertificateAuthority = registerOutput<String>(
       'issuerCertificateAuthority',
@@ -104,6 +120,13 @@ class Certificate extends pulumi.CustomResource {
     requestId = registerOutput<String?>('requestId');
     revocationDetails = registerOutput<RevocationDetailsResponse>(
       'revocationDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RevocationDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     subjectMode = registerOutput<String>('subjectMode');
     updateTime = registerOutput<String>('updateTime');

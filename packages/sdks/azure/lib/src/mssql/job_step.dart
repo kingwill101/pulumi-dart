@@ -567,7 +567,16 @@ class JobStep extends pulumi.CustomResource {
       'maximumRetryIntervalSeconds',
     );
     this.name = registerOutput<String>('name');
-    outputTarget = registerOutput<JobStepOutputTarget?>('outputTarget');
+    outputTarget = registerOutput<JobStepOutputTarget?>(
+      'outputTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobStepOutputTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     retryAttempts = registerOutput<int?>('retryAttempts');
     retryIntervalBackoffMultiplier = registerOutput<double?>(
       'retryIntervalBackoffMultiplier',
@@ -610,7 +619,16 @@ class JobStep extends pulumi.CustomResource {
       'maximumRetryIntervalSeconds',
     );
     this.name = registerOutput<String>('name');
-    outputTarget = registerOutput<JobStepOutputTarget?>('outputTarget');
+    outputTarget = registerOutput<JobStepOutputTarget?>(
+      'outputTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobStepOutputTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     retryAttempts = registerOutput<int?>('retryAttempts');
     retryIntervalBackoffMultiplier = registerOutput<double?>(
       'retryIntervalBackoffMultiplier',

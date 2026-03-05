@@ -190,7 +190,16 @@ class EventIntegration extends pulumi.CustomResource {
        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
-    eventFilter = registerOutput<EventIntegrationEventFilter>('eventFilter');
+    eventFilter = registerOutput<EventIntegrationEventFilter>(
+      'eventFilter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventIntegrationEventFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     eventbridgeBus = registerOutput<String>('eventbridgeBus');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -223,7 +232,16 @@ class EventIntegration extends pulumi.CustomResource {
        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
-    eventFilter = registerOutput<EventIntegrationEventFilter>('eventFilter');
+    eventFilter = registerOutput<EventIntegrationEventFilter>(
+      'eventFilter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventIntegrationEventFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     eventbridgeBus = registerOutput<String>('eventbridgeBus');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

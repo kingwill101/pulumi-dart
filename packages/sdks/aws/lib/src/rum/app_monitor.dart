@@ -159,10 +159,26 @@ class AppMonitor extends pulumi.CustomResource {
        ) {
     appMonitorConfiguration = registerOutput<AppMonitorAppMonitorConfiguration>(
       'appMonitorConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppMonitorAppMonitorConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     appMonitorId = registerOutput<String>('appMonitorId');
     arn = registerOutput<String>('arn');
-    customEvents = registerOutput<AppMonitorCustomEvents>('customEvents');
+    customEvents = registerOutput<AppMonitorCustomEvents>(
+      'customEvents',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppMonitorCustomEvents.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     cwLogEnabled = registerOutput<bool?>('cwLogEnabled');
     cwLogGroup = registerOutput<String>('cwLogGroup');
     domain = registerOutput<String?>('domain');
@@ -198,10 +214,26 @@ class AppMonitor extends pulumi.CustomResource {
        ) {
     appMonitorConfiguration = registerOutput<AppMonitorAppMonitorConfiguration>(
       'appMonitorConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppMonitorAppMonitorConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     appMonitorId = registerOutput<String>('appMonitorId');
     arn = registerOutput<String>('arn');
-    customEvents = registerOutput<AppMonitorCustomEvents>('customEvents');
+    customEvents = registerOutput<AppMonitorCustomEvents>(
+      'customEvents',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppMonitorCustomEvents.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     cwLogEnabled = registerOutput<bool?>('cwLogEnabled');
     cwLogGroup = registerOutput<String>('cwLogGroup');
     domain = registerOutput<String?>('domain');

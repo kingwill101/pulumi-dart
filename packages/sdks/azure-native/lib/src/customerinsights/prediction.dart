@@ -342,7 +342,16 @@ class Prediction extends pulumi.CustomResource {
     involvedRelationships = registerOutput<List<String>?>(
       'involvedRelationships',
     );
-    mappings = registerOutput<PredictionResponseMappings>('mappings');
+    mappings = registerOutput<PredictionResponseMappings>(
+      'mappings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PredictionResponseMappings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     negativeOutcomeExpression = registerOutput<String>(
       'negativeOutcomeExpression',
@@ -358,6 +367,13 @@ class Prediction extends pulumi.CustomResource {
     systemGeneratedEntities =
         registerOutput<PredictionResponseSystemGeneratedEntities>(
           'systemGeneratedEntities',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PredictionResponseSystemGeneratedEntities.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tenantId = registerOutput<String>('tenantId');
     type = registerOutput<String>('type');

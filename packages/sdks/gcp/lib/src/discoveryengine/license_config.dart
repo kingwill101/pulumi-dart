@@ -269,14 +269,32 @@ class LicenseConfig extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     autoRenew = registerOutput<bool?>('autoRenew');
-    endDate = registerOutput<LicenseConfigEndDate?>('endDate');
+    endDate = registerOutput<LicenseConfigEndDate?>(
+      'endDate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LicenseConfigEndDate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     freeTrial = registerOutput<bool?>('freeTrial');
     licenseConfigId = registerOutput<String>('licenseConfigId');
     licenseCount = registerOutput<int>('licenseCount');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    startDate = registerOutput<LicenseConfigStartDate>('startDate');
+    startDate = registerOutput<LicenseConfigStartDate>(
+      'startDate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LicenseConfigStartDate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     subscriptionTerm = registerOutput<String>('subscriptionTerm');
     subscriptionTier = registerOutput<String>('subscriptionTier');
   }
@@ -305,14 +323,32 @@ class LicenseConfig extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     autoRenew = registerOutput<bool?>('autoRenew');
-    endDate = registerOutput<LicenseConfigEndDate?>('endDate');
+    endDate = registerOutput<LicenseConfigEndDate?>(
+      'endDate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LicenseConfigEndDate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     freeTrial = registerOutput<bool?>('freeTrial');
     licenseConfigId = registerOutput<String>('licenseConfigId');
     licenseCount = registerOutput<int>('licenseCount');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    startDate = registerOutput<LicenseConfigStartDate>('startDate');
+    startDate = registerOutput<LicenseConfigStartDate>(
+      'startDate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LicenseConfigStartDate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     subscriptionTerm = registerOutput<String>('subscriptionTerm');
     subscriptionTier = registerOutput<String>('subscriptionTier');
   }

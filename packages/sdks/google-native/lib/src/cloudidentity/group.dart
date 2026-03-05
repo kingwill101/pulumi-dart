@@ -58,8 +58,24 @@ class Group extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     dynamicGroupMetadata = registerOutput<DynamicGroupMetadataResponse>(
       'dynamicGroupMetadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DynamicGroupMetadataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    groupKey = registerOutput<EntityKeyResponse>('groupKey');
+    groupKey = registerOutput<EntityKeyResponse>(
+      'groupKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EntityKeyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     initialGroupConfig = registerOutput<String?>('initialGroupConfig');
     labels = registerOutput<Map<String, String>>('labels');
     this.name = registerOutput<String>('name');

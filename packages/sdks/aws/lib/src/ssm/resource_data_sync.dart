@@ -451,6 +451,13 @@ class ResourceDataSync extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     s3Destination = registerOutput<ResourceDataSyncS3Destination>(
       's3Destination',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceDataSyncS3Destination.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -481,6 +488,13 @@ class ResourceDataSync extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     s3Destination = registerOutput<ResourceDataSyncS3Destination>(
       's3Destination',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceDataSyncS3Destination.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

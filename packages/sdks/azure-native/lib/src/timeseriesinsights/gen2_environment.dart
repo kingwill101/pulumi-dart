@@ -198,11 +198,36 @@ class Gen2Environment extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    sku = registerOutput<SkuResponse>('sku');
-    status = registerOutput<EnvironmentStatusResponse>('status');
+    sku = registerOutput<SkuResponse>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    status = registerOutput<EnvironmentStatusResponse>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnvironmentStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     storageConfiguration =
         registerOutput<Gen2StorageConfigurationOutputResponse>(
           'storageConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return Gen2StorageConfigurationOutputResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tags = registerOutput<Map<String, String>?>('tags');
     timeSeriesIdProperties = registerOutput<List<Map<String, dynamic>>>(
@@ -212,6 +237,13 @@ class Gen2Environment extends pulumi.CustomResource {
     warmStoreConfiguration =
         registerOutput<WarmStoreConfigurationPropertiesResponse?>(
           'warmStoreConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WarmStoreConfigurationPropertiesResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

@@ -155,32 +155,90 @@ class Entry extends pulumi.CustomResource {
     bigqueryDateShardedSpec =
         registerOutput<GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse>(
           'bigqueryDateShardedSpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     bigqueryTableSpec =
         registerOutput<GoogleCloudDatacatalogV1BigQueryTableSpecResponse>(
           'bigqueryTableSpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDatacatalogV1BigQueryTableSpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     businessContext =
         registerOutput<GoogleCloudDatacatalogV1BusinessContextResponse>(
           'businessContext',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDatacatalogV1BusinessContextResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     cloudBigtableSystemSpec =
         registerOutput<GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponse>(
           'cloudBigtableSystemSpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dataSource = registerOutput<GoogleCloudDatacatalogV1DataSourceResponse>(
       'dataSource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudDatacatalogV1DataSourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dataSourceConnectionSpec =
         registerOutput<
           GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse
-        >('dataSourceConnectionSpec');
+        >(
+          'dataSourceConnectionSpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     databaseTableSpec =
         registerOutput<GoogleCloudDatacatalogV1DatabaseTableSpecResponse>(
           'databaseTableSpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDatacatalogV1DatabaseTableSpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     datasetSpec = registerOutput<GoogleCloudDatacatalogV1DatasetSpecResponse>(
       'datasetSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudDatacatalogV1DatasetSpecResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
@@ -188,11 +246,25 @@ class Entry extends pulumi.CustomResource {
     entryId = registerOutput<String>('entryId');
     filesetSpec = registerOutput<GoogleCloudDatacatalogV1FilesetSpecResponse>(
       'filesetSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudDatacatalogV1FilesetSpecResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     fullyQualifiedName = registerOutput<String>('fullyQualifiedName');
     gcsFilesetSpec =
         registerOutput<GoogleCloudDatacatalogV1GcsFilesetSpecResponse>(
           'gcsFilesetSpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDatacatalogV1GcsFilesetSpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     integratedSystem = registerOutput<String>('integratedSystem');
     labels = registerOutput<Map<String, String>>('labels');
@@ -201,34 +273,99 @@ class Entry extends pulumi.CustomResource {
     lookerSystemSpec =
         registerOutput<GoogleCloudDatacatalogV1LookerSystemSpecResponse>(
           'lookerSystemSpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDatacatalogV1LookerSystemSpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     modelSpec = registerOutput<GoogleCloudDatacatalogV1ModelSpecResponse>(
       'modelSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudDatacatalogV1ModelSpecResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     personalDetails =
         registerOutput<GoogleCloudDatacatalogV1PersonalDetailsResponse>(
           'personalDetails',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDatacatalogV1PersonalDetailsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     project = registerOutput<String>('project');
     routineSpec = registerOutput<GoogleCloudDatacatalogV1RoutineSpecResponse>(
       'routineSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudDatacatalogV1RoutineSpecResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    schema = registerOutput<GoogleCloudDatacatalogV1SchemaResponse>('schema');
+    schema = registerOutput<GoogleCloudDatacatalogV1SchemaResponse>(
+      'schema',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudDatacatalogV1SchemaResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     serviceSpec = registerOutput<GoogleCloudDatacatalogV1ServiceSpecResponse>(
       'serviceSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudDatacatalogV1ServiceSpecResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sourceSystemTimestamps =
         registerOutput<GoogleCloudDatacatalogV1SystemTimestampsResponse>(
           'sourceSystemTimestamps',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDatacatalogV1SystemTimestampsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     sqlDatabaseSystemSpec =
         registerOutput<GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponse>(
           'sqlDatabaseSystemSpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     type = registerOutput<String>('type');
     usageSignal = registerOutput<GoogleCloudDatacatalogV1UsageSignalResponse>(
       'usageSignal',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudDatacatalogV1UsageSignalResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     userSpecifiedSystem = registerOutput<String>('userSpecifiedSystem');
     userSpecifiedType = registerOutput<String>('userSpecifiedType');

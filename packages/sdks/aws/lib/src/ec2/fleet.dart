@@ -255,17 +255,42 @@ class Fleet extends pulumi.CustomResource {
     launchTemplateConfigs = registerOutput<List<Map<String, dynamic>>>(
       'launchTemplateConfigs',
     );
-    onDemandOptions = registerOutput<FleetOnDemandOptions?>('onDemandOptions');
+    onDemandOptions = registerOutput<FleetOnDemandOptions?>(
+      'onDemandOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FleetOnDemandOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     replaceUnhealthyInstances = registerOutput<bool?>(
       'replaceUnhealthyInstances',
     );
-    spotOptions = registerOutput<FleetSpotOptions?>('spotOptions');
+    spotOptions = registerOutput<FleetSpotOptions?>(
+      'spotOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FleetSpotOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     targetCapacitySpecification =
         registerOutput<FleetTargetCapacitySpecification>(
           'targetCapacitySpecification',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FleetTargetCapacitySpecification.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     terminateInstances = registerOutput<bool?>('terminateInstances');
     terminateInstancesWithExpiration = registerOutput<bool?>(
@@ -311,17 +336,42 @@ class Fleet extends pulumi.CustomResource {
     launchTemplateConfigs = registerOutput<List<Map<String, dynamic>>>(
       'launchTemplateConfigs',
     );
-    onDemandOptions = registerOutput<FleetOnDemandOptions?>('onDemandOptions');
+    onDemandOptions = registerOutput<FleetOnDemandOptions?>(
+      'onDemandOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FleetOnDemandOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     replaceUnhealthyInstances = registerOutput<bool?>(
       'replaceUnhealthyInstances',
     );
-    spotOptions = registerOutput<FleetSpotOptions?>('spotOptions');
+    spotOptions = registerOutput<FleetSpotOptions?>(
+      'spotOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FleetSpotOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     targetCapacitySpecification =
         registerOutput<FleetTargetCapacitySpecification>(
           'targetCapacitySpecification',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FleetTargetCapacitySpecification.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     terminateInstances = registerOutput<bool?>('terminateInstances');
     terminateInstancesWithExpiration = registerOutput<bool?>(

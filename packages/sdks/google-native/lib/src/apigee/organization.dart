@@ -110,6 +110,13 @@ class Organization extends pulumi.CustomResource {
        ) {
     addonsConfig = registerOutput<GoogleCloudApigeeV1AddonsConfigResponse>(
       'addonsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudApigeeV1AddonsConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     analyticsRegion = registerOutput<String>('analyticsRegion');
     apiConsumerDataEncryptionKeyName = registerOutput<String>(
@@ -138,6 +145,13 @@ class Organization extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     properties = registerOutput<GoogleCloudApigeeV1PropertiesResponse>(
       'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudApigeeV1PropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     runtimeDatabaseEncryptionKeyName = registerOutput<String>(
       'runtimeDatabaseEncryptionKeyName',

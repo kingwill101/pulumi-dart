@@ -1023,7 +1023,16 @@ class IntegrationAccountSchema extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     changedTime = registerOutput<String>('changedTime');
     content = registerOutput<String?>('content');
-    contentLink = registerOutput<ContentLinkResponse>('contentLink');
+    contentLink = registerOutput<ContentLinkResponse>(
+      'contentLink',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContentLinkResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     contentType = registerOutput<String?>('contentType');
     createdTime = registerOutput<String>('createdTime');
     documentName = registerOutput<String?>('documentName');

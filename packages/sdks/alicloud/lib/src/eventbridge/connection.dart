@@ -590,12 +590,26 @@ class Connection extends pulumi.CustomResource {
        ) {
     authParameters = registerOutput<ConnectionAuthParameters?>(
       'authParameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionAuthParameters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     connectionName = registerOutput<String>('connectionName');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     networkParameters = registerOutput<ConnectionNetworkParameters>(
       'networkParameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionNetworkParameters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -624,12 +638,26 @@ class Connection extends pulumi.CustomResource {
        ) {
     authParameters = registerOutput<ConnectionAuthParameters?>(
       'authParameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionAuthParameters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     connectionName = registerOutput<String>('connectionName');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     networkParameters = registerOutput<ConnectionNetworkParameters>(
       'networkParameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionNetworkParameters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

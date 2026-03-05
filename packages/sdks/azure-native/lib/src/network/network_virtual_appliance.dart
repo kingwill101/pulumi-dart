@@ -302,10 +302,28 @@ class NetworkVirtualAppliance extends pulumi.CustomResource {
     cloudInitConfigurationBlobs = registerOutput<List<String>?>(
       'cloudInitConfigurationBlobs',
     );
-    delegation = registerOutput<DelegationPropertiesResponse?>('delegation');
+    delegation = registerOutput<DelegationPropertiesResponse?>(
+      'delegation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DelegationPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     deploymentType = registerOutput<String>('deploymentType');
     etag = registerOutput<String>('etag');
-    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    identity = registerOutput<ManagedServiceIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedServiceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     inboundSecurityRules = registerOutput<List<Map<String, dynamic>>>(
       'inboundSecurityRules',
     );
@@ -317,11 +335,36 @@ class NetworkVirtualAppliance extends pulumi.CustomResource {
     networkProfile =
         registerOutput<
           NetworkVirtualAppliancePropertiesFormatResponseNetworkProfile?
-        >('networkProfile');
-    nvaSku = registerOutput<VirtualApplianceSkuPropertiesResponse?>('nvaSku');
+        >(
+          'networkProfile',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NetworkVirtualAppliancePropertiesFormatResponseNetworkProfile.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
+    nvaSku = registerOutput<VirtualApplianceSkuPropertiesResponse?>(
+      'nvaSku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualApplianceSkuPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     partnerManagedResource =
         registerOutput<PartnerManagedResourcePropertiesResponse?>(
           'partnerManagedResource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PartnerManagedResourcePropertiesResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     provisioningState = registerOutput<String>('provisioningState');
     sshPublicKey = registerOutput<String?>('sshPublicKey');
@@ -337,6 +380,15 @@ class NetworkVirtualAppliance extends pulumi.CustomResource {
     virtualApplianceSites = registerOutput<List<Map<String, dynamic>>>(
       'virtualApplianceSites',
     );
-    virtualHub = registerOutput<SubResourceResponse?>('virtualHub');
+    virtualHub = registerOutput<SubResourceResponse?>(
+      'virtualHub',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

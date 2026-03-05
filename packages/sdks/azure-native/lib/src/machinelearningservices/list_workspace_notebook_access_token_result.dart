@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by listWorkspaceNotebookAccessToken.
 class ListWorkspaceNotebookAccessTokenResult {
   final String accessToken;
@@ -45,7 +44,9 @@ class ListWorkspaceNotebookAccessTokenResult {
     };
   }
 
-  factory ListWorkspaceNotebookAccessTokenResult.fromMap(Map<String, dynamic> map) {
+  factory ListWorkspaceNotebookAccessTokenResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListWorkspaceNotebookAccessTokenResult(
       accessToken: map['accessToken'] as String,
       expiresIn: map['expiresIn'] as int,
@@ -58,4 +59,3 @@ class ListWorkspaceNotebookAccessTokenResult {
     );
   }
 }
-

@@ -239,7 +239,16 @@ class Workspace extends pulumi.CustomResource {
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    settings = registerOutput<WorkspaceSettings>('settings');
+    settings = registerOutput<WorkspaceSettings>(
+      'settings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkspaceSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Workspace] resource's state with the given [name] and [id].
@@ -270,6 +279,15 @@ class Workspace extends pulumi.CustomResource {
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    settings = registerOutput<WorkspaceSettings>('settings');
+    settings = registerOutput<WorkspaceSettings>(
+      'settings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkspaceSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

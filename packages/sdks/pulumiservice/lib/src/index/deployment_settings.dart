@@ -61,18 +61,55 @@ class DeploymentSettings extends pulumi.CustomResource {
     agentPoolId = registerOutput<String?>('agentPoolId');
     cacheOptions = registerOutput<DeploymentSettingsCacheOptions?>(
       'cacheOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentSettingsCacheOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     executorContext = registerOutput<DeploymentSettingsExecutorContext?>(
       'executorContext',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentSettingsExecutorContext.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    github = registerOutput<DeploymentSettingsGithub?>('github');
+    github = registerOutput<DeploymentSettingsGithub?>(
+      'github',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentSettingsGithub.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     operationContext = registerOutput<DeploymentSettingsOperationContext?>(
       'operationContext',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentSettingsOperationContext.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     organization = registerOutput<String>('organization');
     project = registerOutput<String>('project');
     sourceContext = registerOutput<DeploymentSettingsSourceContext?>(
       'sourceContext',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentSettingsSourceContext.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     stack = registerOutput<String>('stack');
   }

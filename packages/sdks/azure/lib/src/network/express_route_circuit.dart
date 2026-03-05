@@ -295,7 +295,16 @@ class ExpressRouteCircuit extends pulumi.CustomResource {
     serviceProviderProvisioningState = registerOutput<String>(
       'serviceProviderProvisioningState',
     );
-    sku = registerOutput<ExpressRouteCircuitSku>('sku');
+    sku = registerOutput<ExpressRouteCircuitSku>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExpressRouteCircuitSku.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
   }
 
@@ -337,7 +346,16 @@ class ExpressRouteCircuit extends pulumi.CustomResource {
     serviceProviderProvisioningState = registerOutput<String>(
       'serviceProviderProvisioningState',
     );
-    sku = registerOutput<ExpressRouteCircuitSku>('sku');
+    sku = registerOutput<ExpressRouteCircuitSku>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExpressRouteCircuitSku.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
   }
 }

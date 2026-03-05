@@ -1357,7 +1357,16 @@ class Service extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    alarms = registerOutput<ServiceAlarms?>('alarms');
+    alarms = registerOutput<ServiceAlarms?>(
+      'alarms',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceAlarms.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     arn = registerOutput<String>('arn');
     availabilityZoneRebalancing = registerOutput<String>(
       'availabilityZoneRebalancing',
@@ -1368,12 +1377,33 @@ class Service extends pulumi.CustomResource {
     cluster = registerOutput<String>('cluster');
     deploymentCircuitBreaker = registerOutput<ServiceDeploymentCircuitBreaker?>(
       'deploymentCircuitBreaker',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceDeploymentCircuitBreaker.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     deploymentConfiguration = registerOutput<ServiceDeploymentConfiguration>(
       'deploymentConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceDeploymentConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     deploymentController = registerOutput<ServiceDeploymentController?>(
       'deploymentController',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceDeploymentController.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     deploymentMaximumPercent = registerOutput<int?>('deploymentMaximumPercent');
     deploymentMinimumHealthyPercent = registerOutput<int?>(
@@ -1395,6 +1425,13 @@ class Service extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkConfiguration = registerOutput<ServiceNetworkConfiguration?>(
       'networkConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceNetworkConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     orderedPlacementStrategies = registerOutput<List<Map<String, dynamic>>?>(
       'orderedPlacementStrategies',
@@ -1409,9 +1446,23 @@ class Service extends pulumi.CustomResource {
     serviceConnectConfiguration =
         registerOutput<ServiceServiceConnectConfiguration?>(
           'serviceConnectConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ServiceServiceConnectConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     serviceRegistries = registerOutput<ServiceServiceRegistries?>(
       'serviceRegistries',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceServiceRegistries.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sigintRollback = registerOutput<bool?>('sigintRollback');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -1420,6 +1471,13 @@ class Service extends pulumi.CustomResource {
     triggers = registerOutput<Map<String, String>>('triggers');
     volumeConfiguration = registerOutput<ServiceVolumeConfiguration?>(
       'volumeConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceVolumeConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     vpcLatticeConfigurations = registerOutput<List<Map<String, dynamic>>?>(
       'vpcLatticeConfigurations',
@@ -1450,7 +1508,16 @@ class Service extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    alarms = registerOutput<ServiceAlarms?>('alarms');
+    alarms = registerOutput<ServiceAlarms?>(
+      'alarms',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceAlarms.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     arn = registerOutput<String>('arn');
     availabilityZoneRebalancing = registerOutput<String>(
       'availabilityZoneRebalancing',
@@ -1461,12 +1528,33 @@ class Service extends pulumi.CustomResource {
     cluster = registerOutput<String>('cluster');
     deploymentCircuitBreaker = registerOutput<ServiceDeploymentCircuitBreaker?>(
       'deploymentCircuitBreaker',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceDeploymentCircuitBreaker.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     deploymentConfiguration = registerOutput<ServiceDeploymentConfiguration>(
       'deploymentConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceDeploymentConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     deploymentController = registerOutput<ServiceDeploymentController?>(
       'deploymentController',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceDeploymentController.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     deploymentMaximumPercent = registerOutput<int?>('deploymentMaximumPercent');
     deploymentMinimumHealthyPercent = registerOutput<int?>(
@@ -1488,6 +1576,13 @@ class Service extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkConfiguration = registerOutput<ServiceNetworkConfiguration?>(
       'networkConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceNetworkConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     orderedPlacementStrategies = registerOutput<List<Map<String, dynamic>>?>(
       'orderedPlacementStrategies',
@@ -1502,9 +1597,23 @@ class Service extends pulumi.CustomResource {
     serviceConnectConfiguration =
         registerOutput<ServiceServiceConnectConfiguration?>(
           'serviceConnectConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ServiceServiceConnectConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     serviceRegistries = registerOutput<ServiceServiceRegistries?>(
       'serviceRegistries',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceServiceRegistries.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sigintRollback = registerOutput<bool?>('sigintRollback');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -1513,6 +1622,13 @@ class Service extends pulumi.CustomResource {
     triggers = registerOutput<Map<String, String>>('triggers');
     volumeConfiguration = registerOutput<ServiceVolumeConfiguration?>(
       'volumeConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceVolumeConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     vpcLatticeConfigurations = registerOutput<List<Map<String, dynamic>>?>(
       'vpcLatticeConfigurations',

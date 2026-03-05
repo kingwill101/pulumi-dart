@@ -383,6 +383,13 @@ class CloudVmCluster extends pulumi.CustomResource {
     cpuCoreCount = registerOutput<int>('cpuCoreCount');
     dataCollectionOptions = registerOutput<CloudVmClusterDataCollectionOptions>(
       'dataCollectionOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CloudVmClusterDataCollectionOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dataStoragePercentage = registerOutput<int>('dataStoragePercentage');
     dataStorageSizeInTbs = registerOutput<double>('dataStorageSizeInTbs');
@@ -446,6 +453,13 @@ class CloudVmCluster extends pulumi.CustomResource {
     cpuCoreCount = registerOutput<int>('cpuCoreCount');
     dataCollectionOptions = registerOutput<CloudVmClusterDataCollectionOptions>(
       'dataCollectionOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CloudVmClusterDataCollectionOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dataStoragePercentage = registerOutput<int>('dataStoragePercentage');
     dataStorageSizeInTbs = registerOutput<double>('dataStorageSizeInTbs');

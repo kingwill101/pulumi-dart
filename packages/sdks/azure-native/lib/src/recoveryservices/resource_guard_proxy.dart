@@ -189,7 +189,16 @@ class ResourceGuardProxy extends pulumi.CustomResource {
     eTag = registerOutput<String?>('eTag');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<ResourceGuardProxyBaseResponse>('properties');
+    properties = registerOutput<ResourceGuardProxyBaseResponse>(
+      'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceGuardProxyBaseResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

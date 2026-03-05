@@ -102,10 +102,24 @@ class InstanceMemcacheV1beta2 extends pulumi.CustomResource {
     maintenancePolicy =
         registerOutput<GoogleCloudMemcacheV1beta2MaintenancePolicyResponse>(
           'maintenancePolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudMemcacheV1beta2MaintenancePolicyResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     maintenanceSchedule =
         registerOutput<MaintenanceScheduleResponseMemcacheV1beta2>(
           'maintenanceSchedule',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MaintenanceScheduleResponseMemcacheV1beta2.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     memcacheFullVersion = registerOutput<String>('memcacheFullVersion');
     memcacheNodes = registerOutput<List<Map<String, dynamic>>>('memcacheNodes');
@@ -113,10 +127,24 @@ class InstanceMemcacheV1beta2 extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     nodeConfig = registerOutput<NodeConfigResponseMemcacheV1beta2>(
       'nodeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodeConfigResponseMemcacheV1beta2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     nodeCount = registerOutput<int>('nodeCount');
     parameters = registerOutput<MemcacheParametersResponseMemcacheV1beta2>(
       'parameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MemcacheParametersResponseMemcacheV1beta2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     reservedIpRangeId = registerOutput<List<String>>('reservedIpRangeId');

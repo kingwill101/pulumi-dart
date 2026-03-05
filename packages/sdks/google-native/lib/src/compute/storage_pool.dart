@@ -92,12 +92,28 @@ class StoragePool extends pulumi.CustomResource {
     requestId = registerOutput<String?>('requestId');
     resourceStatus = registerOutput<StoragePoolResourceStatusResponse>(
       'resourceStatus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StoragePoolResourceStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     selfLink = registerOutput<String>('selfLink');
     selfLinkWithId = registerOutput<String>('selfLinkWithId');
     sizeGb = registerOutput<String>('sizeGb');
     state = registerOutput<String>('state');
-    status = registerOutput<StoragePoolResourceStatusResponse>('status');
+    status = registerOutput<StoragePoolResourceStatusResponse>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StoragePoolResourceStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     storagePoolType = registerOutput<String>('storagePoolType');
     zone = registerOutput<String>('zone');
   }

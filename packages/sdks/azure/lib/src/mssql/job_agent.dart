@@ -291,7 +291,16 @@ class JobAgent extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     databaseId = registerOutput<String>('databaseId');
-    identity = registerOutput<JobAgentIdentity?>('identity');
+    identity = registerOutput<JobAgentIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobAgentIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     sku = registerOutput<String?>('sku');
@@ -322,7 +331,16 @@ class JobAgent extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     databaseId = registerOutput<String>('databaseId');
-    identity = registerOutput<JobAgentIdentity?>('identity');
+    identity = registerOutput<JobAgentIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobAgentIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     sku = registerOutput<String?>('sku');

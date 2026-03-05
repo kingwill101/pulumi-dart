@@ -444,7 +444,27 @@ class WorkbookTemplate extends pulumi.CustomResource {
     localized =
         registerOutput<
           Map<String, List<WorkbookTemplateLocalizedGalleryResponse>>?
-        >('localized');
+        >(
+          'localized',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return pulumi.Input.decodeMapValues<
+              List<WorkbookTemplateLocalizedGalleryResponse>
+            >(
+              guardedValue,
+              (value) =>
+                  pulumi.Input.decodeList<
+                    WorkbookTemplateLocalizedGalleryResponse
+                  >(
+                    value,
+                    (value) => WorkbookTemplateLocalizedGalleryResponse.fromMap(
+                      (value as Map).cast<String, dynamic>(),
+                    ),
+                  ),
+            );
+          },
+        );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     priority = registerOutput<int?>('priority');

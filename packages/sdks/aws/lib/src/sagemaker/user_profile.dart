@@ -179,7 +179,16 @@ class UserProfile extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     userProfileName = registerOutput<String>('userProfileName');
-    userSettings = registerOutput<UserProfileUserSettings?>('userSettings');
+    userSettings = registerOutput<UserProfileUserSettings?>(
+      'userSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserProfileUserSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [UserProfile] resource's state with the given [name] and [id].
@@ -216,6 +225,15 @@ class UserProfile extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     userProfileName = registerOutput<String>('userProfileName');
-    userSettings = registerOutput<UserProfileUserSettings?>('userSettings');
+    userSettings = registerOutput<UserProfileUserSettings?>(
+      'userSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserProfileUserSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

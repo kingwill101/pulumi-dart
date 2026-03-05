@@ -181,14 +181,57 @@ class ResourceLfTag extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     catalogId = registerOutput<String?>('catalogId');
-    database = registerOutput<ResourceLfTagDatabase?>('database');
-    lfTag = registerOutput<ResourceLfTagLfTag>('lfTag');
+    database = registerOutput<ResourceLfTagDatabase?>(
+      'database',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceLfTagDatabase.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    lfTag = registerOutput<ResourceLfTagLfTag>(
+      'lfTag',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceLfTagLfTag.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
-    table = registerOutput<ResourceLfTagTable?>('table');
+    table = registerOutput<ResourceLfTagTable?>(
+      'table',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceLfTagTable.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tableWithColumns = registerOutput<ResourceLfTagTableWithColumns?>(
       'tableWithColumns',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceLfTagTableWithColumns.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    timeouts = registerOutput<ResourceLfTagTimeouts?>('timeouts');
+    timeouts = registerOutput<ResourceLfTagTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceLfTagTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [ResourceLfTag] resource's state with the given [name] and [id].
@@ -215,13 +258,56 @@ class ResourceLfTag extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     catalogId = registerOutput<String?>('catalogId');
-    database = registerOutput<ResourceLfTagDatabase?>('database');
-    lfTag = registerOutput<ResourceLfTagLfTag>('lfTag');
+    database = registerOutput<ResourceLfTagDatabase?>(
+      'database',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceLfTagDatabase.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    lfTag = registerOutput<ResourceLfTagLfTag>(
+      'lfTag',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceLfTagLfTag.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
-    table = registerOutput<ResourceLfTagTable?>('table');
+    table = registerOutput<ResourceLfTagTable?>(
+      'table',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceLfTagTable.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tableWithColumns = registerOutput<ResourceLfTagTableWithColumns?>(
       'tableWithColumns',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceLfTagTableWithColumns.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    timeouts = registerOutput<ResourceLfTagTimeouts?>('timeouts');
+    timeouts = registerOutput<ResourceLfTagTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceLfTagTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

@@ -115,7 +115,16 @@ class Rollout extends pulumi.CustomResource {
     failureReason = registerOutput<String>('failureReason');
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
-    metadata = registerOutput<MetadataResponse>('metadata');
+    metadata = registerOutput<MetadataResponse>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MetadataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     phases = registerOutput<List<Map<String, dynamic>>>('phases');
     project = registerOutput<String>('project');

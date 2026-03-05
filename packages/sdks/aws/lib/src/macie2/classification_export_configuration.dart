@@ -181,6 +181,13 @@ class ClassificationExportConfiguration extends pulumi.CustomResource {
     s3Destination =
         registerOutput<ClassificationExportConfigurationS3Destination>(
           's3Destination',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ClassificationExportConfigurationS3Destination.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 
@@ -211,6 +218,13 @@ class ClassificationExportConfiguration extends pulumi.CustomResource {
     s3Destination =
         registerOutput<ClassificationExportConfigurationS3Destination>(
           's3Destination',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ClassificationExportConfigurationS3Destination.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

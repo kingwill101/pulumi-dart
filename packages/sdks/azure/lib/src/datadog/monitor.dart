@@ -432,8 +432,24 @@ class Monitor extends pulumi.CustomResource {
        ) {
     datadogOrganization = registerOutput<MonitorDatadogOrganization>(
       'datadogOrganization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MonitorDatadogOrganization.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    identity = registerOutput<MonitorIdentity?>('identity');
+    identity = registerOutput<MonitorIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MonitorIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     marketplaceSubscriptionStatus = registerOutput<String>(
       'marketplaceSubscriptionStatus',
@@ -443,7 +459,16 @@ class Monitor extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');
     tags = registerOutput<Map<String, String>?>('tags');
-    user = registerOutput<MonitorUser>('user');
+    user = registerOutput<MonitorUser>(
+      'user',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MonitorUser.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Monitor] resource's state with the given [name] and [id].
@@ -471,8 +496,24 @@ class Monitor extends pulumi.CustomResource {
        ) {
     datadogOrganization = registerOutput<MonitorDatadogOrganization>(
       'datadogOrganization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MonitorDatadogOrganization.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    identity = registerOutput<MonitorIdentity?>('identity');
+    identity = registerOutput<MonitorIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MonitorIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     marketplaceSubscriptionStatus = registerOutput<String>(
       'marketplaceSubscriptionStatus',
@@ -482,6 +523,15 @@ class Monitor extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');
     tags = registerOutput<Map<String, String>?>('tags');
-    user = registerOutput<MonitorUser>('user');
+    user = registerOutput<MonitorUser>(
+      'user',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MonitorUser.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

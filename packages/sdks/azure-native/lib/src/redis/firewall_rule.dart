@@ -181,7 +181,16 @@ class FirewallRule extends pulumi.CustomResource {
     endIP = registerOutput<String>('endIP');
     this.name = registerOutput<String>('name');
     startIP = registerOutput<String>('startIP');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

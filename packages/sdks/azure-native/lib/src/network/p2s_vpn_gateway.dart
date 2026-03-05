@@ -497,14 +497,37 @@ class P2sVpnGateway extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    virtualHub = registerOutput<SubResourceResponse?>('virtualHub');
+    virtualHub = registerOutput<SubResourceResponse?>(
+      'virtualHub',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vpnClientConnectionHealth =
         registerOutput<VpnClientConnectionHealthResponse>(
           'vpnClientConnectionHealth',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VpnClientConnectionHealthResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     vpnGatewayScaleUnit = registerOutput<int?>('vpnGatewayScaleUnit');
     vpnServerConfiguration = registerOutput<SubResourceResponse?>(
       'vpnServerConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

@@ -388,22 +388,65 @@ class Pool extends pulumi.CustomResource {
         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
         options ?? pulumi.CustomResourceOptions(),
       ) {
-    agentProfile = registerOutput<StatefulResponse>('agentProfile');
+    agentProfile = registerOutput<StatefulResponse>(
+      'agentProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StatefulResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     devCenterProjectResourceId = registerOutput<String>(
       'devCenterProjectResourceId',
     );
-    fabricProfile = registerOutput<VmssFabricProfileResponse>('fabricProfile');
-    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    fabricProfile = registerOutput<VmssFabricProfileResponse>(
+      'fabricProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VmssFabricProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    identity = registerOutput<ManagedServiceIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedServiceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     maximumConcurrency = registerOutput<int>('maximumConcurrency');
     this.name = registerOutput<String>('name');
     organizationProfile =
         registerOutput<AzureDevOpsOrganizationProfileResponse>(
           'organizationProfile',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AzureDevOpsOrganizationProfileResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     provisioningState = registerOutput<String?>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

@@ -34,7 +34,16 @@ class AccessPolicy extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    policy = registerOutput<AccessPolicyEntry?>('policy');
+    policy = registerOutput<AccessPolicyEntry?>(
+      'policy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccessPolicyEntry.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupName = registerOutput<String?>('resourceGroupName');
     vaultName = registerOutput<String?>('vaultName');
   }

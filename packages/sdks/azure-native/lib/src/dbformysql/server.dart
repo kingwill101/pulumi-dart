@@ -691,34 +691,118 @@ class Server extends pulumi.CustomResource {
     administratorLogin = registerOutput<String?>('administratorLogin');
     availabilityZone = registerOutput<String?>('availabilityZone');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    backup = registerOutput<BackupResponse?>('backup');
-    dataEncryption = registerOutput<DataEncryptionResponse?>('dataEncryption');
+    backup = registerOutput<BackupResponse?>(
+      'backup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackupResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    dataEncryption = registerOutput<DataEncryptionResponse?>(
+      'dataEncryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataEncryptionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     fullyQualifiedDomainName = registerOutput<String>(
       'fullyQualifiedDomainName',
     );
     highAvailability = registerOutput<HighAvailabilityResponse?>(
       'highAvailability',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HighAvailabilityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    identity = registerOutput<MySQLServerIdentityResponse?>('identity');
+    identity = registerOutput<MySQLServerIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MySQLServerIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     importSourceProperties = registerOutput<ImportSourcePropertiesResponse?>(
       'importSourceProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImportSourcePropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     maintenanceWindow = registerOutput<MaintenanceWindowResponse?>(
       'maintenanceWindow',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MaintenanceWindowResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
-    network = registerOutput<NetworkResponse?>('network');
+    network = registerOutput<NetworkResponse?>(
+      'network',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
       'privateEndpointConnections',
     );
     replicaCapacity = registerOutput<int>('replicaCapacity');
     replicationRole = registerOutput<String?>('replicationRole');
-    sku = registerOutput<MySQLServerSkuResponse?>('sku');
+    sku = registerOutput<MySQLServerSkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MySQLServerSkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sourceServerResourceId = registerOutput<String?>('sourceServerResourceId');
     state = registerOutput<String>('state');
-    storage = registerOutput<StorageResponse?>('storage');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    storage = registerOutput<StorageResponse?>(
+      'storage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StorageResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     version = registerOutput<String?>('version');

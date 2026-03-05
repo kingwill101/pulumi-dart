@@ -644,17 +644,62 @@ class StorageTarget extends pulumi.CustomResource {
        ) {
     allocationPercentage = registerOutput<int>('allocationPercentage');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    blobNfs = registerOutput<BlobNfsTargetResponse?>('blobNfs');
-    clfs = registerOutput<ClfsTargetResponse?>('clfs');
+    blobNfs = registerOutput<BlobNfsTargetResponse?>(
+      'blobNfs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BlobNfsTargetResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    clfs = registerOutput<ClfsTargetResponse?>(
+      'clfs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClfsTargetResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     junctions = registerOutput<List<Map<String, dynamic>>?>('junctions');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    nfs3 = registerOutput<Nfs3TargetResponse?>('nfs3');
+    nfs3 = registerOutput<Nfs3TargetResponse?>(
+      'nfs3',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return Nfs3TargetResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     provisioningState = registerOutput<String>('provisioningState');
     state = registerOutput<String?>('state');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     targetType = registerOutput<String>('targetType');
     type = registerOutput<String>('type');
-    unknown = registerOutput<UnknownTargetResponse?>('unknown');
+    unknown = registerOutput<UnknownTargetResponse?>(
+      'unknown',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UnknownTargetResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

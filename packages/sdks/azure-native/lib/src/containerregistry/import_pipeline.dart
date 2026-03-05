@@ -284,14 +284,50 @@ class ImportPipeline extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    identity = registerOutput<IdentityPropertiesResponse?>('identity');
+    identity = registerOutput<IdentityPropertiesResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IdentityPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     this.options = registerOutput<List<String>?>('options');
     provisioningState = registerOutput<String>('provisioningState');
-    source = registerOutput<ImportPipelineSourcePropertiesResponse>('source');
-    systemData = registerOutput<SystemDataResponse>('systemData');
-    trigger = registerOutput<PipelineTriggerPropertiesResponse?>('trigger');
+    source = registerOutput<ImportPipelineSourcePropertiesResponse>(
+      'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImportPipelineSourcePropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    trigger = registerOutput<PipelineTriggerPropertiesResponse?>(
+      'trigger',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineTriggerPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

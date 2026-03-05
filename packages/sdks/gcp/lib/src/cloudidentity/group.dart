@@ -234,7 +234,16 @@ class Group extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
-    groupKey = registerOutput<GroupGroupKey>('groupKey');
+    groupKey = registerOutput<GroupGroupKey>(
+      'groupKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupGroupKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     initialGroupConfig = registerOutput<String?>('initialGroupConfig');
     labels = registerOutput<Map<String, String>>('labels');
     this.name = registerOutput<String>('name');
@@ -267,7 +276,16 @@ class Group extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
-    groupKey = registerOutput<GroupGroupKey>('groupKey');
+    groupKey = registerOutput<GroupGroupKey>(
+      'groupKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupGroupKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     initialGroupConfig = registerOutput<String?>('initialGroupConfig');
     labels = registerOutput<Map<String, String>>('labels');
     this.name = registerOutput<String>('name');

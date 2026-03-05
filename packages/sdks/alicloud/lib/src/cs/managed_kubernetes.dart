@@ -1740,18 +1740,50 @@ class ManagedKubernetes extends pulumi.CustomResource {
     apiAudiences = registerOutput<List<String>?>('apiAudiences');
     auditLogConfig = registerOutput<ManagedKubernetesAuditLogConfig>(
       'auditLogConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedKubernetesAuditLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    autoMode = registerOutput<ManagedKubernetesAutoMode?>('autoMode');
+    autoMode = registerOutput<ManagedKubernetesAutoMode?>(
+      'autoMode',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedKubernetesAutoMode.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     certificateAuthority =
         registerOutput<ManagedKubernetesCertificateAuthority>(
           'certificateAuthority',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ManagedKubernetesCertificateAuthority.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     clientCert = registerOutput<String?>('clientCert');
     clientKey = registerOutput<String?>('clientKey');
     clusterCaCert = registerOutput<String?>('clusterCaCert');
     clusterDomain = registerOutput<String?>('clusterDomain');
     clusterSpec = registerOutput<String>('clusterSpec');
-    connections = registerOutput<ManagedKubernetesConnections>('connections');
+    connections = registerOutput<ManagedKubernetesConnections>(
+      'connections',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedKubernetesConnections.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     controlPlaneLogComponents = registerOutput<List<String>?>(
       'controlPlaneLogComponents',
     );
@@ -1771,6 +1803,13 @@ class ManagedKubernetes extends pulumi.CustomResource {
     loadBalancerSpec = registerOutput<String>('loadBalancerSpec');
     maintenanceWindow = registerOutput<ManagedKubernetesMaintenanceWindow>(
       'maintenanceWindow',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedKubernetesMaintenanceWindow.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String?>('namePrefix');
@@ -1779,6 +1818,13 @@ class ManagedKubernetes extends pulumi.CustomResource {
     nodeCidrMask = registerOutput<int?>('nodeCidrMask');
     operationPolicy = registerOutput<ManagedKubernetesOperationPolicy>(
       'operationPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedKubernetesOperationPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     podCidr = registerOutput<String?>('podCidr');
     podVswitchIds = registerOutput<List<String>?>('podVswitchIds');
@@ -1788,6 +1834,13 @@ class ManagedKubernetes extends pulumi.CustomResource {
     retainResources = registerOutput<List<String>?>('retainResources');
     rrsaMetadata = registerOutput<ManagedKubernetesRrsaMetadata>(
       'rrsaMetadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedKubernetesRrsaMetadata.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     securityGroupId = registerOutput<String>('securityGroupId');
     serviceAccountIssuer = registerOutput<String?>('serviceAccountIssuer');
@@ -1803,6 +1856,13 @@ class ManagedKubernetes extends pulumi.CustomResource {
     timezone = registerOutput<String?>('timezone');
     upgradePolicy = registerOutput<ManagedKubernetesUpgradePolicy?>(
       'upgradePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedKubernetesUpgradePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     userCa = registerOutput<String?>('userCa');
     version = registerOutput<String>('version');
@@ -1840,18 +1900,50 @@ class ManagedKubernetes extends pulumi.CustomResource {
     apiAudiences = registerOutput<List<String>?>('apiAudiences');
     auditLogConfig = registerOutput<ManagedKubernetesAuditLogConfig>(
       'auditLogConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedKubernetesAuditLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    autoMode = registerOutput<ManagedKubernetesAutoMode?>('autoMode');
+    autoMode = registerOutput<ManagedKubernetesAutoMode?>(
+      'autoMode',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedKubernetesAutoMode.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     certificateAuthority =
         registerOutput<ManagedKubernetesCertificateAuthority>(
           'certificateAuthority',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ManagedKubernetesCertificateAuthority.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     clientCert = registerOutput<String?>('clientCert');
     clientKey = registerOutput<String?>('clientKey');
     clusterCaCert = registerOutput<String?>('clusterCaCert');
     clusterDomain = registerOutput<String?>('clusterDomain');
     clusterSpec = registerOutput<String>('clusterSpec');
-    connections = registerOutput<ManagedKubernetesConnections>('connections');
+    connections = registerOutput<ManagedKubernetesConnections>(
+      'connections',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedKubernetesConnections.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     controlPlaneLogComponents = registerOutput<List<String>?>(
       'controlPlaneLogComponents',
     );
@@ -1871,6 +1963,13 @@ class ManagedKubernetes extends pulumi.CustomResource {
     loadBalancerSpec = registerOutput<String>('loadBalancerSpec');
     maintenanceWindow = registerOutput<ManagedKubernetesMaintenanceWindow>(
       'maintenanceWindow',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedKubernetesMaintenanceWindow.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String?>('namePrefix');
@@ -1879,6 +1978,13 @@ class ManagedKubernetes extends pulumi.CustomResource {
     nodeCidrMask = registerOutput<int?>('nodeCidrMask');
     operationPolicy = registerOutput<ManagedKubernetesOperationPolicy>(
       'operationPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedKubernetesOperationPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     podCidr = registerOutput<String?>('podCidr');
     podVswitchIds = registerOutput<List<String>?>('podVswitchIds');
@@ -1888,6 +1994,13 @@ class ManagedKubernetes extends pulumi.CustomResource {
     retainResources = registerOutput<List<String>?>('retainResources');
     rrsaMetadata = registerOutput<ManagedKubernetesRrsaMetadata>(
       'rrsaMetadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedKubernetesRrsaMetadata.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     securityGroupId = registerOutput<String>('securityGroupId');
     serviceAccountIssuer = registerOutput<String?>('serviceAccountIssuer');
@@ -1903,6 +2016,13 @@ class ManagedKubernetes extends pulumi.CustomResource {
     timezone = registerOutput<String?>('timezone');
     upgradePolicy = registerOutput<ManagedKubernetesUpgradePolicy?>(
       'upgradePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedKubernetesUpgradePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     userCa = registerOutput<String?>('userCa');
     version = registerOutput<String>('version');

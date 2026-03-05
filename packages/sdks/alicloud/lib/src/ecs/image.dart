@@ -584,7 +584,16 @@ class Image extends pulumi.CustomResource {
     diskDeviceMappings = registerOutput<List<Map<String, dynamic>>>(
       'diskDeviceMappings',
     );
-    features = registerOutput<ImageFeatures>('features');
+    features = registerOutput<ImageFeatures>(
+      'features',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImageFeatures.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     force = registerOutput<bool?>('force');
     imageFamily = registerOutput<String?>('imageFamily');
     imageName = registerOutput<String>('imageName');
@@ -627,7 +636,16 @@ class Image extends pulumi.CustomResource {
     diskDeviceMappings = registerOutput<List<Map<String, dynamic>>>(
       'diskDeviceMappings',
     );
-    features = registerOutput<ImageFeatures>('features');
+    features = registerOutput<ImageFeatures>(
+      'features',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImageFeatures.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     force = registerOutput<bool?>('force');
     imageFamily = registerOutput<String?>('imageFamily');
     imageName = registerOutput<String>('imageName');

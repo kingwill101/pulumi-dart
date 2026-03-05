@@ -63,6 +63,13 @@ class WorkerPool extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     privatePoolV1Config = registerOutput<PrivatePoolV1ConfigResponse>(
       'privatePoolV1Config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PrivatePoolV1ConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     state = registerOutput<String>('state');

@@ -38,10 +38,26 @@ class ClusterRoleResource extends pulumi.CustomResource {
     aggregationRule =
         registerOutput<AggregationRuleRbacAuthorizationK8sIoV1alpha1>(
           'aggregationRule',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AggregationRuleRbacAuthorizationK8sIoV1alpha1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     apiVersion = registerOutput<String>('apiVersion');
     kind = registerOutput<String>('kind');
-    metadata = registerOutput<ObjectMeta>('metadata');
+    metadata = registerOutput<ObjectMeta>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     rules = registerOutput<List<Map<String, dynamic>>>('rules');
   }
 }

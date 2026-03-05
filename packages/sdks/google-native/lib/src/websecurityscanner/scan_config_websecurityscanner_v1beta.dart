@@ -70,6 +70,13 @@ class ScanConfigWebsecurityscannerV1beta extends pulumi.CustomResource {
     authentication =
         registerOutput<AuthenticationResponseWebsecurityscannerV1beta>(
           'authentication',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AuthenticationResponseWebsecurityscannerV1beta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     blacklistPatterns = registerOutput<List<String>>('blacklistPatterns');
     displayName = registerOutput<String>('displayName');
@@ -79,6 +86,13 @@ class ScanConfigWebsecurityscannerV1beta extends pulumi.CustomResource {
     ignoreHttpStatusErrors = registerOutput<bool>('ignoreHttpStatusErrors');
     latestRun = registerOutput<ScanRunResponseWebsecurityscannerV1beta>(
       'latestRun',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScanRunResponseWebsecurityscannerV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     managedScan = registerOutput<bool>('managedScan');
     maxQps = registerOutput<int>('maxQps');
@@ -87,6 +101,13 @@ class ScanConfigWebsecurityscannerV1beta extends pulumi.CustomResource {
     riskLevel = registerOutput<String>('riskLevel');
     schedule = registerOutput<ScheduleResponseWebsecurityscannerV1beta>(
       'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduleResponseWebsecurityscannerV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     startingUrls = registerOutput<List<String>>('startingUrls');
     staticIpScan = registerOutput<bool>('staticIpScan');

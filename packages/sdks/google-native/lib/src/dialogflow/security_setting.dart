@@ -63,13 +63,31 @@ class SecuritySetting extends pulumi.CustomResource {
     audioExportSettings =
         registerOutput<
           GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponse
-        >('audioExportSettings');
+        >(
+          'audioExportSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     deidentifyTemplate = registerOutput<String>('deidentifyTemplate');
     displayName = registerOutput<String>('displayName');
     insightsExportSettings =
         registerOutput<
           GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponse
-        >('insightsExportSettings');
+        >(
+          'insightsExportSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     inspectTemplate = registerOutput<String>('inspectTemplate');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

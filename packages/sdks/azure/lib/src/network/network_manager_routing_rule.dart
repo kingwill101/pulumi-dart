@@ -446,9 +446,25 @@ class NetworkManagerRoutingRule extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     destination = registerOutput<NetworkManagerRoutingRuleDestination>(
       'destination',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkManagerRoutingRuleDestination.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
-    nextHop = registerOutput<NetworkManagerRoutingRuleNextHop>('nextHop');
+    nextHop = registerOutput<NetworkManagerRoutingRuleNextHop>(
+      'nextHop',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkManagerRoutingRuleNextHop.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ruleCollectionId = registerOutput<String>('ruleCollectionId');
   }
 
@@ -478,9 +494,25 @@ class NetworkManagerRoutingRule extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     destination = registerOutput<NetworkManagerRoutingRuleDestination>(
       'destination',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkManagerRoutingRuleDestination.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
-    nextHop = registerOutput<NetworkManagerRoutingRuleNextHop>('nextHop');
+    nextHop = registerOutput<NetworkManagerRoutingRuleNextHop>(
+      'nextHop',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkManagerRoutingRuleNextHop.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ruleCollectionId = registerOutput<String>('ruleCollectionId');
   }
 }

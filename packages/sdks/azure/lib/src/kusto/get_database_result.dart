@@ -1,19 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getDatabase.
 class GetDatabaseResult {
   final String clusterName;
+
   /// The time the data that should be kept in cache for fast queries as ISO 8601 timespan.
   final String hotCachePeriod;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The Azure Region in which the managed Kusto Database exists.
   final String location;
   final String name;
   final String resourceGroupName;
+
   /// The size of the database in bytes.
   final double size;
+
   /// The time the data should be kept before it stops being accessible to queries as ISO 8601 timespan.
   final String softDeletePeriod;
 
@@ -63,4 +67,3 @@ class GetDatabaseResult {
     );
   }
 }
-

@@ -520,11 +520,27 @@ class AccessPoint extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     enabledRam = registerOutput<bool?>('enabledRam');
     fileSystemId = registerOutput<String>('fileSystemId');
-    posixUser = registerOutput<AccessPointPosixUser>('posixUser');
+    posixUser = registerOutput<AccessPointPosixUser>(
+      'posixUser',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccessPointPosixUser.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     regionId = registerOutput<String>('regionId');
     rootPath = registerOutput<String>('rootPath');
     rootPathPermission = registerOutput<AccessPointRootPathPermission>(
       'rootPathPermission',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccessPointRootPathPermission.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     status = registerOutput<String>('status');
     vpcId = registerOutput<String>('vpcId');
@@ -560,11 +576,27 @@ class AccessPoint extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     enabledRam = registerOutput<bool?>('enabledRam');
     fileSystemId = registerOutput<String>('fileSystemId');
-    posixUser = registerOutput<AccessPointPosixUser>('posixUser');
+    posixUser = registerOutput<AccessPointPosixUser>(
+      'posixUser',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccessPointPosixUser.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     regionId = registerOutput<String>('regionId');
     rootPath = registerOutput<String>('rootPath');
     rootPathPermission = registerOutput<AccessPointRootPathPermission>(
       'rootPathPermission',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccessPointRootPathPermission.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     status = registerOutput<String>('status');
     vpcId = registerOutput<String>('vpcId');

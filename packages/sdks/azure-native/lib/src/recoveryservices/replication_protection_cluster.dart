@@ -218,6 +218,13 @@ class ReplicationProtectionCluster extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     properties = registerOutput<ReplicationProtectionClusterPropertiesResponse>(
       'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReplicationProtectionClusterPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     type = registerOutput<String>('type');
   }

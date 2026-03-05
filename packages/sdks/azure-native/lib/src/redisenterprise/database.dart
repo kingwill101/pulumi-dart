@@ -688,15 +688,40 @@ class Database extends pulumi.CustomResource {
     evictionPolicy = registerOutput<String?>('evictionPolicy');
     geoReplication = registerOutput<DatabasePropertiesResponseGeoReplication?>(
       'geoReplication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabasePropertiesResponseGeoReplication.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     modules = registerOutput<List<Map<String, dynamic>>?>('modules');
     this.name = registerOutput<String>('name');
-    persistence = registerOutput<PersistenceResponse?>('persistence');
+    persistence = registerOutput<PersistenceResponse?>(
+      'persistence',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PersistenceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     port = registerOutput<int?>('port');
     provisioningState = registerOutput<String>('provisioningState');
     redisVersion = registerOutput<String>('redisVersion');
     resourceState = registerOutput<String>('resourceState');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

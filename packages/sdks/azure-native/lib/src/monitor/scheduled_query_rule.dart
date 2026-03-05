@@ -2067,20 +2067,47 @@ class ScheduledQueryRule extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    actions = registerOutput<ActionsResponse?>('actions');
+    actions = registerOutput<ActionsResponse?>(
+      'actions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ActionsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     autoMitigate = registerOutput<bool?>('autoMitigate');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     checkWorkspaceAlertsStorageConfigured = registerOutput<bool?>(
       'checkWorkspaceAlertsStorageConfigured',
     );
     createdWithApiVersion = registerOutput<String>('createdWithApiVersion');
-    criteria = registerOutput<ScheduledQueryRuleCriteriaResponse>('criteria');
+    criteria = registerOutput<ScheduledQueryRuleCriteriaResponse>(
+      'criteria',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduledQueryRuleCriteriaResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     enabled = registerOutput<bool>('enabled');
     etag = registerOutput<String>('etag');
     evaluationFrequency = registerOutput<String?>('evaluationFrequency');
-    identity = registerOutput<IdentityResponse?>('identity');
+    identity = registerOutput<IdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     isLegacyLogAnalyticsRule = registerOutput<bool>('isLegacyLogAnalyticsRule');
     isWorkspaceAlertsStorageConfigured = registerOutput<bool>(
       'isWorkspaceAlertsStorageConfigured',
@@ -2092,11 +2119,27 @@ class ScheduledQueryRule extends pulumi.CustomResource {
     overrideQueryTimeRange = registerOutput<String?>('overrideQueryTimeRange');
     resolveConfiguration = registerOutput<RuleResolveConfigurationResponse?>(
       'resolveConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RuleResolveConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     scopes = registerOutput<List<String>>('scopes');
     severity = registerOutput<double?>('severity');
     skipQueryValidation = registerOutput<bool?>('skipQueryValidation');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     targetResourceTypes = registerOutput<List<String>?>('targetResourceTypes');
     type = registerOutput<String>('type');

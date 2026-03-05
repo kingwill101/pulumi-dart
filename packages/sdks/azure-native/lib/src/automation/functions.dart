@@ -437,7 +437,8 @@ Future<GetScheduleResult> getSchedule(
 /// Other available API versions: 2017-05-15-preview, 2019-06-01, 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_automation_get_software_update_configuration_by_name_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetSoftwareUpdateConfigurationByNameResult> getSoftwareUpdateConfigurationByName(
+Future<GetSoftwareUpdateConfigurationByNameResult>
+getSoftwareUpdateConfigurationByName(
   GetSoftwareUpdateConfigurationByNameArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -537,7 +538,8 @@ Future<GetWebhookResult> getWebhook(
 /// Other available API versions: 2024-10-23. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_automation_list_automation_account_deleted_runbooks_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListAutomationAccountDeletedRunbooksResult> listAutomationAccountDeletedRunbooks(
+Future<ListAutomationAccountDeletedRunbooksResult>
+listAutomationAccountDeletedRunbooks(
   ListAutomationAccountDeletedRunbooksArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

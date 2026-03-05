@@ -1392,22 +1392,52 @@ class Pipe extends pulumi.CustomResource {
     enrichment = registerOutput<String?>('enrichment');
     enrichmentParameters = registerOutput<PipeEnrichmentParameters?>(
       'enrichmentParameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipeEnrichmentParameters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     kmsKeyIdentifier = registerOutput<String?>('kmsKeyIdentifier');
     logConfiguration = registerOutput<PipeLogConfiguration?>(
       'logConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipeLogConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     source = registerOutput<String>('source');
-    sourceParameters = registerOutput<PipeSourceParameters>('sourceParameters');
+    sourceParameters = registerOutput<PipeSourceParameters>(
+      'sourceParameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipeSourceParameters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     target = registerOutput<String>('target');
     targetParameters = registerOutput<PipeTargetParameters?>(
       'targetParameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipeTargetParameters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -1436,22 +1466,52 @@ class Pipe extends pulumi.CustomResource {
     enrichment = registerOutput<String?>('enrichment');
     enrichmentParameters = registerOutput<PipeEnrichmentParameters?>(
       'enrichmentParameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipeEnrichmentParameters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     kmsKeyIdentifier = registerOutput<String?>('kmsKeyIdentifier');
     logConfiguration = registerOutput<PipeLogConfiguration?>(
       'logConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipeLogConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     source = registerOutput<String>('source');
-    sourceParameters = registerOutput<PipeSourceParameters>('sourceParameters');
+    sourceParameters = registerOutput<PipeSourceParameters>(
+      'sourceParameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipeSourceParameters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     target = registerOutput<String>('target');
     targetParameters = registerOutput<PipeTargetParameters?>(
       'targetParameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipeTargetParameters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

@@ -32,7 +32,16 @@ class JobTemplate extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    config = registerOutput<JobConfigResponse>('config');
+    config = registerOutput<JobConfigResponse>(
+      'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     jobTemplateId = registerOutput<String>('jobTemplateId');
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');

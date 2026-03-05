@@ -62,16 +62,43 @@ class Provider extends pulumi.CustomResource {
        ) {
     attributeCondition = registerOutput<String>('attributeCondition');
     attributeMapping = registerOutput<Map<String, String>>('attributeMapping');
-    aws = registerOutput<AwsResponse>('aws');
+    aws = registerOutput<AwsResponse>(
+      'aws',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String>('description');
     disabled = registerOutput<bool>('disabled');
     displayName = registerOutput<String>('displayName');
     expireTime = registerOutput<String>('expireTime');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    oidc = registerOutput<OidcResponse>('oidc');
+    oidc = registerOutput<OidcResponse>(
+      'oidc',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OidcResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
-    saml = registerOutput<SamlResponse>('saml');
+    saml = registerOutput<SamlResponse>(
+      'saml',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SamlResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     state = registerOutput<String>('state');
     workloadIdentityPoolId = registerOutput<String>('workloadIdentityPoolId');
     workloadIdentityPoolProviderId = registerOutput<String>(

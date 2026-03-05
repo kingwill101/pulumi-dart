@@ -394,14 +394,37 @@ class GremlinGraph extends pulumi.CustomResource {
     analyticalStorageTtl = registerOutput<int?>('analyticalStorageTtl');
     autoscaleSettings = registerOutput<GremlinGraphAutoscaleSettings?>(
       'autoscaleSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GremlinGraphAutoscaleSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     conflictResolutionPolicy =
         registerOutput<GremlinGraphConflictResolutionPolicy>(
           'conflictResolutionPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GremlinGraphConflictResolutionPolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     databaseName = registerOutput<String>('databaseName');
     defaultTtl = registerOutput<int?>('defaultTtl');
-    indexPolicy = registerOutput<GremlinGraphIndexPolicy>('indexPolicy');
+    indexPolicy = registerOutput<GremlinGraphIndexPolicy>(
+      'indexPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GremlinGraphIndexPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     partitionKeyPath = registerOutput<String>('partitionKeyPath');
     partitionKeyVersion = registerOutput<int?>('partitionKeyVersion');
@@ -437,14 +460,37 @@ class GremlinGraph extends pulumi.CustomResource {
     analyticalStorageTtl = registerOutput<int?>('analyticalStorageTtl');
     autoscaleSettings = registerOutput<GremlinGraphAutoscaleSettings?>(
       'autoscaleSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GremlinGraphAutoscaleSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     conflictResolutionPolicy =
         registerOutput<GremlinGraphConflictResolutionPolicy>(
           'conflictResolutionPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GremlinGraphConflictResolutionPolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     databaseName = registerOutput<String>('databaseName');
     defaultTtl = registerOutput<int?>('defaultTtl');
-    indexPolicy = registerOutput<GremlinGraphIndexPolicy>('indexPolicy');
+    indexPolicy = registerOutput<GremlinGraphIndexPolicy>(
+      'indexPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GremlinGraphIndexPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     partitionKeyPath = registerOutput<String>('partitionKeyPath');
     partitionKeyVersion = registerOutput<int?>('partitionKeyVersion');

@@ -95,33 +95,137 @@ class Note extends pulumi.CustomResource {
         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
         options ?? pulumi.CustomResourceOptions(),
       ) {
-    attestation = registerOutput<AttestationNoteResponse>('attestation');
-    build = registerOutput<BuildNoteResponse>('build');
-    compliance = registerOutput<ComplianceNoteResponse>('compliance');
+    attestation = registerOutput<AttestationNoteResponse>(
+      'attestation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AttestationNoteResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    build = registerOutput<BuildNoteResponse>(
+      'build',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BuildNoteResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    compliance = registerOutput<ComplianceNoteResponse>(
+      'compliance',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ComplianceNoteResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
-    deployment = registerOutput<DeploymentNoteResponse>('deployment');
-    discovery = registerOutput<DiscoveryNoteResponse>('discovery');
+    deployment = registerOutput<DeploymentNoteResponse>(
+      'deployment',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentNoteResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    discovery = registerOutput<DiscoveryNoteResponse>(
+      'discovery',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiscoveryNoteResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dsseAttestation = registerOutput<DSSEAttestationNoteResponse>(
       'dsseAttestation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DSSEAttestationNoteResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     expirationTime = registerOutput<String>('expirationTime');
-    image = registerOutput<ImageNoteResponse>('image');
+    image = registerOutput<ImageNoteResponse>(
+      'image',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImageNoteResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kind = registerOutput<String>('kind');
     longDescription = registerOutput<String>('longDescription');
     this.name = registerOutput<String>('name');
     noteId = registerOutput<String>('noteId');
-    package = registerOutput<PackageNoteResponse>('package');
+    package = registerOutput<PackageNoteResponse>(
+      'package',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PackageNoteResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     relatedNoteNames = registerOutput<List<String>>('relatedNoteNames');
     relatedUrl = registerOutput<List<Map<String, dynamic>>>('relatedUrl');
-    sbomReference = registerOutput<SBOMReferenceNoteResponse>('sbomReference');
+    sbomReference = registerOutput<SBOMReferenceNoteResponse>(
+      'sbomReference',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SBOMReferenceNoteResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     shortDescription = registerOutput<String>('shortDescription');
     updateTime = registerOutput<String>('updateTime');
-    upgrade = registerOutput<UpgradeNoteResponse>('upgrade');
-    vulnerability = registerOutput<VulnerabilityNoteResponse>('vulnerability');
+    upgrade = registerOutput<UpgradeNoteResponse>(
+      'upgrade',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UpgradeNoteResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    vulnerability = registerOutput<VulnerabilityNoteResponse>(
+      'vulnerability',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VulnerabilityNoteResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vulnerabilityAssessment =
         registerOutput<VulnerabilityAssessmentNoteResponse>(
           'vulnerabilityAssessment',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VulnerabilityAssessmentNoteResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

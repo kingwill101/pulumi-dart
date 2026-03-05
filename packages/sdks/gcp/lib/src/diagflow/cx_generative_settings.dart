@@ -406,18 +406,46 @@ class CxGenerativeSettings extends pulumi.CustomResource {
        ) {
     fallbackSettings = registerOutput<CxGenerativeSettingsFallbackSettings?>(
       'fallbackSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxGenerativeSettingsFallbackSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     generativeSafetySettings =
         registerOutput<CxGenerativeSettingsGenerativeSafetySettings?>(
           'generativeSafetySettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CxGenerativeSettingsGenerativeSafetySettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     knowledgeConnectorSettings =
         registerOutput<CxGenerativeSettingsKnowledgeConnectorSettings?>(
           'knowledgeConnectorSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CxGenerativeSettingsKnowledgeConnectorSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     languageCode = registerOutput<String>('languageCode');
     llmModelSettings = registerOutput<CxGenerativeSettingsLlmModelSettings?>(
       'llmModelSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxGenerativeSettingsLlmModelSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     parent = registerOutput<String?>('parent');
@@ -448,18 +476,46 @@ class CxGenerativeSettings extends pulumi.CustomResource {
        ) {
     fallbackSettings = registerOutput<CxGenerativeSettingsFallbackSettings?>(
       'fallbackSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxGenerativeSettingsFallbackSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     generativeSafetySettings =
         registerOutput<CxGenerativeSettingsGenerativeSafetySettings?>(
           'generativeSafetySettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CxGenerativeSettingsGenerativeSafetySettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     knowledgeConnectorSettings =
         registerOutput<CxGenerativeSettingsKnowledgeConnectorSettings?>(
           'knowledgeConnectorSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CxGenerativeSettingsKnowledgeConnectorSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     languageCode = registerOutput<String>('languageCode');
     llmModelSettings = registerOutput<CxGenerativeSettingsLlmModelSettings?>(
       'llmModelSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxGenerativeSettingsLlmModelSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     parent = registerOutput<String?>('parent');

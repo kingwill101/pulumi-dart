@@ -348,6 +348,17 @@ class GlobalParameter extends pulumi.CustomResource {
     properties =
         registerOutput<Map<String, GlobalParameterSpecificationResponse>>(
           'properties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return pulumi
+                .Input.decodeMapValues<GlobalParameterSpecificationResponse>(
+              guardedValue,
+              (value) => GlobalParameterSpecificationResponse.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            );
+          },
         );
     type = registerOutput<String>('type');
   }

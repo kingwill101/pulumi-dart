@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getConsumeGroup.
 class GetConsumeGroupResult {
   final String eventhubName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
   final String namespaceName;
   final String resourceGroupName;
+
   /// Specifies the user metadata.
   final String userMetadata;
 
@@ -50,4 +51,3 @@ class GetConsumeGroupResult {
     );
   }
 }
-

@@ -323,10 +323,26 @@ class Logger extends pulumi.CustomResource {
     apiManagementName = registerOutput<String>('apiManagementName');
     applicationInsights = registerOutput<LoggerApplicationInsights?>(
       'applicationInsights',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoggerApplicationInsights.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     buffered = registerOutput<bool?>('buffered');
     description = registerOutput<String?>('description');
-    eventhub = registerOutput<LoggerEventhub?>('eventhub');
+    eventhub = registerOutput<LoggerEventhub?>(
+      'eventhub',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoggerEventhub.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     resourceId = registerOutput<String?>('resourceId');
@@ -358,10 +374,26 @@ class Logger extends pulumi.CustomResource {
     apiManagementName = registerOutput<String>('apiManagementName');
     applicationInsights = registerOutput<LoggerApplicationInsights?>(
       'applicationInsights',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoggerApplicationInsights.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     buffered = registerOutput<bool?>('buffered');
     description = registerOutput<String?>('description');
-    eventhub = registerOutput<LoggerEventhub?>('eventhub');
+    eventhub = registerOutput<LoggerEventhub?>(
+      'eventhub',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoggerEventhub.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     resourceId = registerOutput<String?>('resourceId');

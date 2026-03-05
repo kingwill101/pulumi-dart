@@ -264,6 +264,13 @@ class TransitRouterMulticastDomain extends pulumi.CustomResource {
        ) {
     this.options = registerOutput<TransitRouterMulticastDomainOptions>(
       'options',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TransitRouterMulticastDomainOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     regionId = registerOutput<String>('regionId');
     status = registerOutput<String>('status');
@@ -302,6 +309,13 @@ class TransitRouterMulticastDomain extends pulumi.CustomResource {
        ) {
     this.options = registerOutput<TransitRouterMulticastDomainOptions>(
       'options',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TransitRouterMulticastDomainOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     regionId = registerOutput<String>('regionId');
     status = registerOutput<String>('status');

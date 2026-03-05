@@ -193,6 +193,13 @@ class VectorsIndex extends pulumi.CustomResource {
     indexName = registerOutput<String>('indexName');
     metadataConfiguration = registerOutput<VectorsIndexMetadataConfiguration?>(
       'metadataConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VectorsIndexMetadataConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -234,6 +241,13 @@ class VectorsIndex extends pulumi.CustomResource {
     indexName = registerOutput<String>('indexName');
     metadataConfiguration = registerOutput<VectorsIndexMetadataConfiguration?>(
       'metadataConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VectorsIndexMetadataConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');

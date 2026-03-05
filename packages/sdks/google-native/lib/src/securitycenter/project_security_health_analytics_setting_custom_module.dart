@@ -47,6 +47,13 @@ class ProjectSecurityHealthAnalyticsSettingCustomModule
     customConfig =
         registerOutput<GoogleCloudSecuritycenterV1CustomConfigResponse>(
           'customConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudSecuritycenterV1CustomConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     displayName = registerOutput<String>('displayName');
     enablementState = registerOutput<String>('enablementState');

@@ -568,12 +568,26 @@ class AccessPoint extends pulumi.CustomResource {
     publicAccessBlockConfiguration =
         registerOutput<AccessPointPublicAccessBlockConfiguration?>(
           'publicAccessBlockConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AccessPointPublicAccessBlockConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     vpcConfiguration = registerOutput<AccessPointVpcConfiguration?>(
       'vpcConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccessPointVpcConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -614,12 +628,26 @@ class AccessPoint extends pulumi.CustomResource {
     publicAccessBlockConfiguration =
         registerOutput<AccessPointPublicAccessBlockConfiguration?>(
           'publicAccessBlockConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AccessPointPublicAccessBlockConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     vpcConfiguration = registerOutput<AccessPointVpcConfiguration?>(
       'vpcConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccessPointVpcConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

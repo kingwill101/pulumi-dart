@@ -1,28 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getDataCollectionEndpoint.
 class GetDataCollectionEndpointResult {
   /// The endpoint used for accessing configuration, e.g., `https://mydce-abcd.eastus-1.control.monitor.azure.com`.
   final String configurationAccessEndpoint;
+
   /// Specifies a description for the Data Collection Endpoint.
   final String description;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The immutable ID of the Data Collection Endpoint.
   final String immutableId;
+
   /// The kind of the Data Collection Endpoint. Possible values are `Linux` and `Windows`.
   final String kind;
+
   /// The Azure Region where the Data Collection Endpoint should exist.
   final String location;
+
   /// The endpoint used for ingesting logs, e.g., `https://mydce-abcd.eastus-1.ingest.monitor.azure.com`.
   final String logsIngestionEndpoint;
+
   /// The endpoint used for ingesting metrics, e.g., `https://mydce-abcd.eastus-1.metrics.ingest.monitor.azure.com`.
   final String metricsIngestionEndpoint;
   final String name;
+
   /// Whether network access from public internet to the Data Collection Endpoint are allowed. Possible values are `true` and `false`.
   final bool publicNetworkAccessEnabled;
   final String resourceGroupName;
+
   /// A mapping of tags which should be assigned to the Data Collection Endpoint.
   final Map<String, String> tags;
 
@@ -88,4 +96,3 @@ class GetDataCollectionEndpointResult {
     );
   }
 }
-

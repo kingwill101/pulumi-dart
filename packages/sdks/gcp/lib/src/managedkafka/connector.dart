@@ -704,6 +704,13 @@ class Connector extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     taskRestartPolicy = registerOutput<ConnectorTaskRestartPolicy?>(
       'taskRestartPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectorTaskRestartPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -739,6 +746,13 @@ class Connector extends pulumi.CustomResource {
     this.state = registerOutput<String>('state');
     taskRestartPolicy = registerOutput<ConnectorTaskRestartPolicy?>(
       'taskRestartPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectorTaskRestartPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

@@ -61,6 +61,13 @@ class HciMarketplaceGalleryImage extends pulumi.CustomResource {
     hypervGeneration = registerOutput<String>('hypervGeneration');
     identifier = registerOutput<HciMarketplaceGalleryImageIdentifier>(
       'identifier',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HciMarketplaceGalleryImageIdentifier.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -98,6 +105,13 @@ class HciMarketplaceGalleryImage extends pulumi.CustomResource {
     hypervGeneration = registerOutput<String>('hypervGeneration');
     identifier = registerOutput<HciMarketplaceGalleryImageIdentifier>(
       'identifier',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HciMarketplaceGalleryImageIdentifier.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

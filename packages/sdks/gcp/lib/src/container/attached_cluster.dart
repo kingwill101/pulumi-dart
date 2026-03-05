@@ -1061,9 +1061,23 @@ class AttachedCluster extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     authorization = registerOutput<AttachedClusterAuthorization?>(
       'authorization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AttachedClusterAuthorization.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     binaryAuthorization = registerOutput<AttachedClusterBinaryAuthorization>(
       'binaryAuthorization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AttachedClusterBinaryAuthorization.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clusterRegion = registerOutput<String>('clusterRegion');
     createTime = registerOutput<String>('createTime');
@@ -1074,24 +1088,72 @@ class AttachedCluster extends pulumi.CustomResource {
       'effectiveAnnotations',
     );
     errors = registerOutput<List<Map<String, dynamic>>>('errors');
-    fleet = registerOutput<AttachedClusterFleet>('fleet');
+    fleet = registerOutput<AttachedClusterFleet>(
+      'fleet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AttachedClusterFleet.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kubernetesVersion = registerOutput<String>('kubernetesVersion');
     location = registerOutput<String>('location');
     loggingConfig = registerOutput<AttachedClusterLoggingConfig?>(
       'loggingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AttachedClusterLoggingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     monitoringConfig = registerOutput<AttachedClusterMonitoringConfig>(
       'monitoringConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AttachedClusterMonitoringConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
-    oidcConfig = registerOutput<AttachedClusterOidcConfig>('oidcConfig');
+    oidcConfig = registerOutput<AttachedClusterOidcConfig>(
+      'oidcConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AttachedClusterOidcConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     platformVersion = registerOutput<String>('platformVersion');
     project = registerOutput<String>('project');
-    proxyConfig = registerOutput<AttachedClusterProxyConfig?>('proxyConfig');
+    proxyConfig = registerOutput<AttachedClusterProxyConfig?>(
+      'proxyConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AttachedClusterProxyConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     reconciling = registerOutput<bool>('reconciling');
     securityPostureConfig =
         registerOutput<AttachedClusterSecurityPostureConfig>(
           'securityPostureConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AttachedClusterSecurityPostureConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
@@ -1127,9 +1189,23 @@ class AttachedCluster extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     authorization = registerOutput<AttachedClusterAuthorization?>(
       'authorization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AttachedClusterAuthorization.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     binaryAuthorization = registerOutput<AttachedClusterBinaryAuthorization>(
       'binaryAuthorization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AttachedClusterBinaryAuthorization.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clusterRegion = registerOutput<String>('clusterRegion');
     createTime = registerOutput<String>('createTime');
@@ -1140,24 +1216,72 @@ class AttachedCluster extends pulumi.CustomResource {
       'effectiveAnnotations',
     );
     errors = registerOutput<List<Map<String, dynamic>>>('errors');
-    fleet = registerOutput<AttachedClusterFleet>('fleet');
+    fleet = registerOutput<AttachedClusterFleet>(
+      'fleet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AttachedClusterFleet.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kubernetesVersion = registerOutput<String>('kubernetesVersion');
     location = registerOutput<String>('location');
     loggingConfig = registerOutput<AttachedClusterLoggingConfig?>(
       'loggingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AttachedClusterLoggingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     monitoringConfig = registerOutput<AttachedClusterMonitoringConfig>(
       'monitoringConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AttachedClusterMonitoringConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
-    oidcConfig = registerOutput<AttachedClusterOidcConfig>('oidcConfig');
+    oidcConfig = registerOutput<AttachedClusterOidcConfig>(
+      'oidcConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AttachedClusterOidcConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     platformVersion = registerOutput<String>('platformVersion');
     project = registerOutput<String>('project');
-    proxyConfig = registerOutput<AttachedClusterProxyConfig?>('proxyConfig');
+    proxyConfig = registerOutput<AttachedClusterProxyConfig?>(
+      'proxyConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AttachedClusterProxyConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     reconciling = registerOutput<bool>('reconciling');
     securityPostureConfig =
         registerOutput<AttachedClusterSecurityPostureConfig>(
           'securityPostureConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AttachedClusterSecurityPostureConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');

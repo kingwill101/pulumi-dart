@@ -46,9 +46,25 @@ class ResourceClassParametersResourceK8sIoV1alpha2
     generatedFrom =
         registerOutput<ResourceClassParametersReferenceResourceK8sIoV1alpha2>(
           'generatedFrom',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResourceClassParametersReferenceResourceK8sIoV1alpha2.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     kind = registerOutput<String>('kind');
-    metadata = registerOutput<ObjectMeta>('metadata');
+    metadata = registerOutput<ObjectMeta>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vendorParameters = registerOutput<List<Map<String, dynamic>>>(
       'vendorParameters',
     );

@@ -64,6 +64,13 @@ class NamespaceGkehubV1beta extends pulumi.CustomResource {
     scopeNamespaceId = registerOutput<String>('scopeNamespaceId');
     state = registerOutput<NamespaceLifecycleStateResponseGkehubV1beta>(
       'state',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NamespaceLifecycleStateResponseGkehubV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');

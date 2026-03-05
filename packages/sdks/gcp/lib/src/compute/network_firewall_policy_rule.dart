@@ -1112,7 +1112,16 @@ class NetworkFirewallPolicyRule extends pulumi.CustomResource {
     enableLogging = registerOutput<bool?>('enableLogging');
     firewallPolicy = registerOutput<String>('firewallPolicy');
     kind = registerOutput<String>('kind');
-    match = registerOutput<NetworkFirewallPolicyRuleMatch>('match');
+    match = registerOutput<NetworkFirewallPolicyRuleMatch>(
+      'match',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkFirewallPolicyRuleMatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     priority = registerOutput<int>('priority');
     project = registerOutput<String>('project');
     ruleName = registerOutput<String?>('ruleName');
@@ -1158,7 +1167,16 @@ class NetworkFirewallPolicyRule extends pulumi.CustomResource {
     enableLogging = registerOutput<bool?>('enableLogging');
     firewallPolicy = registerOutput<String>('firewallPolicy');
     kind = registerOutput<String>('kind');
-    match = registerOutput<NetworkFirewallPolicyRuleMatch>('match');
+    match = registerOutput<NetworkFirewallPolicyRuleMatch>(
+      'match',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkFirewallPolicyRuleMatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     priority = registerOutput<int>('priority');
     project = registerOutput<String>('project');
     ruleName = registerOutput<String?>('ruleName');

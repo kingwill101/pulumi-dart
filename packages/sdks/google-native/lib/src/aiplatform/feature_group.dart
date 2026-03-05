@@ -49,6 +49,13 @@ class FeatureGroup extends pulumi.CustomResource {
     bigQuery =
         registerOutput<GoogleCloudAiplatformV1FeatureGroupBigQueryResponse>(
           'bigQuery',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1FeatureGroupBigQueryResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');

@@ -149,7 +149,8 @@ Future<GetWebhookResult> getWebhook(
 /// Uses Azure REST API version 2024-06-27.
 /// [args] Arguments passed to this invoke. {@macro pulumi_appcomplianceautomation_list_provider_action_in_use_storage_accounts_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListProviderActionInUseStorageAccountsResult> listProviderActionInUseStorageAccounts(
+Future<ListProviderActionInUseStorageAccountsResult>
+listProviderActionInUseStorageAccounts(
   ListProviderActionInUseStorageAccountsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

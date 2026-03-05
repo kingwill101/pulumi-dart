@@ -295,10 +295,26 @@ class SmartDetectorAlertRule extends pulumi.CustomResource {
        ) {
     actionGroups = registerOutput<ActionGroupsInformationResponse>(
       'actionGroups',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ActionGroupsInformationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
-    detector = registerOutput<DetectorResponse>('detector');
+    detector = registerOutput<DetectorResponse>(
+      'detector',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DetectorResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     frequency = registerOutput<String>('frequency');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
@@ -306,7 +322,16 @@ class SmartDetectorAlertRule extends pulumi.CustomResource {
     severity = registerOutput<String>('severity');
     state = registerOutput<String>('state');
     tags = registerOutput<Map<String, String>?>('tags');
-    throttling = registerOutput<ThrottlingInformationResponse?>('throttling');
+    throttling = registerOutput<ThrottlingInformationResponse?>(
+      'throttling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ThrottlingInformationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

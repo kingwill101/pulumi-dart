@@ -1832,6 +1832,13 @@ class InstanceTemplateIamBinding extends pulumi.CustomResource {
        ) {
     condition = registerOutput<InstanceTemplateIamBindingCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceTemplateIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     members = registerOutput<List<String>>('members');
@@ -1865,6 +1872,13 @@ class InstanceTemplateIamBinding extends pulumi.CustomResource {
        ) {
     condition = registerOutput<InstanceTemplateIamBindingCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceTemplateIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     members = registerOutput<List<String>>('members');

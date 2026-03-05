@@ -1,18 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getConnector.
 class GetConnectorResult {
   /// ARN of the connector.
   final String arn;
+
   /// Summary description of the connector.
   final String description;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
   final String region;
+
   /// A map of tags assigned to the resource.
   final Map<String, String> tags;
+
   /// Current version of the connector.
   final String version;
 
@@ -58,4 +61,3 @@ class GetConnectorResult {
     );
   }
 }
-

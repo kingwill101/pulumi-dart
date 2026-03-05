@@ -284,6 +284,13 @@ class Report extends pulumi.CustomResource {
     certRecords = registerOutput<List<Map<String, dynamic>>>('certRecords');
     complianceStatus = registerOutput<ReportComplianceStatusResponse>(
       'complianceStatus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReportComplianceStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     errors = registerOutput<List<String>>('errors');
     lastTriggerTime = registerOutput<String>('lastTriggerTime');
@@ -293,9 +300,27 @@ class Report extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     resources = registerOutput<List<Map<String, dynamic>>>('resources');
     status = registerOutput<String>('status');
-    storageInfo = registerOutput<StorageInfoResponse?>('storageInfo');
+    storageInfo = registerOutput<StorageInfoResponse?>(
+      'storageInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StorageInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     subscriptions = registerOutput<List<String>>('subscriptions');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tenantId = registerOutput<String>('tenantId');
     timeZone = registerOutput<String>('timeZone');
     triggerTime = registerOutput<String>('triggerTime');

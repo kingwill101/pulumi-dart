@@ -451,6 +451,13 @@ class ProtectionContainerMapping extends pulumi.CustomResource {
        ) {
     automaticUpdate = registerOutput<ProtectionContainerMappingAutomaticUpdate>(
       'automaticUpdate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProtectionContainerMappingAutomaticUpdate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     recoveryFabricName = registerOutput<String>('recoveryFabricName');
@@ -492,6 +499,13 @@ class ProtectionContainerMapping extends pulumi.CustomResource {
        ) {
     automaticUpdate = registerOutput<ProtectionContainerMappingAutomaticUpdate>(
       'automaticUpdate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProtectionContainerMappingAutomaticUpdate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     recoveryFabricName = registerOutput<String>('recoveryFabricName');

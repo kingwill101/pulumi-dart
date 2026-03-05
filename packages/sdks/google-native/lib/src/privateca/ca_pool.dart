@@ -41,13 +41,29 @@ class CaPool extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     caPoolId = registerOutput<String>('caPoolId');
-    issuancePolicy = registerOutput<IssuancePolicyResponse>('issuancePolicy');
+    issuancePolicy = registerOutput<IssuancePolicyResponse>(
+      'issuancePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IssuancePolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     publishingOptions = registerOutput<PublishingOptionsResponse>(
       'publishingOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PublishingOptionsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     requestId = registerOutput<String?>('requestId');
     tier = registerOutput<String>('tier');

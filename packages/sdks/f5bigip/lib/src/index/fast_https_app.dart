@@ -527,7 +527,16 @@ class FastHttpsApp extends pulumi.CustomResource {
     fallbackPersistence = registerOutput<String?>('fallbackPersistence');
     fastHttpsJson = registerOutput<String>('fastHttpsJson');
     loadBalancingMode = registerOutput<String?>('loadBalancingMode');
-    monitor = registerOutput<FastHttpsAppMonitor?>('monitor');
+    monitor = registerOutput<FastHttpsAppMonitor?>(
+      'monitor',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FastHttpsAppMonitor.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     persistenceProfile = registerOutput<String?>('persistenceProfile');
     persistenceType = registerOutput<String?>('persistenceType');
     poolMembers = registerOutput<List<Map<String, dynamic>>>('poolMembers');
@@ -538,13 +547,43 @@ class FastHttpsApp extends pulumi.CustomResource {
     tenant = registerOutput<String>('tenant');
     tlsClientProfile = registerOutput<FastHttpsAppTlsClientProfile?>(
       'tlsClientProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FastHttpsAppTlsClientProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tlsServerProfile = registerOutput<FastHttpsAppTlsServerProfile?>(
       'tlsServerProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FastHttpsAppTlsServerProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    virtualServer = registerOutput<FastHttpsAppVirtualServer?>('virtualServer');
+    virtualServer = registerOutput<FastHttpsAppVirtualServer?>(
+      'virtualServer',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FastHttpsAppVirtualServer.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     wafSecurityPolicy = registerOutput<FastHttpsAppWafSecurityPolicy?>(
       'wafSecurityPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FastHttpsAppWafSecurityPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -588,7 +627,16 @@ class FastHttpsApp extends pulumi.CustomResource {
     fallbackPersistence = registerOutput<String?>('fallbackPersistence');
     fastHttpsJson = registerOutput<String>('fastHttpsJson');
     loadBalancingMode = registerOutput<String?>('loadBalancingMode');
-    monitor = registerOutput<FastHttpsAppMonitor?>('monitor');
+    monitor = registerOutput<FastHttpsAppMonitor?>(
+      'monitor',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FastHttpsAppMonitor.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     persistenceProfile = registerOutput<String?>('persistenceProfile');
     persistenceType = registerOutput<String?>('persistenceType');
     poolMembers = registerOutput<List<Map<String, dynamic>>>('poolMembers');
@@ -599,13 +647,43 @@ class FastHttpsApp extends pulumi.CustomResource {
     tenant = registerOutput<String>('tenant');
     tlsClientProfile = registerOutput<FastHttpsAppTlsClientProfile?>(
       'tlsClientProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FastHttpsAppTlsClientProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tlsServerProfile = registerOutput<FastHttpsAppTlsServerProfile?>(
       'tlsServerProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FastHttpsAppTlsServerProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    virtualServer = registerOutput<FastHttpsAppVirtualServer?>('virtualServer');
+    virtualServer = registerOutput<FastHttpsAppVirtualServer?>(
+      'virtualServer',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FastHttpsAppVirtualServer.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     wafSecurityPolicy = registerOutput<FastHttpsAppWafSecurityPolicy?>(
       'wafSecurityPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FastHttpsAppWafSecurityPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

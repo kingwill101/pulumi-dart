@@ -265,6 +265,13 @@ class LogDeliveryDestination extends pulumi.CustomResource {
     deliveryDestinationConfiguration =
         registerOutput<LogDeliveryDestinationDeliveryDestinationConfiguration?>(
           'deliveryDestinationConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LogDeliveryDestinationDeliveryDestinationConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     deliveryDestinationType = registerOutput<String>('deliveryDestinationType');
     this.name = registerOutput<String>('name');
@@ -301,6 +308,13 @@ class LogDeliveryDestination extends pulumi.CustomResource {
     deliveryDestinationConfiguration =
         registerOutput<LogDeliveryDestinationDeliveryDestinationConfiguration?>(
           'deliveryDestinationConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LogDeliveryDestinationDeliveryDestinationConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     deliveryDestinationType = registerOutput<String>('deliveryDestinationType');
     this.name = registerOutput<String>('name');

@@ -220,7 +220,16 @@ class RevisionAssets extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<RevisionAssetsTimeouts?>('timeouts');
+    timeouts = registerOutput<RevisionAssetsTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RevisionAssetsTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     updatedAt = registerOutput<String>('updatedAt');
   }
 
@@ -257,7 +266,16 @@ class RevisionAssets extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<RevisionAssetsTimeouts?>('timeouts');
+    timeouts = registerOutput<RevisionAssetsTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RevisionAssetsTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     updatedAt = registerOutput<String>('updatedAt');
   }
 }

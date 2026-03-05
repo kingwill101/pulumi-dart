@@ -1508,18 +1508,45 @@ class Slo extends pulumi.CustomResource {
         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
         options ?? pulumi.CustomResourceOptions(),
       ) {
-    basicSli = registerOutput<SloBasicSli?>('basicSli');
+    basicSli = registerOutput<SloBasicSli?>(
+      'basicSli',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SloBasicSli.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     calendarPeriod = registerOutput<String?>('calendarPeriod');
     displayName = registerOutput<String?>('displayName');
     goal = registerOutput<double>('goal');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    requestBasedSli = registerOutput<SloRequestBasedSli?>('requestBasedSli');
+    requestBasedSli = registerOutput<SloRequestBasedSli?>(
+      'requestBasedSli',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SloRequestBasedSli.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     rollingPeriodDays = registerOutput<int?>('rollingPeriodDays');
     service = registerOutput<String>('service');
     sloId = registerOutput<String>('sloId');
     userLabels = registerOutput<Map<String, String>?>('userLabels');
-    windowsBasedSli = registerOutput<SloWindowsBasedSli?>('windowsBasedSli');
+    windowsBasedSli = registerOutput<SloWindowsBasedSli?>(
+      'windowsBasedSli',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SloWindowsBasedSli.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Slo] resource's state with the given [name] and [id].
@@ -1541,17 +1568,44 @@ class Slo extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    basicSli = registerOutput<SloBasicSli?>('basicSli');
+    basicSli = registerOutput<SloBasicSli?>(
+      'basicSli',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SloBasicSli.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     calendarPeriod = registerOutput<String?>('calendarPeriod');
     displayName = registerOutput<String?>('displayName');
     goal = registerOutput<double>('goal');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    requestBasedSli = registerOutput<SloRequestBasedSli?>('requestBasedSli');
+    requestBasedSli = registerOutput<SloRequestBasedSli?>(
+      'requestBasedSli',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SloRequestBasedSli.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     rollingPeriodDays = registerOutput<int?>('rollingPeriodDays');
     service = registerOutput<String>('service');
     sloId = registerOutput<String>('sloId');
     userLabels = registerOutput<Map<String, String>?>('userLabels');
-    windowsBasedSli = registerOutput<SloWindowsBasedSli?>('windowsBasedSli');
+    windowsBasedSli = registerOutput<SloWindowsBasedSli?>(
+      'windowsBasedSli',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SloWindowsBasedSli.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

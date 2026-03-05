@@ -225,6 +225,13 @@ class InterfaceEndpoint extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     endpointService = registerOutput<EndpointServiceResponse?>(
       'endpointService',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointServiceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String?>('etag');
     fqdn = registerOutput<String?>('fqdn');
@@ -235,7 +242,16 @@ class InterfaceEndpoint extends pulumi.CustomResource {
     );
     owner = registerOutput<String>('owner');
     provisioningState = registerOutput<String>('provisioningState');
-    subnet = registerOutput<SubnetResponse?>('subnet');
+    subnet = registerOutput<SubnetResponse?>(
+      'subnet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubnetResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

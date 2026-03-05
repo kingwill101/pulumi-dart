@@ -272,7 +272,16 @@ class ClusterPeering extends pulumi.CustomResource {
     clusters = registerOutput<List<String>>('clusters');
     identifier = registerOutput<String>('identifier');
     region = registerOutput<String>('region');
-    timeouts = registerOutput<ClusterPeeringTimeouts?>('timeouts');
+    timeouts = registerOutput<ClusterPeeringTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterPeeringTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     witnessRegion = registerOutput<String>('witnessRegion');
   }
 
@@ -302,7 +311,16 @@ class ClusterPeering extends pulumi.CustomResource {
     clusters = registerOutput<List<String>>('clusters');
     identifier = registerOutput<String>('identifier');
     region = registerOutput<String>('region');
-    timeouts = registerOutput<ClusterPeeringTimeouts?>('timeouts');
+    timeouts = registerOutput<ClusterPeeringTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterPeeringTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     witnessRegion = registerOutput<String>('witnessRegion');
   }
 }

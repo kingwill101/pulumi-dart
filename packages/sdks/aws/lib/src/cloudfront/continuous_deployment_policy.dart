@@ -630,9 +630,23 @@ class ContinuousDeploymentPolicy extends pulumi.CustomResource {
     stagingDistributionDnsNames =
         registerOutput<ContinuousDeploymentPolicyStagingDistributionDnsNames>(
           'stagingDistributionDnsNames',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ContinuousDeploymentPolicyStagingDistributionDnsNames.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     trafficConfig = registerOutput<ContinuousDeploymentPolicyTrafficConfig?>(
       'trafficConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContinuousDeploymentPolicyTrafficConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -666,9 +680,23 @@ class ContinuousDeploymentPolicy extends pulumi.CustomResource {
     stagingDistributionDnsNames =
         registerOutput<ContinuousDeploymentPolicyStagingDistributionDnsNames>(
           'stagingDistributionDnsNames',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ContinuousDeploymentPolicyStagingDistributionDnsNames.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     trafficConfig = registerOutput<ContinuousDeploymentPolicyTrafficConfig?>(
       'trafficConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContinuousDeploymentPolicyTrafficConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

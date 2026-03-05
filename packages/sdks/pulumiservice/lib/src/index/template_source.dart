@@ -30,7 +30,16 @@ class TemplateSource extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    destination = registerOutput<TemplateSourceDestination?>('destination');
+    destination = registerOutput<TemplateSourceDestination?>(
+      'destination',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TemplateSourceDestination.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     organizationName = registerOutput<String>('organizationName');
     sourceName = registerOutput<String>('sourceName');
     sourceURL = registerOutput<String>('sourceURL');

@@ -156,7 +156,16 @@ class AnycastIpList extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<AnycastIpListTimeouts?>('timeouts');
+    timeouts = registerOutput<AnycastIpListTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AnycastIpListTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [AnycastIpList] resource's state with the given [name] and [id].
@@ -189,6 +198,15 @@ class AnycastIpList extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<AnycastIpListTimeouts?>('timeouts');
+    timeouts = registerOutput<AnycastIpListTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AnycastIpListTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

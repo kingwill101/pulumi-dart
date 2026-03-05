@@ -2393,16 +2393,44 @@ class App extends pulumi.CustomResource {
     appId = registerOutput<String>('appId');
     audioProcessingConfig = registerOutput<AppAudioProcessingConfig?>(
       'audioProcessingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppAudioProcessingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clientCertificateSettings = registerOutput<AppClientCertificateSettings?>(
       'clientCertificateSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppClientCertificateSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     dataStoreSettings = registerOutput<AppDataStoreSettings?>(
       'dataStoreSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppDataStoreSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     defaultChannelProfile = registerOutput<AppDefaultChannelProfile?>(
       'defaultChannelProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppDefaultChannelProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     deploymentCount = registerOutput<int>('deploymentCount');
     description = registerOutput<String?>('description');
@@ -2411,19 +2439,62 @@ class App extends pulumi.CustomResource {
     evaluationMetricsThresholds =
         registerOutput<AppEvaluationMetricsThresholds?>(
           'evaluationMetricsThresholds',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AppEvaluationMetricsThresholds.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     globalInstruction = registerOutput<String?>('globalInstruction');
     guardrails = registerOutput<List<String>?>('guardrails');
-    languageSettings = registerOutput<AppLanguageSettings?>('languageSettings');
+    languageSettings = registerOutput<AppLanguageSettings?>(
+      'languageSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppLanguageSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
-    loggingSettings = registerOutput<AppLoggingSettings?>('loggingSettings');
+    loggingSettings = registerOutput<AppLoggingSettings?>(
+      'loggingSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppLoggingSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     metadata = registerOutput<Map<String, String>?>('metadata');
-    modelSettings = registerOutput<AppModelSettings?>('modelSettings');
+    modelSettings = registerOutput<AppModelSettings?>(
+      'modelSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppModelSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     pinned = registerOutput<bool?>('pinned');
     project = registerOutput<String>('project');
     rootAgent = registerOutput<String?>('rootAgent');
-    timeZoneSettings = registerOutput<AppTimeZoneSettings?>('timeZoneSettings');
+    timeZoneSettings = registerOutput<AppTimeZoneSettings?>(
+      'timeZoneSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppTimeZoneSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     updateTime = registerOutput<String>('updateTime');
     variableDeclarations = registerOutput<List<Map<String, dynamic>>?>(
       'variableDeclarations',
@@ -2452,16 +2523,44 @@ class App extends pulumi.CustomResource {
     appId = registerOutput<String>('appId');
     audioProcessingConfig = registerOutput<AppAudioProcessingConfig?>(
       'audioProcessingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppAudioProcessingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clientCertificateSettings = registerOutput<AppClientCertificateSettings?>(
       'clientCertificateSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppClientCertificateSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     dataStoreSettings = registerOutput<AppDataStoreSettings?>(
       'dataStoreSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppDataStoreSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     defaultChannelProfile = registerOutput<AppDefaultChannelProfile?>(
       'defaultChannelProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppDefaultChannelProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     deploymentCount = registerOutput<int>('deploymentCount');
     description = registerOutput<String?>('description');
@@ -2470,19 +2569,62 @@ class App extends pulumi.CustomResource {
     evaluationMetricsThresholds =
         registerOutput<AppEvaluationMetricsThresholds?>(
           'evaluationMetricsThresholds',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AppEvaluationMetricsThresholds.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     globalInstruction = registerOutput<String?>('globalInstruction');
     guardrails = registerOutput<List<String>?>('guardrails');
-    languageSettings = registerOutput<AppLanguageSettings?>('languageSettings');
+    languageSettings = registerOutput<AppLanguageSettings?>(
+      'languageSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppLanguageSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
-    loggingSettings = registerOutput<AppLoggingSettings?>('loggingSettings');
+    loggingSettings = registerOutput<AppLoggingSettings?>(
+      'loggingSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppLoggingSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     metadata = registerOutput<Map<String, String>?>('metadata');
-    modelSettings = registerOutput<AppModelSettings?>('modelSettings');
+    modelSettings = registerOutput<AppModelSettings?>(
+      'modelSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppModelSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     pinned = registerOutput<bool?>('pinned');
     project = registerOutput<String>('project');
     rootAgent = registerOutput<String?>('rootAgent');
-    timeZoneSettings = registerOutput<AppTimeZoneSettings?>('timeZoneSettings');
+    timeZoneSettings = registerOutput<AppTimeZoneSettings?>(
+      'timeZoneSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppTimeZoneSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     updateTime = registerOutput<String>('updateTime');
     variableDeclarations = registerOutput<List<Map<String, dynamic>>?>(
       'variableDeclarations',

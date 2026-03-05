@@ -230,12 +230,28 @@ class Token extends pulumi.CustomResource {
     creationDate = registerOutput<String>('creationDate');
     credentials = registerOutput<TokenCredentialsPropertiesResponse?>(
       'credentials',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TokenCredentialsPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     scopeMapId = registerOutput<String?>('scopeMapId');
     status = registerOutput<String?>('status');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

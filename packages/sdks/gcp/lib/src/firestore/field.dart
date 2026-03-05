@@ -953,10 +953,28 @@ class Field extends pulumi.CustomResource {
     collection = registerOutput<String>('collection');
     database = registerOutput<String?>('database');
     field = registerOutput<String>('field');
-    indexConfig = registerOutput<FieldIndexConfig?>('indexConfig');
+    indexConfig = registerOutput<FieldIndexConfig?>(
+      'indexConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FieldIndexConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    ttlConfig = registerOutput<FieldTtlConfig?>('ttlConfig');
+    ttlConfig = registerOutput<FieldTtlConfig?>(
+      'ttlConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FieldTtlConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Field] resource's state with the given [name] and [id].
@@ -981,9 +999,27 @@ class Field extends pulumi.CustomResource {
     collection = registerOutput<String>('collection');
     database = registerOutput<String?>('database');
     field = registerOutput<String>('field');
-    indexConfig = registerOutput<FieldIndexConfig?>('indexConfig');
+    indexConfig = registerOutput<FieldIndexConfig?>(
+      'indexConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FieldIndexConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    ttlConfig = registerOutput<FieldTtlConfig?>('ttlConfig');
+    ttlConfig = registerOutput<FieldTtlConfig?>(
+      'ttlConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FieldTtlConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

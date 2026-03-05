@@ -41,14 +41,38 @@ class CertificateSigningRequestResource extends pulumi.CustomResource {
        ) {
     apiVersion = registerOutput<String>('apiVersion');
     kind = registerOutput<String>('kind');
-    metadata = registerOutput<ObjectMeta>('metadata');
-    spec =
-        registerOutput<CertificateSigningRequestSpecCertificatesK8sIoV1beta1>(
-          'spec',
+    metadata = registerOutput<ObjectMeta>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
         );
+      },
+    );
+    spec = registerOutput<CertificateSigningRequestSpecCertificatesK8sIoV1beta1>(
+      'spec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CertificateSigningRequestSpecCertificatesK8sIoV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status =
         registerOutput<
           CertificateSigningRequestStatusCertificatesK8sIoV1beta1?
-        >('status');
+        >(
+          'status',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CertificateSigningRequestStatusCertificatesK8sIoV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
   }
 }

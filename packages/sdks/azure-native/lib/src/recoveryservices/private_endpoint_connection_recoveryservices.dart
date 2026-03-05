@@ -247,6 +247,13 @@ class PrivateEndpointConnectionRecoveryservices extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     properties = registerOutput<PrivateEndpointConnectionResponse>(
       'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PrivateEndpointConnectionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

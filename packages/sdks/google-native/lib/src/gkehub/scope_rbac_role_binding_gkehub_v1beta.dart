@@ -65,10 +65,26 @@ class ScopeRbacRoleBindingGkehubV1beta extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     rbacrolebindingId = registerOutput<String>('rbacrolebindingId');
-    role = registerOutput<RoleResponseGkehubV1beta>('role');
+    role = registerOutput<RoleResponseGkehubV1beta>(
+      'role',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RoleResponseGkehubV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     scopeId = registerOutput<String>('scopeId');
     state = registerOutput<RBACRoleBindingLifecycleStateResponseGkehubV1beta>(
       'state',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RBACRoleBindingLifecycleStateResponseGkehubV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');

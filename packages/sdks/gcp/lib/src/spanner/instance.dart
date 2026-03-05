@@ -485,6 +485,13 @@ class Instance extends pulumi.CustomResource {
        ) {
     autoscalingConfig = registerOutput<InstanceAutoscalingConfig?>(
       'autoscalingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceAutoscalingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     config = registerOutput<String>('config');
     defaultBackupScheduleType = registerOutput<String>(
@@ -529,6 +536,13 @@ class Instance extends pulumi.CustomResource {
        ) {
     autoscalingConfig = registerOutput<InstanceAutoscalingConfig?>(
       'autoscalingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceAutoscalingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     config = registerOutput<String>('config');
     defaultBackupScheduleType = registerOutput<String>(

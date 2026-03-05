@@ -110,38 +110,114 @@ class MigratingVm extends pulumi.CustomResource {
        ) {
     awsSourceVmDetails = registerOutput<AwsSourceVmDetailsResponse>(
       'awsSourceVmDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsSourceVmDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     azureSourceVmDetails = registerOutput<AzureSourceVmDetailsResponse>(
       'azureSourceVmDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AzureSourceVmDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     computeEngineDisksTargetDefaults =
         registerOutput<ComputeEngineDisksTargetDefaultsResponse>(
           'computeEngineDisksTargetDefaults',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ComputeEngineDisksTargetDefaultsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     computeEngineTargetDefaults =
         registerOutput<ComputeEngineTargetDefaultsResponse>(
           'computeEngineTargetDefaults',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ComputeEngineTargetDefaultsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     createTime = registerOutput<String>('createTime');
     currentSyncInfo = registerOutput<ReplicationCycleResponse>(
       'currentSyncInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReplicationCycleResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     cutoverForecast = registerOutput<CutoverForecastResponse>(
       'cutoverForecast',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CutoverForecastResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
-    error = registerOutput<StatusResponse>('error');
+    error = registerOutput<StatusResponse>(
+      'error',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     group = registerOutput<String>('group');
     labels = registerOutput<Map<String, String>>('labels');
     lastReplicationCycle = registerOutput<ReplicationCycleResponse>(
       'lastReplicationCycle',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReplicationCycleResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    lastSync = registerOutput<ReplicationSyncResponse>('lastSync');
+    lastSync = registerOutput<ReplicationSyncResponse>(
+      'lastSync',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReplicationSyncResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     migratingVmId = registerOutput<String>('migratingVmId');
     this.name = registerOutput<String>('name');
-    policy = registerOutput<SchedulePolicyResponse>('policy');
+    policy = registerOutput<SchedulePolicyResponse>(
+      'policy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SchedulePolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     recentCloneJobs = registerOutput<List<Map<String, dynamic>>>(
       'recentCloneJobs',
@@ -157,6 +233,13 @@ class MigratingVm extends pulumi.CustomResource {
     updateTime = registerOutput<String>('updateTime');
     vmwareSourceVmDetails = registerOutput<VmwareSourceVmDetailsResponse>(
       'vmwareSourceVmDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VmwareSourceVmDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

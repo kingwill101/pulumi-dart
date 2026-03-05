@@ -94,16 +94,39 @@ class RegionSecurityPolicyComputeBeta extends pulumi.CustomResource {
     adaptiveProtectionConfig =
         registerOutput<
           SecurityPolicyAdaptiveProtectionConfigResponseComputeBeta
-        >('adaptiveProtectionConfig');
+        >(
+          'adaptiveProtectionConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SecurityPolicyAdaptiveProtectionConfigResponseComputeBeta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     advancedOptionsConfig =
         registerOutput<SecurityPolicyAdvancedOptionsConfigResponseComputeBeta>(
           'advancedOptionsConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SecurityPolicyAdvancedOptionsConfigResponseComputeBeta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     associations = registerOutput<List<Map<String, dynamic>>>('associations');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     ddosProtectionConfig =
         registerOutput<SecurityPolicyDdosProtectionConfigResponseComputeBeta>(
           'ddosProtectionConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SecurityPolicyDdosProtectionConfigResponseComputeBeta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
@@ -117,6 +140,13 @@ class RegionSecurityPolicyComputeBeta extends pulumi.CustomResource {
     recaptchaOptionsConfig =
         registerOutput<SecurityPolicyRecaptchaOptionsConfigResponseComputeBeta>(
           'recaptchaOptionsConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SecurityPolicyRecaptchaOptionsConfigResponseComputeBeta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     requestId = registerOutput<String?>('requestId');

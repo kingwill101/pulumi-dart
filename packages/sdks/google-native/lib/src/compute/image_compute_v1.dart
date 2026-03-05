@@ -131,6 +131,13 @@ class ImageComputeV1 extends pulumi.CustomResource {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deprecated = registerOutput<DeprecationStatusResponseComputeV1>(
       'deprecated',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeprecationStatusResponseComputeV1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String>('description');
     diskSizeGb = registerOutput<String>('diskSizeGb');
@@ -141,6 +148,13 @@ class ImageComputeV1 extends pulumi.CustomResource {
     );
     imageEncryptionKey = registerOutput<CustomerEncryptionKeyResponseComputeV1>(
       'imageEncryptionKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomerEncryptionKeyResponseComputeV1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     kind = registerOutput<String>('kind');
     labelFingerprint = registerOutput<String>('labelFingerprint');
@@ -149,30 +163,67 @@ class ImageComputeV1 extends pulumi.CustomResource {
     licenses = registerOutput<List<String>>('licenses');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    rawDisk = registerOutput<ImageRawDiskResponseComputeV1>('rawDisk');
+    rawDisk = registerOutput<ImageRawDiskResponseComputeV1>(
+      'rawDisk',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImageRawDiskResponseComputeV1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     requestId = registerOutput<String?>('requestId');
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
     selfLink = registerOutput<String>('selfLink');
     shieldedInstanceInitialState =
         registerOutput<InitialStateConfigResponseComputeV1>(
           'shieldedInstanceInitialState',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InitialStateConfigResponseComputeV1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     sourceDisk = registerOutput<String>('sourceDisk');
     sourceDiskEncryptionKey =
         registerOutput<CustomerEncryptionKeyResponseComputeV1>(
           'sourceDiskEncryptionKey',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CustomerEncryptionKeyResponseComputeV1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     sourceDiskId = registerOutput<String>('sourceDiskId');
     sourceImage = registerOutput<String>('sourceImage');
     sourceImageEncryptionKey =
         registerOutput<CustomerEncryptionKeyResponseComputeV1>(
           'sourceImageEncryptionKey',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CustomerEncryptionKeyResponseComputeV1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     sourceImageId = registerOutput<String>('sourceImageId');
     sourceSnapshot = registerOutput<String>('sourceSnapshot');
     sourceSnapshotEncryptionKey =
         registerOutput<CustomerEncryptionKeyResponseComputeV1>(
           'sourceSnapshotEncryptionKey',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CustomerEncryptionKeyResponseComputeV1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     sourceSnapshotId = registerOutput<String>('sourceSnapshotId');
     sourceType = registerOutput<String>('sourceType');

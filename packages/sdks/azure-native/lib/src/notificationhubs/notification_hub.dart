@@ -218,34 +218,125 @@ class NotificationHub extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    admCredential = registerOutput<AdmCredentialResponse?>('admCredential');
-    apnsCredential = registerOutput<ApnsCredentialResponse?>('apnsCredential');
+    admCredential = registerOutput<AdmCredentialResponse?>(
+      'admCredential',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AdmCredentialResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    apnsCredential = registerOutput<ApnsCredentialResponse?>(
+      'apnsCredential',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApnsCredentialResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     authorizationRules = registerOutput<List<Map<String, dynamic>>>(
       'authorizationRules',
     );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     baiduCredential = registerOutput<BaiduCredentialResponse?>(
       'baiduCredential',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BaiduCredentialResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     browserCredential = registerOutput<BrowserCredentialResponse?>(
       'browserCredential',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BrowserCredentialResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dailyMaxActiveDevices = registerOutput<double>('dailyMaxActiveDevices');
     fcmV1Credential = registerOutput<FcmV1CredentialResponse?>(
       'fcmV1Credential',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FcmV1CredentialResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    gcmCredential = registerOutput<GcmCredentialResponse?>('gcmCredential');
+    gcmCredential = registerOutput<GcmCredentialResponse?>(
+      'gcmCredential',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GcmCredentialResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
-    mpnsCredential = registerOutput<MpnsCredentialResponse?>('mpnsCredential');
+    mpnsCredential = registerOutput<MpnsCredentialResponse?>(
+      'mpnsCredential',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MpnsCredentialResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     registrationTtl = registerOutput<String?>('registrationTtl');
-    sku = registerOutput<SkuResponse?>('sku');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    sku = registerOutput<SkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    wnsCredential = registerOutput<WnsCredentialResponse?>('wnsCredential');
+    wnsCredential = registerOutput<WnsCredentialResponse?>(
+      'wnsCredential',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WnsCredentialResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     xiaomiCredential = registerOutput<XiaomiCredentialResponse?>(
       'xiaomiCredential',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return XiaomiCredentialResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

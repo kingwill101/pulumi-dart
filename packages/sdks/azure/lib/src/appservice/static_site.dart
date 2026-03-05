@@ -200,7 +200,16 @@ class StaticSite extends pulumi.CustomResource {
     apiKey = registerOutput<String>('apiKey');
     appSettings = registerOutput<Map<String, String>?>('appSettings');
     defaultHostName = registerOutput<String>('defaultHostName');
-    identity = registerOutput<StaticSiteIdentity?>('identity');
+    identity = registerOutput<StaticSiteIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StaticSiteIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -235,7 +244,16 @@ class StaticSite extends pulumi.CustomResource {
     apiKey = registerOutput<String>('apiKey');
     appSettings = registerOutput<Map<String, String>?>('appSettings');
     defaultHostName = registerOutput<String>('defaultHostName');
-    identity = registerOutput<StaticSiteIdentity?>('identity');
+    identity = registerOutput<StaticSiteIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StaticSiteIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

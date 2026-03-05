@@ -63,7 +63,16 @@ class GithubEnterpriseConfig extends pulumi.CustomResource {
     peeredNetwork = registerOutput<String>('peeredNetwork');
     project = registerOutput<String>('project');
     projectId = registerOutput<String?>('projectId');
-    secrets = registerOutput<GitHubEnterpriseSecretsResponse>('secrets');
+    secrets = registerOutput<GitHubEnterpriseSecretsResponse>(
+      'secrets',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GitHubEnterpriseSecretsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sslCa = registerOutput<String>('sslCa');
     webhookKey = registerOutput<String>('webhookKey');
   }

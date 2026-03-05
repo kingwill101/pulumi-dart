@@ -75,10 +75,24 @@ class ResourcePolicyComputeBeta extends pulumi.CustomResource {
     groupPlacementPolicy =
         registerOutput<ResourcePolicyGroupPlacementPolicyResponseComputeBeta>(
           'groupPlacementPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResourcePolicyGroupPlacementPolicyResponseComputeBeta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     instanceSchedulePolicy =
         registerOutput<ResourcePolicyInstanceSchedulePolicyResponseComputeBeta>(
           'instanceSchedulePolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResourcePolicyInstanceSchedulePolicyResponseComputeBeta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
@@ -88,11 +102,25 @@ class ResourcePolicyComputeBeta extends pulumi.CustomResource {
     resourceStatus =
         registerOutput<ResourcePolicyResourceStatusResponseComputeBeta>(
           'resourceStatus',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResourcePolicyResourceStatusResponseComputeBeta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     selfLink = registerOutput<String>('selfLink');
     snapshotSchedulePolicy =
         registerOutput<ResourcePolicySnapshotSchedulePolicyResponseComputeBeta>(
           'snapshotSchedulePolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResourcePolicySnapshotSchedulePolicyResponseComputeBeta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     status = registerOutput<String>('status');
   }

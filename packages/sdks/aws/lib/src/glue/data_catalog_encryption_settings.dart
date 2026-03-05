@@ -193,7 +193,16 @@ class DataCatalogEncryptionSettings extends pulumi.CustomResource {
     dataCatalogEncryptionSettings =
         registerOutput<
           DataCatalogEncryptionSettingsDataCatalogEncryptionSettings
-        >('dataCatalogEncryptionSettings');
+        >(
+          'dataCatalogEncryptionSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataCatalogEncryptionSettingsDataCatalogEncryptionSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     region = registerOutput<String>('region');
   }
 
@@ -224,7 +233,16 @@ class DataCatalogEncryptionSettings extends pulumi.CustomResource {
     dataCatalogEncryptionSettings =
         registerOutput<
           DataCatalogEncryptionSettingsDataCatalogEncryptionSettings
-        >('dataCatalogEncryptionSettings');
+        >(
+          'dataCatalogEncryptionSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataCatalogEncryptionSettingsDataCatalogEncryptionSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     region = registerOutput<String>('region');
   }
 }

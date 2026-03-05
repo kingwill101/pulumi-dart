@@ -392,10 +392,24 @@ class DomainName extends pulumi.CustomResource {
     domainName = registerOutput<String>('domainName');
     domainNameConfiguration = registerOutput<DomainNameDomainNameConfiguration>(
       'domainNameConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainNameDomainNameConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     mutualTlsAuthentication =
         registerOutput<DomainNameMutualTlsAuthentication?>(
           'mutualTlsAuthentication',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DomainNameMutualTlsAuthentication.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     routingMode = registerOutput<String>('routingMode');
@@ -433,10 +447,24 @@ class DomainName extends pulumi.CustomResource {
     domainName = registerOutput<String>('domainName');
     domainNameConfiguration = registerOutput<DomainNameDomainNameConfiguration>(
       'domainNameConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainNameDomainNameConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     mutualTlsAuthentication =
         registerOutput<DomainNameMutualTlsAuthentication?>(
           'mutualTlsAuthentication',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DomainNameMutualTlsAuthentication.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     routingMode = registerOutput<String>('routingMode');

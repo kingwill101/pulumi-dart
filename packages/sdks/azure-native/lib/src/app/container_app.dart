@@ -3396,7 +3396,16 @@ class ContainerApp extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    configuration = registerOutput<ConfigurationResponse?>('configuration');
+    configuration = registerOutput<ConfigurationResponse?>(
+      'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     customDomainVerificationId = registerOutput<String>(
       'customDomainVerificationId',
     );
@@ -3405,8 +3414,24 @@ class ContainerApp extends pulumi.CustomResource {
     eventStreamEndpoint = registerOutput<String>('eventStreamEndpoint');
     extendedLocation = registerOutput<ExtendedLocationResponse?>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    identity = registerOutput<ManagedServiceIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedServiceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kind = registerOutput<String?>('kind');
     latestReadyRevisionName = registerOutput<String>('latestReadyRevisionName');
     latestRevisionFqdn = registerOutput<String>('latestRevisionFqdn');
@@ -3419,12 +3444,37 @@ class ContainerApp extends pulumi.CustomResource {
     patchingConfiguration =
         registerOutput<ContainerAppResponsePatchingConfiguration?>(
           'patchingConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ContainerAppResponsePatchingConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     provisioningState = registerOutput<String>('provisioningState');
     runningStatus = registerOutput<String>('runningStatus');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
-    template = registerOutput<TemplateResponse?>('template');
+    template = registerOutput<TemplateResponse?>(
+      'template',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TemplateResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     workloadProfileName = registerOutput<String?>('workloadProfileName');
   }

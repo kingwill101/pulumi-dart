@@ -557,18 +557,43 @@ class VirtualMachineManagerVirtualMachineInstance
     hardware =
         registerOutput<VirtualMachineManagerVirtualMachineInstanceHardware?>(
           'hardware',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VirtualMachineManagerVirtualMachineInstanceHardware.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     infrastructure =
         registerOutput<
           VirtualMachineManagerVirtualMachineInstanceInfrastructure
-        >('infrastructure');
+        >(
+          'infrastructure',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VirtualMachineManagerVirtualMachineInstanceInfrastructure.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     networkInterfaces = registerOutput<List<Map<String, dynamic>>?>(
       'networkInterfaces',
     );
     operatingSystem =
         registerOutput<
           VirtualMachineManagerVirtualMachineInstanceOperatingSystem?
-        >('operatingSystem');
+        >(
+          'operatingSystem',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VirtualMachineManagerVirtualMachineInstanceOperatingSystem.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     scopedResourceId = registerOutput<String>('scopedResourceId');
     storageDisks = registerOutput<List<Map<String, dynamic>>?>('storageDisks');
     systemCenterVirtualMachineManagerAvailabilitySetIds =
@@ -604,18 +629,43 @@ class VirtualMachineManagerVirtualMachineInstance
     hardware =
         registerOutput<VirtualMachineManagerVirtualMachineInstanceHardware?>(
           'hardware',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VirtualMachineManagerVirtualMachineInstanceHardware.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     infrastructure =
         registerOutput<
           VirtualMachineManagerVirtualMachineInstanceInfrastructure
-        >('infrastructure');
+        >(
+          'infrastructure',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VirtualMachineManagerVirtualMachineInstanceInfrastructure.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     networkInterfaces = registerOutput<List<Map<String, dynamic>>?>(
       'networkInterfaces',
     );
     operatingSystem =
         registerOutput<
           VirtualMachineManagerVirtualMachineInstanceOperatingSystem?
-        >('operatingSystem');
+        >(
+          'operatingSystem',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VirtualMachineManagerVirtualMachineInstanceOperatingSystem.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     scopedResourceId = registerOutput<String>('scopedResourceId');
     storageDisks = registerOutput<List<Map<String, dynamic>>?>('storageDisks');
     systemCenterVirtualMachineManagerAvailabilitySetIds =

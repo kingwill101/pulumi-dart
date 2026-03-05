@@ -1694,18 +1694,48 @@ class GraphQLApi extends pulumi.CustomResource {
     authenticationType = registerOutput<String>('authenticationType');
     enhancedMetricsConfig = registerOutput<GraphQLApiEnhancedMetricsConfig?>(
       'enhancedMetricsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GraphQLApiEnhancedMetricsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     introspectionConfig = registerOutput<String?>('introspectionConfig');
     lambdaAuthorizerConfig = registerOutput<GraphQLApiLambdaAuthorizerConfig?>(
       'lambdaAuthorizerConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GraphQLApiLambdaAuthorizerConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    logConfig = registerOutput<GraphQLApiLogConfig?>('logConfig');
+    logConfig = registerOutput<GraphQLApiLogConfig?>(
+      'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GraphQLApiLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     mergedApiExecutionRoleArn = registerOutput<String?>(
       'mergedApiExecutionRoleArn',
     );
     this.name = registerOutput<String>('name');
     openidConnectConfig = registerOutput<GraphQLApiOpenidConnectConfig?>(
       'openidConnectConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GraphQLApiOpenidConnectConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     queryDepthLimit = registerOutput<int?>('queryDepthLimit');
     region = registerOutput<String>('region');
@@ -1716,6 +1746,13 @@ class GraphQLApi extends pulumi.CustomResource {
     uris = registerOutput<Map<String, String>>('uris');
     userPoolConfig = registerOutput<GraphQLApiUserPoolConfig?>(
       'userPoolConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GraphQLApiUserPoolConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     visibility = registerOutput<String?>('visibility');
     xrayEnabled = registerOutput<bool?>('xrayEnabled');
@@ -1753,18 +1790,48 @@ class GraphQLApi extends pulumi.CustomResource {
     authenticationType = registerOutput<String>('authenticationType');
     enhancedMetricsConfig = registerOutput<GraphQLApiEnhancedMetricsConfig?>(
       'enhancedMetricsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GraphQLApiEnhancedMetricsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     introspectionConfig = registerOutput<String?>('introspectionConfig');
     lambdaAuthorizerConfig = registerOutput<GraphQLApiLambdaAuthorizerConfig?>(
       'lambdaAuthorizerConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GraphQLApiLambdaAuthorizerConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    logConfig = registerOutput<GraphQLApiLogConfig?>('logConfig');
+    logConfig = registerOutput<GraphQLApiLogConfig?>(
+      'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GraphQLApiLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     mergedApiExecutionRoleArn = registerOutput<String?>(
       'mergedApiExecutionRoleArn',
     );
     this.name = registerOutput<String>('name');
     openidConnectConfig = registerOutput<GraphQLApiOpenidConnectConfig?>(
       'openidConnectConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GraphQLApiOpenidConnectConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     queryDepthLimit = registerOutput<int?>('queryDepthLimit');
     region = registerOutput<String>('region');
@@ -1775,6 +1842,13 @@ class GraphQLApi extends pulumi.CustomResource {
     uris = registerOutput<Map<String, String>>('uris');
     userPoolConfig = registerOutput<GraphQLApiUserPoolConfig?>(
       'userPoolConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GraphQLApiUserPoolConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     visibility = registerOutput<String?>('visibility');
     xrayEnabled = registerOutput<bool?>('xrayEnabled');

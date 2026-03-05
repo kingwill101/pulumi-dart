@@ -208,7 +208,16 @@ class InterconnectGroup extends pulumi.CustomResource {
     configureds = registerOutput<List<Map<String, dynamic>>>('configureds');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String?>('description');
-    intent = registerOutput<InterconnectGroupIntent>('intent');
+    intent = registerOutput<InterconnectGroupIntent>(
+      'intent',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InterconnectGroupIntent.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     interconnects = registerOutput<List<Map<String, dynamic>>?>(
       'interconnects',
     );
@@ -245,7 +254,16 @@ class InterconnectGroup extends pulumi.CustomResource {
     configureds = registerOutput<List<Map<String, dynamic>>>('configureds');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String?>('description');
-    intent = registerOutput<InterconnectGroupIntent>('intent');
+    intent = registerOutput<InterconnectGroupIntent>(
+      'intent',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InterconnectGroupIntent.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     interconnects = registerOutput<List<Map<String, dynamic>>?>(
       'interconnects',
     );

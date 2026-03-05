@@ -90,6 +90,13 @@ class FirewallComputeBeta extends pulumi.CustomResource {
     kind = registerOutput<String>('kind');
     logConfig = registerOutput<FirewallLogConfigResponseComputeBeta>(
       'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FirewallLogConfigResponseComputeBeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');

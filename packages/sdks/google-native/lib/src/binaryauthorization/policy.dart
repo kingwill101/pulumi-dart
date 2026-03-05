@@ -34,7 +34,16 @@ class Policy extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     description = registerOutput<String>('description');
-    gkePolicy = registerOutput<GkePolicyResponse>('gkePolicy');
+    gkePolicy = registerOutput<GkePolicyResponse>(
+      'gkePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GkePolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     platformId = registerOutput<String>('platformId');
     policyId = registerOutput<String>('policyId');

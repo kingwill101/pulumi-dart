@@ -1105,7 +1105,16 @@ class Server extends pulumi.CustomResource {
     directoryId = registerOutput<String?>('directoryId');
     domain = registerOutput<String?>('domain');
     endpoint = registerOutput<String>('endpoint');
-    endpointDetails = registerOutput<ServerEndpointDetails?>('endpointDetails');
+    endpointDetails = registerOutput<ServerEndpointDetails?>(
+      'endpointDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerEndpointDetails.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     endpointType = registerOutput<String?>('endpointType');
     forceDestroy = registerOutput<bool?>('forceDestroy');
     function = registerOutput<String?>('function');
@@ -1120,11 +1129,27 @@ class Server extends pulumi.CustomResource {
     preAuthenticationLoginBanner = registerOutput<String?>(
       'preAuthenticationLoginBanner',
     );
-    protocolDetails = registerOutput<ServerProtocolDetails>('protocolDetails');
+    protocolDetails = registerOutput<ServerProtocolDetails>(
+      'protocolDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerProtocolDetails.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     protocols = registerOutput<List<String>>('protocols');
     region = registerOutput<String>('region');
     s3StorageOptions = registerOutput<ServerS3StorageOptions>(
       's3StorageOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerS3StorageOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     securityPolicyName = registerOutput<String?>('securityPolicyName');
     sftpAuthenticationMethods = registerOutput<String>(
@@ -1136,7 +1161,16 @@ class Server extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     url = registerOutput<String?>('url');
-    workflowDetails = registerOutput<ServerWorkflowDetails?>('workflowDetails');
+    workflowDetails = registerOutput<ServerWorkflowDetails?>(
+      'workflowDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerWorkflowDetails.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Server] resource's state with the given [name] and [id].
@@ -1167,7 +1201,16 @@ class Server extends pulumi.CustomResource {
     directoryId = registerOutput<String?>('directoryId');
     domain = registerOutput<String?>('domain');
     endpoint = registerOutput<String>('endpoint');
-    endpointDetails = registerOutput<ServerEndpointDetails?>('endpointDetails');
+    endpointDetails = registerOutput<ServerEndpointDetails?>(
+      'endpointDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerEndpointDetails.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     endpointType = registerOutput<String?>('endpointType');
     forceDestroy = registerOutput<bool?>('forceDestroy');
     function = registerOutput<String?>('function');
@@ -1182,11 +1225,27 @@ class Server extends pulumi.CustomResource {
     preAuthenticationLoginBanner = registerOutput<String?>(
       'preAuthenticationLoginBanner',
     );
-    protocolDetails = registerOutput<ServerProtocolDetails>('protocolDetails');
+    protocolDetails = registerOutput<ServerProtocolDetails>(
+      'protocolDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerProtocolDetails.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     protocols = registerOutput<List<String>>('protocols');
     region = registerOutput<String>('region');
     s3StorageOptions = registerOutput<ServerS3StorageOptions>(
       's3StorageOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerS3StorageOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     securityPolicyName = registerOutput<String?>('securityPolicyName');
     sftpAuthenticationMethods = registerOutput<String>(
@@ -1198,6 +1257,15 @@ class Server extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     url = registerOutput<String?>('url');
-    workflowDetails = registerOutput<ServerWorkflowDetails?>('workflowDetails');
+    workflowDetails = registerOutput<ServerWorkflowDetails?>(
+      'workflowDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerWorkflowDetails.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

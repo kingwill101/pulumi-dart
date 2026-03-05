@@ -711,10 +711,24 @@ class Package extends pulumi.CustomResource {
     galleryApps = registerOutput<List<Map<String, dynamic>>>('galleryApps');
     inplaceUpgradeOSPair = registerOutput<InplaceUpgradeOSInfoResponse?>(
       'inplaceUpgradeOSPair',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InplaceUpgradeOSInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     intuneEnrollmentMetadata =
         registerOutput<IntuneEnrollmentMetadataResponse?>(
           'intuneEnrollmentMetadata',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return IntuneEnrollmentMetadataResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     isEnabled = registerOutput<bool>('isEnabled');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
@@ -722,7 +736,16 @@ class Package extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     packageStatus = registerOutput<String>('packageStatus');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     targetOSList = registerOutput<List<Map<String, dynamic>>?>('targetOSList');
     testTypes = registerOutput<List<String>>('testTypes');

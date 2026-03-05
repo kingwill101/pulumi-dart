@@ -527,7 +527,16 @@ class ScopeRbacRoleBinding extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    role = registerOutput<ScopeRbacRoleBindingRole>('role');
+    role = registerOutput<ScopeRbacRoleBindingRole>(
+      'role',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScopeRbacRoleBindingRole.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     scopeId = registerOutput<String>('scopeId');
     scopeRbacRoleBindingId = registerOutput<String>('scopeRbacRoleBindingId');
     states = registerOutput<List<Map<String, dynamic>>>('states');
@@ -567,7 +576,16 @@ class ScopeRbacRoleBinding extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    role = registerOutput<ScopeRbacRoleBindingRole>('role');
+    role = registerOutput<ScopeRbacRoleBindingRole>(
+      'role',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScopeRbacRoleBindingRole.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     scopeId = registerOutput<String>('scopeId');
     scopeRbacRoleBindingId = registerOutput<String>('scopeRbacRoleBindingId');
     states = registerOutput<List<Map<String, dynamic>>>('states');

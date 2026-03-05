@@ -240,7 +240,16 @@ class Definition extends pulumi.CustomResource {
     lighthouseDefinitionId = registerOutput<String>('lighthouseDefinitionId');
     managingTenantId = registerOutput<String>('managingTenantId');
     this.name = registerOutput<String>('name');
-    plan = registerOutput<DefinitionPlan?>('plan');
+    plan = registerOutput<DefinitionPlan?>(
+      'plan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DefinitionPlan.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     scope = registerOutput<String>('scope');
   }
 
@@ -277,7 +286,16 @@ class Definition extends pulumi.CustomResource {
     lighthouseDefinitionId = registerOutput<String>('lighthouseDefinitionId');
     managingTenantId = registerOutput<String>('managingTenantId');
     this.name = registerOutput<String>('name');
-    plan = registerOutput<DefinitionPlan?>('plan');
+    plan = registerOutput<DefinitionPlan?>(
+      'plan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DefinitionPlan.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     scope = registerOutput<String>('scope');
   }
 }

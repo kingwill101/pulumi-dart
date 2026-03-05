@@ -209,9 +209,25 @@ class Server extends pulumi.CustomResource {
       ) {
     customerManagedKey = registerOutput<ServerCustomerManagedKey?>(
       'customerManagedKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerCustomerManagedKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     frsTenantId = registerOutput<String>('frsTenantId');
-    identity = registerOutput<ServerIdentity?>('identity');
+    identity = registerOutput<ServerIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     ordererEndpoints = registerOutput<List<String>>('ordererEndpoints');
@@ -249,9 +265,25 @@ class Server extends pulumi.CustomResource {
        ) {
     customerManagedKey = registerOutput<ServerCustomerManagedKey?>(
       'customerManagedKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerCustomerManagedKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     frsTenantId = registerOutput<String>('frsTenantId');
-    identity = registerOutput<ServerIdentity?>('identity');
+    identity = registerOutput<ServerIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     ordererEndpoints = registerOutput<List<String>>('ordererEndpoints');

@@ -140,6 +140,13 @@ class Keyspace extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     replicationSpecification = registerOutput<KeyspaceReplicationSpecification>(
       'replicationSpecification',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KeyspaceReplicationSpecification.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -173,6 +180,13 @@ class Keyspace extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     replicationSpecification = registerOutput<KeyspaceReplicationSpecification>(
       'replicationSpecification',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KeyspaceReplicationSpecification.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

@@ -58,6 +58,13 @@ class Schedule extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     executionTemplate = registerOutput<ExecutionTemplateResponse>(
       'executionTemplate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExecutionTemplateResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

@@ -200,7 +200,16 @@ class GraphQuery extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     query = registerOutput<String>('query');
     resultKind = registerOutput<String>('resultKind');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     timeModified = registerOutput<String>('timeModified');
     type = registerOutput<String>('type');

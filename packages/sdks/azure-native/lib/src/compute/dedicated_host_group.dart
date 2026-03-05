@@ -403,11 +403,27 @@ class DedicatedHostGroup extends pulumi.CustomResource {
     additionalCapabilities =
         registerOutput<
           DedicatedHostGroupPropertiesAdditionalCapabilitiesResponse?
-        >('additionalCapabilities');
+        >(
+          'additionalCapabilities',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DedicatedHostGroupPropertiesAdditionalCapabilitiesResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     hosts = registerOutput<List<Map<String, dynamic>>>('hosts');
     instanceView = registerOutput<DedicatedHostGroupInstanceViewResponse>(
       'instanceView',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DedicatedHostGroupInstanceViewResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -415,7 +431,16 @@ class DedicatedHostGroup extends pulumi.CustomResource {
     supportAutomaticPlacement = registerOutput<bool?>(
       'supportAutomaticPlacement',
     );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     zones = registerOutput<List<String>?>('zones');

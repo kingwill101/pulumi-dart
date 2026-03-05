@@ -367,7 +367,16 @@ class SafetyRule extends pulumi.CustomResource {
     controlPanelArn = registerOutput<String>('controlPanelArn');
     gatingControls = registerOutput<List<String>?>('gatingControls');
     this.name = registerOutput<String>('name');
-    ruleConfig = registerOutput<SafetyRuleRuleConfig>('ruleConfig');
+    ruleConfig = registerOutput<SafetyRuleRuleConfig>(
+      'ruleConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SafetyRuleRuleConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -403,7 +412,16 @@ class SafetyRule extends pulumi.CustomResource {
     controlPanelArn = registerOutput<String>('controlPanelArn');
     gatingControls = registerOutput<List<String>?>('gatingControls');
     this.name = registerOutput<String>('name');
-    ruleConfig = registerOutput<SafetyRuleRuleConfig>('ruleConfig');
+    ruleConfig = registerOutput<SafetyRuleRuleConfig>(
+      'ruleConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SafetyRuleRuleConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

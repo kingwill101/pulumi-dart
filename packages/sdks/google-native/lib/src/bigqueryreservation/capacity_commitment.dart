@@ -67,7 +67,16 @@ class CapacityCommitment extends pulumi.CustomResource {
     enforceSingleAdminProjectPerOrg = registerOutput<bool?>(
       'enforceSingleAdminProjectPerOrg',
     );
-    failureStatus = registerOutput<StatusResponse>('failureStatus');
+    failureStatus = registerOutput<StatusResponse>(
+      'failureStatus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     isFlatRate = registerOutput<bool>('isFlatRate');
     location = registerOutput<String>('location');
     multiRegionAuxiliary = registerOutput<bool>('multiRegionAuxiliary');

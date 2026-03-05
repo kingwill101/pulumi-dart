@@ -649,7 +649,16 @@ class ComputeCluster extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     description = registerOutput<String?>('description');
-    identity = registerOutput<ComputeClusterIdentity?>('identity');
+    identity = registerOutput<ComputeClusterIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ComputeClusterIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
     location = registerOutput<String>('location');
     machineLearningWorkspaceId = registerOutput<String>(
@@ -659,8 +668,24 @@ class ComputeCluster extends pulumi.CustomResource {
     nodePublicIpEnabled = registerOutput<bool?>('nodePublicIpEnabled');
     scaleSettings = registerOutput<ComputeClusterScaleSettings>(
       'scaleSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ComputeClusterScaleSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    ssh = registerOutput<ComputeClusterSsh?>('ssh');
+    ssh = registerOutput<ComputeClusterSsh?>(
+      'ssh',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ComputeClusterSsh.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sshPublicAccessEnabled = registerOutput<bool?>('sshPublicAccessEnabled');
     subnetResourceId = registerOutput<String>('subnetResourceId');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -692,7 +717,16 @@ class ComputeCluster extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     description = registerOutput<String?>('description');
-    identity = registerOutput<ComputeClusterIdentity?>('identity');
+    identity = registerOutput<ComputeClusterIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ComputeClusterIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
     location = registerOutput<String>('location');
     machineLearningWorkspaceId = registerOutput<String>(
@@ -702,8 +736,24 @@ class ComputeCluster extends pulumi.CustomResource {
     nodePublicIpEnabled = registerOutput<bool?>('nodePublicIpEnabled');
     scaleSettings = registerOutput<ComputeClusterScaleSettings>(
       'scaleSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ComputeClusterScaleSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    ssh = registerOutput<ComputeClusterSsh?>('ssh');
+    ssh = registerOutput<ComputeClusterSsh?>(
+      'ssh',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ComputeClusterSsh.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sshPublicAccessEnabled = registerOutput<bool?>('sshPublicAccessEnabled');
     subnetResourceId = registerOutput<String>('subnetResourceId');
     tags = registerOutput<Map<String, String>?>('tags');

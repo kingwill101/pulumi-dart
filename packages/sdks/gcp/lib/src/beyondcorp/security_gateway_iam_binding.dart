@@ -1911,6 +1911,13 @@ class SecurityGatewayIamBinding extends pulumi.CustomResource {
        ) {
     condition = registerOutput<SecurityGatewayIamBindingCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityGatewayIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
@@ -1945,6 +1952,13 @@ class SecurityGatewayIamBinding extends pulumi.CustomResource {
        ) {
     condition = registerOutput<SecurityGatewayIamBindingCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityGatewayIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');

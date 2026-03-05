@@ -570,11 +570,34 @@ class Job extends pulumi.CustomResource {
     eventStreamEndpoint = registerOutput<String>('eventStreamEndpoint');
     eventTriggerConfig = registerOutput<JobEventTriggerConfig?>(
       'eventTriggerConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobEventTriggerConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    identity = registerOutput<JobIdentity?>('identity');
+    identity = registerOutput<JobIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     manualTriggerConfig = registerOutput<JobManualTriggerConfig?>(
       'manualTriggerConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobManualTriggerConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     outboundIpAddresses = registerOutput<List<String>>('outboundIpAddresses');
@@ -584,10 +607,26 @@ class Job extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     scheduleTriggerConfig = registerOutput<JobScheduleTriggerConfig?>(
       'scheduleTriggerConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobScheduleTriggerConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     secrets = registerOutput<List<Map<String, dynamic>>?>('secrets');
     tags = registerOutput<Map<String, String>?>('tags');
-    template = registerOutput<JobTemplate>('template');
+    template = registerOutput<JobTemplate>(
+      'template',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobTemplate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     workloadProfileName = registerOutput<String?>('workloadProfileName');
   }
 
@@ -616,11 +655,34 @@ class Job extends pulumi.CustomResource {
     eventStreamEndpoint = registerOutput<String>('eventStreamEndpoint');
     eventTriggerConfig = registerOutput<JobEventTriggerConfig?>(
       'eventTriggerConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobEventTriggerConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    identity = registerOutput<JobIdentity?>('identity');
+    identity = registerOutput<JobIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     manualTriggerConfig = registerOutput<JobManualTriggerConfig?>(
       'manualTriggerConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobManualTriggerConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     outboundIpAddresses = registerOutput<List<String>>('outboundIpAddresses');
@@ -630,10 +692,26 @@ class Job extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     scheduleTriggerConfig = registerOutput<JobScheduleTriggerConfig?>(
       'scheduleTriggerConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobScheduleTriggerConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     secrets = registerOutput<List<Map<String, dynamic>>?>('secrets');
     tags = registerOutput<Map<String, String>?>('tags');
-    template = registerOutput<JobTemplate>('template');
+    template = registerOutput<JobTemplate>(
+      'template',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobTemplate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     workloadProfileName = registerOutput<String?>('workloadProfileName');
   }
 }

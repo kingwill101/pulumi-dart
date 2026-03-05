@@ -250,10 +250,24 @@ class AccessPoint extends pulumi.CustomResource {
     publicAccessBlockConfiguration =
         registerOutput<AccessPointPublicAccessBlockConfiguration?>(
           'publicAccessBlockConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AccessPointPublicAccessBlockConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     status = registerOutput<String>('status');
     vpcConfiguration = registerOutput<AccessPointVpcConfiguration?>(
       'vpcConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccessPointVpcConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -286,10 +300,24 @@ class AccessPoint extends pulumi.CustomResource {
     publicAccessBlockConfiguration =
         registerOutput<AccessPointPublicAccessBlockConfiguration?>(
           'publicAccessBlockConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AccessPointPublicAccessBlockConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     status = registerOutput<String>('status');
     vpcConfiguration = registerOutput<AccessPointVpcConfiguration?>(
       'vpcConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccessPointVpcConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

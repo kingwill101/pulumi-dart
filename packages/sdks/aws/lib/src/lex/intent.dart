@@ -677,17 +677,56 @@ class Intent extends pulumi.CustomResource {
     checksum = registerOutput<String>('checksum');
     conclusionStatement = registerOutput<IntentConclusionStatement?>(
       'conclusionStatement',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IntentConclusionStatement.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     confirmationPrompt = registerOutput<IntentConfirmationPrompt?>(
       'confirmationPrompt',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IntentConfirmationPrompt.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createVersion = registerOutput<bool?>('createVersion');
     createdDate = registerOutput<String>('createdDate');
     description = registerOutput<String?>('description');
-    dialogCodeHook = registerOutput<IntentDialogCodeHook?>('dialogCodeHook');
-    followUpPrompt = registerOutput<IntentFollowUpPrompt?>('followUpPrompt');
+    dialogCodeHook = registerOutput<IntentDialogCodeHook?>(
+      'dialogCodeHook',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IntentDialogCodeHook.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    followUpPrompt = registerOutput<IntentFollowUpPrompt?>(
+      'followUpPrompt',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IntentFollowUpPrompt.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     fulfillmentActivity = registerOutput<IntentFulfillmentActivity>(
       'fulfillmentActivity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IntentFulfillmentActivity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     lastUpdatedDate = registerOutput<String>('lastUpdatedDate');
     this.name = registerOutput<String>('name');
@@ -695,6 +734,13 @@ class Intent extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     rejectionStatement = registerOutput<IntentRejectionStatement?>(
       'rejectionStatement',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IntentRejectionStatement.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sampleUtterances = registerOutput<List<String>?>('sampleUtterances');
     slots = registerOutput<List<Map<String, dynamic>>?>('slots');
@@ -728,17 +774,56 @@ class Intent extends pulumi.CustomResource {
     checksum = registerOutput<String>('checksum');
     conclusionStatement = registerOutput<IntentConclusionStatement?>(
       'conclusionStatement',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IntentConclusionStatement.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     confirmationPrompt = registerOutput<IntentConfirmationPrompt?>(
       'confirmationPrompt',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IntentConfirmationPrompt.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createVersion = registerOutput<bool?>('createVersion');
     createdDate = registerOutput<String>('createdDate');
     description = registerOutput<String?>('description');
-    dialogCodeHook = registerOutput<IntentDialogCodeHook?>('dialogCodeHook');
-    followUpPrompt = registerOutput<IntentFollowUpPrompt?>('followUpPrompt');
+    dialogCodeHook = registerOutput<IntentDialogCodeHook?>(
+      'dialogCodeHook',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IntentDialogCodeHook.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    followUpPrompt = registerOutput<IntentFollowUpPrompt?>(
+      'followUpPrompt',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IntentFollowUpPrompt.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     fulfillmentActivity = registerOutput<IntentFulfillmentActivity>(
       'fulfillmentActivity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IntentFulfillmentActivity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     lastUpdatedDate = registerOutput<String>('lastUpdatedDate');
     this.name = registerOutput<String>('name');
@@ -746,6 +831,13 @@ class Intent extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     rejectionStatement = registerOutput<IntentRejectionStatement?>(
       'rejectionStatement',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IntentRejectionStatement.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sampleUtterances = registerOutput<List<String>?>('sampleUtterances');
     slots = registerOutput<List<Map<String, dynamic>>?>('slots');

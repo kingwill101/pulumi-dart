@@ -387,7 +387,16 @@ class NamedValue extends pulumi.CustomResource {
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     displayName = registerOutput<String>('displayName');
-    keyVault = registerOutput<KeyVaultContractPropertiesResponse?>('keyVault');
+    keyVault = registerOutput<KeyVaultContractPropertiesResponse?>(
+      'keyVault',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KeyVaultContractPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     secret = registerOutput<bool?>('secret');
     tags = registerOutput<List<String>?>('tags');

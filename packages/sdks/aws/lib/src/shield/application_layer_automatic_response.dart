@@ -201,6 +201,13 @@ class ApplicationLayerAutomaticResponse extends pulumi.CustomResource {
     resourceArn = registerOutput<String>('resourceArn');
     timeouts = registerOutput<ApplicationLayerAutomaticResponseTimeouts?>(
       'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationLayerAutomaticResponseTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -231,6 +238,13 @@ class ApplicationLayerAutomaticResponse extends pulumi.CustomResource {
     resourceArn = registerOutput<String>('resourceArn');
     timeouts = registerOutput<ApplicationLayerAutomaticResponseTimeouts?>(
       'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationLayerAutomaticResponseTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

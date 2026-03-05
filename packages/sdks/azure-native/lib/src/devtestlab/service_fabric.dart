@@ -217,6 +217,13 @@ class ServiceFabric extends pulumi.CustomResource {
        ) {
     applicableSchedule = registerOutput<ApplicableScheduleResponse>(
       'applicableSchedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicableScheduleResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     environmentId = registerOutput<String?>('environmentId');

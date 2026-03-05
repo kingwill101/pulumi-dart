@@ -100,6 +100,13 @@ class WorkstationConfigWorkstationsV1beta extends pulumi.CustomResource {
     conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
     container = registerOutput<ContainerResponseWorkstationsV1beta>(
       'container',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContainerResponseWorkstationsV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     degraded = registerOutput<bool>('degraded');
@@ -110,12 +117,28 @@ class WorkstationConfigWorkstationsV1beta extends pulumi.CustomResource {
     encryptionKey =
         registerOutput<CustomerEncryptionKeyResponseWorkstationsV1beta>(
           'encryptionKey',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CustomerEncryptionKeyResponseWorkstationsV1beta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     ephemeralDirectories = registerOutput<List<Map<String, dynamic>>>(
       'ephemeralDirectories',
     );
     etag = registerOutput<String>('etag');
-    host = registerOutput<HostResponseWorkstationsV1beta>('host');
+    host = registerOutput<HostResponseWorkstationsV1beta>(
+      'host',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HostResponseWorkstationsV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     idleTimeout = registerOutput<String>('idleTimeout');
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');

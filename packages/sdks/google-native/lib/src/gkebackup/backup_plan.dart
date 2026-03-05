@@ -71,9 +71,27 @@ class BackupPlan extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    backupConfig = registerOutput<BackupConfigResponse>('backupConfig');
+    backupConfig = registerOutput<BackupConfigResponse>(
+      'backupConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackupConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     backupPlanId = registerOutput<String>('backupPlanId');
-    backupSchedule = registerOutput<ScheduleResponse>('backupSchedule');
+    backupSchedule = registerOutput<ScheduleResponse>(
+      'backupSchedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduleResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     cluster = registerOutput<String>('cluster');
     createTime = registerOutput<String>('createTime');
     deactivated = registerOutput<bool>('deactivated');
@@ -86,6 +104,13 @@ class BackupPlan extends pulumi.CustomResource {
     protectedPodCount = registerOutput<int>('protectedPodCount');
     retentionPolicy = registerOutput<RetentionPolicyResponse>(
       'retentionPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RetentionPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     state = registerOutput<String>('state');
     stateReason = registerOutput<String>('stateReason');

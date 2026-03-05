@@ -69,11 +69,29 @@ class Membership extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    authority = registerOutput<AuthorityResponse>('authority');
+    authority = registerOutput<AuthorityResponse>(
+      'authority',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AuthorityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     description = registerOutput<String>('description');
-    endpoint = registerOutput<MembershipEndpointResponse>('endpoint');
+    endpoint = registerOutput<MembershipEndpointResponse>(
+      'endpoint',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MembershipEndpointResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     externalId = registerOutput<String>('externalId');
     labels = registerOutput<Map<String, String>>('labels');
     lastConnectionTime = registerOutput<String>('lastConnectionTime');
@@ -81,11 +99,27 @@ class Membership extends pulumi.CustomResource {
     membershipId = registerOutput<String>('membershipId');
     monitoringConfig = registerOutput<MonitoringConfigResponse>(
       'monitoringConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MonitoringConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');
-    state = registerOutput<MembershipStateResponse>('state');
+    state = registerOutput<MembershipStateResponse>(
+      'state',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MembershipStateResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     uniqueId = registerOutput<String>('uniqueId');
     updateTime = registerOutput<String>('updateTime');
   }

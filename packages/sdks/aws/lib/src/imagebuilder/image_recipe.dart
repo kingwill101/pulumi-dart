@@ -340,6 +340,13 @@ class ImageRecipe extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     systemsManagerAgent = registerOutput<ImageRecipeSystemsManagerAgent>(
       'systemsManagerAgent',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImageRecipeSystemsManagerAgent.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -386,6 +393,13 @@ class ImageRecipe extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     systemsManagerAgent = registerOutput<ImageRecipeSystemsManagerAgent>(
       'systemsManagerAgent',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImageRecipeSystemsManagerAgent.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

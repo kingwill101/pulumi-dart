@@ -698,8 +698,26 @@ class DataCellsFilter extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     region = registerOutput<String>('region');
-    tableData = registerOutput<DataCellsFilterTableData>('tableData');
-    timeouts = registerOutput<DataCellsFilterTimeouts?>('timeouts');
+    tableData = registerOutput<DataCellsFilterTableData>(
+      'tableData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataCellsFilterTableData.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    timeouts = registerOutput<DataCellsFilterTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataCellsFilterTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [DataCellsFilter] resource's state with the given [name] and [id].
@@ -726,7 +744,25 @@ class DataCellsFilter extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     region = registerOutput<String>('region');
-    tableData = registerOutput<DataCellsFilterTableData>('tableData');
-    timeouts = registerOutput<DataCellsFilterTimeouts?>('timeouts');
+    tableData = registerOutput<DataCellsFilterTableData>(
+      'tableData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataCellsFilterTableData.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    timeouts = registerOutput<DataCellsFilterTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataCellsFilterTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

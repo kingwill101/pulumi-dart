@@ -58,15 +58,36 @@ class AppProfile extends pulumi.CustomResource {
     multiClusterRoutingUseAny =
         registerOutput<MultiClusterRoutingUseAnyResponse>(
           'multiClusterRoutingUseAny',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MultiClusterRoutingUseAnyResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     priority = registerOutput<String>('priority');
     project = registerOutput<String>('project');
     singleClusterRouting = registerOutput<SingleClusterRoutingResponse>(
       'singleClusterRouting',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SingleClusterRoutingResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     standardIsolation = registerOutput<StandardIsolationResponse>(
       'standardIsolation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StandardIsolationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

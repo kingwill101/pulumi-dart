@@ -1811,11 +1811,27 @@ class EventBus extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     deadLetterConfig = registerOutput<EventBusDeadLetterConfig?>(
       'deadLetterConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventBusDeadLetterConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     eventSourceName = registerOutput<String?>('eventSourceName');
     kmsKeyIdentifier = registerOutput<String?>('kmsKeyIdentifier');
-    logConfig = registerOutput<EventBusLogConfig?>('logConfig');
+    logConfig = registerOutput<EventBusLogConfig?>(
+      'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventBusLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -1848,11 +1864,27 @@ class EventBus extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     deadLetterConfig = registerOutput<EventBusDeadLetterConfig?>(
       'deadLetterConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventBusDeadLetterConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     eventSourceName = registerOutput<String?>('eventSourceName');
     kmsKeyIdentifier = registerOutput<String?>('kmsKeyIdentifier');
-    logConfig = registerOutput<EventBusLogConfig?>('logConfig');
+    logConfig = registerOutput<EventBusLogConfig?>(
+      'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventBusLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');

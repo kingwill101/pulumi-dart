@@ -50,7 +50,16 @@ class Reservation extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    autoscale = registerOutput<AutoscaleResponse>('autoscale');
+    autoscale = registerOutput<AutoscaleResponse>(
+      'autoscale',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AutoscaleResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     concurrency = registerOutput<String>('concurrency');
     creationTime = registerOutput<String>('creationTime');
     edition = registerOutput<String>('edition');

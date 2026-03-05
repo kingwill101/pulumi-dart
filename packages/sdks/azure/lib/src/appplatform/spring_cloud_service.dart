@@ -377,6 +377,13 @@ class SpringCloudService extends pulumi.CustomResource {
     configServerGitSetting =
         registerOutput<SpringCloudServiceConfigServerGitSetting?>(
           'configServerGitSetting',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SpringCloudServiceConfigServerGitSetting.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     containerRegistries = registerOutput<List<Map<String, dynamic>>?>(
       'containerRegistries',
@@ -384,15 +391,40 @@ class SpringCloudService extends pulumi.CustomResource {
     defaultBuildService =
         registerOutput<SpringCloudServiceDefaultBuildService?>(
           'defaultBuildService',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SpringCloudServiceDefaultBuildService.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     location = registerOutput<String>('location');
     logStreamPublicEndpointEnabled = registerOutput<bool?>(
       'logStreamPublicEndpointEnabled',
     );
     managedEnvironmentId = registerOutput<String?>('managedEnvironmentId');
-    marketplace = registerOutput<SpringCloudServiceMarketplace>('marketplace');
+    marketplace = registerOutput<SpringCloudServiceMarketplace>(
+      'marketplace',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpringCloudServiceMarketplace.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
-    network = registerOutput<SpringCloudServiceNetwork?>('network');
+    network = registerOutput<SpringCloudServiceNetwork?>(
+      'network',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpringCloudServiceNetwork.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     outboundPublicIpAddresses = registerOutput<List<String>>(
       'outboundPublicIpAddresses',
     );
@@ -405,7 +437,16 @@ class SpringCloudService extends pulumi.CustomResource {
     skuName = registerOutput<String?>('skuName');
     skuTier = registerOutput<String>('skuTier');
     tags = registerOutput<Map<String, String>?>('tags');
-    trace = registerOutput<SpringCloudServiceTrace?>('trace');
+    trace = registerOutput<SpringCloudServiceTrace?>(
+      'trace',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpringCloudServiceTrace.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     zoneRedundant = registerOutput<bool?>('zoneRedundant');
   }
 
@@ -436,6 +477,13 @@ class SpringCloudService extends pulumi.CustomResource {
     configServerGitSetting =
         registerOutput<SpringCloudServiceConfigServerGitSetting?>(
           'configServerGitSetting',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SpringCloudServiceConfigServerGitSetting.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     containerRegistries = registerOutput<List<Map<String, dynamic>>?>(
       'containerRegistries',
@@ -443,15 +491,40 @@ class SpringCloudService extends pulumi.CustomResource {
     defaultBuildService =
         registerOutput<SpringCloudServiceDefaultBuildService?>(
           'defaultBuildService',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SpringCloudServiceDefaultBuildService.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     location = registerOutput<String>('location');
     logStreamPublicEndpointEnabled = registerOutput<bool?>(
       'logStreamPublicEndpointEnabled',
     );
     managedEnvironmentId = registerOutput<String?>('managedEnvironmentId');
-    marketplace = registerOutput<SpringCloudServiceMarketplace>('marketplace');
+    marketplace = registerOutput<SpringCloudServiceMarketplace>(
+      'marketplace',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpringCloudServiceMarketplace.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
-    network = registerOutput<SpringCloudServiceNetwork?>('network');
+    network = registerOutput<SpringCloudServiceNetwork?>(
+      'network',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpringCloudServiceNetwork.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     outboundPublicIpAddresses = registerOutput<List<String>>(
       'outboundPublicIpAddresses',
     );
@@ -464,7 +537,16 @@ class SpringCloudService extends pulumi.CustomResource {
     skuName = registerOutput<String?>('skuName');
     skuTier = registerOutput<String>('skuTier');
     tags = registerOutput<Map<String, String>?>('tags');
-    trace = registerOutput<SpringCloudServiceTrace?>('trace');
+    trace = registerOutput<SpringCloudServiceTrace?>(
+      'trace',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpringCloudServiceTrace.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     zoneRedundant = registerOutput<bool?>('zoneRedundant');
   }
 }

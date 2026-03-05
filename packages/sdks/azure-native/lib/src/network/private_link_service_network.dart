@@ -403,6 +403,13 @@ class PrivateLinkServiceNetwork extends pulumi.CustomResource {
     autoApproval =
         registerOutput<PrivateLinkServicePropertiesResponseAutoApproval?>(
           'autoApproval',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PrivateLinkServicePropertiesResponseAutoApproval.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     destinationIPAddress = registerOutput<String?>('destinationIPAddress');
@@ -410,6 +417,13 @@ class PrivateLinkServiceNetwork extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     extendedLocation = registerOutput<ExtendedLocationResponse?>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     fqdns = registerOutput<List<String>?>('fqdns');
     ipConfigurations = registerOutput<List<Map<String, dynamic>>?>(
@@ -433,6 +447,13 @@ class PrivateLinkServiceNetwork extends pulumi.CustomResource {
     visibility =
         registerOutput<PrivateLinkServicePropertiesResponseVisibility?>(
           'visibility',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PrivateLinkServicePropertiesResponseVisibility.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

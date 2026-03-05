@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getPartnerRegistration.
 class GetPartnerRegistrationResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
+
   /// The immutable id of the corresponding partner registration.
   final String partnerRegistrationId;
   final String resourceGroupName;
+
   /// A mapping of tags which are assigned to the EventGrid Partner Registration.
   final Map<String, String> tags;
 
@@ -46,4 +47,3 @@ class GetPartnerRegistrationResult {
     );
   }
 }
-

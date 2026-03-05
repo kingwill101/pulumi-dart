@@ -179,7 +179,16 @@ class OrganizationKajPolicyConfig extends pulumi.CustomResource {
     defaultKeyAccessJustificationPolicy =
         registerOutput<
           OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy?
-        >('defaultKeyAccessJustificationPolicy');
+        >(
+          'defaultKeyAccessJustificationPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     organization = registerOutput<String>('organization');
   }
 
@@ -209,7 +218,16 @@ class OrganizationKajPolicyConfig extends pulumi.CustomResource {
     defaultKeyAccessJustificationPolicy =
         registerOutput<
           OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy?
-        >('defaultKeyAccessJustificationPolicy');
+        >(
+          'defaultKeyAccessJustificationPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     organization = registerOutput<String>('organization');
   }
 }

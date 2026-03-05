@@ -1116,9 +1116,25 @@ class SessionLogger extends pulumi.CustomResource {
     associatedPortalArns = registerOutput<List<String>>('associatedPortalArns');
     customerManagedKey = registerOutput<String?>('customerManagedKey');
     displayName = registerOutput<String?>('displayName');
-    eventFilter = registerOutput<SessionLoggerEventFilter>('eventFilter');
+    eventFilter = registerOutput<SessionLoggerEventFilter>(
+      'eventFilter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SessionLoggerEventFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     logConfiguration = registerOutput<SessionLoggerLogConfiguration>(
       'logConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SessionLoggerLogConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     sessionLoggerArn = registerOutput<String>('sessionLoggerArn');
@@ -1155,9 +1171,25 @@ class SessionLogger extends pulumi.CustomResource {
     associatedPortalArns = registerOutput<List<String>>('associatedPortalArns');
     customerManagedKey = registerOutput<String?>('customerManagedKey');
     displayName = registerOutput<String?>('displayName');
-    eventFilter = registerOutput<SessionLoggerEventFilter>('eventFilter');
+    eventFilter = registerOutput<SessionLoggerEventFilter>(
+      'eventFilter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SessionLoggerEventFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     logConfiguration = registerOutput<SessionLoggerLogConfiguration>(
       'logConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SessionLoggerLogConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     sessionLoggerArn = registerOutput<String>('sessionLoggerArn');

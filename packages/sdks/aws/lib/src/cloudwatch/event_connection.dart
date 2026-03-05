@@ -1376,12 +1376,26 @@ class EventConnection extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     authParameters = registerOutput<EventConnectionAuthParameters>(
       'authParameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventConnectionAuthParameters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     authorizationType = registerOutput<String>('authorizationType');
     description = registerOutput<String?>('description');
     invocationConnectivityParameters =
         registerOutput<EventConnectionInvocationConnectivityParameters?>(
           'invocationConnectivityParameters',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EventConnectionInvocationConnectivityParameters.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     kmsKeyIdentifier = registerOutput<String?>('kmsKeyIdentifier');
     this.name = registerOutput<String>('name');
@@ -1415,12 +1429,26 @@ class EventConnection extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     authParameters = registerOutput<EventConnectionAuthParameters>(
       'authParameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventConnectionAuthParameters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     authorizationType = registerOutput<String>('authorizationType');
     description = registerOutput<String?>('description');
     invocationConnectivityParameters =
         registerOutput<EventConnectionInvocationConnectivityParameters?>(
           'invocationConnectivityParameters',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EventConnectionInvocationConnectivityParameters.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     kmsKeyIdentifier = registerOutput<String?>('kmsKeyIdentifier');
     this.name = registerOutput<String>('name');

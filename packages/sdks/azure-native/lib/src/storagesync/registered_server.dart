@@ -317,7 +317,16 @@ class RegisteredServer extends pulumi.CustomResource {
     serverRole = registerOutput<String?>('serverRole');
     serviceLocation = registerOutput<String?>('serviceLocation');
     storageSyncServiceUid = registerOutput<String?>('storageSyncServiceUid');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

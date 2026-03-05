@@ -392,6 +392,13 @@ class OutputEventHub extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     serialization = registerOutput<OutputEventHubSerialization>(
       'serialization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OutputEventHubSerialization.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     servicebusNamespace = registerOutput<String>('servicebusNamespace');
     sharedAccessPolicyKey = registerOutput<String?>('sharedAccessPolicyKey');
@@ -430,6 +437,13 @@ class OutputEventHub extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     serialization = registerOutput<OutputEventHubSerialization>(
       'serialization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OutputEventHubSerialization.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     servicebusNamespace = registerOutput<String>('servicebusNamespace');
     sharedAccessPolicyKey = registerOutput<String?>('sharedAccessPolicyKey');

@@ -9284,17 +9284,47 @@ class URLMap extends pulumi.CustomResource {
     defaultCustomErrorResponsePolicy =
         registerOutput<URLMapDefaultCustomErrorResponsePolicy?>(
           'defaultCustomErrorResponsePolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return URLMapDefaultCustomErrorResponsePolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     defaultRouteAction = registerOutput<URLMapDefaultRouteAction?>(
       'defaultRouteAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return URLMapDefaultRouteAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     defaultService = registerOutput<String?>('defaultService');
     defaultUrlRedirect = registerOutput<URLMapDefaultUrlRedirect?>(
       'defaultUrlRedirect',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return URLMapDefaultUrlRedirect.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
-    headerAction = registerOutput<URLMapHeaderAction?>('headerAction');
+    headerAction = registerOutput<URLMapHeaderAction?>(
+      'headerAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return URLMapHeaderAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     hostRules = registerOutput<List<Map<String, dynamic>>?>('hostRules');
     mapId = registerOutput<int>('mapId');
     this.name = registerOutput<String>('name');
@@ -9331,17 +9361,47 @@ class URLMap extends pulumi.CustomResource {
     defaultCustomErrorResponsePolicy =
         registerOutput<URLMapDefaultCustomErrorResponsePolicy?>(
           'defaultCustomErrorResponsePolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return URLMapDefaultCustomErrorResponsePolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     defaultRouteAction = registerOutput<URLMapDefaultRouteAction?>(
       'defaultRouteAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return URLMapDefaultRouteAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     defaultService = registerOutput<String?>('defaultService');
     defaultUrlRedirect = registerOutput<URLMapDefaultUrlRedirect?>(
       'defaultUrlRedirect',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return URLMapDefaultUrlRedirect.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
-    headerAction = registerOutput<URLMapHeaderAction?>('headerAction');
+    headerAction = registerOutput<URLMapHeaderAction?>(
+      'headerAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return URLMapHeaderAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     hostRules = registerOutput<List<Map<String, dynamic>>?>('hostRules');
     mapId = registerOutput<int>('mapId');
     this.name = registerOutput<String>('name');

@@ -69,7 +69,16 @@ class InstanceNotebooksV2 extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     creator = registerOutput<String>('creator');
     disableProxyAccess = registerOutput<bool>('disableProxyAccess');
-    gceSetup = registerOutput<GceSetupResponse>('gceSetup');
+    gceSetup = registerOutput<GceSetupResponse>(
+      'gceSetup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GceSetupResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     healthInfo = registerOutput<Map<String, String>>('healthInfo');
     healthState = registerOutput<String>('healthState');
     instanceId = registerOutput<String>('instanceId');

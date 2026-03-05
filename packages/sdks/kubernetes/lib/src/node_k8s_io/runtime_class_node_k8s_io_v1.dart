@@ -42,8 +42,33 @@ class RuntimeClassNodeK8sIoV1 extends pulumi.CustomResource {
     apiVersion = registerOutput<String>('apiVersion');
     handler = registerOutput<String>('handler');
     kind = registerOutput<String>('kind');
-    metadata = registerOutput<ObjectMeta>('metadata');
-    overhead = registerOutput<Overhead>('overhead');
-    scheduling = registerOutput<Scheduling>('scheduling');
+    metadata = registerOutput<ObjectMeta>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    overhead = registerOutput<Overhead>(
+      'overhead',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return Overhead.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
+    scheduling = registerOutput<Scheduling>(
+      'scheduling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return Scheduling.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

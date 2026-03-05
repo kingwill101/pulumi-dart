@@ -2200,11 +2200,34 @@ class BareMetalCluster extends pulumi.CustomResource {
     bareMetalVersion = registerOutput<String>('bareMetalVersion');
     binaryAuthorization = registerOutput<BareMetalClusterBinaryAuthorization?>(
       'binaryAuthorization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalClusterBinaryAuthorization.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clusterOperations = registerOutput<BareMetalClusterClusterOperations?>(
       'clusterOperations',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalClusterClusterOperations.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    controlPlane = registerOutput<BareMetalClusterControlPlane>('controlPlane');
+    controlPlane = registerOutput<BareMetalClusterControlPlane>(
+      'controlPlane',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalClusterControlPlane.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     description = registerOutput<String?>('description');
@@ -2214,36 +2237,114 @@ class BareMetalCluster extends pulumi.CustomResource {
     endpoint = registerOutput<String>('endpoint');
     etag = registerOutput<String>('etag');
     fleets = registerOutput<List<Map<String, dynamic>>>('fleets');
-    loadBalancer = registerOutput<BareMetalClusterLoadBalancer>('loadBalancer');
+    loadBalancer = registerOutput<BareMetalClusterLoadBalancer>(
+      'loadBalancer',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalClusterLoadBalancer.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     localName = registerOutput<String>('localName');
     location = registerOutput<String>('location');
     maintenanceConfig = registerOutput<BareMetalClusterMaintenanceConfig?>(
       'maintenanceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalClusterMaintenanceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     networkConfig = registerOutput<BareMetalClusterNetworkConfig>(
       'networkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalClusterNetworkConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     nodeAccessConfig = registerOutput<BareMetalClusterNodeAccessConfig?>(
       'nodeAccessConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalClusterNodeAccessConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    nodeConfig = registerOutput<BareMetalClusterNodeConfig?>('nodeConfig');
+    nodeConfig = registerOutput<BareMetalClusterNodeConfig?>(
+      'nodeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalClusterNodeConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     osEnvironmentConfig = registerOutput<BareMetalClusterOsEnvironmentConfig?>(
       'osEnvironmentConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalClusterOsEnvironmentConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
-    proxy = registerOutput<BareMetalClusterProxy?>('proxy');
+    proxy = registerOutput<BareMetalClusterProxy?>(
+      'proxy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalClusterProxy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     reconciling = registerOutput<bool>('reconciling');
     securityConfig = registerOutput<BareMetalClusterSecurityConfig?>(
       'securityConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalClusterSecurityConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     state = registerOutput<String>('state');
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
-    storage = registerOutput<BareMetalClusterStorage>('storage');
+    storage = registerOutput<BareMetalClusterStorage>(
+      'storage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalClusterStorage.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
     upgradePolicy = registerOutput<BareMetalClusterUpgradePolicy?>(
       'upgradePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalClusterUpgradePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     validationChecks = registerOutput<List<Map<String, dynamic>>>(
       'validationChecks',
@@ -2278,11 +2379,34 @@ class BareMetalCluster extends pulumi.CustomResource {
     bareMetalVersion = registerOutput<String>('bareMetalVersion');
     binaryAuthorization = registerOutput<BareMetalClusterBinaryAuthorization?>(
       'binaryAuthorization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalClusterBinaryAuthorization.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clusterOperations = registerOutput<BareMetalClusterClusterOperations?>(
       'clusterOperations',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalClusterClusterOperations.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    controlPlane = registerOutput<BareMetalClusterControlPlane>('controlPlane');
+    controlPlane = registerOutput<BareMetalClusterControlPlane>(
+      'controlPlane',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalClusterControlPlane.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     description = registerOutput<String?>('description');
@@ -2292,36 +2416,114 @@ class BareMetalCluster extends pulumi.CustomResource {
     endpoint = registerOutput<String>('endpoint');
     etag = registerOutput<String>('etag');
     fleets = registerOutput<List<Map<String, dynamic>>>('fleets');
-    loadBalancer = registerOutput<BareMetalClusterLoadBalancer>('loadBalancer');
+    loadBalancer = registerOutput<BareMetalClusterLoadBalancer>(
+      'loadBalancer',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalClusterLoadBalancer.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     localName = registerOutput<String>('localName');
     location = registerOutput<String>('location');
     maintenanceConfig = registerOutput<BareMetalClusterMaintenanceConfig?>(
       'maintenanceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalClusterMaintenanceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     networkConfig = registerOutput<BareMetalClusterNetworkConfig>(
       'networkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalClusterNetworkConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     nodeAccessConfig = registerOutput<BareMetalClusterNodeAccessConfig?>(
       'nodeAccessConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalClusterNodeAccessConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    nodeConfig = registerOutput<BareMetalClusterNodeConfig?>('nodeConfig');
+    nodeConfig = registerOutput<BareMetalClusterNodeConfig?>(
+      'nodeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalClusterNodeConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     osEnvironmentConfig = registerOutput<BareMetalClusterOsEnvironmentConfig?>(
       'osEnvironmentConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalClusterOsEnvironmentConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
-    proxy = registerOutput<BareMetalClusterProxy?>('proxy');
+    proxy = registerOutput<BareMetalClusterProxy?>(
+      'proxy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalClusterProxy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     reconciling = registerOutput<bool>('reconciling');
     securityConfig = registerOutput<BareMetalClusterSecurityConfig?>(
       'securityConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalClusterSecurityConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.state = registerOutput<String>('state');
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
-    storage = registerOutput<BareMetalClusterStorage>('storage');
+    storage = registerOutput<BareMetalClusterStorage>(
+      'storage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalClusterStorage.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
     upgradePolicy = registerOutput<BareMetalClusterUpgradePolicy?>(
       'upgradePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalClusterUpgradePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     validationChecks = registerOutput<List<Map<String, dynamic>>>(
       'validationChecks',

@@ -405,6 +405,13 @@ class Formula extends pulumi.CustomResource {
     formulaContent =
         registerOutput<LabVirtualMachineCreationParameterResponse?>(
           'formulaContent',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LabVirtualMachineCreationParameterResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
@@ -413,6 +420,15 @@ class Formula extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
-    vm = registerOutput<FormulaPropertiesFromVmResponse?>('vm');
+    vm = registerOutput<FormulaPropertiesFromVmResponse?>(
+      'vm',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FormulaPropertiesFromVmResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

@@ -657,6 +657,13 @@ class DatabaseMigrationsMongoToCosmosDbRUMongo extends pulumi.CustomResource {
     kind = registerOutput<String>('kind');
     migrationFailureError = registerOutput<ErrorInfoResponse>(
       'migrationFailureError',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ErrorInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     migrationOperationId = registerOutput<String?>('migrationOperationId');
     migrationService = registerOutput<String?>('migrationService');
@@ -667,11 +674,34 @@ class DatabaseMigrationsMongoToCosmosDbRUMongo extends pulumi.CustomResource {
     scope = registerOutput<String?>('scope');
     sourceMongoConnection = registerOutput<MongoConnectionInformationResponse?>(
       'sourceMongoConnection',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MongoConnectionInformationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     startedOn = registerOutput<String>('startedOn');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     targetMongoConnection = registerOutput<MongoConnectionInformationResponse?>(
       'targetMongoConnection',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MongoConnectionInformationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     type = registerOutput<String>('type');
   }

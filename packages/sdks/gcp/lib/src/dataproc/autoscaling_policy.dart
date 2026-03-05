@@ -304,6 +304,13 @@ class AutoscalingPolicy extends pulumi.CustomResource {
        ) {
     basicAlgorithm = registerOutput<AutoscalingPolicyBasicAlgorithm?>(
       'basicAlgorithm',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AutoscalingPolicyBasicAlgorithm.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
@@ -312,9 +319,23 @@ class AutoscalingPolicy extends pulumi.CustomResource {
     secondaryWorkerConfig =
         registerOutput<AutoscalingPolicySecondaryWorkerConfig?>(
           'secondaryWorkerConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AutoscalingPolicySecondaryWorkerConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     workerConfig = registerOutput<AutoscalingPolicyWorkerConfig?>(
       'workerConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AutoscalingPolicyWorkerConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -343,6 +364,13 @@ class AutoscalingPolicy extends pulumi.CustomResource {
        ) {
     basicAlgorithm = registerOutput<AutoscalingPolicyBasicAlgorithm?>(
       'basicAlgorithm',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AutoscalingPolicyBasicAlgorithm.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
@@ -351,9 +379,23 @@ class AutoscalingPolicy extends pulumi.CustomResource {
     secondaryWorkerConfig =
         registerOutput<AutoscalingPolicySecondaryWorkerConfig?>(
           'secondaryWorkerConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AutoscalingPolicySecondaryWorkerConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     workerConfig = registerOutput<AutoscalingPolicyWorkerConfig?>(
       'workerConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AutoscalingPolicyWorkerConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

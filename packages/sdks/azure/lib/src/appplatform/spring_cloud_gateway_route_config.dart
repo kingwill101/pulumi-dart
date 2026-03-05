@@ -433,7 +433,16 @@ class SpringCloudGatewayRouteConfig extends pulumi.CustomResource {
        ) {
     filters = registerOutput<List<String>?>('filters');
     this.name = registerOutput<String>('name');
-    openApi = registerOutput<SpringCloudGatewayRouteConfigOpenApi?>('openApi');
+    openApi = registerOutput<SpringCloudGatewayRouteConfigOpenApi?>(
+      'openApi',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpringCloudGatewayRouteConfigOpenApi.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     predicates = registerOutput<List<String>?>('predicates');
     protocol = registerOutput<String>('protocol');
     routes = registerOutput<List<Map<String, dynamic>>?>('routes');
@@ -467,7 +476,16 @@ class SpringCloudGatewayRouteConfig extends pulumi.CustomResource {
        ) {
     filters = registerOutput<List<String>?>('filters');
     this.name = registerOutput<String>('name');
-    openApi = registerOutput<SpringCloudGatewayRouteConfigOpenApi?>('openApi');
+    openApi = registerOutput<SpringCloudGatewayRouteConfigOpenApi?>(
+      'openApi',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpringCloudGatewayRouteConfigOpenApi.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     predicates = registerOutput<List<String>?>('predicates');
     protocol = registerOutput<String>('protocol');
     routes = registerOutput<List<Map<String, dynamic>>?>('routes');

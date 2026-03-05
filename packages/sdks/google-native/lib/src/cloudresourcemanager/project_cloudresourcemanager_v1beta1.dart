@@ -49,6 +49,13 @@ class ProjectCloudresourcemanagerV1beta1 extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     parent = registerOutput<ResourceIdResponseCloudresourcemanagerV1beta1>(
       'parent',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceIdResponseCloudresourcemanagerV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     projectId = registerOutput<String>('projectId');
     projectNumber = registerOutput<String>('projectNumber');

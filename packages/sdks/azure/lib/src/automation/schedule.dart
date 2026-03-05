@@ -301,6 +301,13 @@ class Schedule extends pulumi.CustomResource {
     monthDays = registerOutput<List<int>?>('monthDays');
     monthlyOccurrence = registerOutput<ScheduleMonthlyOccurrence?>(
       'monthlyOccurrence',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduleMonthlyOccurrence.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -340,6 +347,13 @@ class Schedule extends pulumi.CustomResource {
     monthDays = registerOutput<List<int>?>('monthDays');
     monthlyOccurrence = registerOutput<ScheduleMonthlyOccurrence?>(
       'monthlyOccurrence',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduleMonthlyOccurrence.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

@@ -361,7 +361,16 @@ class SpringCloudApiPortal extends pulumi.CustomResource {
       'publicNetworkAccessEnabled',
     );
     springCloudServiceId = registerOutput<String>('springCloudServiceId');
-    sso = registerOutput<SpringCloudApiPortalSso?>('sso');
+    sso = registerOutput<SpringCloudApiPortalSso?>(
+      'sso',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpringCloudApiPortalSso.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     url = registerOutput<String>('url');
   }
 
@@ -397,7 +406,16 @@ class SpringCloudApiPortal extends pulumi.CustomResource {
       'publicNetworkAccessEnabled',
     );
     springCloudServiceId = registerOutput<String>('springCloudServiceId');
-    sso = registerOutput<SpringCloudApiPortalSso?>('sso');
+    sso = registerOutput<SpringCloudApiPortalSso?>(
+      'sso',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpringCloudApiPortalSso.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     url = registerOutput<String>('url');
   }
 }

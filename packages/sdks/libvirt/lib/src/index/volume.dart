@@ -543,17 +543,44 @@ class Volume extends pulumi.CustomResource {
       ) {
     allocation = registerOutput<double>('allocation');
     allocationUnit = registerOutput<String?>('allocationUnit');
-    backingStore = registerOutput<VolumeBackingStore?>('backingStore');
+    backingStore = registerOutput<VolumeBackingStore?>(
+      'backingStore',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VolumeBackingStore.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     capacity = registerOutput<double>('capacity');
     capacityUnit = registerOutput<String?>('capacityUnit');
-    create = registerOutput<VolumeCreate?>('create');
+    create = registerOutput<VolumeCreate?>(
+      'create',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VolumeCreate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     key = registerOutput<String>('key');
     this.name = registerOutput<String>('name');
     path = registerOutput<String>('path');
     physical = registerOutput<double>('physical');
     physicalUnit = registerOutput<String?>('physicalUnit');
     pool = registerOutput<String>('pool');
-    target = registerOutput<VolumeTarget?>('target');
+    target = registerOutput<VolumeTarget?>(
+      'target',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VolumeTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String?>('type');
   }
 
@@ -582,17 +609,44 @@ class Volume extends pulumi.CustomResource {
        ) {
     allocation = registerOutput<double>('allocation');
     allocationUnit = registerOutput<String?>('allocationUnit');
-    backingStore = registerOutput<VolumeBackingStore?>('backingStore');
+    backingStore = registerOutput<VolumeBackingStore?>(
+      'backingStore',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VolumeBackingStore.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     capacity = registerOutput<double>('capacity');
     capacityUnit = registerOutput<String?>('capacityUnit');
-    create = registerOutput<VolumeCreate?>('create');
+    create = registerOutput<VolumeCreate?>(
+      'create',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VolumeCreate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     key = registerOutput<String>('key');
     this.name = registerOutput<String>('name');
     path = registerOutput<String>('path');
     physical = registerOutput<double>('physical');
     physicalUnit = registerOutput<String?>('physicalUnit');
     pool = registerOutput<String>('pool');
-    target = registerOutput<VolumeTarget?>('target');
+    target = registerOutput<VolumeTarget?>(
+      'target',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VolumeTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String?>('type');
   }
 }

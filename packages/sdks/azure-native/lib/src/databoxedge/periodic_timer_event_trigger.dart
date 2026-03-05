@@ -176,9 +176,36 @@ class PeriodicTimerEventTrigger extends pulumi.CustomResource {
     customContextTag = registerOutput<String?>('customContextTag');
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    sinkInfo = registerOutput<RoleSinkInfoResponse>('sinkInfo');
-    sourceInfo = registerOutput<PeriodicTimerSourceInfoResponse>('sourceInfo');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    sinkInfo = registerOutput<RoleSinkInfoResponse>(
+      'sinkInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RoleSinkInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    sourceInfo = registerOutput<PeriodicTimerSourceInfoResponse>(
+      'sourceInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PeriodicTimerSourceInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

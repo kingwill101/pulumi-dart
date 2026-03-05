@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getSshKey.
 class GetSshKeyResult {
   /// The fingerprint of the public key of the ssh key.
   final String fingerprint;
+
   /// The ID of the ssh key.
   final int id;
   final String name;
+
   /// The public key of the ssh key.
   final String publicKey;
 
@@ -41,4 +42,3 @@ class GetSshKeyResult {
     );
   }
 }
-

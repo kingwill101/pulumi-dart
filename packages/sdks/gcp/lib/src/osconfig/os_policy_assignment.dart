@@ -718,6 +718,13 @@ class OsPolicyAssignment extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     instanceFilter = registerOutput<OsPolicyAssignmentInstanceFilter>(
       'instanceFilter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OsPolicyAssignmentInstanceFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -726,7 +733,16 @@ class OsPolicyAssignment extends pulumi.CustomResource {
     reconciling = registerOutput<bool>('reconciling');
     revisionCreateTime = registerOutput<String>('revisionCreateTime');
     revisionId = registerOutput<String>('revisionId');
-    rollout = registerOutput<OsPolicyAssignmentRollout>('rollout');
+    rollout = registerOutput<OsPolicyAssignmentRollout>(
+      'rollout',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OsPolicyAssignmentRollout.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     rolloutState = registerOutput<String>('rolloutState');
     skipAwaitRollout = registerOutput<bool?>('skipAwaitRollout');
     uid = registerOutput<String>('uid');
@@ -761,6 +777,13 @@ class OsPolicyAssignment extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     instanceFilter = registerOutput<OsPolicyAssignmentInstanceFilter>(
       'instanceFilter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OsPolicyAssignmentInstanceFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -769,7 +792,16 @@ class OsPolicyAssignment extends pulumi.CustomResource {
     reconciling = registerOutput<bool>('reconciling');
     revisionCreateTime = registerOutput<String>('revisionCreateTime');
     revisionId = registerOutput<String>('revisionId');
-    rollout = registerOutput<OsPolicyAssignmentRollout>('rollout');
+    rollout = registerOutput<OsPolicyAssignmentRollout>(
+      'rollout',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OsPolicyAssignmentRollout.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     rolloutState = registerOutput<String>('rolloutState');
     skipAwaitRollout = registerOutput<bool?>('skipAwaitRollout');
     uid = registerOutput<String>('uid');

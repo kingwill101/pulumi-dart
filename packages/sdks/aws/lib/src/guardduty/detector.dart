@@ -257,7 +257,16 @@ class Detector extends pulumi.CustomResource {
        ) {
     accountId = registerOutput<String>('accountId');
     arn = registerOutput<String>('arn');
-    datasources = registerOutput<DetectorDatasources>('datasources');
+    datasources = registerOutput<DetectorDatasources>(
+      'datasources',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DetectorDatasources.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     enable = registerOutput<bool?>('enable');
     findingPublishingFrequency = registerOutput<String>(
       'findingPublishingFrequency',
@@ -292,7 +301,16 @@ class Detector extends pulumi.CustomResource {
        ) {
     accountId = registerOutput<String>('accountId');
     arn = registerOutput<String>('arn');
-    datasources = registerOutput<DetectorDatasources>('datasources');
+    datasources = registerOutput<DetectorDatasources>(
+      'datasources',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DetectorDatasources.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     enable = registerOutput<bool?>('enable');
     findingPublishingFrequency = registerOutput<String>(
       'findingPublishingFrequency',

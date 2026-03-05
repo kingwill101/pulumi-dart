@@ -50,10 +50,24 @@ class MembershipCloudidentityV1beta1 extends pulumi.CustomResource {
     groupId = registerOutput<String>('groupId');
     memberKey = registerOutput<EntityKeyResponseCloudidentityV1beta1>(
       'memberKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EntityKeyResponseCloudidentityV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     preferredMemberKey = registerOutput<EntityKeyResponseCloudidentityV1beta1>(
       'preferredMemberKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EntityKeyResponseCloudidentityV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     roles = registerOutput<List<Map<String, dynamic>>>('roles');
     type = registerOutput<String>('type');

@@ -314,7 +314,16 @@ class KubernetesClusterExtension extends pulumi.CustomResource {
     currentVersion = registerOutput<String>('currentVersion');
     extensionType = registerOutput<String>('extensionType');
     this.name = registerOutput<String>('name');
-    plan = registerOutput<KubernetesClusterExtensionPlan?>('plan');
+    plan = registerOutput<KubernetesClusterExtensionPlan?>(
+      'plan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KubernetesClusterExtensionPlan.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     releaseNamespace = registerOutput<String>('releaseNamespace');
     releaseTrain = registerOutput<String>('releaseTrain');
     targetNamespace = registerOutput<String>('targetNamespace');
@@ -357,7 +366,16 @@ class KubernetesClusterExtension extends pulumi.CustomResource {
     currentVersion = registerOutput<String>('currentVersion');
     extensionType = registerOutput<String>('extensionType');
     this.name = registerOutput<String>('name');
-    plan = registerOutput<KubernetesClusterExtensionPlan?>('plan');
+    plan = registerOutput<KubernetesClusterExtensionPlan?>(
+      'plan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KubernetesClusterExtensionPlan.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     releaseNamespace = registerOutput<String>('releaseNamespace');
     releaseTrain = registerOutput<String>('releaseTrain');
     targetNamespace = registerOutput<String>('targetNamespace');

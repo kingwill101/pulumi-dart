@@ -1889,6 +1889,13 @@ class PreventionInspectTemplate extends pulumi.CustomResource {
     displayName = registerOutput<String?>('displayName');
     inspectConfig = registerOutput<PreventionInspectTemplateInspectConfig?>(
       'inspectConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PreventionInspectTemplateInspectConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
@@ -1922,6 +1929,13 @@ class PreventionInspectTemplate extends pulumi.CustomResource {
     displayName = registerOutput<String?>('displayName');
     inspectConfig = registerOutput<PreventionInspectTemplateInspectConfig?>(
       'inspectConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PreventionInspectTemplateInspectConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');

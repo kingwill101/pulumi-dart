@@ -1307,11 +1307,29 @@ class Policy extends pulumi.CustomResource {
         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
         options ?? pulumi.CustomResourceOptions(),
       ) {
-    dryRunSpec = registerOutput<PolicyDryRunSpec?>('dryRunSpec');
+    dryRunSpec = registerOutput<PolicyDryRunSpec?>(
+      'dryRunSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyDryRunSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
-    spec = registerOutput<PolicySpec?>('spec');
+    spec = registerOutput<PolicySpec?>(
+      'spec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicySpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Policy] resource's state with the given [name] and [id].
@@ -1337,10 +1355,28 @@ class Policy extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    dryRunSpec = registerOutput<PolicyDryRunSpec?>('dryRunSpec');
+    dryRunSpec = registerOutput<PolicyDryRunSpec?>(
+      'dryRunSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyDryRunSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
-    spec = registerOutput<PolicySpec?>('spec');
+    spec = registerOutput<PolicySpec?>(
+      'spec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicySpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

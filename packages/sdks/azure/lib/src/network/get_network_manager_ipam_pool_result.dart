@@ -1,22 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getNetworkManagerIpamPool.
 class GetNetworkManagerIpamPoolResult {
   /// A list of IPv4 or IPv6 IP address prefixes assigned to the Network Manager IPAM Pool.
   final List<String> addressPrefixes;
+
   /// The description of the Network Manager IPAM Pool.
   final String description;
+
   /// The display name of the Network Manager IPAM Pool.
   final String displayName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The Azure Region where the Network Manager IPAM Pool exists.
   final String location;
   final String name;
   final String networkManagerId;
+
   /// The name of the parent IPAM Pool.
   final String parentPoolName;
+
   /// A mapping of tags assigned to the Network Manager IPAM Pool.
   final Map<String, String> tags;
 
@@ -70,4 +75,3 @@ class GetNetworkManagerIpamPoolResult {
     );
   }
 }
-

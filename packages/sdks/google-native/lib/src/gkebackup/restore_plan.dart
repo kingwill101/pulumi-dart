@@ -69,7 +69,16 @@ class RestorePlan extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    restoreConfig = registerOutput<RestoreConfigResponse>('restoreConfig');
+    restoreConfig = registerOutput<RestoreConfigResponse>(
+      'restoreConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RestoreConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     restorePlanId = registerOutput<String>('restorePlanId');
     state = registerOutput<String>('state');
     stateReason = registerOutput<String>('stateReason');

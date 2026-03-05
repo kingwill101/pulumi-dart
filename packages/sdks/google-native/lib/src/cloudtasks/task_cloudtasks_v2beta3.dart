@@ -64,24 +64,59 @@ class TaskCloudtasksV2beta3 extends pulumi.CustomResource {
     appEngineHttpRequest =
         registerOutput<AppEngineHttpRequestResponseCloudtasksV2beta3>(
           'appEngineHttpRequest',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AppEngineHttpRequestResponseCloudtasksV2beta3.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     createTime = registerOutput<String>('createTime');
     dispatchCount = registerOutput<int>('dispatchCount');
     dispatchDeadline = registerOutput<String>('dispatchDeadline');
     firstAttempt = registerOutput<AttemptResponseCloudtasksV2beta3>(
       'firstAttempt',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AttemptResponseCloudtasksV2beta3.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     httpRequest = registerOutput<HttpRequestResponseCloudtasksV2beta3>(
       'httpRequest',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HttpRequestResponseCloudtasksV2beta3.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     lastAttempt = registerOutput<AttemptResponseCloudtasksV2beta3>(
       'lastAttempt',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AttemptResponseCloudtasksV2beta3.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pullMessage = registerOutput<PullMessageResponseCloudtasksV2beta3>(
       'pullMessage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PullMessageResponseCloudtasksV2beta3.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     queueId = registerOutput<String>('queueId');
     responseCount = registerOutput<int>('responseCount');

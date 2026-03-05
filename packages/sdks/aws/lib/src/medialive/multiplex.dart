@@ -257,6 +257,13 @@ class Multiplex extends pulumi.CustomResource {
     availabilityZones = registerOutput<List<String>>('availabilityZones');
     multiplexSettings = registerOutput<MultiplexMultiplexSettings?>(
       'multiplexSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MultiplexMultiplexSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -292,6 +299,13 @@ class Multiplex extends pulumi.CustomResource {
     availabilityZones = registerOutput<List<String>>('availabilityZones');
     multiplexSettings = registerOutput<MultiplexMultiplexSettings?>(
       'multiplexSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MultiplexMultiplexSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

@@ -1,30 +1,39 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getResolverFirewallRuleGroup.
 class GetResolverFirewallRuleGroupResult {
   /// The ARN (Amazon Resource Name) of the rule group.
   final String arn;
+
   /// The date and time that the rule group was created, in Unix time format and Coordinated Universal Time (UTC).
   final String creationTime;
+
   /// A unique string defined by you to identify the request.
   final String creatorRequestId;
   final String firewallRuleGroupId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The date and time that the rule group was last modified, in Unix time format and Coordinated Universal Time (UTC).
   final String modificationTime;
+
   /// The name of the rule group.
   final String name;
+
   /// The Amazon Web Services account ID for the account that created the rule group. When a rule group is shared with your account, this is the account that has shared the rule group with you.
   final String ownerId;
   final String region;
+
   /// The number of rules in the rule group.
   final int ruleCount;
+
   /// Whether the rule group is shared with other Amazon Web Services accounts, or was shared with the current account by another Amazon Web Services account.
   final String shareStatus;
+
   /// The status of the rule group.
   final String status;
+
   /// Additional information about the status of the rule group, if available.
   final String statusMessage;
 
@@ -94,4 +103,3 @@ class GetResolverFirewallRuleGroupResult {
     );
   }
 }
-

@@ -308,6 +308,13 @@ class Share extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     snapshotSchedule = registerOutput<ShareSnapshotSchedule?>(
       'snapshotSchedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ShareSnapshotSchedule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     terms = registerOutput<String?>('terms');
   }
@@ -337,6 +344,13 @@ class Share extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     snapshotSchedule = registerOutput<ShareSnapshotSchedule?>(
       'snapshotSchedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ShareSnapshotSchedule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     terms = registerOutput<String?>('terms');
   }

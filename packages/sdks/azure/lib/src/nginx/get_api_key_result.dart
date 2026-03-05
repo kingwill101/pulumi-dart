@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getApiKey.
 class GetApiKeyResult {
   /// The RFC3339 formatted time after which this Dataplane API Key is no longer valid.
   final String endDateTime;
+
   /// The first three characters of the secret text to help identify it in use.
   final String hint;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -46,4 +47,3 @@ class GetApiKeyResult {
     );
   }
 }
-

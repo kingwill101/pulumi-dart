@@ -586,26 +586,67 @@ class Channel extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     cdiInputSpecification = registerOutput<ChannelCdiInputSpecification?>(
       'cdiInputSpecification',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ChannelCdiInputSpecification.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     channelClass = registerOutput<String>('channelClass');
     channelId = registerOutput<String>('channelId');
     destinations = registerOutput<List<Map<String, dynamic>>>('destinations');
-    encoderSettings = registerOutput<ChannelEncoderSettings>('encoderSettings');
+    encoderSettings = registerOutput<ChannelEncoderSettings>(
+      'encoderSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ChannelEncoderSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     inputAttachments = registerOutput<List<Map<String, dynamic>>>(
       'inputAttachments',
     );
     inputSpecification = registerOutput<ChannelInputSpecification>(
       'inputSpecification',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ChannelInputSpecification.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     logLevel = registerOutput<String>('logLevel');
-    maintenance = registerOutput<ChannelMaintenance>('maintenance');
+    maintenance = registerOutput<ChannelMaintenance>(
+      'maintenance',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ChannelMaintenance.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String?>('roleArn');
     startChannel = registerOutput<bool?>('startChannel');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    vpc = registerOutput<ChannelVpc?>('vpc');
+    vpc = registerOutput<ChannelVpc?>(
+      'vpc',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ChannelVpc.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Channel] resource's state with the given [name] and [id].
@@ -634,25 +675,66 @@ class Channel extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     cdiInputSpecification = registerOutput<ChannelCdiInputSpecification?>(
       'cdiInputSpecification',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ChannelCdiInputSpecification.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     channelClass = registerOutput<String>('channelClass');
     channelId = registerOutput<String>('channelId');
     destinations = registerOutput<List<Map<String, dynamic>>>('destinations');
-    encoderSettings = registerOutput<ChannelEncoderSettings>('encoderSettings');
+    encoderSettings = registerOutput<ChannelEncoderSettings>(
+      'encoderSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ChannelEncoderSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     inputAttachments = registerOutput<List<Map<String, dynamic>>>(
       'inputAttachments',
     );
     inputSpecification = registerOutput<ChannelInputSpecification>(
       'inputSpecification',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ChannelInputSpecification.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     logLevel = registerOutput<String>('logLevel');
-    maintenance = registerOutput<ChannelMaintenance>('maintenance');
+    maintenance = registerOutput<ChannelMaintenance>(
+      'maintenance',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ChannelMaintenance.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String?>('roleArn');
     startChannel = registerOutput<bool?>('startChannel');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    vpc = registerOutput<ChannelVpc?>('vpc');
+    vpc = registerOutput<ChannelVpc?>(
+      'vpc',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ChannelVpc.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

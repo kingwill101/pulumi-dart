@@ -221,7 +221,16 @@ class SdkvoiceVoiceProfileDomain extends pulumi.CustomResource {
     serverSideEncryptionConfiguration =
         registerOutput<
           SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration
-        >('serverSideEncryptionConfiguration');
+        >(
+          'serverSideEncryptionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
@@ -256,7 +265,16 @@ class SdkvoiceVoiceProfileDomain extends pulumi.CustomResource {
     serverSideEncryptionConfiguration =
         registerOutput<
           SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration
-        >('serverSideEncryptionConfiguration');
+        >(
+          'serverSideEncryptionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }

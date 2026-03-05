@@ -403,7 +403,16 @@ class ExpressRoutePort extends pulumi.CustomResource {
     encapsulation = registerOutput<String?>('encapsulation');
     etag = registerOutput<String>('etag');
     etherType = registerOutput<String>('etherType');
-    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    identity = registerOutput<ManagedServiceIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedServiceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     links = registerOutput<List<Map<String, dynamic>>?>('links');
     location = registerOutput<String?>('location');
     mtu = registerOutput<String>('mtu');

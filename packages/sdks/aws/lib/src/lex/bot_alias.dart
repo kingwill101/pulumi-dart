@@ -173,6 +173,13 @@ class BotAlias extends pulumi.CustomResource {
     checksum = registerOutput<String>('checksum');
     conversationLogs = registerOutput<BotAliasConversationLogs?>(
       'conversationLogs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BotAliasConversationLogs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createdDate = registerOutput<String>('createdDate');
     description = registerOutput<String?>('description');
@@ -210,6 +217,13 @@ class BotAlias extends pulumi.CustomResource {
     checksum = registerOutput<String>('checksum');
     conversationLogs = registerOutput<BotAliasConversationLogs?>(
       'conversationLogs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BotAliasConversationLogs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createdDate = registerOutput<String>('createdDate');
     description = registerOutput<String?>('description');

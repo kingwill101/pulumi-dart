@@ -15,7 +15,8 @@ import 'get_zone_result.dart';
 /// Other available API versions: 2018-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dns [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dns_get_dns_resource_reference_by_tar_resources_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDnsResourceReferenceByTarResourcesResult> getDnsResourceReferenceByTarResources(
+Future<GetDnsResourceReferenceByTarResourcesResult>
+getDnsResourceReferenceByTarResources(
   GetDnsResourceReferenceByTarResourcesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

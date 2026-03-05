@@ -214,7 +214,16 @@ class Workgroup extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    configuration = registerOutput<WorkgroupConfiguration?>('configuration');
+    configuration = registerOutput<WorkgroupConfiguration?>(
+      'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkgroupConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     forceDestroy = registerOutput<bool?>('forceDestroy');
     this.name = registerOutput<String>('name');
@@ -248,7 +257,16 @@ class Workgroup extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    configuration = registerOutput<WorkgroupConfiguration?>('configuration');
+    configuration = registerOutput<WorkgroupConfiguration?>(
+      'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkgroupConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     forceDestroy = registerOutput<bool?>('forceDestroy');
     this.name = registerOutput<String>('name');

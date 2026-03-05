@@ -392,7 +392,16 @@ class Invitation extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    message = registerOutput<InvitationMessage?>('message');
+    message = registerOutput<InvitationMessage?>(
+      'message',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InvitationMessage.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     redeemUrl = registerOutput<String>('redeemUrl');
     redirectUrl = registerOutput<String>('redirectUrl');
     userDisplayName = registerOutput<String?>('userDisplayName');
@@ -424,7 +433,16 @@ class Invitation extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    message = registerOutput<InvitationMessage?>('message');
+    message = registerOutput<InvitationMessage?>(
+      'message',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InvitationMessage.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     redeemUrl = registerOutput<String>('redeemUrl');
     redirectUrl = registerOutput<String>('redirectUrl');
     userDisplayName = registerOutput<String?>('userDisplayName');

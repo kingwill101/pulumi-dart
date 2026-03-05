@@ -73,20 +73,79 @@ class Cluster extends pulumi.CustomResource {
        ) {
     apiServerProfile = registerOutput<ClusterApiServerProfile>(
       'apiServerProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterApiServerProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    clusterProfile = registerOutput<ClusterClusterProfile>('clusterProfile');
+    clusterProfile = registerOutput<ClusterClusterProfile>(
+      'clusterProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterClusterProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     consoleUrl = registerOutput<String>('consoleUrl');
-    ingressProfile = registerOutput<ClusterIngressProfile>('ingressProfile');
+    ingressProfile = registerOutput<ClusterIngressProfile>(
+      'ingressProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterIngressProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
-    mainProfile = registerOutput<ClusterMainProfile>('mainProfile');
+    mainProfile = registerOutput<ClusterMainProfile>(
+      'mainProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterMainProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
-    networkProfile = registerOutput<ClusterNetworkProfile>('networkProfile');
+    networkProfile = registerOutput<ClusterNetworkProfile>(
+      'networkProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterNetworkProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     servicePrincipal = registerOutput<ClusterServicePrincipal>(
       'servicePrincipal',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterServicePrincipal.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
-    workerProfile = registerOutput<ClusterWorkerProfile>('workerProfile');
+    workerProfile = registerOutput<ClusterWorkerProfile>(
+      'workerProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterWorkerProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Cluster] resource's state with the given [name] and [id].
@@ -114,19 +173,78 @@ class Cluster extends pulumi.CustomResource {
        ) {
     apiServerProfile = registerOutput<ClusterApiServerProfile>(
       'apiServerProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterApiServerProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    clusterProfile = registerOutput<ClusterClusterProfile>('clusterProfile');
+    clusterProfile = registerOutput<ClusterClusterProfile>(
+      'clusterProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterClusterProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     consoleUrl = registerOutput<String>('consoleUrl');
-    ingressProfile = registerOutput<ClusterIngressProfile>('ingressProfile');
+    ingressProfile = registerOutput<ClusterIngressProfile>(
+      'ingressProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterIngressProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
-    mainProfile = registerOutput<ClusterMainProfile>('mainProfile');
+    mainProfile = registerOutput<ClusterMainProfile>(
+      'mainProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterMainProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
-    networkProfile = registerOutput<ClusterNetworkProfile>('networkProfile');
+    networkProfile = registerOutput<ClusterNetworkProfile>(
+      'networkProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterNetworkProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     servicePrincipal = registerOutput<ClusterServicePrincipal>(
       'servicePrincipal',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterServicePrincipal.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
-    workerProfile = registerOutput<ClusterWorkerProfile>('workerProfile');
+    workerProfile = registerOutput<ClusterWorkerProfile>(
+      'workerProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterWorkerProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

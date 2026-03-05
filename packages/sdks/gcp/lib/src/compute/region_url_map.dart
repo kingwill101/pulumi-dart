@@ -7346,14 +7346,37 @@ class RegionUrlMap extends pulumi.CustomResource {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     defaultRouteAction = registerOutput<RegionUrlMapDefaultRouteAction?>(
       'defaultRouteAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegionUrlMapDefaultRouteAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     defaultService = registerOutput<String?>('defaultService');
     defaultUrlRedirect = registerOutput<RegionUrlMapDefaultUrlRedirect?>(
       'defaultUrlRedirect',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegionUrlMapDefaultUrlRedirect.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
-    headerAction = registerOutput<RegionUrlMapHeaderAction?>('headerAction');
+    headerAction = registerOutput<RegionUrlMapHeaderAction?>(
+      'headerAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegionUrlMapHeaderAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     hostRules = registerOutput<List<Map<String, dynamic>>?>('hostRules');
     mapId = registerOutput<int>('mapId');
     this.name = registerOutput<String>('name');
@@ -7390,14 +7413,37 @@ class RegionUrlMap extends pulumi.CustomResource {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     defaultRouteAction = registerOutput<RegionUrlMapDefaultRouteAction?>(
       'defaultRouteAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegionUrlMapDefaultRouteAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     defaultService = registerOutput<String?>('defaultService');
     defaultUrlRedirect = registerOutput<RegionUrlMapDefaultUrlRedirect?>(
       'defaultUrlRedirect',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegionUrlMapDefaultUrlRedirect.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
-    headerAction = registerOutput<RegionUrlMapHeaderAction?>('headerAction');
+    headerAction = registerOutput<RegionUrlMapHeaderAction?>(
+      'headerAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegionUrlMapHeaderAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     hostRules = registerOutput<List<Map<String, dynamic>>?>('hostRules');
     mapId = registerOutput<int>('mapId');
     this.name = registerOutput<String>('name');

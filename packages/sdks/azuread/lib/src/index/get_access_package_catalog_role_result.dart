@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAccessPackageCatalogRole.
 class GetAccessPackageCatalogRoleResult {
   /// The description of the role.
   final String description;
+
   /// The display name of the role.
   final String displayName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The object ID of the role.
   final String objectId;
+
   /// The object ID of the role.
   final String templateId;
 
@@ -48,4 +51,3 @@ class GetAccessPackageCatalogRoleResult {
     );
   }
 }
-

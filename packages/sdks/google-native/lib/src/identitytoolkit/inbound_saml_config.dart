@@ -46,6 +46,13 @@ class InboundSamlConfig extends pulumi.CustomResource {
     idpConfig =
         registerOutput<GoogleCloudIdentitytoolkitAdminV2IdpConfigResponse>(
           'idpConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudIdentitytoolkitAdminV2IdpConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     inboundSamlConfigId = registerOutput<String?>('inboundSamlConfigId');
     this.name = registerOutput<String>('name');
@@ -53,6 +60,13 @@ class InboundSamlConfig extends pulumi.CustomResource {
     spConfig =
         registerOutput<GoogleCloudIdentitytoolkitAdminV2SpConfigResponse>(
           'spConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudIdentitytoolkitAdminV2SpConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tenantId = registerOutput<String>('tenantId');
   }

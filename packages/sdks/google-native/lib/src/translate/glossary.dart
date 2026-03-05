@@ -49,11 +49,36 @@ class Glossary extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     endTime = registerOutput<String>('endTime');
     entryCount = registerOutput<int>('entryCount');
-    inputConfig = registerOutput<GlossaryInputConfigResponse>('inputConfig');
+    inputConfig = registerOutput<GlossaryInputConfigResponse>(
+      'inputConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GlossaryInputConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     languageCodesSet = registerOutput<LanguageCodesSetResponse>(
       'languageCodesSet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LanguageCodesSetResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    languagePair = registerOutput<LanguageCodePairResponse>('languagePair');
+    languagePair = registerOutput<LanguageCodePairResponse>(
+      'languagePair',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LanguageCodePairResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

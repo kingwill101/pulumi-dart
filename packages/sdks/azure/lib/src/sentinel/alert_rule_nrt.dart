@@ -347,8 +347,26 @@ class AlertRuleNrt extends pulumi.CustomResource {
     entityMappings = registerOutput<List<Map<String, dynamic>>?>(
       'entityMappings',
     );
-    eventGrouping = registerOutput<AlertRuleNrtEventGrouping>('eventGrouping');
-    incident = registerOutput<AlertRuleNrtIncident>('incident');
+    eventGrouping = registerOutput<AlertRuleNrtEventGrouping>(
+      'eventGrouping',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlertRuleNrtEventGrouping.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    incident = registerOutput<AlertRuleNrtIncident>(
+      'incident',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlertRuleNrtIncident.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
     query = registerOutput<String>('query');
@@ -399,8 +417,26 @@ class AlertRuleNrt extends pulumi.CustomResource {
     entityMappings = registerOutput<List<Map<String, dynamic>>?>(
       'entityMappings',
     );
-    eventGrouping = registerOutput<AlertRuleNrtEventGrouping>('eventGrouping');
-    incident = registerOutput<AlertRuleNrtIncident>('incident');
+    eventGrouping = registerOutput<AlertRuleNrtEventGrouping>(
+      'eventGrouping',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlertRuleNrtEventGrouping.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    incident = registerOutput<AlertRuleNrtIncident>(
+      'incident',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlertRuleNrtIncident.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
     query = registerOutput<String>('query');

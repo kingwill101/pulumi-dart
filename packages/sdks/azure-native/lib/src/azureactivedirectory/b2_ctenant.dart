@@ -225,12 +225,37 @@ class B2CTenant extends pulumi.CustomResource {
     billingConfig =
         registerOutput<B2CTenantResourcePropertiesResponseBillingConfig?>(
           'billingConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return B2CTenantResourcePropertiesResponseBillingConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     isGoLocalTenant = registerOutput<bool?>('isGoLocalTenant');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    sku = registerOutput<B2CResourceSKUResponse>('sku');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    sku = registerOutput<B2CResourceSKUResponse>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return B2CResourceSKUResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tenantId = registerOutput<String?>('tenantId');
     type = registerOutput<String>('type');

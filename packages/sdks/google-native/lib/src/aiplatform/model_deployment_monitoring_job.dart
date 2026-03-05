@@ -123,19 +123,51 @@ class ModelDeploymentMonitoringJob extends pulumi.CustomResource {
     encryptionSpec =
         registerOutput<GoogleCloudAiplatformV1EncryptionSpecResponse>(
           'encryptionSpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1EncryptionSpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     endpoint = registerOutput<String>('endpoint');
-    error = registerOutput<GoogleRpcStatusResponse>('error');
+    error = registerOutput<GoogleRpcStatusResponse>(
+      'error',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleRpcStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>>('labels');
     latestMonitoringPipelineMetadata =
         registerOutput<
           GoogleCloudAiplatformV1ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadataResponse
-        >('latestMonitoringPipelineMetadata');
+        >(
+          'latestMonitoringPipelineMetadata',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadataResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     location = registerOutput<String>('location');
     logTtl = registerOutput<String>('logTtl');
     loggingSamplingStrategy =
         registerOutput<GoogleCloudAiplatformV1SamplingStrategyResponse>(
           'loggingSamplingStrategy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1SamplingStrategyResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     modelDeploymentMonitoringObjectiveConfigs =
         registerOutput<List<Map<String, dynamic>>>(
@@ -144,11 +176,29 @@ class ModelDeploymentMonitoringJob extends pulumi.CustomResource {
     modelDeploymentMonitoringScheduleConfig =
         registerOutput<
           GoogleCloudAiplatformV1ModelDeploymentMonitoringScheduleConfigResponse
-        >('modelDeploymentMonitoringScheduleConfig');
+        >(
+          'modelDeploymentMonitoringScheduleConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1ModelDeploymentMonitoringScheduleConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     modelMonitoringAlertConfig =
         registerOutput<
           GoogleCloudAiplatformV1ModelMonitoringAlertConfigResponse
-        >('modelMonitoringAlertConfig');
+        >(
+          'modelMonitoringAlertConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1ModelMonitoringAlertConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     this.name = registerOutput<String>('name');
     nextScheduleTime = registerOutput<String>('nextScheduleTime');
     predictInstanceSchemaUri = registerOutput<String>(
@@ -161,6 +211,13 @@ class ModelDeploymentMonitoringJob extends pulumi.CustomResource {
     statsAnomaliesBaseDirectory =
         registerOutput<GoogleCloudAiplatformV1GcsDestinationResponse>(
           'statsAnomaliesBaseDirectory',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1GcsDestinationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     updateTime = registerOutput<String>('updateTime');
   }

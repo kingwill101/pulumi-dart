@@ -153,7 +153,8 @@ Future<GetMSIXPackageResult> getMSIXPackage(
 /// Other available API versions: 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-04-01-preview, 2025-08-01-preview, 2025-09-01-preview, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native desktopvirtualization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_desktopvirtualization_get_private_endpoint_connection_by_host_pool_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetPrivateEndpointConnectionByHostPoolResult> getPrivateEndpointConnectionByHostPool(
+Future<GetPrivateEndpointConnectionByHostPoolResult>
+getPrivateEndpointConnectionByHostPool(
   GetPrivateEndpointConnectionByHostPoolArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -173,7 +174,8 @@ Future<GetPrivateEndpointConnectionByHostPoolResult> getPrivateEndpointConnectio
 /// Other available API versions: 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-04-01-preview, 2025-08-01-preview, 2025-09-01-preview, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native desktopvirtualization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_desktopvirtualization_get_private_endpoint_connection_by_workspace_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetPrivateEndpointConnectionByWorkspaceResult> getPrivateEndpointConnectionByWorkspace(
+Future<GetPrivateEndpointConnectionByWorkspaceResult>
+getPrivateEndpointConnectionByWorkspace(
   GetPrivateEndpointConnectionByWorkspaceArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

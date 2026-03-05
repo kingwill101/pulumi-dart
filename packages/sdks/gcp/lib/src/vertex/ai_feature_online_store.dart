@@ -662,19 +662,49 @@ class AiFeatureOnlineStore extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    bigtable = registerOutput<AiFeatureOnlineStoreBigtable?>('bigtable');
+    bigtable = registerOutput<AiFeatureOnlineStoreBigtable?>(
+      'bigtable',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiFeatureOnlineStoreBigtable.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     dedicatedServingEndpoint =
         registerOutput<AiFeatureOnlineStoreDedicatedServingEndpoint>(
           'dedicatedServingEndpoint',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AiFeatureOnlineStoreDedicatedServingEndpoint.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     embeddingManagement =
         registerOutput<AiFeatureOnlineStoreEmbeddingManagement>(
           'embeddingManagement',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AiFeatureOnlineStoreEmbeddingManagement.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     encryptionSpec = registerOutput<AiFeatureOnlineStoreEncryptionSpec?>(
       'encryptionSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiFeatureOnlineStoreEncryptionSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     forceDestroy = registerOutput<bool?>('forceDestroy');
@@ -711,19 +741,49 @@ class AiFeatureOnlineStore extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    bigtable = registerOutput<AiFeatureOnlineStoreBigtable?>('bigtable');
+    bigtable = registerOutput<AiFeatureOnlineStoreBigtable?>(
+      'bigtable',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiFeatureOnlineStoreBigtable.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     dedicatedServingEndpoint =
         registerOutput<AiFeatureOnlineStoreDedicatedServingEndpoint>(
           'dedicatedServingEndpoint',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AiFeatureOnlineStoreDedicatedServingEndpoint.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     embeddingManagement =
         registerOutput<AiFeatureOnlineStoreEmbeddingManagement>(
           'embeddingManagement',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AiFeatureOnlineStoreEmbeddingManagement.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     encryptionSpec = registerOutput<AiFeatureOnlineStoreEncryptionSpec?>(
       'encryptionSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiFeatureOnlineStoreEncryptionSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     forceDestroy = registerOutput<bool?>('forceDestroy');

@@ -450,12 +450,33 @@ class Assignment extends pulumi.CustomResource {
     additionalData =
         registerOutput<AssignmentPropertiesResponseAdditionalData?>(
           'additionalData',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AssignmentPropertiesResponseAdditionalData.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     assignedComponent = registerOutput<AssignedComponentItemResponse?>(
       'assignedComponent',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AssignedComponentItemResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     assignedStandard = registerOutput<AssignedStandardItemResponse?>(
       'assignedStandard',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AssignedStandardItemResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
@@ -468,7 +489,16 @@ class Assignment extends pulumi.CustomResource {
     metadata = registerOutput<dynamic>('metadata');
     this.name = registerOutput<String>('name');
     scope = registerOutput<String?>('scope');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

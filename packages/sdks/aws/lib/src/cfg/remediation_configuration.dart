@@ -379,6 +379,13 @@ class RemediationConfiguration extends pulumi.CustomResource {
     executionControls =
         registerOutput<RemediationConfigurationExecutionControls?>(
           'executionControls',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RemediationConfigurationExecutionControls.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     maximumAutomaticAttempts = registerOutput<int?>('maximumAutomaticAttempts');
     parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
@@ -419,6 +426,13 @@ class RemediationConfiguration extends pulumi.CustomResource {
     executionControls =
         registerOutput<RemediationConfigurationExecutionControls?>(
           'executionControls',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RemediationConfigurationExecutionControls.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     maximumAutomaticAttempts = registerOutput<int?>('maximumAutomaticAttempts');
     parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');

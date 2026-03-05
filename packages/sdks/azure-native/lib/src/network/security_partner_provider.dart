@@ -227,6 +227,15 @@ class SecurityPartnerProvider extends pulumi.CustomResource {
     securityProviderName = registerOutput<String?>('securityProviderName');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    virtualHub = registerOutput<SubResourceResponse?>('virtualHub');
+    virtualHub = registerOutput<SubResourceResponse?>(
+      'virtualHub',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

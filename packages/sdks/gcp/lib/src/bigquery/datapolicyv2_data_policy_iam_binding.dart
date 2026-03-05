@@ -931,6 +931,13 @@ class Datapolicyv2DataPolicyIamBinding extends pulumi.CustomResource {
        ) {
     condition = registerOutput<Datapolicyv2DataPolicyIamBindingCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return Datapolicyv2DataPolicyIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dataPolicyId = registerOutput<String>('dataPolicyId');
     etag = registerOutput<String>('etag');
@@ -965,6 +972,13 @@ class Datapolicyv2DataPolicyIamBinding extends pulumi.CustomResource {
        ) {
     condition = registerOutput<Datapolicyv2DataPolicyIamBindingCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return Datapolicyv2DataPolicyIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dataPolicyId = registerOutput<String>('dataPolicyId');
     etag = registerOutput<String>('etag');

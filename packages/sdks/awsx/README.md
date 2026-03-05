@@ -20,7 +20,7 @@ import 'package:pulumi_awsx/pulumi_awsx.dart' as provider;
 dependencies:
   pulumi_awsx:
     git:
-      url: https://github.com/<owner>/<repo>.git
+      url: https://github.com/kingwill101/pulumi-dart.git
       path: packages/awsx
       ref: main
 ~~~

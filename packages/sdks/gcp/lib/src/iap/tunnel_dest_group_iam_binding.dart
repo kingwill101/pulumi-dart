@@ -1914,6 +1914,13 @@ class TunnelDestGroupIamBinding extends pulumi.CustomResource {
        ) {
     condition = registerOutput<TunnelDestGroupIamBindingCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TunnelDestGroupIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     destGroup = registerOutput<String>('destGroup');
     etag = registerOutput<String>('etag');
@@ -1948,6 +1955,13 @@ class TunnelDestGroupIamBinding extends pulumi.CustomResource {
        ) {
     condition = registerOutput<TunnelDestGroupIamBindingCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TunnelDestGroupIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     destGroup = registerOutput<String>('destGroup');
     etag = registerOutput<String>('etag');

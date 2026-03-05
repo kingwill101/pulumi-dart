@@ -1,30 +1,39 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getLocalRulestack.
 class GetLocalRulestackResult {
   /// The Anti-Spyware setting used by the Palo Alto Networks Rulestack.
   final String antiSpywareProfile;
+
   /// The Anti-Virus setting used by the Palo Alto Networks Rulestack.
   final String antiVirusProfile;
+
   /// The description of the Palo Alto Networks Rulestack.
   final String description;
+
   /// The DNS Subscription setting used by the Palo Alto Networks Rulestack.
   final String dnsSubscription;
+
   /// The File Blocking Profile used by the Palo Alto Networks Rulestack.
   final String fileBlockingProfile;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The Azure Region where the Palo Alto Networks Rulestack exists.
   final String location;
   final String name;
+
   /// The trusted egress decryption profile data for the Palo Alto Networks Rulestack.
   final String outboundTrustCertificate;
+
   /// The untrusted egress decryption profile data for the Palo Alto Networks Rulestack.
   final String outboundUntrustCertificate;
   final String resourceGroupName;
+
   /// The URL Filtering Profile used by the Palo Alto Networks Rulestack.
   final String urlFilteringProfile;
+
   /// The Vulnerability Profile used by the Palo Alto Networks Rulestack.
   final String vulnerabilityProfile;
 
@@ -94,4 +103,3 @@ class GetLocalRulestackResult {
     );
   }
 }
-

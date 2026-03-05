@@ -535,7 +535,8 @@ Future<GetEnvironmentContainerResult> getEnvironmentContainer(
 /// Uses Azure REST API version 2021-03-01-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_machinelearningservices_get_environment_specification_version_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetEnvironmentSpecificationVersionResult> getEnvironmentSpecificationVersion(
+Future<GetEnvironmentSpecificationVersionResult>
+getEnvironmentSpecificationVersion(
   GetEnvironmentSpecificationVersionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -633,7 +634,8 @@ Future<GetFeaturesetVersionFeatureResult> getFeaturesetVersionFeature(
 /// Other available API versions: 2023-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_machinelearningservices_get_featurestore_entity_container_entity_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetFeaturestoreEntityContainerEntityResult> getFeaturestoreEntityContainerEntity(
+Future<GetFeaturestoreEntityContainerEntityResult>
+getFeaturestoreEntityContainerEntity(
   GetFeaturestoreEntityContainerEntityArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -709,7 +711,8 @@ Future<GetInferenceGroupResult> getInferenceGroup(
 /// Other available API versions: 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_machinelearningservices_get_inference_group_delta_models_status_async_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetInferenceGroupDeltaModelsStatusAsyncResult> getInferenceGroupDeltaModelsStatusAsync(
+Future<GetInferenceGroupDeltaModelsStatusAsyncResult>
+getInferenceGroupDeltaModelsStatusAsync(
   GetInferenceGroupDeltaModelsStatusAsyncArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1571,7 +1574,8 @@ Future<ListFeaturesetVersionFeaturesResult> listFeaturesetVersionFeatures(
 /// Other available API versions: 2023-02-01-preview, 2023-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_machinelearningservices_list_featureset_version_materialization_jobs_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListFeaturesetVersionMaterializationJobsResult> listFeaturesetVersionMaterializationJobs(
+Future<ListFeaturesetVersionMaterializationJobsResult>
+listFeaturesetVersionMaterializationJobs(
   ListFeaturesetVersionMaterializationJobsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1591,7 +1595,8 @@ Future<ListFeaturesetVersionMaterializationJobsResult> listFeaturesetVersionMate
 /// Other available API versions: 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_machinelearningservices_list_inference_group_delta_models_async_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListInferenceGroupDeltaModelsAsyncResult> listInferenceGroupDeltaModelsAsync(
+Future<ListInferenceGroupDeltaModelsAsyncResult>
+listInferenceGroupDeltaModelsAsync(
   ListInferenceGroupDeltaModelsAsyncArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

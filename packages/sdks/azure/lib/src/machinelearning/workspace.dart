@@ -1033,16 +1033,52 @@ class Workspace extends pulumi.CustomResource {
     containerRegistryId = registerOutput<String?>('containerRegistryId');
     description = registerOutput<String?>('description');
     discoveryUrl = registerOutput<String>('discoveryUrl');
-    encryption = registerOutput<WorkspaceEncryption?>('encryption');
-    featureStore = registerOutput<WorkspaceFeatureStore?>('featureStore');
+    encryption = registerOutput<WorkspaceEncryption?>(
+      'encryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkspaceEncryption.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    featureStore = registerOutput<WorkspaceFeatureStore?>(
+      'featureStore',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkspaceFeatureStore.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     friendlyName = registerOutput<String?>('friendlyName');
     highBusinessImpact = registerOutput<bool?>('highBusinessImpact');
-    identity = registerOutput<WorkspaceIdentity>('identity');
+    identity = registerOutput<WorkspaceIdentity>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkspaceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     imageBuildComputeName = registerOutput<String?>('imageBuildComputeName');
     keyVaultId = registerOutput<String>('keyVaultId');
     kind = registerOutput<String?>('kind');
     location = registerOutput<String>('location');
-    managedNetwork = registerOutput<WorkspaceManagedNetwork>('managedNetwork');
+    managedNetwork = registerOutput<WorkspaceManagedNetwork>(
+      'managedNetwork',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkspaceManagedNetwork.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     primaryUserAssignedIdentity = registerOutput<String?>(
       'primaryUserAssignedIdentity',
@@ -1053,6 +1089,13 @@ class Workspace extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     serverlessCompute = registerOutput<WorkspaceServerlessCompute?>(
       'serverlessCompute',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkspaceServerlessCompute.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     serviceSideEncryptionEnabled = registerOutput<bool?>(
       'serviceSideEncryptionEnabled',
@@ -1091,16 +1134,52 @@ class Workspace extends pulumi.CustomResource {
     containerRegistryId = registerOutput<String?>('containerRegistryId');
     description = registerOutput<String?>('description');
     discoveryUrl = registerOutput<String>('discoveryUrl');
-    encryption = registerOutput<WorkspaceEncryption?>('encryption');
-    featureStore = registerOutput<WorkspaceFeatureStore?>('featureStore');
+    encryption = registerOutput<WorkspaceEncryption?>(
+      'encryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkspaceEncryption.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    featureStore = registerOutput<WorkspaceFeatureStore?>(
+      'featureStore',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkspaceFeatureStore.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     friendlyName = registerOutput<String?>('friendlyName');
     highBusinessImpact = registerOutput<bool?>('highBusinessImpact');
-    identity = registerOutput<WorkspaceIdentity>('identity');
+    identity = registerOutput<WorkspaceIdentity>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkspaceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     imageBuildComputeName = registerOutput<String?>('imageBuildComputeName');
     keyVaultId = registerOutput<String>('keyVaultId');
     kind = registerOutput<String?>('kind');
     location = registerOutput<String>('location');
-    managedNetwork = registerOutput<WorkspaceManagedNetwork>('managedNetwork');
+    managedNetwork = registerOutput<WorkspaceManagedNetwork>(
+      'managedNetwork',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkspaceManagedNetwork.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     primaryUserAssignedIdentity = registerOutput<String?>(
       'primaryUserAssignedIdentity',
@@ -1111,6 +1190,13 @@ class Workspace extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     serverlessCompute = registerOutput<WorkspaceServerlessCompute?>(
       'serverlessCompute',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkspaceServerlessCompute.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     serviceSideEncryptionEnabled = registerOutput<bool?>(
       'serviceSideEncryptionEnabled',

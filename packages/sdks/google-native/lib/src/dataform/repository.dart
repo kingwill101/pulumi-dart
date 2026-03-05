@@ -53,6 +53,13 @@ class Repository extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     gitRemoteSettings = registerOutput<GitRemoteSettingsResponse>(
       'gitRemoteSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GitRemoteSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
@@ -69,6 +76,13 @@ class Repository extends pulumi.CustomResource {
     workspaceCompilationOverrides =
         registerOutput<WorkspaceCompilationOverridesResponse>(
           'workspaceCompilationOverrides',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WorkspaceCompilationOverridesResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

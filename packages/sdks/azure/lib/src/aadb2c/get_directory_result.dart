@@ -1,22 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getDirectory.
 class GetDirectoryResult {
   /// The type of billing for the AAD B2C tenant. Possible values include: `MAU` or `Auths`.
   final String billingType;
+
   /// Location in which the B2C tenant is hosted and data resides. See [official docs](https://aka.ms/B2CDataResidenc) for more information.
   final String dataResidencyLocation;
   final String domainName;
+
   /// The date from which the billing type took effect. May not be populated until after the first billing cycle.
   final String effectiveStartDate;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String resourceGroupName;
+
   /// Billing SKU for the B2C tenant. See [official docs](https://aka.ms/b2cBilling) for more information.
   final String skuName;
+
   /// A mapping of tags assigned to the AAD B2C Directory.
   final Map<String, String> tags;
+
   /// The Tenant ID for the AAD B2C tenant.
   final String tenantId;
 
@@ -70,4 +75,3 @@ class GetDirectoryResult {
     );
   }
 }
-

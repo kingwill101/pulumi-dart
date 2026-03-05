@@ -455,6 +455,13 @@ class PermissionsBoundaryAttachment extends pulumi.CustomResource {
     permissionsBoundary =
         registerOutput<PermissionsBoundaryAttachmentPermissionsBoundary>(
           'permissionsBoundary',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PermissionsBoundaryAttachmentPermissionsBoundary.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
   }
@@ -487,6 +494,13 @@ class PermissionsBoundaryAttachment extends pulumi.CustomResource {
     permissionsBoundary =
         registerOutput<PermissionsBoundaryAttachmentPermissionsBoundary>(
           'permissionsBoundary',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PermissionsBoundaryAttachmentPermissionsBoundary.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
   }

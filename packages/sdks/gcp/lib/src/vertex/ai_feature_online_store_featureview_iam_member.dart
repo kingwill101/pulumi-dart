@@ -931,6 +931,13 @@ class AiFeatureOnlineStoreFeatureviewIamMember extends pulumi.CustomResource {
     condition =
         registerOutput<AiFeatureOnlineStoreFeatureviewIamMemberCondition?>(
           'condition',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AiFeatureOnlineStoreFeatureviewIamMemberCondition.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     etag = registerOutput<String>('etag');
     featureOnlineStore = registerOutput<String>('featureOnlineStore');
@@ -967,6 +974,13 @@ class AiFeatureOnlineStoreFeatureviewIamMember extends pulumi.CustomResource {
     condition =
         registerOutput<AiFeatureOnlineStoreFeatureviewIamMemberCondition?>(
           'condition',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AiFeatureOnlineStoreFeatureviewIamMemberCondition.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     etag = registerOutput<String>('etag');
     featureOnlineStore = registerOutput<String>('featureOnlineStore');

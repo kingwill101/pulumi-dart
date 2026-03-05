@@ -430,6 +430,13 @@ class Firewall extends pulumi.CustomResource {
     managementIpConfiguration =
         registerOutput<FirewallManagementIpConfiguration?>(
           'managementIpConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FirewallManagementIpConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     privateIpRanges = registerOutput<List<String>?>('privateIpRanges');
@@ -438,7 +445,16 @@ class Firewall extends pulumi.CustomResource {
     skuTier = registerOutput<String>('skuTier');
     tags = registerOutput<Map<String, String>?>('tags');
     threatIntelMode = registerOutput<String>('threatIntelMode');
-    virtualHub = registerOutput<FirewallVirtualHub?>('virtualHub');
+    virtualHub = registerOutput<FirewallVirtualHub?>(
+      'virtualHub',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FirewallVirtualHub.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     zones = registerOutput<List<String>?>('zones');
   }
 
@@ -475,6 +491,13 @@ class Firewall extends pulumi.CustomResource {
     managementIpConfiguration =
         registerOutput<FirewallManagementIpConfiguration?>(
           'managementIpConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FirewallManagementIpConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     privateIpRanges = registerOutput<List<String>?>('privateIpRanges');
@@ -483,7 +506,16 @@ class Firewall extends pulumi.CustomResource {
     skuTier = registerOutput<String>('skuTier');
     tags = registerOutput<Map<String, String>?>('tags');
     threatIntelMode = registerOutput<String>('threatIntelMode');
-    virtualHub = registerOutput<FirewallVirtualHub?>('virtualHub');
+    virtualHub = registerOutput<FirewallVirtualHub?>(
+      'virtualHub',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FirewallVirtualHub.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     zones = registerOutput<List<String>?>('zones');
   }
 }

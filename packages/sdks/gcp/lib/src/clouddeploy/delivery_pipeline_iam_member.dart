@@ -28,6 +28,13 @@ class DeliveryPipelineIamMember extends pulumi.CustomResource {
        ) {
     condition = registerOutput<DeliveryPipelineIamMemberCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeliveryPipelineIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
@@ -62,6 +69,13 @@ class DeliveryPipelineIamMember extends pulumi.CustomResource {
        ) {
     condition = registerOutput<DeliveryPipelineIamMemberCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeliveryPipelineIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');

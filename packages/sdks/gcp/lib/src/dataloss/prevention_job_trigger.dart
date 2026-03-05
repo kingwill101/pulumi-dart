@@ -4060,7 +4060,16 @@ class PreventionJobTrigger extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
-    inspectJob = registerOutput<PreventionJobTriggerInspectJob?>('inspectJob');
+    inspectJob = registerOutput<PreventionJobTriggerInspectJob?>(
+      'inspectJob',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PreventionJobTriggerInspectJob.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     lastRunTime = registerOutput<String>('lastRunTime');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
@@ -4096,7 +4105,16 @@ class PreventionJobTrigger extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
-    inspectJob = registerOutput<PreventionJobTriggerInspectJob?>('inspectJob');
+    inspectJob = registerOutput<PreventionJobTriggerInspectJob?>(
+      'inspectJob',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PreventionJobTriggerInspectJob.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     lastRunTime = registerOutput<String>('lastRunTime');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');

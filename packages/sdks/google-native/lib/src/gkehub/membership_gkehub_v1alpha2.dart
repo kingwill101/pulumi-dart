@@ -70,12 +70,28 @@ class MembershipGkehubV1alpha2 extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    authority = registerOutput<AuthorityResponseGkehubV1alpha2>('authority');
+    authority = registerOutput<AuthorityResponseGkehubV1alpha2>(
+      'authority',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AuthorityResponseGkehubV1alpha2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     description = registerOutput<String>('description');
     endpoint = registerOutput<MembershipEndpointResponseGkehubV1alpha2>(
       'endpoint',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MembershipEndpointResponseGkehubV1alpha2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     externalId = registerOutput<String>('externalId');
     infrastructureType = registerOutput<String>('infrastructureType');
@@ -85,10 +101,26 @@ class MembershipGkehubV1alpha2 extends pulumi.CustomResource {
     membershipId = registerOutput<String>('membershipId');
     monitoringConfig = registerOutput<MonitoringConfigResponseGkehubV1alpha2>(
       'monitoringConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MonitoringConfigResponseGkehubV1alpha2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    state = registerOutput<MembershipStateResponseGkehubV1alpha2>('state');
+    state = registerOutput<MembershipStateResponseGkehubV1alpha2>(
+      'state',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MembershipStateResponseGkehubV1alpha2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     uniqueId = registerOutput<String>('uniqueId');
     updateTime = registerOutput<String>('updateTime');
   }

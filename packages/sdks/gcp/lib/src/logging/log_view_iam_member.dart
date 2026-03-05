@@ -1981,7 +1981,16 @@ class LogViewIamMember extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     bucket = registerOutput<String>('bucket');
-    condition = registerOutput<LogViewIamMemberCondition?>('condition');
+    condition = registerOutput<LogViewIamMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LogViewIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
     member = registerOutput<String>('member');
@@ -2014,7 +2023,16 @@ class LogViewIamMember extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     bucket = registerOutput<String>('bucket');
-    condition = registerOutput<LogViewIamMemberCondition?>('condition');
+    condition = registerOutput<LogViewIamMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LogViewIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
     member = registerOutput<String>('member');

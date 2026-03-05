@@ -77,6 +77,13 @@ class ObjectAccessControlStorageV1 extends pulumi.CustomResource {
     object_ = registerOutput<String>('object');
     projectTeam = registerOutput<ObjectAccessControlProjectTeamResponse>(
       'projectTeam',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectAccessControlProjectTeamResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     role = registerOutput<String>('role');
     selfLink = registerOutput<String>('selfLink');

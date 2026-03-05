@@ -375,17 +375,45 @@ class IoTRole extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     computeResource = registerOutput<ComputeResourceResponse?>(
       'computeResource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ComputeResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     hostPlatform = registerOutput<String>('hostPlatform');
     hostPlatformType = registerOutput<String>('hostPlatformType');
     ioTDeviceDetails = registerOutput<IoTDeviceInfoResponse>(
       'ioTDeviceDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IoTDeviceInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     ioTEdgeAgentInfo = registerOutput<IoTEdgeAgentInfoResponse?>(
       'ioTEdgeAgentInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IoTEdgeAgentInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     ioTEdgeDeviceDetails = registerOutput<IoTDeviceInfoResponse>(
       'ioTEdgeDeviceDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IoTDeviceInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
@@ -393,7 +421,16 @@ class IoTRole extends pulumi.CustomResource {
     shareMappings = registerOutput<List<Map<String, dynamic>>?>(
       'shareMappings',
     );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

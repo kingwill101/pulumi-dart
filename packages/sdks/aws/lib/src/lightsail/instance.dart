@@ -494,7 +494,16 @@ class Instance extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    addOn = registerOutput<InstanceAddOn?>('addOn');
+    addOn = registerOutput<InstanceAddOn?>(
+      'addOn',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceAddOn.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     arn = registerOutput<String>('arn');
     availabilityZone = registerOutput<String>('availabilityZone');
     blueprintId = registerOutput<String>('blueprintId');
@@ -539,7 +548,16 @@ class Instance extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    addOn = registerOutput<InstanceAddOn?>('addOn');
+    addOn = registerOutput<InstanceAddOn?>(
+      'addOn',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceAddOn.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     arn = registerOutput<String>('arn');
     availabilityZone = registerOutput<String>('availabilityZone');
     blueprintId = registerOutput<String>('blueprintId');

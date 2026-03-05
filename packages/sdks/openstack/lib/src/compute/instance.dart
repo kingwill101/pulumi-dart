@@ -199,7 +199,16 @@ class Instance extends pulumi.CustomResource {
     tags = registerOutput<List<String>?>('tags');
     updated = registerOutput<String>('updated');
     userData = registerOutput<String?>('userData');
-    vendorOptions = registerOutput<InstanceVendorOptions?>('vendorOptions');
+    vendorOptions = registerOutput<InstanceVendorOptions?>(
+      'vendorOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceVendorOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Instance] resource's state with the given [name] and [id].
@@ -259,6 +268,15 @@ class Instance extends pulumi.CustomResource {
     tags = registerOutput<List<String>?>('tags');
     updated = registerOutput<String>('updated');
     userData = registerOutput<String?>('userData');
-    vendorOptions = registerOutput<InstanceVendorOptions?>('vendorOptions');
+    vendorOptions = registerOutput<InstanceVendorOptions?>(
+      'vendorOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceVendorOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

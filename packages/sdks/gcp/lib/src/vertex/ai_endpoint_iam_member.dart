@@ -26,7 +26,16 @@ class AiEndpointIamMember extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<AiEndpointIamMemberCondition?>('condition');
+    condition = registerOutput<AiEndpointIamMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiEndpointIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     endpoint = registerOutput<String>('endpoint');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
@@ -58,7 +67,16 @@ class AiEndpointIamMember extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<AiEndpointIamMemberCondition?>('condition');
+    condition = registerOutput<AiEndpointIamMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiEndpointIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     endpoint = registerOutput<String>('endpoint');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');

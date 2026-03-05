@@ -180,6 +180,13 @@ class PrivateLinkAssociation extends pulumi.CustomResource {
     properties =
         registerOutput<PrivateLinkAssociationPropertiesExpandedResponse>(
           'properties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PrivateLinkAssociationPropertiesExpandedResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     type = registerOutput<String>('type');
   }

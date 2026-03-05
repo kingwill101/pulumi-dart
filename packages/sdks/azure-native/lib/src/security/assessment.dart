@@ -216,18 +216,57 @@ class Assessment extends pulumi.CustomResource {
     additionalData = registerOutput<Map<String, String>?>('additionalData');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     displayName = registerOutput<String>('displayName');
-    links = registerOutput<AssessmentLinksResponse>('links');
+    links = registerOutput<AssessmentLinksResponse>(
+      'links',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AssessmentLinksResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     metadata = registerOutput<SecurityAssessmentMetadataPropertiesResponse?>(
       'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityAssessmentMetadataPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     partnersData = registerOutput<SecurityAssessmentPartnerDataResponse?>(
       'partnersData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityAssessmentPartnerDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     resourceDetails = registerOutput<AzureResourceDetailsResponse>(
       'resourceDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AzureResourceDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    status = registerOutput<AssessmentStatusResponseResponse>('status');
+    status = registerOutput<AssessmentStatusResponseResponse>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AssessmentStatusResponseResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

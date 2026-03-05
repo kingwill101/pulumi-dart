@@ -801,11 +801,29 @@ class KeystoresAliasesSelfSignedCert extends pulumi.CustomResource {
     keystore = registerOutput<String>('keystore');
     orgId = registerOutput<String>('orgId');
     sigAlg = registerOutput<String>('sigAlg');
-    subject = registerOutput<KeystoresAliasesSelfSignedCertSubject>('subject');
+    subject = registerOutput<KeystoresAliasesSelfSignedCertSubject>(
+      'subject',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KeystoresAliasesSelfSignedCertSubject.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     subjectAlternativeDnsNames =
         registerOutput<
           KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames?
-        >('subjectAlternativeDnsNames');
+        >(
+          'subjectAlternativeDnsNames',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     type = registerOutput<String>('type');
   }
 
@@ -840,11 +858,29 @@ class KeystoresAliasesSelfSignedCert extends pulumi.CustomResource {
     keystore = registerOutput<String>('keystore');
     orgId = registerOutput<String>('orgId');
     sigAlg = registerOutput<String>('sigAlg');
-    subject = registerOutput<KeystoresAliasesSelfSignedCertSubject>('subject');
+    subject = registerOutput<KeystoresAliasesSelfSignedCertSubject>(
+      'subject',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KeystoresAliasesSelfSignedCertSubject.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     subjectAlternativeDnsNames =
         registerOutput<
           KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames?
-        >('subjectAlternativeDnsNames');
+        >(
+          'subjectAlternativeDnsNames',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     type = registerOutput<String>('type');
   }
 }

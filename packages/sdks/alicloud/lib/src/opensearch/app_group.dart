@@ -230,7 +230,16 @@ class AppGroup extends pulumi.CustomResource {
     orderType = registerOutput<String>('orderType');
     orders = registerOutput<List<Map<String, dynamic>>?>('orders');
     paymentType = registerOutput<String>('paymentType');
-    quota = registerOutput<AppGroupQuota>('quota');
+    quota = registerOutput<AppGroupQuota>(
+      'quota',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppGroupQuota.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String>('status');
     type = registerOutput<String>('type');
   }
@@ -266,7 +275,16 @@ class AppGroup extends pulumi.CustomResource {
     orderType = registerOutput<String>('orderType');
     orders = registerOutput<List<Map<String, dynamic>>?>('orders');
     paymentType = registerOutput<String>('paymentType');
-    quota = registerOutput<AppGroupQuota>('quota');
+    quota = registerOutput<AppGroupQuota>(
+      'quota',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppGroupQuota.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String>('status');
     type = registerOutput<String>('type');
   }

@@ -1,19 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getGroup.
 class GetGroupResult {
   final String apiManagementName;
+
   /// The description of this API Management Group.
   final String description;
+
   /// The display name of this API Management Group.
   final String displayName;
+
   /// The identifier of the external Group.
   final String externalId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
   final String resourceGroupName;
+
   /// The type of this API Management Group, such as `custom` or `external`.
   final String type;
 
@@ -63,4 +67,3 @@ class GetGroupResult {
     );
   }
 }
-

@@ -509,13 +509,29 @@ class WorkflowTemplate extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     encryptionConfig = registerOutput<WorkflowTemplateEncryptionConfig?>(
       'encryptionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkflowTemplateEncryptionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     jobs = registerOutput<List<Map<String, dynamic>>>('jobs');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
-    placement = registerOutput<WorkflowTemplatePlacement>('placement');
+    placement = registerOutput<WorkflowTemplatePlacement>(
+      'placement',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkflowTemplatePlacement.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     updateTime = registerOutput<String>('updateTime');
@@ -550,13 +566,29 @@ class WorkflowTemplate extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     encryptionConfig = registerOutput<WorkflowTemplateEncryptionConfig?>(
       'encryptionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkflowTemplateEncryptionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     jobs = registerOutput<List<Map<String, dynamic>>>('jobs');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
-    placement = registerOutput<WorkflowTemplatePlacement>('placement');
+    placement = registerOutput<WorkflowTemplatePlacement>(
+      'placement',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkflowTemplatePlacement.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     updateTime = registerOutput<String>('updateTime');

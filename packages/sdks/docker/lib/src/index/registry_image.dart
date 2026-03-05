@@ -139,8 +139,26 @@ class RegistryImage extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    authConfig = registerOutput<RegistryImageAuthConfig?>('authConfig');
-    build = registerOutput<RegistryImageBuild?>('build');
+    authConfig = registerOutput<RegistryImageAuthConfig?>(
+      'authConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegistryImageAuthConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    build = registerOutput<RegistryImageBuild?>(
+      'build',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegistryImageBuild.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     insecureSkipVerify = registerOutput<bool?>('insecureSkipVerify');
     keepRemotely = registerOutput<bool?>('keepRemotely');
     this.name = registerOutput<String>('name');
@@ -171,8 +189,26 @@ class RegistryImage extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    authConfig = registerOutput<RegistryImageAuthConfig?>('authConfig');
-    build = registerOutput<RegistryImageBuild?>('build');
+    authConfig = registerOutput<RegistryImageAuthConfig?>(
+      'authConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegistryImageAuthConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    build = registerOutput<RegistryImageBuild?>(
+      'build',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegistryImageBuild.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     insecureSkipVerify = registerOutput<bool?>('insecureSkipVerify');
     keepRemotely = registerOutput<bool?>('keepRemotely');
     this.name = registerOutput<String>('name');

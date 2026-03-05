@@ -378,7 +378,16 @@ class CodeRepository extends pulumi.CustomResource {
        ) {
     arn = registerOutput<String>('arn');
     codeRepositoryName = registerOutput<String>('codeRepositoryName');
-    gitConfig = registerOutput<CodeRepositoryGitConfig>('gitConfig');
+    gitConfig = registerOutput<CodeRepositoryGitConfig>(
+      'gitConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CodeRepositoryGitConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -409,7 +418,16 @@ class CodeRepository extends pulumi.CustomResource {
        ) {
     arn = registerOutput<String>('arn');
     codeRepositoryName = registerOutput<String>('codeRepositoryName');
-    gitConfig = registerOutput<CodeRepositoryGitConfig>('gitConfig');
+    gitConfig = registerOutput<CodeRepositoryGitConfig>(
+      'gitConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CodeRepositoryGitConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

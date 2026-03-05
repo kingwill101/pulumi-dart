@@ -191,13 +191,29 @@ class DataCollectionRuleAssociation extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     metadata = registerOutput<DataCollectionRuleAssociationResponseMetadata>(
       'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataCollectionRuleAssociationResponseMetadata.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     systemData =
         registerOutput<
           DataCollectionRuleAssociationProxyOnlyResourceResponseSystemData
-        >('systemData');
+        >(
+          'systemData',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataCollectionRuleAssociationProxyOnlyResourceResponseSystemData.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     type = registerOutput<String>('type');
   }
 }

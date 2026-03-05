@@ -471,22 +471,63 @@ class Connector extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    capacity = registerOutput<ConnectorCapacity>('capacity');
+    capacity = registerOutput<ConnectorCapacity>(
+      'capacity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectorCapacity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     connectorConfiguration = registerOutput<Map<String, String>>(
       'connectorConfiguration',
     );
     description = registerOutput<String?>('description');
-    kafkaCluster = registerOutput<ConnectorKafkaCluster>('kafkaCluster');
+    kafkaCluster = registerOutput<ConnectorKafkaCluster>(
+      'kafkaCluster',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectorKafkaCluster.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kafkaClusterClientAuthentication =
         registerOutput<ConnectorKafkaClusterClientAuthentication>(
           'kafkaClusterClientAuthentication',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConnectorKafkaClusterClientAuthentication.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     kafkaClusterEncryptionInTransit =
         registerOutput<ConnectorKafkaClusterEncryptionInTransit>(
           'kafkaClusterEncryptionInTransit',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConnectorKafkaClusterEncryptionInTransit.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     kafkaconnectVersion = registerOutput<String>('kafkaconnectVersion');
-    logDelivery = registerOutput<ConnectorLogDelivery?>('logDelivery');
+    logDelivery = registerOutput<ConnectorLogDelivery?>(
+      'logDelivery',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectorLogDelivery.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     plugins = registerOutput<List<Map<String, dynamic>>>('plugins');
     region = registerOutput<String>('region');
@@ -496,6 +537,13 @@ class Connector extends pulumi.CustomResource {
     version = registerOutput<String>('version');
     workerConfiguration = registerOutput<ConnectorWorkerConfiguration?>(
       'workerConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectorWorkerConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -523,22 +571,63 @@ class Connector extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    capacity = registerOutput<ConnectorCapacity>('capacity');
+    capacity = registerOutput<ConnectorCapacity>(
+      'capacity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectorCapacity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     connectorConfiguration = registerOutput<Map<String, String>>(
       'connectorConfiguration',
     );
     description = registerOutput<String?>('description');
-    kafkaCluster = registerOutput<ConnectorKafkaCluster>('kafkaCluster');
+    kafkaCluster = registerOutput<ConnectorKafkaCluster>(
+      'kafkaCluster',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectorKafkaCluster.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kafkaClusterClientAuthentication =
         registerOutput<ConnectorKafkaClusterClientAuthentication>(
           'kafkaClusterClientAuthentication',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConnectorKafkaClusterClientAuthentication.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     kafkaClusterEncryptionInTransit =
         registerOutput<ConnectorKafkaClusterEncryptionInTransit>(
           'kafkaClusterEncryptionInTransit',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConnectorKafkaClusterEncryptionInTransit.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     kafkaconnectVersion = registerOutput<String>('kafkaconnectVersion');
-    logDelivery = registerOutput<ConnectorLogDelivery?>('logDelivery');
+    logDelivery = registerOutput<ConnectorLogDelivery?>(
+      'logDelivery',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectorLogDelivery.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     plugins = registerOutput<List<Map<String, dynamic>>>('plugins');
     region = registerOutput<String>('region');
@@ -548,6 +637,13 @@ class Connector extends pulumi.CustomResource {
     version = registerOutput<String>('version');
     workerConfiguration = registerOutput<ConnectorWorkerConfiguration?>(
       'workerConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectorWorkerConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

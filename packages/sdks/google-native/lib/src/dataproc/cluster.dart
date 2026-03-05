@@ -59,16 +59,50 @@ class Cluster extends pulumi.CustomResource {
     );
     clusterName = registerOutput<String>('clusterName');
     clusterUuid = registerOutput<String>('clusterUuid');
-    config = registerOutput<ClusterConfigResponse>('config');
+    config = registerOutput<ClusterConfigResponse>(
+      'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>>('labels');
-    metrics = registerOutput<ClusterMetricsResponse>('metrics');
+    metrics = registerOutput<ClusterMetricsResponse>(
+      'metrics',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterMetricsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
     requestId = registerOutput<String?>('requestId');
-    status = registerOutput<ClusterStatusResponse>('status');
+    status = registerOutput<ClusterStatusResponse>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     statusHistory = registerOutput<List<Map<String, dynamic>>>('statusHistory');
     virtualClusterConfig = registerOutput<VirtualClusterConfigResponse>(
       'virtualClusterConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualClusterConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

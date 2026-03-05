@@ -105,7 +105,8 @@ Future<GetServiceResult> getService(
 /// Gets an endpoint.
 /// [args] Arguments passed to this invoke. {@macro pulumi_servicedirectory_v1beta1_get_endpoint_servicedirectory_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetEndpointServicedirectoryV1beta1Result> getEndpointServicedirectoryV1beta1(
+Future<GetEndpointServicedirectoryV1beta1Result>
+getEndpointServicedirectoryV1beta1(
   GetEndpointServicedirectoryV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -121,7 +122,8 @@ Future<GetEndpointServicedirectoryV1beta1Result> getEndpointServicedirectoryV1be
 /// Gets a namespace.
 /// [args] Arguments passed to this invoke. {@macro pulumi_servicedirectory_v1beta1_get_namespace_servicedirectory_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNamespaceServicedirectoryV1beta1Result> getNamespaceServicedirectoryV1beta1(
+Future<GetNamespaceServicedirectoryV1beta1Result>
+getNamespaceServicedirectoryV1beta1(
   GetNamespaceServicedirectoryV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -137,7 +139,8 @@ Future<GetNamespaceServicedirectoryV1beta1Result> getNamespaceServicedirectoryV1
 /// Gets the IAM Policy for a resource
 /// [args] Arguments passed to this invoke. {@macro pulumi_servicedirectory_v1beta1_get_namespace_iam_policy_servicedirectory_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNamespaceIamPolicyServicedirectoryV1beta1Result> getNamespaceIamPolicyServicedirectoryV1beta1(
+Future<GetNamespaceIamPolicyServicedirectoryV1beta1Result>
+getNamespaceIamPolicyServicedirectoryV1beta1(
   GetNamespaceIamPolicyServicedirectoryV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -153,7 +156,8 @@ Future<GetNamespaceIamPolicyServicedirectoryV1beta1Result> getNamespaceIamPolicy
 /// Gets the IAM Policy for a resource
 /// [args] Arguments passed to this invoke. {@macro pulumi_servicedirectory_v1beta1_get_namespace_service_iam_policy_servicedirectory_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNamespaceServiceIamPolicyServicedirectoryV1beta1Result> getNamespaceServiceIamPolicyServicedirectoryV1beta1(
+Future<GetNamespaceServiceIamPolicyServicedirectoryV1beta1Result>
+getNamespaceServiceIamPolicyServicedirectoryV1beta1(
   GetNamespaceServiceIamPolicyServicedirectoryV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -163,7 +167,9 @@ Future<GetNamespaceServiceIamPolicyServicedirectoryV1beta1Result> getNamespaceSe
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetNamespaceServiceIamPolicyServicedirectoryV1beta1Result.fromMap(result);
+  return GetNamespaceServiceIamPolicyServicedirectoryV1beta1Result.fromMap(
+    result,
+  );
 }
 
 /// Gets the IAM Policy for a resource
@@ -185,7 +191,8 @@ Future<GetNamespaceWorkloadIamPolicyResult> getNamespaceWorkloadIamPolicy(
 /// Gets a service.
 /// [args] Arguments passed to this invoke. {@macro pulumi_servicedirectory_v1beta1_get_service_servicedirectory_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetServiceServicedirectoryV1beta1Result> getServiceServicedirectoryV1beta1(
+Future<GetServiceServicedirectoryV1beta1Result>
+getServiceServicedirectoryV1beta1(
   GetServiceServicedirectoryV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {

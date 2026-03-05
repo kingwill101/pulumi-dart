@@ -235,7 +235,16 @@ class Experience extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    configuration = registerOutput<ExperienceConfiguration>('configuration');
+    configuration = registerOutput<ExperienceConfiguration>(
+      'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExperienceConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
     experienceId = registerOutput<String>('experienceId');
@@ -270,7 +279,16 @@ class Experience extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    configuration = registerOutput<ExperienceConfiguration>('configuration');
+    configuration = registerOutput<ExperienceConfiguration>(
+      'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExperienceConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
     experienceId = registerOutput<String>('experienceId');

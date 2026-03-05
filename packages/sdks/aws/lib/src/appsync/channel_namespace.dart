@@ -162,6 +162,13 @@ class ChannelNamespace extends pulumi.CustomResource {
     codeHandlers = registerOutput<String?>('codeHandlers');
     handlerConfigs = registerOutput<ChannelNamespaceHandlerConfigs?>(
       'handlerConfigs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ChannelNamespaceHandlerConfigs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     publishAuthModes = registerOutput<List<Map<String, dynamic>>?>(
@@ -203,6 +210,13 @@ class ChannelNamespace extends pulumi.CustomResource {
     codeHandlers = registerOutput<String?>('codeHandlers');
     handlerConfigs = registerOutput<ChannelNamespaceHandlerConfigs?>(
       'handlerConfigs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ChannelNamespaceHandlerConfigs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     publishAuthModes = registerOutput<List<Map<String, dynamic>>?>(

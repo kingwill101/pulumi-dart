@@ -128,48 +128,129 @@ class MigratingVmVmmigrationV1alpha1 extends pulumi.CustomResource {
     awsSourceVmDetails =
         registerOutput<AwsSourceVmDetailsResponseVmmigrationV1alpha1>(
           'awsSourceVmDetails',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AwsSourceVmDetailsResponseVmmigrationV1alpha1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     azureSourceVmDetails =
         registerOutput<AzureSourceVmDetailsResponseVmmigrationV1alpha1>(
           'azureSourceVmDetails',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AzureSourceVmDetailsResponseVmmigrationV1alpha1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     computeEngineDisksTargetDefaults =
         registerOutput<
           ComputeEngineDisksTargetDefaultsResponseVmmigrationV1alpha1
-        >('computeEngineDisksTargetDefaults');
+        >(
+          'computeEngineDisksTargetDefaults',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ComputeEngineDisksTargetDefaultsResponseVmmigrationV1alpha1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     computeEngineTargetDefaults =
         registerOutput<ComputeEngineTargetDefaultsResponseVmmigrationV1alpha1>(
           'computeEngineTargetDefaults',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ComputeEngineTargetDefaultsResponseVmmigrationV1alpha1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     computeEngineVmDefaults = registerOutput<TargetVMDetailsResponse>(
       'computeEngineVmDefaults',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TargetVMDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     currentSyncInfo =
         registerOutput<ReplicationCycleResponseVmmigrationV1alpha1>(
           'currentSyncInfo',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ReplicationCycleResponseVmmigrationV1alpha1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     cutoverForecast =
         registerOutput<CutoverForecastResponseVmmigrationV1alpha1>(
           'cutoverForecast',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CutoverForecastResponseVmmigrationV1alpha1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
-    error = registerOutput<StatusResponseVmmigrationV1alpha1>('error');
+    error = registerOutput<StatusResponseVmmigrationV1alpha1>(
+      'error',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StatusResponseVmmigrationV1alpha1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     group = registerOutput<String>('group');
     labels = registerOutput<Map<String, String>>('labels');
     lastReplicationCycle =
         registerOutput<ReplicationCycleResponseVmmigrationV1alpha1>(
           'lastReplicationCycle',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ReplicationCycleResponseVmmigrationV1alpha1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     lastSync = registerOutput<ReplicationSyncResponseVmmigrationV1alpha1>(
       'lastSync',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReplicationSyncResponseVmmigrationV1alpha1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     migratingVmId = registerOutput<String>('migratingVmId');
     this.name = registerOutput<String>('name');
     policy = registerOutput<SchedulePolicyResponseVmmigrationV1alpha1>(
       'policy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SchedulePolicyResponseVmmigrationV1alpha1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     recentCloneJobs = registerOutput<List<Map<String, dynamic>>>(
@@ -183,11 +264,27 @@ class MigratingVmVmmigrationV1alpha1 extends pulumi.CustomResource {
     sourceVmId = registerOutput<String>('sourceVmId');
     state = registerOutput<String>('state');
     stateTime = registerOutput<String>('stateTime');
-    targetDefaults = registerOutput<TargetVMDetailsResponse>('targetDefaults');
+    targetDefaults = registerOutput<TargetVMDetailsResponse>(
+      'targetDefaults',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TargetVMDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     updateTime = registerOutput<String>('updateTime');
     vmwareSourceVmDetails =
         registerOutput<VmwareSourceVmDetailsResponseVmmigrationV1alpha1>(
           'vmwareSourceVmDetails',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VmwareSourceVmDetailsResponseVmmigrationV1alpha1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

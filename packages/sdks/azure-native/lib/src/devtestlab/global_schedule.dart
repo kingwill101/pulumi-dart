@@ -276,12 +276,37 @@ class GlobalSchedule extends pulumi.CustomResource {
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdDate = registerOutput<String>('createdDate');
-    dailyRecurrence = registerOutput<DayDetailsResponse?>('dailyRecurrence');
-    hourlyRecurrence = registerOutput<HourDetailsResponse?>('hourlyRecurrence');
+    dailyRecurrence = registerOutput<DayDetailsResponse?>(
+      'dailyRecurrence',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DayDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    hourlyRecurrence = registerOutput<HourDetailsResponse?>(
+      'hourlyRecurrence',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HourDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     notificationSettings = registerOutput<NotificationSettingsResponse?>(
       'notificationSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NotificationSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     provisioningState = registerOutput<String>('provisioningState');
     status = registerOutput<String?>('status');
@@ -291,6 +316,15 @@ class GlobalSchedule extends pulumi.CustomResource {
     timeZoneId = registerOutput<String?>('timeZoneId');
     type = registerOutput<String>('type');
     uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
-    weeklyRecurrence = registerOutput<WeekDetailsResponse?>('weeklyRecurrence');
+    weeklyRecurrence = registerOutput<WeekDetailsResponse?>(
+      'weeklyRecurrence',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WeekDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

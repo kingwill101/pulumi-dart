@@ -306,10 +306,28 @@ class WafRule extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    config = registerOutput<WafRuleConfig?>('config');
+    config = registerOutput<WafRuleConfig?>(
+      'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WafRuleConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     phase = registerOutput<String>('phase');
     rulesetId = registerOutput<int?>('rulesetId');
-    shared = registerOutput<WafRuleShared?>('shared');
+    shared = registerOutput<WafRuleShared?>(
+      'shared',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WafRuleShared.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     siteId = registerOutput<String>('siteId');
     siteVersion = registerOutput<int?>('siteVersion');
     wafRuleId = registerOutput<int>('wafRuleId');
@@ -338,10 +356,28 @@ class WafRule extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    config = registerOutput<WafRuleConfig?>('config');
+    config = registerOutput<WafRuleConfig?>(
+      'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WafRuleConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     phase = registerOutput<String>('phase');
     rulesetId = registerOutput<int?>('rulesetId');
-    shared = registerOutput<WafRuleShared?>('shared');
+    shared = registerOutput<WafRuleShared?>(
+      'shared',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WafRuleShared.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     siteId = registerOutput<String>('siteId');
     siteVersion = registerOutput<int?>('siteVersion');
     wafRuleId = registerOutput<int>('wafRuleId');

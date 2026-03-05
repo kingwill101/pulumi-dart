@@ -1956,16 +1956,41 @@ class Pipeline extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     inputPayloadFormat = registerOutput<PipelineInputPayloadFormat?>(
       'inputPayloadFormat',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineInputPayloadFormat.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
-    loggingConfig = registerOutput<PipelineLoggingConfig>('loggingConfig');
+    loggingConfig = registerOutput<PipelineLoggingConfig>(
+      'loggingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineLoggingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     mediations = registerOutput<List<Map<String, dynamic>>?>('mediations');
     this.name = registerOutput<String>('name');
     pipelineId = registerOutput<String>('pipelineId');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    retryPolicy = registerOutput<PipelineRetryPolicy>('retryPolicy');
+    retryPolicy = registerOutput<PipelineRetryPolicy>(
+      'retryPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineRetryPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -2005,16 +2030,41 @@ class Pipeline extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     inputPayloadFormat = registerOutput<PipelineInputPayloadFormat?>(
       'inputPayloadFormat',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineInputPayloadFormat.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
-    loggingConfig = registerOutput<PipelineLoggingConfig>('loggingConfig');
+    loggingConfig = registerOutput<PipelineLoggingConfig>(
+      'loggingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineLoggingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     mediations = registerOutput<List<Map<String, dynamic>>?>('mediations');
     this.name = registerOutput<String>('name');
     pipelineId = registerOutput<String>('pipelineId');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    retryPolicy = registerOutput<PipelineRetryPolicy>('retryPolicy');
+    retryPolicy = registerOutput<PipelineRetryPolicy>(
+      'retryPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineRetryPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }

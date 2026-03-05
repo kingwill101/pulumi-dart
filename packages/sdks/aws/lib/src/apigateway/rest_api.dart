@@ -105,6 +105,13 @@ class RestApi extends pulumi.CustomResource {
     );
     endpointConfiguration = registerOutput<RestApiEndpointConfiguration>(
       'endpointConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RestApiEndpointConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     executionArn = registerOutput<String>('executionArn');
     failOnWarnings = registerOutput<bool?>('failOnWarnings');
@@ -153,6 +160,13 @@ class RestApi extends pulumi.CustomResource {
     );
     endpointConfiguration = registerOutput<RestApiEndpointConfiguration>(
       'endpointConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RestApiEndpointConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     executionArn = registerOutput<String>('executionArn');
     failOnWarnings = registerOutput<bool?>('failOnWarnings');

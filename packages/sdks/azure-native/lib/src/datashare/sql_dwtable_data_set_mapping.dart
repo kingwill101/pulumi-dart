@@ -709,7 +709,16 @@ class SqlDWTableDataSetMapping extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     schemaName = registerOutput<String>('schemaName');
     sqlServerResourceId = registerOutput<String>('sqlServerResourceId');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tableName = registerOutput<String>('tableName');
     type = registerOutput<String>('type');
   }

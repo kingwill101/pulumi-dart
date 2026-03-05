@@ -302,7 +302,16 @@ class RouteServer extends pulumi.CustomResource {
     snsTopicArn = registerOutput<String>('snsTopicArn');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<RouteServerTimeouts?>('timeouts');
+    timeouts = registerOutput<RouteServerTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RouteServerTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [RouteServer] resource's state with the given [name] and [id].
@@ -338,6 +347,15 @@ class RouteServer extends pulumi.CustomResource {
     snsTopicArn = registerOutput<String>('snsTopicArn');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<RouteServerTimeouts?>('timeouts');
+    timeouts = registerOutput<RouteServerTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RouteServerTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

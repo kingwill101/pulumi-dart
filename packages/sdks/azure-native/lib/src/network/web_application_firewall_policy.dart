@@ -1800,12 +1800,28 @@ class WebApplicationFirewallPolicy extends pulumi.CustomResource {
     location = registerOutput<String?>('location');
     managedRules = registerOutput<ManagedRulesDefinitionResponse>(
       'managedRules',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedRulesDefinitionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     pathBasedRules = registerOutput<List<Map<String, dynamic>>>(
       'pathBasedRules',
     );
-    policySettings = registerOutput<PolicySettingsResponse?>('policySettings');
+    policySettings = registerOutput<PolicySettingsResponse?>(
+      'policySettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicySettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     provisioningState = registerOutput<String>('provisioningState');
     resourceState = registerOutput<String>('resourceState');
     tags = registerOutput<Map<String, String>?>('tags');

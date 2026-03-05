@@ -384,19 +384,51 @@ class PublicIPPrefix extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    customIPPrefix = registerOutput<SubResourceResponse?>('customIPPrefix');
+    customIPPrefix = registerOutput<SubResourceResponse?>(
+      'customIPPrefix',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     extendedLocation = registerOutput<ExtendedLocationResponse?>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     ipPrefix = registerOutput<String>('ipPrefix');
     ipTags = registerOutput<List<Map<String, dynamic>>?>('ipTags');
     loadBalancerFrontendIpConfiguration = registerOutput<SubResourceResponse>(
       'loadBalancerFrontendIpConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    natGateway = registerOutput<NatGatewayResponse?>('natGateway');
+    natGateway = registerOutput<NatGatewayResponse?>(
+      'natGateway',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NatGatewayResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     prefixLength = registerOutput<int?>('prefixLength');
     provisioningState = registerOutput<String>('provisioningState');
     publicIPAddressVersion = registerOutput<String?>('publicIPAddressVersion');
@@ -404,7 +436,16 @@ class PublicIPPrefix extends pulumi.CustomResource {
       'publicIPAddresses',
     );
     resourceGuid = registerOutput<String>('resourceGuid');
-    sku = registerOutput<PublicIPPrefixSkuResponse?>('sku');
+    sku = registerOutput<PublicIPPrefixSkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PublicIPPrefixSkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     zones = registerOutput<List<String>?>('zones');

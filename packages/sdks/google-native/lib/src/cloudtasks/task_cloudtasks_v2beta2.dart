@@ -52,18 +52,50 @@ class TaskCloudtasksV2beta2 extends pulumi.CustomResource {
     appEngineHttpRequest =
         registerOutput<AppEngineHttpRequestResponseCloudtasksV2beta2>(
           'appEngineHttpRequest',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AppEngineHttpRequestResponseCloudtasksV2beta2.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     createTime = registerOutput<String>('createTime');
     httpRequest = registerOutput<HttpRequestResponseCloudtasksV2beta2>(
       'httpRequest',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HttpRequestResponseCloudtasksV2beta2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pullMessage = registerOutput<PullMessageResponse>('pullMessage');
+    pullMessage = registerOutput<PullMessageResponse>(
+      'pullMessage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PullMessageResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     queueId = registerOutput<String>('queueId');
     scheduleTime = registerOutput<String>('scheduleTime');
-    status = registerOutput<TaskStatusResponse>('status');
+    status = registerOutput<TaskStatusResponse>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TaskStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     view = registerOutput<String>('view');
   }
 }

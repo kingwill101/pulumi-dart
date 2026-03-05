@@ -112,11 +112,27 @@ class NodeTpuV2alpha1 extends pulumi.CustomResource {
        ) {
     acceleratorConfig = registerOutput<AcceleratorConfigResponseTpuV2alpha1>(
       'acceleratorConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AcceleratorConfigResponseTpuV2alpha1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     acceleratorType = registerOutput<String>('acceleratorType');
     apiVersion = registerOutput<String>('apiVersion');
     autocheckpointEnabled = registerOutput<bool>('autocheckpointEnabled');
-    bootDiskConfig = registerOutput<BootDiskConfigResponse>('bootDiskConfig');
+    bootDiskConfig = registerOutput<BootDiskConfigResponse>(
+      'bootDiskConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BootDiskConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     cidrBlock = registerOutput<String>('cidrBlock');
     createTime = registerOutput<String>('createTime');
     dataDisks = registerOutput<List<Map<String, dynamic>>>('dataDisks');
@@ -130,6 +146,13 @@ class NodeTpuV2alpha1 extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkConfig = registerOutput<NetworkConfigResponseTpuV2alpha1>(
       'networkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkConfigResponseTpuV2alpha1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     networkEndpoints = registerOutput<List<Map<String, dynamic>>>(
       'networkEndpoints',
@@ -141,13 +164,34 @@ class NodeTpuV2alpha1 extends pulumi.CustomResource {
     runtimeVersion = registerOutput<String>('runtimeVersion');
     schedulingConfig = registerOutput<SchedulingConfigResponseTpuV2alpha1>(
       'schedulingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SchedulingConfigResponseTpuV2alpha1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     serviceAccount = registerOutput<ServiceAccountResponseTpuV2alpha1>(
       'serviceAccount',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceAccountResponseTpuV2alpha1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     shieldedInstanceConfig =
         registerOutput<ShieldedInstanceConfigResponseTpuV2alpha1>(
           'shieldedInstanceConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ShieldedInstanceConfigResponseTpuV2alpha1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     state = registerOutput<String>('state');
     symptoms = registerOutput<List<Map<String, dynamic>>>('symptoms');

@@ -483,6 +483,13 @@ class RosettaNetProcessConfiguration extends pulumi.CustomResource {
        ) {
     activitySettings = registerOutput<RosettaNetPipActivitySettingsResponse>(
       'activitySettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RosettaNetPipActivitySettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     changedTime = registerOutput<String>('changedTime');
@@ -490,6 +497,13 @@ class RosettaNetProcessConfiguration extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     initiatorRoleSettings = registerOutput<RosettaNetPipRoleSettingsResponse>(
       'initiatorRoleSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RosettaNetPipRoleSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String?>('location');
     metadata = registerOutput<Map<String, String>?>('metadata');
@@ -499,6 +513,13 @@ class RosettaNetProcessConfiguration extends pulumi.CustomResource {
     processVersion = registerOutput<String>('processVersion');
     responderRoleSettings = registerOutput<RosettaNetPipRoleSettingsResponse>(
       'responderRoleSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RosettaNetPipRoleSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

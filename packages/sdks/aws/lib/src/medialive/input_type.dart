@@ -283,7 +283,14 @@ class InputType extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     type = registerOutput<String>('type');
-    vpc = registerOutput<InputVpc?>('vpc');
+    vpc = registerOutput<InputVpc?>(
+      'vpc',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InputVpc.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
   }
 
   /// Gets an existing [InputType] resource's state with the given [name] and [id].
@@ -327,6 +334,13 @@ class InputType extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     type = registerOutput<String>('type');
-    vpc = registerOutput<InputVpc?>('vpc');
+    vpc = registerOutput<InputVpc?>(
+      'vpc',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InputVpc.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
   }
 }

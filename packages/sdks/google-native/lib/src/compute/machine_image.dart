@@ -82,10 +82,24 @@ class MachineImage extends pulumi.CustomResource {
     guestFlush = registerOutput<bool>('guestFlush');
     instanceProperties = registerOutput<InstancePropertiesResponse>(
       'instanceProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstancePropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     kind = registerOutput<String>('kind');
     machineImageEncryptionKey = registerOutput<CustomerEncryptionKeyResponse>(
       'machineImageEncryptionKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomerEncryptionKeyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -100,6 +114,13 @@ class MachineImage extends pulumi.CustomResource {
     sourceInstance = registerOutput<String>('sourceInstance');
     sourceInstanceProperties = registerOutput<SourceInstancePropertiesResponse>(
       'sourceInstanceProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SourceInstancePropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     status = registerOutput<String>('status');
     storageLocations = registerOutput<List<String>>('storageLocations');

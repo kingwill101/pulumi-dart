@@ -163,6 +163,13 @@ class SubscriptionFeatureRegistration extends pulumi.CustomResource {
     properties =
         registerOutput<SubscriptionFeatureRegistrationResponseProperties>(
           'properties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SubscriptionFeatureRegistrationResponseProperties.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     type = registerOutput<String>('type');
   }

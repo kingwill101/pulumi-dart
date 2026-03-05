@@ -432,6 +432,13 @@ class KxCluster extends pulumi.CustomResource {
     autoScalingConfiguration =
         registerOutput<KxClusterAutoScalingConfiguration?>(
           'autoScalingConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return KxClusterAutoScalingConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     availabilityZoneId = registerOutput<String?>('availabilityZoneId');
     azMode = registerOutput<String>('azMode');
@@ -440,8 +447,24 @@ class KxCluster extends pulumi.CustomResource {
     );
     capacityConfiguration = registerOutput<KxClusterCapacityConfiguration?>(
       'capacityConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KxClusterCapacityConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    code = registerOutput<KxClusterCode?>('code');
+    code = registerOutput<KxClusterCode?>(
+      'code',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KxClusterCode.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     commandLineArguments = registerOutput<Map<String, String>?>(
       'commandLineArguments',
     );
@@ -458,10 +481,24 @@ class KxCluster extends pulumi.CustomResource {
     savedownStorageConfiguration =
         registerOutput<KxClusterSavedownStorageConfiguration?>(
           'savedownStorageConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return KxClusterSavedownStorageConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     scalingGroupConfiguration =
         registerOutput<KxClusterScalingGroupConfiguration?>(
           'scalingGroupConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return KxClusterScalingGroupConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     status = registerOutput<String>('status');
     statusReason = registerOutput<String>('statusReason');
@@ -473,6 +510,13 @@ class KxCluster extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     vpcConfiguration = registerOutput<KxClusterVpcConfiguration>(
       'vpcConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KxClusterVpcConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -503,6 +547,13 @@ class KxCluster extends pulumi.CustomResource {
     autoScalingConfiguration =
         registerOutput<KxClusterAutoScalingConfiguration?>(
           'autoScalingConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return KxClusterAutoScalingConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     availabilityZoneId = registerOutput<String?>('availabilityZoneId');
     azMode = registerOutput<String>('azMode');
@@ -511,8 +562,24 @@ class KxCluster extends pulumi.CustomResource {
     );
     capacityConfiguration = registerOutput<KxClusterCapacityConfiguration?>(
       'capacityConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KxClusterCapacityConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    code = registerOutput<KxClusterCode?>('code');
+    code = registerOutput<KxClusterCode?>(
+      'code',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KxClusterCode.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     commandLineArguments = registerOutput<Map<String, String>?>(
       'commandLineArguments',
     );
@@ -529,10 +596,24 @@ class KxCluster extends pulumi.CustomResource {
     savedownStorageConfiguration =
         registerOutput<KxClusterSavedownStorageConfiguration?>(
           'savedownStorageConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return KxClusterSavedownStorageConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     scalingGroupConfiguration =
         registerOutput<KxClusterScalingGroupConfiguration?>(
           'scalingGroupConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return KxClusterScalingGroupConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     status = registerOutput<String>('status');
     statusReason = registerOutput<String>('statusReason');
@@ -544,6 +625,13 @@ class KxCluster extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     vpcConfiguration = registerOutput<KxClusterVpcConfiguration>(
       'vpcConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KxClusterVpcConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

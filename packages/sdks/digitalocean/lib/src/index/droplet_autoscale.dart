@@ -369,13 +369,29 @@ class DropletAutoscale extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    config = registerOutput<DropletAutoscaleConfig>('config');
+    config = registerOutput<DropletAutoscaleConfig>(
+      'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DropletAutoscaleConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createdAt = registerOutput<String>('createdAt');
     currentUtilizations = registerOutput<List<Map<String, dynamic>>>(
       'currentUtilizations',
     );
     dropletTemplate = registerOutput<DropletAutoscaleDropletTemplate>(
       'dropletTemplate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DropletAutoscaleDropletTemplate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     status = registerOutput<String>('status');
@@ -405,13 +421,29 @@ class DropletAutoscale extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    config = registerOutput<DropletAutoscaleConfig>('config');
+    config = registerOutput<DropletAutoscaleConfig>(
+      'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DropletAutoscaleConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createdAt = registerOutput<String>('createdAt');
     currentUtilizations = registerOutput<List<Map<String, dynamic>>>(
       'currentUtilizations',
     );
     dropletTemplate = registerOutput<DropletAutoscaleDropletTemplate>(
       'dropletTemplate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DropletAutoscaleDropletTemplate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     status = registerOutput<String>('status');

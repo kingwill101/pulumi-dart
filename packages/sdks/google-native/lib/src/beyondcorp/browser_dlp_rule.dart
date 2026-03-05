@@ -43,7 +43,16 @@ class BrowserDlpRule extends pulumi.CustomResource {
     group =
         registerOutput<
           GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse
-        >('group');
+        >(
+          'group',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     this.name = registerOutput<String>('name');
     organizationId = registerOutput<String>('organizationId');
     partnerTenantId = registerOutput<String>('partnerTenantId');
@@ -51,6 +60,15 @@ class BrowserDlpRule extends pulumi.CustomResource {
     ruleSetting =
         registerOutput<
           GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse
-        >('ruleSetting');
+        >(
+          'ruleSetting',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
   }
 }

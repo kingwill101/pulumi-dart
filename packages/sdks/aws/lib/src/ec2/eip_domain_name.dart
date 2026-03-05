@@ -207,7 +207,16 @@ class EipDomainName extends pulumi.CustomResource {
     domainName = registerOutput<String>('domainName');
     ptrRecord = registerOutput<String>('ptrRecord');
     region = registerOutput<String>('region');
-    timeouts = registerOutput<EipDomainNameTimeouts?>('timeouts');
+    timeouts = registerOutput<EipDomainNameTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EipDomainNameTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [EipDomainName] resource's state with the given [name] and [id].
@@ -237,6 +246,15 @@ class EipDomainName extends pulumi.CustomResource {
     domainName = registerOutput<String>('domainName');
     ptrRecord = registerOutput<String>('ptrRecord');
     region = registerOutput<String>('region');
-    timeouts = registerOutput<EipDomainNameTimeouts?>('timeouts');
+    timeouts = registerOutput<EipDomainNameTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EipDomainNameTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

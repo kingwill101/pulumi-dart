@@ -47,7 +47,8 @@ Future<GetWorkspaceCollectionResult> getWorkspaceCollection(
 /// Uses Azure REST API version 2016-01-29.
 /// [args] Arguments passed to this invoke. {@macro pulumi_powerbi_list_workspace_collection_access_keys_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListWorkspaceCollectionAccessKeysResult> listWorkspaceCollectionAccessKeys(
+Future<ListWorkspaceCollectionAccessKeysResult>
+listWorkspaceCollectionAccessKeys(
   ListWorkspaceCollectionAccessKeysArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

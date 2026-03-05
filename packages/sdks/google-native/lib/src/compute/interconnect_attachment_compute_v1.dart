@@ -158,7 +158,16 @@ class InterconnectAttachmentComputeV1 extends pulumi.CustomResource {
     configurationConstraints =
         registerOutput<
           InterconnectAttachmentConfigurationConstraintsResponseComputeV1
-        >('configurationConstraints');
+        >(
+          'configurationConstraints',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InterconnectAttachmentConfigurationConstraintsResponseComputeV1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     creationTimestamp = registerOutput<String>('creationTimestamp');
     customerRouterIpAddress = registerOutput<String>('customerRouterIpAddress');
     customerRouterIpv6Address = registerOutput<String>(
@@ -187,10 +196,24 @@ class InterconnectAttachmentComputeV1 extends pulumi.CustomResource {
     partnerMetadata =
         registerOutput<InterconnectAttachmentPartnerMetadataResponseComputeV1>(
           'partnerMetadata',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InterconnectAttachmentPartnerMetadataResponseComputeV1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     privateInterconnectInfo =
         registerOutput<InterconnectAttachmentPrivateInfoResponseComputeV1>(
           'privateInterconnectInfo',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InterconnectAttachmentPrivateInfoResponseComputeV1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');

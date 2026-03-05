@@ -333,7 +333,16 @@ class AccountProject extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     endpoints = registerOutput<Map<String, String>>('endpoints');
-    identity = registerOutput<AccountProjectIdentity>('identity');
+    identity = registerOutput<AccountProjectIdentity>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountProjectIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -367,7 +376,16 @@ class AccountProject extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     endpoints = registerOutput<Map<String, String>>('endpoints');
-    identity = registerOutput<AccountProjectIdentity>('identity');
+    identity = registerOutput<AccountProjectIdentity>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountProjectIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     tags = registerOutput<Map<String, String>?>('tags');

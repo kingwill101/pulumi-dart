@@ -174,12 +174,30 @@ class CloudEdgeManagementRole extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    edgeProfile = registerOutput<EdgeProfileResponse>('edgeProfile');
+    edgeProfile = registerOutput<EdgeProfileResponse>(
+      'edgeProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EdgeProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kind = registerOutput<String>('kind');
     localManagementStatus = registerOutput<String>('localManagementStatus');
     this.name = registerOutput<String>('name');
     roleStatus = registerOutput<String>('roleStatus');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

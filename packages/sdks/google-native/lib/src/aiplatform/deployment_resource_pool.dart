@@ -34,6 +34,13 @@ class DeploymentResourcePool extends pulumi.CustomResource {
     dedicatedResources =
         registerOutput<GoogleCloudAiplatformV1DedicatedResourcesResponse>(
           'dedicatedResources',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1DedicatedResourcesResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

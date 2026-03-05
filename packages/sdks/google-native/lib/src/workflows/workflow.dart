@@ -78,7 +78,16 @@ class Workflow extends pulumi.CustomResource {
     serviceAccount = registerOutput<String>('serviceAccount');
     sourceContents = registerOutput<String>('sourceContents');
     state = registerOutput<String>('state');
-    stateError = registerOutput<StateErrorResponse>('stateError');
+    stateError = registerOutput<StateErrorResponse>(
+      'stateError',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StateErrorResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     updateTime = registerOutput<String>('updateTime');
     userEnvVars = registerOutput<Map<String, String>>('userEnvVars');
     workflowId = registerOutput<String>('workflowId');

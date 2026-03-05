@@ -455,10 +455,26 @@ class SiteMonitor extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     customSchedule = registerOutput<SiteMonitorCustomSchedule?>(
       'customSchedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SiteMonitorCustomSchedule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     interval = registerOutput<String>('interval');
     ispCities = registerOutput<List<Map<String, dynamic>>>('ispCities');
-    optionJson = registerOutput<SiteMonitorOptionJson>('optionJson');
+    optionJson = registerOutput<SiteMonitorOptionJson>(
+      'optionJson',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SiteMonitorOptionJson.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     optionsJson = registerOutput<String>('optionsJson');
     status = registerOutput<String>('status');
     taskName = registerOutput<String>('taskName');
@@ -496,10 +512,26 @@ class SiteMonitor extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     customSchedule = registerOutput<SiteMonitorCustomSchedule?>(
       'customSchedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SiteMonitorCustomSchedule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     interval = registerOutput<String>('interval');
     ispCities = registerOutput<List<Map<String, dynamic>>>('ispCities');
-    optionJson = registerOutput<SiteMonitorOptionJson>('optionJson');
+    optionJson = registerOutput<SiteMonitorOptionJson>(
+      'optionJson',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SiteMonitorOptionJson.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     optionsJson = registerOutput<String>('optionsJson');
     status = registerOutput<String>('status');
     taskName = registerOutput<String>('taskName');

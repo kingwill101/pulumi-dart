@@ -3899,27 +3899,102 @@ class EventTarget extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    appsyncTarget = registerOutput<EventTargetAppsyncTarget?>('appsyncTarget');
+    appsyncTarget = registerOutput<EventTargetAppsyncTarget?>(
+      'appsyncTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventTargetAppsyncTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     arn = registerOutput<String>('arn');
-    batchTarget = registerOutput<EventTargetBatchTarget?>('batchTarget');
+    batchTarget = registerOutput<EventTargetBatchTarget?>(
+      'batchTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventTargetBatchTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     deadLetterConfig = registerOutput<EventTargetDeadLetterConfig?>(
       'deadLetterConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventTargetDeadLetterConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    ecsTarget = registerOutput<EventTargetEcsTarget?>('ecsTarget');
+    ecsTarget = registerOutput<EventTargetEcsTarget?>(
+      'ecsTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventTargetEcsTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     eventBusName = registerOutput<String?>('eventBusName');
     forceDestroy = registerOutput<bool?>('forceDestroy');
-    httpTarget = registerOutput<EventTargetHttpTarget?>('httpTarget');
+    httpTarget = registerOutput<EventTargetHttpTarget?>(
+      'httpTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventTargetHttpTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     input = registerOutput<String?>('input');
     inputPath = registerOutput<String?>('inputPath');
     inputTransformer = registerOutput<EventTargetInputTransformer?>(
       'inputTransformer',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventTargetInputTransformer.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    kinesisTarget = registerOutput<EventTargetKinesisTarget?>('kinesisTarget');
+    kinesisTarget = registerOutput<EventTargetKinesisTarget?>(
+      'kinesisTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventTargetKinesisTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     redshiftTarget = registerOutput<EventTargetRedshiftTarget?>(
       'redshiftTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventTargetRedshiftTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
-    retryPolicy = registerOutput<EventTargetRetryPolicy?>('retryPolicy');
+    retryPolicy = registerOutput<EventTargetRetryPolicy?>(
+      'retryPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventTargetRetryPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     roleArn = registerOutput<String?>('roleArn');
     rule = registerOutput<String>('rule');
     runCommandTargets = registerOutput<List<Map<String, dynamic>>?>(
@@ -3928,8 +4003,24 @@ class EventTarget extends pulumi.CustomResource {
     sagemakerPipelineTarget =
         registerOutput<EventTargetSagemakerPipelineTarget?>(
           'sagemakerPipelineTarget',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EventTargetSagemakerPipelineTarget.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    sqsTarget = registerOutput<EventTargetSqsTarget?>('sqsTarget');
+    sqsTarget = registerOutput<EventTargetSqsTarget?>(
+      'sqsTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventTargetSqsTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     targetId = registerOutput<String>('targetId');
   }
 
@@ -3956,27 +4047,102 @@ class EventTarget extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    appsyncTarget = registerOutput<EventTargetAppsyncTarget?>('appsyncTarget');
+    appsyncTarget = registerOutput<EventTargetAppsyncTarget?>(
+      'appsyncTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventTargetAppsyncTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     arn = registerOutput<String>('arn');
-    batchTarget = registerOutput<EventTargetBatchTarget?>('batchTarget');
+    batchTarget = registerOutput<EventTargetBatchTarget?>(
+      'batchTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventTargetBatchTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     deadLetterConfig = registerOutput<EventTargetDeadLetterConfig?>(
       'deadLetterConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventTargetDeadLetterConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    ecsTarget = registerOutput<EventTargetEcsTarget?>('ecsTarget');
+    ecsTarget = registerOutput<EventTargetEcsTarget?>(
+      'ecsTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventTargetEcsTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     eventBusName = registerOutput<String?>('eventBusName');
     forceDestroy = registerOutput<bool?>('forceDestroy');
-    httpTarget = registerOutput<EventTargetHttpTarget?>('httpTarget');
+    httpTarget = registerOutput<EventTargetHttpTarget?>(
+      'httpTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventTargetHttpTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     input = registerOutput<String?>('input');
     inputPath = registerOutput<String?>('inputPath');
     inputTransformer = registerOutput<EventTargetInputTransformer?>(
       'inputTransformer',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventTargetInputTransformer.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    kinesisTarget = registerOutput<EventTargetKinesisTarget?>('kinesisTarget');
+    kinesisTarget = registerOutput<EventTargetKinesisTarget?>(
+      'kinesisTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventTargetKinesisTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     redshiftTarget = registerOutput<EventTargetRedshiftTarget?>(
       'redshiftTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventTargetRedshiftTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
-    retryPolicy = registerOutput<EventTargetRetryPolicy?>('retryPolicy');
+    retryPolicy = registerOutput<EventTargetRetryPolicy?>(
+      'retryPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventTargetRetryPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     roleArn = registerOutput<String?>('roleArn');
     rule = registerOutput<String>('rule');
     runCommandTargets = registerOutput<List<Map<String, dynamic>>?>(
@@ -3985,8 +4151,24 @@ class EventTarget extends pulumi.CustomResource {
     sagemakerPipelineTarget =
         registerOutput<EventTargetSagemakerPipelineTarget?>(
           'sagemakerPipelineTarget',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EventTargetSagemakerPipelineTarget.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    sqsTarget = registerOutput<EventTargetSqsTarget?>('sqsTarget');
+    sqsTarget = registerOutput<EventTargetSqsTarget?>(
+      'sqsTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventTargetSqsTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     targetId = registerOutput<String>('targetId');
   }
 }

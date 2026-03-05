@@ -1,15 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getStreamConsumer.
 class GetStreamConsumerResult {
   final String arn;
+
   /// Approximate timestamp in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) of when the stream consumer was created.
   final String creationTimestamp;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
   final String region;
+
   /// Current status of the stream consumer.
   final String status;
   final String streamArn;
@@ -61,4 +63,3 @@ class GetStreamConsumerResult {
     );
   }
 }
-

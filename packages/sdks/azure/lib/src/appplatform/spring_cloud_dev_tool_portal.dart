@@ -329,7 +329,16 @@ class SpringCloudDevToolPortal extends pulumi.CustomResource {
       'publicNetworkAccessEnabled',
     );
     springCloudServiceId = registerOutput<String>('springCloudServiceId');
-    sso = registerOutput<SpringCloudDevToolPortalSso?>('sso');
+    sso = registerOutput<SpringCloudDevToolPortalSso?>(
+      'sso',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpringCloudDevToolPortalSso.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [SpringCloudDevToolPortal] resource's state with the given [name] and [id].
@@ -366,6 +375,15 @@ class SpringCloudDevToolPortal extends pulumi.CustomResource {
       'publicNetworkAccessEnabled',
     );
     springCloudServiceId = registerOutput<String>('springCloudServiceId');
-    sso = registerOutput<SpringCloudDevToolPortalSso?>('sso');
+    sso = registerOutput<SpringCloudDevToolPortalSso?>(
+      'sso',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpringCloudDevToolPortalSso.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

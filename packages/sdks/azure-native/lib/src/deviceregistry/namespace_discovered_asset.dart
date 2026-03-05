@@ -1512,12 +1512,28 @@ class NamespaceDiscoveredAsset extends pulumi.CustomResource {
     defaultStreamsDestinations = registerOutput<List<Map<String, dynamic>>?>(
       'defaultStreamsDestinations',
     );
-    deviceRef = registerOutput<DeviceRefResponse>('deviceRef');
+    deviceRef = registerOutput<DeviceRefResponse>(
+      'deviceRef',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeviceRefResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     discoveryId = registerOutput<String>('discoveryId');
     documentationUri = registerOutput<String?>('documentationUri');
     events = registerOutput<List<Map<String, dynamic>>?>('events');
     extendedLocation = registerOutput<ExtendedLocationResponse>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     hardwareRevision = registerOutput<String?>('hardwareRevision');
     location = registerOutput<String>('location');
@@ -1533,7 +1549,16 @@ class NamespaceDiscoveredAsset extends pulumi.CustomResource {
     serialNumber = registerOutput<String?>('serialNumber');
     softwareRevision = registerOutput<String?>('softwareRevision');
     streams = registerOutput<List<Map<String, dynamic>>?>('streams');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     version = registerOutput<double>('version');

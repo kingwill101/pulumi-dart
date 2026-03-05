@@ -312,7 +312,16 @@ class Filter extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     detectorId = registerOutput<String>('detectorId');
-    findingCriteria = registerOutput<FilterFindingCriteria>('findingCriteria');
+    findingCriteria = registerOutput<FilterFindingCriteria>(
+      'findingCriteria',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FilterFindingCriteria.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     rank = registerOutput<int>('rank');
     region = registerOutput<String>('region');
@@ -347,7 +356,16 @@ class Filter extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     detectorId = registerOutput<String>('detectorId');
-    findingCriteria = registerOutput<FilterFindingCriteria>('findingCriteria');
+    findingCriteria = registerOutput<FilterFindingCriteria>(
+      'findingCriteria',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FilterFindingCriteria.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     rank = registerOutput<int>('rank');
     region = registerOutput<String>('region');

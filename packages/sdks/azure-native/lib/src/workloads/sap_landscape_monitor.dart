@@ -314,10 +314,26 @@ class SapLandscapeMonitor extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     grouping = registerOutput<SapLandscapeMonitorPropertiesGroupingResponse?>(
       'grouping',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SapLandscapeMonitorPropertiesGroupingResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     topMetricsThresholds = registerOutput<List<Map<String, dynamic>>?>(
       'topMetricsThresholds',
     );

@@ -204,7 +204,16 @@ class Template extends pulumi.CustomResource {
        ) {
     createTime = registerOutput<String>('createTime');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    filterConfig = registerOutput<TemplateFilterConfig>('filterConfig');
+    filterConfig = registerOutput<TemplateFilterConfig>(
+      'filterConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TemplateFilterConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -213,6 +222,13 @@ class Template extends pulumi.CustomResource {
     templateId = registerOutput<String>('templateId');
     templateMetadata = registerOutput<TemplateTemplateMetadata?>(
       'templateMetadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TemplateTemplateMetadata.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     updateTime = registerOutput<String>('updateTime');
   }
@@ -242,7 +258,16 @@ class Template extends pulumi.CustomResource {
        ) {
     createTime = registerOutput<String>('createTime');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    filterConfig = registerOutput<TemplateFilterConfig>('filterConfig');
+    filterConfig = registerOutput<TemplateFilterConfig>(
+      'filterConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TemplateFilterConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -251,6 +276,13 @@ class Template extends pulumi.CustomResource {
     templateId = registerOutput<String>('templateId');
     templateMetadata = registerOutput<TemplateTemplateMetadata?>(
       'templateMetadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TemplateTemplateMetadata.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     updateTime = registerOutput<String>('updateTime');
   }

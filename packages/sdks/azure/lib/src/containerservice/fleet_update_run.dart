@@ -475,6 +475,13 @@ class FleetUpdateRun extends pulumi.CustomResource {
     );
     managedClusterUpdate = registerOutput<FleetUpdateRunManagedClusterUpdate>(
       'managedClusterUpdate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FleetUpdateRunManagedClusterUpdate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     stages = registerOutput<List<Map<String, dynamic>>?>('stages');
@@ -509,6 +516,13 @@ class FleetUpdateRun extends pulumi.CustomResource {
     );
     managedClusterUpdate = registerOutput<FleetUpdateRunManagedClusterUpdate>(
       'managedClusterUpdate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FleetUpdateRunManagedClusterUpdate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     stages = registerOutput<List<Map<String, dynamic>>?>('stages');

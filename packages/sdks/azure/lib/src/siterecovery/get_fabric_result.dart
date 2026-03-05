@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getFabric.
 class GetFabricResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The Azure location where the Site Recovery Replication Fabric resides.
   final String location;
   final String name;
@@ -45,4 +45,3 @@ class GetFabricResult {
     );
   }
 }
-

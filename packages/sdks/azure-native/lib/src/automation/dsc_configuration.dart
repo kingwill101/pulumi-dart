@@ -314,9 +314,29 @@ class DscConfiguration extends pulumi.CustomResource {
     parameters =
         registerOutput<Map<String, DscConfigurationParameterResponse>?>(
           'parameters',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return pulumi
+                .Input.decodeMapValues<DscConfigurationParameterResponse>(
+              guardedValue,
+              (value) => DscConfigurationParameterResponse.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            );
+          },
         );
     provisioningState = registerOutput<String?>('provisioningState');
-    source = registerOutput<ContentSourceResponse?>('source');
+    source = registerOutput<ContentSourceResponse?>(
+      'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContentSourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     state = registerOutput<String?>('state');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

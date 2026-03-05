@@ -730,9 +730,23 @@ class WorkloadIdentityPool extends pulumi.CustomResource {
     inlineCertificateIssuanceConfig =
         registerOutput<WorkloadIdentityPoolInlineCertificateIssuanceConfig?>(
           'inlineCertificateIssuanceConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WorkloadIdentityPoolInlineCertificateIssuanceConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     inlineTrustConfig = registerOutput<WorkloadIdentityPoolInlineTrustConfig?>(
       'inlineTrustConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkloadIdentityPoolInlineTrustConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     mode = registerOutput<String?>('mode');
     this.name = registerOutput<String>('name');
@@ -770,9 +784,23 @@ class WorkloadIdentityPool extends pulumi.CustomResource {
     inlineCertificateIssuanceConfig =
         registerOutput<WorkloadIdentityPoolInlineCertificateIssuanceConfig?>(
           'inlineCertificateIssuanceConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WorkloadIdentityPoolInlineCertificateIssuanceConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     inlineTrustConfig = registerOutput<WorkloadIdentityPoolInlineTrustConfig?>(
       'inlineTrustConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkloadIdentityPoolInlineTrustConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     mode = registerOutput<String?>('mode');
     this.name = registerOutput<String>('name');

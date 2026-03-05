@@ -281,6 +281,13 @@ class ApplicationDefinition extends pulumi.CustomResource {
     createUiDefinition = registerOutput<dynamic>('createUiDefinition');
     deploymentPolicy = registerOutput<ApplicationDeploymentPolicyResponse?>(
       'deploymentPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationDeploymentPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
@@ -290,21 +297,60 @@ class ApplicationDefinition extends pulumi.CustomResource {
     lockingPolicy =
         registerOutput<ApplicationPackageLockingPolicyDefinitionResponse?>(
           'lockingPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ApplicationPackageLockingPolicyDefinitionResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     mainTemplate = registerOutput<dynamic>('mainTemplate');
     managedBy = registerOutput<String?>('managedBy');
     managementPolicy = registerOutput<ApplicationManagementPolicyResponse?>(
       'managementPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationManagementPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     notificationPolicy = registerOutput<ApplicationNotificationPolicyResponse?>(
       'notificationPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationNotificationPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     packageFileUri = registerOutput<String?>('packageFileUri');
     policies = registerOutput<List<Map<String, dynamic>>?>('policies');
-    sku = registerOutput<SkuResponse?>('sku');
+    sku = registerOutput<SkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     storageAccountId = registerOutput<String?>('storageAccountId');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

@@ -436,7 +436,16 @@ class MulticastGroupRange extends pulumi.CustomResource {
     ipCidrRange = registerOutput<String>('ipCidrRange');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
-    logConfig = registerOutput<MulticastGroupRangeLogConfig?>('logConfig');
+    logConfig = registerOutput<MulticastGroupRangeLogConfig?>(
+      'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MulticastGroupRangeLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     multicastDomain = registerOutput<String>('multicastDomain');
     multicastGroupRangeId = registerOutput<String>('multicastGroupRangeId');
     this.name = registerOutput<String>('name');
@@ -480,7 +489,16 @@ class MulticastGroupRange extends pulumi.CustomResource {
     ipCidrRange = registerOutput<String>('ipCidrRange');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
-    logConfig = registerOutput<MulticastGroupRangeLogConfig?>('logConfig');
+    logConfig = registerOutput<MulticastGroupRangeLogConfig?>(
+      'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MulticastGroupRangeLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     multicastDomain = registerOutput<String>('multicastDomain');
     multicastGroupRangeId = registerOutput<String>('multicastGroupRangeId');
     this.name = registerOutput<String>('name');

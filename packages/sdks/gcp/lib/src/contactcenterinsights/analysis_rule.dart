@@ -724,6 +724,13 @@ class AnalysisRule extends pulumi.CustomResource {
     analysisPercentage = registerOutput<double?>('analysisPercentage');
     annotatorSelector = registerOutput<AnalysisRuleAnnotatorSelector?>(
       'annotatorSelector',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AnalysisRuleAnnotatorSelector.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     conversationFilter = registerOutput<String?>('conversationFilter');
     createTime = registerOutput<String>('createTime');
@@ -761,6 +768,13 @@ class AnalysisRule extends pulumi.CustomResource {
     analysisPercentage = registerOutput<double?>('analysisPercentage');
     annotatorSelector = registerOutput<AnalysisRuleAnnotatorSelector?>(
       'annotatorSelector',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AnalysisRuleAnnotatorSelector.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     conversationFilter = registerOutput<String?>('conversationFilter');
     createTime = registerOutput<String>('createTime');

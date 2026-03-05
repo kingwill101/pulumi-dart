@@ -316,7 +316,16 @@ class ClusterExtension extends pulumi.CustomResource {
     );
     currentVersion = registerOutput<String>('currentVersion');
     extensionType = registerOutput<String>('extensionType');
-    identity = registerOutput<ClusterExtensionIdentity>('identity');
+    identity = registerOutput<ClusterExtensionIdentity>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterExtensionIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     releaseNamespace = registerOutput<String>('releaseNamespace');
     releaseTrain = registerOutput<String>('releaseTrain');
@@ -356,7 +365,16 @@ class ClusterExtension extends pulumi.CustomResource {
     );
     currentVersion = registerOutput<String>('currentVersion');
     extensionType = registerOutput<String>('extensionType');
-    identity = registerOutput<ClusterExtensionIdentity>('identity');
+    identity = registerOutput<ClusterExtensionIdentity>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterExtensionIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     releaseNamespace = registerOutput<String>('releaseNamespace');
     releaseTrain = registerOutput<String>('releaseTrain');

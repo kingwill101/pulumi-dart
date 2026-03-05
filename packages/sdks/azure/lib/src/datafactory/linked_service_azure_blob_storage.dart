@@ -305,12 +305,26 @@ class LinkedServiceAzureBlobStorage extends pulumi.CustomResource {
     keyVaultSasToken =
         registerOutput<LinkedServiceAzureBlobStorageKeyVaultSasToken>(
           'keyVaultSasToken',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinkedServiceAzureBlobStorageKeyVaultSasToken.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');
     sasTokenLinkedKeyVaultKey =
         registerOutput<LinkedServiceAzureBlobStorageSasTokenLinkedKeyVaultKey>(
           'sasTokenLinkedKeyVaultKey',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinkedServiceAzureBlobStorageSasTokenLinkedKeyVaultKey.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     sasUri = registerOutput<String?>('sasUri');
     serviceEndpoint = registerOutput<String?>('serviceEndpoint');
@@ -319,7 +333,16 @@ class LinkedServiceAzureBlobStorage extends pulumi.CustomResource {
     servicePrincipalLinkedKeyVaultKey =
         registerOutput<
           LinkedServiceAzureBlobStorageServicePrincipalLinkedKeyVaultKey?
-        >('servicePrincipalLinkedKeyVaultKey');
+        >(
+          'servicePrincipalLinkedKeyVaultKey',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinkedServiceAzureBlobStorageServicePrincipalLinkedKeyVaultKey.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     storageKind = registerOutput<String?>('storageKind');
     tenantId = registerOutput<String?>('tenantId');
     useManagedIdentity = registerOutput<bool?>('useManagedIdentity');
@@ -362,12 +385,26 @@ class LinkedServiceAzureBlobStorage extends pulumi.CustomResource {
     keyVaultSasToken =
         registerOutput<LinkedServiceAzureBlobStorageKeyVaultSasToken>(
           'keyVaultSasToken',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinkedServiceAzureBlobStorageKeyVaultSasToken.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');
     sasTokenLinkedKeyVaultKey =
         registerOutput<LinkedServiceAzureBlobStorageSasTokenLinkedKeyVaultKey>(
           'sasTokenLinkedKeyVaultKey',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinkedServiceAzureBlobStorageSasTokenLinkedKeyVaultKey.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     sasUri = registerOutput<String?>('sasUri');
     serviceEndpoint = registerOutput<String?>('serviceEndpoint');
@@ -376,7 +413,16 @@ class LinkedServiceAzureBlobStorage extends pulumi.CustomResource {
     servicePrincipalLinkedKeyVaultKey =
         registerOutput<
           LinkedServiceAzureBlobStorageServicePrincipalLinkedKeyVaultKey?
-        >('servicePrincipalLinkedKeyVaultKey');
+        >(
+          'servicePrincipalLinkedKeyVaultKey',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinkedServiceAzureBlobStorageServicePrincipalLinkedKeyVaultKey.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     storageKind = registerOutput<String?>('storageKind');
     tenantId = registerOutput<String?>('tenantId');
     useManagedIdentity = registerOutput<bool?>('useManagedIdentity');

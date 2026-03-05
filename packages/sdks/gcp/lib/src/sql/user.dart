@@ -791,7 +791,16 @@ class User extends pulumi.CustomResource {
     instance = registerOutput<String>('instance');
     this.name = registerOutput<String>('name');
     password = registerOutput<String?>('password');
-    passwordPolicy = registerOutput<UserPasswordPolicy?>('passwordPolicy');
+    passwordPolicy = registerOutput<UserPasswordPolicy?>(
+      'passwordPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserPasswordPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     passwordWo = registerOutput<String?>('passwordWo');
     passwordWoVersion = registerOutput<int?>('passwordWoVersion');
     project = registerOutput<String>('project');
@@ -825,7 +834,16 @@ class User extends pulumi.CustomResource {
     instance = registerOutput<String>('instance');
     this.name = registerOutput<String>('name');
     password = registerOutput<String?>('password');
-    passwordPolicy = registerOutput<UserPasswordPolicy?>('passwordPolicy');
+    passwordPolicy = registerOutput<UserPasswordPolicy?>(
+      'passwordPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserPasswordPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     passwordWo = registerOutput<String?>('passwordWo');
     passwordWoVersion = registerOutput<int?>('passwordWoVersion');
     project = registerOutput<String>('project');

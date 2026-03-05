@@ -3572,7 +3572,16 @@ class Certificate extends pulumi.CustomResource {
       'certificateDescriptions',
     );
     certificateTemplate = registerOutput<String?>('certificateTemplate');
-    config = registerOutput<CertificateConfig?>('config');
+    config = registerOutput<CertificateConfig?>(
+      'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CertificateConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     issuerCertificateAuthority = registerOutput<String>(
@@ -3622,7 +3631,16 @@ class Certificate extends pulumi.CustomResource {
       'certificateDescriptions',
     );
     certificateTemplate = registerOutput<String?>('certificateTemplate');
-    config = registerOutput<CertificateConfig?>('config');
+    config = registerOutput<CertificateConfig?>(
+      'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CertificateConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     issuerCertificateAuthority = registerOutput<String>(

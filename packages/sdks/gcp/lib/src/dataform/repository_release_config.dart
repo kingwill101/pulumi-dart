@@ -486,6 +486,13 @@ class RepositoryReleaseConfig extends pulumi.CustomResource {
     codeCompilationConfig =
         registerOutput<RepositoryReleaseConfigCodeCompilationConfig?>(
           'codeCompilationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RepositoryReleaseConfigCodeCompilationConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     cronSchedule = registerOutput<String?>('cronSchedule');
     gitCommitish = registerOutput<String>('gitCommitish');
@@ -525,6 +532,13 @@ class RepositoryReleaseConfig extends pulumi.CustomResource {
     codeCompilationConfig =
         registerOutput<RepositoryReleaseConfigCodeCompilationConfig?>(
           'codeCompilationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RepositoryReleaseConfigCodeCompilationConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     cronSchedule = registerOutput<String?>('cronSchedule');
     gitCommitish = registerOutput<String>('gitCommitish');

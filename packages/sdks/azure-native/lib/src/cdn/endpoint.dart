@@ -896,11 +896,27 @@ class Endpoint extends pulumi.CustomResource {
     customDomains = registerOutput<List<Map<String, dynamic>>>('customDomains');
     defaultOriginGroup = registerOutput<ResourceReferenceResponse?>(
       'defaultOriginGroup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceReferenceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     deliveryPolicy =
         registerOutput<
           EndpointPropertiesUpdateParametersDeliveryPolicyResponse?
-        >('deliveryPolicy');
+        >(
+          'deliveryPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EndpointPropertiesUpdateParametersDeliveryPolicyResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     geoFilters = registerOutput<List<Map<String, dynamic>>?>('geoFilters');
     hostName = registerOutput<String>('hostName');
     isCompressionEnabled = registerOutput<bool?>('isCompressionEnabled');
@@ -919,7 +935,16 @@ class Endpoint extends pulumi.CustomResource {
       'queryStringCachingBehavior',
     );
     resourceState = registerOutput<String>('resourceState');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     urlSigningKeys = registerOutput<List<Map<String, dynamic>>?>(
@@ -928,6 +953,15 @@ class Endpoint extends pulumi.CustomResource {
     webApplicationFirewallPolicyLink =
         registerOutput<
           EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponse?
-        >('webApplicationFirewallPolicyLink');
+        >(
+          'webApplicationFirewallPolicyLink',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
   }
 }

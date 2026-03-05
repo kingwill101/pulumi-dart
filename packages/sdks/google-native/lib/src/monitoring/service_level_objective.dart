@@ -54,6 +54,13 @@ class ServiceLevelObjective extends pulumi.CustomResource {
     serviceId = registerOutput<String>('serviceId');
     serviceLevelIndicator = registerOutput<ServiceLevelIndicatorResponse>(
       'serviceLevelIndicator',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceLevelIndicatorResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     serviceLevelObjectiveId = registerOutput<String?>(
       'serviceLevelObjectiveId',

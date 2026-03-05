@@ -421,7 +421,16 @@ class InstancePool extends pulumi.CustomResource {
       'maintenanceConfigurationId',
     );
     this.name = registerOutput<String>('name');
-    sku = registerOutput<SkuResponse?>('sku');
+    sku = registerOutput<SkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     subnetId = registerOutput<String>('subnetId');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

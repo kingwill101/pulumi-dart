@@ -313,7 +313,16 @@ class DirectoryBucketAccessPointScope extends pulumi.CustomResource {
     accountId = registerOutput<String>('accountId');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    scope = registerOutput<DirectoryBucketAccessPointScopeScope>('scope');
+    scope = registerOutput<DirectoryBucketAccessPointScopeScope>(
+      'scope',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DirectoryBucketAccessPointScopeScope.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [DirectoryBucketAccessPointScope] resource's state with the given [name] and [id].
@@ -342,6 +351,15 @@ class DirectoryBucketAccessPointScope extends pulumi.CustomResource {
     accountId = registerOutput<String>('accountId');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    scope = registerOutput<DirectoryBucketAccessPointScopeScope>('scope');
+    scope = registerOutput<DirectoryBucketAccessPointScopeScope>(
+      'scope',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DirectoryBucketAccessPointScopeScope.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

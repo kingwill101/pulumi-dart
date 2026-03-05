@@ -35,7 +35,16 @@ class AgentPool extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     agentPoolId = registerOutput<String>('agentPoolId');
-    bandwidthLimit = registerOutput<BandwidthLimitResponse>('bandwidthLimit');
+    bandwidthLimit = registerOutput<BandwidthLimitResponse>(
+      'bandwidthLimit',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BandwidthLimitResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

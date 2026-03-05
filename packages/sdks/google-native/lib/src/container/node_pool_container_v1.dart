@@ -94,38 +94,118 @@ class NodePoolContainerV1 extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    autoscaling = registerOutput<NodePoolAutoscalingResponse>('autoscaling');
+    autoscaling = registerOutput<NodePoolAutoscalingResponse>(
+      'autoscaling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolAutoscalingResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     bestEffortProvisioning = registerOutput<BestEffortProvisioningResponse>(
       'bestEffortProvisioning',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BestEffortProvisioningResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clusterId = registerOutput<String>('clusterId');
     conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
-    config = registerOutput<NodeConfigResponse>('config');
+    config = registerOutput<NodeConfigResponse>(
+      'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodeConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     initialNodeCount = registerOutput<int>('initialNodeCount');
     instanceGroupUrls = registerOutput<List<String>>('instanceGroupUrls');
     location = registerOutput<String>('location');
     locations = registerOutput<List<String>>('locations');
-    management = registerOutput<NodeManagementResponse>('management');
+    management = registerOutput<NodeManagementResponse>(
+      'management',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodeManagementResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     maxPodsConstraint = registerOutput<MaxPodsConstraintResponse>(
       'maxPodsConstraint',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MaxPodsConstraintResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
-    networkConfig = registerOutput<NodeNetworkConfigResponse>('networkConfig');
+    networkConfig = registerOutput<NodeNetworkConfigResponse>(
+      'networkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodeNetworkConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     placementPolicy = registerOutput<PlacementPolicyResponse>(
       'placementPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PlacementPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     podIpv4CidrSize = registerOutput<int>('podIpv4CidrSize');
     project = registerOutput<String>('project');
     queuedProvisioning = registerOutput<QueuedProvisioningResponse>(
       'queuedProvisioning',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return QueuedProvisioningResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     selfLink = registerOutput<String>('selfLink');
     status = registerOutput<String>('status');
     statusMessage = registerOutput<String>('statusMessage');
-    updateInfo = registerOutput<UpdateInfoResponse>('updateInfo');
+    updateInfo = registerOutput<UpdateInfoResponse>(
+      'updateInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UpdateInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     upgradeSettings = registerOutput<UpgradeSettingsResponse>(
       'upgradeSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UpgradeSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     version = registerOutput<String>('version');
   }

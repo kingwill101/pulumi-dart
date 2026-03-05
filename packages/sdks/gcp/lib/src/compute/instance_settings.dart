@@ -189,7 +189,16 @@ class InstanceSettings extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     fingerprint = registerOutput<String>('fingerprint');
-    metadata = registerOutput<InstanceSettingsMetadata?>('metadata');
+    metadata = registerOutput<InstanceSettingsMetadata?>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceSettingsMetadata.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     zone = registerOutput<String>('zone');
   }
@@ -218,7 +227,16 @@ class InstanceSettings extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     fingerprint = registerOutput<String>('fingerprint');
-    metadata = registerOutput<InstanceSettingsMetadata?>('metadata');
+    metadata = registerOutput<InstanceSettingsMetadata?>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceSettingsMetadata.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     zone = registerOutput<String>('zone');
   }

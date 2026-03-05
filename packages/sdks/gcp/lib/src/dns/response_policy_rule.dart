@@ -371,7 +371,16 @@ class ResponsePolicyRule extends pulumi.CustomResource {
        ) {
     behavior = registerOutput<String?>('behavior');
     dnsName = registerOutput<String>('dnsName');
-    localData = registerOutput<ResponsePolicyRuleLocalData?>('localData');
+    localData = registerOutput<ResponsePolicyRuleLocalData?>(
+      'localData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResponsePolicyRuleLocalData.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     responsePolicy = registerOutput<String>('responsePolicy');
     ruleName = registerOutput<String>('ruleName');
@@ -402,7 +411,16 @@ class ResponsePolicyRule extends pulumi.CustomResource {
        ) {
     behavior = registerOutput<String?>('behavior');
     dnsName = registerOutput<String>('dnsName');
-    localData = registerOutput<ResponsePolicyRuleLocalData?>('localData');
+    localData = registerOutput<ResponsePolicyRuleLocalData?>(
+      'localData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResponsePolicyRuleLocalData.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     responsePolicy = registerOutput<String>('responsePolicy');
     ruleName = registerOutput<String>('ruleName');

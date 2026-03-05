@@ -57,7 +57,8 @@ Future<GetActionRequestResult> getActionRequest(
 /// Other available API versions: 2022-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native testbase [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_testbase_get_billing_hub_service_free_hour_balance_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetBillingHubServiceFreeHourBalanceResult> getBillingHubServiceFreeHourBalance(
+Future<GetBillingHubServiceFreeHourBalanceResult>
+getBillingHubServiceFreeHourBalance(
   GetBillingHubServiceFreeHourBalanceArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -305,7 +306,8 @@ Future<GetTestBaseAccountFileUploadUrlResult> getTestBaseAccountFileUploadUrl(
 /// Other available API versions: 2022-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native testbase [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_testbase_get_test_result_console_log_download_urlargs_doc}
 /// [options] Invoke options controlling this call.
-Future<GetTestResultConsoleLogDownloadURLResult> getTestResultConsoleLogDownloadURL(
+Future<GetTestResultConsoleLogDownloadURLResult>
+getTestResultConsoleLogDownloadURL(
   GetTestResultConsoleLogDownloadURLArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

@@ -63,6 +63,13 @@ class DiscoveryConfig extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     orgConfig = registerOutput<GooglePrivacyDlpV2OrgConfigResponse>(
       'orgConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GooglePrivacyDlpV2OrgConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     status = registerOutput<String>('status');

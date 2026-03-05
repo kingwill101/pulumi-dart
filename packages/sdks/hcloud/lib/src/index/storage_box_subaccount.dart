@@ -249,6 +249,13 @@ class StorageBoxSubaccount extends pulumi.CustomResource {
        ) {
     accessSettings = registerOutput<StorageBoxSubaccountAccessSettings>(
       'accessSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StorageBoxSubaccountAccessSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String>('description');
     homeDirectory = registerOutput<String>('homeDirectory');
@@ -285,6 +292,13 @@ class StorageBoxSubaccount extends pulumi.CustomResource {
        ) {
     accessSettings = registerOutput<StorageBoxSubaccountAccessSettings>(
       'accessSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StorageBoxSubaccountAccessSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String>('description');
     homeDirectory = registerOutput<String>('homeDirectory');

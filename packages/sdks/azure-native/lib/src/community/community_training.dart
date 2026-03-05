@@ -326,6 +326,13 @@ class CommunityTraining extends pulumi.CustomResource {
     identityConfiguration =
         registerOutput<IdentityConfigurationPropertiesResponse>(
           'identityConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return IdentityConfigurationPropertiesResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -336,8 +343,26 @@ class CommunityTraining extends pulumi.CustomResource {
       'portalOwnerOrganizationName',
     );
     provisioningState = registerOutput<String>('provisioningState');
-    sku = registerOutput<SkuResponse?>('sku');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    sku = registerOutput<SkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     zoneRedundancyEnabled = registerOutput<bool>('zoneRedundancyEnabled');

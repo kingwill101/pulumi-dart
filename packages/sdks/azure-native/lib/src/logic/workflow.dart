@@ -512,6 +512,13 @@ class Workflow extends pulumi.CustomResource {
        ) {
     accessControl = registerOutput<FlowAccessControlConfigurationResponse?>(
       'accessControl',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FlowAccessControlConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     accessEndpoint = registerOutput<String>('accessEndpoint');
     azureApiVersion = registerOutput<String>('azureApiVersion');
@@ -521,21 +528,70 @@ class Workflow extends pulumi.CustomResource {
     endpointsConfiguration =
         registerOutput<FlowEndpointsConfigurationResponse?>(
           'endpointsConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FlowEndpointsConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    identity = registerOutput<ManagedServiceIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedServiceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     integrationAccount = registerOutput<ResourceReferenceResponse?>(
       'integrationAccount',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceReferenceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     integrationServiceEnvironment = registerOutput<ResourceReferenceResponse?>(
       'integrationServiceEnvironment',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceReferenceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, WorkflowParameterResponse>?>(
       'parameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeMapValues<WorkflowParameterResponse>(
+          guardedValue,
+          (value) => WorkflowParameterResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      },
     );
     provisioningState = registerOutput<String>('provisioningState');
-    sku = registerOutput<SkuResponse>('sku');
+    sku = registerOutput<SkuResponse>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     state = registerOutput<String?>('state');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

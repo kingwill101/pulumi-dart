@@ -1260,6 +1260,13 @@ class ConnectionMonitor extends pulumi.CustomResource {
     connectionMonitorType = registerOutput<String>('connectionMonitorType');
     destination = registerOutput<ConnectionMonitorDestinationResponse?>(
       'destination',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionMonitorDestinationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     endpoints = registerOutput<List<Map<String, dynamic>>?>('endpoints');
     etag = registerOutput<String>('etag');
@@ -1272,7 +1279,16 @@ class ConnectionMonitor extends pulumi.CustomResource {
     notes = registerOutput<String?>('notes');
     outputs = registerOutput<List<Map<String, dynamic>>?>('outputs');
     provisioningState = registerOutput<String>('provisioningState');
-    source = registerOutput<ConnectionMonitorSourceResponse?>('source');
+    source = registerOutput<ConnectionMonitorSourceResponse?>(
+      'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionMonitorSourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     startTime = registerOutput<String>('startTime');
     tags = registerOutput<Map<String, String>?>('tags');
     testConfigurations = registerOutput<List<Map<String, dynamic>>?>(

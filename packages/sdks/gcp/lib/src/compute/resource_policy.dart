@@ -1823,13 +1823,34 @@ class ResourcePolicy extends pulumi.CustomResource {
     diskConsistencyGroupPolicy =
         registerOutput<ResourcePolicyDiskConsistencyGroupPolicy?>(
           'diskConsistencyGroupPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResourcePolicyDiskConsistencyGroupPolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     groupPlacementPolicy = registerOutput<ResourcePolicyGroupPlacementPolicy?>(
       'groupPlacementPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourcePolicyGroupPlacementPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     instanceSchedulePolicy =
         registerOutput<ResourcePolicyInstanceSchedulePolicy?>(
           'instanceSchedulePolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResourcePolicyInstanceSchedulePolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -1838,9 +1859,23 @@ class ResourcePolicy extends pulumi.CustomResource {
     snapshotSchedulePolicy =
         registerOutput<ResourcePolicySnapshotSchedulePolicy?>(
           'snapshotSchedulePolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResourcePolicySnapshotSchedulePolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     workloadPolicy = registerOutput<ResourcePolicyWorkloadPolicy?>(
       'workloadPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourcePolicyWorkloadPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -1871,13 +1906,34 @@ class ResourcePolicy extends pulumi.CustomResource {
     diskConsistencyGroupPolicy =
         registerOutput<ResourcePolicyDiskConsistencyGroupPolicy?>(
           'diskConsistencyGroupPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResourcePolicyDiskConsistencyGroupPolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     groupPlacementPolicy = registerOutput<ResourcePolicyGroupPlacementPolicy?>(
       'groupPlacementPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourcePolicyGroupPlacementPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     instanceSchedulePolicy =
         registerOutput<ResourcePolicyInstanceSchedulePolicy?>(
           'instanceSchedulePolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResourcePolicyInstanceSchedulePolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -1886,9 +1942,23 @@ class ResourcePolicy extends pulumi.CustomResource {
     snapshotSchedulePolicy =
         registerOutput<ResourcePolicySnapshotSchedulePolicy?>(
           'snapshotSchedulePolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResourcePolicySnapshotSchedulePolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     workloadPolicy = registerOutput<ResourcePolicyWorkloadPolicy?>(
       'workloadPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourcePolicyWorkloadPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

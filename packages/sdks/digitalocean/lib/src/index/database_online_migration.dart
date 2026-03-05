@@ -388,7 +388,16 @@ class DatabaseOnlineMigration extends pulumi.CustomResource {
     createdAt = registerOutput<String>('createdAt');
     disableSsl = registerOutput<bool?>('disableSsl');
     ignoreDbs = registerOutput<List<String>?>('ignoreDbs');
-    source = registerOutput<DatabaseOnlineMigrationSource>('source');
+    source = registerOutput<DatabaseOnlineMigrationSource>(
+      'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseOnlineMigrationSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String>('status');
   }
 
@@ -419,7 +428,16 @@ class DatabaseOnlineMigration extends pulumi.CustomResource {
     createdAt = registerOutput<String>('createdAt');
     disableSsl = registerOutput<bool?>('disableSsl');
     ignoreDbs = registerOutput<List<String>?>('ignoreDbs');
-    source = registerOutput<DatabaseOnlineMigrationSource>('source');
+    source = registerOutput<DatabaseOnlineMigrationSource>(
+      'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseOnlineMigrationSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String>('status');
   }
 }

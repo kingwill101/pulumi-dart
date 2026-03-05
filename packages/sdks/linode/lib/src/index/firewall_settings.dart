@@ -148,6 +148,13 @@ class FirewallSettings extends pulumi.CustomResource {
        ) {
     defaultFirewallIds = registerOutput<FirewallSettingsDefaultFirewallIds?>(
       'defaultFirewallIds',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FirewallSettingsDefaultFirewallIds.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -176,6 +183,13 @@ class FirewallSettings extends pulumi.CustomResource {
        ) {
     defaultFirewallIds = registerOutput<FirewallSettingsDefaultFirewallIds?>(
       'defaultFirewallIds',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FirewallSettingsDefaultFirewallIds.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

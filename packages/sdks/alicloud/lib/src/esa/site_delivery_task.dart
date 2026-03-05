@@ -416,14 +416,55 @@ class SiteDeliveryTask extends pulumi.CustomResource {
     fieldName = registerOutput<String>('fieldName');
     httpDelivery = registerOutput<SiteDeliveryTaskHttpDelivery?>(
       'httpDelivery',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SiteDeliveryTaskHttpDelivery.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     kafkaDelivery = registerOutput<SiteDeliveryTaskKafkaDelivery?>(
       'kafkaDelivery',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SiteDeliveryTaskKafkaDelivery.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    ossDelivery = registerOutput<SiteDeliveryTaskOssDelivery?>('ossDelivery');
-    s3Delivery = registerOutput<SiteDeliveryTaskS3Delivery?>('s3Delivery');
+    ossDelivery = registerOutput<SiteDeliveryTaskOssDelivery?>(
+      'ossDelivery',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SiteDeliveryTaskOssDelivery.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    s3Delivery = registerOutput<SiteDeliveryTaskS3Delivery?>(
+      's3Delivery',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SiteDeliveryTaskS3Delivery.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     siteId = registerOutput<String>('siteId');
-    slsDelivery = registerOutput<SiteDeliveryTaskSlsDelivery?>('slsDelivery');
+    slsDelivery = registerOutput<SiteDeliveryTaskSlsDelivery?>(
+      'slsDelivery',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SiteDeliveryTaskSlsDelivery.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String>('status');
     taskName = registerOutput<String>('taskName');
   }
@@ -458,14 +499,55 @@ class SiteDeliveryTask extends pulumi.CustomResource {
     fieldName = registerOutput<String>('fieldName');
     httpDelivery = registerOutput<SiteDeliveryTaskHttpDelivery?>(
       'httpDelivery',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SiteDeliveryTaskHttpDelivery.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     kafkaDelivery = registerOutput<SiteDeliveryTaskKafkaDelivery?>(
       'kafkaDelivery',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SiteDeliveryTaskKafkaDelivery.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    ossDelivery = registerOutput<SiteDeliveryTaskOssDelivery?>('ossDelivery');
-    s3Delivery = registerOutput<SiteDeliveryTaskS3Delivery?>('s3Delivery');
+    ossDelivery = registerOutput<SiteDeliveryTaskOssDelivery?>(
+      'ossDelivery',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SiteDeliveryTaskOssDelivery.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    s3Delivery = registerOutput<SiteDeliveryTaskS3Delivery?>(
+      's3Delivery',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SiteDeliveryTaskS3Delivery.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     siteId = registerOutput<String>('siteId');
-    slsDelivery = registerOutput<SiteDeliveryTaskSlsDelivery?>('slsDelivery');
+    slsDelivery = registerOutput<SiteDeliveryTaskSlsDelivery?>(
+      'slsDelivery',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SiteDeliveryTaskSlsDelivery.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String>('status');
     taskName = registerOutput<String>('taskName');
   }

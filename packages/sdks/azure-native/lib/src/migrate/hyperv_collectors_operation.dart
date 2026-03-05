@@ -264,13 +264,29 @@ class HypervCollectorsOperation extends pulumi.CustomResource {
        ) {
     agentProperties = registerOutput<CollectorAgentPropertiesBaseResponse?>(
       'agentProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CollectorAgentPropertiesBaseResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdTimestamp = registerOutput<String>('createdTimestamp');
     discoverySiteId = registerOutput<String?>('discoverySiteId');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String?>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     updatedTimestamp = registerOutput<String>('updatedTimestamp');
   }

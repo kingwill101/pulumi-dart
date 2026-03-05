@@ -333,6 +333,13 @@ class DatasetJson extends pulumi.CustomResource {
     azureBlobStorageLocation =
         registerOutput<DatasetJsonAzureBlobStorageLocation?>(
           'azureBlobStorageLocation',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DatasetJsonAzureBlobStorageLocation.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
@@ -340,6 +347,13 @@ class DatasetJson extends pulumi.CustomResource {
     folder = registerOutput<String?>('folder');
     httpServerLocation = registerOutput<DatasetJsonHttpServerLocation?>(
       'httpServerLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatasetJsonHttpServerLocation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');
@@ -379,6 +393,13 @@ class DatasetJson extends pulumi.CustomResource {
     azureBlobStorageLocation =
         registerOutput<DatasetJsonAzureBlobStorageLocation?>(
           'azureBlobStorageLocation',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DatasetJsonAzureBlobStorageLocation.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
@@ -386,6 +407,13 @@ class DatasetJson extends pulumi.CustomResource {
     folder = registerOutput<String?>('folder');
     httpServerLocation = registerOutput<DatasetJsonHttpServerLocation?>(
       'httpServerLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatasetJsonHttpServerLocation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');

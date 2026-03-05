@@ -308,7 +308,16 @@ class LoadBalancerBackendAddressPool extends pulumi.CustomResource {
     );
     location = registerOutput<String?>('location');
     this.name = registerOutput<String?>('name');
-    outboundRule = registerOutput<SubResourceResponse>('outboundRule');
+    outboundRule = registerOutput<SubResourceResponse>(
+      'outboundRule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     outboundRules = registerOutput<List<Map<String, dynamic>>>('outboundRules');
     provisioningState = registerOutput<String>('provisioningState');
     syncMode = registerOutput<String?>('syncMode');
@@ -316,6 +325,15 @@ class LoadBalancerBackendAddressPool extends pulumi.CustomResource {
       'tunnelInterfaces',
     );
     type = registerOutput<String>('type');
-    virtualNetwork = registerOutput<SubResourceResponse?>('virtualNetwork');
+    virtualNetwork = registerOutput<SubResourceResponse?>(
+      'virtualNetwork',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

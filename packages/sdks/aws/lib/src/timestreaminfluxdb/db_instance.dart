@@ -1127,6 +1127,13 @@ class DbInstance extends pulumi.CustomResource {
     logDeliveryConfiguration =
         registerOutput<DbInstanceLogDeliveryConfiguration?>(
           'logDeliveryConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DbInstanceLogDeliveryConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     networkType = registerOutput<String>('networkType');
@@ -1140,7 +1147,16 @@ class DbInstance extends pulumi.CustomResource {
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<DbInstanceTimeouts?>('timeouts');
+    timeouts = registerOutput<DbInstanceTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DbInstanceTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     username = registerOutput<String>('username');
     vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds');
     vpcSubnetIds = registerOutput<List<String>>('vpcSubnetIds');
@@ -1186,6 +1202,13 @@ class DbInstance extends pulumi.CustomResource {
     logDeliveryConfiguration =
         registerOutput<DbInstanceLogDeliveryConfiguration?>(
           'logDeliveryConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DbInstanceLogDeliveryConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     networkType = registerOutput<String>('networkType');
@@ -1199,7 +1222,16 @@ class DbInstance extends pulumi.CustomResource {
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<DbInstanceTimeouts?>('timeouts');
+    timeouts = registerOutput<DbInstanceTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DbInstanceTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     username = registerOutput<String>('username');
     vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds');
     vpcSubnetIds = registerOutput<List<String>>('vpcSubnetIds');

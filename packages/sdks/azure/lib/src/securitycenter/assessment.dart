@@ -570,7 +570,16 @@ class Assessment extends pulumi.CustomResource {
        ) {
     additionalData = registerOutput<Map<String, String>?>('additionalData');
     assessmentPolicyId = registerOutput<String>('assessmentPolicyId');
-    status = registerOutput<AssessmentStatus>('status');
+    status = registerOutput<AssessmentStatus>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AssessmentStatus.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     targetResourceId = registerOutput<String>('targetResourceId');
   }
 
@@ -599,7 +608,16 @@ class Assessment extends pulumi.CustomResource {
        ) {
     additionalData = registerOutput<Map<String, String>?>('additionalData');
     assessmentPolicyId = registerOutput<String>('assessmentPolicyId');
-    status = registerOutput<AssessmentStatus>('status');
+    status = registerOutput<AssessmentStatus>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AssessmentStatus.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     targetResourceId = registerOutput<String>('targetResourceId');
   }
 }

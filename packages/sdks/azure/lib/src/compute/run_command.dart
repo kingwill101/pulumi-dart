@@ -1516,6 +1516,13 @@ class RunCommand extends pulumi.CustomResource {
     errorBlobManagedIdentity =
         registerOutput<RunCommandErrorBlobManagedIdentity?>(
           'errorBlobManagedIdentity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RunCommandErrorBlobManagedIdentity.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     errorBlobUri = registerOutput<String?>('errorBlobUri');
     instanceViews = registerOutput<List<Map<String, dynamic>>>('instanceViews');
@@ -1524,6 +1531,13 @@ class RunCommand extends pulumi.CustomResource {
     outputBlobManagedIdentity =
         registerOutput<RunCommandOutputBlobManagedIdentity?>(
           'outputBlobManagedIdentity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RunCommandOutputBlobManagedIdentity.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     outputBlobUri = registerOutput<String?>('outputBlobUri');
     parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
@@ -1532,7 +1546,16 @@ class RunCommand extends pulumi.CustomResource {
     );
     runAsPassword = registerOutput<String?>('runAsPassword');
     runAsUser = registerOutput<String?>('runAsUser');
-    source = registerOutput<RunCommandSource>('source');
+    source = registerOutput<RunCommandSource>(
+      'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RunCommandSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     virtualMachineId = registerOutput<String>('virtualMachineId');
   }
@@ -1563,6 +1586,13 @@ class RunCommand extends pulumi.CustomResource {
     errorBlobManagedIdentity =
         registerOutput<RunCommandErrorBlobManagedIdentity?>(
           'errorBlobManagedIdentity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RunCommandErrorBlobManagedIdentity.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     errorBlobUri = registerOutput<String?>('errorBlobUri');
     instanceViews = registerOutput<List<Map<String, dynamic>>>('instanceViews');
@@ -1571,6 +1601,13 @@ class RunCommand extends pulumi.CustomResource {
     outputBlobManagedIdentity =
         registerOutput<RunCommandOutputBlobManagedIdentity?>(
           'outputBlobManagedIdentity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RunCommandOutputBlobManagedIdentity.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     outputBlobUri = registerOutput<String?>('outputBlobUri');
     parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
@@ -1579,7 +1616,16 @@ class RunCommand extends pulumi.CustomResource {
     );
     runAsPassword = registerOutput<String?>('runAsPassword');
     runAsUser = registerOutput<String?>('runAsUser');
-    source = registerOutput<RunCommandSource>('source');
+    source = registerOutput<RunCommandSource>(
+      'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RunCommandSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     virtualMachineId = registerOutput<String>('virtualMachineId');
   }

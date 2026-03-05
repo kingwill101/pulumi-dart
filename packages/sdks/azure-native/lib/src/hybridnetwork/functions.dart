@@ -167,7 +167,8 @@ Future<GetNetworkFunctionResult> getNetworkFunction(
 /// Other available API versions: 2023-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridnetwork [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_hybridnetwork_get_network_function_definition_group_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNetworkFunctionDefinitionGroupResult> getNetworkFunctionDefinitionGroup(
+Future<GetNetworkFunctionDefinitionGroupResult>
+getNetworkFunctionDefinitionGroup(
   GetNetworkFunctionDefinitionGroupArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -187,7 +188,8 @@ Future<GetNetworkFunctionDefinitionGroupResult> getNetworkFunctionDefinitionGrou
 /// Other available API versions: 2023-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridnetwork [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_hybridnetwork_get_network_function_definition_version_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNetworkFunctionDefinitionVersionResult> getNetworkFunctionDefinitionVersion(
+Future<GetNetworkFunctionDefinitionVersionResult>
+getNetworkFunctionDefinitionVersion(
   GetNetworkFunctionDefinitionVersionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -379,7 +381,8 @@ Future<ListArtifactManifestCredentialResult> listArtifactManifestCredential(
 /// Uses Azure REST API version 2024-04-15.
 /// [args] Arguments passed to this invoke. {@macro pulumi_hybridnetwork_list_artifact_store_network_fabric_controller_private_end_points_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListArtifactStoreNetworkFabricControllerPrivateEndPointsResult> listArtifactStoreNetworkFabricControllerPrivateEndPoints(
+Future<ListArtifactStoreNetworkFabricControllerPrivateEndPointsResult>
+listArtifactStoreNetworkFabricControllerPrivateEndPoints(
   ListArtifactStoreNetworkFabricControllerPrivateEndPointsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -389,7 +392,9 @@ Future<ListArtifactStoreNetworkFabricControllerPrivateEndPointsResult> listArtif
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return ListArtifactStoreNetworkFabricControllerPrivateEndPointsResult.fromMap(result);
+  return ListArtifactStoreNetworkFabricControllerPrivateEndPointsResult.fromMap(
+    result,
+  );
 }
 
 /// List manual private endpoints on artifact stores
@@ -397,7 +402,8 @@ Future<ListArtifactStoreNetworkFabricControllerPrivateEndPointsResult> listArtif
 /// Uses Azure REST API version 2024-04-15.
 /// [args] Arguments passed to this invoke. {@macro pulumi_hybridnetwork_list_artifact_store_private_end_points_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListArtifactStorePrivateEndPointsResult> listArtifactStorePrivateEndPoints(
+Future<ListArtifactStorePrivateEndPointsResult>
+listArtifactStorePrivateEndPoints(
   ListArtifactStorePrivateEndPointsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

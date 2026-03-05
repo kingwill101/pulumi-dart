@@ -838,7 +838,16 @@ class ClusterIAMMember extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     cluster = registerOutput<String>('cluster');
-    condition = registerOutput<ClusterIAMMemberCondition?>('condition');
+    condition = registerOutput<ClusterIAMMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterIAMMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     member = registerOutput<String>('member');
     project = registerOutput<String>('project');
@@ -870,7 +879,16 @@ class ClusterIAMMember extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     cluster = registerOutput<String>('cluster');
-    condition = registerOutput<ClusterIAMMemberCondition?>('condition');
+    condition = registerOutput<ClusterIAMMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterIAMMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     member = registerOutput<String>('member');
     project = registerOutput<String>('project');

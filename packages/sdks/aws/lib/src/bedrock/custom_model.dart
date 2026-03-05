@@ -332,25 +332,64 @@ class CustomModel extends pulumi.CustomResource {
     jobStatus = registerOutput<String>('jobStatus');
     outputDataConfig = registerOutput<CustomModelOutputDataConfig>(
       'outputDataConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomModelOutputDataConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<CustomModelTimeouts?>('timeouts');
+    timeouts = registerOutput<CustomModelTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomModelTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     trainingDataConfig = registerOutput<CustomModelTrainingDataConfig>(
       'trainingDataConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomModelTrainingDataConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     trainingMetrics = registerOutput<List<Map<String, dynamic>>>(
       'trainingMetrics',
     );
     validationDataConfig = registerOutput<CustomModelValidationDataConfig?>(
       'validationDataConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomModelValidationDataConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     validationMetrics = registerOutput<List<Map<String, dynamic>>>(
       'validationMetrics',
     );
-    vpcConfig = registerOutput<CustomModelVpcConfig?>('vpcConfig');
+    vpcConfig = registerOutput<CustomModelVpcConfig?>(
+      'vpcConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomModelVpcConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [CustomModel] resource's state with the given [name] and [id].
@@ -387,24 +426,63 @@ class CustomModel extends pulumi.CustomResource {
     jobStatus = registerOutput<String>('jobStatus');
     outputDataConfig = registerOutput<CustomModelOutputDataConfig>(
       'outputDataConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomModelOutputDataConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<CustomModelTimeouts?>('timeouts');
+    timeouts = registerOutput<CustomModelTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomModelTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     trainingDataConfig = registerOutput<CustomModelTrainingDataConfig>(
       'trainingDataConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomModelTrainingDataConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     trainingMetrics = registerOutput<List<Map<String, dynamic>>>(
       'trainingMetrics',
     );
     validationDataConfig = registerOutput<CustomModelValidationDataConfig?>(
       'validationDataConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomModelValidationDataConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     validationMetrics = registerOutput<List<Map<String, dynamic>>>(
       'validationMetrics',
     );
-    vpcConfig = registerOutput<CustomModelVpcConfig?>('vpcConfig');
+    vpcConfig = registerOutput<CustomModelVpcConfig?>(
+      'vpcConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomModelVpcConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

@@ -756,11 +756,25 @@ class LinkedServiceAzureDatabricks extends pulumi.CustomResource {
     existingClusterId = registerOutput<String?>('existingClusterId');
     instancePool = registerOutput<LinkedServiceAzureDatabricksInstancePool?>(
       'instancePool',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinkedServiceAzureDatabricksInstancePool.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
     keyVaultPassword =
         registerOutput<LinkedServiceAzureDatabricksKeyVaultPassword?>(
           'keyVaultPassword',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinkedServiceAzureDatabricksKeyVaultPassword.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     msiWorkSpaceResourceId = registerOutput<String>('msiWorkSpaceResourceId');
     msiWorkspaceId = registerOutput<String>('msiWorkspaceId');
@@ -768,6 +782,13 @@ class LinkedServiceAzureDatabricks extends pulumi.CustomResource {
     newClusterConfig =
         registerOutput<LinkedServiceAzureDatabricksNewClusterConfig?>(
           'newClusterConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinkedServiceAzureDatabricksNewClusterConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     parameters = registerOutput<Map<String, String>?>('parameters');
   }
@@ -806,11 +827,25 @@ class LinkedServiceAzureDatabricks extends pulumi.CustomResource {
     existingClusterId = registerOutput<String?>('existingClusterId');
     instancePool = registerOutput<LinkedServiceAzureDatabricksInstancePool?>(
       'instancePool',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinkedServiceAzureDatabricksInstancePool.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
     keyVaultPassword =
         registerOutput<LinkedServiceAzureDatabricksKeyVaultPassword?>(
           'keyVaultPassword',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinkedServiceAzureDatabricksKeyVaultPassword.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     msiWorkSpaceResourceId = registerOutput<String>('msiWorkSpaceResourceId');
     msiWorkspaceId = registerOutput<String>('msiWorkspaceId');
@@ -818,6 +853,13 @@ class LinkedServiceAzureDatabricks extends pulumi.CustomResource {
     newClusterConfig =
         registerOutput<LinkedServiceAzureDatabricksNewClusterConfig?>(
           'newClusterConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinkedServiceAzureDatabricksNewClusterConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     parameters = registerOutput<Map<String, String>?>('parameters');
   }

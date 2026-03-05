@@ -1826,21 +1826,60 @@ class Instance extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    adminSettings = registerOutput<InstanceAdminSettings?>('adminSettings');
+    adminSettings = registerOutput<InstanceAdminSettings?>(
+      'adminSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceAdminSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     consumerNetwork = registerOutput<String?>('consumerNetwork');
     controlledEgressConfig = registerOutput<InstanceControlledEgressConfig?>(
       'controlledEgressConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceControlledEgressConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     controlledEgressEnabled = registerOutput<bool?>('controlledEgressEnabled');
     createTime = registerOutput<String>('createTime');
-    customDomain = registerOutput<InstanceCustomDomain?>('customDomain');
+    customDomain = registerOutput<InstanceCustomDomain?>(
+      'customDomain',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceCustomDomain.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     deletionPolicy = registerOutput<String?>('deletionPolicy');
     denyMaintenancePeriod = registerOutput<InstanceDenyMaintenancePeriod?>(
       'denyMaintenancePeriod',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceDenyMaintenancePeriod.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     egressPublicIp = registerOutput<String>('egressPublicIp');
     encryptionConfig = registerOutput<InstanceEncryptionConfig>(
       'encryptionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceEncryptionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     fipsEnabled = registerOutput<bool?>('fipsEnabled');
     geminiEnabled = registerOutput<bool?>('geminiEnabled');
@@ -1850,22 +1889,63 @@ class Instance extends pulumi.CustomResource {
     lookerVersion = registerOutput<String>('lookerVersion');
     maintenanceWindow = registerOutput<InstanceMaintenanceWindow?>(
       'maintenanceWindow',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceMaintenanceWindow.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
-    oauthConfig = registerOutput<InstanceOauthConfig>('oauthConfig');
+    oauthConfig = registerOutput<InstanceOauthConfig>(
+      'oauthConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceOauthConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     periodicExportConfig = registerOutput<InstancePeriodicExportConfig?>(
       'periodicExportConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstancePeriodicExportConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     platformEdition = registerOutput<String?>('platformEdition');
     privateIpEnabled = registerOutput<bool?>('privateIpEnabled');
     project = registerOutput<String>('project');
-    pscConfig = registerOutput<InstancePscConfig>('pscConfig');
+    pscConfig = registerOutput<InstancePscConfig>(
+      'pscConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstancePscConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     pscEnabled = registerOutput<bool?>('pscEnabled');
     publicIpEnabled = registerOutput<bool?>('publicIpEnabled');
     region = registerOutput<String>('region');
     reservedRange = registerOutput<String?>('reservedRange');
     updateTime = registerOutput<String>('updateTime');
-    userMetadata = registerOutput<InstanceUserMetadata?>('userMetadata');
+    userMetadata = registerOutput<InstanceUserMetadata?>(
+      'userMetadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceUserMetadata.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Instance] resource's state with the given [name] and [id].
@@ -1891,21 +1971,60 @@ class Instance extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    adminSettings = registerOutput<InstanceAdminSettings?>('adminSettings');
+    adminSettings = registerOutput<InstanceAdminSettings?>(
+      'adminSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceAdminSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     consumerNetwork = registerOutput<String?>('consumerNetwork');
     controlledEgressConfig = registerOutput<InstanceControlledEgressConfig?>(
       'controlledEgressConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceControlledEgressConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     controlledEgressEnabled = registerOutput<bool?>('controlledEgressEnabled');
     createTime = registerOutput<String>('createTime');
-    customDomain = registerOutput<InstanceCustomDomain?>('customDomain');
+    customDomain = registerOutput<InstanceCustomDomain?>(
+      'customDomain',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceCustomDomain.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     deletionPolicy = registerOutput<String?>('deletionPolicy');
     denyMaintenancePeriod = registerOutput<InstanceDenyMaintenancePeriod?>(
       'denyMaintenancePeriod',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceDenyMaintenancePeriod.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     egressPublicIp = registerOutput<String>('egressPublicIp');
     encryptionConfig = registerOutput<InstanceEncryptionConfig>(
       'encryptionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceEncryptionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     fipsEnabled = registerOutput<bool?>('fipsEnabled');
     geminiEnabled = registerOutput<bool?>('geminiEnabled');
@@ -1915,21 +2034,62 @@ class Instance extends pulumi.CustomResource {
     lookerVersion = registerOutput<String>('lookerVersion');
     maintenanceWindow = registerOutput<InstanceMaintenanceWindow?>(
       'maintenanceWindow',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceMaintenanceWindow.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
-    oauthConfig = registerOutput<InstanceOauthConfig>('oauthConfig');
+    oauthConfig = registerOutput<InstanceOauthConfig>(
+      'oauthConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceOauthConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     periodicExportConfig = registerOutput<InstancePeriodicExportConfig?>(
       'periodicExportConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstancePeriodicExportConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     platformEdition = registerOutput<String?>('platformEdition');
     privateIpEnabled = registerOutput<bool?>('privateIpEnabled');
     project = registerOutput<String>('project');
-    pscConfig = registerOutput<InstancePscConfig>('pscConfig');
+    pscConfig = registerOutput<InstancePscConfig>(
+      'pscConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstancePscConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     pscEnabled = registerOutput<bool?>('pscEnabled');
     publicIpEnabled = registerOutput<bool?>('publicIpEnabled');
     region = registerOutput<String>('region');
     reservedRange = registerOutput<String?>('reservedRange');
     updateTime = registerOutput<String>('updateTime');
-    userMetadata = registerOutput<InstanceUserMetadata?>('userMetadata');
+    userMetadata = registerOutput<InstanceUserMetadata?>(
+      'userMetadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceUserMetadata.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

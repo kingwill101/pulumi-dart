@@ -804,7 +804,16 @@ class AccountIamBinding extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     billingAccountId = registerOutput<String>('billingAccountId');
-    condition = registerOutput<AccountIamBindingCondition?>('condition');
+    condition = registerOutput<AccountIamBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     members = registerOutput<List<String>>('members');
     role = registerOutput<String>('role');
@@ -834,7 +843,16 @@ class AccountIamBinding extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     billingAccountId = registerOutput<String>('billingAccountId');
-    condition = registerOutput<AccountIamBindingCondition?>('condition');
+    condition = registerOutput<AccountIamBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     members = registerOutput<List<String>>('members');
     role = registerOutput<String>('role');

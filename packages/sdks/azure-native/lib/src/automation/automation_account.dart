@@ -240,9 +240,27 @@ class AutomationAccount extends pulumi.CustomResource {
     creationTime = registerOutput<String>('creationTime');
     description = registerOutput<String?>('description');
     disableLocalAuth = registerOutput<bool?>('disableLocalAuth');
-    encryption = registerOutput<EncryptionPropertiesResponse?>('encryption');
+    encryption = registerOutput<EncryptionPropertiesResponse?>(
+      'encryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EncryptionPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String?>('etag');
-    identity = registerOutput<IdentityResponse?>('identity');
+    identity = registerOutput<IdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     lastModifiedBy = registerOutput<String?>('lastModifiedBy');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     location = registerOutput<String?>('location');
@@ -251,9 +269,27 @@ class AutomationAccount extends pulumi.CustomResource {
       'privateEndpointConnections',
     );
     publicNetworkAccess = registerOutput<bool?>('publicNetworkAccess');
-    sku = registerOutput<SkuResponse?>('sku');
+    sku = registerOutput<SkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     state = registerOutput<String>('state');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

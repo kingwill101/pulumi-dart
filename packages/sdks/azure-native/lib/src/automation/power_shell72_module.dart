@@ -247,7 +247,16 @@ class PowerShell72Module extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     creationTime = registerOutput<String?>('creationTime');
     description = registerOutput<String?>('description');
-    error = registerOutput<ModuleErrorInfoResponse?>('error');
+    error = registerOutput<ModuleErrorInfoResponse?>(
+      'error',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ModuleErrorInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String?>('etag');
     isComposite = registerOutput<bool?>('isComposite');
     isGlobal = registerOutput<bool?>('isGlobal');

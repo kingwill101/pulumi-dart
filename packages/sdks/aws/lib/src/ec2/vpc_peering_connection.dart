@@ -655,13 +655,31 @@ class VpcPeeringConnection extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     acceptStatus = registerOutput<String>('acceptStatus');
-    accepter = registerOutput<VpcPeeringConnectionAccepter>('accepter');
+    accepter = registerOutput<VpcPeeringConnectionAccepter>(
+      'accepter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpcPeeringConnectionAccepter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     autoAccept = registerOutput<bool?>('autoAccept');
     peerOwnerId = registerOutput<String>('peerOwnerId');
     peerRegion = registerOutput<String>('peerRegion');
     peerVpcId = registerOutput<String>('peerVpcId');
     region = registerOutput<String>('region');
-    requester = registerOutput<VpcPeeringConnectionRequester>('requester');
+    requester = registerOutput<VpcPeeringConnectionRequester>(
+      'requester',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpcPeeringConnectionRequester.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     vpcId = registerOutput<String>('vpcId');
@@ -691,13 +709,31 @@ class VpcPeeringConnection extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     acceptStatus = registerOutput<String>('acceptStatus');
-    accepter = registerOutput<VpcPeeringConnectionAccepter>('accepter');
+    accepter = registerOutput<VpcPeeringConnectionAccepter>(
+      'accepter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpcPeeringConnectionAccepter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     autoAccept = registerOutput<bool?>('autoAccept');
     peerOwnerId = registerOutput<String>('peerOwnerId');
     peerRegion = registerOutput<String>('peerRegion');
     peerVpcId = registerOutput<String>('peerVpcId');
     region = registerOutput<String>('region');
-    requester = registerOutput<VpcPeeringConnectionRequester>('requester');
+    requester = registerOutput<VpcPeeringConnectionRequester>(
+      'requester',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpcPeeringConnectionRequester.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     vpcId = registerOutput<String>('vpcId');

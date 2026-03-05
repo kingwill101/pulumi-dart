@@ -468,18 +468,39 @@ class ServerlessKubernetes extends pulumi.CustomResource {
     loggingType = registerOutput<String?>('loggingType');
     maintenanceWindow = registerOutput<ServerlessKubernetesMaintenanceWindow>(
       'maintenanceWindow',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerlessKubernetesMaintenanceWindow.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String?>('namePrefix');
     newNatGateway = registerOutput<bool?>('newNatGateway');
     operationPolicy = registerOutput<ServerlessKubernetesOperationPolicy>(
       'operationPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerlessKubernetesOperationPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     privateZone = registerOutput<bool?>('privateZone');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     retainResources = registerOutput<List<String>?>('retainResources');
     rrsaMetadata = registerOutput<ServerlessKubernetesRrsaMetadata>(
       'rrsaMetadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerlessKubernetesRrsaMetadata.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     securityGroupId = registerOutput<String>('securityGroupId');
     serviceCidr = registerOutput<String?>('serviceCidr');
@@ -537,18 +558,39 @@ class ServerlessKubernetes extends pulumi.CustomResource {
     loggingType = registerOutput<String?>('loggingType');
     maintenanceWindow = registerOutput<ServerlessKubernetesMaintenanceWindow>(
       'maintenanceWindow',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerlessKubernetesMaintenanceWindow.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String?>('namePrefix');
     newNatGateway = registerOutput<bool?>('newNatGateway');
     operationPolicy = registerOutput<ServerlessKubernetesOperationPolicy>(
       'operationPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerlessKubernetesOperationPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     privateZone = registerOutput<bool?>('privateZone');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     retainResources = registerOutput<List<String>?>('retainResources');
     rrsaMetadata = registerOutput<ServerlessKubernetesRrsaMetadata>(
       'rrsaMetadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerlessKubernetesRrsaMetadata.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     securityGroupId = registerOutput<String>('securityGroupId');
     serviceCidr = registerOutput<String?>('serviceCidr');

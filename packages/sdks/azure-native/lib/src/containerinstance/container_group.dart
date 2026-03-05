@@ -1334,21 +1334,67 @@ class ContainerGroup extends pulumi.CustomResource {
     confidentialComputeProperties =
         registerOutput<ConfidentialComputePropertiesResponse?>(
           'confidentialComputeProperties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConfidentialComputePropertiesResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     containerGroupProfile =
         registerOutput<ContainerGroupProfileReferenceDefinitionResponse?>(
           'containerGroupProfile',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ContainerGroupProfileReferenceDefinitionResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     containers = registerOutput<List<Map<String, dynamic>>>('containers');
     diagnostics = registerOutput<ContainerGroupDiagnosticsResponse?>(
       'diagnostics',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContainerGroupDiagnosticsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    dnsConfig = registerOutput<DnsConfigurationResponse?>('dnsConfig');
+    dnsConfig = registerOutput<DnsConfigurationResponse?>(
+      'dnsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DnsConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     encryptionProperties = registerOutput<EncryptionPropertiesResponse?>(
       'encryptionProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EncryptionPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     extensions = registerOutput<List<Map<String, dynamic>>?>('extensions');
-    identity = registerOutput<ContainerGroupIdentityResponse?>('identity');
+    identity = registerOutput<ContainerGroupIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContainerGroupIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     imageRegistryCredentials = registerOutput<List<Map<String, dynamic>>?>(
       'imageRegistryCredentials',
     );
@@ -1357,8 +1403,24 @@ class ContainerGroup extends pulumi.CustomResource {
     );
     instanceView = registerOutput<ContainerGroupPropertiesResponseInstanceView>(
       'instanceView',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContainerGroupPropertiesResponseInstanceView.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    ipAddress = registerOutput<IpAddressResponse?>('ipAddress');
+    ipAddress = registerOutput<IpAddressResponse?>(
+      'ipAddress',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IpAddressResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     isCreatedFromStandbyPool = registerOutput<bool>('isCreatedFromStandbyPool');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
@@ -1369,6 +1431,13 @@ class ContainerGroup extends pulumi.CustomResource {
     sku = registerOutput<String?>('sku');
     standbyPoolProfile = registerOutput<StandbyPoolProfileDefinitionResponse?>(
       'standbyPoolProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StandbyPoolProfileDefinitionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     subnetIds = registerOutput<List<Map<String, dynamic>>?>('subnetIds');
     tags = registerOutput<Map<String, String>?>('tags');

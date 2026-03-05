@@ -278,6 +278,13 @@ class ReplicationRecoveryServicesProvider extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     properties = registerOutput<RecoveryServicesProviderPropertiesResponse>(
       'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RecoveryServicesProviderPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     type = registerOutput<String>('type');
   }

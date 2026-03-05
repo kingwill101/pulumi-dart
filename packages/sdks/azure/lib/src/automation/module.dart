@@ -244,7 +244,16 @@ class Module extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     automationAccountName = registerOutput<String>('automationAccountName');
-    moduleLink = registerOutput<ModuleModuleLink>('moduleLink');
+    moduleLink = registerOutput<ModuleModuleLink>(
+      'moduleLink',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ModuleModuleLink.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
   }
@@ -273,7 +282,16 @@ class Module extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     automationAccountName = registerOutput<String>('automationAccountName');
-    moduleLink = registerOutput<ModuleModuleLink>('moduleLink');
+    moduleLink = registerOutput<ModuleModuleLink>(
+      'moduleLink',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ModuleModuleLink.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
   }

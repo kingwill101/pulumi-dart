@@ -348,6 +348,13 @@ class ContainerRecipe extends pulumi.CustomResource {
     instanceConfiguration =
         registerOutput<ContainerRecipeInstanceConfiguration?>(
           'instanceConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ContainerRecipeInstanceConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     kmsKeyId = registerOutput<String?>('kmsKeyId');
     this.name = registerOutput<String>('name');
@@ -360,6 +367,13 @@ class ContainerRecipe extends pulumi.CustomResource {
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     targetRepository = registerOutput<ContainerRecipeTargetRepository>(
       'targetRepository',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContainerRecipeTargetRepository.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     version = registerOutput<String>('version');
     workingDirectory = registerOutput<String?>('workingDirectory');
@@ -399,6 +413,13 @@ class ContainerRecipe extends pulumi.CustomResource {
     instanceConfiguration =
         registerOutput<ContainerRecipeInstanceConfiguration?>(
           'instanceConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ContainerRecipeInstanceConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     kmsKeyId = registerOutput<String?>('kmsKeyId');
     this.name = registerOutput<String>('name');
@@ -411,6 +432,13 @@ class ContainerRecipe extends pulumi.CustomResource {
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     targetRepository = registerOutput<ContainerRecipeTargetRepository>(
       'targetRepository',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContainerRecipeTargetRepository.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     version = registerOutput<String>('version');
     workingDirectory = registerOutput<String?>('workingDirectory');

@@ -61,6 +61,13 @@ class Instance extends pulumi.CustomResource {
        ) {
     autoscalingConfig = registerOutput<AutoscalingConfigResponse>(
       'autoscalingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AutoscalingConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     config = registerOutput<String>('config');
     createTime = registerOutput<String>('createTime');
@@ -68,6 +75,13 @@ class Instance extends pulumi.CustomResource {
     endpointUris = registerOutput<List<String>>('endpointUris');
     freeInstanceMetadata = registerOutput<FreeInstanceMetadataResponse>(
       'freeInstanceMetadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FreeInstanceMetadataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     instanceType = registerOutput<String>('instanceType');
     labels = registerOutput<Map<String, String>>('labels');

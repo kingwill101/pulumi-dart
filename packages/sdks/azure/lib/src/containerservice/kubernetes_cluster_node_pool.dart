@@ -467,11 +467,25 @@ class KubernetesClusterNodePool extends pulumi.CustomResource {
     hostGroupId = registerOutput<String?>('hostGroupId');
     kubeletConfig = registerOutput<KubernetesClusterNodePoolKubeletConfig?>(
       'kubeletConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KubernetesClusterNodePoolKubeletConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     kubeletDiskType = registerOutput<String>('kubeletDiskType');
     kubernetesClusterId = registerOutput<String>('kubernetesClusterId');
     linuxOsConfig = registerOutput<KubernetesClusterNodePoolLinuxOsConfig?>(
       'linuxOsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KubernetesClusterNodePoolLinuxOsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     maxCount = registerOutput<int?>('maxCount');
     maxPods = registerOutput<int>('maxPods');
@@ -483,6 +497,13 @@ class KubernetesClusterNodePool extends pulumi.CustomResource {
     nodeNetworkProfile =
         registerOutput<KubernetesClusterNodePoolNodeNetworkProfile?>(
           'nodeNetworkProfile',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return KubernetesClusterNodePoolNodeNetworkProfile.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     nodePublicIpEnabled = registerOutput<bool?>('nodePublicIpEnabled');
     nodePublicIpPrefixId = registerOutput<String?>('nodePublicIpPrefixId');
@@ -507,11 +528,25 @@ class KubernetesClusterNodePool extends pulumi.CustomResource {
     ultraSsdEnabled = registerOutput<bool?>('ultraSsdEnabled');
     upgradeSettings = registerOutput<KubernetesClusterNodePoolUpgradeSettings?>(
       'upgradeSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KubernetesClusterNodePoolUpgradeSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     vmSize = registerOutput<String>('vmSize');
     vnetSubnetId = registerOutput<String?>('vnetSubnetId');
     windowsProfile = registerOutput<KubernetesClusterNodePoolWindowsProfile?>(
       'windowsProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KubernetesClusterNodePoolWindowsProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     workloadRuntime = registerOutput<String?>('workloadRuntime');
     zones = registerOutput<List<String>?>('zones');
@@ -552,11 +587,25 @@ class KubernetesClusterNodePool extends pulumi.CustomResource {
     hostGroupId = registerOutput<String?>('hostGroupId');
     kubeletConfig = registerOutput<KubernetesClusterNodePoolKubeletConfig?>(
       'kubeletConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KubernetesClusterNodePoolKubeletConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     kubeletDiskType = registerOutput<String>('kubeletDiskType');
     kubernetesClusterId = registerOutput<String>('kubernetesClusterId');
     linuxOsConfig = registerOutput<KubernetesClusterNodePoolLinuxOsConfig?>(
       'linuxOsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KubernetesClusterNodePoolLinuxOsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     maxCount = registerOutput<int?>('maxCount');
     maxPods = registerOutput<int>('maxPods');
@@ -568,6 +617,13 @@ class KubernetesClusterNodePool extends pulumi.CustomResource {
     nodeNetworkProfile =
         registerOutput<KubernetesClusterNodePoolNodeNetworkProfile?>(
           'nodeNetworkProfile',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return KubernetesClusterNodePoolNodeNetworkProfile.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     nodePublicIpEnabled = registerOutput<bool?>('nodePublicIpEnabled');
     nodePublicIpPrefixId = registerOutput<String?>('nodePublicIpPrefixId');
@@ -592,11 +648,25 @@ class KubernetesClusterNodePool extends pulumi.CustomResource {
     ultraSsdEnabled = registerOutput<bool?>('ultraSsdEnabled');
     upgradeSettings = registerOutput<KubernetesClusterNodePoolUpgradeSettings?>(
       'upgradeSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KubernetesClusterNodePoolUpgradeSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     vmSize = registerOutput<String>('vmSize');
     vnetSubnetId = registerOutput<String?>('vnetSubnetId');
     windowsProfile = registerOutput<KubernetesClusterNodePoolWindowsProfile?>(
       'windowsProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KubernetesClusterNodePoolWindowsProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     workloadRuntime = registerOutput<String?>('workloadRuntime');
     zones = registerOutput<List<String>?>('zones');

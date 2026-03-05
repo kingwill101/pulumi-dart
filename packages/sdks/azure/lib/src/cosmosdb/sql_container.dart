@@ -420,15 +420,36 @@ class SqlContainer extends pulumi.CustomResource {
     analyticalStorageTtl = registerOutput<int?>('analyticalStorageTtl');
     autoscaleSettings = registerOutput<SqlContainerAutoscaleSettings?>(
       'autoscaleSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SqlContainerAutoscaleSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     conflictResolutionPolicy =
         registerOutput<SqlContainerConflictResolutionPolicy>(
           'conflictResolutionPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SqlContainerConflictResolutionPolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     databaseName = registerOutput<String>('databaseName');
     defaultTtl = registerOutput<int?>('defaultTtl');
     indexingPolicy = registerOutput<SqlContainerIndexingPolicy>(
       'indexingPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SqlContainerIndexingPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     partitionKeyKind = registerOutput<String?>('partitionKeyKind');
@@ -466,15 +487,36 @@ class SqlContainer extends pulumi.CustomResource {
     analyticalStorageTtl = registerOutput<int?>('analyticalStorageTtl');
     autoscaleSettings = registerOutput<SqlContainerAutoscaleSettings?>(
       'autoscaleSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SqlContainerAutoscaleSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     conflictResolutionPolicy =
         registerOutput<SqlContainerConflictResolutionPolicy>(
           'conflictResolutionPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SqlContainerConflictResolutionPolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     databaseName = registerOutput<String>('databaseName');
     defaultTtl = registerOutput<int?>('defaultTtl');
     indexingPolicy = registerOutput<SqlContainerIndexingPolicy>(
       'indexingPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SqlContainerIndexingPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     partitionKeyKind = registerOutput<String?>('partitionKeyKind');

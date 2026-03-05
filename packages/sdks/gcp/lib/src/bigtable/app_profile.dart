@@ -1059,6 +1059,13 @@ class AppProfile extends pulumi.CustomResource {
     dataBoostIsolationReadOnly =
         registerOutput<AppProfileDataBoostIsolationReadOnly?>(
           'dataBoostIsolationReadOnly',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AppProfileDataBoostIsolationReadOnly.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String?>('description');
     ignoreWarnings = registerOutput<bool?>('ignoreWarnings');
@@ -1074,9 +1081,23 @@ class AppProfile extends pulumi.CustomResource {
     rowAffinity = registerOutput<bool?>('rowAffinity');
     singleClusterRouting = registerOutput<AppProfileSingleClusterRouting?>(
       'singleClusterRouting',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppProfileSingleClusterRouting.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     standardIsolation = registerOutput<AppProfileStandardIsolation>(
       'standardIsolation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppProfileStandardIsolation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -1107,6 +1128,13 @@ class AppProfile extends pulumi.CustomResource {
     dataBoostIsolationReadOnly =
         registerOutput<AppProfileDataBoostIsolationReadOnly?>(
           'dataBoostIsolationReadOnly',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AppProfileDataBoostIsolationReadOnly.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String?>('description');
     ignoreWarnings = registerOutput<bool?>('ignoreWarnings');
@@ -1122,9 +1150,23 @@ class AppProfile extends pulumi.CustomResource {
     rowAffinity = registerOutput<bool?>('rowAffinity');
     singleClusterRouting = registerOutput<AppProfileSingleClusterRouting?>(
       'singleClusterRouting',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppProfileSingleClusterRouting.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     standardIsolation = registerOutput<AppProfileStandardIsolation>(
       'standardIsolation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppProfileStandardIsolation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

@@ -89,17 +89,53 @@ class Service extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     internetAccess = registerOutput<bool?>('internetAccess');
     lastModified = registerOutput<String>('lastModified');
-    logConfig = registerOutput<ServiceLogConfig?>('logConfig');
+    logConfig = registerOutput<ServiceLogConfig?>(
+      'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String?>('namePrefix');
-    nasConfig = registerOutput<ServiceNasConfig?>('nasConfig');
+    nasConfig = registerOutput<ServiceNasConfig?>(
+      'nasConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceNasConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     publish = registerOutput<bool?>('publish');
     role = registerOutput<String?>('role');
     serviceId = registerOutput<String>('serviceId');
     tags = registerOutput<Map<String, String>?>('tags');
-    tracingConfig = registerOutput<ServiceTracingConfig?>('tracingConfig');
+    tracingConfig = registerOutput<ServiceTracingConfig?>(
+      'tracingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceTracingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     version = registerOutput<String>('version');
-    vpcConfig = registerOutput<ServiceVpcConfig?>('vpcConfig');
+    vpcConfig = registerOutput<ServiceVpcConfig?>(
+      'vpcConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceVpcConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Service] resource's state with the given [name] and [id].
@@ -128,16 +164,52 @@ class Service extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     internetAccess = registerOutput<bool?>('internetAccess');
     lastModified = registerOutput<String>('lastModified');
-    logConfig = registerOutput<ServiceLogConfig?>('logConfig');
+    logConfig = registerOutput<ServiceLogConfig?>(
+      'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String?>('namePrefix');
-    nasConfig = registerOutput<ServiceNasConfig?>('nasConfig');
+    nasConfig = registerOutput<ServiceNasConfig?>(
+      'nasConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceNasConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     publish = registerOutput<bool?>('publish');
     role = registerOutput<String?>('role');
     serviceId = registerOutput<String>('serviceId');
     tags = registerOutput<Map<String, String>?>('tags');
-    tracingConfig = registerOutput<ServiceTracingConfig?>('tracingConfig');
+    tracingConfig = registerOutput<ServiceTracingConfig?>(
+      'tracingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceTracingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     version = registerOutput<String>('version');
-    vpcConfig = registerOutput<ServiceVpcConfig?>('vpcConfig');
+    vpcConfig = registerOutput<ServiceVpcConfig?>(
+      'vpcConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceVpcConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

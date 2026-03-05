@@ -254,9 +254,23 @@ class SigningProfile extends pulumi.CustomResource {
     signatureValidityPeriod =
         registerOutput<SigningProfileSignatureValidityPeriod>(
           'signatureValidityPeriod',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SigningProfileSignatureValidityPeriod.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     signingMaterial = registerOutput<SigningProfileSigningMaterial>(
       'signingMaterial',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SigningProfileSigningMaterial.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     signingParameters = registerOutput<Map<String, String>?>(
       'signingParameters',
@@ -303,9 +317,23 @@ class SigningProfile extends pulumi.CustomResource {
     signatureValidityPeriod =
         registerOutput<SigningProfileSignatureValidityPeriod>(
           'signatureValidityPeriod',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SigningProfileSignatureValidityPeriod.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     signingMaterial = registerOutput<SigningProfileSigningMaterial>(
       'signingMaterial',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SigningProfileSigningMaterial.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     signingParameters = registerOutput<Map<String, String>?>(
       'signingParameters',

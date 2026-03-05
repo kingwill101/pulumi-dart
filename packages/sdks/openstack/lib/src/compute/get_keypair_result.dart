@@ -1,18 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getKeypair.
 class GetKeypairResult {
   /// The fingerprint of the OpenSSH key.
   final String fingerprint;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// See Argument Reference above.
   final String name;
+
   /// The OpenSSH-formatted public key of the keypair.
   final String publicKey;
+
   /// See Argument Reference above.
   final String region;
+
   /// See Argument Reference above.
   final String userId;
 
@@ -54,4 +58,3 @@ class GetKeypairResult {
     );
   }
 }
-

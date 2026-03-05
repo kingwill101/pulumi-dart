@@ -139,12 +139,26 @@ class SnapshotComputeV1 extends pulumi.CustomResource {
     snapshotEncryptionKey =
         registerOutput<CustomerEncryptionKeyResponseComputeV1>(
           'snapshotEncryptionKey',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CustomerEncryptionKeyResponseComputeV1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     snapshotType = registerOutput<String>('snapshotType');
     sourceDisk = registerOutput<String>('sourceDisk');
     sourceDiskEncryptionKey =
         registerOutput<CustomerEncryptionKeyResponseComputeV1>(
           'sourceDiskEncryptionKey',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CustomerEncryptionKeyResponseComputeV1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     sourceDiskForRecoveryCheckpoint = registerOutput<String>(
       'sourceDiskForRecoveryCheckpoint',

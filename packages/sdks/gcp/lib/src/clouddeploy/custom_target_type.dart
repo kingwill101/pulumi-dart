@@ -835,6 +835,13 @@ class CustomTargetType extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     customActions = registerOutput<CustomTargetTypeCustomActions?>(
       'customActions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomTargetTypeCustomActions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     customTargetTypeId = registerOutput<String>('customTargetTypeId');
     description = registerOutput<String?>('description');
@@ -879,6 +886,13 @@ class CustomTargetType extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     customActions = registerOutput<CustomTargetTypeCustomActions?>(
       'customActions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomTargetTypeCustomActions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     customTargetTypeId = registerOutput<String>('customTargetTypeId');
     description = registerOutput<String?>('description');

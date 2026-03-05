@@ -314,6 +314,13 @@ class LiteSubscription extends pulumi.CustomResource {
        ) {
     deliveryConfig = registerOutput<LiteSubscriptionDeliveryConfig?>(
       'deliveryConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LiteSubscriptionDeliveryConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -347,6 +354,13 @@ class LiteSubscription extends pulumi.CustomResource {
        ) {
     deliveryConfig = registerOutput<LiteSubscriptionDeliveryConfig?>(
       'deliveryConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LiteSubscriptionDeliveryConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

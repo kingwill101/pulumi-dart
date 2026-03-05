@@ -20,7 +20,7 @@ import 'package:pulumi_google_native/pulumi_google_native.dart' as provider;
 dependencies:
   pulumi_google_native:
     git:
-      url: https://github.com/<owner>/<repo>.git
+      url: https://github.com/kingwill101/pulumi-dart.git
       path: packages/google-native
       ref: main
 ~~~

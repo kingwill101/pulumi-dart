@@ -173,6 +173,13 @@ class Partition extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     storageDescriptor = registerOutput<PartitionStorageDescriptor?>(
       'storageDescriptor',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PartitionStorageDescriptor.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tableName = registerOutput<String>('tableName');
   }
@@ -210,6 +217,13 @@ class Partition extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     storageDescriptor = registerOutput<PartitionStorageDescriptor?>(
       'storageDescriptor',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PartitionStorageDescriptor.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tableName = registerOutput<String>('tableName');
   }

@@ -1030,10 +1030,26 @@ class AutonomousDatabase extends pulumi.CustomResource {
       'peerAutonomousDatabases',
     );
     project = registerOutput<String>('project');
-    properties = registerOutput<AutonomousDatabaseProperties>('properties');
+    properties = registerOutput<AutonomousDatabaseProperties>(
+      'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AutonomousDatabaseProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     sourceConfig = registerOutput<AutonomousDatabaseSourceConfig?>(
       'sourceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AutonomousDatabaseSourceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -1082,10 +1098,26 @@ class AutonomousDatabase extends pulumi.CustomResource {
       'peerAutonomousDatabases',
     );
     project = registerOutput<String>('project');
-    properties = registerOutput<AutonomousDatabaseProperties>('properties');
+    properties = registerOutput<AutonomousDatabaseProperties>(
+      'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AutonomousDatabaseProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     sourceConfig = registerOutput<AutonomousDatabaseSourceConfig?>(
       'sourceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AutonomousDatabaseSourceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

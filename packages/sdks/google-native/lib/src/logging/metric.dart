@@ -54,7 +54,16 @@ class Metric extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     bucketName = registerOutput<String>('bucketName');
-    bucketOptions = registerOutput<BucketOptionsResponse>('bucketOptions');
+    bucketOptions = registerOutput<BucketOptionsResponse>(
+      'bucketOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketOptionsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     disabled = registerOutput<bool>('disabled');
@@ -62,6 +71,13 @@ class Metric extends pulumi.CustomResource {
     labelExtractors = registerOutput<Map<String, String>>('labelExtractors');
     metricDescriptor = registerOutput<MetricDescriptorResponse>(
       'metricDescriptor',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MetricDescriptorResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

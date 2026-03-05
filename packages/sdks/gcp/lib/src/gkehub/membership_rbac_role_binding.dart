@@ -402,7 +402,16 @@ class MembershipRbacRoleBinding extends pulumi.CustomResource {
     );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    role = registerOutput<MembershipRbacRoleBindingRole>('role');
+    role = registerOutput<MembershipRbacRoleBindingRole>(
+      'role',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MembershipRbacRoleBindingRole.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     states = registerOutput<List<Map<String, dynamic>>>('states');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
@@ -441,7 +450,16 @@ class MembershipRbacRoleBinding extends pulumi.CustomResource {
     );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    role = registerOutput<MembershipRbacRoleBindingRole>('role');
+    role = registerOutput<MembershipRbacRoleBindingRole>(
+      'role',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MembershipRbacRoleBindingRole.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     states = registerOutput<List<Map<String, dynamic>>>('states');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');

@@ -57,6 +57,13 @@ class JobTrigger extends pulumi.CustomResource {
     errors = registerOutput<List<Map<String, dynamic>>>('errors');
     inspectJob = registerOutput<GooglePrivacyDlpV2InspectJobConfigResponse>(
       'inspectJob',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GooglePrivacyDlpV2InspectJobConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     lastRunTime = registerOutput<String>('lastRunTime');
     location = registerOutput<String>('location');

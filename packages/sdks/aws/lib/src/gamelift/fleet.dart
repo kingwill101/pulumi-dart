@@ -244,6 +244,13 @@ class Fleet extends pulumi.CustomResource {
     buildId = registerOutput<String?>('buildId');
     certificateConfiguration = registerOutput<FleetCertificateConfiguration>(
       'certificateConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FleetCertificateConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     ec2InboundPermissions = registerOutput<List<Map<String, dynamic>>>(
@@ -263,9 +270,23 @@ class Fleet extends pulumi.CustomResource {
     resourceCreationLimitPolicy =
         registerOutput<FleetResourceCreationLimitPolicy?>(
           'resourceCreationLimitPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FleetResourceCreationLimitPolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     runtimeConfiguration = registerOutput<FleetRuntimeConfiguration?>(
       'runtimeConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FleetRuntimeConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     scriptArn = registerOutput<String>('scriptArn');
     scriptId = registerOutput<String?>('scriptId');
@@ -297,6 +318,13 @@ class Fleet extends pulumi.CustomResource {
     buildId = registerOutput<String?>('buildId');
     certificateConfiguration = registerOutput<FleetCertificateConfiguration>(
       'certificateConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FleetCertificateConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     ec2InboundPermissions = registerOutput<List<Map<String, dynamic>>>(
@@ -316,9 +344,23 @@ class Fleet extends pulumi.CustomResource {
     resourceCreationLimitPolicy =
         registerOutput<FleetResourceCreationLimitPolicy?>(
           'resourceCreationLimitPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FleetResourceCreationLimitPolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     runtimeConfiguration = registerOutput<FleetRuntimeConfiguration?>(
       'runtimeConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FleetRuntimeConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     scriptArn = registerOutput<String>('scriptArn');
     scriptId = registerOutput<String?>('scriptId');

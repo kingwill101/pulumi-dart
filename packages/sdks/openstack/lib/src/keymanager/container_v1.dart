@@ -675,7 +675,16 @@ class ContainerV1 extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    acl = registerOutput<ContainerV1Acl>('acl');
+    acl = registerOutput<ContainerV1Acl>(
+      'acl',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContainerV1Acl.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     consumers = registerOutput<List<Map<String, dynamic>>>('consumers');
     containerRef = registerOutput<String>('containerRef');
     createdAt = registerOutput<String>('createdAt');
@@ -711,7 +720,16 @@ class ContainerV1 extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    acl = registerOutput<ContainerV1Acl>('acl');
+    acl = registerOutput<ContainerV1Acl>(
+      'acl',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContainerV1Acl.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     consumers = registerOutput<List<Map<String, dynamic>>>('consumers');
     containerRef = registerOutput<String>('containerRef');
     createdAt = registerOutput<String>('createdAt');

@@ -2800,6 +2800,13 @@ class Distribution extends pulumi.CustomResource {
     connectionFunctionAssociation =
         registerOutput<DistributionConnectionFunctionAssociation?>(
           'connectionFunctionAssociation',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DistributionConnectionFunctionAssociation.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     continuousDeploymentPolicyId = registerOutput<String>(
       'continuousDeploymentPolicyId',
@@ -2809,6 +2816,13 @@ class Distribution extends pulumi.CustomResource {
     );
     defaultCacheBehavior = registerOutput<DistributionDefaultCacheBehavior>(
       'defaultCacheBehavior',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DistributionDefaultCacheBehavior.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     defaultRootObject = registerOutput<String?>('defaultRootObject');
     domainName = registerOutput<String>('domainName');
@@ -2821,7 +2835,16 @@ class Distribution extends pulumi.CustomResource {
     );
     isIpv6Enabled = registerOutput<bool?>('isIpv6Enabled');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
-    loggingConfig = registerOutput<DistributionLoggingConfig?>('loggingConfig');
+    loggingConfig = registerOutput<DistributionLoggingConfig?>(
+      'loggingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DistributionLoggingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     loggingV1Enabled = registerOutput<bool>('loggingV1Enabled');
     orderedCacheBehaviors = registerOutput<List<Map<String, dynamic>>?>(
       'orderedCacheBehaviors',
@@ -2829,7 +2852,16 @@ class Distribution extends pulumi.CustomResource {
     originGroups = registerOutput<List<Map<String, dynamic>>?>('originGroups');
     origins = registerOutput<List<Map<String, dynamic>>>('origins');
     priceClass = registerOutput<String?>('priceClass');
-    restrictions = registerOutput<DistributionRestrictions>('restrictions');
+    restrictions = registerOutput<DistributionRestrictions>(
+      'restrictions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DistributionRestrictions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     retainOnDelete = registerOutput<bool?>('retainOnDelete');
     staging = registerOutput<bool?>('staging');
     status = registerOutput<String>('status');
@@ -2843,9 +2875,23 @@ class Distribution extends pulumi.CustomResource {
     );
     viewerCertificate = registerOutput<DistributionViewerCertificate>(
       'viewerCertificate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DistributionViewerCertificate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     viewerMtlsConfig = registerOutput<DistributionViewerMtlsConfig?>(
       'viewerMtlsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DistributionViewerMtlsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     waitForDeployment = registerOutput<bool?>('waitForDeployment');
     webAclId = registerOutput<String?>('webAclId');
@@ -2882,6 +2928,13 @@ class Distribution extends pulumi.CustomResource {
     connectionFunctionAssociation =
         registerOutput<DistributionConnectionFunctionAssociation?>(
           'connectionFunctionAssociation',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DistributionConnectionFunctionAssociation.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     continuousDeploymentPolicyId = registerOutput<String>(
       'continuousDeploymentPolicyId',
@@ -2891,6 +2944,13 @@ class Distribution extends pulumi.CustomResource {
     );
     defaultCacheBehavior = registerOutput<DistributionDefaultCacheBehavior>(
       'defaultCacheBehavior',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DistributionDefaultCacheBehavior.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     defaultRootObject = registerOutput<String?>('defaultRootObject');
     domainName = registerOutput<String>('domainName');
@@ -2903,7 +2963,16 @@ class Distribution extends pulumi.CustomResource {
     );
     isIpv6Enabled = registerOutput<bool?>('isIpv6Enabled');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
-    loggingConfig = registerOutput<DistributionLoggingConfig?>('loggingConfig');
+    loggingConfig = registerOutput<DistributionLoggingConfig?>(
+      'loggingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DistributionLoggingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     loggingV1Enabled = registerOutput<bool>('loggingV1Enabled');
     orderedCacheBehaviors = registerOutput<List<Map<String, dynamic>>?>(
       'orderedCacheBehaviors',
@@ -2911,7 +2980,16 @@ class Distribution extends pulumi.CustomResource {
     originGroups = registerOutput<List<Map<String, dynamic>>?>('originGroups');
     origins = registerOutput<List<Map<String, dynamic>>>('origins');
     priceClass = registerOutput<String?>('priceClass');
-    restrictions = registerOutput<DistributionRestrictions>('restrictions');
+    restrictions = registerOutput<DistributionRestrictions>(
+      'restrictions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DistributionRestrictions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     retainOnDelete = registerOutput<bool?>('retainOnDelete');
     staging = registerOutput<bool?>('staging');
     status = registerOutput<String>('status');
@@ -2925,9 +3003,23 @@ class Distribution extends pulumi.CustomResource {
     );
     viewerCertificate = registerOutput<DistributionViewerCertificate>(
       'viewerCertificate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DistributionViewerCertificate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     viewerMtlsConfig = registerOutput<DistributionViewerMtlsConfig?>(
       'viewerMtlsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DistributionViewerMtlsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     waitForDeployment = registerOutput<bool?>('waitForDeployment');
     webAclId = registerOutput<String?>('webAclId');

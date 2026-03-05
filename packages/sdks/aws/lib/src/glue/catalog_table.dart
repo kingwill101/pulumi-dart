@@ -532,6 +532,13 @@ class CatalogTable extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     openTableFormatInput = registerOutput<CatalogTableOpenTableFormatInput?>(
       'openTableFormatInput',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CatalogTableOpenTableFormatInput.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     owner = registerOutput<String?>('owner');
     parameters = registerOutput<Map<String, String>?>('parameters');
@@ -545,9 +552,25 @@ class CatalogTable extends pulumi.CustomResource {
     retention = registerOutput<int?>('retention');
     storageDescriptor = registerOutput<CatalogTableStorageDescriptor?>(
       'storageDescriptor',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CatalogTableStorageDescriptor.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tableType = registerOutput<String?>('tableType');
-    targetTable = registerOutput<CatalogTableTargetTable?>('targetTable');
+    targetTable = registerOutput<CatalogTableTargetTable?>(
+      'targetTable',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CatalogTableTargetTable.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     viewExpandedText = registerOutput<String?>('viewExpandedText');
     viewOriginalText = registerOutput<String?>('viewOriginalText');
   }
@@ -582,6 +605,13 @@ class CatalogTable extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     openTableFormatInput = registerOutput<CatalogTableOpenTableFormatInput?>(
       'openTableFormatInput',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CatalogTableOpenTableFormatInput.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     owner = registerOutput<String?>('owner');
     parameters = registerOutput<Map<String, String>?>('parameters');
@@ -595,9 +625,25 @@ class CatalogTable extends pulumi.CustomResource {
     retention = registerOutput<int?>('retention');
     storageDescriptor = registerOutput<CatalogTableStorageDescriptor?>(
       'storageDescriptor',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CatalogTableStorageDescriptor.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tableType = registerOutput<String?>('tableType');
-    targetTable = registerOutput<CatalogTableTargetTable?>('targetTable');
+    targetTable = registerOutput<CatalogTableTargetTable?>(
+      'targetTable',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CatalogTableTargetTable.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     viewExpandedText = registerOutput<String?>('viewExpandedText');
     viewOriginalText = registerOutput<String?>('viewOriginalText');
   }

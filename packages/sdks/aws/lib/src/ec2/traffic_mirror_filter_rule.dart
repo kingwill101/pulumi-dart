@@ -357,6 +357,13 @@ class TrafficMirrorFilterRule extends pulumi.CustomResource {
     destinationPortRange =
         registerOutput<TrafficMirrorFilterRuleDestinationPortRange?>(
           'destinationPortRange',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return TrafficMirrorFilterRuleDestinationPortRange.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     protocol = registerOutput<int?>('protocol');
     region = registerOutput<String>('region');
@@ -365,6 +372,13 @@ class TrafficMirrorFilterRule extends pulumi.CustomResource {
     sourceCidrBlock = registerOutput<String>('sourceCidrBlock');
     sourcePortRange = registerOutput<TrafficMirrorFilterRuleSourcePortRange?>(
       'sourcePortRange',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TrafficMirrorFilterRuleSourcePortRange.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     trafficDirection = registerOutput<String>('trafficDirection');
     trafficMirrorFilterId = registerOutput<String>('trafficMirrorFilterId');
@@ -399,6 +413,13 @@ class TrafficMirrorFilterRule extends pulumi.CustomResource {
     destinationPortRange =
         registerOutput<TrafficMirrorFilterRuleDestinationPortRange?>(
           'destinationPortRange',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return TrafficMirrorFilterRuleDestinationPortRange.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     protocol = registerOutput<int?>('protocol');
     region = registerOutput<String>('region');
@@ -407,6 +428,13 @@ class TrafficMirrorFilterRule extends pulumi.CustomResource {
     sourceCidrBlock = registerOutput<String>('sourceCidrBlock');
     sourcePortRange = registerOutput<TrafficMirrorFilterRuleSourcePortRange?>(
       'sourcePortRange',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TrafficMirrorFilterRuleSourcePortRange.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     trafficDirection = registerOutput<String>('trafficDirection');
     trafficMirrorFilterId = registerOutput<String>('trafficMirrorFilterId');

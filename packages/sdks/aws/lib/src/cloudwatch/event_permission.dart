@@ -278,7 +278,16 @@ class EventPermission extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     action = registerOutput<String?>('action');
-    condition = registerOutput<EventPermissionCondition?>('condition');
+    condition = registerOutput<EventPermissionCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventPermissionCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     eventBusName = registerOutput<String?>('eventBusName');
     principal = registerOutput<String>('principal');
     region = registerOutput<String>('region');
@@ -309,7 +318,16 @@ class EventPermission extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     action = registerOutput<String?>('action');
-    condition = registerOutput<EventPermissionCondition?>('condition');
+    condition = registerOutput<EventPermissionCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventPermissionCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     eventBusName = registerOutput<String?>('eventBusName');
     principal = registerOutput<String>('principal');
     region = registerOutput<String>('region');

@@ -555,9 +555,23 @@ class UserPool extends pulumi.CustomResource {
        ) {
     accountRecoverySetting = registerOutput<UserPoolAccountRecoverySetting?>(
       'accountRecoverySetting',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserPoolAccountRecoverySetting.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     adminCreateUserConfig = registerOutput<UserPoolAdminCreateUserConfig>(
       'adminCreateUserConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserPoolAdminCreateUserConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     aliasAttributes = registerOutput<List<String>?>('aliasAttributes');
     arn = registerOutput<String>('arn');
@@ -569,13 +583,34 @@ class UserPool extends pulumi.CustomResource {
     deletionProtection = registerOutput<String?>('deletionProtection');
     deviceConfiguration = registerOutput<UserPoolDeviceConfiguration?>(
       'deviceConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserPoolDeviceConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     domain = registerOutput<String>('domain');
     emailConfiguration = registerOutput<UserPoolEmailConfiguration?>(
       'emailConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserPoolEmailConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     emailMfaConfiguration = registerOutput<UserPoolEmailMfaConfiguration?>(
       'emailMfaConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserPoolEmailMfaConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     emailVerificationMessage = registerOutput<String>(
       'emailVerificationMessage',
@@ -585,43 +620,121 @@ class UserPool extends pulumi.CustomResource {
     );
     endpoint = registerOutput<String>('endpoint');
     estimatedNumberOfUsers = registerOutput<int>('estimatedNumberOfUsers');
-    lambdaConfig = registerOutput<UserPoolLambdaConfig?>('lambdaConfig');
+    lambdaConfig = registerOutput<UserPoolLambdaConfig?>(
+      'lambdaConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserPoolLambdaConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     lastModifiedDate = registerOutput<String>('lastModifiedDate');
     mfaConfiguration = registerOutput<String?>('mfaConfiguration');
     this.name = registerOutput<String>('name');
-    passwordPolicy = registerOutput<UserPoolPasswordPolicy>('passwordPolicy');
+    passwordPolicy = registerOutput<UserPoolPasswordPolicy>(
+      'passwordPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserPoolPasswordPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     schemas = registerOutput<List<Map<String, dynamic>>?>('schemas');
-    signInPolicy = registerOutput<UserPoolSignInPolicy>('signInPolicy');
+    signInPolicy = registerOutput<UserPoolSignInPolicy>(
+      'signInPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserPoolSignInPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     smsAuthenticationMessage = registerOutput<String?>(
       'smsAuthenticationMessage',
     );
     smsConfiguration = registerOutput<UserPoolSmsConfiguration>(
       'smsConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserPoolSmsConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     smsVerificationMessage = registerOutput<String>('smsVerificationMessage');
     softwareTokenMfaConfiguration =
         registerOutput<UserPoolSoftwareTokenMfaConfiguration?>(
           'softwareTokenMfaConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return UserPoolSoftwareTokenMfaConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     userAttributeUpdateSettings =
         registerOutput<UserPoolUserAttributeUpdateSettings?>(
           'userAttributeUpdateSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return UserPoolUserAttributeUpdateSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    userPoolAddOns = registerOutput<UserPoolUserPoolAddOns?>('userPoolAddOns');
+    userPoolAddOns = registerOutput<UserPoolUserPoolAddOns?>(
+      'userPoolAddOns',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserPoolUserPoolAddOns.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     userPoolTier = registerOutput<String>('userPoolTier');
     usernameAttributes = registerOutput<List<String>?>('usernameAttributes');
     usernameConfiguration = registerOutput<UserPoolUsernameConfiguration>(
       'usernameConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserPoolUsernameConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     verificationMessageTemplate =
         registerOutput<UserPoolVerificationMessageTemplate>(
           'verificationMessageTemplate',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return UserPoolVerificationMessageTemplate.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     webAuthnConfiguration = registerOutput<UserPoolWebAuthnConfiguration?>(
       'webAuthnConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserPoolWebAuthnConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -650,9 +763,23 @@ class UserPool extends pulumi.CustomResource {
        ) {
     accountRecoverySetting = registerOutput<UserPoolAccountRecoverySetting?>(
       'accountRecoverySetting',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserPoolAccountRecoverySetting.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     adminCreateUserConfig = registerOutput<UserPoolAdminCreateUserConfig>(
       'adminCreateUserConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserPoolAdminCreateUserConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     aliasAttributes = registerOutput<List<String>?>('aliasAttributes');
     arn = registerOutput<String>('arn');
@@ -664,13 +791,34 @@ class UserPool extends pulumi.CustomResource {
     deletionProtection = registerOutput<String?>('deletionProtection');
     deviceConfiguration = registerOutput<UserPoolDeviceConfiguration?>(
       'deviceConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserPoolDeviceConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     domain = registerOutput<String>('domain');
     emailConfiguration = registerOutput<UserPoolEmailConfiguration?>(
       'emailConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserPoolEmailConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     emailMfaConfiguration = registerOutput<UserPoolEmailMfaConfiguration?>(
       'emailMfaConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserPoolEmailMfaConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     emailVerificationMessage = registerOutput<String>(
       'emailVerificationMessage',
@@ -680,43 +828,121 @@ class UserPool extends pulumi.CustomResource {
     );
     endpoint = registerOutput<String>('endpoint');
     estimatedNumberOfUsers = registerOutput<int>('estimatedNumberOfUsers');
-    lambdaConfig = registerOutput<UserPoolLambdaConfig?>('lambdaConfig');
+    lambdaConfig = registerOutput<UserPoolLambdaConfig?>(
+      'lambdaConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserPoolLambdaConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     lastModifiedDate = registerOutput<String>('lastModifiedDate');
     mfaConfiguration = registerOutput<String?>('mfaConfiguration');
     this.name = registerOutput<String>('name');
-    passwordPolicy = registerOutput<UserPoolPasswordPolicy>('passwordPolicy');
+    passwordPolicy = registerOutput<UserPoolPasswordPolicy>(
+      'passwordPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserPoolPasswordPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     schemas = registerOutput<List<Map<String, dynamic>>?>('schemas');
-    signInPolicy = registerOutput<UserPoolSignInPolicy>('signInPolicy');
+    signInPolicy = registerOutput<UserPoolSignInPolicy>(
+      'signInPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserPoolSignInPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     smsAuthenticationMessage = registerOutput<String?>(
       'smsAuthenticationMessage',
     );
     smsConfiguration = registerOutput<UserPoolSmsConfiguration>(
       'smsConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserPoolSmsConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     smsVerificationMessage = registerOutput<String>('smsVerificationMessage');
     softwareTokenMfaConfiguration =
         registerOutput<UserPoolSoftwareTokenMfaConfiguration?>(
           'softwareTokenMfaConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return UserPoolSoftwareTokenMfaConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     userAttributeUpdateSettings =
         registerOutput<UserPoolUserAttributeUpdateSettings?>(
           'userAttributeUpdateSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return UserPoolUserAttributeUpdateSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    userPoolAddOns = registerOutput<UserPoolUserPoolAddOns?>('userPoolAddOns');
+    userPoolAddOns = registerOutput<UserPoolUserPoolAddOns?>(
+      'userPoolAddOns',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserPoolUserPoolAddOns.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     userPoolTier = registerOutput<String>('userPoolTier');
     usernameAttributes = registerOutput<List<String>?>('usernameAttributes');
     usernameConfiguration = registerOutput<UserPoolUsernameConfiguration>(
       'usernameConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserPoolUsernameConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     verificationMessageTemplate =
         registerOutput<UserPoolVerificationMessageTemplate>(
           'verificationMessageTemplate',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return UserPoolVerificationMessageTemplate.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     webAuthnConfiguration = registerOutput<UserPoolWebAuthnConfiguration?>(
       'webAuthnConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserPoolWebAuthnConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

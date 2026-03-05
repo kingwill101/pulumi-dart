@@ -97,13 +97,34 @@ class NetworkEndpointGroupComputeBeta extends pulumi.CustomResource {
     appEngine =
         registerOutput<NetworkEndpointGroupAppEngineResponseComputeBeta>(
           'appEngine',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NetworkEndpointGroupAppEngineResponseComputeBeta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     cloudFunction =
         registerOutput<NetworkEndpointGroupCloudFunctionResponseComputeBeta>(
           'cloudFunction',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NetworkEndpointGroupCloudFunctionResponseComputeBeta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     cloudRun = registerOutput<NetworkEndpointGroupCloudRunResponseComputeBeta>(
       'cloudRun',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkEndpointGroupCloudRunResponseComputeBeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     creationTimestamp = registerOutput<String>('creationTimestamp');
     defaultPort = registerOutput<int>('defaultPort');
@@ -112,13 +133,29 @@ class NetworkEndpointGroupComputeBeta extends pulumi.CustomResource {
     loadBalancer =
         registerOutput<
           NetworkEndpointGroupLbNetworkEndpointGroupResponseComputeBeta
-        >('loadBalancer');
+        >(
+          'loadBalancer',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NetworkEndpointGroupLbNetworkEndpointGroupResponseComputeBeta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     networkEndpointType = registerOutput<String>('networkEndpointType');
     project = registerOutput<String>('project');
     pscData = registerOutput<NetworkEndpointGroupPscDataResponseComputeBeta>(
       'pscData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkEndpointGroupPscDataResponseComputeBeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     pscTargetService = registerOutput<String>('pscTargetService');
     region = registerOutput<String>('region');
@@ -127,7 +164,16 @@ class NetworkEndpointGroupComputeBeta extends pulumi.CustomResource {
     serverlessDeployment =
         registerOutput<
           NetworkEndpointGroupServerlessDeploymentResponseComputeBeta
-        >('serverlessDeployment');
+        >(
+          'serverlessDeployment',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NetworkEndpointGroupServerlessDeploymentResponseComputeBeta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     size = registerOutput<int>('size');
     subnetwork = registerOutput<String>('subnetwork');
     zone = registerOutput<String>('zone');

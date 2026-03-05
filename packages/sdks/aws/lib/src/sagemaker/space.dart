@@ -165,13 +165,36 @@ class Space extends pulumi.CustomResource {
     homeEfsFileSystemUid = registerOutput<String>('homeEfsFileSystemUid');
     ownershipSettings = registerOutput<SpaceOwnershipSettings?>(
       'ownershipSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpaceOwnershipSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     spaceDisplayName = registerOutput<String?>('spaceDisplayName');
     spaceName = registerOutput<String>('spaceName');
-    spaceSettings = registerOutput<SpaceSpaceSettings?>('spaceSettings');
+    spaceSettings = registerOutput<SpaceSpaceSettings?>(
+      'spaceSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpaceSpaceSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     spaceSharingSettings = registerOutput<SpaceSpaceSharingSettings?>(
       'spaceSharingSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpaceSpaceSharingSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -202,13 +225,36 @@ class Space extends pulumi.CustomResource {
     homeEfsFileSystemUid = registerOutput<String>('homeEfsFileSystemUid');
     ownershipSettings = registerOutput<SpaceOwnershipSettings?>(
       'ownershipSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpaceOwnershipSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     spaceDisplayName = registerOutput<String?>('spaceDisplayName');
     spaceName = registerOutput<String>('spaceName');
-    spaceSettings = registerOutput<SpaceSpaceSettings?>('spaceSettings');
+    spaceSettings = registerOutput<SpaceSpaceSettings?>(
+      'spaceSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpaceSpaceSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     spaceSharingSettings = registerOutput<SpaceSpaceSharingSettings?>(
       'spaceSharingSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpaceSpaceSharingSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

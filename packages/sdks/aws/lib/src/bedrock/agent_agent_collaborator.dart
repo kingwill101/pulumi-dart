@@ -746,6 +746,13 @@ class AgentAgentCollaborator extends pulumi.CustomResource {
        ) {
     agentDescriptor = registerOutput<AgentAgentCollaboratorAgentDescriptor>(
       'agentDescriptor',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentAgentCollaboratorAgentDescriptor.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     agentId = registerOutput<String>('agentId');
     agentVersion = registerOutput<String>('agentVersion');
@@ -759,7 +766,16 @@ class AgentAgentCollaborator extends pulumi.CustomResource {
     relayConversationHistory = registerOutput<String>(
       'relayConversationHistory',
     );
-    timeouts = registerOutput<AgentAgentCollaboratorTimeouts?>('timeouts');
+    timeouts = registerOutput<AgentAgentCollaboratorTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentAgentCollaboratorTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [AgentAgentCollaborator] resource's state with the given [name] and [id].
@@ -787,6 +803,13 @@ class AgentAgentCollaborator extends pulumi.CustomResource {
        ) {
     agentDescriptor = registerOutput<AgentAgentCollaboratorAgentDescriptor>(
       'agentDescriptor',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentAgentCollaboratorAgentDescriptor.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     agentId = registerOutput<String>('agentId');
     agentVersion = registerOutput<String>('agentVersion');
@@ -800,6 +823,15 @@ class AgentAgentCollaborator extends pulumi.CustomResource {
     relayConversationHistory = registerOutput<String>(
       'relayConversationHistory',
     );
-    timeouts = registerOutput<AgentAgentCollaboratorTimeouts?>('timeouts');
+    timeouts = registerOutput<AgentAgentCollaboratorTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentAgentCollaboratorTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

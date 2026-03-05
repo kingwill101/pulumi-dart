@@ -45,6 +45,13 @@ class OrganizationInspectTemplate extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     inspectConfig = registerOutput<GooglePrivacyDlpV2InspectConfigResponse>(
       'inspectConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GooglePrivacyDlpV2InspectConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

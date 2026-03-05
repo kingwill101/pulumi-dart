@@ -270,6 +270,13 @@ class ApplicationGroup extends pulumi.CustomResource {
     identity =
         registerOutput<ResourceModelWithAllowedPropertySetResponseIdentity?>(
           'identity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResourceModelWithAllowedPropertySetResponseIdentity.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     kind = registerOutput<String?>('kind');
     location = registerOutput<String>('location');
@@ -278,12 +285,35 @@ class ApplicationGroup extends pulumi.CustomResource {
     objectId = registerOutput<String>('objectId');
     plan = registerOutput<ResourceModelWithAllowedPropertySetResponsePlan?>(
       'plan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceModelWithAllowedPropertySetResponsePlan.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     showInFeed = registerOutput<bool?>('showInFeed');
     sku = registerOutput<ResourceModelWithAllowedPropertySetResponseSku?>(
       'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceModelWithAllowedPropertySetResponseSku.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     workspaceArmPath = registerOutput<String>('workspaceArmPath');

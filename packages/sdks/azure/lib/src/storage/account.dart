@@ -923,14 +923,46 @@ class Account extends pulumi.CustomResource {
     allowedCopyScope = registerOutput<String?>('allowedCopyScope');
     azureFilesAuthentication = registerOutput<AccountAzureFilesAuthentication?>(
       'azureFilesAuthentication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountAzureFilesAuthentication.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    blobProperties = registerOutput<AccountBlobProperties>('blobProperties');
+    blobProperties = registerOutput<AccountBlobProperties>(
+      'blobProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountBlobProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     crossTenantReplicationEnabled = registerOutput<bool?>(
       'crossTenantReplicationEnabled',
     );
-    customDomain = registerOutput<AccountCustomDomain?>('customDomain');
+    customDomain = registerOutput<AccountCustomDomain?>(
+      'customDomain',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountCustomDomain.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     customerManagedKey = registerOutput<AccountCustomerManagedKey?>(
       'customerManagedKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountCustomerManagedKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     defaultToOauthAuthentication = registerOutput<bool?>(
       'defaultToOauthAuthentication',
@@ -938,9 +970,25 @@ class Account extends pulumi.CustomResource {
     dnsEndpointType = registerOutput<String?>('dnsEndpointType');
     edgeZone = registerOutput<String?>('edgeZone');
     httpsTrafficOnlyEnabled = registerOutput<bool?>('httpsTrafficOnlyEnabled');
-    identity = registerOutput<AccountIdentity?>('identity');
+    identity = registerOutput<AccountIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     immutabilityPolicy = registerOutput<AccountImmutabilityPolicy?>(
       'immutabilityPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountImmutabilityPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     infrastructureEncryptionEnabled = registerOutput<bool?>(
       'infrastructureEncryptionEnabled',
@@ -951,7 +999,16 @@ class Account extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     minTlsVersion = registerOutput<String?>('minTlsVersion');
     this.name = registerOutput<String>('name');
-    networkRules = registerOutput<AccountNetworkRules>('networkRules');
+    networkRules = registerOutput<AccountNetworkRules>(
+      'networkRules',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountNetworkRules.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     nfsv3Enabled = registerOutput<bool?>('nfsv3Enabled');
     primaryAccessKey = registerOutput<String>('primaryAccessKey');
     primaryBlobConnectionString = registerOutput<String>(
@@ -1026,10 +1083,37 @@ class Account extends pulumi.CustomResource {
       'publicNetworkAccessEnabled',
     );
     queueEncryptionKeyType = registerOutput<String?>('queueEncryptionKeyType');
-    queueProperties = registerOutput<AccountQueueProperties>('queueProperties');
+    queueProperties = registerOutput<AccountQueueProperties>(
+      'queueProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountQueueProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    routing = registerOutput<AccountRouting>('routing');
-    sasPolicy = registerOutput<AccountSasPolicy?>('sasPolicy');
+    routing = registerOutput<AccountRouting>(
+      'routing',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountRouting.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    sasPolicy = registerOutput<AccountSasPolicy?>(
+      'sasPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountSasPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
     secondaryBlobConnectionString = registerOutput<String>(
       'secondaryBlobConnectionString',
@@ -1111,9 +1195,27 @@ class Account extends pulumi.CustomResource {
       'secondaryWebMicrosoftHost',
     );
     sftpEnabled = registerOutput<bool?>('sftpEnabled');
-    shareProperties = registerOutput<AccountShareProperties>('shareProperties');
+    shareProperties = registerOutput<AccountShareProperties>(
+      'shareProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountShareProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sharedAccessKeyEnabled = registerOutput<bool?>('sharedAccessKeyEnabled');
-    staticWebsite = registerOutput<AccountStaticWebsite>('staticWebsite');
+    staticWebsite = registerOutput<AccountStaticWebsite>(
+      'staticWebsite',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountStaticWebsite.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tableEncryptionKeyType = registerOutput<String?>('tableEncryptionKeyType');
     tags = registerOutput<Map<String, String>?>('tags');
   }
@@ -1151,14 +1253,46 @@ class Account extends pulumi.CustomResource {
     allowedCopyScope = registerOutput<String?>('allowedCopyScope');
     azureFilesAuthentication = registerOutput<AccountAzureFilesAuthentication?>(
       'azureFilesAuthentication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountAzureFilesAuthentication.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    blobProperties = registerOutput<AccountBlobProperties>('blobProperties');
+    blobProperties = registerOutput<AccountBlobProperties>(
+      'blobProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountBlobProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     crossTenantReplicationEnabled = registerOutput<bool?>(
       'crossTenantReplicationEnabled',
     );
-    customDomain = registerOutput<AccountCustomDomain?>('customDomain');
+    customDomain = registerOutput<AccountCustomDomain?>(
+      'customDomain',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountCustomDomain.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     customerManagedKey = registerOutput<AccountCustomerManagedKey?>(
       'customerManagedKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountCustomerManagedKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     defaultToOauthAuthentication = registerOutput<bool?>(
       'defaultToOauthAuthentication',
@@ -1166,9 +1300,25 @@ class Account extends pulumi.CustomResource {
     dnsEndpointType = registerOutput<String?>('dnsEndpointType');
     edgeZone = registerOutput<String?>('edgeZone');
     httpsTrafficOnlyEnabled = registerOutput<bool?>('httpsTrafficOnlyEnabled');
-    identity = registerOutput<AccountIdentity?>('identity');
+    identity = registerOutput<AccountIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     immutabilityPolicy = registerOutput<AccountImmutabilityPolicy?>(
       'immutabilityPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountImmutabilityPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     infrastructureEncryptionEnabled = registerOutput<bool?>(
       'infrastructureEncryptionEnabled',
@@ -1179,7 +1329,16 @@ class Account extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     minTlsVersion = registerOutput<String?>('minTlsVersion');
     this.name = registerOutput<String>('name');
-    networkRules = registerOutput<AccountNetworkRules>('networkRules');
+    networkRules = registerOutput<AccountNetworkRules>(
+      'networkRules',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountNetworkRules.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     nfsv3Enabled = registerOutput<bool?>('nfsv3Enabled');
     primaryAccessKey = registerOutput<String>('primaryAccessKey');
     primaryBlobConnectionString = registerOutput<String>(
@@ -1254,10 +1413,37 @@ class Account extends pulumi.CustomResource {
       'publicNetworkAccessEnabled',
     );
     queueEncryptionKeyType = registerOutput<String?>('queueEncryptionKeyType');
-    queueProperties = registerOutput<AccountQueueProperties>('queueProperties');
+    queueProperties = registerOutput<AccountQueueProperties>(
+      'queueProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountQueueProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    routing = registerOutput<AccountRouting>('routing');
-    sasPolicy = registerOutput<AccountSasPolicy?>('sasPolicy');
+    routing = registerOutput<AccountRouting>(
+      'routing',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountRouting.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    sasPolicy = registerOutput<AccountSasPolicy?>(
+      'sasPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountSasPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
     secondaryBlobConnectionString = registerOutput<String>(
       'secondaryBlobConnectionString',
@@ -1339,9 +1525,27 @@ class Account extends pulumi.CustomResource {
       'secondaryWebMicrosoftHost',
     );
     sftpEnabled = registerOutput<bool?>('sftpEnabled');
-    shareProperties = registerOutput<AccountShareProperties>('shareProperties');
+    shareProperties = registerOutput<AccountShareProperties>(
+      'shareProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountShareProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sharedAccessKeyEnabled = registerOutput<bool?>('sharedAccessKeyEnabled');
-    staticWebsite = registerOutput<AccountStaticWebsite>('staticWebsite');
+    staticWebsite = registerOutput<AccountStaticWebsite>(
+      'staticWebsite',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountStaticWebsite.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tableEncryptionKeyType = registerOutput<String?>('tableEncryptionKeyType');
     tags = registerOutput<Map<String, String>?>('tags');
   }

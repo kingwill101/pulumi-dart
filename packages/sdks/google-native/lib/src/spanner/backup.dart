@@ -72,7 +72,16 @@ class Backup extends pulumi.CustomResource {
     encryptionConfigKmsKeyName = registerOutput<String?>(
       'encryptionConfigKmsKeyName',
     );
-    encryptionInfo = registerOutput<EncryptionInfoResponse>('encryptionInfo');
+    encryptionInfo = registerOutput<EncryptionInfoResponse>(
+      'encryptionInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EncryptionInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     expireTime = registerOutput<String>('expireTime');
     instanceId = registerOutput<String>('instanceId');
     maxExpireTime = registerOutput<String>('maxExpireTime');

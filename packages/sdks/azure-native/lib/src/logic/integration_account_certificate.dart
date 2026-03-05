@@ -236,7 +236,16 @@ class IntegrationAccountCertificate extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     changedTime = registerOutput<String>('changedTime');
     createdTime = registerOutput<String>('createdTime');
-    key = registerOutput<KeyVaultKeyReferenceResponse?>('key');
+    key = registerOutput<KeyVaultKeyReferenceResponse?>(
+      'key',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KeyVaultKeyReferenceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String?>('location');
     metadata = registerOutput<dynamic>('metadata');
     this.name = registerOutput<String>('name');

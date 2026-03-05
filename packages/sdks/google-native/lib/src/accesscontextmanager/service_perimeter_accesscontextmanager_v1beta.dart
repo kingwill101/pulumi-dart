@@ -45,7 +45,16 @@ class ServicePerimeterAccesscontextmanagerV1beta extends pulumi.CustomResource {
     status =
         registerOutput<
           ServicePerimeterConfigResponseAccesscontextmanagerV1beta
-        >('status');
+        >(
+          'status',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ServicePerimeterConfigResponseAccesscontextmanagerV1beta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     title = registerOutput<String>('title');
   }
 }

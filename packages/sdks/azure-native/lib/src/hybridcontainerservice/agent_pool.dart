@@ -235,10 +235,24 @@ class AgentPool extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     cloudProviderProfile = registerOutput<CloudProviderProfileResponse?>(
       'cloudProviderProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CloudProviderProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     count = registerOutput<int?>('count');
     extendedLocation = registerOutput<AgentPoolResponseExtendedLocation?>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentPoolResponseExtendedLocation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String?>('location');
     maxCount = registerOutput<int?>('maxCount');
@@ -253,8 +267,24 @@ class AgentPool extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     status = registerOutput<AgentPoolProvisioningStatusResponseStatus?>(
       'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentPoolProvisioningStatusResponseStatus.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     vmSize = registerOutput<String?>('vmSize');

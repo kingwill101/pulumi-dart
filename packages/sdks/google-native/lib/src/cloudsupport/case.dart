@@ -67,10 +67,26 @@ class Case extends pulumi.CustomResource {
       ) {
     classification = registerOutput<CaseClassificationResponse>(
       'classification',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CaseClassificationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     contactEmail = registerOutput<String>('contactEmail');
     createTime = registerOutput<String>('createTime');
-    creator = registerOutput<ActorResponse>('creator');
+    creator = registerOutput<ActorResponse>(
+      'creator',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ActorResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
     escalated = registerOutput<bool>('escalated');

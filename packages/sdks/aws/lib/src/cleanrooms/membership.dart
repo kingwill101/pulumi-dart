@@ -266,10 +266,24 @@ class Membership extends pulumi.CustomResource {
     defaultResultConfiguration =
         registerOutput<MembershipDefaultResultConfiguration?>(
           'defaultResultConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MembershipDefaultResultConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     memberAbilities = registerOutput<List<String>>('memberAbilities');
     paymentConfiguration = registerOutput<MembershipPaymentConfiguration?>(
       'paymentConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MembershipPaymentConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     queryLogStatus = registerOutput<String>('queryLogStatus');
     region = registerOutput<String>('region');
@@ -316,10 +330,24 @@ class Membership extends pulumi.CustomResource {
     defaultResultConfiguration =
         registerOutput<MembershipDefaultResultConfiguration?>(
           'defaultResultConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MembershipDefaultResultConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     memberAbilities = registerOutput<List<String>>('memberAbilities');
     paymentConfiguration = registerOutput<MembershipPaymentConfiguration?>(
       'paymentConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MembershipPaymentConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     queryLogStatus = registerOutput<String>('queryLogStatus');
     region = registerOutput<String>('region');

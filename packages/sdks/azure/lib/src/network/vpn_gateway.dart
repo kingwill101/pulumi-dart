@@ -350,7 +350,16 @@ class VpnGateway extends pulumi.CustomResource {
     bgpRouteTranslationForNatEnabled = registerOutput<bool?>(
       'bgpRouteTranslationForNatEnabled',
     );
-    bgpSettings = registerOutput<VpnGatewayBgpSettings>('bgpSettings');
+    bgpSettings = registerOutput<VpnGatewayBgpSettings>(
+      'bgpSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpnGatewayBgpSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ipConfigurations = registerOutput<List<Map<String, dynamic>>>(
       'ipConfigurations',
     );
@@ -389,7 +398,16 @@ class VpnGateway extends pulumi.CustomResource {
     bgpRouteTranslationForNatEnabled = registerOutput<bool?>(
       'bgpRouteTranslationForNatEnabled',
     );
-    bgpSettings = registerOutput<VpnGatewayBgpSettings>('bgpSettings');
+    bgpSettings = registerOutput<VpnGatewayBgpSettings>(
+      'bgpSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpnGatewayBgpSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ipConfigurations = registerOutput<List<Map<String, dynamic>>>(
       'ipConfigurations',
     );

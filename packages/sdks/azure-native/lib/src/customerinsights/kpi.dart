@@ -375,7 +375,16 @@ class Kpi extends pulumi.CustomResource {
     );
     provisioningState = registerOutput<String>('provisioningState');
     tenantId = registerOutput<String>('tenantId');
-    thresHolds = registerOutput<KpiThresholdsResponse?>('thresHolds');
+    thresHolds = registerOutput<KpiThresholdsResponse?>(
+      'thresHolds',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KpiThresholdsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     unit = registerOutput<String?>('unit');
   }

@@ -707,6 +707,13 @@ class ScalingRule extends pulumi.CustomResource {
     adjustmentValue = registerOutput<int?>('adjustmentValue');
     alarmDimension = registerOutput<ScalingRuleAlarmDimension?>(
       'alarmDimension',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScalingRuleAlarmDimension.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     ari = registerOutput<String>('ari');
     cooldown = registerOutput<int?>('cooldown');
@@ -762,6 +769,13 @@ class ScalingRule extends pulumi.CustomResource {
     adjustmentValue = registerOutput<int?>('adjustmentValue');
     alarmDimension = registerOutput<ScalingRuleAlarmDimension?>(
       'alarmDimension',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScalingRuleAlarmDimension.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     ari = registerOutput<String>('ari');
     cooldown = registerOutput<int?>('cooldown');

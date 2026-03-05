@@ -57,6 +57,13 @@ class Zone extends pulumi.CustomResource {
       ) {
     authoritativeNameservers = registerOutput<ZoneAuthoritativeNameservers>(
       'authoritativeNameservers',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ZoneAuthoritativeNameservers.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     deleteProtection = registerOutput<bool>('deleteProtection');
     labels = registerOutput<Map<String, String>>('labels');
@@ -90,6 +97,13 @@ class Zone extends pulumi.CustomResource {
        ) {
     authoritativeNameservers = registerOutput<ZoneAuthoritativeNameservers>(
       'authoritativeNameservers',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ZoneAuthoritativeNameservers.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     deleteProtection = registerOutput<bool>('deleteProtection');
     labels = registerOutput<Map<String, String>>('labels');

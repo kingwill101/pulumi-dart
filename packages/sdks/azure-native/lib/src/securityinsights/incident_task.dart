@@ -209,15 +209,42 @@ class IncidentTask extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    createdBy = registerOutput<ClientInfoResponse?>('createdBy');
+    createdBy = registerOutput<ClientInfoResponse?>(
+      'createdBy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClientInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createdTimeUtc = registerOutput<String>('createdTimeUtc');
     description = registerOutput<String?>('description');
     etag = registerOutput<String?>('etag');
-    lastModifiedBy = registerOutput<ClientInfoResponse?>('lastModifiedBy');
+    lastModifiedBy = registerOutput<ClientInfoResponse?>(
+      'lastModifiedBy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClientInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     lastModifiedTimeUtc = registerOutput<String>('lastModifiedTimeUtc');
     this.name = registerOutput<String>('name');
     status = registerOutput<String>('status');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     title = registerOutput<String>('title');
     type = registerOutput<String>('type');
   }

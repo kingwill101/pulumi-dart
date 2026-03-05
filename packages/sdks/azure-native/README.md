@@ -20,7 +20,7 @@ import 'package:pulumi_azure_native/pulumi_azure_native.dart' as provider;
 dependencies:
   pulumi_azure_native:
     git:
-      url: https://github.com/<owner>/<repo>.git
+      url: https://github.com/kingwill101/pulumi-dart.git
       path: packages/azure-native
       ref: main
 ~~~

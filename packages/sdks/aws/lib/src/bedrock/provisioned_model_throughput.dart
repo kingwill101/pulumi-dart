@@ -175,7 +175,16 @@ class ProvisionedModelThroughput extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ProvisionedModelThroughputTimeouts?>('timeouts');
+    timeouts = registerOutput<ProvisionedModelThroughputTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProvisionedModelThroughputTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [ProvisionedModelThroughput] resource's state with the given [name] and [id].
@@ -209,6 +218,15 @@ class ProvisionedModelThroughput extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ProvisionedModelThroughputTimeouts?>('timeouts');
+    timeouts = registerOutput<ProvisionedModelThroughputTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProvisionedModelThroughputTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

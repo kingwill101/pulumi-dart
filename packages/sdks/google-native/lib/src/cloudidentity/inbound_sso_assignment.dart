@@ -47,8 +47,26 @@ class InboundSsoAssignment extends pulumi.CustomResource {
     customer = registerOutput<String>('customer');
     this.name = registerOutput<String>('name');
     rank = registerOutput<int>('rank');
-    samlSsoInfo = registerOutput<SamlSsoInfoResponse>('samlSsoInfo');
-    signInBehavior = registerOutput<SignInBehaviorResponse>('signInBehavior');
+    samlSsoInfo = registerOutput<SamlSsoInfoResponse>(
+      'samlSsoInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SamlSsoInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    signInBehavior = registerOutput<SignInBehaviorResponse>(
+      'signInBehavior',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SignInBehaviorResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ssoMode = registerOutput<String>('ssoMode');
     targetGroup = registerOutput<String>('targetGroup');
     targetOrgUnit = registerOutput<String>('targetOrgUnit');

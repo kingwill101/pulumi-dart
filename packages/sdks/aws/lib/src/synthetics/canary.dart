@@ -246,7 +246,16 @@ class Canary extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     arn = registerOutput<String>('arn');
-    artifactConfig = registerOutput<CanaryArtifactConfig?>('artifactConfig');
+    artifactConfig = registerOutput<CanaryArtifactConfig?>(
+      'artifactConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CanaryArtifactConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     artifactS3Location = registerOutput<String>('artifactS3Location');
     deleteLambda = registerOutput<bool?>('deleteLambda');
     engineArn = registerOutput<String>('engineArn');
@@ -255,12 +264,30 @@ class Canary extends pulumi.CustomResource {
     handler = registerOutput<String>('handler');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    runConfig = registerOutput<CanaryRunConfig>('runConfig');
+    runConfig = registerOutput<CanaryRunConfig>(
+      'runConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CanaryRunConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     runtimeVersion = registerOutput<String>('runtimeVersion');
     s3Bucket = registerOutput<String?>('s3Bucket');
     s3Key = registerOutput<String?>('s3Key');
     s3Version = registerOutput<String?>('s3Version');
-    schedule = registerOutput<CanarySchedule>('schedule');
+    schedule = registerOutput<CanarySchedule>(
+      'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CanarySchedule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sourceLocationArn = registerOutput<String>('sourceLocationArn');
     startCanary = registerOutput<bool?>('startCanary');
     status = registerOutput<String>('status');
@@ -268,7 +295,16 @@ class Canary extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     timelines = registerOutput<List<Map<String, dynamic>>>('timelines');
-    vpcConfig = registerOutput<CanaryVpcConfig?>('vpcConfig');
+    vpcConfig = registerOutput<CanaryVpcConfig?>(
+      'vpcConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CanaryVpcConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     zipFile = registerOutput<String?>('zipFile');
   }
 
@@ -296,7 +332,16 @@ class Canary extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    artifactConfig = registerOutput<CanaryArtifactConfig?>('artifactConfig');
+    artifactConfig = registerOutput<CanaryArtifactConfig?>(
+      'artifactConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CanaryArtifactConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     artifactS3Location = registerOutput<String>('artifactS3Location');
     deleteLambda = registerOutput<bool?>('deleteLambda');
     engineArn = registerOutput<String>('engineArn');
@@ -305,12 +350,30 @@ class Canary extends pulumi.CustomResource {
     handler = registerOutput<String>('handler');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    runConfig = registerOutput<CanaryRunConfig>('runConfig');
+    runConfig = registerOutput<CanaryRunConfig>(
+      'runConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CanaryRunConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     runtimeVersion = registerOutput<String>('runtimeVersion');
     s3Bucket = registerOutput<String?>('s3Bucket');
     s3Key = registerOutput<String?>('s3Key');
     s3Version = registerOutput<String?>('s3Version');
-    schedule = registerOutput<CanarySchedule>('schedule');
+    schedule = registerOutput<CanarySchedule>(
+      'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CanarySchedule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sourceLocationArn = registerOutput<String>('sourceLocationArn');
     startCanary = registerOutput<bool?>('startCanary');
     status = registerOutput<String>('status');
@@ -318,7 +381,16 @@ class Canary extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     timelines = registerOutput<List<Map<String, dynamic>>>('timelines');
-    vpcConfig = registerOutput<CanaryVpcConfig?>('vpcConfig');
+    vpcConfig = registerOutput<CanaryVpcConfig?>(
+      'vpcConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CanaryVpcConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     zipFile = registerOutput<String?>('zipFile');
   }
 }

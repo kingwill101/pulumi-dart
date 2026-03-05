@@ -2039,10 +2039,24 @@ class KubernetesCluster extends pulumi.CustomResource {
        ) {
     aadConfiguration = registerOutput<AadConfigurationResponse?>(
       'aadConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AadConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     administratorConfiguration =
         registerOutput<AdministratorConfigurationResponse?>(
           'administratorConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AdministratorConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     attachedNetworkIds = registerOutput<List<String>>('attachedNetworkIds');
     availableUpgrades = registerOutput<List<Map<String, dynamic>>>(
@@ -2057,12 +2071,26 @@ class KubernetesCluster extends pulumi.CustomResource {
     controlPlaneNodeConfiguration =
         registerOutput<ControlPlaneNodeConfigurationResponse>(
           'controlPlaneNodeConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ControlPlaneNodeConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     detailedStatus = registerOutput<String>('detailedStatus');
     detailedStatusMessage = registerOutput<String>('detailedStatusMessage');
     etag = registerOutput<String>('etag');
     extendedLocation = registerOutput<ExtendedLocationResponse>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     featureStatuses = registerOutput<List<Map<String, dynamic>>>(
       'featureStatuses',
@@ -2075,14 +2103,37 @@ class KubernetesCluster extends pulumi.CustomResource {
     managedResourceGroupConfiguration =
         registerOutput<ManagedResourceGroupConfigurationResponse?>(
           'managedResourceGroupConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ManagedResourceGroupConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     networkConfiguration = registerOutput<NetworkConfigurationResponse>(
       'networkConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     nodes = registerOutput<List<Map<String, dynamic>>>('nodes');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

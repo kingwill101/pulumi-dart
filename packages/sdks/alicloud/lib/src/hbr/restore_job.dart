@@ -586,7 +586,16 @@ class RestoreJob extends pulumi.CustomResource {
     exclude = registerOutput<String?>('exclude');
     include = registerOutput<String?>('include');
     this.options = registerOutput<String?>('options');
-    otsDetail = registerOutput<RestoreJobOtsDetail>('otsDetail');
+    otsDetail = registerOutput<RestoreJobOtsDetail>(
+      'otsDetail',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RestoreJobOtsDetail.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     restoreJobId = registerOutput<String>('restoreJobId');
     restoreType = registerOutput<String>('restoreType');
     snapshotHash = registerOutput<String>('snapshotHash');
@@ -637,7 +646,16 @@ class RestoreJob extends pulumi.CustomResource {
     exclude = registerOutput<String?>('exclude');
     include = registerOutput<String?>('include');
     this.options = registerOutput<String?>('options');
-    otsDetail = registerOutput<RestoreJobOtsDetail>('otsDetail');
+    otsDetail = registerOutput<RestoreJobOtsDetail>(
+      'otsDetail',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RestoreJobOtsDetail.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     restoreJobId = registerOutput<String>('restoreJobId');
     restoreType = registerOutput<String>('restoreType');
     snapshotHash = registerOutput<String>('snapshotHash');

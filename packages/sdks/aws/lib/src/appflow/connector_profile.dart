@@ -528,6 +528,13 @@ class ConnectorProfile extends pulumi.CustomResource {
     connectorProfileConfig =
         registerOutput<ConnectorProfileConnectorProfileConfig>(
           'connectorProfileConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConnectorProfileConnectorProfileConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     connectorType = registerOutput<String>('connectorType');
     credentialsArn = registerOutput<String>('credentialsArn');
@@ -565,6 +572,13 @@ class ConnectorProfile extends pulumi.CustomResource {
     connectorProfileConfig =
         registerOutput<ConnectorProfileConnectorProfileConfig>(
           'connectorProfileConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConnectorProfileConnectorProfileConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     connectorType = registerOutput<String>('connectorType');
     credentialsArn = registerOutput<String>('credentialsArn');

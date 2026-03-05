@@ -227,7 +227,16 @@ class Instance extends pulumi.CustomResource {
     addresses = registerOutput<List<String>>('addresses');
     configurationId = registerOutput<String?>('configurationId');
     databases = registerOutput<List<Map<String, dynamic>>?>('databases');
-    datastore = registerOutput<InstanceDatastore>('datastore');
+    datastore = registerOutput<InstanceDatastore>(
+      'datastore',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceDatastore.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     flavorId = registerOutput<String>('flavorId');
     this.name = registerOutput<String>('name');
     networks = registerOutput<List<Map<String, dynamic>>?>('networks');
@@ -263,7 +272,16 @@ class Instance extends pulumi.CustomResource {
     addresses = registerOutput<List<String>>('addresses');
     configurationId = registerOutput<String?>('configurationId');
     databases = registerOutput<List<Map<String, dynamic>>?>('databases');
-    datastore = registerOutput<InstanceDatastore>('datastore');
+    datastore = registerOutput<InstanceDatastore>(
+      'datastore',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceDatastore.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     flavorId = registerOutput<String>('flavorId');
     this.name = registerOutput<String>('name');
     networks = registerOutput<List<Map<String, dynamic>>?>('networks');

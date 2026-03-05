@@ -20,7 +20,7 @@ import 'package:pulumi_azure/pulumi_azure.dart' as provider;
 dependencies:
   pulumi_azure:
     git:
-      url: https://github.com/<owner>/<repo>.git
+      url: https://github.com/kingwill101/pulumi-dart.git
       path: packages/azure
       ref: main
 ~~~

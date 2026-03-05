@@ -244,19 +244,51 @@ class GatewayApiEntityTag extends pulumi.CustomResource {
     apiVersionDescription = registerOutput<String?>('apiVersionDescription');
     apiVersionSet = registerOutput<ApiVersionSetContractDetailsResponse?>(
       'apiVersionSet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiVersionSetContractDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     apiVersionSetId = registerOutput<String?>('apiVersionSetId');
     authenticationSettings =
         registerOutput<AuthenticationSettingsContractResponse?>(
           'authenticationSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AuthenticationSettingsContractResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    contact = registerOutput<ApiContactInformationResponse?>('contact');
+    contact = registerOutput<ApiContactInformationResponse?>(
+      'contact',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiContactInformationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     isCurrent = registerOutput<bool?>('isCurrent');
     isOnline = registerOutput<bool>('isOnline');
-    license = registerOutput<ApiLicenseInformationResponse?>('license');
+    license = registerOutput<ApiLicenseInformationResponse?>(
+      'license',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiLicenseInformationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     path = registerOutput<String>('path');
     protocols = registerOutput<List<String>?>('protocols');
@@ -265,6 +297,13 @@ class GatewayApiEntityTag extends pulumi.CustomResource {
     subscriptionKeyParameterNames =
         registerOutput<SubscriptionKeyParameterNamesContractResponse?>(
           'subscriptionKeyParameterNames',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SubscriptionKeyParameterNamesContractResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     subscriptionRequired = registerOutput<bool?>('subscriptionRequired');
     termsOfServiceUrl = registerOutput<String?>('termsOfServiceUrl');

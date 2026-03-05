@@ -449,7 +449,16 @@ class VirtualMachineScaleSetExtension extends pulumi.CustomResource {
     protectedSettingsFromKeyVault =
         registerOutput<
           VirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault?
-        >('protectedSettingsFromKeyVault');
+        >(
+          'protectedSettingsFromKeyVault',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     provisionAfterExtensions = registerOutput<List<String>?>(
       'provisionAfterExtensions',
     );
@@ -496,7 +505,16 @@ class VirtualMachineScaleSetExtension extends pulumi.CustomResource {
     protectedSettingsFromKeyVault =
         registerOutput<
           VirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault?
-        >('protectedSettingsFromKeyVault');
+        >(
+          'protectedSettingsFromKeyVault',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     provisionAfterExtensions = registerOutput<List<String>?>(
       'provisionAfterExtensions',
     );

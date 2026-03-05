@@ -366,7 +366,16 @@ class LinkedService extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<AmazonMWSLinkedServiceResponse>('properties');
+    properties = registerOutput<AmazonMWSLinkedServiceResponse>(
+      'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AmazonMWSLinkedServiceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

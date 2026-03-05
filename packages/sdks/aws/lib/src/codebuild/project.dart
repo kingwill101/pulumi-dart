@@ -1601,23 +1601,66 @@ class Project extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    artifacts = registerOutput<ProjectArtifacts>('artifacts');
+    artifacts = registerOutput<ProjectArtifacts>(
+      'artifacts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectArtifacts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     autoRetryLimit = registerOutput<int>('autoRetryLimit');
     badgeEnabled = registerOutput<bool?>('badgeEnabled');
     badgeUrl = registerOutput<String>('badgeUrl');
     buildBatchConfig = registerOutput<ProjectBuildBatchConfig?>(
       'buildBatchConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectBuildBatchConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     buildTimeout = registerOutput<int?>('buildTimeout');
-    cache = registerOutput<ProjectCache?>('cache');
+    cache = registerOutput<ProjectCache?>(
+      'cache',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectCache.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     concurrentBuildLimit = registerOutput<int?>('concurrentBuildLimit');
     description = registerOutput<String>('description');
     encryptionKey = registerOutput<String>('encryptionKey');
-    environment = registerOutput<ProjectEnvironment>('environment');
+    environment = registerOutput<ProjectEnvironment>(
+      'environment',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectEnvironment.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     fileSystemLocations = registerOutput<List<Map<String, dynamic>>?>(
       'fileSystemLocations',
     );
-    logsConfig = registerOutput<ProjectLogsConfig?>('logsConfig');
+    logsConfig = registerOutput<ProjectLogsConfig?>(
+      'logsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectLogsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     projectVisibility = registerOutput<String?>('projectVisibility');
     publicProjectAlias = registerOutput<String>('publicProjectAlias');
@@ -1634,11 +1677,29 @@ class Project extends pulumi.CustomResource {
       'secondarySources',
     );
     serviceRole = registerOutput<String>('serviceRole');
-    source = registerOutput<ProjectSource>('source');
+    source = registerOutput<ProjectSource>(
+      'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sourceVersion = registerOutput<String?>('sourceVersion');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    vpcConfig = registerOutput<ProjectVpcConfig?>('vpcConfig');
+    vpcConfig = registerOutput<ProjectVpcConfig?>(
+      'vpcConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectVpcConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Project] resource's state with the given [name] and [id].
@@ -1665,23 +1726,66 @@ class Project extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    artifacts = registerOutput<ProjectArtifacts>('artifacts');
+    artifacts = registerOutput<ProjectArtifacts>(
+      'artifacts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectArtifacts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     autoRetryLimit = registerOutput<int>('autoRetryLimit');
     badgeEnabled = registerOutput<bool?>('badgeEnabled');
     badgeUrl = registerOutput<String>('badgeUrl');
     buildBatchConfig = registerOutput<ProjectBuildBatchConfig?>(
       'buildBatchConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectBuildBatchConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     buildTimeout = registerOutput<int?>('buildTimeout');
-    cache = registerOutput<ProjectCache?>('cache');
+    cache = registerOutput<ProjectCache?>(
+      'cache',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectCache.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     concurrentBuildLimit = registerOutput<int?>('concurrentBuildLimit');
     description = registerOutput<String>('description');
     encryptionKey = registerOutput<String>('encryptionKey');
-    environment = registerOutput<ProjectEnvironment>('environment');
+    environment = registerOutput<ProjectEnvironment>(
+      'environment',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectEnvironment.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     fileSystemLocations = registerOutput<List<Map<String, dynamic>>?>(
       'fileSystemLocations',
     );
-    logsConfig = registerOutput<ProjectLogsConfig?>('logsConfig');
+    logsConfig = registerOutput<ProjectLogsConfig?>(
+      'logsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectLogsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     projectVisibility = registerOutput<String?>('projectVisibility');
     publicProjectAlias = registerOutput<String>('publicProjectAlias');
@@ -1698,10 +1802,28 @@ class Project extends pulumi.CustomResource {
       'secondarySources',
     );
     serviceRole = registerOutput<String>('serviceRole');
-    source = registerOutput<ProjectSource>('source');
+    source = registerOutput<ProjectSource>(
+      'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sourceVersion = registerOutput<String?>('sourceVersion');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    vpcConfig = registerOutput<ProjectVpcConfig?>('vpcConfig');
+    vpcConfig = registerOutput<ProjectVpcConfig?>(
+      'vpcConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectVpcConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

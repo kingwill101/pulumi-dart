@@ -369,7 +369,16 @@ class ApiOperation extends pulumi.CustomResource {
     method = registerOutput<String>('method');
     this.name = registerOutput<String>('name');
     policies = registerOutput<String?>('policies');
-    request = registerOutput<RequestContractResponse?>('request');
+    request = registerOutput<RequestContractResponse?>(
+      'request',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RequestContractResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     responses = registerOutput<List<Map<String, dynamic>>?>('responses');
     templateParameters = registerOutput<List<Map<String, dynamic>>?>(
       'templateParameters',

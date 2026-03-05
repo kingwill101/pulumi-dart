@@ -904,7 +904,16 @@ class Slot extends pulumi.CustomResource {
     appServiceName = registerOutput<String>('appServiceName');
     appServicePlanId = registerOutput<String>('appServicePlanId');
     appSettings = registerOutput<Map<String, String>>('appSettings');
-    authSettings = registerOutput<SlotAuthSettings>('authSettings');
+    authSettings = registerOutput<SlotAuthSettings>(
+      'authSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SlotAuthSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     clientAffinityEnabled = registerOutput<bool>('clientAffinityEnabled');
     connectionStrings = registerOutput<List<Map<String, dynamic>>>(
       'connectionStrings',
@@ -912,15 +921,40 @@ class Slot extends pulumi.CustomResource {
     defaultSiteHostname = registerOutput<String>('defaultSiteHostname');
     enabled = registerOutput<bool?>('enabled');
     httpsOnly = registerOutput<bool?>('httpsOnly');
-    identity = registerOutput<SlotIdentity?>('identity');
+    identity = registerOutput<SlotIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SlotIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     keyVaultReferenceIdentityId = registerOutput<String>(
       'keyVaultReferenceIdentityId',
     );
     location = registerOutput<String>('location');
-    logs = registerOutput<SlotLogs>('logs');
+    logs = registerOutput<SlotLogs>(
+      'logs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SlotLogs.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    siteConfig = registerOutput<SlotSiteConfig>('siteConfig');
+    siteConfig = registerOutput<SlotSiteConfig>(
+      'siteConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SlotSiteConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     siteCredentials = registerOutput<List<Map<String, dynamic>>>(
       'siteCredentials',
     );
@@ -952,7 +986,16 @@ class Slot extends pulumi.CustomResource {
     appServiceName = registerOutput<String>('appServiceName');
     appServicePlanId = registerOutput<String>('appServicePlanId');
     appSettings = registerOutput<Map<String, String>>('appSettings');
-    authSettings = registerOutput<SlotAuthSettings>('authSettings');
+    authSettings = registerOutput<SlotAuthSettings>(
+      'authSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SlotAuthSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     clientAffinityEnabled = registerOutput<bool>('clientAffinityEnabled');
     connectionStrings = registerOutput<List<Map<String, dynamic>>>(
       'connectionStrings',
@@ -960,15 +1003,40 @@ class Slot extends pulumi.CustomResource {
     defaultSiteHostname = registerOutput<String>('defaultSiteHostname');
     enabled = registerOutput<bool?>('enabled');
     httpsOnly = registerOutput<bool?>('httpsOnly');
-    identity = registerOutput<SlotIdentity?>('identity');
+    identity = registerOutput<SlotIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SlotIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     keyVaultReferenceIdentityId = registerOutput<String>(
       'keyVaultReferenceIdentityId',
     );
     location = registerOutput<String>('location');
-    logs = registerOutput<SlotLogs>('logs');
+    logs = registerOutput<SlotLogs>(
+      'logs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SlotLogs.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    siteConfig = registerOutput<SlotSiteConfig>('siteConfig');
+    siteConfig = registerOutput<SlotSiteConfig>(
+      'siteConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SlotSiteConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     siteCredentials = registerOutput<List<Map<String, dynamic>>>(
       'siteCredentials',
     );

@@ -216,6 +216,13 @@ class DataIntegration extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     scheduleConfig = registerOutput<DataIntegrationScheduleConfig>(
       'scheduleConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataIntegrationScheduleConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sourceUri = registerOutput<String>('sourceUri');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -252,6 +259,13 @@ class DataIntegration extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     scheduleConfig = registerOutput<DataIntegrationScheduleConfig>(
       'scheduleConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataIntegrationScheduleConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sourceUri = registerOutput<String>('sourceUri');
     tags = registerOutput<Map<String, String>?>('tags');

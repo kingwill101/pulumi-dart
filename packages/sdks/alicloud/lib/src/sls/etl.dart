@@ -380,7 +380,16 @@ class Etl extends pulumi.CustomResource {
         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
         options ?? pulumi.CustomResourceOptions(),
       ) {
-    configuration = registerOutput<EtlConfiguration>('configuration');
+    configuration = registerOutput<EtlConfiguration>(
+      'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EtlConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<int>('createTime');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
@@ -408,7 +417,16 @@ class Etl extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    configuration = registerOutput<EtlConfiguration>('configuration');
+    configuration = registerOutput<EtlConfiguration>(
+      'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EtlConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<int>('createTime');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');

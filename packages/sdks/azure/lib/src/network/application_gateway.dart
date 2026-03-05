@@ -811,6 +811,13 @@ class ApplicationGateway extends pulumi.CustomResource {
     autoscaleConfiguration =
         registerOutput<ApplicationGatewayAutoscaleConfiguration?>(
           'autoscaleConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ApplicationGatewayAutoscaleConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     backendAddressPools = registerOutput<List<Map<String, dynamic>>>(
       'backendAddressPools',
@@ -834,9 +841,27 @@ class ApplicationGateway extends pulumi.CustomResource {
     gatewayIpConfigurations = registerOutput<List<Map<String, dynamic>>>(
       'gatewayIpConfigurations',
     );
-    global = registerOutput<ApplicationGatewayGlobal?>('global');
+    global = registerOutput<ApplicationGatewayGlobal?>(
+      'global',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationGatewayGlobal.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     httpListeners = registerOutput<List<Map<String, dynamic>>>('httpListeners');
-    identity = registerOutput<ApplicationGatewayIdentity?>('identity');
+    identity = registerOutput<ApplicationGatewayIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationGatewayIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
@@ -856,11 +881,29 @@ class ApplicationGateway extends pulumi.CustomResource {
     rewriteRuleSets = registerOutput<List<Map<String, dynamic>>?>(
       'rewriteRuleSets',
     );
-    sku = registerOutput<ApplicationGatewaySku>('sku');
+    sku = registerOutput<ApplicationGatewaySku>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationGatewaySku.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sslCertificates = registerOutput<List<Map<String, dynamic>>?>(
       'sslCertificates',
     );
-    sslPolicy = registerOutput<ApplicationGatewaySslPolicy>('sslPolicy');
+    sslPolicy = registerOutput<ApplicationGatewaySslPolicy>(
+      'sslPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationGatewaySslPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sslProfiles = registerOutput<List<Map<String, dynamic>>?>('sslProfiles');
     tags = registerOutput<Map<String, String>?>('tags');
     trustedClientCertificates = registerOutput<List<Map<String, dynamic>>?>(
@@ -872,6 +915,13 @@ class ApplicationGateway extends pulumi.CustomResource {
     urlPathMaps = registerOutput<List<Map<String, dynamic>>?>('urlPathMaps');
     wafConfiguration = registerOutput<ApplicationGatewayWafConfiguration?>(
       'wafConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationGatewayWafConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     zones = registerOutput<List<String>?>('zones');
   }
@@ -905,6 +955,13 @@ class ApplicationGateway extends pulumi.CustomResource {
     autoscaleConfiguration =
         registerOutput<ApplicationGatewayAutoscaleConfiguration?>(
           'autoscaleConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ApplicationGatewayAutoscaleConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     backendAddressPools = registerOutput<List<Map<String, dynamic>>>(
       'backendAddressPools',
@@ -928,9 +985,27 @@ class ApplicationGateway extends pulumi.CustomResource {
     gatewayIpConfigurations = registerOutput<List<Map<String, dynamic>>>(
       'gatewayIpConfigurations',
     );
-    global = registerOutput<ApplicationGatewayGlobal?>('global');
+    global = registerOutput<ApplicationGatewayGlobal?>(
+      'global',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationGatewayGlobal.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     httpListeners = registerOutput<List<Map<String, dynamic>>>('httpListeners');
-    identity = registerOutput<ApplicationGatewayIdentity?>('identity');
+    identity = registerOutput<ApplicationGatewayIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationGatewayIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
@@ -950,11 +1025,29 @@ class ApplicationGateway extends pulumi.CustomResource {
     rewriteRuleSets = registerOutput<List<Map<String, dynamic>>?>(
       'rewriteRuleSets',
     );
-    sku = registerOutput<ApplicationGatewaySku>('sku');
+    sku = registerOutput<ApplicationGatewaySku>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationGatewaySku.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sslCertificates = registerOutput<List<Map<String, dynamic>>?>(
       'sslCertificates',
     );
-    sslPolicy = registerOutput<ApplicationGatewaySslPolicy>('sslPolicy');
+    sslPolicy = registerOutput<ApplicationGatewaySslPolicy>(
+      'sslPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationGatewaySslPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sslProfiles = registerOutput<List<Map<String, dynamic>>?>('sslProfiles');
     tags = registerOutput<Map<String, String>?>('tags');
     trustedClientCertificates = registerOutput<List<Map<String, dynamic>>?>(
@@ -966,6 +1059,13 @@ class ApplicationGateway extends pulumi.CustomResource {
     urlPathMaps = registerOutput<List<Map<String, dynamic>>?>('urlPathMaps');
     wafConfiguration = registerOutput<ApplicationGatewayWafConfiguration?>(
       'wafConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationGatewayWafConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     zones = registerOutput<List<String>?>('zones');
   }

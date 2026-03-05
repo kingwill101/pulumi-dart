@@ -1305,9 +1305,23 @@ class SessionTemplate extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     environmentConfig = registerOutput<SessionTemplateEnvironmentConfig?>(
       'environmentConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SessionTemplateEnvironmentConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     jupyterSession = registerOutput<SessionTemplateJupyterSession?>(
       'jupyterSession',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SessionTemplateJupyterSession.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String?>('location');
@@ -1316,6 +1330,13 @@ class SessionTemplate extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     runtimeConfig = registerOutput<SessionTemplateRuntimeConfig?>(
       'runtimeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SessionTemplateRuntimeConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sparkConnectSession = registerOutput<Map<String, dynamic>?>(
       'sparkConnectSession',
@@ -1352,9 +1373,23 @@ class SessionTemplate extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     environmentConfig = registerOutput<SessionTemplateEnvironmentConfig?>(
       'environmentConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SessionTemplateEnvironmentConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     jupyterSession = registerOutput<SessionTemplateJupyterSession?>(
       'jupyterSession',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SessionTemplateJupyterSession.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String?>('location');
@@ -1363,6 +1398,13 @@ class SessionTemplate extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     runtimeConfig = registerOutput<SessionTemplateRuntimeConfig?>(
       'runtimeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SessionTemplateRuntimeConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sparkConnectSession = registerOutput<Map<String, dynamic>?>(
       'sparkConnectSession',

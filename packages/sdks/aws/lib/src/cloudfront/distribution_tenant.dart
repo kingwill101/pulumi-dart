@@ -474,6 +474,13 @@ class DistributionTenant extends pulumi.CustomResource {
     connectionGroupId = registerOutput<String>('connectionGroupId');
     customizations = registerOutput<DistributionTenantCustomizations?>(
       'customizations',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DistributionTenantCustomizations.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     distributionId = registerOutput<String>('distributionId');
     domains = registerOutput<List<Map<String, dynamic>>?>('domains');
@@ -482,13 +489,29 @@ class DistributionTenant extends pulumi.CustomResource {
     managedCertificateRequest =
         registerOutput<DistributionTenantManagedCertificateRequest?>(
           'managedCertificateRequest',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DistributionTenantManagedCertificateRequest.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<DistributionTenantTimeouts?>('timeouts');
+    timeouts = registerOutput<DistributionTenantTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DistributionTenantTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     waitForDeployment = registerOutput<bool>('waitForDeployment');
   }
 
@@ -519,6 +542,13 @@ class DistributionTenant extends pulumi.CustomResource {
     connectionGroupId = registerOutput<String>('connectionGroupId');
     customizations = registerOutput<DistributionTenantCustomizations?>(
       'customizations',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DistributionTenantCustomizations.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     distributionId = registerOutput<String>('distributionId');
     domains = registerOutput<List<Map<String, dynamic>>?>('domains');
@@ -527,13 +557,29 @@ class DistributionTenant extends pulumi.CustomResource {
     managedCertificateRequest =
         registerOutput<DistributionTenantManagedCertificateRequest?>(
           'managedCertificateRequest',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DistributionTenantManagedCertificateRequest.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<DistributionTenantTimeouts?>('timeouts');
+    timeouts = registerOutput<DistributionTenantTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DistributionTenantTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     waitForDeployment = registerOutput<bool>('waitForDeployment');
   }
 }

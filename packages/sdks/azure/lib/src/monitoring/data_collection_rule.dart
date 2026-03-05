@@ -74,12 +74,37 @@ class DataCollectionRule extends pulumi.CustomResource {
       'dataCollectionEndpointId',
     );
     dataFlows = registerOutput<List<Map<String, dynamic>>>('dataFlows');
-    dataSources = registerOutput<DataCollectionRuleDataSources?>('dataSources');
+    dataSources = registerOutput<DataCollectionRuleDataSources?>(
+      'dataSources',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataCollectionRuleDataSources.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     destinations = registerOutput<DataCollectionRuleDestinations>(
       'destinations',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataCollectionRuleDestinations.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    identity = registerOutput<DataCollectionRuleIdentity?>('identity');
+    identity = registerOutput<DataCollectionRuleIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataCollectionRuleIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     immutableId = registerOutput<String>('immutableId');
     kind = registerOutput<String?>('kind');
     location = registerOutput<String>('location');
@@ -118,12 +143,37 @@ class DataCollectionRule extends pulumi.CustomResource {
       'dataCollectionEndpointId',
     );
     dataFlows = registerOutput<List<Map<String, dynamic>>>('dataFlows');
-    dataSources = registerOutput<DataCollectionRuleDataSources?>('dataSources');
+    dataSources = registerOutput<DataCollectionRuleDataSources?>(
+      'dataSources',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataCollectionRuleDataSources.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     destinations = registerOutput<DataCollectionRuleDestinations>(
       'destinations',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataCollectionRuleDestinations.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    identity = registerOutput<DataCollectionRuleIdentity?>('identity');
+    identity = registerOutput<DataCollectionRuleIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataCollectionRuleIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     immutableId = registerOutput<String>('immutableId');
     kind = registerOutput<String?>('kind');
     location = registerOutput<String>('location');

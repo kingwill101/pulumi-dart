@@ -320,6 +320,13 @@ class Collaboration extends pulumi.CustomResource {
     dataEncryptionMetadata =
         registerOutput<CollaborationDataEncryptionMetadata?>(
           'dataEncryptionMetadata',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CollaborationDataEncryptionMetadata.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String>('description');
     members = registerOutput<List<Map<String, dynamic>>?>('members');
@@ -364,6 +371,13 @@ class Collaboration extends pulumi.CustomResource {
     dataEncryptionMetadata =
         registerOutput<CollaborationDataEncryptionMetadata?>(
           'dataEncryptionMetadata',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CollaborationDataEncryptionMetadata.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String>('description');
     members = registerOutput<List<Map<String, dynamic>>?>('members');

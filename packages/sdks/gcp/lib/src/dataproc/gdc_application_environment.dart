@@ -430,7 +430,16 @@ class GdcApplicationEnvironment extends pulumi.CustomResource {
     sparkApplicationEnvironmentConfig =
         registerOutput<
           GdcApplicationEnvironmentSparkApplicationEnvironmentConfig?
-        >('sparkApplicationEnvironmentConfig');
+        >(
+          'sparkApplicationEnvironmentConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GdcApplicationEnvironmentSparkApplicationEnvironmentConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -478,7 +487,16 @@ class GdcApplicationEnvironment extends pulumi.CustomResource {
     sparkApplicationEnvironmentConfig =
         registerOutput<
           GdcApplicationEnvironmentSparkApplicationEnvironmentConfig?
-        >('sparkApplicationEnvironmentConfig');
+        >(
+          'sparkApplicationEnvironmentConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GdcApplicationEnvironmentSparkApplicationEnvironmentConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }

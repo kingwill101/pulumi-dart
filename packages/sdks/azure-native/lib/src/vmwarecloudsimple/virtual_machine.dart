@@ -372,6 +372,13 @@ class VirtualMachine extends pulumi.CustomResource {
     controllers = registerOutput<List<Map<String, dynamic>>>('controllers');
     customization = registerOutput<GuestOSCustomizationResponse?>(
       'customization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GuestOSCustomizationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     disks = registerOutput<List<Map<String, dynamic>>?>('disks');
     dnsname = registerOutput<String>('dnsname');
@@ -387,7 +394,16 @@ class VirtualMachine extends pulumi.CustomResource {
     privateCloudId = registerOutput<String>('privateCloudId');
     provisioningState = registerOutput<String>('provisioningState');
     publicIP = registerOutput<String>('publicIP');
-    resourcePool = registerOutput<ResourcePoolResponse?>('resourcePool');
+    resourcePool = registerOutput<ResourcePoolResponse?>(
+      'resourcePool',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourcePoolResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     templateId = registerOutput<String?>('templateId');

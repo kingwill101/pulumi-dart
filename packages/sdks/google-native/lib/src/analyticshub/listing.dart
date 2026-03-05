@@ -70,10 +70,26 @@ class Listing extends pulumi.CustomResource {
        ) {
     bigqueryDataset = registerOutput<BigQueryDatasetSourceResponse>(
       'bigqueryDataset',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BigQueryDatasetSourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     categories = registerOutput<List<String>>('categories');
     dataExchangeId = registerOutput<String>('dataExchangeId');
-    dataProvider = registerOutput<DataProviderResponse>('dataProvider');
+    dataProvider = registerOutput<DataProviderResponse>(
+      'dataProvider',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataProviderResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
     documentation = registerOutput<String>('documentation');
@@ -83,10 +99,26 @@ class Listing extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     primaryContact = registerOutput<String>('primaryContact');
     project = registerOutput<String>('project');
-    publisher = registerOutput<PublisherResponse>('publisher');
+    publisher = registerOutput<PublisherResponse>(
+      'publisher',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PublisherResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     requestAccess = registerOutput<String>('requestAccess');
     restrictedExportConfig = registerOutput<RestrictedExportConfigResponse>(
       'restrictedExportConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RestrictedExportConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     state = registerOutput<String>('state');
   }

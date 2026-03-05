@@ -55,6 +55,13 @@ class ServerlessSecurityConfig extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     samlOptions = registerOutput<ServerlessSecurityConfigSamlOptions?>(
       'samlOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerlessSecurityConfigSamlOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     type = registerOutput<String>('type');
   }
@@ -88,6 +95,13 @@ class ServerlessSecurityConfig extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     samlOptions = registerOutput<ServerlessSecurityConfigSamlOptions?>(
       'samlOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerlessSecurityConfigSamlOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     type = registerOutput<String>('type');
   }

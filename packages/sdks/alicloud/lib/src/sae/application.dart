@@ -729,9 +729,27 @@ class Application extends pulumi.CustomResource {
     jarStartArgs = registerOutput<String?>('jarStartArgs');
     jarStartOptions = registerOutput<String?>('jarStartOptions');
     jdk = registerOutput<String?>('jdk');
-    kafkaConfigs = registerOutput<ApplicationKafkaConfigs?>('kafkaConfigs');
+    kafkaConfigs = registerOutput<ApplicationKafkaConfigs?>(
+      'kafkaConfigs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationKafkaConfigs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     liveness = registerOutput<String>('liveness');
-    livenessV2 = registerOutput<ApplicationLivenessV2>('livenessV2');
+    livenessV2 = registerOutput<ApplicationLivenessV2>(
+      'livenessV2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationLivenessV2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     memory = registerOutput<int?>('memory');
     microRegistration = registerOutput<String>('microRegistration');
     minReadyInstanceRatio = registerOutput<int>('minReadyInstanceRatio');
@@ -752,15 +770,49 @@ class Application extends pulumi.CustomResource {
     phpConfig = registerOutput<String?>('phpConfig');
     phpConfigLocation = registerOutput<String?>('phpConfigLocation');
     postStart = registerOutput<String>('postStart');
-    postStartV2 = registerOutput<ApplicationPostStartV2>('postStartV2');
+    postStartV2 = registerOutput<ApplicationPostStartV2>(
+      'postStartV2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationPostStartV2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     preStop = registerOutput<String>('preStop');
-    preStopV2 = registerOutput<ApplicationPreStopV2>('preStopV2');
+    preStopV2 = registerOutput<ApplicationPreStopV2>(
+      'preStopV2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationPreStopV2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     programmingLanguage = registerOutput<String>('programmingLanguage');
     pvtzDiscoverySvc = registerOutput<ApplicationPvtzDiscoverySvc?>(
       'pvtzDiscoverySvc',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationPvtzDiscoverySvc.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     readiness = registerOutput<String>('readiness');
-    readinessV2 = registerOutput<ApplicationReadinessV2>('readinessV2');
+    readinessV2 = registerOutput<ApplicationReadinessV2>(
+      'readinessV2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationReadinessV2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     replicas = registerOutput<int>('replicas');
     securityGroupId = registerOutput<String>('securityGroupId');
     slsConfigs = registerOutput<String?>('slsConfigs');
@@ -773,10 +825,24 @@ class Application extends pulumi.CustomResource {
     tomcatConfig = registerOutput<String>('tomcatConfig');
     tomcatConfigV2 = registerOutput<ApplicationTomcatConfigV2>(
       'tomcatConfigV2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationTomcatConfigV2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     updateStrategy = registerOutput<String>('updateStrategy');
     updateStrategyV2 = registerOutput<ApplicationUpdateStrategyV2>(
       'updateStrategyV2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationUpdateStrategyV2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     vpcId = registerOutput<String?>('vpcId');
     vswitchId = registerOutput<String?>('vswitchId');
@@ -839,9 +905,27 @@ class Application extends pulumi.CustomResource {
     jarStartArgs = registerOutput<String?>('jarStartArgs');
     jarStartOptions = registerOutput<String?>('jarStartOptions');
     jdk = registerOutput<String?>('jdk');
-    kafkaConfigs = registerOutput<ApplicationKafkaConfigs?>('kafkaConfigs');
+    kafkaConfigs = registerOutput<ApplicationKafkaConfigs?>(
+      'kafkaConfigs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationKafkaConfigs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     liveness = registerOutput<String>('liveness');
-    livenessV2 = registerOutput<ApplicationLivenessV2>('livenessV2');
+    livenessV2 = registerOutput<ApplicationLivenessV2>(
+      'livenessV2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationLivenessV2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     memory = registerOutput<int?>('memory');
     microRegistration = registerOutput<String>('microRegistration');
     minReadyInstanceRatio = registerOutput<int>('minReadyInstanceRatio');
@@ -862,15 +946,49 @@ class Application extends pulumi.CustomResource {
     phpConfig = registerOutput<String?>('phpConfig');
     phpConfigLocation = registerOutput<String?>('phpConfigLocation');
     postStart = registerOutput<String>('postStart');
-    postStartV2 = registerOutput<ApplicationPostStartV2>('postStartV2');
+    postStartV2 = registerOutput<ApplicationPostStartV2>(
+      'postStartV2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationPostStartV2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     preStop = registerOutput<String>('preStop');
-    preStopV2 = registerOutput<ApplicationPreStopV2>('preStopV2');
+    preStopV2 = registerOutput<ApplicationPreStopV2>(
+      'preStopV2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationPreStopV2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     programmingLanguage = registerOutput<String>('programmingLanguage');
     pvtzDiscoverySvc = registerOutput<ApplicationPvtzDiscoverySvc?>(
       'pvtzDiscoverySvc',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationPvtzDiscoverySvc.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     readiness = registerOutput<String>('readiness');
-    readinessV2 = registerOutput<ApplicationReadinessV2>('readinessV2');
+    readinessV2 = registerOutput<ApplicationReadinessV2>(
+      'readinessV2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationReadinessV2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     replicas = registerOutput<int>('replicas');
     securityGroupId = registerOutput<String>('securityGroupId');
     slsConfigs = registerOutput<String?>('slsConfigs');
@@ -883,10 +1001,24 @@ class Application extends pulumi.CustomResource {
     tomcatConfig = registerOutput<String>('tomcatConfig');
     tomcatConfigV2 = registerOutput<ApplicationTomcatConfigV2>(
       'tomcatConfigV2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationTomcatConfigV2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     updateStrategy = registerOutput<String>('updateStrategy');
     updateStrategyV2 = registerOutput<ApplicationUpdateStrategyV2>(
       'updateStrategyV2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationUpdateStrategyV2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     vpcId = registerOutput<String?>('vpcId');
     vswitchId = registerOutput<String?>('vswitchId');

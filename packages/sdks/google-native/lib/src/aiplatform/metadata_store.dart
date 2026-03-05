@@ -52,6 +52,13 @@ class MetadataStore extends pulumi.CustomResource {
     encryptionSpec =
         registerOutput<GoogleCloudAiplatformV1EncryptionSpecResponse>(
           'encryptionSpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1EncryptionSpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     location = registerOutput<String>('location');
     metadataStoreId = registerOutput<String?>('metadataStoreId');
@@ -60,7 +67,16 @@ class MetadataStore extends pulumi.CustomResource {
     state =
         registerOutput<
           GoogleCloudAiplatformV1MetadataStoreMetadataStoreStateResponse
-        >('state');
+        >(
+          'state',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1MetadataStoreMetadataStoreStateResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     updateTime = registerOutput<String>('updateTime');
   }
 }

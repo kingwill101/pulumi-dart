@@ -224,7 +224,16 @@ class Router extends pulumi.CustomResource {
     tags = registerOutput<List<String>?>('tags');
     tenantId = registerOutput<String>('tenantId');
     valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
-    vendorOptions = registerOutput<RouterVendorOptions?>('vendorOptions');
+    vendorOptions = registerOutput<RouterVendorOptions?>(
+      'vendorOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RouterVendorOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Router] resource's state with the given [name] and [id].
@@ -269,6 +278,15 @@ class Router extends pulumi.CustomResource {
     tags = registerOutput<List<String>?>('tags');
     tenantId = registerOutput<String>('tenantId');
     valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
-    vendorOptions = registerOutput<RouterVendorOptions?>('vendorOptions');
+    vendorOptions = registerOutput<RouterVendorOptions?>(
+      'vendorOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RouterVendorOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

@@ -205,7 +205,16 @@ class FirewallVpcFirewallCen extends pulumi.CustomResource {
     cenId = registerOutput<String>('cenId');
     connectType = registerOutput<String>('connectType');
     lang = registerOutput<String?>('lang');
-    localVpc = registerOutput<FirewallVpcFirewallCenLocalVpc>('localVpc');
+    localVpc = registerOutput<FirewallVpcFirewallCenLocalVpc>(
+      'localVpc',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FirewallVpcFirewallCenLocalVpc.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     memberUid = registerOutput<String?>('memberUid');
     status = registerOutput<String>('status');
     vpcFirewallId = registerOutput<String>('vpcFirewallId');
@@ -239,7 +248,16 @@ class FirewallVpcFirewallCen extends pulumi.CustomResource {
     cenId = registerOutput<String>('cenId');
     connectType = registerOutput<String>('connectType');
     lang = registerOutput<String?>('lang');
-    localVpc = registerOutput<FirewallVpcFirewallCenLocalVpc>('localVpc');
+    localVpc = registerOutput<FirewallVpcFirewallCenLocalVpc>(
+      'localVpc',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FirewallVpcFirewallCenLocalVpc.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     memberUid = registerOutput<String?>('memberUid');
     status = registerOutput<String>('status');
     vpcFirewallId = registerOutput<String>('vpcFirewallId');

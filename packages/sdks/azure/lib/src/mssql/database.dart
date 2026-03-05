@@ -1098,12 +1098,37 @@ class Database extends pulumi.CustomResource {
     elasticPoolId = registerOutput<String?>('elasticPoolId');
     enclaveType = registerOutput<String>('enclaveType');
     geoBackupEnabled = registerOutput<bool?>('geoBackupEnabled');
-    identity = registerOutput<DatabaseIdentity?>('identity');
-    import = registerOutput<DatabaseImport?>('import');
+    identity = registerOutput<DatabaseIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    import = registerOutput<DatabaseImport?>(
+      'import',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseImport.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ledgerEnabled = registerOutput<bool>('ledgerEnabled');
     licenseType = registerOutput<String>('licenseType');
     longTermRetentionPolicy = registerOutput<DatabaseLongTermRetentionPolicy>(
       'longTermRetentionPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseLongTermRetentionPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     maintenanceConfigurationName = registerOutput<String>(
       'maintenanceConfigurationName',
@@ -1127,12 +1152,26 @@ class Database extends pulumi.CustomResource {
     serverId = registerOutput<String>('serverId');
     shortTermRetentionPolicy = registerOutput<DatabaseShortTermRetentionPolicy>(
       'shortTermRetentionPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseShortTermRetentionPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     skuName = registerOutput<String>('skuName');
     storageAccountType = registerOutput<String?>('storageAccountType');
     tags = registerOutput<Map<String, String>?>('tags');
     threatDetectionPolicy = registerOutput<DatabaseThreatDetectionPolicy>(
       'threatDetectionPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseThreatDetectionPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     transparentDataEncryptionEnabled = registerOutput<bool?>(
       'transparentDataEncryptionEnabled',
@@ -1179,12 +1218,37 @@ class Database extends pulumi.CustomResource {
     elasticPoolId = registerOutput<String?>('elasticPoolId');
     enclaveType = registerOutput<String>('enclaveType');
     geoBackupEnabled = registerOutput<bool?>('geoBackupEnabled');
-    identity = registerOutput<DatabaseIdentity?>('identity');
-    import = registerOutput<DatabaseImport?>('import');
+    identity = registerOutput<DatabaseIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    import = registerOutput<DatabaseImport?>(
+      'import',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseImport.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ledgerEnabled = registerOutput<bool>('ledgerEnabled');
     licenseType = registerOutput<String>('licenseType');
     longTermRetentionPolicy = registerOutput<DatabaseLongTermRetentionPolicy>(
       'longTermRetentionPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseLongTermRetentionPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     maintenanceConfigurationName = registerOutput<String>(
       'maintenanceConfigurationName',
@@ -1208,12 +1272,26 @@ class Database extends pulumi.CustomResource {
     serverId = registerOutput<String>('serverId');
     shortTermRetentionPolicy = registerOutput<DatabaseShortTermRetentionPolicy>(
       'shortTermRetentionPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseShortTermRetentionPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     skuName = registerOutput<String>('skuName');
     storageAccountType = registerOutput<String?>('storageAccountType');
     tags = registerOutput<Map<String, String>?>('tags');
     threatDetectionPolicy = registerOutput<DatabaseThreatDetectionPolicy>(
       'threatDetectionPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseThreatDetectionPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     transparentDataEncryptionEnabled = registerOutput<bool?>(
       'transparentDataEncryptionEnabled',

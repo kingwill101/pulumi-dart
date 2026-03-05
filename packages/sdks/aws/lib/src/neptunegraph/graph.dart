@@ -253,9 +253,25 @@ class Graph extends pulumi.CustomResource {
     replicaCount = registerOutput<int>('replicaCount');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<GraphTimeouts?>('timeouts');
+    timeouts = registerOutput<GraphTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GraphTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vectorSearchConfiguration = registerOutput<GraphVectorSearchConfiguration?>(
       'vectorSearchConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GraphVectorSearchConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -290,9 +306,25 @@ class Graph extends pulumi.CustomResource {
     replicaCount = registerOutput<int>('replicaCount');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<GraphTimeouts?>('timeouts');
+    timeouts = registerOutput<GraphTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GraphTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vectorSearchConfiguration = registerOutput<GraphVectorSearchConfiguration?>(
       'vectorSearchConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GraphVectorSearchConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

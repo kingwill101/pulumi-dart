@@ -339,7 +339,16 @@ class Job extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    schedule = registerOutput<JobScheduleResponse?>('schedule');
+    schedule = registerOutput<JobScheduleResponse?>(
+      'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobScheduleResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     version = registerOutput<int>('version');
   }

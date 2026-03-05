@@ -100,11 +100,34 @@ class Backup extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     encryptionConfig = registerOutput<EncryptionConfigResponse>(
       'encryptionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EncryptionConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    encryptionInfo = registerOutput<EncryptionInfoResponse>('encryptionInfo');
+    encryptionInfo = registerOutput<EncryptionInfoResponse>(
+      'encryptionInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EncryptionInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     expiryQuantity = registerOutput<QuantityBasedExpiryResponse>(
       'expiryQuantity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return QuantityBasedExpiryResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     expiryTime = registerOutput<String>('expiryTime');
     labels = registerOutput<Map<String, String>>('labels');

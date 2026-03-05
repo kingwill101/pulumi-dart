@@ -363,6 +363,13 @@ class UserHierarchyStructure extends pulumi.CustomResource {
     hierarchyStructure =
         registerOutput<UserHierarchyStructureHierarchyStructure>(
           'hierarchyStructure',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return UserHierarchyStructureHierarchyStructure.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     instanceId = registerOutput<String>('instanceId');
     region = registerOutput<String>('region');
@@ -394,6 +401,13 @@ class UserHierarchyStructure extends pulumi.CustomResource {
     hierarchyStructure =
         registerOutput<UserHierarchyStructureHierarchyStructure>(
           'hierarchyStructure',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return UserHierarchyStructureHierarchyStructure.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     instanceId = registerOutput<String>('instanceId');
     region = registerOutput<String>('region');

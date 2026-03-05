@@ -491,14 +491,39 @@ class JobStep extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    action = registerOutput<JobStepActionResponse>('action');
+    action = registerOutput<JobStepActionResponse>(
+      'action',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobStepActionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     credential = registerOutput<String?>('credential');
     executionOptions = registerOutput<JobStepExecutionOptionsResponse?>(
       'executionOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobStepExecutionOptionsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
-    output = registerOutput<JobStepOutputResponse?>('output');
+    output = registerOutput<JobStepOutputResponse?>(
+      'output',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobStepOutputResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     stepId = registerOutput<int?>('stepId');
     targetGroup = registerOutput<String>('targetGroup');
     type = registerOutput<String>('type');

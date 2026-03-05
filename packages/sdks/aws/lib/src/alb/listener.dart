@@ -2280,6 +2280,13 @@ class Listener extends pulumi.CustomResource {
     loadBalancerArn = registerOutput<String>('loadBalancerArn');
     mutualAuthentication = registerOutput<ListenerMutualAuthentication>(
       'mutualAuthentication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ListenerMutualAuthentication.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     port = registerOutput<int?>('port');
     protocol = registerOutput<String>('protocol');
@@ -2391,6 +2398,13 @@ class Listener extends pulumi.CustomResource {
     loadBalancerArn = registerOutput<String>('loadBalancerArn');
     mutualAuthentication = registerOutput<ListenerMutualAuthentication>(
       'mutualAuthentication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ListenerMutualAuthentication.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     port = registerOutput<int?>('port');
     protocol = registerOutput<String>('protocol');

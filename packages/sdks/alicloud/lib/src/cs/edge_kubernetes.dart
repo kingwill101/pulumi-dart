@@ -1007,12 +1007,28 @@ class EdgeKubernetes extends pulumi.CustomResource {
     availabilityZone = registerOutput<String>('availabilityZone');
     certificateAuthority = registerOutput<EdgeKubernetesCertificateAuthority>(
       'certificateAuthority',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EdgeKubernetesCertificateAuthority.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clientCert = registerOutput<String?>('clientCert');
     clientKey = registerOutput<String?>('clientKey');
     clusterCaCert = registerOutput<String?>('clusterCaCert');
     clusterSpec = registerOutput<String>('clusterSpec');
-    connections = registerOutput<EdgeKubernetesConnections>('connections');
+    connections = registerOutput<EdgeKubernetesConnections>(
+      'connections',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EdgeKubernetesConnections.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     deletionProtection = registerOutput<bool?>('deletionProtection');
     installCloudMonitor = registerOutput<bool?>('installCloudMonitor');
     isEnterpriseSecurityGroup = registerOutput<bool>(
@@ -1021,7 +1037,16 @@ class EdgeKubernetes extends pulumi.CustomResource {
     keyName = registerOutput<String?>('keyName');
     kubeConfig = registerOutput<String?>('kubeConfig');
     loadBalancerSpec = registerOutput<String>('loadBalancerSpec');
-    logConfig = registerOutput<EdgeKubernetesLogConfig?>('logConfig');
+    logConfig = registerOutput<EdgeKubernetesLogConfig?>(
+      'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EdgeKubernetesLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String?>('namePrefix');
     natGatewayId = registerOutput<String>('natGatewayId');
@@ -1033,7 +1058,16 @@ class EdgeKubernetes extends pulumi.CustomResource {
     rdsInstances = registerOutput<List<String>?>('rdsInstances');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     retainResources = registerOutput<List<String>?>('retainResources');
-    runtime = registerOutput<EdgeKubernetesRuntime?>('runtime');
+    runtime = registerOutput<EdgeKubernetesRuntime?>(
+      'runtime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EdgeKubernetesRuntime.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     securityGroupId = registerOutput<String>('securityGroupId');
     serviceCidr = registerOutput<String?>('serviceCidr');
     skipSetCertificateAuthority = registerOutput<bool?>(
@@ -1094,12 +1128,28 @@ class EdgeKubernetes extends pulumi.CustomResource {
     availabilityZone = registerOutput<String>('availabilityZone');
     certificateAuthority = registerOutput<EdgeKubernetesCertificateAuthority>(
       'certificateAuthority',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EdgeKubernetesCertificateAuthority.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clientCert = registerOutput<String?>('clientCert');
     clientKey = registerOutput<String?>('clientKey');
     clusterCaCert = registerOutput<String?>('clusterCaCert');
     clusterSpec = registerOutput<String>('clusterSpec');
-    connections = registerOutput<EdgeKubernetesConnections>('connections');
+    connections = registerOutput<EdgeKubernetesConnections>(
+      'connections',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EdgeKubernetesConnections.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     deletionProtection = registerOutput<bool?>('deletionProtection');
     installCloudMonitor = registerOutput<bool?>('installCloudMonitor');
     isEnterpriseSecurityGroup = registerOutput<bool>(
@@ -1108,7 +1158,16 @@ class EdgeKubernetes extends pulumi.CustomResource {
     keyName = registerOutput<String?>('keyName');
     kubeConfig = registerOutput<String?>('kubeConfig');
     loadBalancerSpec = registerOutput<String>('loadBalancerSpec');
-    logConfig = registerOutput<EdgeKubernetesLogConfig?>('logConfig');
+    logConfig = registerOutput<EdgeKubernetesLogConfig?>(
+      'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EdgeKubernetesLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String?>('namePrefix');
     natGatewayId = registerOutput<String>('natGatewayId');
@@ -1120,7 +1179,16 @@ class EdgeKubernetes extends pulumi.CustomResource {
     rdsInstances = registerOutput<List<String>?>('rdsInstances');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     retainResources = registerOutput<List<String>?>('retainResources');
-    runtime = registerOutput<EdgeKubernetesRuntime?>('runtime');
+    runtime = registerOutput<EdgeKubernetesRuntime?>(
+      'runtime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EdgeKubernetesRuntime.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     securityGroupId = registerOutput<String>('securityGroupId');
     serviceCidr = registerOutput<String?>('serviceCidr');
     skipSetCertificateAuthority = registerOutput<bool?>(

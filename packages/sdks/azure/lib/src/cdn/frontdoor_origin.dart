@@ -1414,7 +1414,16 @@ class FrontdoorOrigin extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     originHostHeader = registerOutput<String?>('originHostHeader');
     priority = registerOutput<int?>('priority');
-    privateLink = registerOutput<FrontdoorOriginPrivateLink?>('privateLink');
+    privateLink = registerOutput<FrontdoorOriginPrivateLink?>(
+      'privateLink',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FrontdoorOriginPrivateLink.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     weight = registerOutput<int?>('weight');
   }
 
@@ -1454,7 +1463,16 @@ class FrontdoorOrigin extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     originHostHeader = registerOutput<String?>('originHostHeader');
     priority = registerOutput<int?>('priority');
-    privateLink = registerOutput<FrontdoorOriginPrivateLink?>('privateLink');
+    privateLink = registerOutput<FrontdoorOriginPrivateLink?>(
+      'privateLink',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FrontdoorOriginPrivateLink.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     weight = registerOutput<int?>('weight');
   }
 }

@@ -215,9 +215,27 @@ class Profile extends pulumi.CustomResource {
        ) {
     accountNumber = registerOutput<String?>('accountNumber');
     additionalInformation = registerOutput<String?>('additionalInformation');
-    address = registerOutput<ProfileAddress?>('address');
+    address = registerOutput<ProfileAddress?>(
+      'address',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProfileAddress.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     attributes = registerOutput<Map<String, String>?>('attributes');
-    billingAddress = registerOutput<ProfileBillingAddress?>('billingAddress');
+    billingAddress = registerOutput<ProfileBillingAddress?>(
+      'billingAddress',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProfileBillingAddress.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     birthDate = registerOutput<String?>('birthDate');
     businessEmailAddress = registerOutput<String?>('businessEmailAddress');
     businessName = registerOutput<String?>('businessName');
@@ -228,7 +246,16 @@ class Profile extends pulumi.CustomResource {
     genderString = registerOutput<String?>('genderString');
     homePhoneNumber = registerOutput<String?>('homePhoneNumber');
     lastName = registerOutput<String?>('lastName');
-    mailingAddress = registerOutput<ProfileMailingAddress?>('mailingAddress');
+    mailingAddress = registerOutput<ProfileMailingAddress?>(
+      'mailingAddress',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProfileMailingAddress.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     middleName = registerOutput<String?>('middleName');
     mobilePhoneNumber = registerOutput<String?>('mobilePhoneNumber');
     partyTypeString = registerOutput<String?>('partyTypeString');
@@ -237,6 +264,13 @@ class Profile extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     shippingAddress = registerOutput<ProfileShippingAddress?>(
       'shippingAddress',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProfileShippingAddress.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -265,9 +299,27 @@ class Profile extends pulumi.CustomResource {
        ) {
     accountNumber = registerOutput<String?>('accountNumber');
     additionalInformation = registerOutput<String?>('additionalInformation');
-    address = registerOutput<ProfileAddress?>('address');
+    address = registerOutput<ProfileAddress?>(
+      'address',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProfileAddress.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     attributes = registerOutput<Map<String, String>?>('attributes');
-    billingAddress = registerOutput<ProfileBillingAddress?>('billingAddress');
+    billingAddress = registerOutput<ProfileBillingAddress?>(
+      'billingAddress',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProfileBillingAddress.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     birthDate = registerOutput<String?>('birthDate');
     businessEmailAddress = registerOutput<String?>('businessEmailAddress');
     businessName = registerOutput<String?>('businessName');
@@ -278,7 +330,16 @@ class Profile extends pulumi.CustomResource {
     genderString = registerOutput<String?>('genderString');
     homePhoneNumber = registerOutput<String?>('homePhoneNumber');
     lastName = registerOutput<String?>('lastName');
-    mailingAddress = registerOutput<ProfileMailingAddress?>('mailingAddress');
+    mailingAddress = registerOutput<ProfileMailingAddress?>(
+      'mailingAddress',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProfileMailingAddress.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     middleName = registerOutput<String?>('middleName');
     mobilePhoneNumber = registerOutput<String?>('mobilePhoneNumber');
     partyTypeString = registerOutput<String?>('partyTypeString');
@@ -287,6 +348,13 @@ class Profile extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     shippingAddress = registerOutput<ProfileShippingAddress?>(
       'shippingAddress',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProfileShippingAddress.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

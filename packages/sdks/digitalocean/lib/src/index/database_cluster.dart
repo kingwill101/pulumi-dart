@@ -1070,6 +1070,13 @@ class DatabaseCluster extends pulumi.CustomResource {
        ) {
     backupRestore = registerOutput<DatabaseClusterBackupRestore?>(
       'backupRestore',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseClusterBackupRestore.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clusterUrn = registerOutput<String>('clusterUrn');
     database = registerOutput<String>('database');
@@ -1129,6 +1136,13 @@ class DatabaseCluster extends pulumi.CustomResource {
        ) {
     backupRestore = registerOutput<DatabaseClusterBackupRestore?>(
       'backupRestore',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseClusterBackupRestore.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clusterUrn = registerOutput<String>('clusterUrn');
     database = registerOutput<String>('database');

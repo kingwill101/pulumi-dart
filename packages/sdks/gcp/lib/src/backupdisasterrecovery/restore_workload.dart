@@ -1416,26 +1416,61 @@ class RestoreWorkload extends pulumi.CustomResource {
     computeInstanceRestoreProperties =
         registerOutput<RestoreWorkloadComputeInstanceRestoreProperties?>(
           'computeInstanceRestoreProperties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RestoreWorkloadComputeInstanceRestoreProperties.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     computeInstanceTargetEnvironment =
         registerOutput<RestoreWorkloadComputeInstanceTargetEnvironment?>(
           'computeInstanceTargetEnvironment',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RestoreWorkloadComputeInstanceTargetEnvironment.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dataSourceId = registerOutput<String>('dataSourceId');
     deleteRestoredInstance = registerOutput<bool?>('deleteRestoredInstance');
     diskRestoreProperties =
         registerOutput<RestoreWorkloadDiskRestoreProperties?>(
           'diskRestoreProperties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RestoreWorkloadDiskRestoreProperties.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     diskTargetEnvironment =
         registerOutput<RestoreWorkloadDiskTargetEnvironment?>(
           'diskTargetEnvironment',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RestoreWorkloadDiskTargetEnvironment.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     regionDiskTargetEnvironment =
         registerOutput<RestoreWorkloadRegionDiskTargetEnvironment?>(
           'regionDiskTargetEnvironment',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RestoreWorkloadRegionDiskTargetEnvironment.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     requestId = registerOutput<String?>('requestId');
     targetResources = registerOutput<List<Map<String, dynamic>>>(
@@ -1474,26 +1509,61 @@ class RestoreWorkload extends pulumi.CustomResource {
     computeInstanceRestoreProperties =
         registerOutput<RestoreWorkloadComputeInstanceRestoreProperties?>(
           'computeInstanceRestoreProperties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RestoreWorkloadComputeInstanceRestoreProperties.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     computeInstanceTargetEnvironment =
         registerOutput<RestoreWorkloadComputeInstanceTargetEnvironment?>(
           'computeInstanceTargetEnvironment',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RestoreWorkloadComputeInstanceTargetEnvironment.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dataSourceId = registerOutput<String>('dataSourceId');
     deleteRestoredInstance = registerOutput<bool?>('deleteRestoredInstance');
     diskRestoreProperties =
         registerOutput<RestoreWorkloadDiskRestoreProperties?>(
           'diskRestoreProperties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RestoreWorkloadDiskRestoreProperties.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     diskTargetEnvironment =
         registerOutput<RestoreWorkloadDiskTargetEnvironment?>(
           'diskTargetEnvironment',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RestoreWorkloadDiskTargetEnvironment.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     regionDiskTargetEnvironment =
         registerOutput<RestoreWorkloadRegionDiskTargetEnvironment?>(
           'regionDiskTargetEnvironment',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RestoreWorkloadRegionDiskTargetEnvironment.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     requestId = registerOutput<String?>('requestId');
     targetResources = registerOutput<List<Map<String, dynamic>>>(

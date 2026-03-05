@@ -75,7 +75,16 @@ class FhirStoreHealthcareV1beta1 extends pulumi.CustomResource {
     complexDataTypeReferenceParsing = registerOutput<String>(
       'complexDataTypeReferenceParsing',
     );
-    consentConfig = registerOutput<ConsentConfigResponse>('consentConfig');
+    consentConfig = registerOutput<ConsentConfigResponse>(
+      'consentConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConsentConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     datasetId = registerOutput<String>('datasetId');
     defaultSearchHandlingStrict = registerOutput<bool>(
       'defaultSearchHandlingStrict',
@@ -94,16 +103,39 @@ class FhirStoreHealthcareV1beta1 extends pulumi.CustomResource {
     notificationConfig =
         registerOutput<NotificationConfigResponseHealthcareV1beta1>(
           'notificationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NotificationConfigResponseHealthcareV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     notificationConfigs = registerOutput<List<Map<String, dynamic>>>(
       'notificationConfigs',
     );
     project = registerOutput<String>('project');
-    searchConfig = registerOutput<SearchConfigResponse>('searchConfig');
+    searchConfig = registerOutput<SearchConfigResponse>(
+      'searchConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SearchConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     streamConfigs = registerOutput<List<Map<String, dynamic>>>('streamConfigs');
     validationConfig =
         registerOutput<ValidationConfigResponseHealthcareV1beta1>(
           'validationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ValidationConfigResponseHealthcareV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     version = registerOutput<String>('version');
   }

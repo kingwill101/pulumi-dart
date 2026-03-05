@@ -333,16 +333,37 @@ class MachineRunCommand extends pulumi.CustomResource {
     errorBlobManagedIdentity =
         registerOutput<RunCommandManagedIdentityResponse?>(
           'errorBlobManagedIdentity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RunCommandManagedIdentityResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     errorBlobUri = registerOutput<String?>('errorBlobUri');
     instanceView = registerOutput<MachineRunCommandInstanceViewResponse>(
       'instanceView',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MachineRunCommandInstanceViewResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     outputBlobManagedIdentity =
         registerOutput<RunCommandManagedIdentityResponse?>(
           'outputBlobManagedIdentity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RunCommandManagedIdentityResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     outputBlobUri = registerOutput<String?>('outputBlobUri');
     parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
@@ -352,8 +373,26 @@ class MachineRunCommand extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     runAsPassword = registerOutput<String?>('runAsPassword');
     runAsUser = registerOutput<String?>('runAsUser');
-    source = registerOutput<MachineRunCommandScriptSourceResponse?>('source');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    source = registerOutput<MachineRunCommandScriptSourceResponse?>(
+      'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MachineRunCommandScriptSourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     timeoutInSeconds = registerOutput<int?>('timeoutInSeconds');
     type = registerOutput<String>('type');

@@ -214,15 +214,38 @@ class CustomActionType extends pulumi.CustomResource {
     );
     inputArtifactDetails = registerOutput<CustomActionTypeInputArtifactDetails>(
       'inputArtifactDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomActionTypeInputArtifactDetails.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     outputArtifactDetails =
         registerOutput<CustomActionTypeOutputArtifactDetails>(
           'outputArtifactDetails',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CustomActionTypeOutputArtifactDetails.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     owner = registerOutput<String>('owner');
     providerName = registerOutput<String>('providerName');
     region = registerOutput<String>('region');
-    settings = registerOutput<CustomActionTypeSettings?>('settings');
+    settings = registerOutput<CustomActionTypeSettings?>(
+      'settings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomActionTypeSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     version = registerOutput<String>('version');
@@ -258,15 +281,38 @@ class CustomActionType extends pulumi.CustomResource {
     );
     inputArtifactDetails = registerOutput<CustomActionTypeInputArtifactDetails>(
       'inputArtifactDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomActionTypeInputArtifactDetails.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     outputArtifactDetails =
         registerOutput<CustomActionTypeOutputArtifactDetails>(
           'outputArtifactDetails',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CustomActionTypeOutputArtifactDetails.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     owner = registerOutput<String>('owner');
     providerName = registerOutput<String>('providerName');
     region = registerOutput<String>('region');
-    settings = registerOutput<CustomActionTypeSettings?>('settings');
+    settings = registerOutput<CustomActionTypeSettings?>(
+      'settings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomActionTypeSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     version = registerOutput<String>('version');

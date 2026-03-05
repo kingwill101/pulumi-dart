@@ -157,7 +157,16 @@ class KeyValueStore extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     this.name = registerOutput<String>('name');
-    timeouts = registerOutput<KeyValueStoreTimeouts?>('timeouts');
+    timeouts = registerOutput<KeyValueStoreTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KeyValueStoreTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [KeyValueStore] resource's state with the given [name] and [id].
@@ -188,6 +197,15 @@ class KeyValueStore extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     this.name = registerOutput<String>('name');
-    timeouts = registerOutput<KeyValueStoreTimeouts?>('timeouts');
+    timeouts = registerOutput<KeyValueStoreTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KeyValueStoreTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

@@ -1,28 +1,37 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getQuotaV2.
 class GetQuotaV2Result {
   /// The number of allowed floating ips.
   final int floatingip;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The number of allowed networks.
   final int network;
+
   /// The number of allowed ports.
   final int port;
+
   /// See Argument Reference above.
   final String projectId;
+
   /// The number of allowed rbac policies.
   final int rbacPolicy;
+
   /// See Argument Reference above.
   final String region;
+
   /// The amount of allowed routers.
   final int router;
+
   /// The number of allowed security groups.
   final int securityGroup;
+
   /// The number of allowed security group rules.
   final int securityGroupRule;
+
   /// The number of allowed subnets.
   /// * `subnetpool-` - The number of allowed subnet pools.
   final int subnet;
@@ -90,4 +99,3 @@ class GetQuotaV2Result {
     );
   }
 }
-

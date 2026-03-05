@@ -60,10 +60,28 @@ class Connector extends pulumi.CustomResource {
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    principalInfo = registerOutput<PrincipalInfoResponse>('principalInfo');
+    principalInfo = registerOutput<PrincipalInfoResponse>(
+      'principalInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PrincipalInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');
-    resourceInfo = registerOutput<ResourceInfoResponse>('resourceInfo');
+    resourceInfo = registerOutput<ResourceInfoResponse>(
+      'resourceInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');

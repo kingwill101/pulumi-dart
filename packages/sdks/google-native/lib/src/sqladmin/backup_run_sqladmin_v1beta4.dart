@@ -75,14 +75,37 @@ class BackupRunSqladminV1beta4 extends pulumi.CustomResource {
     diskEncryptionConfiguration =
         registerOutput<DiskEncryptionConfigurationResponseSqladminV1beta4>(
           'diskEncryptionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DiskEncryptionConfigurationResponseSqladminV1beta4.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     diskEncryptionStatus =
         registerOutput<DiskEncryptionStatusResponseSqladminV1beta4>(
           'diskEncryptionStatus',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DiskEncryptionStatusResponseSqladminV1beta4.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     endTime = registerOutput<String>('endTime');
     enqueuedTime = registerOutput<String>('enqueuedTime');
-    error = registerOutput<OperationErrorResponseSqladminV1beta4>('error');
+    error = registerOutput<OperationErrorResponseSqladminV1beta4>(
+      'error',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OperationErrorResponseSqladminV1beta4.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     instance = registerOutput<String>('instance');
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');

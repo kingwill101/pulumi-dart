@@ -665,12 +665,37 @@ class AgentcoreBrowser extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkConfiguration = registerOutput<AgentcoreBrowserNetworkConfiguration>(
       'networkConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentcoreBrowserNetworkConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    recording = registerOutput<AgentcoreBrowserRecording?>('recording');
+    recording = registerOutput<AgentcoreBrowserRecording?>(
+      'recording',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentcoreBrowserRecording.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<AgentcoreBrowserTimeouts?>('timeouts');
+    timeouts = registerOutput<AgentcoreBrowserTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentcoreBrowserTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [AgentcoreBrowser] resource's state with the given [name] and [id].
@@ -703,11 +728,36 @@ class AgentcoreBrowser extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkConfiguration = registerOutput<AgentcoreBrowserNetworkConfiguration>(
       'networkConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentcoreBrowserNetworkConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    recording = registerOutput<AgentcoreBrowserRecording?>('recording');
+    recording = registerOutput<AgentcoreBrowserRecording?>(
+      'recording',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentcoreBrowserRecording.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<AgentcoreBrowserTimeouts?>('timeouts');
+    timeouts = registerOutput<AgentcoreBrowserTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentcoreBrowserTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

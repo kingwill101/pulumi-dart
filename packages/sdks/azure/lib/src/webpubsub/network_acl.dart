@@ -518,7 +518,16 @@ class NetworkAcl extends pulumi.CustomResource {
     privateEndpoints = registerOutput<List<Map<String, dynamic>>?>(
       'privateEndpoints',
     );
-    publicNetwork = registerOutput<NetworkAclPublicNetwork>('publicNetwork');
+    publicNetwork = registerOutput<NetworkAclPublicNetwork>(
+      'publicNetwork',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkAclPublicNetwork.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     webPubsubId = registerOutput<String>('webPubsubId');
   }
 
@@ -549,7 +558,16 @@ class NetworkAcl extends pulumi.CustomResource {
     privateEndpoints = registerOutput<List<Map<String, dynamic>>?>(
       'privateEndpoints',
     );
-    publicNetwork = registerOutput<NetworkAclPublicNetwork>('publicNetwork');
+    publicNetwork = registerOutput<NetworkAclPublicNetwork>(
+      'publicNetwork',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkAclPublicNetwork.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     webPubsubId = registerOutput<String>('webPubsubId');
   }
 }

@@ -278,17 +278,40 @@ class GovernanceAssignment extends pulumi.CustomResource {
     additionalData =
         registerOutput<GovernanceAssignmentAdditionalDataResponse?>(
           'additionalData',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GovernanceAssignmentAdditionalDataResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     governanceEmailNotification =
         registerOutput<GovernanceEmailNotificationResponse?>(
           'governanceEmailNotification',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GovernanceEmailNotificationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     isGracePeriod = registerOutput<bool?>('isGracePeriod');
     this.name = registerOutput<String>('name');
     owner = registerOutput<String?>('owner');
     remediationDueDate = registerOutput<String>('remediationDueDate');
-    remediationEta = registerOutput<RemediationEtaResponse?>('remediationEta');
+    remediationEta = registerOutput<RemediationEtaResponse?>(
+      'remediationEta',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RemediationEtaResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

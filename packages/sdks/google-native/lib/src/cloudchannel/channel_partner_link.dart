@@ -52,6 +52,13 @@ class ChannelPartnerLink extends pulumi.CustomResource {
     channelPartnerCloudIdentityInfo =
         registerOutput<GoogleCloudChannelV1CloudIdentityInfoResponse>(
           'channelPartnerCloudIdentityInfo',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudChannelV1CloudIdentityInfoResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     createTime = registerOutput<String>('createTime');
     inviteLinkUri = registerOutput<String>('inviteLinkUri');

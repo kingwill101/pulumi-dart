@@ -2188,7 +2188,16 @@ class Asset extends pulumi.CustomResource {
     defaultEventsConfiguration = registerOutput<String?>(
       'defaultEventsConfiguration',
     );
-    defaultTopic = registerOutput<TopicResponse?>('defaultTopic');
+    defaultTopic = registerOutput<TopicResponse?>(
+      'defaultTopic',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TopicResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     discoveredAssetRefs = registerOutput<List<String>?>('discoveredAssetRefs');
     displayName = registerOutput<String?>('displayName');
@@ -2197,6 +2206,13 @@ class Asset extends pulumi.CustomResource {
     events = registerOutput<List<Map<String, dynamic>>?>('events');
     extendedLocation = registerOutput<ExtendedLocationResponse>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     externalAssetId = registerOutput<String?>('externalAssetId');
     hardwareRevision = registerOutput<String?>('hardwareRevision');
@@ -2209,8 +2225,26 @@ class Asset extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     serialNumber = registerOutput<String?>('serialNumber');
     softwareRevision = registerOutput<String?>('softwareRevision');
-    status = registerOutput<AssetStatusResponse>('status');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    status = registerOutput<AssetStatusResponse>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AssetStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     uuid = registerOutput<String>('uuid');

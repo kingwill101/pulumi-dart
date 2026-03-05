@@ -451,13 +451,31 @@ class NextGenerationFirewallVirtualHubLocalRulestack
     dnsSettings =
         registerOutput<
           NextGenerationFirewallVirtualHubLocalRulestackDnsSettings?
-        >('dnsSettings');
+        >(
+          'dnsSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NextGenerationFirewallVirtualHubLocalRulestackDnsSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     marketplaceOfferId = registerOutput<String?>('marketplaceOfferId');
     this.name = registerOutput<String>('name');
     networkProfile =
         registerOutput<
           NextGenerationFirewallVirtualHubLocalRulestackNetworkProfile
-        >('networkProfile');
+        >(
+          'networkProfile',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NextGenerationFirewallVirtualHubLocalRulestackNetworkProfile.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     planId = registerOutput<String?>('planId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     rulestackId = registerOutput<String>('rulestackId');
@@ -493,13 +511,31 @@ class NextGenerationFirewallVirtualHubLocalRulestack
     dnsSettings =
         registerOutput<
           NextGenerationFirewallVirtualHubLocalRulestackDnsSettings?
-        >('dnsSettings');
+        >(
+          'dnsSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NextGenerationFirewallVirtualHubLocalRulestackDnsSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     marketplaceOfferId = registerOutput<String?>('marketplaceOfferId');
     this.name = registerOutput<String>('name');
     networkProfile =
         registerOutput<
           NextGenerationFirewallVirtualHubLocalRulestackNetworkProfile
-        >('networkProfile');
+        >(
+          'networkProfile',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NextGenerationFirewallVirtualHubLocalRulestackNetworkProfile.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     planId = registerOutput<String?>('planId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     rulestackId = registerOutput<String>('rulestackId');

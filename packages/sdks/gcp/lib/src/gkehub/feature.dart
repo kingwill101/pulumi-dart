@@ -2508,6 +2508,13 @@ class Feature extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     fleetDefaultMemberConfig = registerOutput<FeatureFleetDefaultMemberConfig?>(
       'fleetDefaultMemberConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FeatureFleetDefaultMemberConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
@@ -2517,7 +2524,16 @@ class Feature extends pulumi.CustomResource {
     resourceStates = registerOutput<List<Map<String, dynamic>>>(
       'resourceStates',
     );
-    spec = registerOutput<FeatureSpec?>('spec');
+    spec = registerOutput<FeatureSpec?>(
+      'spec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FeatureSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     states = registerOutput<List<Map<String, dynamic>>>('states');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -2550,6 +2566,13 @@ class Feature extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     fleetDefaultMemberConfig = registerOutput<FeatureFleetDefaultMemberConfig?>(
       'fleetDefaultMemberConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FeatureFleetDefaultMemberConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
@@ -2559,7 +2582,16 @@ class Feature extends pulumi.CustomResource {
     resourceStates = registerOutput<List<Map<String, dynamic>>>(
       'resourceStates',
     );
-    spec = registerOutput<FeatureSpec?>('spec');
+    spec = registerOutput<FeatureSpec?>(
+      'spec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FeatureSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     states = registerOutput<List<Map<String, dynamic>>>('states');
     updateTime = registerOutput<String>('updateTime');
   }

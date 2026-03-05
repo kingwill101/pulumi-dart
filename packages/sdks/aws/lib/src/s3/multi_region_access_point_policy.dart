@@ -327,7 +327,16 @@ class MultiRegionAccessPointPolicy extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     accountId = registerOutput<String>('accountId');
-    details = registerOutput<MultiRegionAccessPointPolicyDetails>('details');
+    details = registerOutput<MultiRegionAccessPointPolicyDetails>(
+      'details',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MultiRegionAccessPointPolicyDetails.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     established = registerOutput<String>('established');
     proposed = registerOutput<String>('proposed');
     region = registerOutput<String>('region');
@@ -357,7 +366,16 @@ class MultiRegionAccessPointPolicy extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     accountId = registerOutput<String>('accountId');
-    details = registerOutput<MultiRegionAccessPointPolicyDetails>('details');
+    details = registerOutput<MultiRegionAccessPointPolicyDetails>(
+      'details',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MultiRegionAccessPointPolicyDetails.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     established = registerOutput<String>('established');
     proposed = registerOutput<String>('proposed');
     region = registerOutput<String>('region');

@@ -136,8 +136,26 @@ class FunctionType extends pulumi.CustomResource {
     environmentVariables = registerOutput<Map<String, String>>(
       'environmentVariables',
     );
-    eventTrigger = registerOutput<EventTriggerResponse>('eventTrigger');
-    httpsTrigger = registerOutput<HttpsTriggerResponse>('httpsTrigger');
+    eventTrigger = registerOutput<EventTriggerResponse>(
+      'eventTrigger',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventTriggerResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    httpsTrigger = registerOutput<HttpsTriggerResponse>(
+      'httpsTrigger',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HttpsTriggerResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ingressSettings = registerOutput<String>('ingressSettings');
     kmsKeyName = registerOutput<String>('kmsKeyName');
     labels = registerOutput<Map<String, String>>('labels');
@@ -156,6 +174,13 @@ class FunctionType extends pulumi.CustomResource {
     sourceArchiveUrl = registerOutput<String>('sourceArchiveUrl');
     sourceRepository = registerOutput<SourceRepositoryResponse>(
       'sourceRepository',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SourceRepositoryResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sourceToken = registerOutput<String>('sourceToken');
     sourceUploadUrl = registerOutput<String>('sourceUploadUrl');

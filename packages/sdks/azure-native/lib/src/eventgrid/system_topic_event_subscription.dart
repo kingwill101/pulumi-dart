@@ -265,27 +265,82 @@ class SystemTopicEventSubscription extends pulumi.CustomResource {
     deadLetterDestination =
         registerOutput<StorageBlobDeadLetterDestinationResponse?>(
           'deadLetterDestination',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return StorageBlobDeadLetterDestinationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     deadLetterWithResourceIdentity =
         registerOutput<DeadLetterWithResourceIdentityResponse?>(
           'deadLetterWithResourceIdentity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DeadLetterWithResourceIdentityResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     deliveryWithResourceIdentity =
         registerOutput<DeliveryWithResourceIdentityResponse?>(
           'deliveryWithResourceIdentity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DeliveryWithResourceIdentityResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     destination =
         registerOutput<AzureFunctionEventSubscriptionDestinationResponse?>(
           'destination',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AzureFunctionEventSubscriptionDestinationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     eventDeliverySchema = registerOutput<String?>('eventDeliverySchema');
     expirationTimeUtc = registerOutput<String?>('expirationTimeUtc');
-    filter = registerOutput<EventSubscriptionFilterResponse?>('filter');
+    filter = registerOutput<EventSubscriptionFilterResponse?>(
+      'filter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventSubscriptionFilterResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<List<String>?>('labels');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    retryPolicy = registerOutput<RetryPolicyResponse?>('retryPolicy');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    retryPolicy = registerOutput<RetryPolicyResponse?>(
+      'retryPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RetryPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     topic = registerOutput<String>('topic');
     type = registerOutput<String>('type');
   }

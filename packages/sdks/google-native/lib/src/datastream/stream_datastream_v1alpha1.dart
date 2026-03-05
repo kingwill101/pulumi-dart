@@ -72,6 +72,13 @@ class StreamDatastreamV1alpha1 extends pulumi.CustomResource {
        ) {
     backfillAll = registerOutput<BackfillAllStrategyResponseDatastreamV1alpha1>(
       'backfillAll',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackfillAllStrategyResponseDatastreamV1alpha1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     backfillNone = registerOutput<Map<String, dynamic>>('backfillNone');
     createTime = registerOutput<String>('createTime');
@@ -81,6 +88,13 @@ class StreamDatastreamV1alpha1 extends pulumi.CustomResource {
     destinationConfig =
         registerOutput<DestinationConfigResponseDatastreamV1alpha1>(
           'destinationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DestinationConfigResponseDatastreamV1alpha1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     displayName = registerOutput<String>('displayName');
     errors = registerOutput<List<Map<String, dynamic>>>('errors');
@@ -92,6 +106,13 @@ class StreamDatastreamV1alpha1 extends pulumi.CustomResource {
     requestId = registerOutput<String?>('requestId');
     sourceConfig = registerOutput<SourceConfigResponseDatastreamV1alpha1>(
       'sourceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SourceConfigResponseDatastreamV1alpha1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     state = registerOutput<String>('state');
     streamId = registerOutput<String>('streamId');

@@ -90,14 +90,46 @@ class FlowLog extends pulumi.CustomResource {
     flowAnalyticsConfiguration =
         registerOutput<TrafficAnalyticsPropertiesResponse?>(
           'flowAnalyticsConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return TrafficAnalyticsPropertiesResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    format = registerOutput<FlowLogFormatParametersResponse?>('format');
-    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    format = registerOutput<FlowLogFormatParametersResponse?>(
+      'format',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FlowLogFormatParametersResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    identity = registerOutput<ManagedServiceIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedServiceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     retentionPolicy = registerOutput<RetentionPolicyParametersResponse?>(
       'retentionPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RetentionPolicyParametersResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     storageId = registerOutput<String>('storageId');
     tags = registerOutput<Map<String, String>?>('tags');

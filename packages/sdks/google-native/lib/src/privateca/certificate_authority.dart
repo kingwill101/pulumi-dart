@@ -83,18 +83,45 @@ class CertificateAuthority extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    accessUrls = registerOutput<AccessUrlsResponse>('accessUrls');
+    accessUrls = registerOutput<AccessUrlsResponse>(
+      'accessUrls',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccessUrlsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     caCertificateDescriptions = registerOutput<List<Map<String, dynamic>>>(
       'caCertificateDescriptions',
     );
     caPoolId = registerOutput<String>('caPoolId');
     certificateAuthorityId = registerOutput<String>('certificateAuthorityId');
-    config = registerOutput<CertificateConfigResponse>('config');
+    config = registerOutput<CertificateConfigResponse>(
+      'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CertificateConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     expireTime = registerOutput<String>('expireTime');
     gcsBucket = registerOutput<String>('gcsBucket');
-    keySpec = registerOutput<KeyVersionSpecResponse>('keySpec');
+    keySpec = registerOutput<KeyVersionSpecResponse>(
+      'keySpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KeyVersionSpecResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>>('labels');
     lifetime = registerOutput<String>('lifetime');
     location = registerOutput<String>('location');
@@ -105,6 +132,13 @@ class CertificateAuthority extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     subordinateConfig = registerOutput<SubordinateConfigResponse>(
       'subordinateConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubordinateConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tier = registerOutput<String>('tier');
     type = registerOutput<String>('type');

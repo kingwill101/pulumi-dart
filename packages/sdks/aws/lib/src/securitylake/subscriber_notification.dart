@@ -276,6 +276,13 @@ class SubscriberNotification extends pulumi.CustomResource {
        ) {
     configuration = registerOutput<SubscriberNotificationConfiguration>(
       'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubscriberNotificationConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     endpointId = registerOutput<String>('endpointId');
     region = registerOutput<String>('region');
@@ -308,6 +315,13 @@ class SubscriberNotification extends pulumi.CustomResource {
        ) {
     configuration = registerOutput<SubscriberNotificationConfiguration>(
       'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubscriberNotificationConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     endpointId = registerOutput<String>('endpointId');
     region = registerOutput<String>('region');

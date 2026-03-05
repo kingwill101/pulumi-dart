@@ -1020,7 +1020,16 @@ class SingleNodeVirtualInstance extends pulumi.CustomResource {
        ) {
     appLocation = registerOutput<String>('appLocation');
     environment = registerOutput<String>('environment');
-    identity = registerOutput<SingleNodeVirtualInstanceIdentity?>('identity');
+    identity = registerOutput<SingleNodeVirtualInstanceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SingleNodeVirtualInstanceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     managedResourceGroupName = registerOutput<String?>(
       'managedResourceGroupName',
@@ -1035,6 +1044,13 @@ class SingleNodeVirtualInstance extends pulumi.CustomResource {
     singleServerConfiguration =
         registerOutput<SingleNodeVirtualInstanceSingleServerConfiguration>(
           'singleServerConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SingleNodeVirtualInstanceSingleServerConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tags = registerOutput<Map<String, String>?>('tags');
   }
@@ -1064,7 +1080,16 @@ class SingleNodeVirtualInstance extends pulumi.CustomResource {
        ) {
     appLocation = registerOutput<String>('appLocation');
     environment = registerOutput<String>('environment');
-    identity = registerOutput<SingleNodeVirtualInstanceIdentity?>('identity');
+    identity = registerOutput<SingleNodeVirtualInstanceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SingleNodeVirtualInstanceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     managedResourceGroupName = registerOutput<String?>(
       'managedResourceGroupName',
@@ -1079,6 +1104,13 @@ class SingleNodeVirtualInstance extends pulumi.CustomResource {
     singleServerConfiguration =
         registerOutput<SingleNodeVirtualInstanceSingleServerConfiguration>(
           'singleServerConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SingleNodeVirtualInstanceSingleServerConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tags = registerOutput<Map<String, String>?>('tags');
   }

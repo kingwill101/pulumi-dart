@@ -148,7 +148,16 @@ class Site extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     globalNetworkId = registerOutput<String>('globalNetworkId');
-    location = registerOutput<SiteLocation?>('location');
+    location = registerOutput<SiteLocation?>(
+      'location',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SiteLocation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
@@ -175,7 +184,16 @@ class Site extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     globalNetworkId = registerOutput<String>('globalNetworkId');
-    location = registerOutput<SiteLocation?>('location');
+    location = registerOutput<SiteLocation?>(
+      'location',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SiteLocation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }

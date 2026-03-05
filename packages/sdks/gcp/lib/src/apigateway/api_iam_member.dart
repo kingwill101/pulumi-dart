@@ -883,7 +883,16 @@ class ApiIamMember extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     api = registerOutput<String>('api');
-    condition = registerOutput<ApiIamMemberCondition?>('condition');
+    condition = registerOutput<ApiIamMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     member = registerOutput<String>('member');
     project = registerOutput<String>('project');
@@ -914,7 +923,16 @@ class ApiIamMember extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     api = registerOutput<String>('api');
-    condition = registerOutput<ApiIamMemberCondition?>('condition');
+    condition = registerOutput<ApiIamMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     member = registerOutput<String>('member');
     project = registerOutput<String>('project');

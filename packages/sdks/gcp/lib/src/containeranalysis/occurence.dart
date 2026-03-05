@@ -523,7 +523,16 @@ class Occurence extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    attestation = registerOutput<OccurenceAttestation>('attestation');
+    attestation = registerOutput<OccurenceAttestation>(
+      'attestation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OccurenceAttestation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
@@ -557,7 +566,16 @@ class Occurence extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    attestation = registerOutput<OccurenceAttestation>('attestation');
+    attestation = registerOutput<OccurenceAttestation>(
+      'attestation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OccurenceAttestation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');

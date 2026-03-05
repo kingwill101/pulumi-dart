@@ -255,14 +255,35 @@ class OutboundConnection extends pulumi.CustomResource {
     connectionProperties =
         registerOutput<OutboundConnectionConnectionProperties>(
           'connectionProperties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return OutboundConnectionConnectionProperties.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     connectionStatus = registerOutput<String>('connectionStatus');
     localDomainInfo = registerOutput<OutboundConnectionLocalDomainInfo>(
       'localDomainInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OutboundConnectionLocalDomainInfo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     remoteDomainInfo = registerOutput<OutboundConnectionRemoteDomainInfo>(
       'remoteDomainInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OutboundConnectionRemoteDomainInfo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -295,14 +316,35 @@ class OutboundConnection extends pulumi.CustomResource {
     connectionProperties =
         registerOutput<OutboundConnectionConnectionProperties>(
           'connectionProperties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return OutboundConnectionConnectionProperties.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     connectionStatus = registerOutput<String>('connectionStatus');
     localDomainInfo = registerOutput<OutboundConnectionLocalDomainInfo>(
       'localDomainInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OutboundConnectionLocalDomainInfo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     remoteDomainInfo = registerOutput<OutboundConnectionRemoteDomainInfo>(
       'remoteDomainInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OutboundConnectionRemoteDomainInfo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

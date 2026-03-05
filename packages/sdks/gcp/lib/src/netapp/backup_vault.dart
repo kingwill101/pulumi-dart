@@ -229,6 +229,13 @@ class BackupVault extends pulumi.CustomResource {
     backupRegion = registerOutput<String?>('backupRegion');
     backupRetentionPolicy = registerOutput<BackupVaultBackupRetentionPolicy?>(
       'backupRetentionPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackupVaultBackupRetentionPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     backupVaultType = registerOutput<String>('backupVaultType');
     createTime = registerOutput<String>('createTime');
@@ -271,6 +278,13 @@ class BackupVault extends pulumi.CustomResource {
     backupRegion = registerOutput<String?>('backupRegion');
     backupRetentionPolicy = registerOutput<BackupVaultBackupRetentionPolicy?>(
       'backupRetentionPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackupVaultBackupRetentionPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     backupVaultType = registerOutput<String>('backupVaultType');
     createTime = registerOutput<String>('createTime');

@@ -1640,7 +1640,16 @@ class HostingVersion extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    config = registerOutput<HostingVersionConfig?>('config');
+    config = registerOutput<HostingVersionConfig?>(
+      'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HostingVersionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     siteId = registerOutput<String>('siteId');
     versionId = registerOutput<String>('versionId');
@@ -1669,7 +1678,16 @@ class HostingVersion extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    config = registerOutput<HostingVersionConfig?>('config');
+    config = registerOutput<HostingVersionConfig?>(
+      'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HostingVersionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     siteId = registerOutput<String>('siteId');
     versionId = registerOutput<String>('versionId');

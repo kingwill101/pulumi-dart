@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getKeyTransaction.
 class GetKeyTransactionResult {
   final String accountId;
+
   /// Domain of the key transaction in New Relic.
   final String domain;
+
   /// GUID of the key transaction in New Relic.
   final String guid;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
+
   /// Type of the key transaction in New Relic.
   final String type;
 
@@ -52,4 +55,3 @@ class GetKeyTransactionResult {
     );
   }
 }
-

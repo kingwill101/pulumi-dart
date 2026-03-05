@@ -692,6 +692,13 @@ class LinuxVirtualMachineScaleSet extends pulumi.CustomResource {
     additionalCapabilities =
         registerOutput<LinuxVirtualMachineScaleSetAdditionalCapabilities?>(
           'additionalCapabilities',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinuxVirtualMachineScaleSetAdditionalCapabilities.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     adminPassword = registerOutput<String?>('adminPassword');
     adminSshKeys = registerOutput<List<Map<String, dynamic>>?>('adminSshKeys');
@@ -699,14 +706,35 @@ class LinuxVirtualMachineScaleSet extends pulumi.CustomResource {
     automaticInstanceRepair =
         registerOutput<LinuxVirtualMachineScaleSetAutomaticInstanceRepair>(
           'automaticInstanceRepair',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinuxVirtualMachineScaleSetAutomaticInstanceRepair.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     automaticOsUpgradePolicy =
         registerOutput<LinuxVirtualMachineScaleSetAutomaticOsUpgradePolicy?>(
           'automaticOsUpgradePolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinuxVirtualMachineScaleSetAutomaticOsUpgradePolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     bootDiagnostics =
         registerOutput<LinuxVirtualMachineScaleSetBootDiagnostics?>(
           'bootDiagnostics',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinuxVirtualMachineScaleSetBootDiagnostics.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     capacityReservationGroupId = registerOutput<String?>(
       'capacityReservationGroupId',
@@ -733,7 +761,16 @@ class LinuxVirtualMachineScaleSet extends pulumi.CustomResource {
     );
     healthProbeId = registerOutput<String?>('healthProbeId');
     hostGroupId = registerOutput<String?>('hostGroupId');
-    identity = registerOutput<LinuxVirtualMachineScaleSetIdentity?>('identity');
+    identity = registerOutput<LinuxVirtualMachineScaleSetIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinuxVirtualMachineScaleSetIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     instances = registerOutput<int?>('instances');
     location = registerOutput<String>('location');
     maxBidPrice = registerOutput<double?>('maxBidPrice');
@@ -741,9 +778,27 @@ class LinuxVirtualMachineScaleSet extends pulumi.CustomResource {
     networkInterfaces = registerOutput<List<Map<String, dynamic>>>(
       'networkInterfaces',
     );
-    osDisk = registerOutput<LinuxVirtualMachineScaleSetOsDisk>('osDisk');
+    osDisk = registerOutput<LinuxVirtualMachineScaleSetOsDisk>(
+      'osDisk',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinuxVirtualMachineScaleSetOsDisk.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     overprovision = registerOutput<bool?>('overprovision');
-    plan = registerOutput<LinuxVirtualMachineScaleSetPlan?>('plan');
+    plan = registerOutput<LinuxVirtualMachineScaleSetPlan?>(
+      'plan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinuxVirtualMachineScaleSetPlan.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     platformFaultDomainCount = registerOutput<int>('platformFaultDomainCount');
     priority = registerOutput<String?>('priority');
     provisionVmAgent = registerOutput<bool?>('provisionVmAgent');
@@ -760,8 +815,24 @@ class LinuxVirtualMachineScaleSet extends pulumi.CustomResource {
     rollingUpgradePolicy =
         registerOutput<LinuxVirtualMachineScaleSetRollingUpgradePolicy?>(
           'rollingUpgradePolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinuxVirtualMachineScaleSetRollingUpgradePolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    scaleIn = registerOutput<LinuxVirtualMachineScaleSetScaleIn?>('scaleIn');
+    scaleIn = registerOutput<LinuxVirtualMachineScaleSetScaleIn?>(
+      'scaleIn',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinuxVirtualMachineScaleSetScaleIn.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     secrets = registerOutput<List<Map<String, dynamic>>?>('secrets');
     secureBootEnabled = registerOutput<bool?>('secureBootEnabled');
     singlePlacementGroup = registerOutput<bool?>('singlePlacementGroup');
@@ -770,14 +841,35 @@ class LinuxVirtualMachineScaleSet extends pulumi.CustomResource {
     sourceImageReference =
         registerOutput<LinuxVirtualMachineScaleSetSourceImageReference?>(
           'sourceImageReference',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinuxVirtualMachineScaleSetSourceImageReference.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     spotRestore = registerOutput<LinuxVirtualMachineScaleSetSpotRestore>(
       'spotRestore',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinuxVirtualMachineScaleSetSpotRestore.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     terminationNotification =
         registerOutput<LinuxVirtualMachineScaleSetTerminationNotification>(
           'terminationNotification',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinuxVirtualMachineScaleSetTerminationNotification.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     uniqueId = registerOutput<String>('uniqueId');
     upgradeMode = registerOutput<String?>('upgradeMode');
@@ -813,6 +905,13 @@ class LinuxVirtualMachineScaleSet extends pulumi.CustomResource {
     additionalCapabilities =
         registerOutput<LinuxVirtualMachineScaleSetAdditionalCapabilities?>(
           'additionalCapabilities',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinuxVirtualMachineScaleSetAdditionalCapabilities.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     adminPassword = registerOutput<String?>('adminPassword');
     adminSshKeys = registerOutput<List<Map<String, dynamic>>?>('adminSshKeys');
@@ -820,14 +919,35 @@ class LinuxVirtualMachineScaleSet extends pulumi.CustomResource {
     automaticInstanceRepair =
         registerOutput<LinuxVirtualMachineScaleSetAutomaticInstanceRepair>(
           'automaticInstanceRepair',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinuxVirtualMachineScaleSetAutomaticInstanceRepair.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     automaticOsUpgradePolicy =
         registerOutput<LinuxVirtualMachineScaleSetAutomaticOsUpgradePolicy?>(
           'automaticOsUpgradePolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinuxVirtualMachineScaleSetAutomaticOsUpgradePolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     bootDiagnostics =
         registerOutput<LinuxVirtualMachineScaleSetBootDiagnostics?>(
           'bootDiagnostics',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinuxVirtualMachineScaleSetBootDiagnostics.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     capacityReservationGroupId = registerOutput<String?>(
       'capacityReservationGroupId',
@@ -854,7 +974,16 @@ class LinuxVirtualMachineScaleSet extends pulumi.CustomResource {
     );
     healthProbeId = registerOutput<String?>('healthProbeId');
     hostGroupId = registerOutput<String?>('hostGroupId');
-    identity = registerOutput<LinuxVirtualMachineScaleSetIdentity?>('identity');
+    identity = registerOutput<LinuxVirtualMachineScaleSetIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinuxVirtualMachineScaleSetIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     instances = registerOutput<int?>('instances');
     location = registerOutput<String>('location');
     maxBidPrice = registerOutput<double?>('maxBidPrice');
@@ -862,9 +991,27 @@ class LinuxVirtualMachineScaleSet extends pulumi.CustomResource {
     networkInterfaces = registerOutput<List<Map<String, dynamic>>>(
       'networkInterfaces',
     );
-    osDisk = registerOutput<LinuxVirtualMachineScaleSetOsDisk>('osDisk');
+    osDisk = registerOutput<LinuxVirtualMachineScaleSetOsDisk>(
+      'osDisk',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinuxVirtualMachineScaleSetOsDisk.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     overprovision = registerOutput<bool?>('overprovision');
-    plan = registerOutput<LinuxVirtualMachineScaleSetPlan?>('plan');
+    plan = registerOutput<LinuxVirtualMachineScaleSetPlan?>(
+      'plan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinuxVirtualMachineScaleSetPlan.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     platformFaultDomainCount = registerOutput<int>('platformFaultDomainCount');
     priority = registerOutput<String?>('priority');
     provisionVmAgent = registerOutput<bool?>('provisionVmAgent');
@@ -881,8 +1028,24 @@ class LinuxVirtualMachineScaleSet extends pulumi.CustomResource {
     rollingUpgradePolicy =
         registerOutput<LinuxVirtualMachineScaleSetRollingUpgradePolicy?>(
           'rollingUpgradePolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinuxVirtualMachineScaleSetRollingUpgradePolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    scaleIn = registerOutput<LinuxVirtualMachineScaleSetScaleIn?>('scaleIn');
+    scaleIn = registerOutput<LinuxVirtualMachineScaleSetScaleIn?>(
+      'scaleIn',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinuxVirtualMachineScaleSetScaleIn.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     secrets = registerOutput<List<Map<String, dynamic>>?>('secrets');
     secureBootEnabled = registerOutput<bool?>('secureBootEnabled');
     singlePlacementGroup = registerOutput<bool?>('singlePlacementGroup');
@@ -891,14 +1054,35 @@ class LinuxVirtualMachineScaleSet extends pulumi.CustomResource {
     sourceImageReference =
         registerOutput<LinuxVirtualMachineScaleSetSourceImageReference?>(
           'sourceImageReference',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinuxVirtualMachineScaleSetSourceImageReference.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     spotRestore = registerOutput<LinuxVirtualMachineScaleSetSpotRestore>(
       'spotRestore',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinuxVirtualMachineScaleSetSpotRestore.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     terminationNotification =
         registerOutput<LinuxVirtualMachineScaleSetTerminationNotification>(
           'terminationNotification',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinuxVirtualMachineScaleSetTerminationNotification.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     uniqueId = registerOutput<String>('uniqueId');
     upgradeMode = registerOutput<String?>('upgradeMode');

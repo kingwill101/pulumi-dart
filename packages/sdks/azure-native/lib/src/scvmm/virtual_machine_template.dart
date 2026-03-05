@@ -269,6 +269,13 @@ class VirtualMachineTemplate extends pulumi.CustomResource {
     dynamicMemoryMinMB = registerOutput<int>('dynamicMemoryMinMB');
     extendedLocation = registerOutput<ExtendedLocationResponse>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     generation = registerOutput<int>('generation');
     inventoryItemId = registerOutput<String?>('inventoryItemId');
@@ -284,7 +291,16 @@ class VirtualMachineTemplate extends pulumi.CustomResource {
     osName = registerOutput<String>('osName');
     osType = registerOutput<String>('osType');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     uuid = registerOutput<String?>('uuid');

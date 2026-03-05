@@ -236,11 +236,27 @@ class DevEnvironment extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     alias = registerOutput<String?>('alias');
-    ides = registerOutput<DevEnvironmentIdes>('ides');
+    ides = registerOutput<DevEnvironmentIdes>(
+      'ides',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DevEnvironmentIdes.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     inactivityTimeoutMinutes = registerOutput<int?>('inactivityTimeoutMinutes');
     instanceType = registerOutput<String>('instanceType');
     persistentStorage = registerOutput<DevEnvironmentPersistentStorage>(
       'persistentStorage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DevEnvironmentPersistentStorage.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     projectName = registerOutput<String>('projectName');
     region = registerOutput<String>('region');
@@ -272,11 +288,27 @@ class DevEnvironment extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     alias = registerOutput<String?>('alias');
-    ides = registerOutput<DevEnvironmentIdes>('ides');
+    ides = registerOutput<DevEnvironmentIdes>(
+      'ides',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DevEnvironmentIdes.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     inactivityTimeoutMinutes = registerOutput<int?>('inactivityTimeoutMinutes');
     instanceType = registerOutput<String>('instanceType');
     persistentStorage = registerOutput<DevEnvironmentPersistentStorage>(
       'persistentStorage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DevEnvironmentPersistentStorage.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     projectName = registerOutput<String>('projectName');
     region = registerOutput<String>('region');

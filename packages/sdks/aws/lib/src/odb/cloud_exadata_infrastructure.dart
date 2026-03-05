@@ -177,6 +177,13 @@ class CloudExadataInfrastructure extends pulumi.CustomResource {
     maintenanceWindow =
         registerOutput<CloudExadataInfrastructureMaintenanceWindow>(
           'maintenanceWindow',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CloudExadataInfrastructureMaintenanceWindow.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     maxCpuCount = registerOutput<int>('maxCpuCount');
     maxDataStorageInTbs = registerOutput<double>('maxDataStorageInTbs');
@@ -203,7 +210,16 @@ class CloudExadataInfrastructure extends pulumi.CustomResource {
     storageServerVersion = registerOutput<String>('storageServerVersion');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<CloudExadataInfrastructureTimeouts?>('timeouts');
+    timeouts = registerOutput<CloudExadataInfrastructureTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CloudExadataInfrastructureTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     totalStorageSizeInGbs = registerOutput<int>('totalStorageSizeInGbs');
   }
 
@@ -254,6 +270,13 @@ class CloudExadataInfrastructure extends pulumi.CustomResource {
     maintenanceWindow =
         registerOutput<CloudExadataInfrastructureMaintenanceWindow>(
           'maintenanceWindow',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CloudExadataInfrastructureMaintenanceWindow.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     maxCpuCount = registerOutput<int>('maxCpuCount');
     maxDataStorageInTbs = registerOutput<double>('maxDataStorageInTbs');
@@ -280,7 +303,16 @@ class CloudExadataInfrastructure extends pulumi.CustomResource {
     storageServerVersion = registerOutput<String>('storageServerVersion');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<CloudExadataInfrastructureTimeouts?>('timeouts');
+    timeouts = registerOutput<CloudExadataInfrastructureTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CloudExadataInfrastructureTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     totalStorageSizeInGbs = registerOutput<int>('totalStorageSizeInGbs');
   }
 }

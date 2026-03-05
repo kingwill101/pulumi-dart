@@ -68,12 +68,30 @@ class Runtime extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    accessConfig = registerOutput<RuntimeAccessConfigResponse>('accessConfig');
+    accessConfig = registerOutput<RuntimeAccessConfigResponse>(
+      'accessConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RuntimeAccessConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     healthState = registerOutput<String>('healthState');
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
-    metrics = registerOutput<RuntimeMetricsResponse>('metrics');
+    metrics = registerOutput<RuntimeMetricsResponse>(
+      'metrics',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RuntimeMetricsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     migrated = registerOutput<bool>('migrated');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -82,12 +100,35 @@ class Runtime extends pulumi.CustomResource {
     runtimeMigrationEligibility =
         registerOutput<RuntimeMigrationEligibilityResponse>(
           'runtimeMigrationEligibility',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RuntimeMigrationEligibilityResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     softwareConfig = registerOutput<RuntimeSoftwareConfigResponse>(
       'softwareConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RuntimeSoftwareConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
-    virtualMachine = registerOutput<VirtualMachineResponse>('virtualMachine');
+    virtualMachine = registerOutput<VirtualMachineResponse>(
+      'virtualMachine',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualMachineResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

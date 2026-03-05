@@ -1305,8 +1305,7 @@ Future<GetApplicationResult> getApplication(
 ///       arguments: {}
 /// ```
 /// [options] Invoke options controlling this call.
-Future<GetApplicationPublishedAppIdsResult> getApplicationPublishedAppIds(
-  {
+Future<GetApplicationPublishedAppIdsResult> getApplicationPublishedAppIds({
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
@@ -1531,8 +1530,7 @@ Future<GetApplicationTemplateResult> getApplicationTemplate(
 ///   objectId: ${current.objectId}
 /// ```
 /// [options] Invoke options controlling this call.
-Future<GetClientConfigResult> getClientConfig(
-  {
+Future<GetClientConfigResult> getClientConfig({
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
@@ -1774,8 +1772,7 @@ Future<GetDirectoryObjectResult> getDirectoryObject(
 ///   roles: ${current.objectIds}
 /// ```
 /// [options] Invoke options controlling this call.
-Future<GetDirectoryRoleTemplatesResult> getDirectoryRoleTemplates(
-  {
+Future<GetDirectoryRoleTemplatesResult> getDirectoryRoleTemplates({
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
@@ -1885,8 +1882,7 @@ Future<GetDirectoryRoleTemplatesResult> getDirectoryRoleTemplates(
 ///   roles: ${current.objectIds}
 /// ```
 /// [options] Invoke options controlling this call.
-Future<GetDirectoryRolesResult> getDirectoryRoles(
-  {
+Future<GetDirectoryRolesResult> getDirectoryRoles({
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;

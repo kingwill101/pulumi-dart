@@ -58,7 +58,16 @@ class OauthIdpConfig extends pulumi.CustomResource {
     responseType =
         registerOutput<
           GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponse
-        >('responseType');
+        >(
+          'responseType',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     tenantId = registerOutput<String>('tenantId');
   }
 }

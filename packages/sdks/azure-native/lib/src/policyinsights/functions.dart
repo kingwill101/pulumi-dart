@@ -169,7 +169,8 @@ Future<GetRemediationAtSubscriptionResult> getRemediationAtSubscription(
 /// Other available API versions: 2021-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native policyinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_policyinsights_list_remediation_deployments_at_management_group_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListRemediationDeploymentsAtManagementGroupResult> listRemediationDeploymentsAtManagementGroup(
+Future<ListRemediationDeploymentsAtManagementGroupResult>
+listRemediationDeploymentsAtManagementGroup(
   ListRemediationDeploymentsAtManagementGroupArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -189,7 +190,8 @@ Future<ListRemediationDeploymentsAtManagementGroupResult> listRemediationDeploym
 /// Other available API versions: 2021-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native policyinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_policyinsights_list_remediation_deployments_at_resource_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListRemediationDeploymentsAtResourceResult> listRemediationDeploymentsAtResource(
+Future<ListRemediationDeploymentsAtResourceResult>
+listRemediationDeploymentsAtResource(
   ListRemediationDeploymentsAtResourceArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -209,7 +211,8 @@ Future<ListRemediationDeploymentsAtResourceResult> listRemediationDeploymentsAtR
 /// Other available API versions: 2021-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native policyinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_policyinsights_list_remediation_deployments_at_resource_group_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListRemediationDeploymentsAtResourceGroupResult> listRemediationDeploymentsAtResourceGroup(
+Future<ListRemediationDeploymentsAtResourceGroupResult>
+listRemediationDeploymentsAtResourceGroup(
   ListRemediationDeploymentsAtResourceGroupArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -229,7 +232,8 @@ Future<ListRemediationDeploymentsAtResourceGroupResult> listRemediationDeploymen
 /// Other available API versions: 2021-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native policyinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_policyinsights_list_remediation_deployments_at_subscription_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListRemediationDeploymentsAtSubscriptionResult> listRemediationDeploymentsAtSubscription(
+Future<ListRemediationDeploymentsAtSubscriptionResult>
+listRemediationDeploymentsAtSubscription(
   ListRemediationDeploymentsAtSubscriptionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

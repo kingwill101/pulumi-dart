@@ -54,6 +54,13 @@ class TriggerEventarcV1beta1 extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     destination = registerOutput<DestinationResponseEventarcV1beta1>(
       'destination',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DestinationResponseEventarcV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     labels = registerOutput<Map<String, String>>('labels');
@@ -64,7 +71,16 @@ class TriggerEventarcV1beta1 extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     serviceAccount = registerOutput<String>('serviceAccount');
-    transport = registerOutput<TransportResponseEventarcV1beta1>('transport');
+    transport = registerOutput<TransportResponseEventarcV1beta1>(
+      'transport',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TransportResponseEventarcV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     triggerId = registerOutput<String>('triggerId');
     updateTime = registerOutput<String>('updateTime');
   }

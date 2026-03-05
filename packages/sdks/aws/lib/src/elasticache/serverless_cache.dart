@@ -667,6 +667,13 @@ class ServerlessCache extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     cacheUsageLimits = registerOutput<ServerlessCacheCacheUsageLimits?>(
       'cacheUsageLimits',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerlessCacheCacheUsageLimits.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     dailySnapshotTime = registerOutput<String>('dailySnapshotTime');
@@ -690,7 +697,16 @@ class ServerlessCache extends pulumi.CustomResource {
     subnetIds = registerOutput<List<String>>('subnetIds');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ServerlessCacheTimeouts?>('timeouts');
+    timeouts = registerOutput<ServerlessCacheTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerlessCacheTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     userGroupId = registerOutput<String?>('userGroupId');
   }
 
@@ -720,6 +736,13 @@ class ServerlessCache extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     cacheUsageLimits = registerOutput<ServerlessCacheCacheUsageLimits?>(
       'cacheUsageLimits',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerlessCacheCacheUsageLimits.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     dailySnapshotTime = registerOutput<String>('dailySnapshotTime');
@@ -743,7 +766,16 @@ class ServerlessCache extends pulumi.CustomResource {
     subnetIds = registerOutput<List<String>>('subnetIds');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ServerlessCacheTimeouts?>('timeouts');
+    timeouts = registerOutput<ServerlessCacheTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerlessCacheTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     userGroupId = registerOutput<String?>('userGroupId');
   }
 }

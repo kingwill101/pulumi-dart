@@ -598,17 +598,40 @@ class StackSet extends pulumi.CustomResource {
        ) {
     administrationRoleArn = registerOutput<String?>('administrationRoleArn');
     arn = registerOutput<String>('arn');
-    autoDeployment = registerOutput<StackSetAutoDeployment?>('autoDeployment');
+    autoDeployment = registerOutput<StackSetAutoDeployment?>(
+      'autoDeployment',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StackSetAutoDeployment.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     callAs = registerOutput<String?>('callAs');
     capabilities = registerOutput<List<String>?>('capabilities');
     description = registerOutput<String?>('description');
     executionRoleName = registerOutput<String>('executionRoleName');
     managedExecution = registerOutput<StackSetManagedExecution?>(
       'managedExecution',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StackSetManagedExecution.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     operationPreferences = registerOutput<StackSetOperationPreferences?>(
       'operationPreferences',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StackSetOperationPreferences.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     parameters = registerOutput<Map<String, String>?>('parameters');
     permissionModel = registerOutput<String?>('permissionModel');
@@ -645,17 +668,40 @@ class StackSet extends pulumi.CustomResource {
        ) {
     administrationRoleArn = registerOutput<String?>('administrationRoleArn');
     arn = registerOutput<String>('arn');
-    autoDeployment = registerOutput<StackSetAutoDeployment?>('autoDeployment');
+    autoDeployment = registerOutput<StackSetAutoDeployment?>(
+      'autoDeployment',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StackSetAutoDeployment.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     callAs = registerOutput<String?>('callAs');
     capabilities = registerOutput<List<String>?>('capabilities');
     description = registerOutput<String?>('description');
     executionRoleName = registerOutput<String>('executionRoleName');
     managedExecution = registerOutput<StackSetManagedExecution?>(
       'managedExecution',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StackSetManagedExecution.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     operationPreferences = registerOutput<StackSetOperationPreferences?>(
       'operationPreferences',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StackSetOperationPreferences.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     parameters = registerOutput<Map<String, String>?>('parameters');
     permissionModel = registerOutput<String?>('permissionModel');

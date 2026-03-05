@@ -877,6 +877,13 @@ class V2Vm extends pulumi.CustomResource {
       ) {
     acceleratorConfig = registerOutput<V2VmAcceleratorConfig>(
       'acceleratorConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2VmAcceleratorConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     acceleratorType = registerOutput<String>('acceleratorType');
     apiVersion = registerOutput<String>('apiVersion');
@@ -890,7 +897,16 @@ class V2Vm extends pulumi.CustomResource {
     metadata = registerOutput<Map<String, String>?>('metadata');
     multisliceNode = registerOutput<bool>('multisliceNode');
     this.name = registerOutput<String>('name');
-    networkConfig = registerOutput<V2VmNetworkConfig>('networkConfig');
+    networkConfig = registerOutput<V2VmNetworkConfig>(
+      'networkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2VmNetworkConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     networkConfigs = registerOutput<List<Map<String, dynamic>>?>(
       'networkConfigs',
     );
@@ -903,10 +919,33 @@ class V2Vm extends pulumi.CustomResource {
     runtimeVersion = registerOutput<String>('runtimeVersion');
     schedulingConfig = registerOutput<V2VmSchedulingConfig?>(
       'schedulingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2VmSchedulingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    serviceAccount = registerOutput<V2VmServiceAccount>('serviceAccount');
+    serviceAccount = registerOutput<V2VmServiceAccount>(
+      'serviceAccount',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2VmServiceAccount.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     shieldedInstanceConfig = registerOutput<V2VmShieldedInstanceConfig?>(
       'shieldedInstanceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2VmShieldedInstanceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     state = registerOutput<String>('state');
     symptoms = registerOutput<List<Map<String, dynamic>>>('symptoms');
@@ -935,6 +974,13 @@ class V2Vm extends pulumi.CustomResource {
        ) {
     acceleratorConfig = registerOutput<V2VmAcceleratorConfig>(
       'acceleratorConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2VmAcceleratorConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     acceleratorType = registerOutput<String>('acceleratorType');
     apiVersion = registerOutput<String>('apiVersion');
@@ -948,7 +994,16 @@ class V2Vm extends pulumi.CustomResource {
     metadata = registerOutput<Map<String, String>?>('metadata');
     multisliceNode = registerOutput<bool>('multisliceNode');
     this.name = registerOutput<String>('name');
-    networkConfig = registerOutput<V2VmNetworkConfig>('networkConfig');
+    networkConfig = registerOutput<V2VmNetworkConfig>(
+      'networkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2VmNetworkConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     networkConfigs = registerOutput<List<Map<String, dynamic>>?>(
       'networkConfigs',
     );
@@ -961,10 +1016,33 @@ class V2Vm extends pulumi.CustomResource {
     runtimeVersion = registerOutput<String>('runtimeVersion');
     schedulingConfig = registerOutput<V2VmSchedulingConfig?>(
       'schedulingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2VmSchedulingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    serviceAccount = registerOutput<V2VmServiceAccount>('serviceAccount');
+    serviceAccount = registerOutput<V2VmServiceAccount>(
+      'serviceAccount',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2VmServiceAccount.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     shieldedInstanceConfig = registerOutput<V2VmShieldedInstanceConfig?>(
       'shieldedInstanceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2VmShieldedInstanceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.state = registerOutput<String>('state');
     symptoms = registerOutput<List<Map<String, dynamic>>>('symptoms');

@@ -562,7 +562,16 @@ class Table extends pulumi.CustomResource {
     deleteTime = registerOutput<String>('deleteTime');
     etag = registerOutput<String>('etag');
     expireTime = registerOutput<String>('expireTime');
-    hiveOptions = registerOutput<TableHiveOptions?>('hiveOptions');
+    hiveOptions = registerOutput<TableHiveOptions?>(
+      'hiveOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TableHiveOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     type = registerOutput<String?>('type');
     updateTime = registerOutput<String>('updateTime');
@@ -592,7 +601,16 @@ class Table extends pulumi.CustomResource {
     deleteTime = registerOutput<String>('deleteTime');
     etag = registerOutput<String>('etag');
     expireTime = registerOutput<String>('expireTime');
-    hiveOptions = registerOutput<TableHiveOptions?>('hiveOptions');
+    hiveOptions = registerOutput<TableHiveOptions?>(
+      'hiveOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TableHiveOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     type = registerOutput<String?>('type');
     updateTime = registerOutput<String>('updateTime');

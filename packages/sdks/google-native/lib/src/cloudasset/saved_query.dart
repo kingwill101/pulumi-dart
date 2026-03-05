@@ -48,7 +48,16 @@ class SavedQuery extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    content = registerOutput<QueryContentResponse>('content');
+    content = registerOutput<QueryContentResponse>(
+      'content',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return QueryContentResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     creator = registerOutput<String>('creator');
     description = registerOutput<String>('description');

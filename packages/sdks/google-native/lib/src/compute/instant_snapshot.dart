@@ -89,6 +89,13 @@ class InstantSnapshot extends pulumi.CustomResource {
     requestId = registerOutput<String?>('requestId');
     resourceStatus = registerOutput<InstantSnapshotResourceStatusResponse>(
       'resourceStatus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstantSnapshotResourceStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
     selfLink = registerOutput<String>('selfLink');

@@ -374,7 +374,16 @@ class SecurityDeviceGroup extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    allowRule = registerOutput<SecurityDeviceGroupAllowRule?>('allowRule');
+    allowRule = registerOutput<SecurityDeviceGroupAllowRule?>(
+      'allowRule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityDeviceGroupAllowRule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     iothubId = registerOutput<String>('iothubId');
     this.name = registerOutput<String>('name');
     rangeRules = registerOutput<List<Map<String, dynamic>>?>('rangeRules');
@@ -403,7 +412,16 @@ class SecurityDeviceGroup extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    allowRule = registerOutput<SecurityDeviceGroupAllowRule?>('allowRule');
+    allowRule = registerOutput<SecurityDeviceGroupAllowRule?>(
+      'allowRule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityDeviceGroupAllowRule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     iothubId = registerOutput<String>('iothubId');
     this.name = registerOutput<String>('name');
     rangeRules = registerOutput<List<Map<String, dynamic>>?>('rangeRules');

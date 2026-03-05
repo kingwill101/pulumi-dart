@@ -374,11 +374,25 @@ class ManagedDatabase extends pulumi.CustomResource {
     longTermRetentionPolicy =
         registerOutput<ManagedDatabaseLongTermRetentionPolicy>(
           'longTermRetentionPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ManagedDatabaseLongTermRetentionPolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     managedInstanceId = registerOutput<String>('managedInstanceId');
     this.name = registerOutput<String>('name');
     pointInTimeRestore = registerOutput<ManagedDatabasePointInTimeRestore?>(
       'pointInTimeRestore',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedDatabasePointInTimeRestore.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     shortTermRetentionDays = registerOutput<int?>('shortTermRetentionDays');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -410,11 +424,25 @@ class ManagedDatabase extends pulumi.CustomResource {
     longTermRetentionPolicy =
         registerOutput<ManagedDatabaseLongTermRetentionPolicy>(
           'longTermRetentionPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ManagedDatabaseLongTermRetentionPolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     managedInstanceId = registerOutput<String>('managedInstanceId');
     this.name = registerOutput<String>('name');
     pointInTimeRestore = registerOutput<ManagedDatabasePointInTimeRestore?>(
       'pointInTimeRestore',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedDatabasePointInTimeRestore.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     shortTermRetentionDays = registerOutput<int?>('shortTermRetentionDays');
     tags = registerOutput<Map<String, String>?>('tags');

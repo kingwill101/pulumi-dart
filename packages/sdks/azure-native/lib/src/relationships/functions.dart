@@ -27,7 +27,8 @@ Future<GetDependencyOfRelationshipResult> getDependencyOfRelationship(
 /// Uses Azure REST API version 2023-09-01-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_relationships_get_service_group_member_relationship_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetServiceGroupMemberRelationshipResult> getServiceGroupMemberRelationship(
+Future<GetServiceGroupMemberRelationshipResult>
+getServiceGroupMemberRelationship(
   GetServiceGroupMemberRelationshipArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

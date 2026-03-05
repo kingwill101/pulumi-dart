@@ -266,11 +266,27 @@ class Stage extends pulumi.CustomResource {
       ) {
     accessLogSettings = registerOutput<StageAccessLogSettings?>(
       'accessLogSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StageAccessLogSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     arn = registerOutput<String>('arn');
     cacheClusterEnabled = registerOutput<bool?>('cacheClusterEnabled');
     cacheClusterSize = registerOutput<String?>('cacheClusterSize');
-    canarySettings = registerOutput<StageCanarySettings?>('canarySettings');
+    canarySettings = registerOutput<StageCanarySettings?>(
+      'canarySettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StageCanarySettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     clientCertificateId = registerOutput<String?>('clientCertificateId');
     deployment = registerOutput<String>('deployment');
     description = registerOutput<String?>('description');
@@ -308,11 +324,27 @@ class Stage extends pulumi.CustomResource {
        ) {
     accessLogSettings = registerOutput<StageAccessLogSettings?>(
       'accessLogSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StageAccessLogSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     arn = registerOutput<String>('arn');
     cacheClusterEnabled = registerOutput<bool?>('cacheClusterEnabled');
     cacheClusterSize = registerOutput<String?>('cacheClusterSize');
-    canarySettings = registerOutput<StageCanarySettings?>('canarySettings');
+    canarySettings = registerOutput<StageCanarySettings?>(
+      'canarySettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StageCanarySettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     clientCertificateId = registerOutput<String?>('clientCertificateId');
     deployment = registerOutput<String>('deployment');
     description = registerOutput<String?>('description');

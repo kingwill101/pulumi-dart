@@ -124,20 +124,59 @@ class V2Function extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     caPort = registerOutput<int>('caPort');
-    code = registerOutput<V2FunctionCode?>('code');
+    code = registerOutput<V2FunctionCode?>(
+      'code',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2FunctionCode.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     codeChecksum = registerOutput<String>('codeChecksum');
     cpu = registerOutput<double?>('cpu');
     createTime = registerOutput<String>('createTime');
     customContainerConfig = registerOutput<V2FunctionCustomContainerConfig?>(
       'customContainerConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2FunctionCustomContainerConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    customDns = registerOutput<V2FunctionCustomDns?>('customDns');
+    customDns = registerOutput<V2FunctionCustomDns?>(
+      'customDns',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2FunctionCustomDns.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     customHealthCheckConfig =
         registerOutput<V2FunctionCustomHealthCheckConfig?>(
           'customHealthCheckConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return V2FunctionCustomHealthCheckConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     customRuntimeConfig = registerOutput<V2FunctionCustomRuntimeConfig?>(
       'customRuntimeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2FunctionCustomRuntimeConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     diskSize = registerOutput<int?>('diskSize');
@@ -154,6 +193,13 @@ class V2Function extends pulumi.CustomResource {
     instanceLifecycleConfig =
         registerOutput<V2FunctionInstanceLifecycleConfig?>(
           'instanceLifecycleConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return V2FunctionInstanceLifecycleConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     instanceType = registerOutput<String>('instanceType');
     layers = registerOutput<List<String>?>('layers');
@@ -187,20 +233,59 @@ class V2Function extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     caPort = registerOutput<int>('caPort');
-    code = registerOutput<V2FunctionCode?>('code');
+    code = registerOutput<V2FunctionCode?>(
+      'code',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2FunctionCode.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     codeChecksum = registerOutput<String>('codeChecksum');
     cpu = registerOutput<double?>('cpu');
     createTime = registerOutput<String>('createTime');
     customContainerConfig = registerOutput<V2FunctionCustomContainerConfig?>(
       'customContainerConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2FunctionCustomContainerConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    customDns = registerOutput<V2FunctionCustomDns?>('customDns');
+    customDns = registerOutput<V2FunctionCustomDns?>(
+      'customDns',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2FunctionCustomDns.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     customHealthCheckConfig =
         registerOutput<V2FunctionCustomHealthCheckConfig?>(
           'customHealthCheckConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return V2FunctionCustomHealthCheckConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     customRuntimeConfig = registerOutput<V2FunctionCustomRuntimeConfig?>(
       'customRuntimeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2FunctionCustomRuntimeConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     diskSize = registerOutput<int?>('diskSize');
@@ -217,6 +302,13 @@ class V2Function extends pulumi.CustomResource {
     instanceLifecycleConfig =
         registerOutput<V2FunctionInstanceLifecycleConfig?>(
           'instanceLifecycleConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return V2FunctionInstanceLifecycleConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     instanceType = registerOutput<String>('instanceType');
     layers = registerOutput<List<String>?>('layers');

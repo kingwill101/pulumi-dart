@@ -492,12 +492,26 @@ class NetworkWatcherFlowLog extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     retentionPolicy = registerOutput<NetworkWatcherFlowLogRetentionPolicy>(
       'retentionPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkWatcherFlowLogRetentionPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     storageAccountId = registerOutput<String>('storageAccountId');
     tags = registerOutput<Map<String, String>?>('tags');
     targetResourceId = registerOutput<String>('targetResourceId');
     trafficAnalytics = registerOutput<NetworkWatcherFlowLogTrafficAnalytics?>(
       'trafficAnalytics',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkWatcherFlowLogTrafficAnalytics.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     version = registerOutput<int?>('version');
   }
@@ -533,12 +547,26 @@ class NetworkWatcherFlowLog extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     retentionPolicy = registerOutput<NetworkWatcherFlowLogRetentionPolicy>(
       'retentionPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkWatcherFlowLogRetentionPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     storageAccountId = registerOutput<String>('storageAccountId');
     tags = registerOutput<Map<String, String>?>('tags');
     targetResourceId = registerOutput<String>('targetResourceId');
     trafficAnalytics = registerOutput<NetworkWatcherFlowLogTrafficAnalytics?>(
       'trafficAnalytics',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkWatcherFlowLogTrafficAnalytics.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     version = registerOutput<int?>('version');
   }

@@ -1931,6 +1931,13 @@ class AgentcoreGatewayTarget extends pulumi.CustomResource {
     credentialProviderConfiguration =
         registerOutput<AgentcoreGatewayTargetCredentialProviderConfiguration?>(
           'credentialProviderConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AgentcoreGatewayTargetCredentialProviderConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String?>('description');
     gatewayIdentifier = registerOutput<String>('gatewayIdentifier');
@@ -1939,9 +1946,25 @@ class AgentcoreGatewayTarget extends pulumi.CustomResource {
     targetConfiguration =
         registerOutput<AgentcoreGatewayTargetTargetConfiguration>(
           'targetConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AgentcoreGatewayTargetTargetConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     targetId = registerOutput<String>('targetId');
-    timeouts = registerOutput<AgentcoreGatewayTargetTimeouts?>('timeouts');
+    timeouts = registerOutput<AgentcoreGatewayTargetTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentcoreGatewayTargetTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [AgentcoreGatewayTarget] resource's state with the given [name] and [id].
@@ -1970,6 +1993,13 @@ class AgentcoreGatewayTarget extends pulumi.CustomResource {
     credentialProviderConfiguration =
         registerOutput<AgentcoreGatewayTargetCredentialProviderConfiguration?>(
           'credentialProviderConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AgentcoreGatewayTargetCredentialProviderConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String?>('description');
     gatewayIdentifier = registerOutput<String>('gatewayIdentifier');
@@ -1978,8 +2008,24 @@ class AgentcoreGatewayTarget extends pulumi.CustomResource {
     targetConfiguration =
         registerOutput<AgentcoreGatewayTargetTargetConfiguration>(
           'targetConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AgentcoreGatewayTargetTargetConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     targetId = registerOutput<String>('targetId');
-    timeouts = registerOutput<AgentcoreGatewayTargetTimeouts?>('timeouts');
+    timeouts = registerOutput<AgentcoreGatewayTargetTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentcoreGatewayTargetTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

@@ -603,7 +603,16 @@ class BackupPolicyPostgresqlFlexibleServer extends pulumi.CustomResource {
     defaultRetentionRule =
         registerOutput<
           BackupPolicyPostgresqlFlexibleServerDefaultRetentionRule
-        >('defaultRetentionRule');
+        >(
+          'defaultRetentionRule',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return BackupPolicyPostgresqlFlexibleServerDefaultRetentionRule.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     this.name = registerOutput<String>('name');
     retentionRules = registerOutput<List<Map<String, dynamic>>?>(
       'retentionRules',
@@ -641,7 +650,16 @@ class BackupPolicyPostgresqlFlexibleServer extends pulumi.CustomResource {
     defaultRetentionRule =
         registerOutput<
           BackupPolicyPostgresqlFlexibleServerDefaultRetentionRule
-        >('defaultRetentionRule');
+        >(
+          'defaultRetentionRule',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return BackupPolicyPostgresqlFlexibleServerDefaultRetentionRule.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     this.name = registerOutput<String>('name');
     retentionRules = registerOutput<List<Map<String, dynamic>>?>(
       'retentionRules',

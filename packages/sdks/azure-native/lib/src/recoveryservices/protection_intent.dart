@@ -212,6 +212,13 @@ class ProtectionIntent extends pulumi.CustomResource {
     properties =
         registerOutput<AzureRecoveryServiceVaultProtectionIntentResponse>(
           'properties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AzureRecoveryServiceVaultProtectionIntentResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

@@ -155,7 +155,16 @@ class Hub extends pulumi.CustomResource {
     hubName = registerOutput<String>('hubName');
     hubSearchKeywords = registerOutput<List<String>?>('hubSearchKeywords');
     region = registerOutput<String>('region');
-    s3StorageConfig = registerOutput<HubS3StorageConfig?>('s3StorageConfig');
+    s3StorageConfig = registerOutput<HubS3StorageConfig?>(
+      's3StorageConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HubS3StorageConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
@@ -185,7 +194,16 @@ class Hub extends pulumi.CustomResource {
     hubName = registerOutput<String>('hubName');
     hubSearchKeywords = registerOutput<List<String>?>('hubSearchKeywords');
     region = registerOutput<String>('region');
-    s3StorageConfig = registerOutput<HubS3StorageConfig?>('s3StorageConfig');
+    s3StorageConfig = registerOutput<HubS3StorageConfig?>(
+      's3StorageConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HubS3StorageConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }

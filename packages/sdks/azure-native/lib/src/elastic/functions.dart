@@ -155,8 +155,8 @@ Future<GetOrganizationApiKeyResult> getOrganizationApiKey(
 ///
 /// Other available API versions: 2023-06-15-preview, 2023-07-01-preview, 2023-10-01-preview, 2023-11-01-preview, 2024-01-01-preview, 2024-05-01-preview, 2024-06-15-preview, 2024-10-01-preview, 2025-01-15-preview, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native elastic [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [options] Invoke options controlling this call.
-Future<GetOrganizationElasticToAzureSubscriptionMappingResult> getOrganizationElasticToAzureSubscriptionMapping(
-  {
+Future<GetOrganizationElasticToAzureSubscriptionMappingResult>
+getOrganizationElasticToAzureSubscriptionMapping({
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;

@@ -778,7 +778,16 @@ class Store extends pulumi.CustomResource {
     autoSplit = registerOutput<bool?>('autoSplit');
     createTime = registerOutput<int>('createTime');
     enableWebTracking = registerOutput<bool?>('enableWebTracking');
-    encryptConf = registerOutput<StoreEncryptConf>('encryptConf');
+    encryptConf = registerOutput<StoreEncryptConf>(
+      'encryptConf',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StoreEncryptConf.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     hotTtl = registerOutput<int?>('hotTtl');
     infrequentAccessTtl = registerOutput<int?>('infrequentAccessTtl');
     logstoreName = registerOutput<String>('logstoreName');
@@ -817,7 +826,16 @@ class Store extends pulumi.CustomResource {
     autoSplit = registerOutput<bool?>('autoSplit');
     createTime = registerOutput<int>('createTime');
     enableWebTracking = registerOutput<bool?>('enableWebTracking');
-    encryptConf = registerOutput<StoreEncryptConf>('encryptConf');
+    encryptConf = registerOutput<StoreEncryptConf>(
+      'encryptConf',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StoreEncryptConf.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     hotTtl = registerOutput<int?>('hotTtl');
     infrequentAccessTtl = registerOutput<int?>('infrequentAccessTtl');
     logstoreName = registerOutput<String>('logstoreName');

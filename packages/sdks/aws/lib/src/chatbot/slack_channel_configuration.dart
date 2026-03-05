@@ -211,7 +211,16 @@ class SlackChannelConfiguration extends pulumi.CustomResource {
     snsTopicArns = registerOutput<List<String>>('snsTopicArns');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<SlackChannelConfigurationTimeouts?>('timeouts');
+    timeouts = registerOutput<SlackChannelConfigurationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SlackChannelConfigurationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     userAuthorizationRequired = registerOutput<bool>(
       'userAuthorizationRequired',
     );
@@ -253,7 +262,16 @@ class SlackChannelConfiguration extends pulumi.CustomResource {
     snsTopicArns = registerOutput<List<String>>('snsTopicArns');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<SlackChannelConfigurationTimeouts?>('timeouts');
+    timeouts = registerOutput<SlackChannelConfigurationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SlackChannelConfigurationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     userAuthorizationRequired = registerOutput<bool>(
       'userAuthorizationRequired',
     );

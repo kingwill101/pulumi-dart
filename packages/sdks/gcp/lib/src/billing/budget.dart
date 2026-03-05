@@ -1713,10 +1713,37 @@ class Budget extends pulumi.CustomResource {
         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
         options ?? pulumi.CustomResourceOptions(),
       ) {
-    allUpdatesRule = registerOutput<BudgetAllUpdatesRule?>('allUpdatesRule');
-    amount = registerOutput<BudgetAmount>('amount');
+    allUpdatesRule = registerOutput<BudgetAllUpdatesRule?>(
+      'allUpdatesRule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BudgetAllUpdatesRule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    amount = registerOutput<BudgetAmount>(
+      'amount',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BudgetAmount.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     billingAccount = registerOutput<String>('billingAccount');
-    budgetFilter = registerOutput<BudgetBudgetFilter>('budgetFilter');
+    budgetFilter = registerOutput<BudgetBudgetFilter>(
+      'budgetFilter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BudgetBudgetFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
     ownershipScope = registerOutput<String?>('ownershipScope');
@@ -1748,10 +1775,37 @@ class Budget extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    allUpdatesRule = registerOutput<BudgetAllUpdatesRule?>('allUpdatesRule');
-    amount = registerOutput<BudgetAmount>('amount');
+    allUpdatesRule = registerOutput<BudgetAllUpdatesRule?>(
+      'allUpdatesRule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BudgetAllUpdatesRule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    amount = registerOutput<BudgetAmount>(
+      'amount',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BudgetAmount.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     billingAccount = registerOutput<String>('billingAccount');
-    budgetFilter = registerOutput<BudgetBudgetFilter>('budgetFilter');
+    budgetFilter = registerOutput<BudgetBudgetFilter>(
+      'budgetFilter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BudgetBudgetFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
     ownershipScope = registerOutput<String?>('ownershipScope');

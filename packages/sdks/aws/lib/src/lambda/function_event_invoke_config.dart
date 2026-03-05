@@ -1148,6 +1148,13 @@ class FunctionEventInvokeConfig extends pulumi.CustomResource {
     destinationConfig =
         registerOutput<FunctionEventInvokeConfigDestinationConfig?>(
           'destinationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FunctionEventInvokeConfigDestinationConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     functionName = registerOutput<String>('functionName');
     maximumEventAgeInSeconds = registerOutput<int?>('maximumEventAgeInSeconds');
@@ -1182,6 +1189,13 @@ class FunctionEventInvokeConfig extends pulumi.CustomResource {
     destinationConfig =
         registerOutput<FunctionEventInvokeConfigDestinationConfig?>(
           'destinationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FunctionEventInvokeConfigDestinationConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     functionName = registerOutput<String>('functionName');
     maximumEventAgeInSeconds = registerOutput<int?>('maximumEventAgeInSeconds');

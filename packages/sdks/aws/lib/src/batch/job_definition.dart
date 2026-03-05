@@ -1918,6 +1918,13 @@ class JobDefinition extends pulumi.CustomResource {
     ecsProperties = registerOutput<String?>('ecsProperties');
     eksProperties = registerOutput<JobDefinitionEksProperties?>(
       'eksProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobDefinitionEksProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     nodeProperties = registerOutput<String?>('nodeProperties');
@@ -1929,12 +1936,28 @@ class JobDefinition extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     retryStrategy = registerOutput<JobDefinitionRetryStrategy?>(
       'retryStrategy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobDefinitionRetryStrategy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     revision = registerOutput<int>('revision');
     schedulingPriority = registerOutput<int?>('schedulingPriority');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeout = registerOutput<JobDefinitionTimeout?>('timeout');
+    timeout = registerOutput<JobDefinitionTimeout?>(
+      'timeout',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobDefinitionTimeout.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 
@@ -1968,6 +1991,13 @@ class JobDefinition extends pulumi.CustomResource {
     ecsProperties = registerOutput<String?>('ecsProperties');
     eksProperties = registerOutput<JobDefinitionEksProperties?>(
       'eksProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobDefinitionEksProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     nodeProperties = registerOutput<String?>('nodeProperties');
@@ -1979,12 +2009,28 @@ class JobDefinition extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     retryStrategy = registerOutput<JobDefinitionRetryStrategy?>(
       'retryStrategy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobDefinitionRetryStrategy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     revision = registerOutput<int>('revision');
     schedulingPriority = registerOutput<int?>('schedulingPriority');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeout = registerOutput<JobDefinitionTimeout?>('timeout');
+    timeout = registerOutput<JobDefinitionTimeout?>(
+      'timeout',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobDefinitionTimeout.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

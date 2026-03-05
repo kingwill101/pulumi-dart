@@ -785,6 +785,13 @@ class DataStore extends pulumi.CustomResource {
     advancedSiteSearchConfig =
         registerOutput<DataStoreAdvancedSiteSearchConfig>(
           'advancedSiteSearchConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataStoreAdvancedSiteSearchConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     contentConfig = registerOutput<String>('contentConfig');
     createAdvancedSiteSearch = registerOutput<bool?>(
@@ -797,6 +804,13 @@ class DataStore extends pulumi.CustomResource {
     documentProcessingConfig =
         registerOutput<DataStoreDocumentProcessingConfig?>(
           'documentProcessingConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataStoreDocumentProcessingConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     industryVertical = registerOutput<String>('industryVertical');
     kmsKeyName = registerOutput<String?>('kmsKeyName');
@@ -835,6 +849,13 @@ class DataStore extends pulumi.CustomResource {
     advancedSiteSearchConfig =
         registerOutput<DataStoreAdvancedSiteSearchConfig>(
           'advancedSiteSearchConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataStoreAdvancedSiteSearchConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     contentConfig = registerOutput<String>('contentConfig');
     createAdvancedSiteSearch = registerOutput<bool?>(
@@ -847,6 +868,13 @@ class DataStore extends pulumi.CustomResource {
     documentProcessingConfig =
         registerOutput<DataStoreDocumentProcessingConfig?>(
           'documentProcessingConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataStoreDocumentProcessingConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     industryVertical = registerOutput<String>('industryVertical');
     kmsKeyName = registerOutput<String?>('kmsKeyName');

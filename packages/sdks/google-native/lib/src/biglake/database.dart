@@ -52,7 +52,16 @@ class Database extends pulumi.CustomResource {
     databaseId = registerOutput<String>('databaseId');
     deleteTime = registerOutput<String>('deleteTime');
     expireTime = registerOutput<String>('expireTime');
-    hiveOptions = registerOutput<HiveDatabaseOptionsResponse>('hiveOptions');
+    hiveOptions = registerOutput<HiveDatabaseOptionsResponse>(
+      'hiveOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HiveDatabaseOptionsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

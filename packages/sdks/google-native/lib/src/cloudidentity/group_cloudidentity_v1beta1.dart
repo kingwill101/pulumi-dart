@@ -66,9 +66,23 @@ class GroupCloudidentityV1beta1 extends pulumi.CustomResource {
     dynamicGroupMetadata =
         registerOutput<DynamicGroupMetadataResponseCloudidentityV1beta1>(
           'dynamicGroupMetadata',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DynamicGroupMetadataResponseCloudidentityV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     groupKey = registerOutput<EntityKeyResponseCloudidentityV1beta1>(
       'groupKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EntityKeyResponseCloudidentityV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     initialGroupConfig = registerOutput<String>('initialGroupConfig');
     labels = registerOutput<Map<String, String>>('labels');

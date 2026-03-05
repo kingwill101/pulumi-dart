@@ -622,10 +622,28 @@ class PostRule extends pulumi.CustomResource {
     applications = registerOutput<List<String>?>('applications');
     auditComment = registerOutput<String?>('auditComment');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    category = registerOutput<CategoryResponse?>('category');
+    category = registerOutput<CategoryResponse?>(
+      'category',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CategoryResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     decryptionRuleType = registerOutput<String?>('decryptionRuleType');
     description = registerOutput<String?>('description');
-    destination = registerOutput<DestinationAddrResponse?>('destination');
+    destination = registerOutput<DestinationAddrResponse?>(
+      'destination',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DestinationAddrResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     enableLogging = registerOutput<String?>('enableLogging');
     etag = registerOutput<String?>('etag');
     inboundInspectionCertificate = registerOutput<String?>(
@@ -640,8 +658,26 @@ class PostRule extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     ruleName = registerOutput<String>('ruleName');
     ruleState = registerOutput<String?>('ruleState');
-    source = registerOutput<SourceAddrResponse?>('source');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    source = registerOutput<SourceAddrResponse?>(
+      'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SourceAddrResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<List<Map<String, dynamic>>?>('tags');
     type = registerOutput<String>('type');
   }

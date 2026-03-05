@@ -567,7 +567,16 @@ class AppHostingDomain extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     purgeTime = registerOutput<String>('purgeTime');
-    serve = registerOutput<AppHostingDomainServe?>('serve');
+    serve = registerOutput<AppHostingDomainServe?>(
+      'serve',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppHostingDomainServe.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -607,7 +616,16 @@ class AppHostingDomain extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     purgeTime = registerOutput<String>('purgeTime');
-    serve = registerOutput<AppHostingDomainServe?>('serve');
+    serve = registerOutput<AppHostingDomainServe?>(
+      'serve',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppHostingDomainServe.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }

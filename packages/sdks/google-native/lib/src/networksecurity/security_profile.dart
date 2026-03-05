@@ -59,6 +59,13 @@ class SecurityProfile extends pulumi.CustomResource {
     securityProfileId = registerOutput<String>('securityProfileId');
     threatPreventionProfile = registerOutput<ThreatPreventionProfileResponse>(
       'threatPreventionProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ThreatPreventionProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     type = registerOutput<String>('type');
     updateTime = registerOutput<String>('updateTime');

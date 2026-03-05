@@ -1,25 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getProducerImageShareGroup.
 class GetProducerImageShareGroupResult {
   /// The date and time the Image Share Group was created.
   final String created;
+
   /// The description of the Image Share Group.
   final String description;
+
   /// The date and time the Image Share Group will expire.
   final String expiry;
   final int id;
+
   /// The number of images in the Image Share Group.
   final int imagesCount;
+
   /// Whether the Image Share Group is suspended.
   final bool isSuspended;
+
   /// The label of the Image Share Group.
   final String label;
+
   /// The number of members in the Image Share Group.
   final int membersCount;
+
   /// The date and time the Image Share Group was last updated.
   final String updated;
+
   /// The UUID of the Image Share Group.
   final String uuid;
 
@@ -77,4 +84,3 @@ class GetProducerImageShareGroupResult {
     );
   }
 }
-

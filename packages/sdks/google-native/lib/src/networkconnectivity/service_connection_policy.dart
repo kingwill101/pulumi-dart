@@ -68,7 +68,16 @@ class ServiceConnectionPolicy extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     project = registerOutput<String>('project');
-    pscConfig = registerOutput<PscConfigResponse>('pscConfig');
+    pscConfig = registerOutput<PscConfigResponse>(
+      'pscConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PscConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     pscConnections = registerOutput<List<Map<String, dynamic>>>(
       'pscConnections',
     );

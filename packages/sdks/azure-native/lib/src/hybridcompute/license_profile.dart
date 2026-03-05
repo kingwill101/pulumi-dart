@@ -283,7 +283,16 @@ class LicenseProfile extends pulumi.CustomResource {
     billingStartDate = registerOutput<String>('billingStartDate');
     disenrollmentDate = registerOutput<String>('disenrollmentDate');
     enrollmentDate = registerOutput<String>('enrollmentDate');
-    error = registerOutput<ErrorDetailResponse>('error');
+    error = registerOutput<ErrorDetailResponse>(
+      'error',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ErrorDetailResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     esuEligibility = registerOutput<String>('esuEligibility');
     esuKeyState = registerOutput<String>('esuKeyState');
     esuKeys = registerOutput<List<Map<String, dynamic>>>('esuKeys');
@@ -299,7 +308,16 @@ class LicenseProfile extends pulumi.CustomResource {
       'softwareAssuranceCustomer',
     );
     subscriptionStatus = registerOutput<String?>('subscriptionStatus');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

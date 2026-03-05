@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getCallerIdentity.
 class GetCallerIdentityResult {
   /// Account ID.
   final String accountId;
+
   /// The Alibaba Cloud Resource Name (ARN) of the user making the call.
   final String arn;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The type of the princiapal. RAMUser for users.
   final String identityType;
 
@@ -42,4 +44,3 @@ class GetCallerIdentityResult {
     );
   }
 }
-

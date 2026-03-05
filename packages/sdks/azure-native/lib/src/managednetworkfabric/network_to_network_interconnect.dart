@@ -483,27 +483,73 @@ class NetworkToNetworkInterconnect extends pulumi.CustomResource {
     egressAclId = registerOutput<String?>('egressAclId');
     exportRoutePolicy = registerOutput<ExportRoutePolicyInformationResponse?>(
       'exportRoutePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExportRoutePolicyInformationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     importRoutePolicy = registerOutput<ImportRoutePolicyInformationResponse?>(
       'importRoutePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImportRoutePolicyInformationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     ingressAclId = registerOutput<String?>('ingressAclId');
     isManagementType = registerOutput<String?>('isManagementType');
     layer2Configuration = registerOutput<Layer2ConfigurationResponse?>(
       'layer2Configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return Layer2ConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     nniType = registerOutput<String?>('nniType');
     npbStaticRouteConfiguration =
         registerOutput<NpbStaticRouteConfigurationResponse?>(
           'npbStaticRouteConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NpbStaticRouteConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     optionBLayer3Configuration =
         registerOutput<
           NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration?
-        >('optionBLayer3Configuration');
+        >(
+          'optionBLayer3Configuration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     useOptionB = registerOutput<String>('useOptionB');
   }

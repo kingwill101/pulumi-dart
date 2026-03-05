@@ -250,7 +250,16 @@ class PluginInstance extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     actions = registerOutput<List<Map<String, dynamic>>>('actions');
-    authConfig = registerOutput<PluginInstanceAuthConfig?>('authConfig');
+    authConfig = registerOutput<PluginInstanceAuthConfig?>(
+      'authConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PluginInstanceAuthConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     disable = registerOutput<bool?>('disable');
     displayName = registerOutput<String>('displayName');
@@ -288,7 +297,16 @@ class PluginInstance extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     actions = registerOutput<List<Map<String, dynamic>>>('actions');
-    authConfig = registerOutput<PluginInstanceAuthConfig?>('authConfig');
+    authConfig = registerOutput<PluginInstanceAuthConfig?>(
+      'authConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PluginInstanceAuthConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     disable = registerOutput<bool?>('disable');
     displayName = registerOutput<String>('displayName');

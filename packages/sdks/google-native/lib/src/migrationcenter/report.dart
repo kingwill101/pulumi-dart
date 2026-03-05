@@ -59,7 +59,16 @@ class Report extends pulumi.CustomResource {
     reportId = registerOutput<String>('reportId');
     requestId = registerOutput<String?>('requestId');
     state = registerOutput<String>('state');
-    summary = registerOutput<ReportSummaryResponse>('summary');
+    summary = registerOutput<ReportSummaryResponse>(
+      'summary',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReportSummaryResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     updateTime = registerOutput<String>('updateTime');
   }

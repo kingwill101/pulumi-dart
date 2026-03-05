@@ -128,14 +128,46 @@ class Workspace extends pulumi.CustomResource {
     cspWorkspaceAdminProperties =
         registerOutput<CspWorkspaceAdminPropertiesResponse?>(
           'cspWorkspaceAdminProperties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CspWorkspaceAdminPropertiesResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     defaultDataLakeStorage =
         registerOutput<DataLakeStorageAccountDetailsResponse?>(
           'defaultDataLakeStorage',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataLakeStorageAccountDetailsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    encryption = registerOutput<EncryptionDetailsResponse?>('encryption');
+    encryption = registerOutput<EncryptionDetailsResponse?>(
+      'encryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EncryptionDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     extraProperties = registerOutput<dynamic>('extraProperties');
-    identity = registerOutput<ManagedIdentityResponse?>('identity');
+    identity = registerOutput<ManagedIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     managedResourceGroupName = registerOutput<String?>(
       'managedResourceGroupName',
@@ -144,6 +176,13 @@ class Workspace extends pulumi.CustomResource {
     managedVirtualNetworkSettings =
         registerOutput<ManagedVirtualNetworkSettingsResponse?>(
           'managedVirtualNetworkSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ManagedVirtualNetworkSettingsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     privateEndpointConnections = registerOutput<List<Map<String, dynamic>>?>(
@@ -153,6 +192,13 @@ class Workspace extends pulumi.CustomResource {
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     purviewConfiguration = registerOutput<PurviewConfigurationResponse?>(
       'purviewConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PurviewConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     settings = registerOutput<Map<String, dynamic>>('settings');
     sqlAdministratorLogin = registerOutput<String?>('sqlAdministratorLogin');
@@ -166,10 +212,24 @@ class Workspace extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     virtualNetworkProfile = registerOutput<VirtualNetworkProfileResponse?>(
       'virtualNetworkProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualNetworkProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     workspaceRepositoryConfiguration =
         registerOutput<WorkspaceRepositoryConfigurationResponse?>(
           'workspaceRepositoryConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WorkspaceRepositoryConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     workspaceUID = registerOutput<String>('workspaceUID');
   }

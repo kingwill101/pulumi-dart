@@ -572,12 +572,28 @@ class Kubernetes extends pulumi.CustomResource {
     apiAudiences = registerOutput<List<String>?>('apiAudiences');
     certificateAuthority = registerOutput<KubernetesCertificateAuthority>(
       'certificateAuthority',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KubernetesCertificateAuthority.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clientCert = registerOutput<String?>('clientCert');
     clientKey = registerOutput<String?>('clientKey');
     clusterCaCert = registerOutput<String?>('clusterCaCert');
     clusterDomain = registerOutput<String?>('clusterDomain');
-    connections = registerOutput<KubernetesConnections>('connections');
+    connections = registerOutput<KubernetesConnections>(
+      'connections',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KubernetesConnections.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     customSan = registerOutput<String?>('customSan');
     deleteOptions = registerOutput<List<Map<String, dynamic>>?>(
       'deleteOptions',
@@ -628,7 +644,16 @@ class Kubernetes extends pulumi.CustomResource {
     rdsInstances = registerOutput<List<String>?>('rdsInstances');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     retainResources = registerOutput<List<String>?>('retainResources');
-    runtime = registerOutput<KubernetesRuntime?>('runtime');
+    runtime = registerOutput<KubernetesRuntime?>(
+      'runtime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KubernetesRuntime.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     securityGroupId = registerOutput<String>('securityGroupId');
     serviceAccountIssuer = registerOutput<String?>('serviceAccountIssuer');
     serviceCidr = registerOutput<String?>('serviceCidr');
@@ -674,12 +699,28 @@ class Kubernetes extends pulumi.CustomResource {
     apiAudiences = registerOutput<List<String>?>('apiAudiences');
     certificateAuthority = registerOutput<KubernetesCertificateAuthority>(
       'certificateAuthority',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KubernetesCertificateAuthority.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clientCert = registerOutput<String?>('clientCert');
     clientKey = registerOutput<String?>('clientKey');
     clusterCaCert = registerOutput<String?>('clusterCaCert');
     clusterDomain = registerOutput<String?>('clusterDomain');
-    connections = registerOutput<KubernetesConnections>('connections');
+    connections = registerOutput<KubernetesConnections>(
+      'connections',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KubernetesConnections.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     customSan = registerOutput<String?>('customSan');
     deleteOptions = registerOutput<List<Map<String, dynamic>>?>(
       'deleteOptions',
@@ -730,7 +771,16 @@ class Kubernetes extends pulumi.CustomResource {
     rdsInstances = registerOutput<List<String>?>('rdsInstances');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     retainResources = registerOutput<List<String>?>('retainResources');
-    runtime = registerOutput<KubernetesRuntime?>('runtime');
+    runtime = registerOutput<KubernetesRuntime?>(
+      'runtime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KubernetesRuntime.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     securityGroupId = registerOutput<String>('securityGroupId');
     serviceAccountIssuer = registerOutput<String?>('serviceAccountIssuer');
     serviceCidr = registerOutput<String?>('serviceCidr');

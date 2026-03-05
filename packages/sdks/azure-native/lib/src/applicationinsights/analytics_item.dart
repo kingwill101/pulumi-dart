@@ -266,7 +266,16 @@ class AnalyticsItem extends pulumi.CustomResource {
     properties =
         registerOutput<
           ApplicationInsightsComponentAnalyticsItemPropertiesResponse
-        >('properties');
+        >(
+          'properties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ApplicationInsightsComponentAnalyticsItemPropertiesResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     scope = registerOutput<String?>('scope');
     timeCreated = registerOutput<String>('timeCreated');
     timeModified = registerOutput<String>('timeModified');

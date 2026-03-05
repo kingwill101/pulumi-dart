@@ -839,8 +839,26 @@ class Secret extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    replication = registerOutput<SecretReplication>('replication');
-    rotation = registerOutput<SecretRotation?>('rotation');
+    replication = registerOutput<SecretReplication>(
+      'replication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecretReplication.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    rotation = registerOutput<SecretRotation?>(
+      'rotation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecretRotation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     secretId = registerOutput<String>('secretId');
     tags = registerOutput<Map<String, String>?>('tags');
     topics = registerOutput<List<Map<String, dynamic>>?>('topics');
@@ -884,8 +902,26 @@ class Secret extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    replication = registerOutput<SecretReplication>('replication');
-    rotation = registerOutput<SecretRotation?>('rotation');
+    replication = registerOutput<SecretReplication>(
+      'replication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecretReplication.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    rotation = registerOutput<SecretRotation?>(
+      'rotation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecretRotation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     secretId = registerOutput<String>('secretId');
     tags = registerOutput<Map<String, String>?>('tags');
     topics = registerOutput<List<Map<String, dynamic>>?>('topics');

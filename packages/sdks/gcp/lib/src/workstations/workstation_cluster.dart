@@ -1222,6 +1222,13 @@ class WorkstationCluster extends pulumi.CustomResource {
     displayName = registerOutput<String?>('displayName');
     domainConfig = registerOutput<WorkstationClusterDomainConfig?>(
       'domainConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkstationClusterDomainConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     effectiveAnnotations = registerOutput<Map<String, String>>(
       'effectiveAnnotations',
@@ -1235,6 +1242,13 @@ class WorkstationCluster extends pulumi.CustomResource {
     privateClusterConfig =
         registerOutput<WorkstationClusterPrivateClusterConfig?>(
           'privateClusterConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WorkstationClusterPrivateClusterConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
@@ -1275,6 +1289,13 @@ class WorkstationCluster extends pulumi.CustomResource {
     displayName = registerOutput<String?>('displayName');
     domainConfig = registerOutput<WorkstationClusterDomainConfig?>(
       'domainConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkstationClusterDomainConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     effectiveAnnotations = registerOutput<Map<String, String>>(
       'effectiveAnnotations',
@@ -1288,6 +1309,13 @@ class WorkstationCluster extends pulumi.CustomResource {
     privateClusterConfig =
         registerOutput<WorkstationClusterPrivateClusterConfig?>(
           'privateClusterConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WorkstationClusterPrivateClusterConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');

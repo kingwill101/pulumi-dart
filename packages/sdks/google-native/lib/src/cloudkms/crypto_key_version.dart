@@ -77,6 +77,13 @@ class CryptoKeyVersion extends pulumi.CustomResource {
     algorithm = registerOutput<String>('algorithm');
     attestation = registerOutput<KeyOperationAttestationResponse>(
       'attestation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KeyOperationAttestationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     cryptoKeyId = registerOutput<String>('cryptoKeyId');
@@ -88,6 +95,13 @@ class CryptoKeyVersion extends pulumi.CustomResource {
     externalProtectionLevelOptions =
         registerOutput<ExternalProtectionLevelOptionsResponse>(
           'externalProtectionLevelOptions',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ExternalProtectionLevelOptionsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     generateTime = registerOutput<String>('generateTime');
     generationFailureReason = registerOutput<String>('generationFailureReason');

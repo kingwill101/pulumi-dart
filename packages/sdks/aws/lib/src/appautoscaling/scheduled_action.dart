@@ -442,6 +442,13 @@ class ScheduledAction extends pulumi.CustomResource {
     scalableDimension = registerOutput<String>('scalableDimension');
     scalableTargetAction = registerOutput<ScheduledActionScalableTargetAction>(
       'scalableTargetAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduledActionScalableTargetAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     schedule = registerOutput<String>('schedule');
     serviceNamespace = registerOutput<String>('serviceNamespace');
@@ -480,6 +487,13 @@ class ScheduledAction extends pulumi.CustomResource {
     scalableDimension = registerOutput<String>('scalableDimension');
     scalableTargetAction = registerOutput<ScheduledActionScalableTargetAction>(
       'scalableTargetAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduledActionScalableTargetAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     schedule = registerOutput<String>('schedule');
     serviceNamespace = registerOutput<String>('serviceNamespace');

@@ -108,17 +108,40 @@ class InstanceGroupManagerComputeV1 extends pulumi.CustomResource {
     currentActions =
         registerOutput<InstanceGroupManagerActionsSummaryResponseComputeV1>(
           'currentActions',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceGroupManagerActionsSummaryResponseComputeV1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String>('description');
     distributionPolicy = registerOutput<DistributionPolicyResponseComputeV1>(
       'distributionPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DistributionPolicyResponseComputeV1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     fingerprint = registerOutput<String>('fingerprint');
     instanceGroup = registerOutput<String>('instanceGroup');
     instanceLifecyclePolicy =
         registerOutput<
           InstanceGroupManagerInstanceLifecyclePolicyResponseComputeV1
-        >('instanceLifecyclePolicy');
+        >(
+          'instanceLifecyclePolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceGroupManagerInstanceLifecyclePolicyResponseComputeV1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     instanceTemplate = registerOutput<String>('instanceTemplate');
     kind = registerOutput<String>('kind');
     listManagedInstancesResults = registerOutput<String>(
@@ -132,15 +155,36 @@ class InstanceGroupManagerComputeV1 extends pulumi.CustomResource {
     selfLink = registerOutput<String>('selfLink');
     statefulPolicy = registerOutput<StatefulPolicyResponseComputeV1>(
       'statefulPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StatefulPolicyResponseComputeV1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     status = registerOutput<InstanceGroupManagerStatusResponseComputeV1>(
       'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceGroupManagerStatusResponseComputeV1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     targetPools = registerOutput<List<String>>('targetPools');
     targetSize = registerOutput<int>('targetSize');
     updatePolicy =
         registerOutput<InstanceGroupManagerUpdatePolicyResponseComputeV1>(
           'updatePolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceGroupManagerUpdatePolicyResponseComputeV1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     versions = registerOutput<List<Map<String, dynamic>>>('versions');
     zone = registerOutput<String>('zone');

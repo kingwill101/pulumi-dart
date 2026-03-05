@@ -1,25 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAnalyticsWorkspace.
 class GetAnalyticsWorkspaceResult {
   /// The workspace daily quota for ingestion in GB.
   final double dailyQuotaGb;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
   final String name;
+
   /// The Primary shared key for the Log Analytics Workspace.
   final String primarySharedKey;
   final String resourceGroupName;
+
   /// The workspace data retention in days.
   final int retentionInDays;
+
   /// The Secondary shared key for the Log Analytics Workspace.
   final String secondarySharedKey;
+
   /// The SKU of the Log Analytics Workspace.
   final String sku;
+
   /// A mapping of tags assigned to the resource.
   final Map<String, String> tags;
+
   /// The Workspace (or Customer) ID for the Log Analytics Workspace.
   final String workspaceId;
 
@@ -81,4 +87,3 @@ class GetAnalyticsWorkspaceResult {
     );
   }
 }
-

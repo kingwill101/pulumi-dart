@@ -254,7 +254,16 @@ class Webhook extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     sendAllEvents = registerOutput<String?>('sendAllEvents');
     status = registerOutput<String?>('status');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tenantId = registerOutput<String>('tenantId');
     type = registerOutput<String>('type');
     updateWebhookKey = registerOutput<String?>('updateWebhookKey');

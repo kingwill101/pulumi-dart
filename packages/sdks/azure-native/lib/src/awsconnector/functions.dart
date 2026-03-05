@@ -445,7 +445,8 @@ Future<GetCodeBuildProjectResult> getCodeBuildProject(
 /// Uses Azure REST API version 2024-12-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_awsconnector_get_code_build_source_credentials_info_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetCodeBuildSourceCredentialsInfoResult> getCodeBuildSourceCredentialsInfo(
+Future<GetCodeBuildSourceCredentialsInfoResult>
+getCodeBuildSourceCredentialsInfo(
   GetCodeBuildSourceCredentialsInfoArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -463,7 +464,8 @@ Future<GetCodeBuildSourceCredentialsInfoResult> getCodeBuildSourceCredentialsInf
 /// Uses Azure REST API version 2024-12-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_awsconnector_get_config_service_configuration_recorder_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetConfigServiceConfigurationRecorderResult> getConfigServiceConfigurationRecorder(
+Future<GetConfigServiceConfigurationRecorderResult>
+getConfigServiceConfigurationRecorder(
   GetConfigServiceConfigurationRecorderArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -481,7 +483,8 @@ Future<GetConfigServiceConfigurationRecorderResult> getConfigServiceConfiguratio
 /// Uses Azure REST API version 2024-12-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_awsconnector_get_config_service_configuration_recorder_status_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetConfigServiceConfigurationRecorderStatusResult> getConfigServiceConfigurationRecorderStatus(
+Future<GetConfigServiceConfigurationRecorderStatusResult>
+getConfigServiceConfigurationRecorderStatus(
   GetConfigServiceConfigurationRecorderStatusArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -517,7 +520,8 @@ Future<GetConfigServiceDeliveryChannelResult> getConfigServiceDeliveryChannel(
 /// Uses Azure REST API version 2024-12-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_awsconnector_get_database_migration_service_replication_instance_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDatabaseMigrationServiceReplicationInstanceResult> getDatabaseMigrationServiceReplicationInstance(
+Future<GetDatabaseMigrationServiceReplicationInstanceResult>
+getDatabaseMigrationServiceReplicationInstance(
   GetDatabaseMigrationServiceReplicationInstanceArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -553,7 +557,8 @@ Future<GetDaxClusterResult> getDaxCluster(
 /// Uses Azure REST API version 2024-12-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_awsconnector_get_dynamo_db_continuous_backups_description_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDynamoDbContinuousBackupsDescriptionResult> getDynamoDbContinuousBackupsDescription(
+Future<GetDynamoDbContinuousBackupsDescriptionResult>
+getDynamoDbContinuousBackupsDescription(
   GetDynamoDbContinuousBackupsDescriptionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1093,7 +1098,8 @@ Future<GetElasticBeanstalkApplicationResult> getElasticBeanstalkApplication(
 /// Uses Azure REST API version 2024-12-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_awsconnector_get_elastic_beanstalk_configuration_template_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetElasticBeanstalkConfigurationTemplateResult> getElasticBeanstalkConfigurationTemplate(
+Future<GetElasticBeanstalkConfigurationTemplateResult>
+getElasticBeanstalkConfigurationTemplate(
   GetElasticBeanstalkConfigurationTemplateArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1129,7 +1135,8 @@ Future<GetElasticBeanstalkEnvironmentResult> getElasticBeanstalkEnvironment(
 /// Uses Azure REST API version 2024-12-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_awsconnector_get_elastic_load_balancing_v2_listener_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetElasticLoadBalancingV2ListenerResult> getElasticLoadBalancingV2Listener(
+Future<GetElasticLoadBalancingV2ListenerResult>
+getElasticLoadBalancingV2Listener(
   GetElasticLoadBalancingV2ListenerArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1147,7 +1154,8 @@ Future<GetElasticLoadBalancingV2ListenerResult> getElasticLoadBalancingV2Listene
 /// Uses Azure REST API version 2024-12-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_awsconnector_get_elastic_load_balancing_v2_load_balancer_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetElasticLoadBalancingV2LoadBalancerResult> getElasticLoadBalancingV2LoadBalancer(
+Future<GetElasticLoadBalancingV2LoadBalancerResult>
+getElasticLoadBalancingV2LoadBalancer(
   GetElasticLoadBalancingV2LoadBalancerArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1165,7 +1173,8 @@ Future<GetElasticLoadBalancingV2LoadBalancerResult> getElasticLoadBalancingV2Loa
 /// Uses Azure REST API version 2024-12-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_awsconnector_get_elastic_load_balancing_v2_target_group_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetElasticLoadBalancingV2TargetGroupResult> getElasticLoadBalancingV2TargetGroup(
+Future<GetElasticLoadBalancingV2TargetGroupResult>
+getElasticLoadBalancingV2TargetGroup(
   GetElasticLoadBalancingV2TargetGroupArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1183,7 +1192,8 @@ Future<GetElasticLoadBalancingV2TargetGroupResult> getElasticLoadBalancingV2Targ
 /// Uses Azure REST API version 2024-12-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_awsconnector_get_elastic_load_balancingv2_target_health_description_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetElasticLoadBalancingv2TargetHealthDescriptionResult> getElasticLoadBalancingv2TargetHealthDescription(
+Future<GetElasticLoadBalancingv2TargetHealthDescriptionResult>
+getElasticLoadBalancingv2TargetHealthDescription(
   GetElasticLoadBalancingv2TargetHealthDescriptionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2011,7 +2021,8 @@ Future<GetS3BucketPolicyResult> getS3BucketPolicy(
 /// Uses Azure REST API version 2024-12-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_awsconnector_get_s3_control_multi_region_access_point_policy_document_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetS3ControlMultiRegionAccessPointPolicyDocumentResult> getS3ControlMultiRegionAccessPointPolicyDocument(
+Future<GetS3ControlMultiRegionAccessPointPolicyDocumentResult>
+getS3ControlMultiRegionAccessPointPolicyDocument(
   GetS3ControlMultiRegionAccessPointPolicyDocumentArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2047,7 +2058,8 @@ Future<GetSageMakerAppResult> getSageMakerApp(
 /// Uses Azure REST API version 2024-12-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_awsconnector_get_sage_maker_notebook_instance_summary_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetSageMakerNotebookInstanceSummaryResult> getSageMakerNotebookInstanceSummary(
+Future<GetSageMakerNotebookInstanceSummaryResult>
+getSageMakerNotebookInstanceSummary(
   GetSageMakerNotebookInstanceSummaryArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2191,7 +2203,8 @@ Future<GetSsmParameterResult> getSsmParameter(
 /// Uses Azure REST API version 2024-12-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_awsconnector_get_ssm_resource_compliance_summary_item_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetSsmResourceComplianceSummaryItemResult> getSsmResourceComplianceSummaryItem(
+Future<GetSsmResourceComplianceSummaryItemResult>
+getSsmResourceComplianceSummaryItem(
   GetSsmResourceComplianceSummaryItemArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

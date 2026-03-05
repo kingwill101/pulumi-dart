@@ -1154,7 +1154,16 @@ class Plan extends pulumi.CustomResource {
     regions = registerOutput<List<String>>('regions');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<PlanTimeouts?>('timeouts');
+    timeouts = registerOutput<PlanTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PlanTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     triggers = registerOutput<List<Map<String, dynamic>>?>('triggers');
     workflows = registerOutput<List<Map<String, dynamic>>?>('workflows');
   }
@@ -1194,7 +1203,16 @@ class Plan extends pulumi.CustomResource {
     regions = registerOutput<List<String>>('regions');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<PlanTimeouts?>('timeouts');
+    timeouts = registerOutput<PlanTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PlanTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     triggers = registerOutput<List<Map<String, dynamic>>?>('triggers');
     workflows = registerOutput<List<Map<String, dynamic>>?>('workflows');
   }

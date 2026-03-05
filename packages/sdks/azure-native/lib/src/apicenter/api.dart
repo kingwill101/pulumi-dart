@@ -304,12 +304,39 @@ class Api extends pulumi.CustomResource {
       'externalDocumentation',
     );
     kind = registerOutput<String>('kind');
-    license = registerOutput<LicenseResponse?>('license');
+    license = registerOutput<LicenseResponse?>(
+      'license',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LicenseResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     lifecycleStage = registerOutput<String>('lifecycleStage');
     this.name = registerOutput<String>('name');
     summary = registerOutput<String?>('summary');
-    systemData = registerOutput<SystemDataResponse>('systemData');
-    termsOfService = registerOutput<TermsOfServiceResponse?>('termsOfService');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    termsOfService = registerOutput<TermsOfServiceResponse?>(
+      'termsOfService',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TermsOfServiceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     title = registerOutput<String>('title');
     type = registerOutput<String>('type');
   }

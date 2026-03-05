@@ -227,12 +227,37 @@ class ApiSource extends pulumi.CustomResource {
     azureApiManagementSource =
         registerOutput<AzureApiManagementSourceResponse?>(
           'azureApiManagementSource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AzureApiManagementSourceResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     importSpecification = registerOutput<String?>('importSpecification');
-    linkState = registerOutput<LinkStateResponse>('linkState');
+    linkState = registerOutput<LinkStateResponse>(
+      'linkState',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinkStateResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     targetEnvironmentId = registerOutput<String?>('targetEnvironmentId');
     targetLifecycleStage = registerOutput<String?>('targetLifecycleStage');
     type = registerOutput<String>('type');

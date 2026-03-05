@@ -101,7 +101,16 @@ class ConsumersIamMember extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<ConsumersIamMemberCondition?>('condition');
+    condition = registerOutput<ConsumersIamMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConsumersIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     consumerProject = registerOutput<String>('consumerProject');
     etag = registerOutput<String>('etag');
     member = registerOutput<String>('member');
@@ -132,7 +141,16 @@ class ConsumersIamMember extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<ConsumersIamMemberCondition?>('condition');
+    condition = registerOutput<ConsumersIamMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConsumersIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     consumerProject = registerOutput<String>('consumerProject');
     etag = registerOutput<String>('etag');
     member = registerOutput<String>('member');

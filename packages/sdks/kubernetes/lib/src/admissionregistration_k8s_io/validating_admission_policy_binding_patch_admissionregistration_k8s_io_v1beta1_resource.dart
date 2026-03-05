@@ -48,10 +48,28 @@ class ValidatingAdmissionPolicyBindingPatchAdmissionregistrationK8sIoV1beta1Reso
        ) {
     apiVersion = registerOutput<String?>('apiVersion');
     kind = registerOutput<String?>('kind');
-    metadata = registerOutput<ObjectMetaPatch?>('metadata');
+    metadata = registerOutput<ObjectMetaPatch?>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMetaPatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     spec =
         registerOutput<
           ValidatingAdmissionPolicyBindingSpecPatchAdmissionregistrationK8sIoV1beta1?
-        >('spec');
+        >(
+          'spec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ValidatingAdmissionPolicyBindingSpecPatchAdmissionregistrationK8sIoV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
   }
 }

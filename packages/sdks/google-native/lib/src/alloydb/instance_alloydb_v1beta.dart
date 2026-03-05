@@ -109,6 +109,13 @@ class InstanceAlloydbV1beta extends pulumi.CustomResource {
     clientConnectionConfig =
         registerOutput<ClientConnectionConfigResponseAlloydbV1beta>(
           'clientConnectionConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ClientConnectionConfigResponseAlloydbV1beta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     clusterId = registerOutput<String>('clusterId');
     createTime = registerOutput<String>('createTime');
@@ -124,6 +131,13 @@ class InstanceAlloydbV1beta extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     machineConfig = registerOutput<MachineConfigResponseAlloydbV1beta>(
       'machineConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MachineConfigResponseAlloydbV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     nodes = registerOutput<List<Map<String, dynamic>>>('nodes');
@@ -131,9 +145,23 @@ class InstanceAlloydbV1beta extends pulumi.CustomResource {
     queryInsightsConfig =
         registerOutput<QueryInsightsInstanceConfigResponseAlloydbV1beta>(
           'queryInsightsConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return QueryInsightsInstanceConfigResponseAlloydbV1beta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     readPoolConfig = registerOutput<ReadPoolConfigResponseAlloydbV1beta>(
       'readPoolConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReadPoolConfigResponseAlloydbV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     reconciling = registerOutput<bool>('reconciling');
     requestId = registerOutput<String?>('requestId');
@@ -141,8 +169,24 @@ class InstanceAlloydbV1beta extends pulumi.CustomResource {
     uid = registerOutput<String>('uid');
     updatePolicy = registerOutput<UpdatePolicyResponseAlloydbV1beta>(
       'updatePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UpdatePolicyResponseAlloydbV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     updateTime = registerOutput<String>('updateTime');
-    writableNode = registerOutput<NodeResponseAlloydbV1beta>('writableNode');
+    writableNode = registerOutput<NodeResponseAlloydbV1beta>(
+      'writableNode',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodeResponseAlloydbV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

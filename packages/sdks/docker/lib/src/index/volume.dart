@@ -155,7 +155,16 @@ class Volume extends pulumi.CustomResource {
         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
         options ?? pulumi.CustomResourceOptions(),
       ) {
-    cluster = registerOutput<VolumeCluster?>('cluster');
+    cluster = registerOutput<VolumeCluster?>(
+      'cluster',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VolumeCluster.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     driver = registerOutput<String>('driver');
     driverOpts = registerOutput<Map<String, String>?>('driverOpts');
     labels = registerOutput<List<Map<String, dynamic>>?>('labels');
@@ -186,7 +195,16 @@ class Volume extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    cluster = registerOutput<VolumeCluster?>('cluster');
+    cluster = registerOutput<VolumeCluster?>(
+      'cluster',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VolumeCluster.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     driver = registerOutput<String>('driver');
     driverOpts = registerOutput<Map<String, String>?>('driverOpts');
     labels = registerOutput<List<Map<String, dynamic>>?>('labels');

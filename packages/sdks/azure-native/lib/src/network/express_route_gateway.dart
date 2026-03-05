@@ -247,7 +247,16 @@ class ExpressRouteGateway extends pulumi.CustomResource {
     autoScaleConfiguration =
         registerOutput<
           ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration?
-        >('autoScaleConfiguration');
+        >(
+          'autoScaleConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
     expressRouteConnections = registerOutput<List<Map<String, dynamic>>?>(
@@ -258,6 +267,15 @@ class ExpressRouteGateway extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    virtualHub = registerOutput<VirtualHubIdResponse>('virtualHub');
+    virtualHub = registerOutput<VirtualHubIdResponse>(
+      'virtualHub',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualHubIdResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

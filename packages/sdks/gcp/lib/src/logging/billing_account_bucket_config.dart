@@ -341,6 +341,13 @@ class BillingAccountBucketConfig extends pulumi.CustomResource {
     bucketId = registerOutput<String>('bucketId');
     cmekSettings = registerOutput<BillingAccountBucketConfigCmekSettings?>(
       'cmekSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BillingAccountBucketConfigCmekSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String>('description');
     indexConfigs = registerOutput<List<Map<String, dynamic>>>('indexConfigs');
@@ -377,6 +384,13 @@ class BillingAccountBucketConfig extends pulumi.CustomResource {
     bucketId = registerOutput<String>('bucketId');
     cmekSettings = registerOutput<BillingAccountBucketConfigCmekSettings?>(
       'cmekSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BillingAccountBucketConfigCmekSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String>('description');
     indexConfigs = registerOutput<List<Map<String, dynamic>>>('indexConfigs');

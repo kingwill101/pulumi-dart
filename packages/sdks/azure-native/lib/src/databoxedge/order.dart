@@ -284,8 +284,24 @@ class Order extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     contactInformation = registerOutput<ContactDetailsResponse>(
       'contactInformation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContactDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    currentStatus = registerOutput<OrderStatusResponse>('currentStatus');
+    currentStatus = registerOutput<OrderStatusResponse>(
+      'currentStatus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrderStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     deliveryTrackingInfo = registerOutput<List<Map<String, dynamic>>>(
       'deliveryTrackingInfo',
     );
@@ -298,8 +314,26 @@ class Order extends pulumi.CustomResource {
     );
     serialNumber = registerOutput<String>('serialNumber');
     shipmentType = registerOutput<String?>('shipmentType');
-    shippingAddress = registerOutput<AddressResponse?>('shippingAddress');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    shippingAddress = registerOutput<AddressResponse?>(
+      'shippingAddress',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AddressResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

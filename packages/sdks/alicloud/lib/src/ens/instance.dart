@@ -217,7 +217,16 @@ class Instance extends pulumi.CustomResource {
     securityId = registerOutput<String>('securityId');
     spotStrategy = registerOutput<String?>('spotStrategy');
     status = registerOutput<String>('status');
-    systemDisk = registerOutput<InstanceSystemDisk?>('systemDisk');
+    systemDisk = registerOutput<InstanceSystemDisk?>(
+      'systemDisk',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceSystemDisk.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     uniqueSuffix = registerOutput<bool?>('uniqueSuffix');
     userData = registerOutput<String?>('userData');
@@ -283,7 +292,16 @@ class Instance extends pulumi.CustomResource {
     securityId = registerOutput<String>('securityId');
     spotStrategy = registerOutput<String?>('spotStrategy');
     status = registerOutput<String>('status');
-    systemDisk = registerOutput<InstanceSystemDisk?>('systemDisk');
+    systemDisk = registerOutput<InstanceSystemDisk?>(
+      'systemDisk',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceSystemDisk.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     uniqueSuffix = registerOutput<bool?>('uniqueSuffix');
     userData = registerOutput<String?>('userData');

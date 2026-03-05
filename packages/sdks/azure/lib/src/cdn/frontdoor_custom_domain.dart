@@ -624,7 +624,16 @@ class FrontdoorCustomDomain extends pulumi.CustomResource {
     expirationDate = registerOutput<String>('expirationDate');
     hostName = registerOutput<String>('hostName');
     this.name = registerOutput<String>('name');
-    tls = registerOutput<FrontdoorCustomDomainTls>('tls');
+    tls = registerOutput<FrontdoorCustomDomainTls>(
+      'tls',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FrontdoorCustomDomainTls.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     validationToken = registerOutput<String>('validationToken');
   }
 
@@ -656,7 +665,16 @@ class FrontdoorCustomDomain extends pulumi.CustomResource {
     expirationDate = registerOutput<String>('expirationDate');
     hostName = registerOutput<String>('hostName');
     this.name = registerOutput<String>('name');
-    tls = registerOutput<FrontdoorCustomDomainTls>('tls');
+    tls = registerOutput<FrontdoorCustomDomainTls>(
+      'tls',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FrontdoorCustomDomainTls.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     validationToken = registerOutput<String>('validationToken');
   }
 }

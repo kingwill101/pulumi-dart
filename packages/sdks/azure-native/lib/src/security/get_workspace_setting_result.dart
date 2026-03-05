@@ -1,18 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getWorkspaceSetting.
 class GetWorkspaceSettingResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Resource Id
   final String id;
+
   /// Resource name
   final String name;
+
   /// All the VMs in this scope will send their security data to the mentioned workspace unless overridden by a setting with more specific scope
   final String scope;
+
   /// Resource type
   final String type;
+
   /// The full Azure ID of the workspace to save the data in
   final String workspaceId;
 
@@ -54,4 +58,3 @@ class GetWorkspaceSettingResult {
     );
   }
 }
-

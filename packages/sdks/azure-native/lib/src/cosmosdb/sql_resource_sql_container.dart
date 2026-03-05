@@ -902,9 +902,23 @@ class SqlResourceSqlContainer extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     this.options = registerOutput<SqlContainerGetPropertiesResponseOptions?>(
       'options',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SqlContainerGetPropertiesResponseOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     resource = registerOutput<SqlContainerGetPropertiesResponseResource?>(
       'resource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SqlContainerGetPropertiesResponseResource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

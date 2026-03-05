@@ -412,6 +412,13 @@ class Note extends pulumi.CustomResource {
       ) {
     attestationAuthority = registerOutput<NoteAttestationAuthority>(
       'attestationAuthority',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NoteAttestationAuthority.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     expirationTime = registerOutput<String?>('expirationTime');
@@ -446,6 +453,13 @@ class Note extends pulumi.CustomResource {
        ) {
     attestationAuthority = registerOutput<NoteAttestationAuthority>(
       'attestationAuthority',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NoteAttestationAuthority.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     expirationTime = registerOutput<String?>('expirationTime');

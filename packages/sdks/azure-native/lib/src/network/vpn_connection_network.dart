@@ -491,9 +491,25 @@ class VpnConnectionNetwork extends pulumi.CustomResource {
     );
     this.name = registerOutput<String?>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    remoteVpnSite = registerOutput<SubResourceResponse?>('remoteVpnSite');
+    remoteVpnSite = registerOutput<SubResourceResponse?>(
+      'remoteVpnSite',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     routingConfiguration = registerOutput<RoutingConfigurationResponse?>(
       'routingConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RoutingConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     routingWeight = registerOutput<int?>('routingWeight');
     sharedKey = registerOutput<String?>('sharedKey');

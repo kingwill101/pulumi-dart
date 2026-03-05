@@ -889,20 +889,57 @@ class SecurityPolicyRuleCompute extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     headerAction = registerOutput<SecurityPolicyRuleHeaderAction?>(
       'headerAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityPolicyRuleHeaderAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    match = registerOutput<SecurityPolicyRuleMatch?>('match');
+    match = registerOutput<SecurityPolicyRuleMatch?>(
+      'match',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityPolicyRuleMatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     preconfiguredWafConfig =
         registerOutput<SecurityPolicyRulePreconfiguredWafConfig?>(
           'preconfiguredWafConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SecurityPolicyRulePreconfiguredWafConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     preview = registerOutput<bool?>('preview');
     priority = registerOutput<int>('priority');
     project = registerOutput<String>('project');
     rateLimitOptions = registerOutput<SecurityPolicyRuleRateLimitOptions?>(
       'rateLimitOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityPolicyRuleRateLimitOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     redirectOptions = registerOutput<SecurityPolicyRuleRedirectOptions?>(
       'redirectOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityPolicyRuleRedirectOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     securityPolicy = registerOutput<String>('securityPolicy');
   }
@@ -934,20 +971,57 @@ class SecurityPolicyRuleCompute extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     headerAction = registerOutput<SecurityPolicyRuleHeaderAction?>(
       'headerAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityPolicyRuleHeaderAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    match = registerOutput<SecurityPolicyRuleMatch?>('match');
+    match = registerOutput<SecurityPolicyRuleMatch?>(
+      'match',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityPolicyRuleMatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     preconfiguredWafConfig =
         registerOutput<SecurityPolicyRulePreconfiguredWafConfig?>(
           'preconfiguredWafConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SecurityPolicyRulePreconfiguredWafConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     preview = registerOutput<bool?>('preview');
     priority = registerOutput<int>('priority');
     project = registerOutput<String>('project');
     rateLimitOptions = registerOutput<SecurityPolicyRuleRateLimitOptions?>(
       'rateLimitOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityPolicyRuleRateLimitOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     redirectOptions = registerOutput<SecurityPolicyRuleRedirectOptions?>(
       'redirectOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityPolicyRuleRedirectOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     securityPolicy = registerOutput<String>('securityPolicy');
   }

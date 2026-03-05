@@ -300,6 +300,13 @@ class AppServicePlan extends pulumi.CustomResource {
     elasticScaleEnabled = registerOutput<bool?>('elasticScaleEnabled');
     extendedLocation = registerOutput<ExtendedLocationResponse?>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     freeOfferExpirationTime = registerOutput<String?>(
       'freeOfferExpirationTime',
@@ -308,6 +315,13 @@ class AppServicePlan extends pulumi.CustomResource {
     hostingEnvironmentProfile =
         registerOutput<HostingEnvironmentProfileResponse?>(
           'hostingEnvironmentProfile',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return HostingEnvironmentProfileResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     hyperV = registerOutput<bool?>('hyperV');
     isSpot = registerOutput<bool?>('isSpot');
@@ -315,6 +329,13 @@ class AppServicePlan extends pulumi.CustomResource {
     kind = registerOutput<String?>('kind');
     kubeEnvironmentProfile = registerOutput<KubeEnvironmentProfileResponse?>(
       'kubeEnvironmentProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KubeEnvironmentProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     maximumElasticWorkerCount = registerOutput<int?>(
@@ -328,7 +349,16 @@ class AppServicePlan extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     reserved = registerOutput<bool?>('reserved');
     resourceGroup = registerOutput<String>('resourceGroup');
-    sku = registerOutput<SkuDescriptionResponse?>('sku');
+    sku = registerOutput<SkuDescriptionResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuDescriptionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     spotExpirationTime = registerOutput<String?>('spotExpirationTime');
     status = registerOutput<String>('status');
     subscription = registerOutput<String>('subscription');

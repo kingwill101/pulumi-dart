@@ -2116,21 +2116,55 @@ class Tool extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     app = registerOutput<String>('app');
-    clientFunction = registerOutput<ToolClientFunction?>('clientFunction');
+    clientFunction = registerOutput<ToolClientFunction?>(
+      'clientFunction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ToolClientFunction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
-    dataStoreTool = registerOutput<ToolDataStoreTool?>('dataStoreTool');
+    dataStoreTool = registerOutput<ToolDataStoreTool?>(
+      'dataStoreTool',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ToolDataStoreTool.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String>('etag');
     executionType = registerOutput<String?>('executionType');
     generatedSummary = registerOutput<String>('generatedSummary');
     googleSearchTool = registerOutput<ToolGoogleSearchTool?>(
       'googleSearchTool',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ToolGoogleSearchTool.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     openApiTools = registerOutput<List<Map<String, dynamic>>>('openApiTools');
     project = registerOutput<String>('project');
-    pythonFunction = registerOutput<ToolPythonFunction?>('pythonFunction');
+    pythonFunction = registerOutput<ToolPythonFunction?>(
+      'pythonFunction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ToolPythonFunction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     systemTools = registerOutput<List<Map<String, dynamic>>>('systemTools');
     toolId = registerOutput<String>('toolId');
     updateTime = registerOutput<String>('updateTime');
@@ -2156,21 +2190,55 @@ class Tool extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     app = registerOutput<String>('app');
-    clientFunction = registerOutput<ToolClientFunction?>('clientFunction');
+    clientFunction = registerOutput<ToolClientFunction?>(
+      'clientFunction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ToolClientFunction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
-    dataStoreTool = registerOutput<ToolDataStoreTool?>('dataStoreTool');
+    dataStoreTool = registerOutput<ToolDataStoreTool?>(
+      'dataStoreTool',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ToolDataStoreTool.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String>('etag');
     executionType = registerOutput<String?>('executionType');
     generatedSummary = registerOutput<String>('generatedSummary');
     googleSearchTool = registerOutput<ToolGoogleSearchTool?>(
       'googleSearchTool',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ToolGoogleSearchTool.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     openApiTools = registerOutput<List<Map<String, dynamic>>>('openApiTools');
     project = registerOutput<String>('project');
-    pythonFunction = registerOutput<ToolPythonFunction?>('pythonFunction');
+    pythonFunction = registerOutput<ToolPythonFunction?>(
+      'pythonFunction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ToolPythonFunction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     systemTools = registerOutput<List<Map<String, dynamic>>>('systemTools');
     toolId = registerOutput<String>('toolId');
     updateTime = registerOutput<String>('updateTime');

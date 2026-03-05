@@ -370,8 +370,26 @@ class BigDataPool extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    autoPause = registerOutput<AutoPausePropertiesResponse?>('autoPause');
-    autoScale = registerOutput<AutoScalePropertiesResponse?>('autoScale');
+    autoPause = registerOutput<AutoPausePropertiesResponse?>(
+      'autoPause',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AutoPausePropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    autoScale = registerOutput<AutoScalePropertiesResponse?>(
+      'autoScale',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AutoScalePropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     cacheSize = registerOutput<int?>('cacheSize');
     creationDate = registerOutput<String>('creationDate');
@@ -382,6 +400,13 @@ class BigDataPool extends pulumi.CustomResource {
     dynamicExecutorAllocation =
         registerOutput<DynamicExecutorAllocationResponse?>(
           'dynamicExecutorAllocation',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DynamicExecutorAllocationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     isAutotuneEnabled = registerOutput<bool?>('isAutotuneEnabled');
     isComputeIsolationEnabled = registerOutput<bool?>(
@@ -390,6 +415,13 @@ class BigDataPool extends pulumi.CustomResource {
     lastSucceededTimestamp = registerOutput<String>('lastSucceededTimestamp');
     libraryRequirements = registerOutput<LibraryRequirementsResponse?>(
       'libraryRequirements',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LibraryRequirementsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -402,6 +434,13 @@ class BigDataPool extends pulumi.CustomResource {
     );
     sparkConfigProperties = registerOutput<SparkConfigPropertiesResponse?>(
       'sparkConfigProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkConfigPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sparkEventsFolder = registerOutput<String?>('sparkEventsFolder');
     sparkVersion = registerOutput<String?>('sparkVersion');

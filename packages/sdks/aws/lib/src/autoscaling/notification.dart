@@ -253,7 +253,17 @@ class Notification extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     groupNames = registerOutput<List<String>>('groupNames');
-    notifications = registerOutput<List<NotificationType>>('notifications');
+    notifications = registerOutput<List<NotificationType>>(
+      'notifications',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<NotificationType>(
+          guardedValue,
+          (value) => NotificationType.fromValue(value as String),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     topicArn = registerOutput<String>('topicArn');
   }
@@ -282,7 +292,17 @@ class Notification extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     groupNames = registerOutput<List<String>>('groupNames');
-    notifications = registerOutput<List<NotificationType>>('notifications');
+    notifications = registerOutput<List<NotificationType>>(
+      'notifications',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<NotificationType>(
+          guardedValue,
+          (value) => NotificationType.fromValue(value as String),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     topicArn = registerOutput<String>('topicArn');
   }

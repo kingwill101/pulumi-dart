@@ -443,9 +443,23 @@ class GremlinResourceGremlinGraph extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     this.options = registerOutput<GremlinGraphGetPropertiesResponseOptions?>(
       'options',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GremlinGraphGetPropertiesResponseOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     resource = registerOutput<GremlinGraphGetPropertiesResponseResource?>(
       'resource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GremlinGraphGetPropertiesResponseResource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

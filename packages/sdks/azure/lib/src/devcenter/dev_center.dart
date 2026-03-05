@@ -252,7 +252,16 @@ class DevCenter extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     devCenterUri = registerOutput<String>('devCenterUri');
-    identity = registerOutput<DevCenterIdentity?>('identity');
+    identity = registerOutput<DevCenterIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DevCenterIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     projectCatalogItemSyncEnabled = registerOutput<bool?>(
@@ -286,7 +295,16 @@ class DevCenter extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     devCenterUri = registerOutput<String>('devCenterUri');
-    identity = registerOutput<DevCenterIdentity?>('identity');
+    identity = registerOutput<DevCenterIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DevCenterIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     projectCatalogItemSyncEnabled = registerOutput<bool?>(

@@ -1255,17 +1255,38 @@ class DeploymentGroup extends pulumi.CustomResource {
        ) {
     alarmConfiguration = registerOutput<DeploymentGroupAlarmConfiguration?>(
       'alarmConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentGroupAlarmConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     appName = registerOutput<String>('appName');
     arn = registerOutput<String>('arn');
     autoRollbackConfiguration =
         registerOutput<DeploymentGroupAutoRollbackConfiguration?>(
           'autoRollbackConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DeploymentGroupAutoRollbackConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     autoscalingGroups = registerOutput<List<String>?>('autoscalingGroups');
     blueGreenDeploymentConfig =
         registerOutput<DeploymentGroupBlueGreenDeploymentConfig>(
           'blueGreenDeploymentConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DeploymentGroupBlueGreenDeploymentConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     computePlatform = registerOutput<String>('computePlatform');
     deploymentConfigName = registerOutput<String?>('deploymentConfigName');
@@ -1273,14 +1294,37 @@ class DeploymentGroup extends pulumi.CustomResource {
     deploymentGroupName = registerOutput<String>('deploymentGroupName');
     deploymentStyle = registerOutput<DeploymentGroupDeploymentStyle?>(
       'deploymentStyle',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentGroupDeploymentStyle.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     ec2TagFilters = registerOutput<List<Map<String, dynamic>>?>(
       'ec2TagFilters',
     );
     ec2TagSets = registerOutput<List<Map<String, dynamic>>?>('ec2TagSets');
-    ecsService = registerOutput<DeploymentGroupEcsService?>('ecsService');
+    ecsService = registerOutput<DeploymentGroupEcsService?>(
+      'ecsService',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentGroupEcsService.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     loadBalancerInfo = registerOutput<DeploymentGroupLoadBalancerInfo?>(
       'loadBalancerInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentGroupLoadBalancerInfo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     onPremisesInstanceTagFilters = registerOutput<List<Map<String, dynamic>>?>(
       'onPremisesInstanceTagFilters',
@@ -1323,17 +1367,38 @@ class DeploymentGroup extends pulumi.CustomResource {
        ) {
     alarmConfiguration = registerOutput<DeploymentGroupAlarmConfiguration?>(
       'alarmConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentGroupAlarmConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     appName = registerOutput<String>('appName');
     arn = registerOutput<String>('arn');
     autoRollbackConfiguration =
         registerOutput<DeploymentGroupAutoRollbackConfiguration?>(
           'autoRollbackConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DeploymentGroupAutoRollbackConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     autoscalingGroups = registerOutput<List<String>?>('autoscalingGroups');
     blueGreenDeploymentConfig =
         registerOutput<DeploymentGroupBlueGreenDeploymentConfig>(
           'blueGreenDeploymentConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DeploymentGroupBlueGreenDeploymentConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     computePlatform = registerOutput<String>('computePlatform');
     deploymentConfigName = registerOutput<String?>('deploymentConfigName');
@@ -1341,14 +1406,37 @@ class DeploymentGroup extends pulumi.CustomResource {
     deploymentGroupName = registerOutput<String>('deploymentGroupName');
     deploymentStyle = registerOutput<DeploymentGroupDeploymentStyle?>(
       'deploymentStyle',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentGroupDeploymentStyle.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     ec2TagFilters = registerOutput<List<Map<String, dynamic>>?>(
       'ec2TagFilters',
     );
     ec2TagSets = registerOutput<List<Map<String, dynamic>>?>('ec2TagSets');
-    ecsService = registerOutput<DeploymentGroupEcsService?>('ecsService');
+    ecsService = registerOutput<DeploymentGroupEcsService?>(
+      'ecsService',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentGroupEcsService.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     loadBalancerInfo = registerOutput<DeploymentGroupLoadBalancerInfo?>(
       'loadBalancerInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentGroupLoadBalancerInfo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     onPremisesInstanceTagFilters = registerOutput<List<Map<String, dynamic>>?>(
       'onPremisesInstanceTagFilters',

@@ -284,23 +284,67 @@ class ConfigurationSet extends pulumi.CustomResource {
     configurationSetName = registerOutput<String>('configurationSetName');
     deliveryOptions = registerOutput<ConfigurationSetDeliveryOptions?>(
       'deliveryOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigurationSetDeliveryOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     reputationOptions = registerOutput<ConfigurationSetReputationOptions>(
       'reputationOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigurationSetReputationOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sendingOptions = registerOutput<ConfigurationSetSendingOptions>(
       'sendingOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigurationSetSendingOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     suppressionOptions = registerOutput<ConfigurationSetSuppressionOptions?>(
       'suppressionOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigurationSetSuppressionOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     trackingOptions = registerOutput<ConfigurationSetTrackingOptions?>(
       'trackingOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigurationSetTrackingOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    vdmOptions = registerOutput<ConfigurationSetVdmOptions?>('vdmOptions');
+    vdmOptions = registerOutput<ConfigurationSetVdmOptions?>(
+      'vdmOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigurationSetVdmOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [ConfigurationSet] resource's state with the given [name] and [id].
@@ -330,22 +374,66 @@ class ConfigurationSet extends pulumi.CustomResource {
     configurationSetName = registerOutput<String>('configurationSetName');
     deliveryOptions = registerOutput<ConfigurationSetDeliveryOptions?>(
       'deliveryOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigurationSetDeliveryOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     reputationOptions = registerOutput<ConfigurationSetReputationOptions>(
       'reputationOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigurationSetReputationOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sendingOptions = registerOutput<ConfigurationSetSendingOptions>(
       'sendingOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigurationSetSendingOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     suppressionOptions = registerOutput<ConfigurationSetSuppressionOptions?>(
       'suppressionOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigurationSetSuppressionOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     trackingOptions = registerOutput<ConfigurationSetTrackingOptions?>(
       'trackingOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigurationSetTrackingOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    vdmOptions = registerOutput<ConfigurationSetVdmOptions?>('vdmOptions');
+    vdmOptions = registerOutput<ConfigurationSetVdmOptions?>(
+      'vdmOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigurationSetVdmOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

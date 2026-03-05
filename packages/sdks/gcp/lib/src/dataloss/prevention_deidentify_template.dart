@@ -976,6 +976,13 @@ class PreventionDeidentifyTemplate extends pulumi.CustomResource {
     deidentifyConfig =
         registerOutput<PreventionDeidentifyTemplateDeidentifyConfig>(
           'deidentifyConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PreventionDeidentifyTemplateDeidentifyConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
@@ -1012,6 +1019,13 @@ class PreventionDeidentifyTemplate extends pulumi.CustomResource {
     deidentifyConfig =
         registerOutput<PreventionDeidentifyTemplateDeidentifyConfig>(
           'deidentifyConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PreventionDeidentifyTemplateDeidentifyConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');

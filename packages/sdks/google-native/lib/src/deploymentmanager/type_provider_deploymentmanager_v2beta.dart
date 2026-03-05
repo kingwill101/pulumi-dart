@@ -60,6 +60,13 @@ class TypeProviderDeploymentmanagerV2beta extends pulumi.CustomResource {
     );
     credential = registerOutput<CredentialResponseDeploymentmanagerV2beta>(
       'credential',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CredentialResponseDeploymentmanagerV2beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     customCertificateAuthorityRoots = registerOutput<List<String>>(
       'customCertificateAuthorityRoots',
@@ -71,9 +78,23 @@ class TypeProviderDeploymentmanagerV2beta extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     operation = registerOutput<OperationResponseDeploymentmanagerV2beta>(
       'operation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OperationResponseDeploymentmanagerV2beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.options = registerOutput<OptionsResponseDeploymentmanagerV2beta>(
       'options',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OptionsResponseDeploymentmanagerV2beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     selfLink = registerOutput<String>('selfLink');

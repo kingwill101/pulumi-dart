@@ -88,16 +88,41 @@ class WorkstationConfig extends pulumi.CustomResource {
        ) {
     annotations = registerOutput<Map<String, String>>('annotations');
     conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
-    container = registerOutput<ContainerResponse>('container');
+    container = registerOutput<ContainerResponse>(
+      'container',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContainerResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     degraded = registerOutput<bool>('degraded');
     deleteTime = registerOutput<String>('deleteTime');
     displayName = registerOutput<String>('displayName');
     encryptionKey = registerOutput<CustomerEncryptionKeyResponse>(
       'encryptionKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomerEncryptionKeyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
-    host = registerOutput<HostResponse>('host');
+    host = registerOutput<HostResponse>(
+      'host',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HostResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     idleTimeout = registerOutput<String>('idleTimeout');
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');

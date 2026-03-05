@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAuthenticationDomain.
 class GetAuthenticationDomainResult {
   /// The ID of the matching authentication domain fetched.
@@ -10,16 +9,10 @@ class GetAuthenticationDomainResult {
   /// Creates a new [GetAuthenticationDomainResult].
   /// [id] The ID of the matching authentication domain fetched.
   /// [name] Required.
-  GetAuthenticationDomainResult({
-    required this.id,
-    required this.name,
-  });
+  GetAuthenticationDomainResult({required this.id, required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'name': name,
-    };
+    return <String, dynamic>{'id': id, 'name': name};
   }
 
   factory GetAuthenticationDomainResult.fromMap(Map<String, dynamic> map) {
@@ -29,4 +22,3 @@ class GetAuthenticationDomainResult {
     );
   }
 }
-

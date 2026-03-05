@@ -385,13 +385,29 @@ class BmcKeySet extends pulumi.CustomResource {
     expiration = registerOutput<String>('expiration');
     extendedLocation = registerOutput<ExtendedLocationResponse>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     lastValidation = registerOutput<String>('lastValidation');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     privilegeLevel = registerOutput<String>('privilegeLevel');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     userList = registerOutput<List<Map<String, dynamic>>>('userList');

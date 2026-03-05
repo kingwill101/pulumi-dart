@@ -441,6 +441,13 @@ class StreamInputEventHubV2 extends pulumi.CustomResource {
     partitionKey = registerOutput<String?>('partitionKey');
     serialization = registerOutput<StreamInputEventHubV2Serialization>(
       'serialization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StreamInputEventHubV2Serialization.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     servicebusNamespace = registerOutput<String>('servicebusNamespace');
     sharedAccessPolicyKey = registerOutput<String?>('sharedAccessPolicyKey');
@@ -480,6 +487,13 @@ class StreamInputEventHubV2 extends pulumi.CustomResource {
     partitionKey = registerOutput<String?>('partitionKey');
     serialization = registerOutput<StreamInputEventHubV2Serialization>(
       'serialization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StreamInputEventHubV2Serialization.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     servicebusNamespace = registerOutput<String>('servicebusNamespace');
     sharedAccessPolicyKey = registerOutput<String?>('sharedAccessPolicyKey');

@@ -63,6 +63,13 @@ class Certificate extends pulumi.CustomResource {
     rawCertificate =
         registerOutput<GoogleCloudIntegrationsV1alphaClientCertificateResponse>(
           'rawCertificate',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudIntegrationsV1alphaClientCertificateResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     requestorId = registerOutput<String>('requestorId');
     validEndTime = registerOutput<String>('validEndTime');

@@ -150,6 +150,13 @@ class Queue extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     reservationPlanSettings = registerOutput<QueueReservationPlanSettings>(
       'reservationPlanSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return QueueReservationPlanSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     status = registerOutput<String?>('status');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -183,6 +190,13 @@ class Queue extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     reservationPlanSettings = registerOutput<QueueReservationPlanSettings>(
       'reservationPlanSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return QueueReservationPlanSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     status = registerOutput<String?>('status');
     tags = registerOutput<Map<String, String>?>('tags');

@@ -782,21 +782,55 @@ class SignalR extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    cors = registerOutput<SignalRCorsSettingsResponse?>('cors');
+    cors = registerOutput<SignalRCorsSettingsResponse?>(
+      'cors',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SignalRCorsSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     disableAadAuth = registerOutput<bool?>('disableAadAuth');
     disableLocalAuth = registerOutput<bool?>('disableLocalAuth');
     externalIP = registerOutput<String>('externalIP');
     features = registerOutput<List<Map<String, dynamic>>?>('features');
     hostName = registerOutput<String>('hostName');
     hostNamePrefix = registerOutput<String>('hostNamePrefix');
-    identity = registerOutput<ManagedIdentityResponse?>('identity');
+    identity = registerOutput<ManagedIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kind = registerOutput<String?>('kind');
     liveTraceConfiguration = registerOutput<LiveTraceConfigurationResponse?>(
       'liveTraceConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LiveTraceConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkACLs = registerOutput<SignalRNetworkACLsResponse?>('networkACLs');
+    networkACLs = registerOutput<SignalRNetworkACLsResponse?>(
+      'networkACLs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SignalRNetworkACLsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
       'privateEndpointConnections',
     );
@@ -807,19 +841,71 @@ class SignalR extends pulumi.CustomResource {
     resourceLogConfiguration =
         registerOutput<ResourceLogConfigurationResponse?>(
           'resourceLogConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResourceLogConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     resourceStopped = registerOutput<String?>('resourceStopped');
     serverPort = registerOutput<int>('serverPort');
-    serverless = registerOutput<ServerlessSettingsResponse?>('serverless');
+    serverless = registerOutput<ServerlessSettingsResponse?>(
+      'serverless',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerlessSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sharedPrivateLinkResources = registerOutput<List<Map<String, dynamic>>>(
       'sharedPrivateLinkResources',
     );
-    sku = registerOutput<ResourceSkuResponse?>('sku');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    sku = registerOutput<ResourceSkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceSkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
-    tls = registerOutput<SignalRTlsSettingsResponse?>('tls');
+    tls = registerOutput<SignalRTlsSettingsResponse?>(
+      'tls',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SignalRTlsSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
-    upstream = registerOutput<ServerlessUpstreamSettingsResponse?>('upstream');
+    upstream = registerOutput<ServerlessUpstreamSettingsResponse?>(
+      'upstream',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerlessUpstreamSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     version = registerOutput<String>('version');
   }
 }

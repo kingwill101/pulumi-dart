@@ -389,7 +389,16 @@ class SharedImage extends pulumi.CustomResource {
     galleryName = registerOutput<String>('galleryName');
     hibernationEnabled = registerOutput<bool?>('hibernationEnabled');
     hyperVGeneration = registerOutput<String?>('hyperVGeneration');
-    identifier = registerOutput<SharedImageIdentifier>('identifier');
+    identifier = registerOutput<SharedImageIdentifier>(
+      'identifier',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SharedImageIdentifier.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     maxRecommendedMemoryInGb = registerOutput<int?>('maxRecommendedMemoryInGb');
     maxRecommendedVcpuCount = registerOutput<int?>('maxRecommendedVcpuCount');
@@ -398,7 +407,16 @@ class SharedImage extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     osType = registerOutput<String>('osType');
     privacyStatementUri = registerOutput<String?>('privacyStatementUri');
-    purchasePlan = registerOutput<SharedImagePurchasePlan?>('purchasePlan');
+    purchasePlan = registerOutput<SharedImagePurchasePlan?>(
+      'purchasePlan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SharedImagePurchasePlan.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     releaseNoteUri = registerOutput<String?>('releaseNoteUri');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     specialized = registerOutput<bool?>('specialized');
@@ -448,7 +466,16 @@ class SharedImage extends pulumi.CustomResource {
     galleryName = registerOutput<String>('galleryName');
     hibernationEnabled = registerOutput<bool?>('hibernationEnabled');
     hyperVGeneration = registerOutput<String?>('hyperVGeneration');
-    identifier = registerOutput<SharedImageIdentifier>('identifier');
+    identifier = registerOutput<SharedImageIdentifier>(
+      'identifier',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SharedImageIdentifier.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     maxRecommendedMemoryInGb = registerOutput<int?>('maxRecommendedMemoryInGb');
     maxRecommendedVcpuCount = registerOutput<int?>('maxRecommendedVcpuCount');
@@ -457,7 +484,16 @@ class SharedImage extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     osType = registerOutput<String>('osType');
     privacyStatementUri = registerOutput<String?>('privacyStatementUri');
-    purchasePlan = registerOutput<SharedImagePurchasePlan?>('purchasePlan');
+    purchasePlan = registerOutput<SharedImagePurchasePlan?>(
+      'purchasePlan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SharedImagePurchasePlan.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     releaseNoteUri = registerOutput<String?>('releaseNoteUri');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     specialized = registerOutput<bool?>('specialized');

@@ -209,7 +209,16 @@ class Smsvoicev2PhoneNumber extends pulumi.CustomResource {
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<Smsvoicev2PhoneNumberTimeouts?>('timeouts');
+    timeouts = registerOutput<Smsvoicev2PhoneNumberTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return Smsvoicev2PhoneNumberTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     twoWayChannelArn = registerOutput<String?>('twoWayChannelArn');
     twoWayChannelEnabled = registerOutput<bool>('twoWayChannelEnabled');
     twoWayChannelRole = registerOutput<String?>('twoWayChannelRole');
@@ -256,7 +265,16 @@ class Smsvoicev2PhoneNumber extends pulumi.CustomResource {
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<Smsvoicev2PhoneNumberTimeouts?>('timeouts');
+    timeouts = registerOutput<Smsvoicev2PhoneNumberTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return Smsvoicev2PhoneNumberTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     twoWayChannelArn = registerOutput<String?>('twoWayChannelArn');
     twoWayChannelEnabled = registerOutput<bool>('twoWayChannelEnabled');
     twoWayChannelRole = registerOutput<String?>('twoWayChannelRole');

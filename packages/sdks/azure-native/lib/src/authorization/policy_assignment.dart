@@ -1637,7 +1637,16 @@ class PolicyAssignment extends pulumi.CustomResource {
       'effectiveDefinitionVersion',
     );
     enforcementMode = registerOutput<String?>('enforcementMode');
-    identity = registerOutput<IdentityResponse?>('identity');
+    identity = registerOutput<IdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     instanceId = registerOutput<String>('instanceId');
     latestDefinitionVersion = registerOutput<String>('latestDefinitionVersion');
     location = registerOutput<String?>('location');
@@ -1650,13 +1659,32 @@ class PolicyAssignment extends pulumi.CustomResource {
     overrides = registerOutput<List<Map<String, dynamic>>?>('overrides');
     parameters = registerOutput<Map<String, ParameterValuesValueResponse>?>(
       'parameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeMapValues<ParameterValuesValueResponse>(
+          guardedValue,
+          (value) => ParameterValuesValueResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      },
     );
     policyDefinitionId = registerOutput<String?>('policyDefinitionId');
     resourceSelectors = registerOutput<List<Map<String, dynamic>>?>(
       'resourceSelectors',
     );
     scope = registerOutput<String>('scope');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

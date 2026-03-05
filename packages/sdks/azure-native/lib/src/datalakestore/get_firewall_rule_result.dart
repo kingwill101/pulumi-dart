@@ -1,18 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getFirewallRule.
 class GetFirewallRuleResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The end IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol.
   final String endIpAddress;
+
   /// The resource identifier.
   final String id;
+
   /// The resource name.
   final String name;
+
   /// The start IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol.
   final String startIpAddress;
+
   /// The resource type.
   final String type;
 
@@ -54,4 +58,3 @@ class GetFirewallRuleResult {
     );
   }
 }
-

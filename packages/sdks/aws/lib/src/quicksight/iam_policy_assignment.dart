@@ -186,7 +186,16 @@ class IamPolicyAssignment extends pulumi.CustomResource {
     assignmentName = registerOutput<String>('assignmentName');
     assignmentStatus = registerOutput<String>('assignmentStatus');
     awsAccountId = registerOutput<String>('awsAccountId');
-    identities = registerOutput<IamPolicyAssignmentIdentities?>('identities');
+    identities = registerOutput<IamPolicyAssignmentIdentities?>(
+      'identities',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IamPolicyAssignmentIdentities.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     namespace = registerOutput<String>('namespace');
     policyArn = registerOutput<String?>('policyArn');
     region = registerOutput<String>('region');
@@ -219,7 +228,16 @@ class IamPolicyAssignment extends pulumi.CustomResource {
     assignmentName = registerOutput<String>('assignmentName');
     assignmentStatus = registerOutput<String>('assignmentStatus');
     awsAccountId = registerOutput<String>('awsAccountId');
-    identities = registerOutput<IamPolicyAssignmentIdentities?>('identities');
+    identities = registerOutput<IamPolicyAssignmentIdentities?>(
+      'identities',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IamPolicyAssignmentIdentities.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     namespace = registerOutput<String>('namespace');
     policyArn = registerOutput<String?>('policyArn');
     region = registerOutput<String>('region');

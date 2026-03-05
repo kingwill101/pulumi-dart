@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getTestResultConsoleLogDownloadURL.
 class GetTestResultConsoleLogDownloadURLResult {
   /// The download URL.
   final String downloadUrl;
+
   /// Expiry date of the download URL.
   final String expirationTime;
 
@@ -23,11 +23,12 @@ class GetTestResultConsoleLogDownloadURLResult {
     };
   }
 
-  factory GetTestResultConsoleLogDownloadURLResult.fromMap(Map<String, dynamic> map) {
+  factory GetTestResultConsoleLogDownloadURLResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTestResultConsoleLogDownloadURLResult(
       downloadUrl: map['downloadUrl'] as String,
       expirationTime: map['expirationTime'] as String,
     );
   }
 }
-

@@ -234,6 +234,13 @@ class SchedulingPolicy extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     fairSharePolicy = registerOutput<SchedulingPolicyFairSharePolicy?>(
       'fairSharePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SchedulingPolicyFairSharePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -267,6 +274,13 @@ class SchedulingPolicy extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     fairSharePolicy = registerOutput<SchedulingPolicyFairSharePolicy?>(
       'fairSharePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SchedulingPolicyFairSharePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

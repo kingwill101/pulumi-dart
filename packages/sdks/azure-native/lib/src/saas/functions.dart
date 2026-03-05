@@ -47,7 +47,8 @@ Future<ListSaasResourceAccessTokenResult> listSaasResourceAccessToken(
 /// Uses Azure REST API version 2018-03-01-beta.
 /// [args] Arguments passed to this invoke. {@macro pulumi_saas_list_saas_subscription_level_access_token_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListSaasSubscriptionLevelAccessTokenResult> listSaasSubscriptionLevelAccessToken(
+Future<ListSaasSubscriptionLevelAccessTokenResult>
+listSaasSubscriptionLevelAccessToken(
   ListSaasSubscriptionLevelAccessTokenArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

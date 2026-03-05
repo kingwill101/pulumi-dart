@@ -55,7 +55,16 @@ class Backup extends pulumi.CustomResource {
     requestId = registerOutput<String?>('requestId');
     restoringServices = registerOutput<List<String>>('restoringServices');
     serviceId = registerOutput<String>('serviceId');
-    serviceRevision = registerOutput<ServiceResponse>('serviceRevision');
+    serviceRevision = registerOutput<ServiceResponse>(
+      'serviceRevision',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     state = registerOutput<String>('state');
   }
 }

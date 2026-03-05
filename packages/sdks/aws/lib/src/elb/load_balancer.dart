@@ -462,7 +462,16 @@ class LoadBalancer extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    accessLogs = registerOutput<LoadBalancerAccessLogs?>('accessLogs');
+    accessLogs = registerOutput<LoadBalancerAccessLogs?>(
+      'accessLogs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerAccessLogs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     arn = registerOutput<String>('arn');
     availabilityZones = registerOutput<List<String>>('availabilityZones');
     connectionDraining = registerOutput<bool?>('connectionDraining');
@@ -472,7 +481,16 @@ class LoadBalancer extends pulumi.CustomResource {
     crossZoneLoadBalancing = registerOutput<bool?>('crossZoneLoadBalancing');
     desyncMitigationMode = registerOutput<String?>('desyncMitigationMode');
     dnsName = registerOutput<String>('dnsName');
-    healthCheck = registerOutput<LoadBalancerHealthCheck>('healthCheck');
+    healthCheck = registerOutput<LoadBalancerHealthCheck>(
+      'healthCheck',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerHealthCheck.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     idleTimeout = registerOutput<int?>('idleTimeout');
     instances = registerOutput<List<String>>('instances');
     internal = registerOutput<bool>('internal');
@@ -512,7 +530,16 @@ class LoadBalancer extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    accessLogs = registerOutput<LoadBalancerAccessLogs?>('accessLogs');
+    accessLogs = registerOutput<LoadBalancerAccessLogs?>(
+      'accessLogs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerAccessLogs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     arn = registerOutput<String>('arn');
     availabilityZones = registerOutput<List<String>>('availabilityZones');
     connectionDraining = registerOutput<bool?>('connectionDraining');
@@ -522,7 +549,16 @@ class LoadBalancer extends pulumi.CustomResource {
     crossZoneLoadBalancing = registerOutput<bool?>('crossZoneLoadBalancing');
     desyncMitigationMode = registerOutput<String?>('desyncMitigationMode');
     dnsName = registerOutput<String>('dnsName');
-    healthCheck = registerOutput<LoadBalancerHealthCheck>('healthCheck');
+    healthCheck = registerOutput<LoadBalancerHealthCheck>(
+      'healthCheck',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerHealthCheck.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     idleTimeout = registerOutput<int?>('idleTimeout');
     instances = registerOutput<List<String>>('instances');
     internal = registerOutput<bool>('internal');

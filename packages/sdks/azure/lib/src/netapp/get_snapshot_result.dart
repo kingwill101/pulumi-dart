@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getSnapshot.
 class GetSnapshotResult {
   final String accountName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The Azure Region where the NetApp Snapshot exists.
   final String location;
   final String name;
@@ -55,4 +56,3 @@ class GetSnapshotResult {
     );
   }
 }
-

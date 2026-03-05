@@ -371,7 +371,16 @@ class FunctionUrl extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     authorizationType = registerOutput<String>('authorizationType');
-    cors = registerOutput<FunctionUrlCors?>('cors');
+    cors = registerOutput<FunctionUrlCors?>(
+      'cors',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionUrlCors.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     functionArn = registerOutput<String>('functionArn');
     functionName = registerOutput<String>('functionName');
     functionUrl = registerOutput<String>('functionUrl');
@@ -405,7 +414,16 @@ class FunctionUrl extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     authorizationType = registerOutput<String>('authorizationType');
-    cors = registerOutput<FunctionUrlCors?>('cors');
+    cors = registerOutput<FunctionUrlCors?>(
+      'cors',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionUrlCors.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     functionArn = registerOutput<String>('functionArn');
     functionName = registerOutput<String>('functionName');
     functionUrl = registerOutput<String>('functionUrl');

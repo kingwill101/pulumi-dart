@@ -20,7 +20,7 @@ import 'package:pulumi_aws/pulumi_aws.dart' as provider;
 dependencies:
   pulumi_aws:
     git:
-      url: https://github.com/<owner>/<repo>.git
+      url: https://github.com/kingwill101/pulumi-dart.git
       path: packages/aws
       ref: main
 ~~~

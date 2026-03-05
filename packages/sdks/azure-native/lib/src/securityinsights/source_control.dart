@@ -326,14 +326,46 @@ class SourceControl extends pulumi.CustomResource {
     etag = registerOutput<String?>('etag');
     lastDeploymentInfo = registerOutput<DeploymentInfoResponse?>(
       'lastDeploymentInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     repoType = registerOutput<String>('repoType');
-    repository = registerOutput<RepositoryResponse>('repository');
+    repository = registerOutput<RepositoryResponse>(
+      'repository',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RepositoryResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     repositoryResourceInfo = registerOutput<RepositoryResourceInfoResponse?>(
       'repositoryResourceInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RepositoryResourceInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     version = registerOutput<String?>('version');
   }

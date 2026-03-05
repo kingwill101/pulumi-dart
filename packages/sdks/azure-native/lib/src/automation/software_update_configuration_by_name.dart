@@ -680,18 +680,50 @@ class SoftwareUpdateConfigurationByName extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdBy = registerOutput<String>('createdBy');
     creationTime = registerOutput<String>('creationTime');
-    error = registerOutput<ErrorResponseResponse?>('error');
+    error = registerOutput<ErrorResponseResponse?>(
+      'error',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ErrorResponseResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     lastModifiedBy = registerOutput<String>('lastModifiedBy');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     scheduleInfo = registerOutput<SUCSchedulePropertiesResponse>(
       'scheduleInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SUCSchedulePropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    tasks = registerOutput<SoftwareUpdateConfigurationTasksResponse?>('tasks');
+    tasks = registerOutput<SoftwareUpdateConfigurationTasksResponse?>(
+      'tasks',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SoftwareUpdateConfigurationTasksResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     updateConfiguration = registerOutput<UpdateConfigurationResponse>(
       'updateConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UpdateConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

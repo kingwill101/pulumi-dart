@@ -552,7 +552,16 @@ class MangedSslCertificate extends pulumi.CustomResource {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String?>('description');
     expireTime = registerOutput<String>('expireTime');
-    managed = registerOutput<MangedSslCertificateManaged?>('managed');
+    managed = registerOutput<MangedSslCertificateManaged?>(
+      'managed',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MangedSslCertificateManaged.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     selfLink = registerOutput<String>('selfLink');
@@ -589,7 +598,16 @@ class MangedSslCertificate extends pulumi.CustomResource {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String?>('description');
     expireTime = registerOutput<String>('expireTime');
-    managed = registerOutput<MangedSslCertificateManaged?>('managed');
+    managed = registerOutput<MangedSslCertificateManaged?>(
+      'managed',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MangedSslCertificateManaged.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     selfLink = registerOutput<String>('selfLink');

@@ -690,6 +690,13 @@ class ScaleSetPacketCapture extends pulumi.CustomResource {
     filters = registerOutput<List<Map<String, dynamic>>?>('filters');
     machineScope = registerOutput<ScaleSetPacketCaptureMachineScope?>(
       'machineScope',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScaleSetPacketCaptureMachineScope.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     maximumBytesPerPacket = registerOutput<int?>('maximumBytesPerPacket');
     maximumBytesPerSession = registerOutput<int?>('maximumBytesPerSession');
@@ -700,6 +707,13 @@ class ScaleSetPacketCapture extends pulumi.CustomResource {
     networkWatcherId = registerOutput<String>('networkWatcherId');
     storageLocation = registerOutput<ScaleSetPacketCaptureStorageLocation>(
       'storageLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScaleSetPacketCaptureStorageLocation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     virtualMachineScaleSetId = registerOutput<String>(
       'virtualMachineScaleSetId',
@@ -732,6 +746,13 @@ class ScaleSetPacketCapture extends pulumi.CustomResource {
     filters = registerOutput<List<Map<String, dynamic>>?>('filters');
     machineScope = registerOutput<ScaleSetPacketCaptureMachineScope?>(
       'machineScope',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScaleSetPacketCaptureMachineScope.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     maximumBytesPerPacket = registerOutput<int?>('maximumBytesPerPacket');
     maximumBytesPerSession = registerOutput<int?>('maximumBytesPerSession');
@@ -742,6 +763,13 @@ class ScaleSetPacketCapture extends pulumi.CustomResource {
     networkWatcherId = registerOutput<String>('networkWatcherId');
     storageLocation = registerOutput<ScaleSetPacketCaptureStorageLocation>(
       'storageLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScaleSetPacketCaptureStorageLocation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     virtualMachineScaleSetId = registerOutput<String>(
       'virtualMachineScaleSetId',

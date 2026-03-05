@@ -1973,6 +1973,13 @@ class Instance extends pulumi.CustomResource {
     backupWindow = registerOutput<String>('backupWindow');
     blueGreenUpdate = registerOutput<InstanceBlueGreenUpdate?>(
       'blueGreenUpdate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceBlueGreenUpdate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     caCertIdentifier = registerOutput<String>('caCertIdentifier');
     characterSetName = registerOutput<String>('characterSetName');
@@ -2057,8 +2064,24 @@ class Instance extends pulumi.CustomResource {
     resourceId = registerOutput<String>('resourceId');
     restoreToPointInTime = registerOutput<InstanceRestoreToPointInTime?>(
       'restoreToPointInTime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceRestoreToPointInTime.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    s3Import = registerOutput<InstanceS3Import?>('s3Import');
+    s3Import = registerOutput<InstanceS3Import?>(
+      's3Import',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceS3Import.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     skipFinalSnapshot = registerOutput<bool?>('skipFinalSnapshot');
     snapshotIdentifier = registerOutput<String>('snapshotIdentifier');
     status = registerOutput<String>('status');
@@ -2111,6 +2134,13 @@ class Instance extends pulumi.CustomResource {
     backupWindow = registerOutput<String>('backupWindow');
     blueGreenUpdate = registerOutput<InstanceBlueGreenUpdate?>(
       'blueGreenUpdate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceBlueGreenUpdate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     caCertIdentifier = registerOutput<String>('caCertIdentifier');
     characterSetName = registerOutput<String>('characterSetName');
@@ -2195,8 +2225,24 @@ class Instance extends pulumi.CustomResource {
     resourceId = registerOutput<String>('resourceId');
     restoreToPointInTime = registerOutput<InstanceRestoreToPointInTime?>(
       'restoreToPointInTime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceRestoreToPointInTime.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    s3Import = registerOutput<InstanceS3Import?>('s3Import');
+    s3Import = registerOutput<InstanceS3Import?>(
+      's3Import',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceS3Import.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     skipFinalSnapshot = registerOutput<bool?>('skipFinalSnapshot');
     snapshotIdentifier = registerOutput<String>('snapshotIdentifier');
     status = registerOutput<String>('status');

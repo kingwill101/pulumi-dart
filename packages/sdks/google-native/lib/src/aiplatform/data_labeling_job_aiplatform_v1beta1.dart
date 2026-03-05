@@ -86,19 +86,51 @@ class DataLabelingJobAiplatformV1beta1 extends pulumi.CustomResource {
     activeLearningConfig =
         registerOutput<
           GoogleCloudAiplatformV1beta1ActiveLearningConfigResponse
-        >('activeLearningConfig');
+        >(
+          'activeLearningConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1beta1ActiveLearningConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     annotationLabels = registerOutput<Map<String, String>>('annotationLabels');
     createTime = registerOutput<String>('createTime');
     currentSpend = registerOutput<GoogleTypeMoneyResponseAiplatformV1beta1>(
       'currentSpend',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleTypeMoneyResponseAiplatformV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     datasets = registerOutput<List<String>>('datasets');
     displayName = registerOutput<String>('displayName');
     encryptionSpec =
         registerOutput<GoogleCloudAiplatformV1beta1EncryptionSpecResponse>(
           'encryptionSpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1beta1EncryptionSpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    error = registerOutput<GoogleRpcStatusResponseAiplatformV1beta1>('error');
+    error = registerOutput<GoogleRpcStatusResponseAiplatformV1beta1>(
+      'error',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleRpcStatusResponseAiplatformV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     inputs = registerOutput<dynamic>('inputs');
     inputsSchemaUri = registerOutput<String>('inputsSchemaUri');
     instructionUri = registerOutput<String>('instructionUri');

@@ -2722,12 +2722,30 @@ class EdgeCacheService extends pulumi.CustomResource {
     ipv4Addresses = registerOutput<List<String>>('ipv4Addresses');
     ipv6Addresses = registerOutput<List<String>>('ipv6Addresses');
     labels = registerOutput<Map<String, String>?>('labels');
-    logConfig = registerOutput<EdgeCacheServiceLogConfig?>('logConfig');
+    logConfig = registerOutput<EdgeCacheServiceLogConfig?>(
+      'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EdgeCacheServiceLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     requireTls = registerOutput<bool>('requireTls');
-    routing = registerOutput<EdgeCacheServiceRouting>('routing');
+    routing = registerOutput<EdgeCacheServiceRouting>(
+      'routing',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EdgeCacheServiceRouting.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sslPolicy = registerOutput<String?>('sslPolicy');
   }
 
@@ -2763,12 +2781,30 @@ class EdgeCacheService extends pulumi.CustomResource {
     ipv4Addresses = registerOutput<List<String>>('ipv4Addresses');
     ipv6Addresses = registerOutput<List<String>>('ipv6Addresses');
     labels = registerOutput<Map<String, String>?>('labels');
-    logConfig = registerOutput<EdgeCacheServiceLogConfig?>('logConfig');
+    logConfig = registerOutput<EdgeCacheServiceLogConfig?>(
+      'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EdgeCacheServiceLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     requireTls = registerOutput<bool>('requireTls');
-    routing = registerOutput<EdgeCacheServiceRouting>('routing');
+    routing = registerOutput<EdgeCacheServiceRouting>(
+      'routing',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EdgeCacheServiceRouting.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sslPolicy = registerOutput<String?>('sslPolicy');
   }
 }

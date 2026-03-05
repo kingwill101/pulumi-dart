@@ -1139,10 +1139,26 @@ class Instance extends pulumi.CustomResource {
        ) {
     acceleratorConfig = registerOutput<InstanceAcceleratorConfig?>(
       'acceleratorConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceAcceleratorConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     bootDiskSizeGb = registerOutput<int?>('bootDiskSizeGb');
     bootDiskType = registerOutput<String?>('bootDiskType');
-    containerImage = registerOutput<InstanceContainerImage?>('containerImage');
+    containerImage = registerOutput<InstanceContainerImage?>(
+      'containerImage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceContainerImage.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     customGpuDriverPath = registerOutput<String?>('customGpuDriverPath');
     dataDiskSizeGb = registerOutput<int?>('dataDiskSizeGb');
@@ -1169,17 +1185,40 @@ class Instance extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     reservationAffinity = registerOutput<InstanceReservationAffinity?>(
       'reservationAffinity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceReservationAffinity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     serviceAccount = registerOutput<String>('serviceAccount');
     serviceAccountScopes = registerOutput<List<String>>('serviceAccountScopes');
     shieldedInstanceConfig = registerOutput<InstanceShieldedInstanceConfig>(
       'shieldedInstanceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceShieldedInstanceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     state = registerOutput<String>('state');
     subnet = registerOutput<String>('subnet');
     tags = registerOutput<List<String>>('tags');
     updateTime = registerOutput<String>('updateTime');
-    vmImage = registerOutput<InstanceVmImage?>('vmImage');
+    vmImage = registerOutput<InstanceVmImage?>(
+      'vmImage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceVmImage.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Instance] resource's state with the given [name] and [id].
@@ -1207,10 +1246,26 @@ class Instance extends pulumi.CustomResource {
        ) {
     acceleratorConfig = registerOutput<InstanceAcceleratorConfig?>(
       'acceleratorConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceAcceleratorConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     bootDiskSizeGb = registerOutput<int?>('bootDiskSizeGb');
     bootDiskType = registerOutput<String?>('bootDiskType');
-    containerImage = registerOutput<InstanceContainerImage?>('containerImage');
+    containerImage = registerOutput<InstanceContainerImage?>(
+      'containerImage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceContainerImage.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     customGpuDriverPath = registerOutput<String?>('customGpuDriverPath');
     dataDiskSizeGb = registerOutput<int?>('dataDiskSizeGb');
@@ -1237,16 +1292,39 @@ class Instance extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     reservationAffinity = registerOutput<InstanceReservationAffinity?>(
       'reservationAffinity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceReservationAffinity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     serviceAccount = registerOutput<String>('serviceAccount');
     serviceAccountScopes = registerOutput<List<String>>('serviceAccountScopes');
     shieldedInstanceConfig = registerOutput<InstanceShieldedInstanceConfig>(
       'shieldedInstanceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceShieldedInstanceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.state = registerOutput<String>('state');
     subnet = registerOutput<String>('subnet');
     tags = registerOutput<List<String>>('tags');
     updateTime = registerOutput<String>('updateTime');
-    vmImage = registerOutput<InstanceVmImage?>('vmImage');
+    vmImage = registerOutput<InstanceVmImage?>(
+      'vmImage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceVmImage.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

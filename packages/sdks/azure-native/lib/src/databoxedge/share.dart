@@ -283,6 +283,13 @@ class Share extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     azureContainerInfo = registerOutput<AzureContainerInfoResponse?>(
       'azureContainerInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AzureContainerInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clientAccessRights = registerOutput<List<Map<String, dynamic>>?>(
       'clientAccessRights',
@@ -291,10 +298,28 @@ class Share extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     monitoringStatus = registerOutput<String>('monitoringStatus');
     this.name = registerOutput<String>('name');
-    refreshDetails = registerOutput<RefreshDetailsResponse?>('refreshDetails');
+    refreshDetails = registerOutput<RefreshDetailsResponse?>(
+      'refreshDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RefreshDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     shareMappings = registerOutput<List<Map<String, dynamic>>>('shareMappings');
     shareStatus = registerOutput<String>('shareStatus');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     userAccessRights = registerOutput<List<Map<String, dynamic>>?>(
       'userAccessRights',

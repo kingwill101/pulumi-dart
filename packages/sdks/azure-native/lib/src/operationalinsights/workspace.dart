@@ -263,9 +263,27 @@ class Workspace extends pulumi.CustomResource {
       'defaultDataCollectionRuleResourceId',
     );
     etag = registerOutput<String?>('etag');
-    features = registerOutput<WorkspaceFeaturesResponse?>('features');
+    features = registerOutput<WorkspaceFeaturesResponse?>(
+      'features',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkspaceFeaturesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     forceCmkForQuery = registerOutput<bool?>('forceCmkForQuery');
-    identity = registerOutput<IdentityResponse?>('identity');
+    identity = registerOutput<IdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     modifiedDate = registerOutput<String>('modifiedDate');
     this.name = registerOutput<String>('name');
@@ -280,12 +298,37 @@ class Workspace extends pulumi.CustomResource {
       'publicNetworkAccessForQuery',
     );
     retentionInDays = registerOutput<int?>('retentionInDays');
-    sku = registerOutput<WorkspaceSkuResponse?>('sku');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    sku = registerOutput<WorkspaceSkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkspaceSkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     workspaceCapping = registerOutput<WorkspaceCappingResponse?>(
       'workspaceCapping',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkspaceCappingResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

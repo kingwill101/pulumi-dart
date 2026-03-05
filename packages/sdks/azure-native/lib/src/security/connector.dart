@@ -681,11 +681,25 @@ class Connector extends pulumi.CustomResource {
     authenticationDetails =
         registerOutput<AwAssumeRoleAuthenticationDetailsPropertiesResponse?>(
           'authenticationDetails',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AwAssumeRoleAuthenticationDetailsPropertiesResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     hybridComputeSettings =
         registerOutput<HybridComputeSettingsPropertiesResponse?>(
           'hybridComputeSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return HybridComputeSettingsPropertiesResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');

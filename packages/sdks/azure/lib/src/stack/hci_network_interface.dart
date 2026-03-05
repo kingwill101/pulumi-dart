@@ -410,6 +410,13 @@ class HciNetworkInterface extends pulumi.CustomResource {
     dnsServers = registerOutput<List<String>?>('dnsServers');
     ipConfiguration = registerOutput<HciNetworkInterfaceIpConfiguration>(
       'ipConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HciNetworkInterfaceIpConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     macAddress = registerOutput<String?>('macAddress');
@@ -445,6 +452,13 @@ class HciNetworkInterface extends pulumi.CustomResource {
     dnsServers = registerOutput<List<String>?>('dnsServers');
     ipConfiguration = registerOutput<HciNetworkInterfaceIpConfiguration>(
       'ipConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HciNetworkInterfaceIpConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     macAddress = registerOutput<String?>('macAddress');

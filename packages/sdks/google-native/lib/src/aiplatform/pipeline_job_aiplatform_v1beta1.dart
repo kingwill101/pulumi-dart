@@ -100,12 +100,35 @@ class PipelineJobAiplatformV1beta1 extends pulumi.CustomResource {
     encryptionSpec =
         registerOutput<GoogleCloudAiplatformV1beta1EncryptionSpecResponse>(
           'encryptionSpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1beta1EncryptionSpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     endTime = registerOutput<String>('endTime');
-    error = registerOutput<GoogleRpcStatusResponseAiplatformV1beta1>('error');
+    error = registerOutput<GoogleRpcStatusResponseAiplatformV1beta1>(
+      'error',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleRpcStatusResponseAiplatformV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     jobDetail =
         registerOutput<GoogleCloudAiplatformV1beta1PipelineJobDetailResponse>(
           'jobDetail',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1beta1PipelineJobDetailResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
@@ -118,7 +141,16 @@ class PipelineJobAiplatformV1beta1 extends pulumi.CustomResource {
     runtimeConfig =
         registerOutput<
           GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigResponse
-        >('runtimeConfig');
+        >(
+          'runtimeConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     scheduleName = registerOutput<String>('scheduleName');
     serviceAccount = registerOutput<String>('serviceAccount');
     startTime = registerOutput<String>('startTime');
@@ -126,7 +158,16 @@ class PipelineJobAiplatformV1beta1 extends pulumi.CustomResource {
     templateMetadata =
         registerOutput<
           GoogleCloudAiplatformV1beta1PipelineTemplateMetadataResponse
-        >('templateMetadata');
+        >(
+          'templateMetadata',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1beta1PipelineTemplateMetadataResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     templateUri = registerOutput<String>('templateUri');
     updateTime = registerOutput<String>('updateTime');
   }

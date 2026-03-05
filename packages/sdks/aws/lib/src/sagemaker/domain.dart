@@ -665,16 +665,48 @@ class Domain extends pulumi.CustomResource {
     authMode = registerOutput<String>('authMode');
     defaultSpaceSettings = registerOutput<DomainDefaultSpaceSettings?>(
       'defaultSpaceSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainDefaultSpaceSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     defaultUserSettings = registerOutput<DomainDefaultUserSettings>(
       'defaultUserSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainDefaultUserSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     domainName = registerOutput<String>('domainName');
-    domainSettings = registerOutput<DomainDomainSettings?>('domainSettings');
+    domainSettings = registerOutput<DomainDomainSettings?>(
+      'domainSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainDomainSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     homeEfsFileSystemId = registerOutput<String>('homeEfsFileSystemId');
     kmsKeyId = registerOutput<String?>('kmsKeyId');
     region = registerOutput<String>('region');
-    retentionPolicy = registerOutput<DomainRetentionPolicy?>('retentionPolicy');
+    retentionPolicy = registerOutput<DomainRetentionPolicy?>(
+      'retentionPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainRetentionPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     securityGroupIdForDomainBoundary = registerOutput<String>(
       'securityGroupIdForDomainBoundary',
     );
@@ -723,16 +755,48 @@ class Domain extends pulumi.CustomResource {
     authMode = registerOutput<String>('authMode');
     defaultSpaceSettings = registerOutput<DomainDefaultSpaceSettings?>(
       'defaultSpaceSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainDefaultSpaceSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     defaultUserSettings = registerOutput<DomainDefaultUserSettings>(
       'defaultUserSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainDefaultUserSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     domainName = registerOutput<String>('domainName');
-    domainSettings = registerOutput<DomainDomainSettings?>('domainSettings');
+    domainSettings = registerOutput<DomainDomainSettings?>(
+      'domainSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainDomainSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     homeEfsFileSystemId = registerOutput<String>('homeEfsFileSystemId');
     kmsKeyId = registerOutput<String?>('kmsKeyId');
     region = registerOutput<String>('region');
-    retentionPolicy = registerOutput<DomainRetentionPolicy?>('retentionPolicy');
+    retentionPolicy = registerOutput<DomainRetentionPolicy?>(
+      'retentionPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainRetentionPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     securityGroupIdForDomainBoundary = registerOutput<String>(
       'securityGroupIdForDomainBoundary',
     );

@@ -1722,6 +1722,13 @@ class TaskDefinition extends pulumi.CustomResource {
     enableFaultInjection = registerOutput<bool>('enableFaultInjection');
     ephemeralStorage = registerOutput<TaskDefinitionEphemeralStorage?>(
       'ephemeralStorage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TaskDefinitionEphemeralStorage.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     executionRoleArn = registerOutput<String?>('executionRoleArn');
     family = registerOutput<String>('family');
@@ -1734,6 +1741,13 @@ class TaskDefinition extends pulumi.CustomResource {
     );
     proxyConfiguration = registerOutput<TaskDefinitionProxyConfiguration?>(
       'proxyConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TaskDefinitionProxyConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     requiresCompatibilities = registerOutput<List<String>?>(
@@ -1742,6 +1756,13 @@ class TaskDefinition extends pulumi.CustomResource {
     revision = registerOutput<int>('revision');
     runtimePlatform = registerOutput<TaskDefinitionRuntimePlatform?>(
       'runtimePlatform',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TaskDefinitionRuntimePlatform.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     skipDestroy = registerOutput<bool?>('skipDestroy');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -1781,6 +1802,13 @@ class TaskDefinition extends pulumi.CustomResource {
     enableFaultInjection = registerOutput<bool>('enableFaultInjection');
     ephemeralStorage = registerOutput<TaskDefinitionEphemeralStorage?>(
       'ephemeralStorage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TaskDefinitionEphemeralStorage.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     executionRoleArn = registerOutput<String?>('executionRoleArn');
     family = registerOutput<String>('family');
@@ -1793,6 +1821,13 @@ class TaskDefinition extends pulumi.CustomResource {
     );
     proxyConfiguration = registerOutput<TaskDefinitionProxyConfiguration?>(
       'proxyConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TaskDefinitionProxyConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     requiresCompatibilities = registerOutput<List<String>?>(
@@ -1801,6 +1836,13 @@ class TaskDefinition extends pulumi.CustomResource {
     revision = registerOutput<int>('revision');
     runtimePlatform = registerOutput<TaskDefinitionRuntimePlatform?>(
       'runtimePlatform',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TaskDefinitionRuntimePlatform.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     skipDestroy = registerOutput<bool?>('skipDestroy');
     tags = registerOutput<Map<String, String>?>('tags');

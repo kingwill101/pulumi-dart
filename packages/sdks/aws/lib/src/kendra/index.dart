@@ -3650,7 +3650,16 @@ class Index extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     arn = registerOutput<String>('arn');
-    capacityUnits = registerOutput<IndexCapacityUnits>('capacityUnits');
+    capacityUnits = registerOutput<IndexCapacityUnits>(
+      'capacityUnits',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IndexCapacityUnits.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createdAt = registerOutput<String>('createdAt');
     description = registerOutput<String?>('description');
     documentMetadataConfigurationUpdates =
@@ -3668,6 +3677,13 @@ class Index extends pulumi.CustomResource {
     serverSideEncryptionConfiguration =
         registerOutput<IndexServerSideEncryptionConfiguration?>(
           'serverSideEncryptionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return IndexServerSideEncryptionConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -3677,9 +3693,23 @@ class Index extends pulumi.CustomResource {
     userGroupResolutionConfiguration =
         registerOutput<IndexUserGroupResolutionConfiguration?>(
           'userGroupResolutionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return IndexUserGroupResolutionConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     userTokenConfigurations = registerOutput<IndexUserTokenConfigurations?>(
       'userTokenConfigurations',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IndexUserTokenConfigurations.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -3703,7 +3733,16 @@ class Index extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    capacityUnits = registerOutput<IndexCapacityUnits>('capacityUnits');
+    capacityUnits = registerOutput<IndexCapacityUnits>(
+      'capacityUnits',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IndexCapacityUnits.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createdAt = registerOutput<String>('createdAt');
     description = registerOutput<String?>('description');
     documentMetadataConfigurationUpdates =
@@ -3721,6 +3760,13 @@ class Index extends pulumi.CustomResource {
     serverSideEncryptionConfiguration =
         registerOutput<IndexServerSideEncryptionConfiguration?>(
           'serverSideEncryptionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return IndexServerSideEncryptionConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -3730,9 +3776,23 @@ class Index extends pulumi.CustomResource {
     userGroupResolutionConfiguration =
         registerOutput<IndexUserGroupResolutionConfiguration?>(
           'userGroupResolutionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return IndexUserGroupResolutionConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     userTokenConfigurations = registerOutput<IndexUserTokenConfigurations?>(
       'userTokenConfigurations',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IndexUserTokenConfigurations.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

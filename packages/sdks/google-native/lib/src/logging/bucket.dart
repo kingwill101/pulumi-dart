@@ -56,7 +56,16 @@ class Bucket extends pulumi.CustomResource {
       ) {
     analyticsEnabled = registerOutput<bool>('analyticsEnabled');
     bucketId = registerOutput<String>('bucketId');
-    cmekSettings = registerOutput<CmekSettingsResponse>('cmekSettings');
+    cmekSettings = registerOutput<CmekSettingsResponse>(
+      'cmekSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CmekSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     indexConfigs = registerOutput<List<Map<String, dynamic>>>('indexConfigs');

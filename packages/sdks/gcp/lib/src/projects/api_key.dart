@@ -1047,7 +1047,16 @@ class ApiKey extends pulumi.CustomResource {
     keyString = registerOutput<String>('keyString');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    restrictions = registerOutput<ApiKeyRestrictions?>('restrictions');
+    restrictions = registerOutput<ApiKeyRestrictions?>(
+      'restrictions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiKeyRestrictions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     serviceAccountEmail = registerOutput<String?>('serviceAccountEmail');
     uid = registerOutput<String>('uid');
   }
@@ -1079,7 +1088,16 @@ class ApiKey extends pulumi.CustomResource {
     keyString = registerOutput<String>('keyString');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    restrictions = registerOutput<ApiKeyRestrictions?>('restrictions');
+    restrictions = registerOutput<ApiKeyRestrictions?>(
+      'restrictions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiKeyRestrictions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     serviceAccountEmail = registerOutput<String?>('serviceAccountEmail');
     uid = registerOutput<String>('uid');
   }

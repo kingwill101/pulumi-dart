@@ -1350,9 +1350,23 @@ class Endpoint extends pulumi.CustomResource {
     );
     privateDnsZoneGroup = registerOutput<EndpointPrivateDnsZoneGroup?>(
       'privateDnsZoneGroup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointPrivateDnsZoneGroup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     privateServiceConnection = registerOutput<EndpointPrivateServiceConnection>(
       'privateServiceConnection',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointPrivateServiceConnection.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     subnetId = registerOutput<String>('subnetId');
@@ -1401,9 +1415,23 @@ class Endpoint extends pulumi.CustomResource {
     );
     privateDnsZoneGroup = registerOutput<EndpointPrivateDnsZoneGroup?>(
       'privateDnsZoneGroup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointPrivateDnsZoneGroup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     privateServiceConnection = registerOutput<EndpointPrivateServiceConnection>(
       'privateServiceConnection',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointPrivateServiceConnection.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     subnetId = registerOutput<String>('subnetId');

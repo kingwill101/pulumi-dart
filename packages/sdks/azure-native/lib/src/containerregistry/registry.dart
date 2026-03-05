@@ -426,24 +426,87 @@ class Registry extends pulumi.CustomResource {
     dataEndpointHostNames = registerOutput<List<String>>(
       'dataEndpointHostNames',
     );
-    encryption = registerOutput<EncryptionPropertyResponse?>('encryption');
-    identity = registerOutput<IdentityPropertiesResponse?>('identity');
+    encryption = registerOutput<EncryptionPropertyResponse?>(
+      'encryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EncryptionPropertyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    identity = registerOutput<IdentityPropertiesResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IdentityPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     loginServer = registerOutput<String>('loginServer');
     this.name = registerOutput<String>('name');
     networkRuleBypassOptions = registerOutput<String?>(
       'networkRuleBypassOptions',
     );
-    networkRuleSet = registerOutput<NetworkRuleSetResponse?>('networkRuleSet');
-    policies = registerOutput<PoliciesResponse?>('policies');
+    networkRuleSet = registerOutput<NetworkRuleSetResponse?>(
+      'networkRuleSet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkRuleSetResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    policies = registerOutput<PoliciesResponse?>(
+      'policies',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PoliciesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
       'privateEndpointConnections',
     );
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    sku = registerOutput<SkuResponse>('sku');
-    status = registerOutput<StatusResponse>('status');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    sku = registerOutput<SkuResponse>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    status = registerOutput<StatusResponse>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     zoneRedundancy = registerOutput<String?>('zoneRedundancy');

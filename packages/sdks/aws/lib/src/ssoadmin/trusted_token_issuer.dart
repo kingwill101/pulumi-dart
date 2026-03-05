@@ -240,6 +240,13 @@ class TrustedTokenIssuer extends pulumi.CustomResource {
     trustedTokenIssuerConfiguration =
         registerOutput<TrustedTokenIssuerTrustedTokenIssuerConfiguration>(
           'trustedTokenIssuerConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return TrustedTokenIssuerTrustedTokenIssuerConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     trustedTokenIssuerType = registerOutput<String>('trustedTokenIssuerType');
   }
@@ -277,6 +284,13 @@ class TrustedTokenIssuer extends pulumi.CustomResource {
     trustedTokenIssuerConfiguration =
         registerOutput<TrustedTokenIssuerTrustedTokenIssuerConfiguration>(
           'trustedTokenIssuerConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return TrustedTokenIssuerTrustedTokenIssuerConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     trustedTokenIssuerType = registerOutput<String>('trustedTokenIssuerType');
   }

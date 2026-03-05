@@ -191,11 +191,30 @@ class TemplateSpec extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     metadata = registerOutput<dynamic>('metadata');
     this.name = registerOutput<String>('name');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     versions = registerOutput<Map<String, TemplateSpecVersionInfoResponse>>(
       'versions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeMapValues<TemplateSpecVersionInfoResponse>(
+          guardedValue,
+          (value) => TemplateSpecVersionInfoResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      },
     );
   }
 }

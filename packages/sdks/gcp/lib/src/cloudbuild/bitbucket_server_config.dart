@@ -891,7 +891,16 @@ class BitbucketServerConfig extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     peeredNetwork = registerOutput<String?>('peeredNetwork');
     project = registerOutput<String>('project');
-    secrets = registerOutput<BitbucketServerConfigSecrets>('secrets');
+    secrets = registerOutput<BitbucketServerConfigSecrets>(
+      'secrets',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BitbucketServerConfigSecrets.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sslCa = registerOutput<String?>('sslCa');
     username = registerOutput<String>('username');
     webhookKey = registerOutput<String>('webhookKey');
@@ -930,7 +939,16 @@ class BitbucketServerConfig extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     peeredNetwork = registerOutput<String?>('peeredNetwork');
     project = registerOutput<String>('project');
-    secrets = registerOutput<BitbucketServerConfigSecrets>('secrets');
+    secrets = registerOutput<BitbucketServerConfigSecrets>(
+      'secrets',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BitbucketServerConfigSecrets.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sslCa = registerOutput<String?>('sslCa');
     username = registerOutput<String>('username');
     webhookKey = registerOutput<String>('webhookKey');

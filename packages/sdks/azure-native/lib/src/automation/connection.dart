@@ -230,6 +230,13 @@ class Connection extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     connectionType = registerOutput<ConnectionTypeAssociationPropertyResponse?>(
       'connectionType',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionTypeAssociationPropertyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     creationTime = registerOutput<String>('creationTime');
     description = registerOutput<String?>('description');

@@ -428,6 +428,13 @@ class GcpUserAccessBinding extends pulumi.CustomResource {
     );
     sessionSettings = registerOutput<GcpUserAccessBindingSessionSettings?>(
       'sessionSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GcpUserAccessBindingSessionSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -463,6 +470,13 @@ class GcpUserAccessBinding extends pulumi.CustomResource {
     );
     sessionSettings = registerOutput<GcpUserAccessBindingSessionSettings?>(
       'sessionSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GcpUserAccessBindingSessionSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

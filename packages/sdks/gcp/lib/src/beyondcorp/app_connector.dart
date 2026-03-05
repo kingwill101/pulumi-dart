@@ -449,7 +449,16 @@ class AppConnector extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
-    principalInfo = registerOutput<AppConnectorPrincipalInfo>('principalInfo');
+    principalInfo = registerOutput<AppConnectorPrincipalInfo>(
+      'principalInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppConnectorPrincipalInfo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     region = registerOutput<String?>('region');
@@ -483,7 +492,16 @@ class AppConnector extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
-    principalInfo = registerOutput<AppConnectorPrincipalInfo>('principalInfo');
+    principalInfo = registerOutput<AppConnectorPrincipalInfo>(
+      'principalInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppConnectorPrincipalInfo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     region = registerOutput<String?>('region');

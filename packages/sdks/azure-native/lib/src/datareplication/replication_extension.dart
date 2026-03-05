@@ -196,9 +196,23 @@ class ReplicationExtension extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     properties = registerOutput<ReplicationExtensionModelPropertiesResponse>(
       'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReplicationExtensionModelPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     systemData = registerOutput<ReplicationExtensionModelResponseSystemData>(
       'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReplicationExtensionModelResponseSystemData.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     type = registerOutput<String>('type');
   }

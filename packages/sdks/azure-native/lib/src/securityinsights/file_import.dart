@@ -251,17 +251,44 @@ class FileImport extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     contentType = registerOutput<String>('contentType');
     createdTimeUTC = registerOutput<String>('createdTimeUTC');
-    errorFile = registerOutput<FileMetadataResponse>('errorFile');
+    errorFile = registerOutput<FileMetadataResponse>(
+      'errorFile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FileMetadataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     errorsPreview = registerOutput<List<Map<String, dynamic>>>('errorsPreview');
     filesValidUntilTimeUTC = registerOutput<String>('filesValidUntilTimeUTC');
-    importFile = registerOutput<FileMetadataResponse>('importFile');
+    importFile = registerOutput<FileMetadataResponse>(
+      'importFile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FileMetadataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     importValidUntilTimeUTC = registerOutput<String>('importValidUntilTimeUTC');
     ingestedRecordCount = registerOutput<int>('ingestedRecordCount');
     ingestionMode = registerOutput<String>('ingestionMode');
     this.name = registerOutput<String>('name');
     source = registerOutput<String>('source');
     state = registerOutput<String>('state');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     totalRecordCount = registerOutput<int>('totalRecordCount');
     type = registerOutput<String>('type');
     validRecordCount = registerOutput<int>('validRecordCount');

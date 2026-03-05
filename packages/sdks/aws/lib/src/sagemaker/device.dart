@@ -151,7 +151,16 @@ class Device extends pulumi.CustomResource {
       ) {
     agentVersion = registerOutput<String>('agentVersion');
     arn = registerOutput<String>('arn');
-    device = registerOutput<DeviceDevice>('device');
+    device = registerOutput<DeviceDevice>(
+      'device',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeviceDevice.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     deviceFleetName = registerOutput<String>('deviceFleetName');
     region = registerOutput<String>('region');
   }
@@ -181,7 +190,16 @@ class Device extends pulumi.CustomResource {
        ) {
     agentVersion = registerOutput<String>('agentVersion');
     arn = registerOutput<String>('arn');
-    device = registerOutput<DeviceDevice>('device');
+    device = registerOutput<DeviceDevice>(
+      'device',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeviceDevice.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     deviceFleetName = registerOutput<String>('deviceFleetName');
     region = registerOutput<String>('region');
   }

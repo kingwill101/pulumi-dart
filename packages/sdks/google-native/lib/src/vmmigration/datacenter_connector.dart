@@ -80,11 +80,27 @@ class DatacenterConnector extends pulumi.CustomResource {
     );
     availableVersions = registerOutput<AvailableUpdatesResponse>(
       'availableVersions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AvailableUpdatesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     bucket = registerOutput<String>('bucket');
     createTime = registerOutput<String>('createTime');
     datacenterConnectorId = registerOutput<String>('datacenterConnectorId');
-    error = registerOutput<StatusResponse>('error');
+    error = registerOutput<StatusResponse>(
+      'error',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -95,7 +111,16 @@ class DatacenterConnector extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     stateTime = registerOutput<String>('stateTime');
     updateTime = registerOutput<String>('updateTime');
-    upgradeStatus = registerOutput<UpgradeStatusResponse>('upgradeStatus');
+    upgradeStatus = registerOutput<UpgradeStatusResponse>(
+      'upgradeStatus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UpgradeStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     version = registerOutput<String>('version');
   }
 }

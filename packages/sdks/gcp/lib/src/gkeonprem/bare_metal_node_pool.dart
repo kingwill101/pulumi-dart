@@ -1408,6 +1408,13 @@ class BareMetalNodePool extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     nodePoolConfig = registerOutput<BareMetalNodePoolNodePoolConfig>(
       'nodePoolConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalNodePoolNodePoolConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     reconciling = registerOutput<bool>('reconciling');
@@ -1453,6 +1460,13 @@ class BareMetalNodePool extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     nodePoolConfig = registerOutput<BareMetalNodePoolNodePoolConfig>(
       'nodePoolConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BareMetalNodePoolNodePoolConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     reconciling = registerOutput<bool>('reconciling');

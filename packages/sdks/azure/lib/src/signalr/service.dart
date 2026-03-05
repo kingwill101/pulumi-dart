@@ -410,9 +410,27 @@ class Service extends pulumi.CustomResource {
     cors = registerOutput<List<Map<String, dynamic>>>('cors');
     hostname = registerOutput<String>('hostname');
     httpRequestLogsEnabled = registerOutput<bool?>('httpRequestLogsEnabled');
-    identity = registerOutput<ServiceIdentity?>('identity');
+    identity = registerOutput<ServiceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ipAddress = registerOutput<String>('ipAddress');
-    liveTrace = registerOutput<ServiceLiveTrace?>('liveTrace');
+    liveTrace = registerOutput<ServiceLiveTrace?>(
+      'liveTrace',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceLiveTrace.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     liveTraceEnabled = registerOutput<bool?>('liveTraceEnabled');
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
     location = registerOutput<String>('location');
@@ -434,7 +452,16 @@ class Service extends pulumi.CustomResource {
       'serverlessConnectionTimeoutInSeconds',
     );
     serviceMode = registerOutput<String?>('serviceMode');
-    sku = registerOutput<ServiceSku>('sku');
+    sku = registerOutput<ServiceSku>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceSku.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tlsClientCertEnabled = registerOutput<bool?>('tlsClientCertEnabled');
     upstreamEndpoints = registerOutput<List<Map<String, dynamic>>?>(
@@ -470,9 +497,27 @@ class Service extends pulumi.CustomResource {
     cors = registerOutput<List<Map<String, dynamic>>>('cors');
     hostname = registerOutput<String>('hostname');
     httpRequestLogsEnabled = registerOutput<bool?>('httpRequestLogsEnabled');
-    identity = registerOutput<ServiceIdentity?>('identity');
+    identity = registerOutput<ServiceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ipAddress = registerOutput<String>('ipAddress');
-    liveTrace = registerOutput<ServiceLiveTrace?>('liveTrace');
+    liveTrace = registerOutput<ServiceLiveTrace?>(
+      'liveTrace',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceLiveTrace.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     liveTraceEnabled = registerOutput<bool?>('liveTraceEnabled');
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
     location = registerOutput<String>('location');
@@ -494,7 +539,16 @@ class Service extends pulumi.CustomResource {
       'serverlessConnectionTimeoutInSeconds',
     );
     serviceMode = registerOutput<String?>('serviceMode');
-    sku = registerOutput<ServiceSku>('sku');
+    sku = registerOutput<ServiceSku>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceSku.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tlsClientCertEnabled = registerOutput<bool?>('tlsClientCertEnabled');
     upstreamEndpoints = registerOutput<List<Map<String, dynamic>>?>(

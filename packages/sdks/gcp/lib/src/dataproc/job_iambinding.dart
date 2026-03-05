@@ -834,7 +834,16 @@ class JobIAMBinding extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<JobIAMBindingCondition?>('condition');
+    condition = registerOutput<JobIAMBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobIAMBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     jobId = registerOutput<String>('jobId');
     members = registerOutput<List<String>>('members');
@@ -866,7 +875,16 @@ class JobIAMBinding extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<JobIAMBindingCondition?>('condition');
+    condition = registerOutput<JobIAMBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobIAMBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     jobId = registerOutput<String>('jobId');
     members = registerOutput<List<String>>('members');

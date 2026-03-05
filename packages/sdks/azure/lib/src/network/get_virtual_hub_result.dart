@@ -1,24 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getVirtualHub.
 class GetVirtualHubResult {
   /// The Address Prefix used for this Virtual Hub.
   final String addressPrefix;
+
   /// The ID of the default Route Table in the Virtual Hub.
   final String defaultRouteTableId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The Azure Region where the Virtual Hub exists.
   final String location;
   final String name;
   final String resourceGroupName;
+
   /// A mapping of tags assigned to the Virtual Hub.
   final Map<String, String> tags;
+
   /// The Autonomous System Number of the Virtual Hub BGP router.
   final int virtualRouterAsn;
+
   /// The IP addresses of the Virtual Hub BGP router.
   final List<String> virtualRouterIps;
+
   /// The ID of the Virtual WAN within which the Virtual Hub exists.
   final String virtualWanId;
 
@@ -76,4 +82,3 @@ class GetVirtualHubResult {
     );
   }
 }
-

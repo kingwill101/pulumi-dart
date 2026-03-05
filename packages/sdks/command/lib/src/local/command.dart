@@ -817,7 +817,14 @@ class Command extends pulumi.CustomResource {
     dir = registerOutput<String?>('dir');
     environment = registerOutput<Map<String, String>?>('environment');
     interpreter = registerOutput<List<String>?>('interpreter');
-    logging = registerOutput<Logging?>('logging');
+    logging = registerOutput<Logging?>(
+      'logging',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return Logging.fromValue(guardedValue as String);
+      },
+    );
     stderr = registerOutput<String>('stderr');
     stdin = registerOutput<String?>('stdin');
     stdout = registerOutput<String>('stdout');

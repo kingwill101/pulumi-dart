@@ -7,84 +7,123 @@ import 'get_cluster_cluster_node.dart';
 class GetClusterResult {
   /// Whether major version upgrades can be applied during maintenance period
   final bool allowVersionUpgrade;
+
   /// The value represents how the cluster is configured to use AQUA.
   final String aquaConfigurationStatus;
+
   /// ARN of cluster.
   final String arn;
+
   /// The backup retention period
   final int automatedSnapshotRetentionPeriod;
+
   /// Availability zone of the cluster
   final String availabilityZone;
+
   /// Indicates whether the cluster is able to be relocated to another availability zone.
   final bool availabilityZoneRelocationEnabled;
+
   /// Name of the S3 bucket where the log files are to be stored
   final String bucketName;
+
   /// Cluster identifier
   final String clusterIdentifier;
+
   /// The namespace Amazon Resource Name (ARN) of the cluster
   final String clusterNamespaceArn;
+
   /// Nodes in the cluster. Cluster node blocks are documented below
   final List<GetClusterClusterNode> clusterNodes;
+
   /// The name of the parameter group to be associated with this cluster
   final String clusterParameterGroupName;
+
   /// Public key for the cluster
   final String clusterPublicKey;
+
   /// The cluster revision number
   final String clusterRevisionNumber;
+
   /// The name of a cluster subnet group to be associated with this cluster
   final String clusterSubnetGroupName;
+
   /// Cluster type
   final String clusterType;
   final String clusterVersion;
+
   /// Name of the default database in the cluster
   final String databaseName;
+
   /// The ARN for the IAM role that was set as default for the cluster when the cluster was created.
   final String defaultIamRoleArn;
+
   /// Elastic IP of the cluster
   final String elasticIp;
+
   /// Whether cluster logging is enabled
   final bool enableLogging;
+
   /// Whether the cluster data is encrypted
   final bool encrypted;
+
   /// Cluster endpoint
   final String endpoint;
+
   /// Whether enhanced VPC routing is enabled
   final bool enhancedVpcRouting;
+
   /// IAM roles associated to the cluster
   final List<String> iamRoles;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// KMS encryption key associated to the cluster
   final String kmsKeyId;
+
   /// The log destination type.
   final String logDestinationType;
+
   /// Collection of exported log types. Log types include the connection log, user log and user activity log.
   final List<String> logExports;
+
   /// The name of the maintenance track for the restored cluster.
   final String maintenanceTrackName;
+
   /// (Optional)  The default number of days to retain a manual snapshot.
   final int manualSnapshotRetentionPeriod;
+
   /// Username for the master DB user
   final String masterUsername;
+
   /// If the cluster is a Multi-AZ deployment
   final bool multiAz;
+
   /// Cluster node type
   final String nodeType;
+
   /// Number of nodes in the cluster
   final int numberOfNodes;
+
   /// Port the cluster responds on
   final int port;
+
   /// The maintenance window
   final String preferredMaintenanceWindow;
+
   /// Whether the cluster is publicly accessible
   final bool publiclyAccessible;
   final String region;
+
   /// Folder inside the S3 bucket where the log files are stored
   final String s3KeyPrefix;
+
   /// Tags associated to the cluster
   final Map<String, String> tags;
+
   /// VPC Id associated with the cluster
   final String vpcId;
+
   /// The VPC security group Ids associated with the cluster
   final List<String> vpcSecurityGroupIds;
 
@@ -187,7 +226,11 @@ class GetClusterResult {
       'bucketName': bucketName,
       'clusterIdentifier': clusterIdentifier,
       'clusterNamespaceArn': clusterNamespaceArn,
-      'clusterNodes': pulumi.Input.encodeList<GetClusterClusterNode, Map<String, dynamic>>(clusterNodes, (value) => value.toMap()),
+      'clusterNodes':
+          pulumi.Input.encodeList<GetClusterClusterNode, Map<String, dynamic>>(
+            clusterNodes,
+            (value) => value.toMap(),
+          ),
       'clusterParameterGroupName': clusterParameterGroupName,
       'clusterPublicKey': clusterPublicKey,
       'clusterRevisionNumber': clusterRevisionNumber,
@@ -228,13 +271,20 @@ class GetClusterResult {
       allowVersionUpgrade: map['allowVersionUpgrade'] as bool,
       aquaConfigurationStatus: map['aquaConfigurationStatus'] as String,
       arn: map['arn'] as String,
-      automatedSnapshotRetentionPeriod: map['automatedSnapshotRetentionPeriod'] as int,
+      automatedSnapshotRetentionPeriod:
+          map['automatedSnapshotRetentionPeriod'] as int,
       availabilityZone: map['availabilityZone'] as String,
-      availabilityZoneRelocationEnabled: map['availabilityZoneRelocationEnabled'] as bool,
+      availabilityZoneRelocationEnabled:
+          map['availabilityZoneRelocationEnabled'] as bool,
       bucketName: map['bucketName'] as String,
       clusterIdentifier: map['clusterIdentifier'] as String,
       clusterNamespaceArn: map['clusterNamespaceArn'] as String,
-      clusterNodes: pulumi.Input.decodeList<GetClusterClusterNode>(map['clusterNodes']!, (value) => GetClusterClusterNode.fromMap((value as Map).cast<String, dynamic>())),
+      clusterNodes: pulumi.Input.decodeList<GetClusterClusterNode>(
+        map['clusterNodes']!,
+        (value) => GetClusterClusterNode.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       clusterParameterGroupName: map['clusterParameterGroupName'] as String,
       clusterPublicKey: map['clusterPublicKey'] as String,
       clusterRevisionNumber: map['clusterRevisionNumber'] as String,
@@ -254,7 +304,8 @@ class GetClusterResult {
       logDestinationType: map['logDestinationType'] as String,
       logExports: (map['logExports'] as List).cast<String>(),
       maintenanceTrackName: map['maintenanceTrackName'] as String,
-      manualSnapshotRetentionPeriod: map['manualSnapshotRetentionPeriod'] as int,
+      manualSnapshotRetentionPeriod:
+          map['manualSnapshotRetentionPeriod'] as int,
       masterUsername: map['masterUsername'] as String,
       multiAz: map['multiAz'] as bool,
       nodeType: map['nodeType'] as String,
@@ -270,4 +321,3 @@ class GetClusterResult {
     );
   }
 }
-

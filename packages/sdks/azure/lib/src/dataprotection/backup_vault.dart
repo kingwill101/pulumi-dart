@@ -227,7 +227,16 @@ class BackupVault extends pulumi.CustomResource {
       'crossRegionRestoreEnabled',
     );
     datastoreType = registerOutput<String>('datastoreType');
-    identity = registerOutput<BackupVaultIdentity?>('identity');
+    identity = registerOutput<BackupVaultIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackupVaultIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     immutability = registerOutput<String?>('immutability');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -267,7 +276,16 @@ class BackupVault extends pulumi.CustomResource {
       'crossRegionRestoreEnabled',
     );
     datastoreType = registerOutput<String>('datastoreType');
-    identity = registerOutput<BackupVaultIdentity?>('identity');
+    identity = registerOutput<BackupVaultIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackupVaultIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     immutability = registerOutput<String?>('immutability');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

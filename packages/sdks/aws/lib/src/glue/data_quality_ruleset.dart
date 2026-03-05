@@ -503,7 +503,16 @@ class DataQualityRuleset extends pulumi.CustomResource {
     ruleset = registerOutput<String>('ruleset');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    targetTable = registerOutput<DataQualityRulesetTargetTable?>('targetTable');
+    targetTable = registerOutput<DataQualityRulesetTargetTable?>(
+      'targetTable',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataQualityRulesetTargetTable.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [DataQualityRuleset] resource's state with the given [name] and [id].
@@ -539,6 +548,15 @@ class DataQualityRuleset extends pulumi.CustomResource {
     ruleset = registerOutput<String>('ruleset');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    targetTable = registerOutput<DataQualityRulesetTargetTable?>('targetTable');
+    targetTable = registerOutput<DataQualityRulesetTargetTable?>(
+      'targetTable',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataQualityRulesetTargetTable.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

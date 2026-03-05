@@ -671,15 +671,40 @@ class ResponsePlan extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    action = registerOutput<ResponsePlanAction?>('action');
+    action = registerOutput<ResponsePlanAction?>(
+      'action',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResponsePlanAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     arn = registerOutput<String>('arn');
     chatChannels = registerOutput<List<String>?>('chatChannels');
     displayName = registerOutput<String?>('displayName');
     engagements = registerOutput<List<String>?>('engagements');
     incidentTemplate = registerOutput<ResponsePlanIncidentTemplate>(
       'incidentTemplate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResponsePlanIncidentTemplate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    integration = registerOutput<ResponsePlanIntegration?>('integration');
+    integration = registerOutput<ResponsePlanIntegration?>(
+      'integration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResponsePlanIntegration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -709,15 +734,40 @@ class ResponsePlan extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    action = registerOutput<ResponsePlanAction?>('action');
+    action = registerOutput<ResponsePlanAction?>(
+      'action',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResponsePlanAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     arn = registerOutput<String>('arn');
     chatChannels = registerOutput<List<String>?>('chatChannels');
     displayName = registerOutput<String?>('displayName');
     engagements = registerOutput<List<String>?>('engagements');
     incidentTemplate = registerOutput<ResponsePlanIncidentTemplate>(
       'incidentTemplate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResponsePlanIncidentTemplate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    integration = registerOutput<ResponsePlanIntegration?>('integration');
+    integration = registerOutput<ResponsePlanIntegration?>(
+      'integration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResponsePlanIntegration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');

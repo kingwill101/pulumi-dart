@@ -443,12 +443,28 @@ class Assistant extends pulumi.CustomResource {
        ) {
     assistantId = registerOutput<String>('assistantId');
     collectionId = registerOutput<String>('collectionId');
-    customerPolicy = registerOutput<AssistantCustomerPolicy?>('customerPolicy');
+    customerPolicy = registerOutput<AssistantCustomerPolicy?>(
+      'customerPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AssistantCustomerPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     engineId = registerOutput<String>('engineId');
     generationConfig = registerOutput<AssistantGenerationConfig?>(
       'generationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AssistantGenerationConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -481,12 +497,28 @@ class Assistant extends pulumi.CustomResource {
        ) {
     assistantId = registerOutput<String>('assistantId');
     collectionId = registerOutput<String>('collectionId');
-    customerPolicy = registerOutput<AssistantCustomerPolicy?>('customerPolicy');
+    customerPolicy = registerOutput<AssistantCustomerPolicy?>(
+      'customerPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AssistantCustomerPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     engineId = registerOutput<String>('engineId');
     generationConfig = registerOutput<AssistantGenerationConfig?>(
       'generationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AssistantGenerationConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

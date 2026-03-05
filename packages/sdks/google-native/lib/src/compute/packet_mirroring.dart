@@ -66,18 +66,50 @@ class PacketMirroring extends pulumi.CustomResource {
        ) {
     collectorIlb = registerOutput<PacketMirroringForwardingRuleInfoResponse>(
       'collectorIlb',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PacketMirroringForwardingRuleInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');
     enable = registerOutput<String>('enable');
-    filter = registerOutput<PacketMirroringFilterResponse>('filter');
+    filter = registerOutput<PacketMirroringFilterResponse>(
+      'filter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PacketMirroringFilterResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kind = registerOutput<String>('kind');
     mirroredResources =
         registerOutput<PacketMirroringMirroredResourceInfoResponse>(
           'mirroredResources',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PacketMirroringMirroredResourceInfoResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
-    network = registerOutput<PacketMirroringNetworkInfoResponse>('network');
+    network = registerOutput<PacketMirroringNetworkInfoResponse>(
+      'network',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PacketMirroringNetworkInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     priority = registerOutput<int>('priority');
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');

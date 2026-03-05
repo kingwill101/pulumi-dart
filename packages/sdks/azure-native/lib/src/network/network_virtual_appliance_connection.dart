@@ -338,6 +338,13 @@ class NetworkVirtualApplianceConnection extends pulumi.CustomResource {
     properties =
         registerOutput<NetworkVirtualApplianceConnectionPropertiesResponse>(
           'properties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NetworkVirtualApplianceConnectionPropertiesResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

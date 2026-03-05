@@ -70,12 +70,39 @@ class Device extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     blocked = registerOutput<bool>('blocked');
-    config = registerOutput<DeviceConfigResponse>('config');
+    config = registerOutput<DeviceConfigResponse>(
+      'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeviceConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     credentials = registerOutput<List<Map<String, dynamic>>>('credentials');
-    gatewayConfig = registerOutput<GatewayConfigResponse>('gatewayConfig');
+    gatewayConfig = registerOutput<GatewayConfigResponse>(
+      'gatewayConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GatewayConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     lastConfigAckTime = registerOutput<String>('lastConfigAckTime');
     lastConfigSendTime = registerOutput<String>('lastConfigSendTime');
-    lastErrorStatus = registerOutput<StatusResponse>('lastErrorStatus');
+    lastErrorStatus = registerOutput<StatusResponse>(
+      'lastErrorStatus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     lastErrorTime = registerOutput<String>('lastErrorTime');
     lastEventTime = registerOutput<String>('lastEventTime');
     lastHeartbeatTime = registerOutput<String>('lastHeartbeatTime');
@@ -87,6 +114,15 @@ class Device extends pulumi.CustomResource {
     numId = registerOutput<String>('numId');
     project = registerOutput<String>('project');
     registryId = registerOutput<String>('registryId');
-    state = registerOutput<DeviceStateResponse>('state');
+    state = registerOutput<DeviceStateResponse>(
+      'state',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeviceStateResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

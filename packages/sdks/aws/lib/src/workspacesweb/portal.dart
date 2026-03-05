@@ -400,7 +400,16 @@ class Portal extends pulumi.CustomResource {
     statusReason = registerOutput<String>('statusReason');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<PortalTimeouts?>('timeouts');
+    timeouts = registerOutput<PortalTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PortalTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     trustStoreArn = registerOutput<String>('trustStoreArn');
     userAccessLoggingSettingsArn = registerOutput<String>(
       'userAccessLoggingSettingsArn',
@@ -456,7 +465,16 @@ class Portal extends pulumi.CustomResource {
     statusReason = registerOutput<String>('statusReason');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<PortalTimeouts?>('timeouts');
+    timeouts = registerOutput<PortalTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PortalTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     trustStoreArn = registerOutput<String>('trustStoreArn');
     userAccessLoggingSettingsArn = registerOutput<String>(
       'userAccessLoggingSettingsArn',

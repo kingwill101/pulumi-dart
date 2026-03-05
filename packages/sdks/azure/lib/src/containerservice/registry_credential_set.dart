@@ -793,9 +793,25 @@ class RegistryCredentialSet extends pulumi.CustomResource {
     authenticationCredentials =
         registerOutput<RegistryCredentialSetAuthenticationCredentials>(
           'authenticationCredentials',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RegistryCredentialSetAuthenticationCredentials.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     containerRegistryId = registerOutput<String>('containerRegistryId');
-    identity = registerOutput<RegistryCredentialSetIdentity>('identity');
+    identity = registerOutput<RegistryCredentialSetIdentity>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegistryCredentialSetIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     loginServer = registerOutput<String>('loginServer');
     this.name = registerOutput<String>('name');
   }
@@ -826,9 +842,25 @@ class RegistryCredentialSet extends pulumi.CustomResource {
     authenticationCredentials =
         registerOutput<RegistryCredentialSetAuthenticationCredentials>(
           'authenticationCredentials',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RegistryCredentialSetAuthenticationCredentials.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     containerRegistryId = registerOutput<String>('containerRegistryId');
-    identity = registerOutput<RegistryCredentialSetIdentity>('identity');
+    identity = registerOutput<RegistryCredentialSetIdentity>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegistryCredentialSetIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     loginServer = registerOutput<String>('loginServer');
     this.name = registerOutput<String>('name');
   }

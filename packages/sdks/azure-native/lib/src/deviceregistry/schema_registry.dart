@@ -242,6 +242,13 @@ class SchemaRegistry extends pulumi.CustomResource {
     displayName = registerOutput<String?>('displayName');
     identity = registerOutput<SystemAssignedServiceIdentityResponse?>(
       'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemAssignedServiceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -250,7 +257,16 @@ class SchemaRegistry extends pulumi.CustomResource {
     storageAccountContainerUrl = registerOutput<String>(
       'storageAccountContainerUrl',
     );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     uuid = registerOutput<String>('uuid');

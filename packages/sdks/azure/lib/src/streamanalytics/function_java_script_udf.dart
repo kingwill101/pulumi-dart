@@ -282,7 +282,16 @@ class FunctionJavaScriptUDF extends pulumi.CustomResource {
        ) {
     inputs = registerOutput<List<Map<String, dynamic>>>('inputs');
     this.name = registerOutput<String>('name');
-    output = registerOutput<FunctionJavaScriptUDFOutput>('output');
+    output = registerOutput<FunctionJavaScriptUDFOutput>(
+      'output',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionJavaScriptUDFOutput.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     script = registerOutput<String>('script');
     streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
@@ -313,7 +322,16 @@ class FunctionJavaScriptUDF extends pulumi.CustomResource {
        ) {
     inputs = registerOutput<List<Map<String, dynamic>>>('inputs');
     this.name = registerOutput<String>('name');
-    output = registerOutput<FunctionJavaScriptUDFOutput>('output');
+    output = registerOutput<FunctionJavaScriptUDFOutput>(
+      'output',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionJavaScriptUDFOutput.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     script = registerOutput<String>('script');
     streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');

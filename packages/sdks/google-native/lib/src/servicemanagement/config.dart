@@ -114,36 +114,169 @@ class Config extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     apis = registerOutput<List<Map<String, dynamic>>>('apis');
-    authentication = registerOutput<AuthenticationResponse>('authentication');
-    backend = registerOutput<BackendResponse>('backend');
-    billing = registerOutput<BillingResponse>('billing');
+    authentication = registerOutput<AuthenticationResponse>(
+      'authentication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AuthenticationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    backend = registerOutput<BackendResponse>(
+      'backend',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackendResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    billing = registerOutput<BillingResponse>(
+      'billing',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BillingResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     configVersion = registerOutput<int>('configVersion');
-    context = registerOutput<ContextResponse>('context');
-    control = registerOutput<ControlResponse>('control');
-    customError = registerOutput<CustomErrorResponse>('customError');
-    documentation = registerOutput<DocumentationResponse>('documentation');
+    context = registerOutput<ContextResponse>(
+      'context',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContextResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    control = registerOutput<ControlResponse>(
+      'control',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ControlResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    customError = registerOutput<CustomErrorResponse>(
+      'customError',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomErrorResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    documentation = registerOutput<DocumentationResponse>(
+      'documentation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DocumentationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
     enums = registerOutput<List<Map<String, dynamic>>>('enums');
-    http = registerOutput<HttpResponse>('http');
-    logging = registerOutput<LoggingResponse>('logging');
+    http = registerOutput<HttpResponse>(
+      'http',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HttpResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    logging = registerOutput<LoggingResponse>(
+      'logging',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoggingResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     logs = registerOutput<List<Map<String, dynamic>>>('logs');
     metrics = registerOutput<List<Map<String, dynamic>>>('metrics');
     monitoredResources = registerOutput<List<Map<String, dynamic>>>(
       'monitoredResources',
     );
-    monitoring = registerOutput<MonitoringResponse>('monitoring');
+    monitoring = registerOutput<MonitoringResponse>(
+      'monitoring',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MonitoringResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     producerProjectId = registerOutput<String>('producerProjectId');
-    publishing = registerOutput<PublishingResponse>('publishing');
-    quota = registerOutput<QuotaResponse>('quota');
+    publishing = registerOutput<PublishingResponse>(
+      'publishing',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PublishingResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    quota = registerOutput<QuotaResponse>(
+      'quota',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return QuotaResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     serviceName = registerOutput<String>('serviceName');
-    sourceInfo = registerOutput<SourceInfoResponse>('sourceInfo');
+    sourceInfo = registerOutput<SourceInfoResponse>(
+      'sourceInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SourceInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     systemParameters = registerOutput<SystemParametersResponse>(
       'systemParameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemParametersResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     systemTypes = registerOutput<List<Map<String, dynamic>>>('systemTypes');
     title = registerOutput<String>('title');
     types = registerOutput<List<Map<String, dynamic>>>('types');
-    usage = registerOutput<UsageResponse>('usage');
+    usage = registerOutput<UsageResponse>(
+      'usage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UsageResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

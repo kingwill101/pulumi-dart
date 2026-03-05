@@ -515,7 +515,16 @@ class Key extends pulumi.CustomResource {
     publicKeyPem = registerOutput<String>('publicKeyPem');
     resourceId = registerOutput<String>('resourceId');
     resourceVersionlessId = registerOutput<String>('resourceVersionlessId');
-    rotationPolicy = registerOutput<KeyRotationPolicy?>('rotationPolicy');
+    rotationPolicy = registerOutput<KeyRotationPolicy?>(
+      'rotationPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KeyRotationPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     version = registerOutput<String>('version');
     versionlessId = registerOutput<String>('versionlessId');
@@ -556,7 +565,16 @@ class Key extends pulumi.CustomResource {
     publicKeyPem = registerOutput<String>('publicKeyPem');
     resourceId = registerOutput<String>('resourceId');
     resourceVersionlessId = registerOutput<String>('resourceVersionlessId');
-    rotationPolicy = registerOutput<KeyRotationPolicy?>('rotationPolicy');
+    rotationPolicy = registerOutput<KeyRotationPolicy?>(
+      'rotationPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KeyRotationPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     version = registerOutput<String>('version');
     versionlessId = registerOutput<String>('versionlessId');

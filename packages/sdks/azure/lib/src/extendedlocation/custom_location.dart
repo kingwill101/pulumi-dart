@@ -58,6 +58,13 @@ class CustomLocation extends pulumi.CustomResource {
        ) {
     authentication = registerOutput<CustomLocationAuthentication?>(
       'authentication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomLocationAuthentication.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clusterExtensionIds = registerOutput<List<String>>('clusterExtensionIds');
     displayName = registerOutput<String?>('displayName');
@@ -94,6 +101,13 @@ class CustomLocation extends pulumi.CustomResource {
        ) {
     authentication = registerOutput<CustomLocationAuthentication?>(
       'authentication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomLocationAuthentication.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clusterExtensionIds = registerOutput<List<String>>('clusterExtensionIds');
     displayName = registerOutput<String?>('displayName');

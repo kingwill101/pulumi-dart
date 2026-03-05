@@ -4603,6 +4603,13 @@ class LoadBalancer extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     extendedLocation = registerOutput<ExtendedLocationResponse?>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     frontendIPConfigurations = registerOutput<List<Map<String, dynamic>>?>(
       'frontendIPConfigurations',
@@ -4624,7 +4631,16 @@ class LoadBalancer extends pulumi.CustomResource {
     probes = registerOutput<List<Map<String, dynamic>>?>('probes');
     provisioningState = registerOutput<String>('provisioningState');
     resourceGuid = registerOutput<String>('resourceGuid');
-    sku = registerOutput<LoadBalancerSkuResponse?>('sku');
+    sku = registerOutput<LoadBalancerSkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerSkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

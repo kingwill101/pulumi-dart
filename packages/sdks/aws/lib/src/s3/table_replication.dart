@@ -176,7 +176,16 @@ class TableReplication extends pulumi.CustomResource {
        ) {
     region = registerOutput<String>('region');
     role = registerOutput<String>('role');
-    rule = registerOutput<TableReplicationRule?>('rule');
+    rule = registerOutput<TableReplicationRule?>(
+      'rule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TableReplicationRule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tableArn = registerOutput<String>('tableArn');
     versionToken = registerOutput<String>('versionToken');
   }
@@ -206,7 +215,16 @@ class TableReplication extends pulumi.CustomResource {
        ) {
     region = registerOutput<String>('region');
     role = registerOutput<String>('role');
-    rule = registerOutput<TableReplicationRule?>('rule');
+    rule = registerOutput<TableReplicationRule?>(
+      'rule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TableReplicationRule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tableArn = registerOutput<String>('tableArn');
     versionToken = registerOutput<String>('versionToken');
   }

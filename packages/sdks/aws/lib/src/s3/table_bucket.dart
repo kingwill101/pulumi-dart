@@ -161,11 +161,25 @@ class TableBucket extends pulumi.CustomResource {
     encryptionConfiguration =
         registerOutput<TableBucketEncryptionConfiguration?>(
           'encryptionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return TableBucketEncryptionConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     forceDestroy = registerOutput<bool>('forceDestroy');
     maintenanceConfiguration =
         registerOutput<TableBucketMaintenanceConfiguration>(
           'maintenanceConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return TableBucketMaintenanceConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     ownerAccountId = registerOutput<String>('ownerAccountId');
@@ -202,11 +216,25 @@ class TableBucket extends pulumi.CustomResource {
     encryptionConfiguration =
         registerOutput<TableBucketEncryptionConfiguration?>(
           'encryptionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return TableBucketEncryptionConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     forceDestroy = registerOutput<bool>('forceDestroy');
     maintenanceConfiguration =
         registerOutput<TableBucketMaintenanceConfiguration>(
           'maintenanceConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return TableBucketMaintenanceConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     ownerAccountId = registerOutput<String>('ownerAccountId');

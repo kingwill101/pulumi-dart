@@ -58,14 +58,39 @@ class EventSubscription extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     destinations = registerOutput<EventSubscriptionDestinationResponse>(
       'destinations',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventSubscriptionDestinationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     eventSubscriptionId = registerOutput<String>('eventSubscriptionId');
     eventTypeId = registerOutput<String>('eventTypeId');
-    jms = registerOutput<JMSResponse>('jms');
+    jms = registerOutput<JMSResponse>(
+      'jms',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JMSResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    status = registerOutput<EventSubscriptionStatusResponse>('status');
+    status = registerOutput<EventSubscriptionStatusResponse>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventSubscriptionStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     subscriber = registerOutput<String>('subscriber');
     subscriberLink = registerOutput<String>('subscriberLink');
     updateTime = registerOutput<String>('updateTime');

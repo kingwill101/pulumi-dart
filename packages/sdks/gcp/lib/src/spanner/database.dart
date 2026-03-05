@@ -287,6 +287,13 @@ class Database extends pulumi.CustomResource {
     enableDropProtection = registerOutput<bool?>('enableDropProtection');
     encryptionConfig = registerOutput<DatabaseEncryptionConfig?>(
       'encryptionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseEncryptionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     instance = registerOutput<String>('instance');
     this.name = registerOutput<String>('name');
@@ -325,6 +332,13 @@ class Database extends pulumi.CustomResource {
     enableDropProtection = registerOutput<bool?>('enableDropProtection');
     encryptionConfig = registerOutput<DatabaseEncryptionConfig?>(
       'encryptionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseEncryptionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     instance = registerOutput<String>('instance');
     this.name = registerOutput<String>('name');

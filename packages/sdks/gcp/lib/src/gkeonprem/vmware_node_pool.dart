@@ -1160,7 +1160,16 @@ class VMwareNodePool extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
-    config = registerOutput<VMwareNodePoolConfig>('config');
+    config = registerOutput<VMwareNodePoolConfig>(
+      'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VMwareNodePoolConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     displayName = registerOutput<String?>('displayName');
@@ -1172,6 +1181,13 @@ class VMwareNodePool extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     nodePoolAutoscaling = registerOutput<VMwareNodePoolNodePoolAutoscaling?>(
       'nodePoolAutoscaling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VMwareNodePoolNodePoolAutoscaling.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     onPremVersion = registerOutput<String?>('onPremVersion');
     project = registerOutput<String>('project');
@@ -1207,7 +1223,16 @@ class VMwareNodePool extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
-    config = registerOutput<VMwareNodePoolConfig>('config');
+    config = registerOutput<VMwareNodePoolConfig>(
+      'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VMwareNodePoolConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     displayName = registerOutput<String?>('displayName');
@@ -1219,6 +1244,13 @@ class VMwareNodePool extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     nodePoolAutoscaling = registerOutput<VMwareNodePoolNodePoolAutoscaling?>(
       'nodePoolAutoscaling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VMwareNodePoolNodePoolAutoscaling.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     onPremVersion = registerOutput<String?>('onPremVersion');
     project = registerOutput<String>('project');

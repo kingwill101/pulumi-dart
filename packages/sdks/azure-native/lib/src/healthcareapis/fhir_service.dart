@@ -111,32 +111,90 @@ class FhirService extends pulumi.CustomResource {
        ) {
     acrConfiguration = registerOutput<FhirServiceAcrConfigurationResponse?>(
       'acrConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FhirServiceAcrConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     authenticationConfiguration =
         registerOutput<FhirServiceAuthenticationConfigurationResponse?>(
           'authenticationConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FhirServiceAuthenticationConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     corsConfiguration = registerOutput<FhirServiceCorsConfigurationResponse?>(
       'corsConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FhirServiceCorsConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    encryption = registerOutput<EncryptionResponse?>('encryption');
+    encryption = registerOutput<EncryptionResponse?>(
+      'encryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EncryptionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String?>('etag');
     eventState = registerOutput<String>('eventState');
     exportConfiguration =
         registerOutput<FhirServiceExportConfigurationResponse?>(
           'exportConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FhirServiceExportConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     identity = registerOutput<ServiceManagedIdentityResponseIdentity?>(
       'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceManagedIdentityResponseIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     implementationGuidesConfiguration =
         registerOutput<ImplementationGuidesConfigurationResponse?>(
           'implementationGuidesConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ImplementationGuidesConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     importConfiguration =
         registerOutput<FhirServiceImportConfigurationResponse?>(
           'importConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FhirServiceImportConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     kind = registerOutput<String?>('kind');
     location = registerOutput<String?>('location');
@@ -149,8 +207,24 @@ class FhirService extends pulumi.CustomResource {
     resourceVersionPolicyConfiguration =
         registerOutput<ResourceVersionPolicyConfigurationResponse?>(
           'resourceVersionPolicyConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResourceVersionPolicyConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

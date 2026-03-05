@@ -553,7 +553,16 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModule
     customConfig =
         registerOutput<
           ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfig?
-        >('customConfig');
+        >(
+          'customConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     displayName = registerOutput<String?>('displayName');
     enablementState = registerOutput<String?>('enablementState');
     lastEditor = registerOutput<String>('lastEditor');
@@ -590,7 +599,16 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModule
     customConfig =
         registerOutput<
           ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfig?
-        >('customConfig');
+        >(
+          'customConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     displayName = registerOutput<String?>('displayName');
     enablementState = registerOutput<String?>('enablementState');
     lastEditor = registerOutput<String>('lastEditor');

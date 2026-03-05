@@ -1,26 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getInsights.
 class GetInsightsResult {
   /// The App ID associated with this Application Insights component.
   final String appId;
+
   /// The type of the component.
   final String applicationType;
+
   /// The connection string of the Application Insights component. (Sensitive)
   final String connectionString;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The instrumentation key of the Application Insights component.
   final String instrumentationKey;
+
   /// The Azure location where the component exists.
   final String location;
   final String name;
   final String resourceGroupName;
+
   /// The retention period in days.
   final int retentionInDays;
+
   /// Tags applied to the component.
   final Map<String, String> tags;
+
   /// The id of the associated Log Analytics workspace
   final String workspaceId;
 
@@ -82,4 +89,3 @@ class GetInsightsResult {
     );
   }
 }
-

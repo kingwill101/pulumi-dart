@@ -141,7 +141,16 @@ class FrameworkDeployment extends pulumi.CustomResource {
     deploymentState = registerOutput<String>('deploymentState');
     description = registerOutput<String?>('description');
     etag = registerOutput<String>('etag');
-    framework = registerOutput<FrameworkDeploymentFramework>('framework');
+    framework = registerOutput<FrameworkDeploymentFramework>(
+      'framework',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FrameworkDeploymentFramework.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     frameworkDeploymentId = registerOutput<String>('frameworkDeploymentId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -149,6 +158,13 @@ class FrameworkDeployment extends pulumi.CustomResource {
     targetResourceConfig =
         registerOutput<FrameworkDeploymentTargetResourceConfig>(
           'targetResourceConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FrameworkDeploymentTargetResourceConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     targetResourceDisplayName = registerOutput<String>(
       'targetResourceDisplayName',
@@ -191,7 +207,16 @@ class FrameworkDeployment extends pulumi.CustomResource {
     deploymentState = registerOutput<String>('deploymentState');
     description = registerOutput<String?>('description');
     etag = registerOutput<String>('etag');
-    framework = registerOutput<FrameworkDeploymentFramework>('framework');
+    framework = registerOutput<FrameworkDeploymentFramework>(
+      'framework',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FrameworkDeploymentFramework.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     frameworkDeploymentId = registerOutput<String>('frameworkDeploymentId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -199,6 +224,13 @@ class FrameworkDeployment extends pulumi.CustomResource {
     targetResourceConfig =
         registerOutput<FrameworkDeploymentTargetResourceConfig>(
           'targetResourceConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FrameworkDeploymentTargetResourceConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     targetResourceDisplayName = registerOutput<String>(
       'targetResourceDisplayName',

@@ -243,7 +243,16 @@ class Application extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     displayName = registerOutput<String>('displayName');
-    identity = registerOutput<ApplicationIdentity?>('identity');
+    identity = registerOutput<ApplicationIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     publicNetworkAccessEnabled = registerOutput<bool?>(
@@ -280,7 +289,16 @@ class Application extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     displayName = registerOutput<String>('displayName');
-    identity = registerOutput<ApplicationIdentity?>('identity');
+    identity = registerOutput<ApplicationIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     publicNetworkAccessEnabled = registerOutput<bool?>(

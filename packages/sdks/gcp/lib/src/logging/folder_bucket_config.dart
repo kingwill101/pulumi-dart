@@ -236,6 +236,13 @@ class FolderBucketConfig extends pulumi.CustomResource {
     bucketId = registerOutput<String>('bucketId');
     cmekSettings = registerOutput<FolderBucketConfigCmekSettings?>(
       'cmekSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FolderBucketConfigCmekSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String>('description');
     folder = registerOutput<String>('folder');
@@ -272,6 +279,13 @@ class FolderBucketConfig extends pulumi.CustomResource {
     bucketId = registerOutput<String>('bucketId');
     cmekSettings = registerOutput<FolderBucketConfigCmekSettings?>(
       'cmekSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FolderBucketConfigCmekSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String>('description');
     folder = registerOutput<String>('folder');

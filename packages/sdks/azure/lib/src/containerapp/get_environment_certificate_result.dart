@@ -1,22 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getEnvironmentCertificate.
 class GetEnvironmentCertificateResult {
   final String containerAppEnvironmentId;
+
   /// The expiration date for the Certificate.
   final String expirationDate;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The date of issue for the Certificate.
   final String issueDate;
+
   /// The Certificate Issuer.
   final String issuer;
   final String name;
+
   /// The Subject Name for the Certificate.
   final String subjectName;
+
   /// A mapping of tags assigned to the resource.
   final Map<String, String> tags;
+
   /// The Thumbprint of the Certificate.
   final String thumbprint;
 
@@ -70,4 +76,3 @@ class GetEnvironmentCertificateResult {
     );
   }
 }
-

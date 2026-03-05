@@ -217,6 +217,13 @@ class ServerlessCluster extends pulumi.CustomResource {
     clientAuthentication =
         registerOutput<ServerlessClusterClientAuthentication>(
           'clientAuthentication',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ServerlessClusterClientAuthentication.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     clusterName = registerOutput<String>('clusterName');
     clusterUuid = registerOutput<String>('clusterUuid');
@@ -254,6 +261,13 @@ class ServerlessCluster extends pulumi.CustomResource {
     clientAuthentication =
         registerOutput<ServerlessClusterClientAuthentication>(
           'clientAuthentication',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ServerlessClusterClientAuthentication.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     clusterName = registerOutput<String>('clusterName');
     clusterUuid = registerOutput<String>('clusterUuid');

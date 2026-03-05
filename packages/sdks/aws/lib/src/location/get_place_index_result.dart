@@ -7,20 +7,27 @@ import 'get_place_index_data_source_configuration.dart';
 class GetPlaceIndexResult {
   /// Timestamp for when the place index resource was created in ISO 8601 format.
   final String createTime;
+
   /// Data provider of geospatial data.
   final String dataSource;
+
   /// List of configurations that specify data storage option for requesting Places.
   final List<GetPlaceIndexDataSourceConfiguration> dataSourceConfigurations;
+
   /// Optional description for the place index resource.
   final String description;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// ARN for the place index resource.
   final String indexArn;
   final String indexName;
   final String region;
+
   /// Key-value map of resource tags for the place index.
   final Map<String, String> tags;
+
   /// Timestamp for when the place index resource was last updated in ISO 8601 format.
   final String updateTime;
 
@@ -52,7 +59,11 @@ class GetPlaceIndexResult {
     return <String, dynamic>{
       'createTime': createTime,
       'dataSource': dataSource,
-      'dataSourceConfigurations': pulumi.Input.encodeList<GetPlaceIndexDataSourceConfiguration, Map<String, dynamic>>(dataSourceConfigurations, (value) => value.toMap()),
+      'dataSourceConfigurations':
+          pulumi.Input.encodeList<
+            GetPlaceIndexDataSourceConfiguration,
+            Map<String, dynamic>
+          >(dataSourceConfigurations, (value) => value.toMap()),
       'description': description,
       'id': id,
       'indexArn': indexArn,
@@ -67,7 +78,13 @@ class GetPlaceIndexResult {
     return GetPlaceIndexResult(
       createTime: map['createTime'] as String,
       dataSource: map['dataSource'] as String,
-      dataSourceConfigurations: pulumi.Input.decodeList<GetPlaceIndexDataSourceConfiguration>(map['dataSourceConfigurations']!, (value) => GetPlaceIndexDataSourceConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      dataSourceConfigurations:
+          pulumi.Input.decodeList<GetPlaceIndexDataSourceConfiguration>(
+            map['dataSourceConfigurations']!,
+            (value) => GetPlaceIndexDataSourceConfiguration.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       description: map['description'] as String,
       id: map['id'] as String,
       indexArn: map['indexArn'] as String,
@@ -78,4 +95,3 @@ class GetPlaceIndexResult {
     );
   }
 }
-

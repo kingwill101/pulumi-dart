@@ -44,12 +44,26 @@ class Blob extends pulumi.CustomResource {
         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
         options ?? pulumi.CustomResourceOptions(),
       ) {
-    accessTier = registerOutput<BlobAccessTier?>('accessTier');
+    accessTier = registerOutput<BlobAccessTier?>(
+      'accessTier',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BlobAccessTier.fromValue(guardedValue as String);
+      },
+    );
     contentMd5 = registerOutput<String?>('contentMd5');
     contentType = registerOutput<String?>('contentType');
     metadata = registerOutput<Map<String, String>>('metadata');
     this.name = registerOutput<String>('name');
-    type = registerOutput<BlobType>('type');
+    type = registerOutput<BlobType>(
+      'type',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BlobType.fromValue(guardedValue as String);
+      },
+    );
     url = registerOutput<String>('url');
   }
 }

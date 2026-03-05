@@ -1015,6 +1015,13 @@ class MaintenanceWindowTask extends pulumi.CustomResource {
     taskInvocationParameters =
         registerOutput<MaintenanceWindowTaskTaskInvocationParameters?>(
           'taskInvocationParameters',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MaintenanceWindowTaskTaskInvocationParameters.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     taskType = registerOutput<String>('taskType');
     windowId = registerOutput<String>('windowId');
@@ -1058,6 +1065,13 @@ class MaintenanceWindowTask extends pulumi.CustomResource {
     taskInvocationParameters =
         registerOutput<MaintenanceWindowTaskTaskInvocationParameters?>(
           'taskInvocationParameters',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MaintenanceWindowTaskTaskInvocationParameters.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     taskType = registerOutput<String>('taskType');
     windowId = registerOutput<String>('windowId');

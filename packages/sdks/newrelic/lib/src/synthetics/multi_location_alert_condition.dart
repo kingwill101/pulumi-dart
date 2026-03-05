@@ -762,7 +762,16 @@ class MultiLocationAlertCondition extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    critical = registerOutput<MultiLocationAlertConditionCritical>('critical');
+    critical = registerOutput<MultiLocationAlertConditionCritical>(
+      'critical',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MultiLocationAlertConditionCritical.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     enabled = registerOutput<bool?>('enabled');
     entities = registerOutput<List<String>>('entities');
     entityGuid = registerOutput<String>('entityGuid');
@@ -772,7 +781,16 @@ class MultiLocationAlertCondition extends pulumi.CustomResource {
     violationTimeLimitSeconds = registerOutput<int?>(
       'violationTimeLimitSeconds',
     );
-    warning = registerOutput<MultiLocationAlertConditionWarning?>('warning');
+    warning = registerOutput<MultiLocationAlertConditionWarning?>(
+      'warning',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MultiLocationAlertConditionWarning.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [MultiLocationAlertCondition] resource's state with the given [name] and [id].
@@ -798,7 +816,16 @@ class MultiLocationAlertCondition extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    critical = registerOutput<MultiLocationAlertConditionCritical>('critical');
+    critical = registerOutput<MultiLocationAlertConditionCritical>(
+      'critical',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MultiLocationAlertConditionCritical.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     enabled = registerOutput<bool?>('enabled');
     entities = registerOutput<List<String>>('entities');
     entityGuid = registerOutput<String>('entityGuid');
@@ -808,6 +835,15 @@ class MultiLocationAlertCondition extends pulumi.CustomResource {
     violationTimeLimitSeconds = registerOutput<int?>(
       'violationTimeLimitSeconds',
     );
-    warning = registerOutput<MultiLocationAlertConditionWarning?>('warning');
+    warning = registerOutput<MultiLocationAlertConditionWarning?>(
+      'warning',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MultiLocationAlertConditionWarning.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

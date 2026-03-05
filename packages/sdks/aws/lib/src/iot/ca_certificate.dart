@@ -464,6 +464,13 @@ class CaCertificate extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     registrationConfig = registerOutput<CaCertificateRegistrationConfig?>(
       'registrationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CaCertificateRegistrationConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -506,6 +513,13 @@ class CaCertificate extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     registrationConfig = registerOutput<CaCertificateRegistrationConfig?>(
       'registrationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CaCertificateRegistrationConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

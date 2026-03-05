@@ -1307,12 +1307,26 @@ class ManagedCluster extends pulumi.CustomResource {
     applicationTypeVersionsCleanupPolicy =
         registerOutput<ApplicationTypeVersionsCleanupPolicyResponse?>(
           'applicationTypeVersionsCleanupPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ApplicationTypeVersionsCleanupPolicyResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     auxiliarySubnets = registerOutput<List<Map<String, dynamic>>?>(
       'auxiliarySubnets',
     );
     azureActiveDirectory = registerOutput<AzureActiveDirectoryResponse?>(
       'azureActiveDirectory',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AzureActiveDirectoryResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     clientConnectionPort = registerOutput<int?>('clientConnectionPort');
@@ -1361,13 +1375,38 @@ class ManagedCluster extends pulumi.CustomResource {
     serviceEndpoints = registerOutput<List<Map<String, dynamic>>?>(
       'serviceEndpoints',
     );
-    sku = registerOutput<SkuResponse>('sku');
+    sku = registerOutput<SkuResponse>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     subnetId = registerOutput<String?>('subnetId');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     upgradeDescription = registerOutput<ClusterUpgradePolicyResponse?>(
       'upgradeDescription',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterUpgradePolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     useCustomVnet = registerOutput<bool?>('useCustomVnet');
     zonalResiliency = registerOutput<bool?>('zonalResiliency');

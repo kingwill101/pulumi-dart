@@ -38,7 +38,16 @@ class Configuration extends pulumi.CustomResource {
     configurations = registerOutput<List<Map<String, dynamic>>?>(
       'configurations',
     );
-    datastore = registerOutput<ConfigurationDatastore>('datastore');
+    datastore = registerOutput<ConfigurationDatastore>(
+      'datastore',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigurationDatastore.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -70,7 +79,16 @@ class Configuration extends pulumi.CustomResource {
     configurations = registerOutput<List<Map<String, dynamic>>?>(
       'configurations',
     );
-    datastore = registerOutput<ConfigurationDatastore>('datastore');
+    datastore = registerOutput<ConfigurationDatastore>(
+      'datastore',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigurationDatastore.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

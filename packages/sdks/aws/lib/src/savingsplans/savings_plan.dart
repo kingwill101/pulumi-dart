@@ -356,7 +356,16 @@ class SavingsPlan extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     termDurationInSeconds = registerOutput<int>('termDurationInSeconds');
-    timeouts = registerOutput<SavingsPlanTimeouts?>('timeouts');
+    timeouts = registerOutput<SavingsPlanTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SavingsPlanTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     upfrontPaymentAmount = registerOutput<String?>('upfrontPaymentAmount');
   }
 
@@ -404,7 +413,16 @@ class SavingsPlan extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     termDurationInSeconds = registerOutput<int>('termDurationInSeconds');
-    timeouts = registerOutput<SavingsPlanTimeouts?>('timeouts');
+    timeouts = registerOutput<SavingsPlanTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SavingsPlanTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     upfrontPaymentAmount = registerOutput<String?>('upfrontPaymentAmount');
   }
 }

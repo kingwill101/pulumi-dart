@@ -194,6 +194,13 @@ class ConfigurationAssignment extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     filter = registerOutput<ConfigurationAssignmentFilterPropertiesResponse?>(
       'filter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigurationAssignmentFilterPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String?>('location');
     maintenanceConfigurationId = registerOutput<String?>(
@@ -201,7 +208,16 @@ class ConfigurationAssignment extends pulumi.CustomResource {
     );
     this.name = registerOutput<String>('name');
     resourceId = registerOutput<String?>('resourceId');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

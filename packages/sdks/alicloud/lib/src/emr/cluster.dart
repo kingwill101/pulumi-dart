@@ -3396,11 +3396,27 @@ class Cluster extends pulumi.CustomResource {
     isOpenPublicIp = registerOutput<bool?>('isOpenPublicIp');
     keyPairName = registerOutput<String?>('keyPairName');
     masterPwd = registerOutput<String?>('masterPwd');
-    metaStoreConf = registerOutput<ClusterMetaStoreConf?>('metaStoreConf');
+    metaStoreConf = registerOutput<ClusterMetaStoreConf?>(
+      'metaStoreConf',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterMetaStoreConf.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     metaStoreType = registerOutput<String>('metaStoreType');
     modifyClusterServiceConfig =
         registerOutput<ClusterModifyClusterServiceConfig?>(
           'modifyClusterServiceConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ClusterModifyClusterServiceConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     optionSoftwareLists = registerOutput<List<String>?>('optionSoftwareLists');
@@ -3453,11 +3469,27 @@ class Cluster extends pulumi.CustomResource {
     isOpenPublicIp = registerOutput<bool?>('isOpenPublicIp');
     keyPairName = registerOutput<String?>('keyPairName');
     masterPwd = registerOutput<String?>('masterPwd');
-    metaStoreConf = registerOutput<ClusterMetaStoreConf?>('metaStoreConf');
+    metaStoreConf = registerOutput<ClusterMetaStoreConf?>(
+      'metaStoreConf',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterMetaStoreConf.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     metaStoreType = registerOutput<String>('metaStoreType');
     modifyClusterServiceConfig =
         registerOutput<ClusterModifyClusterServiceConfig?>(
           'modifyClusterServiceConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ClusterModifyClusterServiceConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     optionSoftwareLists = registerOutput<List<String>?>('optionSoftwareLists');

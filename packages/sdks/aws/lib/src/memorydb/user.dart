@@ -214,6 +214,13 @@ class User extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     authenticationMode = registerOutput<UserAuthenticationMode>(
       'authenticationMode',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserAuthenticationMode.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     minimumEngineVersion = registerOutput<String>('minimumEngineVersion');
     region = registerOutput<String>('region');
@@ -245,6 +252,13 @@ class User extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     authenticationMode = registerOutput<UserAuthenticationMode>(
       'authenticationMode',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserAuthenticationMode.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     minimumEngineVersion = registerOutput<String>('minimumEngineVersion');
     region = registerOutput<String>('region');

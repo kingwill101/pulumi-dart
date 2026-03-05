@@ -364,6 +364,13 @@ class ConfigurationSet extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     deliveryOptions = registerOutput<ConfigurationSetDeliveryOptions?>(
       'deliveryOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigurationSetDeliveryOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     lastFreshStart = registerOutput<String>('lastFreshStart');
     this.name = registerOutput<String>('name');
@@ -374,6 +381,13 @@ class ConfigurationSet extends pulumi.CustomResource {
     sendingEnabled = registerOutput<bool?>('sendingEnabled');
     trackingOptions = registerOutput<ConfigurationSetTrackingOptions?>(
       'trackingOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigurationSetTrackingOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -403,6 +417,13 @@ class ConfigurationSet extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     deliveryOptions = registerOutput<ConfigurationSetDeliveryOptions?>(
       'deliveryOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigurationSetDeliveryOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     lastFreshStart = registerOutput<String>('lastFreshStart');
     this.name = registerOutput<String>('name');
@@ -413,6 +434,13 @@ class ConfigurationSet extends pulumi.CustomResource {
     sendingEnabled = registerOutput<bool?>('sendingEnabled');
     trackingOptions = registerOutput<ConfigurationSetTrackingOptions?>(
       'trackingOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigurationSetTrackingOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

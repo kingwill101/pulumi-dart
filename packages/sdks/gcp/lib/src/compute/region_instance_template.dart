@@ -197,11 +197,25 @@ class RegionInstanceTemplate extends pulumi.CustomResource {
     advancedMachineFeatures =
         registerOutput<RegionInstanceTemplateAdvancedMachineFeatures?>(
           'advancedMachineFeatures',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RegionInstanceTemplateAdvancedMachineFeatures.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     canIpForward = registerOutput<bool?>('canIpForward');
     confidentialInstanceConfig =
         registerOutput<RegionInstanceTemplateConfidentialInstanceConfig>(
           'confidentialInstanceConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RegionInstanceTemplateConfidentialInstanceConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String?>('description');
@@ -229,6 +243,13 @@ class RegionInstanceTemplate extends pulumi.CustomResource {
     networkPerformanceConfig =
         registerOutput<RegionInstanceTemplateNetworkPerformanceConfig?>(
           'networkPerformanceConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RegionInstanceTemplateNetworkPerformanceConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     numericId = registerOutput<String>('numericId');
     partnerMetadata = registerOutput<Map<String, String>?>('partnerMetadata');
@@ -238,19 +259,49 @@ class RegionInstanceTemplate extends pulumi.CustomResource {
     reservationAffinity =
         registerOutput<RegionInstanceTemplateReservationAffinity?>(
           'reservationAffinity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RegionInstanceTemplateReservationAffinity.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     resourceManagerTags = registerOutput<Map<String, String>?>(
       'resourceManagerTags',
     );
     resourcePolicies = registerOutput<String?>('resourcePolicies');
-    scheduling = registerOutput<RegionInstanceTemplateScheduling>('scheduling');
+    scheduling = registerOutput<RegionInstanceTemplateScheduling>(
+      'scheduling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegionInstanceTemplateScheduling.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     selfLink = registerOutput<String>('selfLink');
     serviceAccount = registerOutput<RegionInstanceTemplateServiceAccount?>(
       'serviceAccount',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegionInstanceTemplateServiceAccount.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     shieldedInstanceConfig =
         registerOutput<RegionInstanceTemplateShieldedInstanceConfig>(
           'shieldedInstanceConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RegionInstanceTemplateShieldedInstanceConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tags = registerOutput<List<String>?>('tags');
     tagsFingerprint = registerOutput<String>('tagsFingerprint');
@@ -282,11 +333,25 @@ class RegionInstanceTemplate extends pulumi.CustomResource {
     advancedMachineFeatures =
         registerOutput<RegionInstanceTemplateAdvancedMachineFeatures?>(
           'advancedMachineFeatures',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RegionInstanceTemplateAdvancedMachineFeatures.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     canIpForward = registerOutput<bool?>('canIpForward');
     confidentialInstanceConfig =
         registerOutput<RegionInstanceTemplateConfidentialInstanceConfig>(
           'confidentialInstanceConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RegionInstanceTemplateConfidentialInstanceConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String?>('description');
@@ -314,6 +379,13 @@ class RegionInstanceTemplate extends pulumi.CustomResource {
     networkPerformanceConfig =
         registerOutput<RegionInstanceTemplateNetworkPerformanceConfig?>(
           'networkPerformanceConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RegionInstanceTemplateNetworkPerformanceConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     numericId = registerOutput<String>('numericId');
     partnerMetadata = registerOutput<Map<String, String>?>('partnerMetadata');
@@ -323,19 +395,49 @@ class RegionInstanceTemplate extends pulumi.CustomResource {
     reservationAffinity =
         registerOutput<RegionInstanceTemplateReservationAffinity?>(
           'reservationAffinity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RegionInstanceTemplateReservationAffinity.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     resourceManagerTags = registerOutput<Map<String, String>?>(
       'resourceManagerTags',
     );
     resourcePolicies = registerOutput<String?>('resourcePolicies');
-    scheduling = registerOutput<RegionInstanceTemplateScheduling>('scheduling');
+    scheduling = registerOutput<RegionInstanceTemplateScheduling>(
+      'scheduling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegionInstanceTemplateScheduling.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     selfLink = registerOutput<String>('selfLink');
     serviceAccount = registerOutput<RegionInstanceTemplateServiceAccount?>(
       'serviceAccount',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegionInstanceTemplateServiceAccount.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     shieldedInstanceConfig =
         registerOutput<RegionInstanceTemplateShieldedInstanceConfig>(
           'shieldedInstanceConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RegionInstanceTemplateShieldedInstanceConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tags = registerOutput<List<String>?>('tags');
     tagsFingerprint = registerOutput<String>('tagsFingerprint');

@@ -1,26 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getManagedHardwareSecurityModuleKey.
 class GetManagedHardwareSecurityModuleKeyResult {
   /// The EC Curve name of this Managed Hardware Security Module Key.
   final String curve;
   final String expirationDate;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of JSON web key operations assigned to this Managed Hardware Security Module Key
   final List<String> keyOpts;
+
   /// Specifies the Size of this Managed Hardware Security Module Key.
   final int keySize;
+
   /// Specifies the Key Type of this Managed Hardware Security Module Key
   final String keyType;
   final String managedHsmId;
   final String name;
   final String notBeforeDate;
+
   /// A mapping of tags assigned to this Managed Hardware Security Module Key.
   final Map<String, String> tags;
+
   /// The current version of the Managed Hardware Security Module Key.
   final String version;
+
   /// The versioned ID of the Managed Hardware Security Module Key.
   final String versionedId;
 
@@ -69,7 +75,9 @@ class GetManagedHardwareSecurityModuleKeyResult {
     };
   }
 
-  factory GetManagedHardwareSecurityModuleKeyResult.fromMap(Map<String, dynamic> map) {
+  factory GetManagedHardwareSecurityModuleKeyResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetManagedHardwareSecurityModuleKeyResult(
       curve: map['curve'] as String,
       expirationDate: map['expirationDate'] as String,
@@ -86,4 +94,3 @@ class GetManagedHardwareSecurityModuleKeyResult {
     );
   }
 }
-

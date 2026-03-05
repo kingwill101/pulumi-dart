@@ -310,6 +310,13 @@ class SecuritySolution extends pulumi.CustomResource {
     recommendationsEnabled =
         registerOutput<SecuritySolutionRecommendationsEnabled>(
           'recommendationsEnabled',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SecuritySolutionRecommendationsEnabled.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -357,6 +364,13 @@ class SecuritySolution extends pulumi.CustomResource {
     recommendationsEnabled =
         registerOutput<SecuritySolutionRecommendationsEnabled>(
           'recommendationsEnabled',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SecuritySolutionRecommendationsEnabled.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');

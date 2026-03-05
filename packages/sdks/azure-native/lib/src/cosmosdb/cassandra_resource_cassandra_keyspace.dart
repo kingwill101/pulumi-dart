@@ -213,9 +213,23 @@ class CassandraResourceCassandraKeyspace extends pulumi.CustomResource {
     this.options =
         registerOutput<CassandraKeyspaceGetPropertiesResponseOptions?>(
           'options',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CassandraKeyspaceGetPropertiesResponseOptions.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     resource = registerOutput<CassandraKeyspaceGetPropertiesResponseResource?>(
       'resource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CassandraKeyspaceGetPropertiesResponseResource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

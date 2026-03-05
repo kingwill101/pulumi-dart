@@ -363,6 +363,13 @@ class StreamInputIotHub extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     serialization = registerOutput<StreamInputIotHubSerialization>(
       'serialization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StreamInputIotHubSerialization.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sharedAccessPolicyKey = registerOutput<String>('sharedAccessPolicyKey');
     sharedAccessPolicyName = registerOutput<String>('sharedAccessPolicyName');
@@ -401,6 +408,13 @@ class StreamInputIotHub extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     serialization = registerOutput<StreamInputIotHubSerialization>(
       'serialization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StreamInputIotHubSerialization.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sharedAccessPolicyKey = registerOutput<String>('sharedAccessPolicyKey');
     sharedAccessPolicyName = registerOutput<String>('sharedAccessPolicyName');

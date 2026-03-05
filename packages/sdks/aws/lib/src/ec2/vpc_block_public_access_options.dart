@@ -135,7 +135,16 @@ class VpcBlockPublicAccessOptions extends pulumi.CustomResource {
       'internetGatewayBlockMode',
     );
     region = registerOutput<String>('region');
-    timeouts = registerOutput<VpcBlockPublicAccessOptionsTimeouts?>('timeouts');
+    timeouts = registerOutput<VpcBlockPublicAccessOptionsTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpcBlockPublicAccessOptionsTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [VpcBlockPublicAccessOptions] resource's state with the given [name] and [id].
@@ -167,6 +176,15 @@ class VpcBlockPublicAccessOptions extends pulumi.CustomResource {
       'internetGatewayBlockMode',
     );
     region = registerOutput<String>('region');
-    timeouts = registerOutput<VpcBlockPublicAccessOptionsTimeouts?>('timeouts');
+    timeouts = registerOutput<VpcBlockPublicAccessOptionsTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpcBlockPublicAccessOptionsTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

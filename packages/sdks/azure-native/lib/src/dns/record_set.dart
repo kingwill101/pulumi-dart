@@ -2736,7 +2736,16 @@ class RecordSet extends pulumi.CustomResource {
     aaaaRecords = registerOutput<List<Map<String, dynamic>>?>('aaaaRecords');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     caaRecords = registerOutput<List<Map<String, dynamic>>?>('caaRecords');
-    cnameRecord = registerOutput<CnameRecordResponse?>('cnameRecord');
+    cnameRecord = registerOutput<CnameRecordResponse?>(
+      'cnameRecord',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CnameRecordResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dsRecords = registerOutput<List<Map<String, dynamic>>?>('dsRecords');
     etag = registerOutput<String?>('etag');
     fqdn = registerOutput<String>('fqdn');
@@ -2747,13 +2756,47 @@ class RecordSet extends pulumi.CustomResource {
     nsRecords = registerOutput<List<Map<String, dynamic>>?>('nsRecords');
     provisioningState = registerOutput<String>('provisioningState');
     ptrRecords = registerOutput<List<Map<String, dynamic>>?>('ptrRecords');
-    soaRecord = registerOutput<SoaRecordResponse?>('soaRecord');
+    soaRecord = registerOutput<SoaRecordResponse?>(
+      'soaRecord',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SoaRecordResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     srvRecords = registerOutput<List<Map<String, dynamic>>?>('srvRecords');
-    systemData = registerOutput<SystemDataResponse>('systemData');
-    targetResource = registerOutput<SubResourceResponse?>('targetResource');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    targetResource = registerOutput<SubResourceResponse?>(
+      'targetResource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tlsaRecords = registerOutput<List<Map<String, dynamic>>?>('tlsaRecords');
     trafficManagementProfile = registerOutput<SubResourceResponse?>(
       'trafficManagementProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     ttl = registerOutput<double?>('ttl');
     txtRecords = registerOutput<List<Map<String, dynamic>>?>('txtRecords');

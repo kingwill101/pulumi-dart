@@ -73,18 +73,61 @@ class NGroup extends pulumi.CustomResource {
     containerGroupProfiles = registerOutput<List<Map<String, dynamic>>?>(
       'containerGroupProfiles',
     );
-    elasticProfile = registerOutput<ElasticProfileResponse?>('elasticProfile');
-    identity = registerOutput<NGroupIdentityResponse?>('identity');
+    elasticProfile = registerOutput<ElasticProfileResponse?>(
+      'elasticProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ElasticProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    identity = registerOutput<NGroupIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NGroupIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     placementProfile = registerOutput<PlacementProfileResponse?>(
       'placementProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PlacementProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    updateProfile = registerOutput<UpdateProfileResponse?>('updateProfile');
+    updateProfile = registerOutput<UpdateProfileResponse?>(
+      'updateProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UpdateProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     zones = registerOutput<List<String>?>('zones');
   }
 }

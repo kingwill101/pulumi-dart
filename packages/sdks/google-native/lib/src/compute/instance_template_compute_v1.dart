@@ -58,6 +58,13 @@ class InstanceTemplateComputeV1 extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     properties = registerOutput<InstancePropertiesResponseComputeV1>(
       'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstancePropertiesResponseComputeV1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     requestId = registerOutput<String?>('requestId');
@@ -66,6 +73,13 @@ class InstanceTemplateComputeV1 extends pulumi.CustomResource {
     sourceInstanceParams =
         registerOutput<SourceInstanceParamsResponseComputeV1>(
           'sourceInstanceParams',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SourceInstanceParamsResponseComputeV1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

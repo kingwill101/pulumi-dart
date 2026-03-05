@@ -338,6 +338,13 @@ class HostPool extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     scheduledAgentUpdates = registerOutput<HostPoolScheduledAgentUpdates?>(
       'scheduledAgentUpdates',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HostPoolScheduledAgentUpdates.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     startVmOnConnect = registerOutput<bool?>('startVmOnConnect');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -384,6 +391,13 @@ class HostPool extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     scheduledAgentUpdates = registerOutput<HostPoolScheduledAgentUpdates?>(
       'scheduledAgentUpdates',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HostPoolScheduledAgentUpdates.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     startVmOnConnect = registerOutput<bool?>('startVmOnConnect');
     tags = registerOutput<Map<String, String>?>('tags');

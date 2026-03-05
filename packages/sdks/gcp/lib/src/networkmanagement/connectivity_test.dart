@@ -1094,7 +1094,16 @@ class ConnectivityTest extends pulumi.CustomResource {
        ) {
     bypassFirewallChecks = registerOutput<bool?>('bypassFirewallChecks');
     description = registerOutput<String?>('description');
-    destination = registerOutput<ConnectivityTestDestination>('destination');
+    destination = registerOutput<ConnectivityTestDestination>(
+      'destination',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectivityTestDestination.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
@@ -1103,7 +1112,16 @@ class ConnectivityTest extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     relatedProjects = registerOutput<List<String>?>('relatedProjects');
     roundTrip = registerOutput<bool?>('roundTrip');
-    source = registerOutput<ConnectivityTestSource>('source');
+    source = registerOutput<ConnectivityTestSource>(
+      'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectivityTestSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [ConnectivityTest] resource's state with the given [name] and [id].
@@ -1131,7 +1149,16 @@ class ConnectivityTest extends pulumi.CustomResource {
        ) {
     bypassFirewallChecks = registerOutput<bool?>('bypassFirewallChecks');
     description = registerOutput<String?>('description');
-    destination = registerOutput<ConnectivityTestDestination>('destination');
+    destination = registerOutput<ConnectivityTestDestination>(
+      'destination',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectivityTestDestination.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
@@ -1140,6 +1167,15 @@ class ConnectivityTest extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     relatedProjects = registerOutput<List<String>?>('relatedProjects');
     roundTrip = registerOutput<bool?>('roundTrip');
-    source = registerOutput<ConnectivityTestSource>('source');
+    source = registerOutput<ConnectivityTestSource>(
+      'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectivityTestSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

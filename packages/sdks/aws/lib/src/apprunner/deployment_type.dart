@@ -122,7 +122,16 @@ class DeploymentType extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     serviceArn = registerOutput<String>('serviceArn');
     status = registerOutput<String>('status');
-    timeouts = registerOutput<DeploymentTimeouts?>('timeouts');
+    timeouts = registerOutput<DeploymentTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [DeploymentType] resource's state with the given [name] and [id].
@@ -152,6 +161,15 @@ class DeploymentType extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     serviceArn = registerOutput<String>('serviceArn');
     status = registerOutput<String>('status');
-    timeouts = registerOutput<DeploymentTimeouts?>('timeouts');
+    timeouts = registerOutput<DeploymentTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

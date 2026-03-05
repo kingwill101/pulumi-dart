@@ -76,7 +76,16 @@ class Automation extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');
     rules = registerOutput<List<Map<String, dynamic>>>('rules');
-    selector = registerOutput<AutomationResourceSelectorResponse>('selector');
+    selector = registerOutput<AutomationResourceSelectorResponse>(
+      'selector',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AutomationResourceSelectorResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     serviceAccount = registerOutput<String>('serviceAccount');
     suspended = registerOutput<bool>('suspended');
     uid = registerOutput<String>('uid');

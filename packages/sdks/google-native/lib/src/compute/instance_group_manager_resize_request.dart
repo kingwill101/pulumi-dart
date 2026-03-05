@@ -70,10 +70,26 @@ class InstanceGroupManagerResizeRequest extends pulumi.CustomResource {
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    queuingPolicy = registerOutput<QueuingPolicyResponse>('queuingPolicy');
+    queuingPolicy = registerOutput<QueuingPolicyResponse>(
+      'queuingPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return QueuingPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     requestId = registerOutput<String?>('requestId');
     requestedRunDuration = registerOutput<DurationResponse>(
       'requestedRunDuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     resizeBy = registerOutput<int>('resizeBy');
     selfLink = registerOutput<String>('selfLink');
@@ -81,6 +97,13 @@ class InstanceGroupManagerResizeRequest extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     status = registerOutput<InstanceGroupManagerResizeRequestStatusResponse>(
       'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceGroupManagerResizeRequestStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     zone = registerOutput<String>('zone');
   }

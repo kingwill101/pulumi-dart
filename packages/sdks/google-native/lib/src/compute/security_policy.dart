@@ -91,19 +91,47 @@ class SecurityPolicy extends pulumi.CustomResource {
     adaptiveProtectionConfig =
         registerOutput<SecurityPolicyAdaptiveProtectionConfigResponse>(
           'adaptiveProtectionConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SecurityPolicyAdaptiveProtectionConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     advancedOptionsConfig =
         registerOutput<SecurityPolicyAdvancedOptionsConfigResponse>(
           'advancedOptionsConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SecurityPolicyAdvancedOptionsConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     associations = registerOutput<List<Map<String, dynamic>>>('associations');
     cloudArmorConfig = registerOutput<SecurityPolicyCloudArmorConfigResponse>(
       'cloudArmorConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityPolicyCloudArmorConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     creationTimestamp = registerOutput<String>('creationTimestamp');
     ddosProtectionConfig =
         registerOutput<SecurityPolicyDdosProtectionConfigResponse>(
           'ddosProtectionConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SecurityPolicyDdosProtectionConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
@@ -117,6 +145,13 @@ class SecurityPolicy extends pulumi.CustomResource {
     recaptchaOptionsConfig =
         registerOutput<SecurityPolicyRecaptchaOptionsConfigResponse>(
           'recaptchaOptionsConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SecurityPolicyRecaptchaOptionsConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     requestId = registerOutput<String?>('requestId');

@@ -247,7 +247,16 @@ class Pool extends pulumi.CustomResource {
     listenerId = registerOutput<String?>('listenerId');
     loadbalancerId = registerOutput<String?>('loadbalancerId');
     this.name = registerOutput<String>('name');
-    persistence = registerOutput<PoolPersistence?>('persistence');
+    persistence = registerOutput<PoolPersistence?>(
+      'persistence',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PoolPersistence.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     protocol = registerOutput<String>('protocol');
     region = registerOutput<String>('region');
     tags = registerOutput<List<String>?>('tags');
@@ -286,7 +295,16 @@ class Pool extends pulumi.CustomResource {
     listenerId = registerOutput<String?>('listenerId');
     loadbalancerId = registerOutput<String?>('loadbalancerId');
     this.name = registerOutput<String>('name');
-    persistence = registerOutput<PoolPersistence?>('persistence');
+    persistence = registerOutput<PoolPersistence?>(
+      'persistence',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PoolPersistence.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     protocol = registerOutput<String>('protocol');
     region = registerOutput<String>('region');
     tags = registerOutput<List<String>?>('tags');

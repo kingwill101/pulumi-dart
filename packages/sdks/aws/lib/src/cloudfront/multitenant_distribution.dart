@@ -603,6 +603,13 @@ class MultitenantDistribution extends pulumi.CustomResource {
     defaultCacheBehavior =
         registerOutput<MultitenantDistributionDefaultCacheBehavior>(
           'defaultCacheBehavior',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MultitenantDistributionDefaultCacheBehavior.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     defaultRootObject = registerOutput<String?>('defaultRootObject');
     domainName = registerOutput<String>('domainName');
@@ -617,17 +624,47 @@ class MultitenantDistribution extends pulumi.CustomResource {
     origins = registerOutput<List<Map<String, dynamic>>?>('origins');
     restrictions = registerOutput<MultitenantDistributionRestrictions?>(
       'restrictions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MultitenantDistributionRestrictions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     tenantConfig = registerOutput<MultitenantDistributionTenantConfig>(
       'tenantConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MultitenantDistributionTenantConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    timeouts = registerOutput<MultitenantDistributionTimeouts?>('timeouts');
+    timeouts = registerOutput<MultitenantDistributionTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MultitenantDistributionTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     viewerCertificate =
         registerOutput<MultitenantDistributionViewerCertificate>(
           'viewerCertificate',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MultitenantDistributionViewerCertificate.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     webAclId = registerOutput<String?>('webAclId');
   }
@@ -671,6 +708,13 @@ class MultitenantDistribution extends pulumi.CustomResource {
     defaultCacheBehavior =
         registerOutput<MultitenantDistributionDefaultCacheBehavior>(
           'defaultCacheBehavior',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MultitenantDistributionDefaultCacheBehavior.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     defaultRootObject = registerOutput<String?>('defaultRootObject');
     domainName = registerOutput<String>('domainName');
@@ -685,17 +729,47 @@ class MultitenantDistribution extends pulumi.CustomResource {
     origins = registerOutput<List<Map<String, dynamic>>?>('origins');
     restrictions = registerOutput<MultitenantDistributionRestrictions?>(
       'restrictions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MultitenantDistributionRestrictions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     tenantConfig = registerOutput<MultitenantDistributionTenantConfig>(
       'tenantConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MultitenantDistributionTenantConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    timeouts = registerOutput<MultitenantDistributionTimeouts?>('timeouts');
+    timeouts = registerOutput<MultitenantDistributionTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MultitenantDistributionTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     viewerCertificate =
         registerOutput<MultitenantDistributionViewerCertificate>(
           'viewerCertificate',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MultitenantDistributionViewerCertificate.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     webAclId = registerOutput<String?>('webAclId');
   }

@@ -1025,7 +1025,16 @@ class FunctionApp extends pulumi.CustomResource {
        ) {
     appServicePlanId = registerOutput<String>('appServicePlanId');
     appSettings = registerOutput<Map<String, String>>('appSettings');
-    authSettings = registerOutput<FunctionAppAuthSettings>('authSettings');
+    authSettings = registerOutput<FunctionAppAuthSettings>(
+      'authSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionAppAuthSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     clientCertMode = registerOutput<String?>('clientCertMode');
     connectionStrings = registerOutput<List<Map<String, dynamic>>>(
       'connectionStrings',
@@ -1038,7 +1047,16 @@ class FunctionApp extends pulumi.CustomResource {
     enableBuiltinLogging = registerOutput<bool?>('enableBuiltinLogging');
     enabled = registerOutput<bool?>('enabled');
     httpsOnly = registerOutput<bool?>('httpsOnly');
-    identity = registerOutput<FunctionAppIdentity?>('identity');
+    identity = registerOutput<FunctionAppIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionAppIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     keyVaultReferenceIdentityId = registerOutput<String>(
       'keyVaultReferenceIdentityId',
     );
@@ -1051,11 +1069,29 @@ class FunctionApp extends pulumi.CustomResource {
       'possibleOutboundIpAddresses',
     );
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    siteConfig = registerOutput<FunctionAppSiteConfig>('siteConfig');
+    siteConfig = registerOutput<FunctionAppSiteConfig>(
+      'siteConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionAppSiteConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     siteCredentials = registerOutput<List<Map<String, dynamic>>>(
       'siteCredentials',
     );
-    sourceControl = registerOutput<FunctionAppSourceControl>('sourceControl');
+    sourceControl = registerOutput<FunctionAppSourceControl>(
+      'sourceControl',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionAppSourceControl.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     storageAccountAccessKey = registerOutput<String>('storageAccountAccessKey');
     storageAccountName = registerOutput<String>('storageAccountName');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -1087,7 +1123,16 @@ class FunctionApp extends pulumi.CustomResource {
        ) {
     appServicePlanId = registerOutput<String>('appServicePlanId');
     appSettings = registerOutput<Map<String, String>>('appSettings');
-    authSettings = registerOutput<FunctionAppAuthSettings>('authSettings');
+    authSettings = registerOutput<FunctionAppAuthSettings>(
+      'authSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionAppAuthSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     clientCertMode = registerOutput<String?>('clientCertMode');
     connectionStrings = registerOutput<List<Map<String, dynamic>>>(
       'connectionStrings',
@@ -1100,7 +1145,16 @@ class FunctionApp extends pulumi.CustomResource {
     enableBuiltinLogging = registerOutput<bool?>('enableBuiltinLogging');
     enabled = registerOutput<bool?>('enabled');
     httpsOnly = registerOutput<bool?>('httpsOnly');
-    identity = registerOutput<FunctionAppIdentity?>('identity');
+    identity = registerOutput<FunctionAppIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionAppIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     keyVaultReferenceIdentityId = registerOutput<String>(
       'keyVaultReferenceIdentityId',
     );
@@ -1113,11 +1167,29 @@ class FunctionApp extends pulumi.CustomResource {
       'possibleOutboundIpAddresses',
     );
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    siteConfig = registerOutput<FunctionAppSiteConfig>('siteConfig');
+    siteConfig = registerOutput<FunctionAppSiteConfig>(
+      'siteConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionAppSiteConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     siteCredentials = registerOutput<List<Map<String, dynamic>>>(
       'siteCredentials',
     );
-    sourceControl = registerOutput<FunctionAppSourceControl>('sourceControl');
+    sourceControl = registerOutput<FunctionAppSourceControl>(
+      'sourceControl',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionAppSourceControl.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     storageAccountAccessKey = registerOutput<String>('storageAccountAccessKey');
     storageAccountName = registerOutput<String>('storageAccountName');
     tags = registerOutput<Map<String, String>?>('tags');

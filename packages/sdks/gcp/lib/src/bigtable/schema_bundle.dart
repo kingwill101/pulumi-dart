@@ -363,7 +363,16 @@ class SchemaBundle extends pulumi.CustomResource {
     instance = registerOutput<String?>('instance');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    protoSchema = registerOutput<SchemaBundleProtoSchema>('protoSchema');
+    protoSchema = registerOutput<SchemaBundleProtoSchema>(
+      'protoSchema',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SchemaBundleProtoSchema.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     schemaBundleId = registerOutput<String>('schemaBundleId');
     table = registerOutput<String?>('table');
   }
@@ -396,7 +405,16 @@ class SchemaBundle extends pulumi.CustomResource {
     instance = registerOutput<String?>('instance');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    protoSchema = registerOutput<SchemaBundleProtoSchema>('protoSchema');
+    protoSchema = registerOutput<SchemaBundleProtoSchema>(
+      'protoSchema',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SchemaBundleProtoSchema.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     schemaBundleId = registerOutput<String>('schemaBundleId');
     table = registerOutput<String?>('table');
   }

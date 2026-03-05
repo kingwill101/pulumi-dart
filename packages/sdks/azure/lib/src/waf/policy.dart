@@ -734,10 +734,28 @@ class Policy extends pulumi.CustomResource {
     customRules = registerOutput<List<Map<String, dynamic>>?>('customRules');
     httpListenerIds = registerOutput<List<String>>('httpListenerIds');
     location = registerOutput<String>('location');
-    managedRules = registerOutput<PolicyManagedRules>('managedRules');
+    managedRules = registerOutput<PolicyManagedRules>(
+      'managedRules',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyManagedRules.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     pathBasedRuleIds = registerOutput<List<String>>('pathBasedRuleIds');
-    policySettings = registerOutput<PolicyPolicySettings?>('policySettings');
+    policySettings = registerOutput<PolicyPolicySettings?>(
+      'policySettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyPolicySettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
   }
@@ -768,10 +786,28 @@ class Policy extends pulumi.CustomResource {
     customRules = registerOutput<List<Map<String, dynamic>>?>('customRules');
     httpListenerIds = registerOutput<List<String>>('httpListenerIds');
     location = registerOutput<String>('location');
-    managedRules = registerOutput<PolicyManagedRules>('managedRules');
+    managedRules = registerOutput<PolicyManagedRules>(
+      'managedRules',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyManagedRules.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     pathBasedRuleIds = registerOutput<List<String>>('pathBasedRuleIds');
-    policySettings = registerOutput<PolicyPolicySettings?>('policySettings');
+    policySettings = registerOutput<PolicyPolicySettings?>(
+      'policySettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyPolicySettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
   }

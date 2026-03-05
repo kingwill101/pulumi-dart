@@ -250,6 +250,13 @@ class VirtualMachineScaleSetVMExtension extends pulumi.CustomResource {
     forceUpdateTag = registerOutput<String?>('forceUpdateTag');
     instanceView = registerOutput<VirtualMachineExtensionInstanceViewResponse?>(
       'instanceView',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualMachineExtensionInstanceViewResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
@@ -257,6 +264,13 @@ class VirtualMachineScaleSetVMExtension extends pulumi.CustomResource {
     protectedSettingsFromKeyVault =
         registerOutput<KeyVaultSecretReferenceResponse?>(
           'protectedSettingsFromKeyVault',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return KeyVaultSecretReferenceResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     provisionAfterExtensions = registerOutput<List<String>?>(
       'provisionAfterExtensions',

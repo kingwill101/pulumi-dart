@@ -47,6 +47,13 @@ class RegionNotificationEndpointComputeBeta extends pulumi.CustomResource {
     grpcSettings =
         registerOutput<NotificationEndpointGrpcSettingsResponseComputeBeta>(
           'grpcSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NotificationEndpointGrpcSettingsResponseComputeBeta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');

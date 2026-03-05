@@ -33,7 +33,8 @@ Future<GetDataConnectorResult> getDataConnector(
 /// Uses Azure REST API version 2023-06-01-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_agfoodplatform_get_data_manager_for_agriculture_resource_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDataManagerForAgricultureResourceResult> getDataManagerForAgricultureResource(
+Future<GetDataManagerForAgricultureResourceResult>
+getDataManagerForAgricultureResource(
   GetDataManagerForAgricultureResourceArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

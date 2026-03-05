@@ -1,20 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getEnterpriseDatabase.
 class GetEnterpriseDatabaseResult {
   /// The Redis Enterprise Cluster ID that is hosting the Redis Enterprise Database.
   final String clusterId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The Linked Database Group Nickname for the Redis Enterprise Database instance.
   final String linkedDatabaseGroupNickname;
+
   /// The Linked Database list for the Redis Enterprise Database instance.
   final List<String> linkedDatabaseIds;
+
   /// The Redis Enterprise Database name.
   final String name;
+
   /// The Primary Access Key for the Redis Enterprise Database instance.
   final String primaryAccessKey;
+
   /// The Secondary Access Key for the Redis Enterprise Database instance.
   final String secondaryAccessKey;
 
@@ -60,4 +65,3 @@ class GetEnterpriseDatabaseResult {
     );
   }
 }
-

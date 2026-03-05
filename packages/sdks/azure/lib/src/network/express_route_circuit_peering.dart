@@ -745,10 +745,26 @@ class ExpressRouteCircuitPeering extends pulumi.CustomResource {
     expressRouteCircuitName = registerOutput<String>('expressRouteCircuitName');
     gatewayManagerEtag = registerOutput<String>('gatewayManagerEtag');
     ipv4Enabled = registerOutput<bool?>('ipv4Enabled');
-    ipv6 = registerOutput<ExpressRouteCircuitPeeringIpv6?>('ipv6');
+    ipv6 = registerOutput<ExpressRouteCircuitPeeringIpv6?>(
+      'ipv6',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExpressRouteCircuitPeeringIpv6.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     microsoftPeeringConfig =
         registerOutput<ExpressRouteCircuitPeeringMicrosoftPeeringConfig?>(
           'microsoftPeeringConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ExpressRouteCircuitPeeringMicrosoftPeeringConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     peerAsn = registerOutput<int>('peerAsn');
     peeringType = registerOutput<String>('peeringType');
@@ -793,10 +809,26 @@ class ExpressRouteCircuitPeering extends pulumi.CustomResource {
     expressRouteCircuitName = registerOutput<String>('expressRouteCircuitName');
     gatewayManagerEtag = registerOutput<String>('gatewayManagerEtag');
     ipv4Enabled = registerOutput<bool?>('ipv4Enabled');
-    ipv6 = registerOutput<ExpressRouteCircuitPeeringIpv6?>('ipv6');
+    ipv6 = registerOutput<ExpressRouteCircuitPeeringIpv6?>(
+      'ipv6',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExpressRouteCircuitPeeringIpv6.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     microsoftPeeringConfig =
         registerOutput<ExpressRouteCircuitPeeringMicrosoftPeeringConfig?>(
           'microsoftPeeringConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ExpressRouteCircuitPeeringMicrosoftPeeringConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     peerAsn = registerOutput<int>('peerAsn');
     peeringType = registerOutput<String>('peeringType');

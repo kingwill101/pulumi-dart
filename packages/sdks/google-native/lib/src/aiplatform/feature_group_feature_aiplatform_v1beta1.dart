@@ -75,7 +75,16 @@ class FeatureGroupFeatureAiplatformV1beta1 extends pulumi.CustomResource {
     monitoringConfig =
         registerOutput<
           GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigResponse
-        >('monitoringConfig');
+        >(
+          'monitoringConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     monitoringStats = registerOutput<List<Map<String, dynamic>>>(
       'monitoringStats',
     );

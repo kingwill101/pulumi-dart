@@ -263,6 +263,13 @@ class ApiDestination extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     httpApiParameters = registerOutput<ApiDestinationHttpApiParameters>(
       'httpApiParameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiDestinationHttpApiParameters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -295,6 +302,13 @@ class ApiDestination extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     httpApiParameters = registerOutput<ApiDestinationHttpApiParameters>(
       'httpApiParameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiDestinationHttpApiParameters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

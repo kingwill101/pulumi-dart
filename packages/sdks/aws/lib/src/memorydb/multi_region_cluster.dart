@@ -267,7 +267,16 @@ class MultiRegionCluster extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<MultiRegionClusterTimeouts?>('timeouts');
+    timeouts = registerOutput<MultiRegionClusterTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MultiRegionClusterTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tlsEnabled = registerOutput<bool>('tlsEnabled');
     updateStrategy = registerOutput<String?>('updateStrategy');
   }
@@ -312,7 +321,16 @@ class MultiRegionCluster extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<MultiRegionClusterTimeouts?>('timeouts');
+    timeouts = registerOutput<MultiRegionClusterTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MultiRegionClusterTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tlsEnabled = registerOutput<bool>('tlsEnabled');
     updateStrategy = registerOutput<String?>('updateStrategy');
   }

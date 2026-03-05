@@ -649,7 +649,16 @@ class NodePool extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    autoscaling = registerOutput<NodePoolAutoscaling?>('autoscaling');
+    autoscaling = registerOutput<NodePoolAutoscaling?>(
+      'autoscaling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolAutoscaling.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     cluster = registerOutput<String>('cluster');
     initialNodeCount = registerOutput<int>('initialNodeCount');
     instanceGroupUrls = registerOutput<List<String>>('instanceGroupUrls');
@@ -657,12 +666,39 @@ class NodePool extends pulumi.CustomResource {
     managedInstanceGroupUrls = registerOutput<List<String>>(
       'managedInstanceGroupUrls',
     );
-    management = registerOutput<NodePoolManagement>('management');
+    management = registerOutput<NodePoolManagement>(
+      'management',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolManagement.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     maxPodsPerNode = registerOutput<int>('maxPodsPerNode');
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
-    networkConfig = registerOutput<NodePoolNetworkConfig>('networkConfig');
-    nodeConfig = registerOutput<NodePoolNodeConfig>('nodeConfig');
+    networkConfig = registerOutput<NodePoolNetworkConfig>(
+      'networkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolNetworkConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    nodeConfig = registerOutput<NodePoolNodeConfig>(
+      'nodeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolNodeConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     nodeCount = registerOutput<int>('nodeCount');
     nodeDrainConfigs = registerOutput<List<Map<String, dynamic>>>(
       'nodeDrainConfigs',
@@ -671,13 +707,34 @@ class NodePool extends pulumi.CustomResource {
     operation = registerOutput<String>('operation');
     placementPolicy = registerOutput<NodePoolPlacementPolicy?>(
       'placementPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolPlacementPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     queuedProvisioning = registerOutput<NodePoolQueuedProvisioning?>(
       'queuedProvisioning',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolQueuedProvisioning.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     upgradeSettings = registerOutput<NodePoolUpgradeSettings>(
       'upgradeSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolUpgradeSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     version = registerOutput<String>('version');
   }
@@ -705,7 +762,16 @@ class NodePool extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    autoscaling = registerOutput<NodePoolAutoscaling?>('autoscaling');
+    autoscaling = registerOutput<NodePoolAutoscaling?>(
+      'autoscaling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolAutoscaling.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     cluster = registerOutput<String>('cluster');
     initialNodeCount = registerOutput<int>('initialNodeCount');
     instanceGroupUrls = registerOutput<List<String>>('instanceGroupUrls');
@@ -713,12 +779,39 @@ class NodePool extends pulumi.CustomResource {
     managedInstanceGroupUrls = registerOutput<List<String>>(
       'managedInstanceGroupUrls',
     );
-    management = registerOutput<NodePoolManagement>('management');
+    management = registerOutput<NodePoolManagement>(
+      'management',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolManagement.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     maxPodsPerNode = registerOutput<int>('maxPodsPerNode');
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
-    networkConfig = registerOutput<NodePoolNetworkConfig>('networkConfig');
-    nodeConfig = registerOutput<NodePoolNodeConfig>('nodeConfig');
+    networkConfig = registerOutput<NodePoolNetworkConfig>(
+      'networkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolNetworkConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    nodeConfig = registerOutput<NodePoolNodeConfig>(
+      'nodeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolNodeConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     nodeCount = registerOutput<int>('nodeCount');
     nodeDrainConfigs = registerOutput<List<Map<String, dynamic>>>(
       'nodeDrainConfigs',
@@ -727,13 +820,34 @@ class NodePool extends pulumi.CustomResource {
     operation = registerOutput<String>('operation');
     placementPolicy = registerOutput<NodePoolPlacementPolicy?>(
       'placementPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolPlacementPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     queuedProvisioning = registerOutput<NodePoolQueuedProvisioning?>(
       'queuedProvisioning',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolQueuedProvisioning.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     upgradeSettings = registerOutput<NodePoolUpgradeSettings>(
       'upgradeSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolUpgradeSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     version = registerOutput<String>('version');
   }

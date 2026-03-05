@@ -51,6 +51,13 @@ class NodeGroupDataprocV1 extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     nodeGroupConfig = registerOutput<InstanceGroupConfigResponse>(
       'nodeGroupConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceGroupConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     nodeGroupId = registerOutput<String?>('nodeGroupId');
     parentOperationId = registerOutput<String?>('parentOperationId');

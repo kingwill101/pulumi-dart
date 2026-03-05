@@ -9,7 +9,8 @@ import 'get_secret_sync_result.dart';
 /// Uses Azure REST API version 2024-08-21-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_secretsynccontroller_get_azure_key_vault_secret_provider_class_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetAzureKeyVaultSecretProviderClassResult> getAzureKeyVaultSecretProviderClass(
+Future<GetAzureKeyVaultSecretProviderClassResult>
+getAzureKeyVaultSecretProviderClass(
   GetAzureKeyVaultSecretProviderClassArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

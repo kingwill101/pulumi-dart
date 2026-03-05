@@ -1562,7 +1562,16 @@ class FhirStore extends pulumi.CustomResource {
     complexDataTypeReferenceParsing = registerOutput<String>(
       'complexDataTypeReferenceParsing',
     );
-    consentConfig = registerOutput<FhirStoreConsentConfig?>('consentConfig');
+    consentConfig = registerOutput<FhirStoreConsentConfig?>(
+      'consentConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FhirStoreConsentConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dataset = registerOutput<String>('dataset');
     defaultSearchHandlingStrict = registerOutput<bool?>(
       'defaultSearchHandlingStrict',
@@ -1583,6 +1592,13 @@ class FhirStore extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     notificationConfig = registerOutput<FhirStoreNotificationConfig?>(
       'notificationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FhirStoreNotificationConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     notificationConfigs = registerOutput<List<Map<String, dynamic>>?>(
       'notificationConfigs',
@@ -1594,6 +1610,13 @@ class FhirStore extends pulumi.CustomResource {
     );
     validationConfig = registerOutput<FhirStoreValidationConfig?>(
       'validationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FhirStoreValidationConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     version = registerOutput<String?>('version');
   }
@@ -1624,7 +1647,16 @@ class FhirStore extends pulumi.CustomResource {
     complexDataTypeReferenceParsing = registerOutput<String>(
       'complexDataTypeReferenceParsing',
     );
-    consentConfig = registerOutput<FhirStoreConsentConfig?>('consentConfig');
+    consentConfig = registerOutput<FhirStoreConsentConfig?>(
+      'consentConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FhirStoreConsentConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dataset = registerOutput<String>('dataset');
     defaultSearchHandlingStrict = registerOutput<bool?>(
       'defaultSearchHandlingStrict',
@@ -1645,6 +1677,13 @@ class FhirStore extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     notificationConfig = registerOutput<FhirStoreNotificationConfig?>(
       'notificationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FhirStoreNotificationConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     notificationConfigs = registerOutput<List<Map<String, dynamic>>?>(
       'notificationConfigs',
@@ -1656,6 +1695,13 @@ class FhirStore extends pulumi.CustomResource {
     );
     validationConfig = registerOutput<FhirStoreValidationConfig?>(
       'validationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FhirStoreValidationConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     version = registerOutput<String?>('version');
   }

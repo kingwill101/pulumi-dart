@@ -243,6 +243,13 @@ class IntegrationAccountCertificate extends pulumi.CustomResource {
     integrationAccountName = registerOutput<String>('integrationAccountName');
     keyVaultKey = registerOutput<IntegrationAccountCertificateKeyVaultKey?>(
       'keyVaultKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IntegrationAccountCertificateKeyVaultKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     metadata = registerOutput<String?>('metadata');
     this.name = registerOutput<String>('name');
@@ -276,6 +283,13 @@ class IntegrationAccountCertificate extends pulumi.CustomResource {
     integrationAccountName = registerOutput<String>('integrationAccountName');
     keyVaultKey = registerOutput<IntegrationAccountCertificateKeyVaultKey?>(
       'keyVaultKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IntegrationAccountCertificateKeyVaultKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     metadata = registerOutput<String?>('metadata');
     this.name = registerOutput<String>('name');

@@ -81,11 +81,25 @@ class ReservationResource extends pulumi.CustomResource {
     aggregateReservation =
         registerOutput<AllocationAggregateReservationResponseComputeBeta>(
           'aggregateReservation',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AllocationAggregateReservationResponseComputeBeta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     commitment = registerOutput<String>('commitment');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deleteAfterDuration = registerOutput<DurationResponseComputeBeta>(
       'deleteAfterDuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DurationResponseComputeBeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     deleteAtTime = registerOutput<String>('deleteAtTime');
     description = registerOutput<String>('description');
@@ -97,15 +111,36 @@ class ReservationResource extends pulumi.CustomResource {
     resourceStatus =
         registerOutput<AllocationResourceStatusResponseComputeBeta>(
           'resourceStatus',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AllocationResourceStatusResponseComputeBeta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
     selfLink = registerOutput<String>('selfLink');
     shareSettings = registerOutput<ShareSettingsResponseComputeBeta>(
       'shareSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ShareSettingsResponseComputeBeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     specificReservation =
         registerOutput<AllocationSpecificSKUReservationResponseComputeBeta>(
           'specificReservation',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AllocationSpecificSKUReservationResponseComputeBeta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     specificReservationRequired = registerOutput<bool>(
       'specificReservationRequired',

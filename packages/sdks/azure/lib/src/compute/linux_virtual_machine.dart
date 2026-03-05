@@ -723,6 +723,13 @@ class LinuxVirtualMachine extends pulumi.CustomResource {
     additionalCapabilities =
         registerOutput<LinuxVirtualMachineAdditionalCapabilities?>(
           'additionalCapabilities',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinuxVirtualMachineAdditionalCapabilities.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     adminPassword = registerOutput<String?>('adminPassword');
     adminSshKeys = registerOutput<List<Map<String, dynamic>>?>('adminSshKeys');
@@ -731,6 +738,13 @@ class LinuxVirtualMachine extends pulumi.CustomResource {
     availabilitySetId = registerOutput<String?>('availabilitySetId');
     bootDiagnostics = registerOutput<LinuxVirtualMachineBootDiagnostics?>(
       'bootDiagnostics',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinuxVirtualMachineBootDiagnostics.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     bypassPlatformSafetyChecksOnUserScheduleEnabled = registerOutput<bool?>(
       'bypassPlatformSafetyChecksOnUserScheduleEnabled',
@@ -753,21 +767,55 @@ class LinuxVirtualMachine extends pulumi.CustomResource {
     galleryApplications = registerOutput<List<Map<String, dynamic>>?>(
       'galleryApplications',
     );
-    identity = registerOutput<LinuxVirtualMachineIdentity?>('identity');
+    identity = registerOutput<LinuxVirtualMachineIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinuxVirtualMachineIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     licenseType = registerOutput<String?>('licenseType');
     location = registerOutput<String>('location');
     maxBidPrice = registerOutput<double?>('maxBidPrice');
     this.name = registerOutput<String>('name');
     networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds');
-    osDisk = registerOutput<LinuxVirtualMachineOsDisk>('osDisk');
+    osDisk = registerOutput<LinuxVirtualMachineOsDisk>(
+      'osDisk',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinuxVirtualMachineOsDisk.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     osImageNotification =
         registerOutput<LinuxVirtualMachineOsImageNotification?>(
           'osImageNotification',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinuxVirtualMachineOsImageNotification.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     osManagedDiskId = registerOutput<String>('osManagedDiskId');
     patchAssessmentMode = registerOutput<String>('patchAssessmentMode');
     patchMode = registerOutput<String>('patchMode');
-    plan = registerOutput<LinuxVirtualMachinePlan?>('plan');
+    plan = registerOutput<LinuxVirtualMachinePlan?>(
+      'plan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinuxVirtualMachinePlan.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     platformFaultDomain = registerOutput<int?>('platformFaultDomain');
     priority = registerOutput<String?>('priority');
     privateIpAddress = registerOutput<String>('privateIpAddress');
@@ -787,11 +835,25 @@ class LinuxVirtualMachine extends pulumi.CustomResource {
     sourceImageReference =
         registerOutput<LinuxVirtualMachineSourceImageReference?>(
           'sourceImageReference',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinuxVirtualMachineSourceImageReference.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tags = registerOutput<Map<String, String>?>('tags');
     terminationNotification =
         registerOutput<LinuxVirtualMachineTerminationNotification>(
           'terminationNotification',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinuxVirtualMachineTerminationNotification.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     userData = registerOutput<String?>('userData');
     virtualMachineId = registerOutput<String>('virtualMachineId');
@@ -831,6 +893,13 @@ class LinuxVirtualMachine extends pulumi.CustomResource {
     additionalCapabilities =
         registerOutput<LinuxVirtualMachineAdditionalCapabilities?>(
           'additionalCapabilities',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinuxVirtualMachineAdditionalCapabilities.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     adminPassword = registerOutput<String?>('adminPassword');
     adminSshKeys = registerOutput<List<Map<String, dynamic>>?>('adminSshKeys');
@@ -839,6 +908,13 @@ class LinuxVirtualMachine extends pulumi.CustomResource {
     availabilitySetId = registerOutput<String?>('availabilitySetId');
     bootDiagnostics = registerOutput<LinuxVirtualMachineBootDiagnostics?>(
       'bootDiagnostics',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinuxVirtualMachineBootDiagnostics.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     bypassPlatformSafetyChecksOnUserScheduleEnabled = registerOutput<bool?>(
       'bypassPlatformSafetyChecksOnUserScheduleEnabled',
@@ -861,21 +937,55 @@ class LinuxVirtualMachine extends pulumi.CustomResource {
     galleryApplications = registerOutput<List<Map<String, dynamic>>?>(
       'galleryApplications',
     );
-    identity = registerOutput<LinuxVirtualMachineIdentity?>('identity');
+    identity = registerOutput<LinuxVirtualMachineIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinuxVirtualMachineIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     licenseType = registerOutput<String?>('licenseType');
     location = registerOutput<String>('location');
     maxBidPrice = registerOutput<double?>('maxBidPrice');
     this.name = registerOutput<String>('name');
     networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds');
-    osDisk = registerOutput<LinuxVirtualMachineOsDisk>('osDisk');
+    osDisk = registerOutput<LinuxVirtualMachineOsDisk>(
+      'osDisk',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinuxVirtualMachineOsDisk.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     osImageNotification =
         registerOutput<LinuxVirtualMachineOsImageNotification?>(
           'osImageNotification',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinuxVirtualMachineOsImageNotification.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     osManagedDiskId = registerOutput<String>('osManagedDiskId');
     patchAssessmentMode = registerOutput<String>('patchAssessmentMode');
     patchMode = registerOutput<String>('patchMode');
-    plan = registerOutput<LinuxVirtualMachinePlan?>('plan');
+    plan = registerOutput<LinuxVirtualMachinePlan?>(
+      'plan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinuxVirtualMachinePlan.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     platformFaultDomain = registerOutput<int?>('platformFaultDomain');
     priority = registerOutput<String?>('priority');
     privateIpAddress = registerOutput<String>('privateIpAddress');
@@ -895,11 +1005,25 @@ class LinuxVirtualMachine extends pulumi.CustomResource {
     sourceImageReference =
         registerOutput<LinuxVirtualMachineSourceImageReference?>(
           'sourceImageReference',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinuxVirtualMachineSourceImageReference.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tags = registerOutput<Map<String, String>?>('tags');
     terminationNotification =
         registerOutput<LinuxVirtualMachineTerminationNotification>(
           'terminationNotification',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinuxVirtualMachineTerminationNotification.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     userData = registerOutput<String?>('userData');
     virtualMachineId = registerOutput<String>('virtualMachineId');

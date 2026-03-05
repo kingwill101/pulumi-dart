@@ -80,12 +80,35 @@ class Subscription extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     ackDeadlineSeconds = registerOutput<int>('ackDeadlineSeconds');
-    bigqueryConfig = registerOutput<BigQueryConfigResponse>('bigqueryConfig');
+    bigqueryConfig = registerOutput<BigQueryConfigResponse>(
+      'bigqueryConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BigQueryConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     cloudStorageConfig = registerOutput<CloudStorageConfigResponse>(
       'cloudStorageConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CloudStorageConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     deadLetterPolicy = registerOutput<DeadLetterPolicyResponse>(
       'deadLetterPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeadLetterPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     detached = registerOutput<bool>('detached');
     enableExactlyOnceDelivery = registerOutput<bool>(
@@ -94,6 +117,13 @@ class Subscription extends pulumi.CustomResource {
     enableMessageOrdering = registerOutput<bool>('enableMessageOrdering');
     expirationPolicy = registerOutput<ExpirationPolicyResponse>(
       'expirationPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExpirationPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     filter = registerOutput<String>('filter');
     labels = registerOutput<Map<String, String>>('labels');
@@ -102,9 +132,27 @@ class Subscription extends pulumi.CustomResource {
     );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pushConfig = registerOutput<PushConfigResponse>('pushConfig');
+    pushConfig = registerOutput<PushConfigResponse>(
+      'pushConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PushConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     retainAckedMessages = registerOutput<bool>('retainAckedMessages');
-    retryPolicy = registerOutput<RetryPolicyResponse>('retryPolicy');
+    retryPolicy = registerOutput<RetryPolicyResponse>(
+      'retryPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RetryPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     state = registerOutput<String>('state');
     subscriptionId = registerOutput<String>('subscriptionId');
     topic = registerOutput<String>('topic');

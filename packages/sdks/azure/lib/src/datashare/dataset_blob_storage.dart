@@ -56,6 +56,13 @@ class DatasetBlobStorage extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     storageAccount = registerOutput<DatasetBlobStorageStorageAccount>(
       'storageAccount',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatasetBlobStorageStorageAccount.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -90,6 +97,13 @@ class DatasetBlobStorage extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     storageAccount = registerOutput<DatasetBlobStorageStorageAccount>(
       'storageAccount',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatasetBlobStorageStorageAccount.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

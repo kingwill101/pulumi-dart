@@ -160,6 +160,13 @@ class PlaceIndex extends pulumi.CustomResource {
     dataSource = registerOutput<String>('dataSource');
     dataSourceConfiguration = registerOutput<PlaceIndexDataSourceConfiguration>(
       'dataSourceConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PlaceIndexDataSourceConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     indexArn = registerOutput<String>('indexArn');
@@ -197,6 +204,13 @@ class PlaceIndex extends pulumi.CustomResource {
     dataSource = registerOutput<String>('dataSource');
     dataSourceConfiguration = registerOutput<PlaceIndexDataSourceConfiguration>(
       'dataSourceConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PlaceIndexDataSourceConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     indexArn = registerOutput<String>('indexArn');

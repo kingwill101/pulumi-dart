@@ -1,15 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getDomain.
 class GetDomainResult {
   /// The uniform resource name of the domain
   final String domainUrn;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
+
   /// The TTL of the domain.
   final int ttl;
+
   /// The zone file of the domain.
   final String zoneFile;
 
@@ -47,4 +49,3 @@ class GetDomainResult {
     );
   }
 }
-

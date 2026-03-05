@@ -4134,24 +4134,63 @@ class Datascan extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     createTime = registerOutput<String>('createTime');
-    data = registerOutput<DatascanData>('data');
+    data = registerOutput<DatascanData>(
+      'data',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatascanData.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dataDiscoverySpec = registerOutput<DatascanDataDiscoverySpec?>(
       'dataDiscoverySpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatascanDataDiscoverySpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dataDocumentationSpec = registerOutput<Map<String, dynamic>?>(
       'dataDocumentationSpec',
     );
     dataProfileSpec = registerOutput<DatascanDataProfileSpec?>(
       'dataProfileSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatascanDataProfileSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dataQualitySpec = registerOutput<DatascanDataQualitySpec?>(
       'dataQualitySpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatascanDataQualitySpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dataScanId = registerOutput<String>('dataScanId');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    executionSpec = registerOutput<DatascanExecutionSpec>('executionSpec');
+    executionSpec = registerOutput<DatascanExecutionSpec>(
+      'executionSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatascanExecutionSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     executionStatuses = registerOutput<List<Map<String, dynamic>>>(
       'executionStatuses',
     );
@@ -4190,24 +4229,63 @@ class Datascan extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     createTime = registerOutput<String>('createTime');
-    data = registerOutput<DatascanData>('data');
+    data = registerOutput<DatascanData>(
+      'data',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatascanData.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dataDiscoverySpec = registerOutput<DatascanDataDiscoverySpec?>(
       'dataDiscoverySpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatascanDataDiscoverySpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dataDocumentationSpec = registerOutput<Map<String, dynamic>?>(
       'dataDocumentationSpec',
     );
     dataProfileSpec = registerOutput<DatascanDataProfileSpec?>(
       'dataProfileSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatascanDataProfileSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dataQualitySpec = registerOutput<DatascanDataQualitySpec?>(
       'dataQualitySpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatascanDataQualitySpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dataScanId = registerOutput<String>('dataScanId');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    executionSpec = registerOutput<DatascanExecutionSpec>('executionSpec');
+    executionSpec = registerOutput<DatascanExecutionSpec>(
+      'executionSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatascanExecutionSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     executionStatuses = registerOutput<List<Map<String, dynamic>>>(
       'executionStatuses',
     );

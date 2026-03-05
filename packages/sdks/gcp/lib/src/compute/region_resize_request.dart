@@ -651,6 +651,13 @@ class RegionResizeRequest extends pulumi.CustomResource {
     requestedRunDuration =
         registerOutput<RegionResizeRequestRequestedRunDuration?>(
           'requestedRunDuration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RegionResizeRequestRequestedRunDuration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     resizeBy = registerOutput<int>('resizeBy');
     state = registerOutput<String>('state');
@@ -689,6 +696,13 @@ class RegionResizeRequest extends pulumi.CustomResource {
     requestedRunDuration =
         registerOutput<RegionResizeRequestRequestedRunDuration?>(
           'requestedRunDuration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RegionResizeRequestRequestedRunDuration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     resizeBy = registerOutput<int>('resizeBy');
     this.state = registerOutput<String>('state');

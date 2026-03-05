@@ -190,6 +190,13 @@ class KubernetesFleetManager extends pulumi.CustomResource {
        ) {
     hubProfile = registerOutput<KubernetesFleetManagerHubProfile?>(
       'hubProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KubernetesFleetManagerHubProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -222,6 +229,13 @@ class KubernetesFleetManager extends pulumi.CustomResource {
        ) {
     hubProfile = registerOutput<KubernetesFleetManagerHubProfile?>(
       'hubProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KubernetesFleetManagerHubProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

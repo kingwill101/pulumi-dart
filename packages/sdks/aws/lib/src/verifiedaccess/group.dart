@@ -286,6 +286,13 @@ class Group extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     sseConfiguration = registerOutput<GroupSseConfiguration>(
       'sseConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupSseConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -324,6 +331,13 @@ class Group extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     sseConfiguration = registerOutput<GroupSseConfiguration>(
       'sseConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupSseConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

@@ -59,16 +59,52 @@ class QueuedResource extends pulumi.CustomResource {
        ) {
     bestEffort = registerOutput<Map<String, dynamic>>('bestEffort');
     createTime = registerOutput<String>('createTime');
-    guaranteed = registerOutput<GuaranteedResponse>('guaranteed');
+    guaranteed = registerOutput<GuaranteedResponse>(
+      'guaranteed',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GuaranteedResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     queuedResourceId = registerOutput<String?>('queuedResourceId');
-    queueingPolicy = registerOutput<QueueingPolicyResponse>('queueingPolicy');
+    queueingPolicy = registerOutput<QueueingPolicyResponse>(
+      'queueingPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return QueueingPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     requestId = registerOutput<String?>('requestId');
     reservationName = registerOutput<String>('reservationName');
     spot = registerOutput<Map<String, dynamic>>('spot');
-    state = registerOutput<QueuedResourceStateResponse>('state');
-    tpu = registerOutput<TpuResponse>('tpu');
+    state = registerOutput<QueuedResourceStateResponse>(
+      'state',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return QueuedResourceStateResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    tpu = registerOutput<TpuResponse>(
+      'tpu',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TpuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

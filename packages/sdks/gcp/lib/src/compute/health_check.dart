@@ -2722,30 +2722,88 @@ class HealthCheck extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     grpcHealthCheck = registerOutput<HealthCheckGrpcHealthCheck?>(
       'grpcHealthCheck',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HealthCheckGrpcHealthCheck.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     grpcTlsHealthCheck = registerOutput<HealthCheckGrpcTlsHealthCheck?>(
       'grpcTlsHealthCheck',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HealthCheckGrpcTlsHealthCheck.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     healthyThreshold = registerOutput<int?>('healthyThreshold');
     http2HealthCheck = registerOutput<HealthCheckHttp2HealthCheck?>(
       'http2HealthCheck',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HealthCheckHttp2HealthCheck.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     httpHealthCheck = registerOutput<HealthCheckHttpHealthCheck?>(
       'httpHealthCheck',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HealthCheckHttpHealthCheck.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     httpsHealthCheck = registerOutput<HealthCheckHttpsHealthCheck?>(
       'httpsHealthCheck',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HealthCheckHttpsHealthCheck.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    logConfig = registerOutput<HealthCheckLogConfig>('logConfig');
+    logConfig = registerOutput<HealthCheckLogConfig>(
+      'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HealthCheckLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     selfLink = registerOutput<String>('selfLink');
     sourceRegions = registerOutput<List<String>?>('sourceRegions');
     sslHealthCheck = registerOutput<HealthCheckSslHealthCheck?>(
       'sslHealthCheck',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HealthCheckSslHealthCheck.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tcpHealthCheck = registerOutput<HealthCheckTcpHealthCheck?>(
       'tcpHealthCheck',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HealthCheckTcpHealthCheck.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     timeoutSec = registerOutput<int?>('timeoutSec');
     type = registerOutput<String>('type');
@@ -2780,30 +2838,88 @@ class HealthCheck extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     grpcHealthCheck = registerOutput<HealthCheckGrpcHealthCheck?>(
       'grpcHealthCheck',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HealthCheckGrpcHealthCheck.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     grpcTlsHealthCheck = registerOutput<HealthCheckGrpcTlsHealthCheck?>(
       'grpcTlsHealthCheck',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HealthCheckGrpcTlsHealthCheck.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     healthyThreshold = registerOutput<int?>('healthyThreshold');
     http2HealthCheck = registerOutput<HealthCheckHttp2HealthCheck?>(
       'http2HealthCheck',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HealthCheckHttp2HealthCheck.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     httpHealthCheck = registerOutput<HealthCheckHttpHealthCheck?>(
       'httpHealthCheck',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HealthCheckHttpHealthCheck.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     httpsHealthCheck = registerOutput<HealthCheckHttpsHealthCheck?>(
       'httpsHealthCheck',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HealthCheckHttpsHealthCheck.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    logConfig = registerOutput<HealthCheckLogConfig>('logConfig');
+    logConfig = registerOutput<HealthCheckLogConfig>(
+      'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HealthCheckLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     selfLink = registerOutput<String>('selfLink');
     sourceRegions = registerOutput<List<String>?>('sourceRegions');
     sslHealthCheck = registerOutput<HealthCheckSslHealthCheck?>(
       'sslHealthCheck',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HealthCheckSslHealthCheck.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tcpHealthCheck = registerOutput<HealthCheckTcpHealthCheck?>(
       'tcpHealthCheck',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HealthCheckTcpHealthCheck.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     timeoutSec = registerOutput<int?>('timeoutSec');
     type = registerOutput<String>('type');

@@ -3686,6 +3686,13 @@ class VolumeGroup extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     groupMetaData = registerOutput<VolumeGroupMetaDataResponse?>(
       'groupMetaData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VolumeGroupMetaDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');

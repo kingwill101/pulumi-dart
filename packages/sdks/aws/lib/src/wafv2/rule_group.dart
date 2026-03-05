@@ -2083,6 +2083,13 @@ class RuleGroup extends pulumi.CustomResource {
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     visibilityConfig = registerOutput<RuleGroupVisibilityConfig>(
       'visibilityConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RuleGroupVisibilityConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -2126,6 +2133,13 @@ class RuleGroup extends pulumi.CustomResource {
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     visibilityConfig = registerOutput<RuleGroupVisibilityConfig>(
       'visibilityConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RuleGroupVisibilityConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

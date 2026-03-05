@@ -518,18 +518,59 @@ class PrivateCloud extends pulumi.CustomResource {
        ) {
     availability = registerOutput<AvailabilityPropertiesResponse?>(
       'availability',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AvailabilityPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    circuit = registerOutput<CircuitResponse?>('circuit');
+    circuit = registerOutput<CircuitResponse?>(
+      'circuit',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CircuitResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dnsZoneType = registerOutput<String?>('dnsZoneType');
-    encryption = registerOutput<EncryptionResponse?>('encryption');
-    endpoints = registerOutput<EndpointsResponse>('endpoints');
+    encryption = registerOutput<EncryptionResponse?>(
+      'encryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EncryptionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    endpoints = registerOutput<EndpointsResponse>(
+      'endpoints',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     extendedNetworkBlocks = registerOutput<List<String>?>(
       'extendedNetworkBlocks',
     );
     externalCloudLinks = registerOutput<List<String>>('externalCloudLinks');
     identity = registerOutput<SystemAssignedServiceIdentityResponse?>(
       'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemAssignedServiceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     identitySources = registerOutput<List<Map<String, dynamic>>?>(
       'identitySources',
@@ -538,6 +579,13 @@ class PrivateCloud extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     managementCluster = registerOutput<ManagementClusterResponse>(
       'managementCluster',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagementClusterResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     managementNetwork = registerOutput<String>('managementNetwork');
     this.name = registerOutput<String>('name');
@@ -549,9 +597,36 @@ class PrivateCloud extends pulumi.CustomResource {
     nsxtPassword = registerOutput<String?>('nsxtPassword');
     provisioningNetwork = registerOutput<String>('provisioningNetwork');
     provisioningState = registerOutput<String>('provisioningState');
-    secondaryCircuit = registerOutput<CircuitResponse?>('secondaryCircuit');
-    sku = registerOutput<SkuResponse>('sku');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    secondaryCircuit = registerOutput<CircuitResponse?>(
+      'secondaryCircuit',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CircuitResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    sku = registerOutput<SkuResponse>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     vcenterCertificateThumbprint = registerOutput<String>(

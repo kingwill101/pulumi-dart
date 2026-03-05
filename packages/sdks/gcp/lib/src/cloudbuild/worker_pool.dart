@@ -583,15 +583,40 @@ class WorkerPool extends pulumi.CustomResource {
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkConfig = registerOutput<WorkerPoolNetworkConfig?>('networkConfig');
+    networkConfig = registerOutput<WorkerPoolNetworkConfig?>(
+      'networkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkerPoolNetworkConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     privateServiceConnect = registerOutput<WorkerPoolPrivateServiceConnect?>(
       'privateServiceConnect',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkerPoolPrivateServiceConnect.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
-    workerConfig = registerOutput<WorkerPoolWorkerConfig>('workerConfig');
+    workerConfig = registerOutput<WorkerPoolWorkerConfig>(
+      'workerConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkerPoolWorkerConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [WorkerPool] resource's state with the given [name] and [id].
@@ -626,14 +651,39 @@ class WorkerPool extends pulumi.CustomResource {
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkConfig = registerOutput<WorkerPoolNetworkConfig?>('networkConfig');
+    networkConfig = registerOutput<WorkerPoolNetworkConfig?>(
+      'networkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkerPoolNetworkConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     privateServiceConnect = registerOutput<WorkerPoolPrivateServiceConnect?>(
       'privateServiceConnect',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkerPoolPrivateServiceConnect.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     this.state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
-    workerConfig = registerOutput<WorkerPoolWorkerConfig>('workerConfig');
+    workerConfig = registerOutput<WorkerPoolWorkerConfig>(
+      'workerConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkerPoolWorkerConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

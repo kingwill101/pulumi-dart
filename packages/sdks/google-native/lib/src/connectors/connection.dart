@@ -114,7 +114,16 @@ class Connection extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    authConfig = registerOutput<AuthConfigResponse>('authConfig');
+    authConfig = registerOutput<AuthConfigResponse>(
+      'authConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AuthConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     configVariables = registerOutput<List<Map<String, dynamic>>>(
       'configVariables',
     );
@@ -124,6 +133,13 @@ class Connection extends pulumi.CustomResource {
     connectorVersionInfraConfig =
         registerOutput<ConnectorVersionInfraConfigResponse>(
           'connectorVersionInfraConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConnectorVersionInfraConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     connectorVersionLaunchStage = registerOutput<String>(
       'connectorVersionLaunchStage',
@@ -134,24 +150,85 @@ class Connection extends pulumi.CustomResource {
       'destinationConfigs',
     );
     envoyImageLocation = registerOutput<String>('envoyImageLocation');
-    eventingConfig = registerOutput<EventingConfigResponse>('eventingConfig');
+    eventingConfig = registerOutput<EventingConfigResponse>(
+      'eventingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventingConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     eventingEnablementType = registerOutput<String>('eventingEnablementType');
     eventingRuntimeData = registerOutput<EventingRuntimeDataResponse>(
       'eventingRuntimeData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventingRuntimeDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     imageLocation = registerOutput<String>('imageLocation');
     isTrustedTester = registerOutput<bool>('isTrustedTester');
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
-    lockConfig = registerOutput<LockConfigResponse>('lockConfig');
-    logConfig = registerOutput<ConnectorsLogConfigResponse>('logConfig');
+    lockConfig = registerOutput<LockConfigResponse>(
+      'lockConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LockConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    logConfig = registerOutput<ConnectorsLogConfigResponse>(
+      'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectorsLogConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
-    nodeConfig = registerOutput<NodeConfigResponse>('nodeConfig');
+    nodeConfig = registerOutput<NodeConfigResponse>(
+      'nodeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodeConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     serviceAccount = registerOutput<String>('serviceAccount');
     serviceDirectory = registerOutput<String>('serviceDirectory');
-    sslConfig = registerOutput<SslConfigResponse>('sslConfig');
-    status = registerOutput<ConnectionStatusResponse>('status');
+    sslConfig = registerOutput<SslConfigResponse>(
+      'sslConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SslConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    status = registerOutput<ConnectionStatusResponse>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     subscriptionType = registerOutput<String>('subscriptionType');
     suspended = registerOutput<bool>('suspended');
     updateTime = registerOutput<String>('updateTime');

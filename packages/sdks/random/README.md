@@ -20,7 +20,7 @@ import 'package:pulumi_random/pulumi_random.dart' as provider;
 dependencies:
   pulumi_random:
     git:
-      url: https://github.com/<owner>/<repo>.git
+      url: https://github.com/kingwill101/pulumi-dart.git
       path: packages/random
       ref: main
 ~~~

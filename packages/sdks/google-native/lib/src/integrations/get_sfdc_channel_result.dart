@@ -1,24 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getSfdcChannel.
 class GetSfdcChannelResult {
   /// The Channel topic defined by salesforce once an channel is opened
   final String channelTopic;
+
   /// Time when the channel is created
   final String createTime;
+
   /// Time when the channel was deleted. Empty if not deleted.
   final String deleteTime;
+
   /// The description for this channel
   final String description;
+
   /// Client level unique name/alias to easily reference a channel.
   final String displayName;
+
   /// Indicated if a channel has any active integrations referencing it. Set to false when the channel is created, and set to true if there is any integration published with the channel configured in it.
   final bool isActive;
+
   /// Last sfdc messsage replay id for channel
   final String lastReplayId;
+
   /// Resource name of the SFDC channel projects/{project}/locations/{location}/sfdcInstances/{sfdc_instance}/sfdcChannels/{sfdc_channel}.
   final String name;
+
   /// Time when the channel was last updated
   final String updateTime;
 
@@ -72,4 +79,3 @@ class GetSfdcChannelResult {
     );
   }
 }
-

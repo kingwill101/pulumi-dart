@@ -801,9 +801,25 @@ class SubnetNetwork extends pulumi.CustomResource {
       'ipamPoolPrefixAllocations',
     );
     this.name = registerOutput<String?>('name');
-    natGateway = registerOutput<SubResourceResponse?>('natGateway');
+    natGateway = registerOutput<SubResourceResponse?>(
+      'natGateway',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     networkSecurityGroup = registerOutput<NetworkSecurityGroupResponse?>(
       'networkSecurityGroup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkSecurityGroupResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     privateEndpointNetworkPolicies = registerOutput<String?>(
       'privateEndpointNetworkPolicies',
@@ -819,7 +835,16 @@ class SubnetNetwork extends pulumi.CustomResource {
     resourceNavigationLinks = registerOutput<List<Map<String, dynamic>>>(
       'resourceNavigationLinks',
     );
-    routeTable = registerOutput<RouteTableResponse?>('routeTable');
+    routeTable = registerOutput<RouteTableResponse?>(
+      'routeTable',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RouteTableResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     serviceAssociationLinks = registerOutput<List<Map<String, dynamic>>>(
       'serviceAssociationLinks',
     );

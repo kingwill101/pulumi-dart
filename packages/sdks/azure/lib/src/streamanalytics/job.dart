@@ -324,7 +324,16 @@ class Job extends pulumi.CustomResource {
       'eventsOutOfOrderMaxDelayInSeconds',
     );
     eventsOutOfOrderPolicy = registerOutput<String?>('eventsOutOfOrderPolicy');
-    identity = registerOutput<JobIdentity?>('identity');
+    identity = registerOutput<JobIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     jobId = registerOutput<String>('jobId');
     jobStorageAccounts = registerOutput<List<Map<String, dynamic>>?>(
       'jobStorageAccounts',
@@ -372,7 +381,16 @@ class Job extends pulumi.CustomResource {
       'eventsOutOfOrderMaxDelayInSeconds',
     );
     eventsOutOfOrderPolicy = registerOutput<String?>('eventsOutOfOrderPolicy');
-    identity = registerOutput<JobIdentity?>('identity');
+    identity = registerOutput<JobIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     jobId = registerOutput<String>('jobId');
     jobStorageAccounts = registerOutput<List<Map<String, dynamic>>?>(
       'jobStorageAccounts',

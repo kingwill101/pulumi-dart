@@ -105,7 +105,16 @@ class VirtualMachineImageTemplate extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    autoRun = registerOutput<ImageTemplateAutoRunResponse?>('autoRun');
+    autoRun = registerOutput<ImageTemplateAutoRunResponse?>(
+      'autoRun',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImageTemplateAutoRunResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     buildTimeoutInMinutes = registerOutput<int?>('buildTimeoutInMinutes');
     customize = registerOutput<List<Map<String, dynamic>>?>('customize');
@@ -113,13 +122,36 @@ class VirtualMachineImageTemplate extends pulumi.CustomResource {
     errorHandling =
         registerOutput<ImageTemplatePropertiesResponseErrorHandling?>(
           'errorHandling',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ImageTemplatePropertiesResponseErrorHandling.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     exactStagingResourceGroup = registerOutput<String>(
       'exactStagingResourceGroup',
     );
-    identity = registerOutput<ImageTemplateIdentityResponse>('identity');
+    identity = registerOutput<ImageTemplateIdentityResponse>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImageTemplateIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     lastRunStatus = registerOutput<ImageTemplateLastRunStatusResponse>(
       'lastRunStatus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImageTemplateLastRunStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     managedResourceTags = registerOutput<Map<String, String>?>(
@@ -128,19 +160,67 @@ class VirtualMachineImageTemplate extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     optimize = registerOutput<ImageTemplatePropertiesResponseOptimize?>(
       'optimize',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImageTemplatePropertiesResponseOptimize.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     provisioningError = registerOutput<ProvisioningErrorResponse>(
       'provisioningError',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProvisioningErrorResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     provisioningState = registerOutput<String>('provisioningState');
-    source = registerOutput<ImageTemplateManagedImageSourceResponse>('source');
+    source = registerOutput<ImageTemplateManagedImageSourceResponse>(
+      'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImageTemplateManagedImageSourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     stagingResourceGroup = registerOutput<String?>('stagingResourceGroup');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     validate = registerOutput<ImageTemplatePropertiesResponseValidate?>(
       'validate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImageTemplatePropertiesResponseValidate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    vmProfile = registerOutput<ImageTemplateVmProfileResponse?>('vmProfile');
+    vmProfile = registerOutput<ImageTemplateVmProfileResponse?>(
+      'vmProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImageTemplateVmProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

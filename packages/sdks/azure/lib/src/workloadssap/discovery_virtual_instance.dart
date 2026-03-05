@@ -264,7 +264,16 @@ class DiscoveryVirtualInstance extends pulumi.CustomResource {
       'centralServerVirtualMachineId',
     );
     environment = registerOutput<String>('environment');
-    identity = registerOutput<DiscoveryVirtualInstanceIdentity?>('identity');
+    identity = registerOutput<DiscoveryVirtualInstanceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiscoveryVirtualInstanceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     managedResourceGroupName = registerOutput<String?>(
       'managedResourceGroupName',
@@ -308,7 +317,16 @@ class DiscoveryVirtualInstance extends pulumi.CustomResource {
       'centralServerVirtualMachineId',
     );
     environment = registerOutput<String>('environment');
-    identity = registerOutput<DiscoveryVirtualInstanceIdentity?>('identity');
+    identity = registerOutput<DiscoveryVirtualInstanceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiscoveryVirtualInstanceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     managedResourceGroupName = registerOutput<String?>(
       'managedResourceGroupName',

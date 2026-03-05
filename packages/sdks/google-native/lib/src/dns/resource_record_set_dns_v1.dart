@@ -47,7 +47,16 @@ class ResourceRecordSetDnsV1 extends pulumi.CustomResource {
     managedZone = registerOutput<String>('managedZone');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    routingPolicy = registerOutput<RRSetRoutingPolicyResponse>('routingPolicy');
+    routingPolicy = registerOutput<RRSetRoutingPolicyResponse>(
+      'routingPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RRSetRoutingPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     rrdatas = registerOutput<List<String>>('rrdatas');
     signatureRrdatas = registerOutput<List<String>>('signatureRrdatas');
     ttl = registerOutput<int>('ttl');

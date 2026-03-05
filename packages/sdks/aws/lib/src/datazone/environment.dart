@@ -294,7 +294,16 @@ class Environment extends pulumi.CustomResource {
       'provisionedResources',
     );
     region = registerOutput<String>('region');
-    timeouts = registerOutput<EnvironmentTimeouts?>('timeouts');
+    timeouts = registerOutput<EnvironmentTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnvironmentTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     userParameters = registerOutput<List<Map<String, dynamic>>?>(
       'userParameters',
     );
@@ -342,7 +351,16 @@ class Environment extends pulumi.CustomResource {
       'provisionedResources',
     );
     region = registerOutput<String>('region');
-    timeouts = registerOutput<EnvironmentTimeouts?>('timeouts');
+    timeouts = registerOutput<EnvironmentTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnvironmentTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     userParameters = registerOutput<List<Map<String, dynamic>>?>(
       'userParameters',
     );

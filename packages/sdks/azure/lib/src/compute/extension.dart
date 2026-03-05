@@ -646,6 +646,13 @@ class Extension extends pulumi.CustomResource {
     protectedSettingsFromKeyVault =
         registerOutput<ExtensionProtectedSettingsFromKeyVault?>(
           'protectedSettingsFromKeyVault',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ExtensionProtectedSettingsFromKeyVault.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     provisionAfterExtensions = registerOutput<List<String>?>(
       'provisionAfterExtensions',
@@ -691,6 +698,13 @@ class Extension extends pulumi.CustomResource {
     protectedSettingsFromKeyVault =
         registerOutput<ExtensionProtectedSettingsFromKeyVault?>(
           'protectedSettingsFromKeyVault',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ExtensionProtectedSettingsFromKeyVault.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     provisionAfterExtensions = registerOutput<List<String>?>(
       'provisionAfterExtensions',

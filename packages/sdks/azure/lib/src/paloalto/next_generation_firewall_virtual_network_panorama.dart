@@ -709,14 +709,32 @@ class NextGenerationFirewallVirtualNetworkPanorama
     dnsSettings =
         registerOutput<
           NextGenerationFirewallVirtualNetworkPanoramaDnsSettings?
-        >('dnsSettings');
+        >(
+          'dnsSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NextGenerationFirewallVirtualNetworkPanoramaDnsSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     location = registerOutput<String>('location');
     marketplaceOfferId = registerOutput<String?>('marketplaceOfferId');
     this.name = registerOutput<String>('name');
     networkProfile =
         registerOutput<
           NextGenerationFirewallVirtualNetworkPanoramaNetworkProfile
-        >('networkProfile');
+        >(
+          'networkProfile',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NextGenerationFirewallVirtualNetworkPanoramaNetworkProfile.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     panoramaBase64Config = registerOutput<String>('panoramaBase64Config');
     panoramas = registerOutput<List<Map<String, dynamic>>>('panoramas');
     planId = registerOutput<String?>('planId');
@@ -753,14 +771,32 @@ class NextGenerationFirewallVirtualNetworkPanorama
     dnsSettings =
         registerOutput<
           NextGenerationFirewallVirtualNetworkPanoramaDnsSettings?
-        >('dnsSettings');
+        >(
+          'dnsSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NextGenerationFirewallVirtualNetworkPanoramaDnsSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     location = registerOutput<String>('location');
     marketplaceOfferId = registerOutput<String?>('marketplaceOfferId');
     this.name = registerOutput<String>('name');
     networkProfile =
         registerOutput<
           NextGenerationFirewallVirtualNetworkPanoramaNetworkProfile
-        >('networkProfile');
+        >(
+          'networkProfile',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NextGenerationFirewallVirtualNetworkPanoramaNetworkProfile.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     panoramaBase64Config = registerOutput<String>('panoramaBase64Config');
     panoramas = registerOutput<List<Map<String, dynamic>>>('panoramas');
     planId = registerOutput<String?>('planId');

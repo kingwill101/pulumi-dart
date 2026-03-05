@@ -826,6 +826,13 @@ class InstanceLoggingConfiguration extends pulumi.CustomResource {
        ) {
     accessLogs = registerOutput<InstanceLoggingConfigurationAccessLogs>(
       'accessLogs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceLoggingConfigurationAccessLogs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     verifiedaccessInstanceId = registerOutput<String>(
@@ -858,6 +865,13 @@ class InstanceLoggingConfiguration extends pulumi.CustomResource {
        ) {
     accessLogs = registerOutput<InstanceLoggingConfigurationAccessLogs>(
       'accessLogs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceLoggingConfigurationAccessLogs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     verifiedaccessInstanceId = registerOutput<String>(

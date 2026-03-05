@@ -496,7 +496,16 @@ class SecondarySubnet extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<SecondarySubnetTimeouts?>('timeouts');
+    timeouts = registerOutput<SecondarySubnetTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecondarySubnetTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [SecondarySubnet] resource's state with the given [name] and [id].
@@ -537,6 +546,15 @@ class SecondarySubnet extends pulumi.CustomResource {
     this.state = registerOutput<String>('state');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<SecondarySubnetTimeouts?>('timeouts');
+    timeouts = registerOutput<SecondarySubnetTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecondarySubnetTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

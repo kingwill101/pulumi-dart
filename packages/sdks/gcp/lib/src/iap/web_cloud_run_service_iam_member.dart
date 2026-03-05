@@ -1912,6 +1912,13 @@ class WebCloudRunServiceIamMember extends pulumi.CustomResource {
     cloudRunServiceName = registerOutput<String>('cloudRunServiceName');
     condition = registerOutput<WebCloudRunServiceIamMemberCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebCloudRunServiceIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
@@ -1946,6 +1953,13 @@ class WebCloudRunServiceIamMember extends pulumi.CustomResource {
     cloudRunServiceName = registerOutput<String>('cloudRunServiceName');
     condition = registerOutput<WebCloudRunServiceIamMemberCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebCloudRunServiceIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');

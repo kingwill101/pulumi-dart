@@ -69,6 +69,15 @@ class Connector extends pulumi.CustomResource {
     network = registerOutput<String>('network');
     project = registerOutput<String>('project');
     state = registerOutput<String>('state');
-    subnet = registerOutput<SubnetResponse>('subnet');
+    subnet = registerOutput<SubnetResponse>(
+      'subnet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubnetResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

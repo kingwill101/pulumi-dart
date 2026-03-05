@@ -277,11 +277,25 @@ class Database extends pulumi.CustomResource {
        ) {
     aclConfiguration = registerOutput<DatabaseAclConfiguration?>(
       'aclConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseAclConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     bucket = registerOutput<String?>('bucket');
     comment = registerOutput<String?>('comment');
     encryptionConfiguration = registerOutput<DatabaseEncryptionConfiguration?>(
       'encryptionConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseEncryptionConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
     forceDestroy = registerOutput<bool?>('forceDestroy');
@@ -316,11 +330,25 @@ class Database extends pulumi.CustomResource {
        ) {
     aclConfiguration = registerOutput<DatabaseAclConfiguration?>(
       'aclConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseAclConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     bucket = registerOutput<String?>('bucket');
     comment = registerOutput<String?>('comment');
     encryptionConfiguration = registerOutput<DatabaseEncryptionConfiguration?>(
       'encryptionConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseEncryptionConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
     forceDestroy = registerOutput<bool?>('forceDestroy');

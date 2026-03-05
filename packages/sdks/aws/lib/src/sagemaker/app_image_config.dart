@@ -423,14 +423,35 @@ class AppImageConfig extends pulumi.CustomResource {
     codeEditorAppImageConfig =
         registerOutput<AppImageConfigCodeEditorAppImageConfig?>(
           'codeEditorAppImageConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AppImageConfigCodeEditorAppImageConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     jupyterLabImageConfig =
         registerOutput<AppImageConfigJupyterLabImageConfig?>(
           'jupyterLabImageConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AppImageConfigJupyterLabImageConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     kernelGatewayImageConfig =
         registerOutput<AppImageConfigKernelGatewayImageConfig?>(
           'kernelGatewayImageConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AppImageConfigKernelGatewayImageConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -465,14 +486,35 @@ class AppImageConfig extends pulumi.CustomResource {
     codeEditorAppImageConfig =
         registerOutput<AppImageConfigCodeEditorAppImageConfig?>(
           'codeEditorAppImageConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AppImageConfigCodeEditorAppImageConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     jupyterLabImageConfig =
         registerOutput<AppImageConfigJupyterLabImageConfig?>(
           'jupyterLabImageConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AppImageConfigJupyterLabImageConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     kernelGatewayImageConfig =
         registerOutput<AppImageConfigKernelGatewayImageConfig?>(
           'kernelGatewayImageConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AppImageConfigKernelGatewayImageConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');

@@ -351,10 +351,24 @@ class Cluster extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     restoreToPointInTime = registerOutput<ClusterRestoreToPointInTime?>(
       'restoreToPointInTime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterRestoreToPointInTime.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     serverlessV2ScalingConfiguration =
         registerOutput<ClusterServerlessV2ScalingConfiguration?>(
           'serverlessV2ScalingConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ClusterServerlessV2ScalingConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     skipFinalSnapshot = registerOutput<bool?>('skipFinalSnapshot');
     snapshotIdentifier = registerOutput<String?>('snapshotIdentifier');
@@ -438,10 +452,24 @@ class Cluster extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     restoreToPointInTime = registerOutput<ClusterRestoreToPointInTime?>(
       'restoreToPointInTime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterRestoreToPointInTime.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     serverlessV2ScalingConfiguration =
         registerOutput<ClusterServerlessV2ScalingConfiguration?>(
           'serverlessV2ScalingConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ClusterServerlessV2ScalingConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     skipFinalSnapshot = registerOutput<bool?>('skipFinalSnapshot');
     snapshotIdentifier = registerOutput<String?>('snapshotIdentifier');

@@ -473,6 +473,13 @@ class WebAclLoggingConfiguration extends pulumi.CustomResource {
     );
     loggingFilter = registerOutput<WebAclLoggingConfigurationLoggingFilter?>(
       'loggingFilter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebAclLoggingConfigurationLoggingFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     redactedFields = registerOutput<List<Map<String, dynamic>>?>(
       'redactedFields',
@@ -509,6 +516,13 @@ class WebAclLoggingConfiguration extends pulumi.CustomResource {
     );
     loggingFilter = registerOutput<WebAclLoggingConfigurationLoggingFilter?>(
       'loggingFilter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebAclLoggingConfigurationLoggingFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     redactedFields = registerOutput<List<Map<String, dynamic>>?>(
       'redactedFields',

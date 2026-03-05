@@ -139,7 +139,16 @@ class RouteServerVpcAssociation extends pulumi.CustomResource {
        ) {
     region = registerOutput<String>('region');
     routeServerId = registerOutput<String>('routeServerId');
-    timeouts = registerOutput<RouteServerVpcAssociationTimeouts?>('timeouts');
+    timeouts = registerOutput<RouteServerVpcAssociationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RouteServerVpcAssociationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vpcId = registerOutput<String>('vpcId');
   }
 
@@ -168,7 +177,16 @@ class RouteServerVpcAssociation extends pulumi.CustomResource {
        ) {
     region = registerOutput<String>('region');
     routeServerId = registerOutput<String>('routeServerId');
-    timeouts = registerOutput<RouteServerVpcAssociationTimeouts?>('timeouts');
+    timeouts = registerOutput<RouteServerVpcAssociationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RouteServerVpcAssociationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vpcId = registerOutput<String>('vpcId');
   }
 }

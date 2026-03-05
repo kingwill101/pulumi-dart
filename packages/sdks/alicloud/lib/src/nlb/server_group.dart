@@ -437,7 +437,16 @@ class ServerGroup extends pulumi.CustomResource {
     connectionDrain = registerOutput<bool>('connectionDrain');
     connectionDrainEnabled = registerOutput<bool>('connectionDrainEnabled');
     connectionDrainTimeout = registerOutput<int>('connectionDrainTimeout');
-    healthCheck = registerOutput<ServerGroupHealthCheck>('healthCheck');
+    healthCheck = registerOutput<ServerGroupHealthCheck>(
+      'healthCheck',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerGroupHealthCheck.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     preserveClientIpEnabled = registerOutput<bool>('preserveClientIpEnabled');
     protocol = registerOutput<String>('protocol');
     regionId = registerOutput<String>('regionId');
@@ -478,7 +487,16 @@ class ServerGroup extends pulumi.CustomResource {
     connectionDrain = registerOutput<bool>('connectionDrain');
     connectionDrainEnabled = registerOutput<bool>('connectionDrainEnabled');
     connectionDrainTimeout = registerOutput<int>('connectionDrainTimeout');
-    healthCheck = registerOutput<ServerGroupHealthCheck>('healthCheck');
+    healthCheck = registerOutput<ServerGroupHealthCheck>(
+      'healthCheck',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerGroupHealthCheck.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     preserveClientIpEnabled = registerOutput<bool>('preserveClientIpEnabled');
     protocol = registerOutput<String>('protocol');
     regionId = registerOutput<String>('regionId');

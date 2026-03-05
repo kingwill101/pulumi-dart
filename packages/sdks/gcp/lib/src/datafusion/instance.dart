@@ -1590,6 +1590,13 @@ class Instance extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     cryptoKeyConfig = registerOutput<InstanceCryptoKeyConfig?>(
       'cryptoKeyConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceCryptoKeyConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dataprocServiceAccount = registerOutput<String?>('dataprocServiceAccount');
     description = registerOutput<String?>('description');
@@ -1604,11 +1611,27 @@ class Instance extends pulumi.CustomResource {
     );
     eventPublishConfig = registerOutput<InstanceEventPublishConfig?>(
       'eventPublishConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceEventPublishConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     gcsBucket = registerOutput<String>('gcsBucket');
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
-    networkConfig = registerOutput<InstanceNetworkConfig?>('networkConfig');
+    networkConfig = registerOutput<InstanceNetworkConfig?>(
+      'networkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceNetworkConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.options = registerOutput<Map<String, String>>('options');
     p4ServiceAccount = registerOutput<String>('p4ServiceAccount');
     privateInstance = registerOutput<bool?>('privateInstance');
@@ -1655,6 +1678,13 @@ class Instance extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     cryptoKeyConfig = registerOutput<InstanceCryptoKeyConfig?>(
       'cryptoKeyConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceCryptoKeyConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dataprocServiceAccount = registerOutput<String?>('dataprocServiceAccount');
     description = registerOutput<String?>('description');
@@ -1669,11 +1699,27 @@ class Instance extends pulumi.CustomResource {
     );
     eventPublishConfig = registerOutput<InstanceEventPublishConfig?>(
       'eventPublishConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceEventPublishConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     gcsBucket = registerOutput<String>('gcsBucket');
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
-    networkConfig = registerOutput<InstanceNetworkConfig?>('networkConfig');
+    networkConfig = registerOutput<InstanceNetworkConfig?>(
+      'networkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceNetworkConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.options = registerOutput<Map<String, String>>('options');
     p4ServiceAccount = registerOutput<String>('p4ServiceAccount');
     privateInstance = registerOutput<bool?>('privateInstance');

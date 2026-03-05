@@ -269,37 +269,207 @@ class AwsGovcloudIntegrations extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     accountId = registerOutput<String>('accountId');
-    alb = registerOutput<AwsGovcloudIntegrationsAlb?>('alb');
+    alb = registerOutput<AwsGovcloudIntegrationsAlb?>(
+      'alb',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsAlb.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     apiGateway = registerOutput<AwsGovcloudIntegrationsApiGateway?>(
       'apiGateway',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsApiGateway.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     autoScaling = registerOutput<AwsGovcloudIntegrationsAutoScaling?>(
       'autoScaling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsAutoScaling.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     awsDirectConnect = registerOutput<AwsGovcloudIntegrationsAwsDirectConnect?>(
       'awsDirectConnect',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsAwsDirectConnect.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    awsStates = registerOutput<AwsGovcloudIntegrationsAwsStates?>('awsStates');
+    awsStates = registerOutput<AwsGovcloudIntegrationsAwsStates?>(
+      'awsStates',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsAwsStates.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     cloudtrail = registerOutput<AwsGovcloudIntegrationsCloudtrail?>(
       'cloudtrail',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsCloudtrail.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    dynamoDb = registerOutput<AwsGovcloudIntegrationsDynamoDb?>('dynamoDb');
-    ebs = registerOutput<AwsGovcloudIntegrationsEbs?>('ebs');
-    ec2 = registerOutput<AwsGovcloudIntegrationsEc2?>('ec2');
+    dynamoDb = registerOutput<AwsGovcloudIntegrationsDynamoDb?>(
+      'dynamoDb',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsDynamoDb.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    ebs = registerOutput<AwsGovcloudIntegrationsEbs?>(
+      'ebs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsEbs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    ec2 = registerOutput<AwsGovcloudIntegrationsEc2?>(
+      'ec2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsEc2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     elasticSearch = registerOutput<AwsGovcloudIntegrationsElasticSearch?>(
       'elasticSearch',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsElasticSearch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    elb = registerOutput<AwsGovcloudIntegrationsElb?>('elb');
-    emr = registerOutput<AwsGovcloudIntegrationsEmr?>('emr');
-    iam = registerOutput<AwsGovcloudIntegrationsIam?>('iam');
-    lambda = registerOutput<AwsGovcloudIntegrationsLambda?>('lambda');
+    elb = registerOutput<AwsGovcloudIntegrationsElb?>(
+      'elb',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsElb.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    emr = registerOutput<AwsGovcloudIntegrationsEmr?>(
+      'emr',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsEmr.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    iam = registerOutput<AwsGovcloudIntegrationsIam?>(
+      'iam',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsIam.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    lambda = registerOutput<AwsGovcloudIntegrationsLambda?>(
+      'lambda',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsLambda.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     linkedAccountId = registerOutput<String>('linkedAccountId');
-    rds = registerOutput<AwsGovcloudIntegrationsRds?>('rds');
-    redShift = registerOutput<AwsGovcloudIntegrationsRedShift?>('redShift');
-    route53 = registerOutput<AwsGovcloudIntegrationsRoute53?>('route53');
-    s3 = registerOutput<AwsGovcloudIntegrationsS3?>('s3');
-    sns = registerOutput<AwsGovcloudIntegrationsSns?>('sns');
-    sqs = registerOutput<AwsGovcloudIntegrationsSqs?>('sqs');
+    rds = registerOutput<AwsGovcloudIntegrationsRds?>(
+      'rds',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsRds.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    redShift = registerOutput<AwsGovcloudIntegrationsRedShift?>(
+      'redShift',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsRedShift.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    route53 = registerOutput<AwsGovcloudIntegrationsRoute53?>(
+      'route53',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsRoute53.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    s3 = registerOutput<AwsGovcloudIntegrationsS3?>(
+      's3',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsS3.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    sns = registerOutput<AwsGovcloudIntegrationsSns?>(
+      'sns',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsSns.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    sqs = registerOutput<AwsGovcloudIntegrationsSqs?>(
+      'sqs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsSqs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [AwsGovcloudIntegrations] resource's state with the given [name] and [id].
@@ -326,36 +496,206 @@ class AwsGovcloudIntegrations extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     accountId = registerOutput<String>('accountId');
-    alb = registerOutput<AwsGovcloudIntegrationsAlb?>('alb');
+    alb = registerOutput<AwsGovcloudIntegrationsAlb?>(
+      'alb',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsAlb.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     apiGateway = registerOutput<AwsGovcloudIntegrationsApiGateway?>(
       'apiGateway',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsApiGateway.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     autoScaling = registerOutput<AwsGovcloudIntegrationsAutoScaling?>(
       'autoScaling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsAutoScaling.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     awsDirectConnect = registerOutput<AwsGovcloudIntegrationsAwsDirectConnect?>(
       'awsDirectConnect',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsAwsDirectConnect.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    awsStates = registerOutput<AwsGovcloudIntegrationsAwsStates?>('awsStates');
+    awsStates = registerOutput<AwsGovcloudIntegrationsAwsStates?>(
+      'awsStates',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsAwsStates.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     cloudtrail = registerOutput<AwsGovcloudIntegrationsCloudtrail?>(
       'cloudtrail',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsCloudtrail.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    dynamoDb = registerOutput<AwsGovcloudIntegrationsDynamoDb?>('dynamoDb');
-    ebs = registerOutput<AwsGovcloudIntegrationsEbs?>('ebs');
-    ec2 = registerOutput<AwsGovcloudIntegrationsEc2?>('ec2');
+    dynamoDb = registerOutput<AwsGovcloudIntegrationsDynamoDb?>(
+      'dynamoDb',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsDynamoDb.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    ebs = registerOutput<AwsGovcloudIntegrationsEbs?>(
+      'ebs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsEbs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    ec2 = registerOutput<AwsGovcloudIntegrationsEc2?>(
+      'ec2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsEc2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     elasticSearch = registerOutput<AwsGovcloudIntegrationsElasticSearch?>(
       'elasticSearch',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsElasticSearch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    elb = registerOutput<AwsGovcloudIntegrationsElb?>('elb');
-    emr = registerOutput<AwsGovcloudIntegrationsEmr?>('emr');
-    iam = registerOutput<AwsGovcloudIntegrationsIam?>('iam');
-    lambda = registerOutput<AwsGovcloudIntegrationsLambda?>('lambda');
+    elb = registerOutput<AwsGovcloudIntegrationsElb?>(
+      'elb',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsElb.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    emr = registerOutput<AwsGovcloudIntegrationsEmr?>(
+      'emr',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsEmr.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    iam = registerOutput<AwsGovcloudIntegrationsIam?>(
+      'iam',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsIam.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    lambda = registerOutput<AwsGovcloudIntegrationsLambda?>(
+      'lambda',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsLambda.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     linkedAccountId = registerOutput<String>('linkedAccountId');
-    rds = registerOutput<AwsGovcloudIntegrationsRds?>('rds');
-    redShift = registerOutput<AwsGovcloudIntegrationsRedShift?>('redShift');
-    route53 = registerOutput<AwsGovcloudIntegrationsRoute53?>('route53');
-    s3 = registerOutput<AwsGovcloudIntegrationsS3?>('s3');
-    sns = registerOutput<AwsGovcloudIntegrationsSns?>('sns');
-    sqs = registerOutput<AwsGovcloudIntegrationsSqs?>('sqs');
+    rds = registerOutput<AwsGovcloudIntegrationsRds?>(
+      'rds',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsRds.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    redShift = registerOutput<AwsGovcloudIntegrationsRedShift?>(
+      'redShift',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsRedShift.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    route53 = registerOutput<AwsGovcloudIntegrationsRoute53?>(
+      'route53',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsRoute53.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    s3 = registerOutput<AwsGovcloudIntegrationsS3?>(
+      's3',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsS3.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    sns = registerOutput<AwsGovcloudIntegrationsSns?>(
+      'sns',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsSns.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    sqs = registerOutput<AwsGovcloudIntegrationsSqs?>(
+      'sqs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsGovcloudIntegrationsSqs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

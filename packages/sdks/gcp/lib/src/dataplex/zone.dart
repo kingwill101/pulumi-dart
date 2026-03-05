@@ -337,7 +337,16 @@ class Zone extends pulumi.CustomResource {
     assetStatuses = registerOutput<List<Map<String, dynamic>>>('assetStatuses');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
-    discoverySpec = registerOutput<ZoneDiscoverySpec>('discoverySpec');
+    discoverySpec = registerOutput<ZoneDiscoverySpec>(
+      'discoverySpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ZoneDiscoverySpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -346,7 +355,16 @@ class Zone extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    resourceSpec = registerOutput<ZoneResourceSpec>('resourceSpec');
+    resourceSpec = registerOutput<ZoneResourceSpec>(
+      'resourceSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ZoneResourceSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     state = registerOutput<String>('state');
     type = registerOutput<String>('type');
     uid = registerOutput<String>('uid');
@@ -375,7 +393,16 @@ class Zone extends pulumi.CustomResource {
     assetStatuses = registerOutput<List<Map<String, dynamic>>>('assetStatuses');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
-    discoverySpec = registerOutput<ZoneDiscoverySpec>('discoverySpec');
+    discoverySpec = registerOutput<ZoneDiscoverySpec>(
+      'discoverySpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ZoneDiscoverySpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -384,7 +411,16 @@ class Zone extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    resourceSpec = registerOutput<ZoneResourceSpec>('resourceSpec');
+    resourceSpec = registerOutput<ZoneResourceSpec>(
+      'resourceSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ZoneResourceSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.state = registerOutput<String>('state');
     type = registerOutput<String>('type');
     uid = registerOutput<String>('uid');

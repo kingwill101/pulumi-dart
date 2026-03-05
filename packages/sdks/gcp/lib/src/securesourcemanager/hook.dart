@@ -107,7 +107,16 @@ class Hook extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pushOption = registerOutput<HookPushOption>('pushOption');
+    pushOption = registerOutput<HookPushOption>(
+      'pushOption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HookPushOption.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     repositoryId = registerOutput<String>('repositoryId');
     sensitiveQueryString = registerOutput<String?>('sensitiveQueryString');
     targetUri = registerOutput<String>('targetUri');
@@ -141,7 +150,16 @@ class Hook extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pushOption = registerOutput<HookPushOption>('pushOption');
+    pushOption = registerOutput<HookPushOption>(
+      'pushOption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HookPushOption.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     repositoryId = registerOutput<String>('repositoryId');
     sensitiveQueryString = registerOutput<String?>('sensitiveQueryString');
     targetUri = registerOutput<String>('targetUri');

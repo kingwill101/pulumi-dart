@@ -123,8 +123,6 @@ class NewrelicConfig {
   }
 
   bool get syntheticsApiUrlIsSecret => _isSecret('syntheticsApiUrl');
-
 }
 
 final config = NewrelicConfig();
-

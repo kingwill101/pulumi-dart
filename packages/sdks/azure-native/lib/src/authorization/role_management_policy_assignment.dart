@@ -186,6 +186,13 @@ class RoleManagementPolicyAssignment extends pulumi.CustomResource {
     policyAssignmentProperties =
         registerOutput<PolicyAssignmentPropertiesResponse>(
           'policyAssignmentProperties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PolicyAssignmentPropertiesResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     policyId = registerOutput<String?>('policyId');
     roleDefinitionId = registerOutput<String?>('roleDefinitionId');

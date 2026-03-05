@@ -299,6 +299,13 @@ class LinkedServiceOdbc extends pulumi.CustomResource {
     annotations = registerOutput<List<String>?>('annotations');
     basicAuthentication = registerOutput<LinkedServiceOdbcBasicAuthentication?>(
       'basicAuthentication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinkedServiceOdbcBasicAuthentication.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     connectionString = registerOutput<String>('connectionString');
     dataFactoryId = registerOutput<String>('dataFactoryId');
@@ -337,6 +344,13 @@ class LinkedServiceOdbc extends pulumi.CustomResource {
     annotations = registerOutput<List<String>?>('annotations');
     basicAuthentication = registerOutput<LinkedServiceOdbcBasicAuthentication?>(
       'basicAuthentication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinkedServiceOdbcBasicAuthentication.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     connectionString = registerOutput<String>('connectionString');
     dataFactoryId = registerOutput<String>('dataFactoryId');

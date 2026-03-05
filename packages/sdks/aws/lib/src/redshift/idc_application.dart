@@ -183,6 +183,13 @@ class IdcApplication extends pulumi.CustomResource {
     authorizedTokenIssuer =
         registerOutput<IdcApplicationAuthorizedTokenIssuer?>(
           'authorizedTokenIssuer',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return IdcApplicationAuthorizedTokenIssuer.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     iamRoleArn = registerOutput<String>('iamRoleArn');
     idcDisplayName = registerOutput<String>('idcDisplayName');
@@ -200,6 +207,13 @@ class IdcApplication extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     serviceIntegration = registerOutput<IdcApplicationServiceIntegration?>(
       'serviceIntegration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IdcApplicationServiceIntegration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -232,6 +246,13 @@ class IdcApplication extends pulumi.CustomResource {
     authorizedTokenIssuer =
         registerOutput<IdcApplicationAuthorizedTokenIssuer?>(
           'authorizedTokenIssuer',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return IdcApplicationAuthorizedTokenIssuer.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     iamRoleArn = registerOutput<String>('iamRoleArn');
     idcDisplayName = registerOutput<String>('idcDisplayName');
@@ -249,6 +270,13 @@ class IdcApplication extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     serviceIntegration = registerOutput<IdcApplicationServiceIntegration?>(
       'serviceIntegration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IdcApplicationServiceIntegration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

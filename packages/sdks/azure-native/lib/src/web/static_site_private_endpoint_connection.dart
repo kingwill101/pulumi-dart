@@ -206,10 +206,26 @@ class StaticSitePrivateEndpointConnection extends pulumi.CustomResource {
     ipAddresses = registerOutput<List<String>?>('ipAddresses');
     kind = registerOutput<String?>('kind');
     this.name = registerOutput<String>('name');
-    privateEndpoint = registerOutput<ArmIdWrapperResponse?>('privateEndpoint');
+    privateEndpoint = registerOutput<ArmIdWrapperResponse?>(
+      'privateEndpoint',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ArmIdWrapperResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     privateLinkServiceConnectionState =
         registerOutput<PrivateLinkConnectionStateResponse?>(
           'privateLinkServiceConnectionState',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PrivateLinkConnectionStateResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     provisioningState = registerOutput<String>('provisioningState');
     type = registerOutput<String>('type');

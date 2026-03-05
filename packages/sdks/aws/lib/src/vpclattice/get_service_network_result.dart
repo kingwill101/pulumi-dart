@@ -1,22 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getServiceNetwork.
 class GetServiceNetworkResult {
   /// ARN of the Service Network.
   final String arn;
+
   /// Authentication type for the service network. Either `NONE` or `AWS_IAM`.
   final String authType;
+
   /// Date and time the service network was created.
   final String createdAt;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Date and time the service network was last updated.
   final String lastUpdatedAt;
+
   /// Name of the service network.
   final String name;
+
   /// Number of services associated with this service network.
   final int numberOfAssociatedServices;
+
   /// Number of VPCs associated with this service network.
   final int numberOfAssociatedVpcs;
   final String region;
@@ -81,4 +87,3 @@ class GetServiceNetworkResult {
     );
   }
 }
-

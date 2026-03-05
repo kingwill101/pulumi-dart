@@ -11,7 +11,8 @@ import 'list_fluid_relay_server_keys_result.dart';
 /// Uses Azure REST API version 2025-06-20-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_fluidrelay_get_fluid_relay_private_endpoint_connection_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetFluidRelayPrivateEndpointConnectionResult> getFluidRelayPrivateEndpointConnection(
+Future<GetFluidRelayPrivateEndpointConnectionResult>
+getFluidRelayPrivateEndpointConnection(
   GetFluidRelayPrivateEndpointConnectionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

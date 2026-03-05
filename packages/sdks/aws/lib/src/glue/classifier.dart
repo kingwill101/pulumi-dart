@@ -547,16 +547,48 @@ class Classifier extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    csvClassifier = registerOutput<ClassifierCsvClassifier?>('csvClassifier');
+    csvClassifier = registerOutput<ClassifierCsvClassifier?>(
+      'csvClassifier',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClassifierCsvClassifier.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     grokClassifier = registerOutput<ClassifierGrokClassifier?>(
       'grokClassifier',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClassifierGrokClassifier.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     jsonClassifier = registerOutput<ClassifierJsonClassifier?>(
       'jsonClassifier',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClassifierJsonClassifier.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    xmlClassifier = registerOutput<ClassifierXmlClassifier?>('xmlClassifier');
+    xmlClassifier = registerOutput<ClassifierXmlClassifier?>(
+      'xmlClassifier',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClassifierXmlClassifier.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Classifier] resource's state with the given [name] and [id].
@@ -582,15 +614,47 @@ class Classifier extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    csvClassifier = registerOutput<ClassifierCsvClassifier?>('csvClassifier');
+    csvClassifier = registerOutput<ClassifierCsvClassifier?>(
+      'csvClassifier',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClassifierCsvClassifier.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     grokClassifier = registerOutput<ClassifierGrokClassifier?>(
       'grokClassifier',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClassifierGrokClassifier.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     jsonClassifier = registerOutput<ClassifierJsonClassifier?>(
       'jsonClassifier',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClassifierJsonClassifier.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    xmlClassifier = registerOutput<ClassifierXmlClassifier?>('xmlClassifier');
+    xmlClassifier = registerOutput<ClassifierXmlClassifier?>(
+      'xmlClassifier',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClassifierXmlClassifier.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

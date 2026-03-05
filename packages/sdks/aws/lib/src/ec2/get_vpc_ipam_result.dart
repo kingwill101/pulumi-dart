@@ -7,39 +7,56 @@ import 'get_vpc_ipam_operating_region.dart';
 class GetVpcIpamResult {
   /// ARN of the IPAM.
   final String arn;
+
   /// The default resource discovery association ID.
   final String defaultResourceDiscoveryAssociationId;
+
   /// The default resource discovery ID.
   final String defaultResourceDiscoveryId;
+
   /// Description for the IPAM.
   final String description;
+
   /// If private GUA is enabled.
   final bool enablePrivateGua;
+
   /// ID of the IPAM resource.
   final String id;
+
   /// Region that the IPAM exists in.
   final String ipamRegion;
+
   /// AWS account that is charged for active IP addresses managed in IPAM.
   final String meteredAccount;
+
   /// Regions that the IPAM is configured to operate in.
   final List<GetVpcIpamOperatingRegion> operatingRegions;
+
   /// ID of the account that owns this IPAM.
   final String ownerId;
+
   /// ID of the default private scope.
   final String privateDefaultScopeId;
+
   /// ID of the default public scope.
   final String publicDefaultScopeId;
   final String region;
+
   /// Number of resource discovery associations.
   final int resourceDiscoveryAssociationCount;
+
   /// Number of scopes on this IPAM.
   final int scopeCount;
+
   /// Current state of the IPAM.
   final String state;
+
   /// State message of the IPAM.
   final String stateMessage;
+
   /// Tags of the IPAM resource.
   final Map<String, String> tags;
+
   /// IPAM Tier.
   final String tier;
 
@@ -88,14 +105,19 @@ class GetVpcIpamResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'arn': arn,
-      'defaultResourceDiscoveryAssociationId': defaultResourceDiscoveryAssociationId,
+      'defaultResourceDiscoveryAssociationId':
+          defaultResourceDiscoveryAssociationId,
       'defaultResourceDiscoveryId': defaultResourceDiscoveryId,
       'description': description,
       'enablePrivateGua': enablePrivateGua,
       'id': id,
       'ipamRegion': ipamRegion,
       'meteredAccount': meteredAccount,
-      'operatingRegions': pulumi.Input.encodeList<GetVpcIpamOperatingRegion, Map<String, dynamic>>(operatingRegions, (value) => value.toMap()),
+      'operatingRegions':
+          pulumi.Input.encodeList<
+            GetVpcIpamOperatingRegion,
+            Map<String, dynamic>
+          >(operatingRegions, (value) => value.toMap()),
       'ownerId': ownerId,
       'privateDefaultScopeId': privateDefaultScopeId,
       'publicDefaultScopeId': publicDefaultScopeId,
@@ -112,19 +134,26 @@ class GetVpcIpamResult {
   factory GetVpcIpamResult.fromMap(Map<String, dynamic> map) {
     return GetVpcIpamResult(
       arn: map['arn'] as String,
-      defaultResourceDiscoveryAssociationId: map['defaultResourceDiscoveryAssociationId'] as String,
+      defaultResourceDiscoveryAssociationId:
+          map['defaultResourceDiscoveryAssociationId'] as String,
       defaultResourceDiscoveryId: map['defaultResourceDiscoveryId'] as String,
       description: map['description'] as String,
       enablePrivateGua: map['enablePrivateGua'] as bool,
       id: map['id'] as String,
       ipamRegion: map['ipamRegion'] as String,
       meteredAccount: map['meteredAccount'] as String,
-      operatingRegions: pulumi.Input.decodeList<GetVpcIpamOperatingRegion>(map['operatingRegions']!, (value) => GetVpcIpamOperatingRegion.fromMap((value as Map).cast<String, dynamic>())),
+      operatingRegions: pulumi.Input.decodeList<GetVpcIpamOperatingRegion>(
+        map['operatingRegions']!,
+        (value) => GetVpcIpamOperatingRegion.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       ownerId: map['ownerId'] as String,
       privateDefaultScopeId: map['privateDefaultScopeId'] as String,
       publicDefaultScopeId: map['publicDefaultScopeId'] as String,
       region: map['region'] as String,
-      resourceDiscoveryAssociationCount: map['resourceDiscoveryAssociationCount'] as int,
+      resourceDiscoveryAssociationCount:
+          map['resourceDiscoveryAssociationCount'] as int,
       scopeCount: map['scopeCount'] as int,
       state: map['state'] as String,
       stateMessage: map['stateMessage'] as String,
@@ -133,4 +162,3 @@ class GetVpcIpamResult {
     );
   }
 }
-

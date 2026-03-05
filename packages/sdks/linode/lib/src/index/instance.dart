@@ -1053,7 +1053,16 @@ class Instance extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    alerts = registerOutput<InstanceAlerts>('alerts');
+    alerts = registerOutput<InstanceAlerts>(
+      'alerts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceAlerts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     authorizedKeys = registerOutput<List<String>?>('authorizedKeys');
     authorizedUsers = registerOutput<List<String>?>('authorizedUsers');
     backupId = registerOutput<int?>('backupId');
@@ -1082,7 +1091,16 @@ class Instance extends pulumi.CustomResource {
     metadatas = registerOutput<List<Map<String, dynamic>>?>('metadatas');
     migrationType = registerOutput<String?>('migrationType');
     networkHelper = registerOutput<bool?>('networkHelper');
-    placementGroup = registerOutput<InstancePlacementGroup?>('placementGroup');
+    placementGroup = registerOutput<InstancePlacementGroup?>(
+      'placementGroup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstancePlacementGroup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     placementGroupExternallyManaged = registerOutput<bool?>(
       'placementGroupExternallyManaged',
     );
@@ -1125,7 +1143,16 @@ class Instance extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    alerts = registerOutput<InstanceAlerts>('alerts');
+    alerts = registerOutput<InstanceAlerts>(
+      'alerts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceAlerts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     authorizedKeys = registerOutput<List<String>?>('authorizedKeys');
     authorizedUsers = registerOutput<List<String>?>('authorizedUsers');
     backupId = registerOutput<int?>('backupId');
@@ -1154,7 +1181,16 @@ class Instance extends pulumi.CustomResource {
     metadatas = registerOutput<List<Map<String, dynamic>>?>('metadatas');
     migrationType = registerOutput<String?>('migrationType');
     networkHelper = registerOutput<bool?>('networkHelper');
-    placementGroup = registerOutput<InstancePlacementGroup?>('placementGroup');
+    placementGroup = registerOutput<InstancePlacementGroup?>(
+      'placementGroup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstancePlacementGroup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     placementGroupExternallyManaged = registerOutput<bool?>(
       'placementGroupExternallyManaged',
     );

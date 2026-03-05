@@ -70,10 +70,24 @@ class RegistrationDomainsV1beta1 extends pulumi.CustomResource {
        ) {
     contactSettings = registerOutput<ContactSettingsResponseDomainsV1beta1>(
       'contactSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContactSettingsResponseDomainsV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     dnsSettings = registerOutput<DnsSettingsResponseDomainsV1beta1>(
       'dnsSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DnsSettingsResponseDomainsV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     domainName = registerOutput<String>('domainName');
     expireTime = registerOutput<String>('expireTime');
@@ -83,11 +97,25 @@ class RegistrationDomainsV1beta1 extends pulumi.CustomResource {
     managementSettings =
         registerOutput<ManagementSettingsResponseDomainsV1beta1>(
           'managementSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ManagementSettingsResponseDomainsV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     pendingContactSettings =
         registerOutput<ContactSettingsResponseDomainsV1beta1>(
           'pendingContactSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ContactSettingsResponseDomainsV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     project = registerOutput<String>('project');
     registerFailureReason = registerOutput<String>('registerFailureReason');

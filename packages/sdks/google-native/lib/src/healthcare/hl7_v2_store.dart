@@ -48,7 +48,16 @@ class Hl7V2Store extends pulumi.CustomResource {
     notificationConfigs = registerOutput<List<Map<String, dynamic>>>(
       'notificationConfigs',
     );
-    parserConfig = registerOutput<ParserConfigResponse>('parserConfig');
+    parserConfig = registerOutput<ParserConfigResponse>(
+      'parserConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ParserConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     rejectDuplicateMessage = registerOutput<bool>('rejectDuplicateMessage');
   }

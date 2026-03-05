@@ -806,12 +806,30 @@ class Target extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
-    anthosCluster = registerOutput<TargetAnthosCluster?>('anthosCluster');
+    anthosCluster = registerOutput<TargetAnthosCluster?>(
+      'anthosCluster',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TargetAnthosCluster.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     associatedEntities = registerOutput<List<Map<String, dynamic>>?>(
       'associatedEntities',
     );
     createTime = registerOutput<String>('createTime');
-    customTarget = registerOutput<TargetCustomTarget?>('customTarget');
+    customTarget = registerOutput<TargetCustomTarget?>(
+      'customTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TargetCustomTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     deployParameters = registerOutput<Map<String, String>?>('deployParameters');
     description = registerOutput<String?>('description');
     effectiveAnnotations = registerOutput<Map<String, String>>(
@@ -822,15 +840,38 @@ class Target extends pulumi.CustomResource {
     executionConfigs = registerOutput<List<Map<String, dynamic>>>(
       'executionConfigs',
     );
-    gke = registerOutput<TargetGke?>('gke');
+    gke = registerOutput<TargetGke?>(
+      'gke',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TargetGke.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
-    multiTarget = registerOutput<TargetMultiTarget?>('multiTarget');
+    multiTarget = registerOutput<TargetMultiTarget?>(
+      'multiTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TargetMultiTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     requireApproval = registerOutput<bool?>('requireApproval');
-    run = registerOutput<TargetRun?>('run');
+    run = registerOutput<TargetRun?>(
+      'run',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TargetRun.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     targetId = registerOutput<String>('targetId');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
@@ -860,12 +901,30 @@ class Target extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
-    anthosCluster = registerOutput<TargetAnthosCluster?>('anthosCluster');
+    anthosCluster = registerOutput<TargetAnthosCluster?>(
+      'anthosCluster',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TargetAnthosCluster.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     associatedEntities = registerOutput<List<Map<String, dynamic>>?>(
       'associatedEntities',
     );
     createTime = registerOutput<String>('createTime');
-    customTarget = registerOutput<TargetCustomTarget?>('customTarget');
+    customTarget = registerOutput<TargetCustomTarget?>(
+      'customTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TargetCustomTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     deployParameters = registerOutput<Map<String, String>?>('deployParameters');
     description = registerOutput<String?>('description');
     effectiveAnnotations = registerOutput<Map<String, String>>(
@@ -876,15 +935,38 @@ class Target extends pulumi.CustomResource {
     executionConfigs = registerOutput<List<Map<String, dynamic>>>(
       'executionConfigs',
     );
-    gke = registerOutput<TargetGke?>('gke');
+    gke = registerOutput<TargetGke?>(
+      'gke',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TargetGke.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
-    multiTarget = registerOutput<TargetMultiTarget?>('multiTarget');
+    multiTarget = registerOutput<TargetMultiTarget?>(
+      'multiTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TargetMultiTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     requireApproval = registerOutput<bool?>('requireApproval');
-    run = registerOutput<TargetRun?>('run');
+    run = registerOutput<TargetRun?>(
+      'run',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TargetRun.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     targetId = registerOutput<String>('targetId');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');

@@ -58,6 +58,13 @@ class Flow extends pulumi.CustomResource {
     advancedSettings =
         registerOutput<GoogleCloudDialogflowCxV3AdvancedSettingsResponse>(
           'advancedSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowCxV3AdvancedSettingsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     agentId = registerOutput<String>('agentId');
     description = registerOutput<String>('description');
@@ -66,12 +73,28 @@ class Flow extends pulumi.CustomResource {
     knowledgeConnectorSettings =
         registerOutput<
           GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsResponse
-        >('knowledgeConnectorSettings');
+        >(
+          'knowledgeConnectorSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     languageCode = registerOutput<String?>('languageCode');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     nluSettings = registerOutput<GoogleCloudDialogflowCxV3NluSettingsResponse>(
       'nluSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudDialogflowCxV3NluSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     transitionRouteGroups = registerOutput<List<String>>(

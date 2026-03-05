@@ -59,11 +59,27 @@ class ControlRetailV2alpha extends pulumi.CustomResource {
     facetSpec =
         registerOutput<GoogleCloudRetailV2alphaSearchRequestFacetSpecResponse>(
           'facetSpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudRetailV2alphaSearchRequestFacetSpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    rule = registerOutput<GoogleCloudRetailV2alphaRuleResponse>('rule');
+    rule = registerOutput<GoogleCloudRetailV2alphaRuleResponse>(
+      'rule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudRetailV2alphaRuleResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     searchSolutionUseCase = registerOutput<List<String>>(
       'searchSolutionUseCase',
     );

@@ -237,7 +237,16 @@ class Socketio extends pulumi.CustomResource {
     aadAuthEnabled = registerOutput<bool?>('aadAuthEnabled');
     externalIp = registerOutput<String>('externalIp');
     hostname = registerOutput<String>('hostname');
-    identity = registerOutput<SocketioIdentity?>('identity');
+    identity = registerOutput<SocketioIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SocketioIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     liveTraceConnectivityLogsEnabled = registerOutput<bool?>(
       'liveTraceConnectivityLogsEnabled',
     );
@@ -262,7 +271,16 @@ class Socketio extends pulumi.CustomResource {
     );
     serverPort = registerOutput<int>('serverPort');
     serviceMode = registerOutput<String?>('serviceMode');
-    sku = registerOutput<SocketioSku>('sku');
+    sku = registerOutput<SocketioSku>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SocketioSku.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tlsClientCertEnabled = registerOutput<bool?>('tlsClientCertEnabled');
   }
@@ -293,7 +311,16 @@ class Socketio extends pulumi.CustomResource {
     aadAuthEnabled = registerOutput<bool?>('aadAuthEnabled');
     externalIp = registerOutput<String>('externalIp');
     hostname = registerOutput<String>('hostname');
-    identity = registerOutput<SocketioIdentity?>('identity');
+    identity = registerOutput<SocketioIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SocketioIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     liveTraceConnectivityLogsEnabled = registerOutput<bool?>(
       'liveTraceConnectivityLogsEnabled',
     );
@@ -318,7 +345,16 @@ class Socketio extends pulumi.CustomResource {
     );
     serverPort = registerOutput<int>('serverPort');
     serviceMode = registerOutput<String?>('serviceMode');
-    sku = registerOutput<SocketioSku>('sku');
+    sku = registerOutput<SocketioSku>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SocketioSku.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tlsClientCertEnabled = registerOutput<bool?>('tlsClientCertEnabled');
   }

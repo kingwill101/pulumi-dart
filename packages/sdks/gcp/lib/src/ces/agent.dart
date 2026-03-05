@@ -1643,11 +1643,27 @@ class Agent extends pulumi.CustomResource {
     instruction = registerOutput<String?>('instruction');
     llmAgent = registerOutput<Map<String, dynamic>?>('llmAgent');
     location = registerOutput<String>('location');
-    modelSettings = registerOutput<AgentModelSettings?>('modelSettings');
+    modelSettings = registerOutput<AgentModelSettings?>(
+      'modelSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentModelSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     remoteDialogflowAgent = registerOutput<AgentRemoteDialogflowAgent?>(
       'remoteDialogflowAgent',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentRemoteDialogflowAgent.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tools = registerOutput<List<String>?>('tools');
     toolsets = registerOutput<List<Map<String, dynamic>>?>('toolsets');
@@ -1703,11 +1719,27 @@ class Agent extends pulumi.CustomResource {
     instruction = registerOutput<String?>('instruction');
     llmAgent = registerOutput<Map<String, dynamic>?>('llmAgent');
     location = registerOutput<String>('location');
-    modelSettings = registerOutput<AgentModelSettings?>('modelSettings');
+    modelSettings = registerOutput<AgentModelSettings?>(
+      'modelSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentModelSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     remoteDialogflowAgent = registerOutput<AgentRemoteDialogflowAgent?>(
       'remoteDialogflowAgent',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentRemoteDialogflowAgent.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tools = registerOutput<List<String>?>('tools');
     toolsets = registerOutput<List<Map<String, dynamic>>?>('toolsets');

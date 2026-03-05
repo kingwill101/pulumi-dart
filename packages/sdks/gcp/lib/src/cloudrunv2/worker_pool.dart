@@ -3475,6 +3475,13 @@ class WorkerPool extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     binaryAuthorization = registerOutput<WorkerPoolBinaryAuthorization?>(
       'binaryAuthorization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkerPoolBinaryAuthorization.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     client = registerOutput<String?>('client');
     clientVersion = registerOutput<String?>('clientVersion');
@@ -3509,8 +3516,26 @@ class WorkerPool extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     reconciling = registerOutput<bool>('reconciling');
-    scaling = registerOutput<WorkerPoolScaling>('scaling');
-    template = registerOutput<WorkerPoolTemplate>('template');
+    scaling = registerOutput<WorkerPoolScaling>(
+      'scaling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkerPoolScaling.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    template = registerOutput<WorkerPoolTemplate>(
+      'template',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkerPoolTemplate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     terminalConditions = registerOutput<List<Map<String, dynamic>>>(
       'terminalConditions',
     );
@@ -3544,6 +3569,13 @@ class WorkerPool extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     binaryAuthorization = registerOutput<WorkerPoolBinaryAuthorization?>(
       'binaryAuthorization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkerPoolBinaryAuthorization.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     client = registerOutput<String?>('client');
     clientVersion = registerOutput<String?>('clientVersion');
@@ -3578,8 +3610,26 @@ class WorkerPool extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     reconciling = registerOutput<bool>('reconciling');
-    scaling = registerOutput<WorkerPoolScaling>('scaling');
-    template = registerOutput<WorkerPoolTemplate>('template');
+    scaling = registerOutput<WorkerPoolScaling>(
+      'scaling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkerPoolScaling.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    template = registerOutput<WorkerPoolTemplate>(
+      'template',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkerPoolTemplate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     terminalConditions = registerOutput<List<Map<String, dynamic>>>(
       'terminalConditions',
     );

@@ -51,6 +51,13 @@ class Evaluation extends pulumi.CustomResource {
     evaluationConfig =
         registerOutput<GoogleCloudDialogflowV2EvaluationConfigResponse>(
           'evaluationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowV2EvaluationConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -59,6 +66,13 @@ class Evaluation extends pulumi.CustomResource {
     smartReplyMetrics =
         registerOutput<GoogleCloudDialogflowV2SmartReplyMetricsResponse>(
           'smartReplyMetrics',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowV2SmartReplyMetricsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

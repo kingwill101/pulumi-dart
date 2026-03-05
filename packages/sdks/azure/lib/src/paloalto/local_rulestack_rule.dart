@@ -349,10 +349,28 @@ class LocalRulestackRule extends pulumi.CustomResource {
     action = registerOutput<String>('action');
     applications = registerOutput<List<String>>('applications');
     auditComment = registerOutput<String?>('auditComment');
-    category = registerOutput<LocalRulestackRuleCategory?>('category');
+    category = registerOutput<LocalRulestackRuleCategory?>(
+      'category',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LocalRulestackRuleCategory.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     decryptionRuleType = registerOutput<String?>('decryptionRuleType');
     description = registerOutput<String?>('description');
-    destination = registerOutput<LocalRulestackRuleDestination>('destination');
+    destination = registerOutput<LocalRulestackRuleDestination>(
+      'destination',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LocalRulestackRuleDestination.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     enabled = registerOutput<bool?>('enabled');
     inspectionCertificateId = registerOutput<String?>(
       'inspectionCertificateId',
@@ -365,7 +383,16 @@ class LocalRulestackRule extends pulumi.CustomResource {
     protocol = registerOutput<String?>('protocol');
     protocolPorts = registerOutput<List<String>?>('protocolPorts');
     rulestackId = registerOutput<String>('rulestackId');
-    source = registerOutput<LocalRulestackRuleSource>('source');
+    source = registerOutput<LocalRulestackRuleSource>(
+      'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LocalRulestackRuleSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
   }
 
@@ -395,10 +422,28 @@ class LocalRulestackRule extends pulumi.CustomResource {
     action = registerOutput<String>('action');
     applications = registerOutput<List<String>>('applications');
     auditComment = registerOutput<String?>('auditComment');
-    category = registerOutput<LocalRulestackRuleCategory?>('category');
+    category = registerOutput<LocalRulestackRuleCategory?>(
+      'category',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LocalRulestackRuleCategory.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     decryptionRuleType = registerOutput<String?>('decryptionRuleType');
     description = registerOutput<String?>('description');
-    destination = registerOutput<LocalRulestackRuleDestination>('destination');
+    destination = registerOutput<LocalRulestackRuleDestination>(
+      'destination',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LocalRulestackRuleDestination.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     enabled = registerOutput<bool?>('enabled');
     inspectionCertificateId = registerOutput<String?>(
       'inspectionCertificateId',
@@ -411,7 +456,16 @@ class LocalRulestackRule extends pulumi.CustomResource {
     protocol = registerOutput<String?>('protocol');
     protocolPorts = registerOutput<List<String>?>('protocolPorts');
     rulestackId = registerOutput<String>('rulestackId');
-    source = registerOutput<LocalRulestackRuleSource>('source');
+    source = registerOutput<LocalRulestackRuleSource>(
+      'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LocalRulestackRuleSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
   }
 }

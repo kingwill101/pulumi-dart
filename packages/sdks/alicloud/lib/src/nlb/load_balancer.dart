@@ -896,6 +896,13 @@ class LoadBalancer extends pulumi.CustomResource {
     deletionProtectionConfig =
         registerOutput<LoadBalancerDeletionProtectionConfig>(
           'deletionProtectionConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LoadBalancerDeletionProtectionConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     deletionProtectionEnabled = registerOutput<bool>(
       'deletionProtectionEnabled',
@@ -913,6 +920,13 @@ class LoadBalancer extends pulumi.CustomResource {
     modificationProtectionConfig =
         registerOutput<LoadBalancerModificationProtectionConfig>(
           'modificationProtectionConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LoadBalancerModificationProtectionConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     modificationProtectionReason = registerOutput<String>(
       'modificationProtectionReason',
@@ -962,6 +976,13 @@ class LoadBalancer extends pulumi.CustomResource {
     deletionProtectionConfig =
         registerOutput<LoadBalancerDeletionProtectionConfig>(
           'deletionProtectionConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LoadBalancerDeletionProtectionConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     deletionProtectionEnabled = registerOutput<bool>(
       'deletionProtectionEnabled',
@@ -979,6 +1000,13 @@ class LoadBalancer extends pulumi.CustomResource {
     modificationProtectionConfig =
         registerOutput<LoadBalancerModificationProtectionConfig>(
           'modificationProtectionConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LoadBalancerModificationProtectionConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     modificationProtectionReason = registerOutput<String>(
       'modificationProtectionReason',

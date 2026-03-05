@@ -233,7 +233,16 @@ class NetworkInterfacePermission extends pulumi.CustomResource {
     );
     permission = registerOutput<String>('permission');
     region = registerOutput<String>('region');
-    timeouts = registerOutput<NetworkInterfacePermissionTimeouts?>('timeouts');
+    timeouts = registerOutput<NetworkInterfacePermissionTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkInterfacePermissionTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [NetworkInterfacePermission] resource's state with the given [name] and [id].
@@ -266,6 +275,15 @@ class NetworkInterfacePermission extends pulumi.CustomResource {
     );
     permission = registerOutput<String>('permission');
     region = registerOutput<String>('region');
-    timeouts = registerOutput<NetworkInterfacePermissionTimeouts?>('timeouts');
+    timeouts = registerOutput<NetworkInterfacePermissionTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkInterfacePermissionTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

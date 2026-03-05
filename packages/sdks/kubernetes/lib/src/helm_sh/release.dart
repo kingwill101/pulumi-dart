@@ -904,13 +904,31 @@ class Release extends pulumi.CustomResource {
     recreatePods = registerOutput<bool?>('recreatePods');
     renderSubchartNotes = registerOutput<bool?>('renderSubchartNotes');
     replace = registerOutput<bool?>('replace');
-    repositoryOpts = registerOutput<RepositoryOpts?>('repositoryOpts');
+    repositoryOpts = registerOutput<RepositoryOpts?>(
+      'repositoryOpts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RepositoryOpts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resetValues = registerOutput<bool?>('resetValues');
     resourceNames = registerOutput<Map<String, List<String>>?>('resourceNames');
     reuseValues = registerOutput<bool?>('reuseValues');
     skipAwait = registerOutput<bool?>('skipAwait');
     skipCrds = registerOutput<bool?>('skipCrds');
-    status = registerOutput<ReleaseStatus>('status');
+    status = registerOutput<ReleaseStatus>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReleaseStatus.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     timeout = registerOutput<int?>('timeout');
     valueYamlFiles = registerOutput<List<Map<String, dynamic>>?>(
       'valueYamlFiles',

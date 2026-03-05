@@ -206,8 +206,24 @@ class ApiDefinition extends pulumi.CustomResource {
     specification =
         registerOutput<ApiDefinitionPropertiesSpecificationResponse>(
           'specification',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ApiDefinitionPropertiesSpecificationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     title = registerOutput<String>('title');
     type = registerOutput<String>('type');
   }

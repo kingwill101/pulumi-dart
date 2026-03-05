@@ -170,6 +170,13 @@ class TrustProvider extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     deviceOptions = registerOutput<TrustProviderDeviceOptions?>(
       'deviceOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TrustProviderDeviceOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     deviceTrustProviderType = registerOutput<String?>(
       'deviceTrustProviderType',
@@ -177,12 +184,35 @@ class TrustProvider extends pulumi.CustomResource {
     nativeApplicationOidcOptions =
         registerOutput<TrustProviderNativeApplicationOidcOptions?>(
           'nativeApplicationOidcOptions',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return TrustProviderNativeApplicationOidcOptions.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    oidcOptions = registerOutput<TrustProviderOidcOptions?>('oidcOptions');
+    oidcOptions = registerOutput<TrustProviderOidcOptions?>(
+      'oidcOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TrustProviderOidcOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     policyReferenceName = registerOutput<String>('policyReferenceName');
     region = registerOutput<String>('region');
     sseSpecification = registerOutput<TrustProviderSseSpecification>(
       'sseSpecification',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TrustProviderSseSpecification.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -216,6 +246,13 @@ class TrustProvider extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     deviceOptions = registerOutput<TrustProviderDeviceOptions?>(
       'deviceOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TrustProviderDeviceOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     deviceTrustProviderType = registerOutput<String?>(
       'deviceTrustProviderType',
@@ -223,12 +260,35 @@ class TrustProvider extends pulumi.CustomResource {
     nativeApplicationOidcOptions =
         registerOutput<TrustProviderNativeApplicationOidcOptions?>(
           'nativeApplicationOidcOptions',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return TrustProviderNativeApplicationOidcOptions.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    oidcOptions = registerOutput<TrustProviderOidcOptions?>('oidcOptions');
+    oidcOptions = registerOutput<TrustProviderOidcOptions?>(
+      'oidcOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TrustProviderOidcOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     policyReferenceName = registerOutput<String>('policyReferenceName');
     region = registerOutput<String>('region');
     sseSpecification = registerOutput<TrustProviderSseSpecification>(
       'sseSpecification',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TrustProviderSseSpecification.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

@@ -78,6 +78,13 @@ class NodeTemplateComputeV1 extends pulumi.CustomResource {
     nodeTypeFlexibility =
         registerOutput<NodeTemplateNodeTypeFlexibilityResponseComputeV1>(
           'nodeTypeFlexibility',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NodeTemplateNodeTypeFlexibilityResponseComputeV1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
@@ -85,6 +92,13 @@ class NodeTemplateComputeV1 extends pulumi.CustomResource {
     selfLink = registerOutput<String>('selfLink');
     serverBinding = registerOutput<ServerBindingResponseComputeV1>(
       'serverBinding',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerBindingResponseComputeV1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     status = registerOutput<String>('status');
     statusMessage = registerOutput<String>('statusMessage');

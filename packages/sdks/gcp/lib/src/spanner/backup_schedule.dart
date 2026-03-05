@@ -659,6 +659,13 @@ class BackupSchedule extends pulumi.CustomResource {
     database = registerOutput<String>('database');
     encryptionConfig = registerOutput<BackupScheduleEncryptionConfig>(
       'encryptionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackupScheduleEncryptionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     fullBackupSpec = registerOutput<Map<String, dynamic>?>('fullBackupSpec');
     incrementalBackupSpec = registerOutput<Map<String, dynamic>?>(
@@ -668,7 +675,16 @@ class BackupSchedule extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     retentionDuration = registerOutput<String>('retentionDuration');
-    spec = registerOutput<BackupScheduleSpec?>('spec');
+    spec = registerOutput<BackupScheduleSpec?>(
+      'spec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackupScheduleSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [BackupSchedule] resource's state with the given [name] and [id].
@@ -697,6 +713,13 @@ class BackupSchedule extends pulumi.CustomResource {
     database = registerOutput<String>('database');
     encryptionConfig = registerOutput<BackupScheduleEncryptionConfig>(
       'encryptionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackupScheduleEncryptionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     fullBackupSpec = registerOutput<Map<String, dynamic>?>('fullBackupSpec');
     incrementalBackupSpec = registerOutput<Map<String, dynamic>?>(
@@ -706,6 +729,15 @@ class BackupSchedule extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     retentionDuration = registerOutput<String>('retentionDuration');
-    spec = registerOutput<BackupScheduleSpec?>('spec');
+    spec = registerOutput<BackupScheduleSpec?>(
+      'spec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackupScheduleSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

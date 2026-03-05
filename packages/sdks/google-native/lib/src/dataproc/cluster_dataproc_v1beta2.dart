@@ -49,13 +49,40 @@ class ClusterDataprocV1beta2 extends pulumi.CustomResource {
        ) {
     clusterName = registerOutput<String>('clusterName');
     clusterUuid = registerOutput<String>('clusterUuid');
-    config = registerOutput<ClusterConfigResponseDataprocV1beta2>('config');
+    config = registerOutput<ClusterConfigResponseDataprocV1beta2>(
+      'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterConfigResponseDataprocV1beta2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>>('labels');
-    metrics = registerOutput<ClusterMetricsResponseDataprocV1beta2>('metrics');
+    metrics = registerOutput<ClusterMetricsResponseDataprocV1beta2>(
+      'metrics',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterMetricsResponseDataprocV1beta2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
     requestId = registerOutput<String?>('requestId');
-    status = registerOutput<ClusterStatusResponseDataprocV1beta2>('status');
+    status = registerOutput<ClusterStatusResponseDataprocV1beta2>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterStatusResponseDataprocV1beta2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     statusHistory = registerOutput<List<Map<String, dynamic>>>('statusHistory');
   }
 }

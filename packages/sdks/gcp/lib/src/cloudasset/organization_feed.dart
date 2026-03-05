@@ -392,11 +392,27 @@ class OrganizationFeed extends pulumi.CustomResource {
     assetNames = registerOutput<List<String>?>('assetNames');
     assetTypes = registerOutput<List<String>?>('assetTypes');
     billingProject = registerOutput<String>('billingProject');
-    condition = registerOutput<OrganizationFeedCondition?>('condition');
+    condition = registerOutput<OrganizationFeedCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrganizationFeedCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     contentType = registerOutput<String?>('contentType');
     feedId = registerOutput<String>('feedId');
     feedOutputConfig = registerOutput<OrganizationFeedFeedOutputConfig>(
       'feedOutputConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrganizationFeedFeedOutputConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     orgId = registerOutput<String>('orgId');
@@ -428,11 +444,27 @@ class OrganizationFeed extends pulumi.CustomResource {
     assetNames = registerOutput<List<String>?>('assetNames');
     assetTypes = registerOutput<List<String>?>('assetTypes');
     billingProject = registerOutput<String>('billingProject');
-    condition = registerOutput<OrganizationFeedCondition?>('condition');
+    condition = registerOutput<OrganizationFeedCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrganizationFeedCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     contentType = registerOutput<String?>('contentType');
     feedId = registerOutput<String>('feedId');
     feedOutputConfig = registerOutput<OrganizationFeedFeedOutputConfig>(
       'feedOutputConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrganizationFeedFeedOutputConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     orgId = registerOutput<String>('orgId');

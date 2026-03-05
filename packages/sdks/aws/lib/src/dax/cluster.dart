@@ -241,6 +241,13 @@ class Cluster extends pulumi.CustomResource {
     securityGroupIds = registerOutput<List<String>>('securityGroupIds');
     serverSideEncryption = registerOutput<ClusterServerSideEncryption?>(
       'serverSideEncryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterServerSideEncryption.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     subnetGroupName = registerOutput<String>('subnetGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -291,6 +298,13 @@ class Cluster extends pulumi.CustomResource {
     securityGroupIds = registerOutput<List<String>>('securityGroupIds');
     serverSideEncryption = registerOutput<ClusterServerSideEncryption?>(
       'serverSideEncryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterServerSideEncryption.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     subnetGroupName = registerOutput<String>('subnetGroupName');
     tags = registerOutput<Map<String, String>?>('tags');

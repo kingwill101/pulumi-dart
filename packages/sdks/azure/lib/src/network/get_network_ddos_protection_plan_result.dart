@@ -1,16 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getNetworkDdosProtectionPlan.
 class GetNetworkDdosProtectionPlanResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Specifies the supported Azure location where the resource exists.
   final String location;
   final String name;
   final String resourceGroupName;
+
   /// A mapping of tags assigned to the resource.
   final Map<String, String> tags;
+
   /// A list of IDs of the Virtual Networks associated with this DDoS Protection Plan.
   final List<String> virtualNetworkIds;
 
@@ -52,4 +54,3 @@ class GetNetworkDdosProtectionPlanResult {
     );
   }
 }
-

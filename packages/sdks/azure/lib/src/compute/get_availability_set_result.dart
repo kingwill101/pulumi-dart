@@ -1,20 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAvailabilitySet.
 class GetAvailabilitySetResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The supported Azure location where the Availability Set exists.
   final String location;
+
   /// Whether the availability set is managed or not.
   final bool managed;
   final String name;
+
   /// The number of fault domains that are used.
   final String platformFaultDomainCount;
+
   /// The number of update domains that are used.
   final String platformUpdateDomainCount;
   final String resourceGroupName;
+
   /// A mapping of tags assigned to the resource.
   final Map<String, String> tags;
 
@@ -64,4 +68,3 @@ class GetAvailabilitySetResult {
     );
   }
 }
-

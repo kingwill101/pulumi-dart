@@ -55,8 +55,6 @@ class HcloudConfig {
   }
 
   bool get tokenIsSecret => _isSecret('token');
-
 }
 
 final config = HcloudConfig();
-

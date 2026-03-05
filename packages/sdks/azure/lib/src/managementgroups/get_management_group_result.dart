@@ -1,22 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getManagementGroup.
 class GetManagementGroupResult {
   /// A list of Management Group IDs which directly or indirectly belong to this Management Group.
   final List<String> allManagementGroupIds;
+
   /// A list of Subscription IDs which are assigned to this Management Group or its children Management Groups.
   final List<String> allSubscriptionIds;
   final String displayName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of Management Group IDs which directly belong to this Management Group.
   final List<String> managementGroupIds;
   final String name;
+
   /// The ID of any Parent Management Group.
   final String parentManagementGroupId;
+
   /// A list of Subscription IDs which are directly assigned to this Management Group.
   final List<String> subscriptionIds;
+
   /// The Management Group ID with the Tenant ID prefix.
   final String tenantScopedId;
 
@@ -58,7 +63,8 @@ class GetManagementGroupResult {
 
   factory GetManagementGroupResult.fromMap(Map<String, dynamic> map) {
     return GetManagementGroupResult(
-      allManagementGroupIds: (map['allManagementGroupIds'] as List).cast<String>(),
+      allManagementGroupIds: (map['allManagementGroupIds'] as List)
+          .cast<String>(),
       allSubscriptionIds: (map['allSubscriptionIds'] as List).cast<String>(),
       displayName: map['displayName'] as String,
       id: map['id'] as String,
@@ -70,4 +76,3 @@ class GetManagementGroupResult {
     );
   }
 }
-

@@ -83,17 +83,49 @@ class DataLabelingJob extends pulumi.CustomResource {
     activeLearningConfig =
         registerOutput<GoogleCloudAiplatformV1ActiveLearningConfigResponse>(
           'activeLearningConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1ActiveLearningConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     annotationLabels = registerOutput<Map<String, String>>('annotationLabels');
     createTime = registerOutput<String>('createTime');
-    currentSpend = registerOutput<GoogleTypeMoneyResponse>('currentSpend');
+    currentSpend = registerOutput<GoogleTypeMoneyResponse>(
+      'currentSpend',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleTypeMoneyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     datasets = registerOutput<List<String>>('datasets');
     displayName = registerOutput<String>('displayName');
     encryptionSpec =
         registerOutput<GoogleCloudAiplatformV1EncryptionSpecResponse>(
           'encryptionSpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1EncryptionSpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    error = registerOutput<GoogleRpcStatusResponse>('error');
+    error = registerOutput<GoogleRpcStatusResponse>(
+      'error',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleRpcStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     inputs = registerOutput<dynamic>('inputs');
     inputsSchemaUri = registerOutput<String>('inputsSchemaUri');
     instructionUri = registerOutput<String>('instructionUri');

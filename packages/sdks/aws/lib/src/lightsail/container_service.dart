@@ -616,9 +616,23 @@ class ContainerService extends pulumi.CustomResource {
     privateRegistryAccess =
         registerOutput<ContainerServicePrivateRegistryAccess>(
           'privateRegistryAccess',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ContainerServicePrivateRegistryAccess.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     publicDomainNames = registerOutput<ContainerServicePublicDomainNames?>(
       'publicDomainNames',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContainerServicePublicDomainNames.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     resourceType = registerOutput<String>('resourceType');
@@ -664,9 +678,23 @@ class ContainerService extends pulumi.CustomResource {
     privateRegistryAccess =
         registerOutput<ContainerServicePrivateRegistryAccess>(
           'privateRegistryAccess',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ContainerServicePrivateRegistryAccess.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     publicDomainNames = registerOutput<ContainerServicePublicDomainNames?>(
       'publicDomainNames',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContainerServicePublicDomainNames.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     resourceType = registerOutput<String>('resourceType');

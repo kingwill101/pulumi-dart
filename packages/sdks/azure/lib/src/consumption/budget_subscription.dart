@@ -528,12 +528,30 @@ class BudgetSubscription extends pulumi.CustomResource {
        ) {
     amount = registerOutput<double>('amount');
     etag = registerOutput<String>('etag');
-    filter = registerOutput<BudgetSubscriptionFilter?>('filter');
+    filter = registerOutput<BudgetSubscriptionFilter?>(
+      'filter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BudgetSubscriptionFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     notifications = registerOutput<List<Map<String, dynamic>>>('notifications');
     subscriptionId = registerOutput<String>('subscriptionId');
     timeGrain = registerOutput<String?>('timeGrain');
-    timePeriod = registerOutput<BudgetSubscriptionTimePeriod>('timePeriod');
+    timePeriod = registerOutput<BudgetSubscriptionTimePeriod>(
+      'timePeriod',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BudgetSubscriptionTimePeriod.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [BudgetSubscription] resource's state with the given [name] and [id].
@@ -561,11 +579,29 @@ class BudgetSubscription extends pulumi.CustomResource {
        ) {
     amount = registerOutput<double>('amount');
     etag = registerOutput<String>('etag');
-    filter = registerOutput<BudgetSubscriptionFilter?>('filter');
+    filter = registerOutput<BudgetSubscriptionFilter?>(
+      'filter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BudgetSubscriptionFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     notifications = registerOutput<List<Map<String, dynamic>>>('notifications');
     subscriptionId = registerOutput<String>('subscriptionId');
     timeGrain = registerOutput<String?>('timeGrain');
-    timePeriod = registerOutput<BudgetSubscriptionTimePeriod>('timePeriod');
+    timePeriod = registerOutput<BudgetSubscriptionTimePeriod>(
+      'timePeriod',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BudgetSubscriptionTimePeriod.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

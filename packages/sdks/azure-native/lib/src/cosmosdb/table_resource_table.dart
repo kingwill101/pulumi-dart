@@ -210,8 +210,24 @@ class TableResourceTable extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     this.options = registerOutput<TableGetPropertiesResponseOptions?>(
       'options',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TableGetPropertiesResponseOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    resource = registerOutput<TableGetPropertiesResponseResource?>('resource');
+    resource = registerOutput<TableGetPropertiesResponseResource?>(
+      'resource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TableGetPropertiesResponseResource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

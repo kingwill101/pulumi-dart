@@ -588,12 +588,37 @@ class ResourceLfTags extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     catalogId = registerOutput<String>('catalogId');
-    database = registerOutput<ResourceLfTagsDatabase>('database');
+    database = registerOutput<ResourceLfTagsDatabase>(
+      'database',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceLfTagsDatabase.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     lfTags = registerOutput<List<Map<String, dynamic>>>('lfTags');
     region = registerOutput<String>('region');
-    table = registerOutput<ResourceLfTagsTable>('table');
+    table = registerOutput<ResourceLfTagsTable>(
+      'table',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceLfTagsTable.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tableWithColumns = registerOutput<ResourceLfTagsTableWithColumns>(
       'tableWithColumns',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceLfTagsTableWithColumns.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -621,12 +646,37 @@ class ResourceLfTags extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     catalogId = registerOutput<String>('catalogId');
-    database = registerOutput<ResourceLfTagsDatabase>('database');
+    database = registerOutput<ResourceLfTagsDatabase>(
+      'database',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceLfTagsDatabase.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     lfTags = registerOutput<List<Map<String, dynamic>>>('lfTags');
     region = registerOutput<String>('region');
-    table = registerOutput<ResourceLfTagsTable>('table');
+    table = registerOutput<ResourceLfTagsTable>(
+      'table',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceLfTagsTable.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tableWithColumns = registerOutput<ResourceLfTagsTableWithColumns>(
       'tableWithColumns',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceLfTagsTableWithColumns.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

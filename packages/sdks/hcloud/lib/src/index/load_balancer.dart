@@ -242,7 +242,16 @@ class LoadBalancer extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    algorithm = registerOutput<LoadBalancerAlgorithm>('algorithm');
+    algorithm = registerOutput<LoadBalancerAlgorithm>(
+      'algorithm',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerAlgorithm.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     deleteProtection = registerOutput<bool?>('deleteProtection');
     ipv4 = registerOutput<String>('ipv4');
     ipv6 = registerOutput<String>('ipv6');
@@ -279,7 +288,16 @@ class LoadBalancer extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    algorithm = registerOutput<LoadBalancerAlgorithm>('algorithm');
+    algorithm = registerOutput<LoadBalancerAlgorithm>(
+      'algorithm',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerAlgorithm.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     deleteProtection = registerOutput<bool?>('deleteProtection');
     ipv4 = registerOutput<String>('ipv4');
     ipv6 = registerOutput<String>('ipv6');

@@ -83,11 +83,27 @@ class DatacenterConnectorVmmigrationV1alpha1 extends pulumi.CustomResource {
     availableVersions =
         registerOutput<AvailableUpdatesResponseVmmigrationV1alpha1>(
           'availableVersions',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AvailableUpdatesResponseVmmigrationV1alpha1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     bucket = registerOutput<String>('bucket');
     createTime = registerOutput<String>('createTime');
     datacenterConnectorId = registerOutput<String>('datacenterConnectorId');
-    error = registerOutput<StatusResponseVmmigrationV1alpha1>('error');
+    error = registerOutput<StatusResponseVmmigrationV1alpha1>(
+      'error',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StatusResponseVmmigrationV1alpha1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -100,6 +116,13 @@ class DatacenterConnectorVmmigrationV1alpha1 extends pulumi.CustomResource {
     updateTime = registerOutput<String>('updateTime');
     upgradeStatus = registerOutput<UpgradeStatusResponseVmmigrationV1alpha1>(
       'upgradeStatus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UpgradeStatusResponseVmmigrationV1alpha1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     version = registerOutput<String>('version');
   }

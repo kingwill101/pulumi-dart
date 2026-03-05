@@ -62,7 +62,16 @@ class IssueModel extends pulumi.CustomResource {
     inputDataConfig =
         registerOutput<
           GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse
-        >('inputDataConfig');
+        >(
+          'inputDataConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     issueCount = registerOutput<String>('issueCount');
     languageCode = registerOutput<String>('languageCode');
     location = registerOutput<String>('location');
@@ -73,7 +82,16 @@ class IssueModel extends pulumi.CustomResource {
     trainingStats =
         registerOutput<
           GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse
-        >('trainingStats');
+        >(
+          'trainingStats',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     updateTime = registerOutput<String>('updateTime');
   }
 }

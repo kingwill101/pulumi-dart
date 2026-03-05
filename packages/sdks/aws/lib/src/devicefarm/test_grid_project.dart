@@ -172,7 +172,16 @@ class TestGridProject extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    vpcConfig = registerOutput<TestGridProjectVpcConfig?>('vpcConfig');
+    vpcConfig = registerOutput<TestGridProjectVpcConfig?>(
+      'vpcConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TestGridProjectVpcConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [TestGridProject] resource's state with the given [name] and [id].
@@ -204,6 +213,15 @@ class TestGridProject extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    vpcConfig = registerOutput<TestGridProjectVpcConfig?>('vpcConfig');
+    vpcConfig = registerOutput<TestGridProjectVpcConfig?>(
+      'vpcConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TestGridProjectVpcConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

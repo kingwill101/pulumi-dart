@@ -216,6 +216,13 @@ class Environment extends pulumi.CustomResource {
     deploymentProperties =
         registerOutput<EnvironmentDeploymentPropertiesResponse?>(
           'deploymentProperties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EnvironmentDeploymentPropertiesResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');

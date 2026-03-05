@@ -256,13 +256,49 @@ class TaskRun extends pulumi.CustomResource {
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     forceUpdateTag = registerOutput<String?>('forceUpdateTag');
-    identity = registerOutput<IdentityPropertiesResponse?>('identity');
+    identity = registerOutput<IdentityPropertiesResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IdentityPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    runRequest = registerOutput<DockerBuildRequestResponse?>('runRequest');
-    runResult = registerOutput<RunResponse>('runResult');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    runRequest = registerOutput<DockerBuildRequestResponse?>(
+      'runRequest',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DockerBuildRequestResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    runResult = registerOutput<RunResponse>(
+      'runResult',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RunResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

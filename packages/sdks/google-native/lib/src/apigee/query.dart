@@ -69,10 +69,24 @@ class Query extends pulumi.CustomResource {
     organizationId = registerOutput<String>('organizationId');
     queryParams = registerOutput<GoogleCloudApigeeV1QueryMetadataResponse>(
       'queryParams',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudApigeeV1QueryMetadataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     reportDefinitionId = registerOutput<String>('reportDefinitionId');
     result = registerOutput<GoogleCloudApigeeV1AsyncQueryResultResponse>(
       'result',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudApigeeV1AsyncQueryResultResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     resultFileSize = registerOutput<String>('resultFileSize');
     resultRows = registerOutput<String>('resultRows');

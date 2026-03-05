@@ -401,15 +401,42 @@ class Group extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     containers = registerOutput<List<Map<String, dynamic>>>('containers');
-    diagnostics = registerOutput<GroupDiagnostics?>('diagnostics');
-    dnsConfig = registerOutput<GroupDnsConfig?>('dnsConfig');
+    diagnostics = registerOutput<GroupDiagnostics?>(
+      'diagnostics',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupDiagnostics.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    dnsConfig = registerOutput<GroupDnsConfig?>(
+      'dnsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupDnsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dnsNameLabel = registerOutput<String?>('dnsNameLabel');
     dnsNameLabelReusePolicy = registerOutput<String?>(
       'dnsNameLabelReusePolicy',
     );
     exposedPorts = registerOutput<List<Map<String, dynamic>>>('exposedPorts');
     fqdn = registerOutput<String>('fqdn');
-    identity = registerOutput<GroupIdentity?>('identity');
+    identity = registerOutput<GroupIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     imageRegistryCredentials = registerOutput<List<Map<String, dynamic>>?>(
       'imageRegistryCredentials',
     );
@@ -455,15 +482,42 @@ class Group extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     containers = registerOutput<List<Map<String, dynamic>>>('containers');
-    diagnostics = registerOutput<GroupDiagnostics?>('diagnostics');
-    dnsConfig = registerOutput<GroupDnsConfig?>('dnsConfig');
+    diagnostics = registerOutput<GroupDiagnostics?>(
+      'diagnostics',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupDiagnostics.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    dnsConfig = registerOutput<GroupDnsConfig?>(
+      'dnsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupDnsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dnsNameLabel = registerOutput<String?>('dnsNameLabel');
     dnsNameLabelReusePolicy = registerOutput<String?>(
       'dnsNameLabelReusePolicy',
     );
     exposedPorts = registerOutput<List<Map<String, dynamic>>>('exposedPorts');
     fqdn = registerOutput<String>('fqdn');
-    identity = registerOutput<GroupIdentity?>('identity');
+    identity = registerOutput<GroupIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     imageRegistryCredentials = registerOutput<List<Map<String, dynamic>>?>(
       'imageRegistryCredentials',
     );

@@ -309,8 +309,26 @@ class S3ControlMultiRegionAccessPointPolicyDocument
     properties =
         registerOutput<
           S3ControlMultiRegionAccessPointPolicyDocumentPropertiesResponse
-        >('properties');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+        >(
+          'properties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return S3ControlMultiRegionAccessPointPolicyDocumentPropertiesResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

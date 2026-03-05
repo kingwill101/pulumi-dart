@@ -582,6 +582,13 @@ class VpnServerConfiguration extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     properties = registerOutput<VpnServerConfigurationPropertiesResponse>(
       'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpnServerConfigurationPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

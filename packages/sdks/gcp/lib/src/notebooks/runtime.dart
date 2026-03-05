@@ -1268,7 +1268,16 @@ class Runtime extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    accessConfig = registerOutput<RuntimeAccessConfig?>('accessConfig');
+    accessConfig = registerOutput<RuntimeAccessConfig?>(
+      'accessConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RuntimeAccessConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     healthState = registerOutput<String>('healthState');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -1277,9 +1286,27 @@ class Runtime extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    softwareConfig = registerOutput<RuntimeSoftwareConfig>('softwareConfig');
+    softwareConfig = registerOutput<RuntimeSoftwareConfig>(
+      'softwareConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RuntimeSoftwareConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     state = registerOutput<String>('state');
-    virtualMachine = registerOutput<RuntimeVirtualMachine?>('virtualMachine');
+    virtualMachine = registerOutput<RuntimeVirtualMachine?>(
+      'virtualMachine',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RuntimeVirtualMachine.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Runtime] resource's state with the given [name] and [id].
@@ -1305,7 +1332,16 @@ class Runtime extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    accessConfig = registerOutput<RuntimeAccessConfig?>('accessConfig');
+    accessConfig = registerOutput<RuntimeAccessConfig?>(
+      'accessConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RuntimeAccessConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     healthState = registerOutput<String>('healthState');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -1314,8 +1350,26 @@ class Runtime extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    softwareConfig = registerOutput<RuntimeSoftwareConfig>('softwareConfig');
+    softwareConfig = registerOutput<RuntimeSoftwareConfig>(
+      'softwareConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RuntimeSoftwareConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.state = registerOutput<String>('state');
-    virtualMachine = registerOutput<RuntimeVirtualMachine?>('virtualMachine');
+    virtualMachine = registerOutput<RuntimeVirtualMachine?>(
+      'virtualMachine',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RuntimeVirtualMachine.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

@@ -885,6 +885,13 @@ class AgentcoreGateway extends pulumi.CustomResource {
     authorizerConfiguration =
         registerOutput<AgentcoreGatewayAuthorizerConfiguration?>(
           'authorizerConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AgentcoreGatewayAuthorizerConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     authorizerType = registerOutput<String>('authorizerType');
     description = registerOutput<String?>('description');
@@ -900,13 +907,29 @@ class AgentcoreGateway extends pulumi.CustomResource {
     protocolConfiguration =
         registerOutput<AgentcoreGatewayProtocolConfiguration?>(
           'protocolConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AgentcoreGatewayProtocolConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     protocolType = registerOutput<String>('protocolType');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<AgentcoreGatewayTimeouts?>('timeouts');
+    timeouts = registerOutput<AgentcoreGatewayTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentcoreGatewayTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     workloadIdentityDetails = registerOutput<List<Map<String, dynamic>>>(
       'workloadIdentityDetails',
     );
@@ -938,6 +961,13 @@ class AgentcoreGateway extends pulumi.CustomResource {
     authorizerConfiguration =
         registerOutput<AgentcoreGatewayAuthorizerConfiguration?>(
           'authorizerConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AgentcoreGatewayAuthorizerConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     authorizerType = registerOutput<String>('authorizerType');
     description = registerOutput<String?>('description');
@@ -953,13 +983,29 @@ class AgentcoreGateway extends pulumi.CustomResource {
     protocolConfiguration =
         registerOutput<AgentcoreGatewayProtocolConfiguration?>(
           'protocolConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AgentcoreGatewayProtocolConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     protocolType = registerOutput<String>('protocolType');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<AgentcoreGatewayTimeouts?>('timeouts');
+    timeouts = registerOutput<AgentcoreGatewayTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentcoreGatewayTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     workloadIdentityDetails = registerOutput<List<Map<String, dynamic>>>(
       'workloadIdentityDetails',
     );

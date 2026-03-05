@@ -1766,7 +1766,16 @@ class CaPoolIamMember extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     caPool = registerOutput<String>('caPool');
-    condition = registerOutput<CaPoolIamMemberCondition?>('condition');
+    condition = registerOutput<CaPoolIamMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CaPoolIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
     member = registerOutput<String>('member');
@@ -1798,7 +1807,16 @@ class CaPoolIamMember extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     caPool = registerOutput<String>('caPool');
-    condition = registerOutput<CaPoolIamMemberCondition?>('condition');
+    condition = registerOutput<CaPoolIamMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CaPoolIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
     member = registerOutput<String>('member');

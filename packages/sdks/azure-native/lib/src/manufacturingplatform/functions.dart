@@ -27,7 +27,8 @@ Future<GetManufacturingDataServiceResult> getManufacturingDataService(
 /// Uses Azure REST API version 2025-03-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_manufacturingplatform_list_manufacturing_data_service_available_versions_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListManufacturingDataServiceAvailableVersionsResult> listManufacturingDataServiceAvailableVersions(
+Future<ListManufacturingDataServiceAvailableVersionsResult>
+listManufacturingDataServiceAvailableVersions(
   ListManufacturingDataServiceAvailableVersionsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

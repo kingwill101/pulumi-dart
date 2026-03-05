@@ -306,7 +306,16 @@ class Cluster extends pulumi.CustomResource {
     argocdEnabled = registerOutput<bool>('argocdEnabled');
     clusterName = registerOutput<String>('clusterName');
     createTime = registerOutput<String>('createTime');
-    network = registerOutput<ClusterNetwork>('network');
+    network = registerOutput<ClusterNetwork>(
+      'network',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterNetwork.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     profile = registerOutput<String>('profile');
     status = registerOutput<String>('status');
   }
@@ -337,7 +346,16 @@ class Cluster extends pulumi.CustomResource {
     argocdEnabled = registerOutput<bool>('argocdEnabled');
     clusterName = registerOutput<String>('clusterName');
     createTime = registerOutput<String>('createTime');
-    network = registerOutput<ClusterNetwork>('network');
+    network = registerOutput<ClusterNetwork>(
+      'network',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterNetwork.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     profile = registerOutput<String>('profile');
     status = registerOutput<String>('status');
   }

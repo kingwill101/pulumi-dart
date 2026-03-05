@@ -172,9 +172,29 @@ class V2modelsBotVersion extends pulumi.CustomResource {
     localeSpecification =
         registerOutput<Map<String, V2modelsBotVersionLocaleSpecification>>(
           'localeSpecification',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return pulumi
+                .Input.decodeMapValues<V2modelsBotVersionLocaleSpecification>(
+              guardedValue,
+              (value) => V2modelsBotVersionLocaleSpecification.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            );
+          },
         );
     region = registerOutput<String>('region');
-    timeouts = registerOutput<V2modelsBotVersionTimeouts?>('timeouts');
+    timeouts = registerOutput<V2modelsBotVersionTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2modelsBotVersionTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [V2modelsBotVersion] resource's state with the given [name] and [id].
@@ -206,8 +226,28 @@ class V2modelsBotVersion extends pulumi.CustomResource {
     localeSpecification =
         registerOutput<Map<String, V2modelsBotVersionLocaleSpecification>>(
           'localeSpecification',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return pulumi
+                .Input.decodeMapValues<V2modelsBotVersionLocaleSpecification>(
+              guardedValue,
+              (value) => V2modelsBotVersionLocaleSpecification.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            );
+          },
         );
     region = registerOutput<String>('region');
-    timeouts = registerOutput<V2modelsBotVersionTimeouts?>('timeouts');
+    timeouts = registerOutput<V2modelsBotVersionTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2modelsBotVersionTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

@@ -275,7 +275,16 @@ class VirtualNetwork extends pulumi.CustomResource {
     labName = registerOutput<String>('labName');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    subnet = registerOutput<VirtualNetworkSubnet>('subnet');
+    subnet = registerOutput<VirtualNetworkSubnet>(
+      'subnet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualNetworkSubnet.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
   }
@@ -307,7 +316,16 @@ class VirtualNetwork extends pulumi.CustomResource {
     labName = registerOutput<String>('labName');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    subnet = registerOutput<VirtualNetworkSubnet>('subnet');
+    subnet = registerOutput<VirtualNetworkSubnet>(
+      'subnet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualNetworkSubnet.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
   }

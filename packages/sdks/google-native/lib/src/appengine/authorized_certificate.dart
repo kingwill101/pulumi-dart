@@ -49,6 +49,13 @@ class AuthorizedCertificate extends pulumi.CustomResource {
     appId = registerOutput<String>('appId');
     certificateRawData = registerOutput<CertificateRawDataResponse>(
       'certificateRawData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CertificateRawDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     displayName = registerOutput<String>('displayName');
     domainMappingsCount = registerOutput<int>('domainMappingsCount');
@@ -56,6 +63,13 @@ class AuthorizedCertificate extends pulumi.CustomResource {
     expireTime = registerOutput<String>('expireTime');
     managedCertificate = registerOutput<ManagedCertificateResponse>(
       'managedCertificate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedCertificateResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     visibleDomainMappings = registerOutput<List<String>>(

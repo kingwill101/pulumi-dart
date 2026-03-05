@@ -137,7 +137,16 @@ class RegionInstanceGroupManagerComputeBeta extends pulumi.CustomResource {
     allInstancesConfig =
         registerOutput<
           InstanceGroupManagerAllInstancesConfigResponseComputeBeta
-        >('allInstancesConfig');
+        >(
+          'allInstancesConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceGroupManagerAllInstancesConfigResponseComputeBeta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     autoHealingPolicies = registerOutput<List<Map<String, dynamic>>>(
       'autoHealingPolicies',
     );
@@ -146,22 +155,54 @@ class RegionInstanceGroupManagerComputeBeta extends pulumi.CustomResource {
     currentActions =
         registerOutput<InstanceGroupManagerActionsSummaryResponseComputeBeta>(
           'currentActions',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceGroupManagerActionsSummaryResponseComputeBeta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String>('description');
     distributionPolicy = registerOutput<DistributionPolicyResponseComputeBeta>(
       'distributionPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DistributionPolicyResponseComputeBeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     failoverAction = registerOutput<String>('failoverAction');
     fingerprint = registerOutput<String>('fingerprint');
     instanceFlexibilityPolicy =
         registerOutput<
           InstanceGroupManagerInstanceFlexibilityPolicyResponseComputeBeta
-        >('instanceFlexibilityPolicy');
+        >(
+          'instanceFlexibilityPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceGroupManagerInstanceFlexibilityPolicyResponseComputeBeta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     instanceGroup = registerOutput<String>('instanceGroup');
     instanceLifecyclePolicy =
         registerOutput<
           InstanceGroupManagerInstanceLifecyclePolicyResponseComputeBeta
-        >('instanceLifecyclePolicy');
+        >(
+          'instanceLifecyclePolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceGroupManagerInstanceLifecyclePolicyResponseComputeBeta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     instanceTemplate = registerOutput<String>('instanceTemplate');
     kind = registerOutput<String>('kind');
     listManagedInstancesResults = registerOutput<String>(
@@ -177,12 +218,33 @@ class RegionInstanceGroupManagerComputeBeta extends pulumi.CustomResource {
     standbyPolicy =
         registerOutput<InstanceGroupManagerStandbyPolicyResponseComputeBeta>(
           'standbyPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceGroupManagerStandbyPolicyResponseComputeBeta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     statefulPolicy = registerOutput<StatefulPolicyResponseComputeBeta>(
       'statefulPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StatefulPolicyResponseComputeBeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     status = registerOutput<InstanceGroupManagerStatusResponseComputeBeta>(
       'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceGroupManagerStatusResponseComputeBeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     targetPools = registerOutput<List<String>>('targetPools');
     targetSize = registerOutput<int>('targetSize');
@@ -191,6 +253,13 @@ class RegionInstanceGroupManagerComputeBeta extends pulumi.CustomResource {
     updatePolicy =
         registerOutput<InstanceGroupManagerUpdatePolicyResponseComputeBeta>(
           'updatePolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceGroupManagerUpdatePolicyResponseComputeBeta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     versions = registerOutput<List<Map<String, dynamic>>>('versions');
     zone = registerOutput<String>('zone');

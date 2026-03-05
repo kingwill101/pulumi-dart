@@ -849,6 +849,13 @@ class V2OrganizationSourceIamBinding extends pulumi.CustomResource {
        ) {
     condition = registerOutput<V2OrganizationSourceIamBindingCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2OrganizationSourceIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     members = registerOutput<List<String>>('members');
@@ -882,6 +889,13 @@ class V2OrganizationSourceIamBinding extends pulumi.CustomResource {
        ) {
     condition = registerOutput<V2OrganizationSourceIamBindingCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2OrganizationSourceIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     members = registerOutput<List<String>>('members');

@@ -1267,10 +1267,26 @@ class WebApp extends pulumi.CustomResource {
       'customDomainVerificationId',
     );
     dailyMemoryTimeQuota = registerOutput<int?>('dailyMemoryTimeQuota');
-    daprConfig = registerOutput<DaprConfigResponse?>('daprConfig');
+    daprConfig = registerOutput<DaprConfigResponse?>(
+      'daprConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DaprConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     defaultHostName = registerOutput<String>('defaultHostName');
     dnsConfiguration = registerOutput<SiteDnsConfigResponse?>(
       'dnsConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SiteDnsConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     enabled = registerOutput<bool?>('enabled');
     enabledHostNames = registerOutput<List<String>>('enabledHostNames');
@@ -1279,9 +1295,23 @@ class WebApp extends pulumi.CustomResource {
     );
     extendedLocation = registerOutput<ExtendedLocationResponse?>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     functionAppConfig = registerOutput<FunctionAppConfigResponse?>(
       'functionAppConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionAppConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     hostNameSslStates = registerOutput<List<Map<String, dynamic>>?>(
       'hostNameSslStates',
@@ -1291,10 +1321,26 @@ class WebApp extends pulumi.CustomResource {
     hostingEnvironmentProfile =
         registerOutput<HostingEnvironmentProfileResponse?>(
           'hostingEnvironmentProfile',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return HostingEnvironmentProfileResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     httpsOnly = registerOutput<bool?>('httpsOnly');
     hyperV = registerOutput<bool?>('hyperV');
-    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    identity = registerOutput<ManagedServiceIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedServiceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     inProgressOperationId = registerOutput<String>('inProgressOperationId');
     ipMode = registerOutput<String?>('ipMode');
     isDefaultContainer = registerOutput<bool>('isDefaultContainer');
@@ -1316,13 +1362,40 @@ class WebApp extends pulumi.CustomResource {
     redundancyMode = registerOutput<String?>('redundancyMode');
     repositorySiteName = registerOutput<String>('repositorySiteName');
     reserved = registerOutput<bool?>('reserved');
-    resourceConfig = registerOutput<ResourceConfigResponse?>('resourceConfig');
+    resourceConfig = registerOutput<ResourceConfigResponse?>(
+      'resourceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroup = registerOutput<String>('resourceGroup');
     scmSiteAlsoStopped = registerOutput<bool?>('scmSiteAlsoStopped');
     serverFarmId = registerOutput<String?>('serverFarmId');
-    siteConfig = registerOutput<SiteConfigResponse?>('siteConfig');
+    siteConfig = registerOutput<SiteConfigResponse?>(
+      'siteConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SiteConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sku = registerOutput<String>('sku');
-    slotSwapStatus = registerOutput<SlotSwapStatusResponse>('slotSwapStatus');
+    slotSwapStatus = registerOutput<SlotSwapStatusResponse>(
+      'slotSwapStatus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SlotSwapStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     state = registerOutput<String>('state');
     storageAccountRequired = registerOutput<bool?>('storageAccountRequired');
     suspendedTill = registerOutput<String>('suspendedTill');

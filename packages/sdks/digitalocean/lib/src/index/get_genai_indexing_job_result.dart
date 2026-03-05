@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getGenaiIndexingJob.
 class GetGenaiIndexingJobResult {
   final int completedDatasources;
   final String createdAt;
   final List<String> dataSourceUuids;
   final String finishedAt;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String knowledgeBaseUuid;
@@ -99,4 +99,3 @@ class GetGenaiIndexingJobResult {
     );
   }
 }
-

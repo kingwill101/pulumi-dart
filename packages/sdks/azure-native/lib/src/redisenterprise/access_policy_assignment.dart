@@ -201,6 +201,15 @@ class AccessPolicyAssignment extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     type = registerOutput<String>('type');
-    user = registerOutput<AccessPolicyAssignmentPropertiesResponseUser>('user');
+    user = registerOutput<AccessPolicyAssignmentPropertiesResponseUser>(
+      'user',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccessPolicyAssignmentPropertiesResponseUser.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getNodebalancerVpc.
 class GetNodebalancerVpcResult {
   final int id;
+
   /// A CIDR range for the VPC's IPv4 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
   final String ipv4Range;
   final int nodebalancerId;
+
   /// The ID of this configuration's VPC subnet.
   final int subnetId;
+
   /// The ID of this configuration's VPC.
   final int vpcId;
 
@@ -46,4 +48,3 @@ class GetNodebalancerVpcResult {
     );
   }
 }
-

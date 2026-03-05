@@ -3195,6 +3195,13 @@ class GlobalForwardingRule extends pulumi.CustomResource {
     serviceDirectoryRegistrations =
         registerOutput<GlobalForwardingRuleServiceDirectoryRegistrations>(
           'serviceDirectoryRegistrations',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GlobalForwardingRuleServiceDirectoryRegistrations.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     sourceIpRanges = registerOutput<List<String>?>('sourceIpRanges');
     subnetwork = registerOutput<String>('subnetwork');
@@ -3258,6 +3265,13 @@ class GlobalForwardingRule extends pulumi.CustomResource {
     serviceDirectoryRegistrations =
         registerOutput<GlobalForwardingRuleServiceDirectoryRegistrations>(
           'serviceDirectoryRegistrations',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GlobalForwardingRuleServiceDirectoryRegistrations.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     sourceIpRanges = registerOutput<List<String>?>('sourceIpRanges');
     subnetwork = registerOutput<String>('subnetwork');

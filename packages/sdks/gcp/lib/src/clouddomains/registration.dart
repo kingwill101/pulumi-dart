@@ -592,9 +592,25 @@ class Registration extends pulumi.CustomResource {
     contactNotices = registerOutput<List<String>?>('contactNotices');
     contactSettings = registerOutput<RegistrationContactSettings>(
       'contactSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegistrationContactSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
-    dnsSettings = registerOutput<RegistrationDnsSettings?>('dnsSettings');
+    dnsSettings = registerOutput<RegistrationDnsSettings?>(
+      'dnsSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegistrationDnsSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     domainName = registerOutput<String>('domainName');
     domainNotices = registerOutput<List<String>?>('domainNotices');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -604,6 +620,13 @@ class Registration extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     managementSettings = registerOutput<RegistrationManagementSettings>(
       'managementSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegistrationManagementSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -611,7 +634,16 @@ class Registration extends pulumi.CustomResource {
     registerFailureReason = registerOutput<String>('registerFailureReason');
     state = registerOutput<String>('state');
     supportedPrivacies = registerOutput<List<String>>('supportedPrivacies');
-    yearlyPrice = registerOutput<RegistrationYearlyPrice>('yearlyPrice');
+    yearlyPrice = registerOutput<RegistrationYearlyPrice>(
+      'yearlyPrice',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegistrationYearlyPrice.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Registration] resource's state with the given [name] and [id].
@@ -640,9 +672,25 @@ class Registration extends pulumi.CustomResource {
     contactNotices = registerOutput<List<String>?>('contactNotices');
     contactSettings = registerOutput<RegistrationContactSettings>(
       'contactSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegistrationContactSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
-    dnsSettings = registerOutput<RegistrationDnsSettings?>('dnsSettings');
+    dnsSettings = registerOutput<RegistrationDnsSettings?>(
+      'dnsSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegistrationDnsSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     domainName = registerOutput<String>('domainName');
     domainNotices = registerOutput<List<String>?>('domainNotices');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -652,6 +700,13 @@ class Registration extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     managementSettings = registerOutput<RegistrationManagementSettings>(
       'managementSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegistrationManagementSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -659,6 +714,15 @@ class Registration extends pulumi.CustomResource {
     registerFailureReason = registerOutput<String>('registerFailureReason');
     this.state = registerOutput<String>('state');
     supportedPrivacies = registerOutput<List<String>>('supportedPrivacies');
-    yearlyPrice = registerOutput<RegistrationYearlyPrice>('yearlyPrice');
+    yearlyPrice = registerOutput<RegistrationYearlyPrice>(
+      'yearlyPrice',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegistrationYearlyPrice.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

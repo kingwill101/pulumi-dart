@@ -354,7 +354,16 @@ class Database extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     expireTime = registerOutput<String>('expireTime');
-    hiveOptions = registerOutput<DatabaseHiveOptions>('hiveOptions');
+    hiveOptions = registerOutput<DatabaseHiveOptions>(
+      'hiveOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseHiveOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');
     updateTime = registerOutput<String>('updateTime');
@@ -387,7 +396,16 @@ class Database extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     expireTime = registerOutput<String>('expireTime');
-    hiveOptions = registerOutput<DatabaseHiveOptions>('hiveOptions');
+    hiveOptions = registerOutput<DatabaseHiveOptions>(
+      'hiveOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseHiveOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');
     updateTime = registerOutput<String>('updateTime');

@@ -45,10 +45,26 @@ class ClusterRolePatchRbacAuthorizationK8sIoV1beta1Resource
     aggregationRule =
         registerOutput<AggregationRulePatchRbacAuthorizationK8sIoV1beta1?>(
           'aggregationRule',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AggregationRulePatchRbacAuthorizationK8sIoV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     apiVersion = registerOutput<String?>('apiVersion');
     kind = registerOutput<String?>('kind');
-    metadata = registerOutput<ObjectMetaPatch?>('metadata');
+    metadata = registerOutput<ObjectMetaPatch?>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMetaPatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     rules = registerOutput<List<Map<String, dynamic>>?>('rules');
   }
 }

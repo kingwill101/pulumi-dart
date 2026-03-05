@@ -293,6 +293,13 @@ class Snapshot extends pulumi.CustomResource {
     diskSizeGb = registerOutput<int>('diskSizeGb');
     encryptionSettings = registerOutput<SnapshotEncryptionSettings?>(
       'encryptionSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SnapshotEncryptionSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     incrementalEnabled = registerOutput<bool?>('incrementalEnabled');
     location = registerOutput<String>('location');
@@ -337,6 +344,13 @@ class Snapshot extends pulumi.CustomResource {
     diskSizeGb = registerOutput<int>('diskSizeGb');
     encryptionSettings = registerOutput<SnapshotEncryptionSettings?>(
       'encryptionSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SnapshotEncryptionSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     incrementalEnabled = registerOutput<bool?>('incrementalEnabled');
     location = registerOutput<String>('location');

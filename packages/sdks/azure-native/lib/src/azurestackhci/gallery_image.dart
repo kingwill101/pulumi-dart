@@ -250,19 +250,62 @@ class GalleryImage extends pulumi.CustomResource {
     containerId = registerOutput<String?>('containerId');
     extendedLocation = registerOutput<ExtendedLocationResponse?>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     hyperVGeneration = registerOutput<String?>('hyperVGeneration');
-    identifier = registerOutput<GalleryImageIdentifierResponse?>('identifier');
+    identifier = registerOutput<GalleryImageIdentifierResponse?>(
+      'identifier',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GalleryImageIdentifierResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     imagePath = registerOutput<String?>('imagePath');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     osType = registerOutput<String>('osType');
     provisioningState = registerOutput<String>('provisioningState');
     sourceVirtualMachineId = registerOutput<String?>('sourceVirtualMachineId');
-    status = registerOutput<GalleryImageStatusResponse>('status');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    status = registerOutput<GalleryImageStatusResponse>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GalleryImageStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    version = registerOutput<GalleryImageVersionResponse?>('version');
+    version = registerOutput<GalleryImageVersionResponse?>(
+      'version',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GalleryImageVersionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

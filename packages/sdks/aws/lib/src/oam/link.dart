@@ -559,6 +559,13 @@ class Link extends pulumi.CustomResource {
     labelTemplate = registerOutput<String>('labelTemplate');
     linkConfiguration = registerOutput<LinkLinkConfiguration?>(
       'linkConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinkLinkConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     linkId = registerOutput<String>('linkId');
     region = registerOutput<String>('region');
@@ -593,6 +600,13 @@ class Link extends pulumi.CustomResource {
     labelTemplate = registerOutput<String>('labelTemplate');
     linkConfiguration = registerOutput<LinkLinkConfiguration?>(
       'linkConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinkLinkConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     linkId = registerOutput<String>('linkId');
     region = registerOutput<String>('region');

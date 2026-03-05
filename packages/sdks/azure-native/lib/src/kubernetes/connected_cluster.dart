@@ -722,20 +722,45 @@ class ConnectedCluster extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    aadProfile = registerOutput<AadProfileResponse?>('aadProfile');
+    aadProfile = registerOutput<AadProfileResponse?>(
+      'aadProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AadProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     agentPublicKeyCertificate = registerOutput<String>(
       'agentPublicKeyCertificate',
     );
     agentVersion = registerOutput<String>('agentVersion');
     arcAgentProfile = registerOutput<ArcAgentProfileResponse?>(
       'arcAgentProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ArcAgentProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     azureHybridBenefit = registerOutput<String?>('azureHybridBenefit');
     connectivityStatus = registerOutput<String>('connectivityStatus');
     distribution = registerOutput<String?>('distribution');
     distributionVersion = registerOutput<String?>('distributionVersion');
-    identity = registerOutput<ConnectedClusterIdentityResponse>('identity');
+    identity = registerOutput<ConnectedClusterIdentityResponse>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectedClusterIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     infrastructure = registerOutput<String?>('infrastructure');
     kind = registerOutput<String?>('kind');
     kubernetesVersion = registerOutput<String>('kubernetesVersion');
@@ -754,7 +779,16 @@ class ConnectedCluster extends pulumi.CustomResource {
     );
     privateLinkState = registerOutput<String?>('privateLinkState');
     provisioningState = registerOutput<String?>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     totalCoreCount = registerOutput<int>('totalCoreCount');
     totalNodeCount = registerOutput<int>('totalNodeCount');

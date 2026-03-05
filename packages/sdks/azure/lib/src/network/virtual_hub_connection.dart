@@ -329,7 +329,16 @@ class VirtualHubConnection extends pulumi.CustomResource {
     internetSecurityEnabled = registerOutput<bool?>('internetSecurityEnabled');
     this.name = registerOutput<String>('name');
     remoteVirtualNetworkId = registerOutput<String>('remoteVirtualNetworkId');
-    routing = registerOutput<VirtualHubConnectionRouting>('routing');
+    routing = registerOutput<VirtualHubConnectionRouting>(
+      'routing',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualHubConnectionRouting.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     virtualHubId = registerOutput<String>('virtualHubId');
   }
 
@@ -359,7 +368,16 @@ class VirtualHubConnection extends pulumi.CustomResource {
     internetSecurityEnabled = registerOutput<bool?>('internetSecurityEnabled');
     this.name = registerOutput<String>('name');
     remoteVirtualNetworkId = registerOutput<String>('remoteVirtualNetworkId');
-    routing = registerOutput<VirtualHubConnectionRouting>('routing');
+    routing = registerOutput<VirtualHubConnectionRouting>(
+      'routing',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualHubConnectionRouting.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     virtualHubId = registerOutput<String>('virtualHubId');
   }
 }

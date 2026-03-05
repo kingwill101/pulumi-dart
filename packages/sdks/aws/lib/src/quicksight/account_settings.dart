@@ -196,7 +196,16 @@ class AccountSettings extends pulumi.CustomResource {
     terminationProtectionEnabled = registerOutput<bool>(
       'terminationProtectionEnabled',
     );
-    timeouts = registerOutput<AccountSettingsTimeouts?>('timeouts');
+    timeouts = registerOutput<AccountSettingsTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountSettingsTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [AccountSettings] resource's state with the given [name] and [id].
@@ -228,6 +237,15 @@ class AccountSettings extends pulumi.CustomResource {
     terminationProtectionEnabled = registerOutput<bool>(
       'terminationProtectionEnabled',
     );
-    timeouts = registerOutput<AccountSettingsTimeouts?>('timeouts');
+    timeouts = registerOutput<AccountSettingsTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountSettingsTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

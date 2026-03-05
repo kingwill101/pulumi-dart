@@ -82,13 +82,34 @@ class RegionNetworkEndpointGroupComputeV1 extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>>('annotations');
     appEngine = registerOutput<NetworkEndpointGroupAppEngineResponseComputeV1>(
       'appEngine',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkEndpointGroupAppEngineResponseComputeV1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     cloudFunction =
         registerOutput<NetworkEndpointGroupCloudFunctionResponseComputeV1>(
           'cloudFunction',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NetworkEndpointGroupCloudFunctionResponseComputeV1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     cloudRun = registerOutput<NetworkEndpointGroupCloudRunResponseComputeV1>(
       'cloudRun',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkEndpointGroupCloudRunResponseComputeV1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     creationTimestamp = registerOutput<String>('creationTimestamp');
     defaultPort = registerOutput<int>('defaultPort');
@@ -100,6 +121,13 @@ class RegionNetworkEndpointGroupComputeV1 extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     pscData = registerOutput<NetworkEndpointGroupPscDataResponseComputeV1>(
       'pscData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkEndpointGroupPscDataResponseComputeV1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     pscTargetService = registerOutput<String>('pscTargetService');
     region = registerOutput<String>('region');

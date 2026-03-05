@@ -1,25 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getSnapshot.
 class GetSnapshotResult {
   /// See Argument Reference above.
   final String description;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// See Argument Reference above.
   final String name;
+
   /// See Argument Reference above.
   final String projectId;
   final String region;
+
   /// The UUID of the source share that was used to create the snapshot.
   final String shareId;
+
   /// The file system protocol of a share snapshot.
   final String shareProto;
+
   /// The share snapshot size, in GBs.
   final int shareSize;
+
   /// The snapshot size, in GBs.
   final int size;
+
   /// See Argument Reference above.
   final String status;
 
@@ -77,4 +84,3 @@ class GetSnapshotResult {
     );
   }
 }
-

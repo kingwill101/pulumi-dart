@@ -345,7 +345,16 @@ class RestApiPut extends pulumi.CustomResource {
     parameters = registerOutput<Map<String, String>?>('parameters');
     region = registerOutput<String>('region');
     restApiId = registerOutput<String>('restApiId');
-    timeouts = registerOutput<RestApiPutTimeouts?>('timeouts');
+    timeouts = registerOutput<RestApiPutTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RestApiPutTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     triggers = registerOutput<Map<String, String>?>('triggers');
   }
 
@@ -377,7 +386,16 @@ class RestApiPut extends pulumi.CustomResource {
     parameters = registerOutput<Map<String, String>?>('parameters');
     region = registerOutput<String>('region');
     restApiId = registerOutput<String>('restApiId');
-    timeouts = registerOutput<RestApiPutTimeouts?>('timeouts');
+    timeouts = registerOutput<RestApiPutTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RestApiPutTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     triggers = registerOutput<Map<String, String>?>('triggers');
   }
 }

@@ -459,11 +459,25 @@ class EndpointCustomDomain extends pulumi.CustomResource {
     cdnEndpointId = registerOutput<String>('cdnEndpointId');
     cdnManagedHttps = registerOutput<EndpointCustomDomainCdnManagedHttps?>(
       'cdnManagedHttps',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointCustomDomainCdnManagedHttps.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     hostName = registerOutput<String>('hostName');
     this.name = registerOutput<String>('name');
     userManagedHttps = registerOutput<EndpointCustomDomainUserManagedHttps?>(
       'userManagedHttps',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointCustomDomainUserManagedHttps.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -493,11 +507,25 @@ class EndpointCustomDomain extends pulumi.CustomResource {
     cdnEndpointId = registerOutput<String>('cdnEndpointId');
     cdnManagedHttps = registerOutput<EndpointCustomDomainCdnManagedHttps?>(
       'cdnManagedHttps',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointCustomDomainCdnManagedHttps.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     hostName = registerOutput<String>('hostName');
     this.name = registerOutput<String>('name');
     userManagedHttps = registerOutput<EndpointCustomDomainUserManagedHttps?>(
       'userManagedHttps',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointCustomDomainUserManagedHttps.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

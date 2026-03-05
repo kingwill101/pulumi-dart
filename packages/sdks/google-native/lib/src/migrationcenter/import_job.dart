@@ -64,6 +64,13 @@ class ImportJob extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     executionReport = registerOutput<ExecutionReportResponse>(
       'executionReport',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExecutionReportResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     importJobId = registerOutput<String>('importJobId');
     labels = registerOutput<Map<String, String>>('labels');
@@ -75,6 +82,13 @@ class ImportJob extends pulumi.CustomResource {
     updateTime = registerOutput<String>('updateTime');
     validationReport = registerOutput<ValidationReportResponse>(
       'validationReport',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ValidationReportResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

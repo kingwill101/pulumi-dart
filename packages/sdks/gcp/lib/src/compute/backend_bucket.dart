@@ -807,7 +807,16 @@ class BackendBucket extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     bucketName = registerOutput<String>('bucketName');
-    cdnPolicy = registerOutput<BackendBucketCdnPolicy>('cdnPolicy');
+    cdnPolicy = registerOutput<BackendBucketCdnPolicy>(
+      'cdnPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackendBucketCdnPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     compressionMode = registerOutput<String?>('compressionMode');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     customResponseHeaders = registerOutput<List<String>?>(
@@ -818,7 +827,16 @@ class BackendBucket extends pulumi.CustomResource {
     enableCdn = registerOutput<bool?>('enableCdn');
     loadBalancingScheme = registerOutput<String?>('loadBalancingScheme');
     this.name = registerOutput<String>('name');
-    params = registerOutput<BackendBucketParams?>('params');
+    params = registerOutput<BackendBucketParams?>(
+      'params',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackendBucketParams.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     selfLink = registerOutput<String>('selfLink');
   }
@@ -847,7 +865,16 @@ class BackendBucket extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     bucketName = registerOutput<String>('bucketName');
-    cdnPolicy = registerOutput<BackendBucketCdnPolicy>('cdnPolicy');
+    cdnPolicy = registerOutput<BackendBucketCdnPolicy>(
+      'cdnPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackendBucketCdnPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     compressionMode = registerOutput<String?>('compressionMode');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     customResponseHeaders = registerOutput<List<String>?>(
@@ -858,7 +885,16 @@ class BackendBucket extends pulumi.CustomResource {
     enableCdn = registerOutput<bool?>('enableCdn');
     loadBalancingScheme = registerOutput<String?>('loadBalancingScheme');
     this.name = registerOutput<String>('name');
-    params = registerOutput<BackendBucketParams?>('params');
+    params = registerOutput<BackendBucketParams?>(
+      'params',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackendBucketParams.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     selfLink = registerOutput<String>('selfLink');
   }

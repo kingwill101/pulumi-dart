@@ -1832,6 +1832,13 @@ class InstanceTemplateIamMember extends pulumi.CustomResource {
        ) {
     condition = registerOutput<InstanceTemplateIamMemberCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceTemplateIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     member = registerOutput<String>('member');
@@ -1865,6 +1872,13 @@ class InstanceTemplateIamMember extends pulumi.CustomResource {
        ) {
     condition = registerOutput<InstanceTemplateIamMemberCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceTemplateIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     member = registerOutput<String>('member');

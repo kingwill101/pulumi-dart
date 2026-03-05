@@ -56,7 +56,16 @@ class StorageClassStorageK8sIoV1 extends pulumi.CustomResource {
     );
     apiVersion = registerOutput<String>('apiVersion');
     kind = registerOutput<String>('kind');
-    metadata = registerOutput<ObjectMeta>('metadata');
+    metadata = registerOutput<ObjectMeta>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     mountOptions = registerOutput<List<String>>('mountOptions');
     parameters = registerOutput<Map<String, String>>('parameters');
     provisioner = registerOutput<String>('provisioner');

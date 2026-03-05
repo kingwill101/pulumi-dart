@@ -154,6 +154,13 @@ class TopicRuleDestination extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     vpcConfiguration = registerOutput<TopicRuleDestinationVpcConfiguration>(
       'vpcConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TopicRuleDestinationVpcConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -185,6 +192,13 @@ class TopicRuleDestination extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     vpcConfiguration = registerOutput<TopicRuleDestinationVpcConfiguration>(
       'vpcConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TopicRuleDestinationVpcConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

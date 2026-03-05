@@ -2077,19 +2077,51 @@ class Cluster extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    accessConfig = registerOutput<ClusterAccessConfig>('accessConfig');
+    accessConfig = registerOutput<ClusterAccessConfig>(
+      'accessConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterAccessConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     arn = registerOutput<String>('arn');
     bootstrapSelfManagedAddons = registerOutput<bool?>(
       'bootstrapSelfManagedAddons',
     );
     certificateAuthority = registerOutput<ClusterCertificateAuthority>(
       'certificateAuthority',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterCertificateAuthority.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clusterId = registerOutput<String>('clusterId');
-    computeConfig = registerOutput<ClusterComputeConfig>('computeConfig');
+    computeConfig = registerOutput<ClusterComputeConfig>(
+      'computeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterComputeConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     controlPlaneScalingConfig =
         registerOutput<ClusterControlPlaneScalingConfig>(
           'controlPlaneScalingConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ClusterControlPlaneScalingConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     createdAt = registerOutput<String>('createdAt');
     defaultAddonsToRemoves = registerOutput<List<String>?>(
@@ -2101,30 +2133,94 @@ class Cluster extends pulumi.CustomResource {
     );
     encryptionConfig = registerOutput<ClusterEncryptionConfig?>(
       'encryptionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterEncryptionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     endpoint = registerOutput<String>('endpoint');
     forceUpdateVersion = registerOutput<bool?>('forceUpdateVersion');
     identities = registerOutput<List<Map<String, dynamic>>>('identities');
     kubernetesNetworkConfig = registerOutput<ClusterKubernetesNetworkConfig>(
       'kubernetesNetworkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterKubernetesNetworkConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
-    outpostConfig = registerOutput<ClusterOutpostConfig?>('outpostConfig');
+    outpostConfig = registerOutput<ClusterOutpostConfig?>(
+      'outpostConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterOutpostConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     platformVersion = registerOutput<String>('platformVersion');
     region = registerOutput<String>('region');
     remoteNetworkConfig = registerOutput<ClusterRemoteNetworkConfig?>(
       'remoteNetworkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterRemoteNetworkConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     roleArn = registerOutput<String>('roleArn');
     status = registerOutput<String>('status');
-    storageConfig = registerOutput<ClusterStorageConfig>('storageConfig');
+    storageConfig = registerOutput<ClusterStorageConfig>(
+      'storageConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterStorageConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    upgradePolicy = registerOutput<ClusterUpgradePolicy>('upgradePolicy');
+    upgradePolicy = registerOutput<ClusterUpgradePolicy>(
+      'upgradePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterUpgradePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     version = registerOutput<String>('version');
-    vpcConfig = registerOutput<ClusterVpcConfig>('vpcConfig');
+    vpcConfig = registerOutput<ClusterVpcConfig>(
+      'vpcConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterVpcConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     zonalShiftConfig = registerOutput<ClusterZonalShiftConfig?>(
       'zonalShiftConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterZonalShiftConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -2151,19 +2247,51 @@ class Cluster extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    accessConfig = registerOutput<ClusterAccessConfig>('accessConfig');
+    accessConfig = registerOutput<ClusterAccessConfig>(
+      'accessConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterAccessConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     arn = registerOutput<String>('arn');
     bootstrapSelfManagedAddons = registerOutput<bool?>(
       'bootstrapSelfManagedAddons',
     );
     certificateAuthority = registerOutput<ClusterCertificateAuthority>(
       'certificateAuthority',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterCertificateAuthority.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clusterId = registerOutput<String>('clusterId');
-    computeConfig = registerOutput<ClusterComputeConfig>('computeConfig');
+    computeConfig = registerOutput<ClusterComputeConfig>(
+      'computeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterComputeConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     controlPlaneScalingConfig =
         registerOutput<ClusterControlPlaneScalingConfig>(
           'controlPlaneScalingConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ClusterControlPlaneScalingConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     createdAt = registerOutput<String>('createdAt');
     defaultAddonsToRemoves = registerOutput<List<String>?>(
@@ -2175,30 +2303,94 @@ class Cluster extends pulumi.CustomResource {
     );
     encryptionConfig = registerOutput<ClusterEncryptionConfig?>(
       'encryptionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterEncryptionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     endpoint = registerOutput<String>('endpoint');
     forceUpdateVersion = registerOutput<bool?>('forceUpdateVersion');
     identities = registerOutput<List<Map<String, dynamic>>>('identities');
     kubernetesNetworkConfig = registerOutput<ClusterKubernetesNetworkConfig>(
       'kubernetesNetworkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterKubernetesNetworkConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
-    outpostConfig = registerOutput<ClusterOutpostConfig?>('outpostConfig');
+    outpostConfig = registerOutput<ClusterOutpostConfig?>(
+      'outpostConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterOutpostConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     platformVersion = registerOutput<String>('platformVersion');
     region = registerOutput<String>('region');
     remoteNetworkConfig = registerOutput<ClusterRemoteNetworkConfig?>(
       'remoteNetworkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterRemoteNetworkConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     roleArn = registerOutput<String>('roleArn');
     status = registerOutput<String>('status');
-    storageConfig = registerOutput<ClusterStorageConfig>('storageConfig');
+    storageConfig = registerOutput<ClusterStorageConfig>(
+      'storageConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterStorageConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    upgradePolicy = registerOutput<ClusterUpgradePolicy>('upgradePolicy');
+    upgradePolicy = registerOutput<ClusterUpgradePolicy>(
+      'upgradePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterUpgradePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     version = registerOutput<String>('version');
-    vpcConfig = registerOutput<ClusterVpcConfig>('vpcConfig');
+    vpcConfig = registerOutput<ClusterVpcConfig>(
+      'vpcConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterVpcConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     zonalShiftConfig = registerOutput<ClusterZonalShiftConfig?>(
       'zonalShiftConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterZonalShiftConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

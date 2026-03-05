@@ -244,6 +244,13 @@ class SecurityScanConfig extends pulumi.CustomResource {
        ) {
     authentication = registerOutput<SecurityScanConfigAuthentication?>(
       'authentication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityScanConfigAuthentication.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     blacklistPatterns = registerOutput<List<String>?>('blacklistPatterns');
     displayName = registerOutput<String>('displayName');
@@ -253,7 +260,16 @@ class SecurityScanConfig extends pulumi.CustomResource {
     maxQps = registerOutput<int?>('maxQps');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    schedule = registerOutput<SecurityScanConfigSchedule?>('schedule');
+    schedule = registerOutput<SecurityScanConfigSchedule?>(
+      'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityScanConfigSchedule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     startingUrls = registerOutput<List<String>>('startingUrls');
     targetPlatforms = registerOutput<List<String>?>('targetPlatforms');
     userAgent = registerOutput<String?>('userAgent');
@@ -284,6 +300,13 @@ class SecurityScanConfig extends pulumi.CustomResource {
        ) {
     authentication = registerOutput<SecurityScanConfigAuthentication?>(
       'authentication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityScanConfigAuthentication.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     blacklistPatterns = registerOutput<List<String>?>('blacklistPatterns');
     displayName = registerOutput<String>('displayName');
@@ -293,7 +316,16 @@ class SecurityScanConfig extends pulumi.CustomResource {
     maxQps = registerOutput<int?>('maxQps');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    schedule = registerOutput<SecurityScanConfigSchedule?>('schedule');
+    schedule = registerOutput<SecurityScanConfigSchedule?>(
+      'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityScanConfigSchedule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     startingUrls = registerOutput<List<String>>('startingUrls');
     targetPlatforms = registerOutput<List<String>?>('targetPlatforms');
     userAgent = registerOutput<String?>('userAgent');

@@ -49,17 +49,53 @@ class Dashboard extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    columnLayout = registerOutput<ColumnLayoutResponse>('columnLayout');
+    columnLayout = registerOutput<ColumnLayoutResponse>(
+      'columnLayout',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ColumnLayoutResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dashboardFilters = registerOutput<List<Map<String, dynamic>>>(
       'dashboardFilters',
     );
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String>('etag');
-    gridLayout = registerOutput<GridLayoutResponse>('gridLayout');
+    gridLayout = registerOutput<GridLayoutResponse>(
+      'gridLayout',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GridLayoutResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>>('labels');
-    mosaicLayout = registerOutput<MosaicLayoutResponse>('mosaicLayout');
+    mosaicLayout = registerOutput<MosaicLayoutResponse>(
+      'mosaicLayout',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MosaicLayoutResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    rowLayout = registerOutput<RowLayoutResponse>('rowLayout');
+    rowLayout = registerOutput<RowLayoutResponse>(
+      'rowLayout',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RowLayoutResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

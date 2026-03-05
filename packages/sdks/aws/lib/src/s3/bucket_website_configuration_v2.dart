@@ -460,14 +460,35 @@ class BucketWebsiteConfigurationV2 extends pulumi.CustomResource {
     bucket = registerOutput<String>('bucket');
     errorDocument = registerOutput<BucketWebsiteConfigurationV2ErrorDocument?>(
       'errorDocument',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketWebsiteConfigurationV2ErrorDocument.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
     indexDocument = registerOutput<BucketWebsiteConfigurationV2IndexDocument?>(
       'indexDocument',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketWebsiteConfigurationV2IndexDocument.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     redirectAllRequestsTo =
         registerOutput<BucketWebsiteConfigurationV2RedirectAllRequestsTo?>(
           'redirectAllRequestsTo',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return BucketWebsiteConfigurationV2RedirectAllRequestsTo.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     routingRuleDetails = registerOutput<String>('routingRuleDetails');
@@ -502,14 +523,35 @@ class BucketWebsiteConfigurationV2 extends pulumi.CustomResource {
     bucket = registerOutput<String>('bucket');
     errorDocument = registerOutput<BucketWebsiteConfigurationV2ErrorDocument?>(
       'errorDocument',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketWebsiteConfigurationV2ErrorDocument.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
     indexDocument = registerOutput<BucketWebsiteConfigurationV2IndexDocument?>(
       'indexDocument',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketWebsiteConfigurationV2IndexDocument.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     redirectAllRequestsTo =
         registerOutput<BucketWebsiteConfigurationV2RedirectAllRequestsTo?>(
           'redirectAllRequestsTo',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return BucketWebsiteConfigurationV2RedirectAllRequestsTo.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     routingRuleDetails = registerOutput<String>('routingRuleDetails');

@@ -249,11 +249,27 @@ class TemplateScratch extends pulumi.CustomResource {
     );
     sourceResourceGroup = registerOutput<TemplateScratchSourceResourceGroup?>(
       'sourceResourceGroup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TemplateScratchSourceResourceGroup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sourceResources = registerOutput<List<Map<String, dynamic>>?>(
       'sourceResources',
     );
-    sourceTag = registerOutput<TemplateScratchSourceTag?>('sourceTag');
+    sourceTag = registerOutput<TemplateScratchSourceTag?>(
+      'sourceTag',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TemplateScratchSourceTag.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String>('status');
     templateScratchType = registerOutput<String>('templateScratchType');
   }
@@ -289,11 +305,27 @@ class TemplateScratch extends pulumi.CustomResource {
     );
     sourceResourceGroup = registerOutput<TemplateScratchSourceResourceGroup?>(
       'sourceResourceGroup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TemplateScratchSourceResourceGroup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sourceResources = registerOutput<List<Map<String, dynamic>>?>(
       'sourceResources',
     );
-    sourceTag = registerOutput<TemplateScratchSourceTag?>('sourceTag');
+    sourceTag = registerOutput<TemplateScratchSourceTag?>(
+      'sourceTag',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TemplateScratchSourceTag.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String>('status');
     templateScratchType = registerOutput<String>('templateScratchType');
   }

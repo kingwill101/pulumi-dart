@@ -358,13 +358,43 @@ class SapCentralServerInstance extends pulumi.CustomResource {
     enqueueReplicationServerProperties =
         registerOutput<EnqueueReplicationServerPropertiesResponse?>(
           'enqueueReplicationServerProperties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EnqueueReplicationServerPropertiesResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     enqueueServerProperties = registerOutput<EnqueueServerPropertiesResponse?>(
       'enqueueServerProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnqueueServerPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    errors = registerOutput<SAPVirtualInstanceErrorResponse>('errors');
+    errors = registerOutput<SAPVirtualInstanceErrorResponse>(
+      'errors',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SAPVirtualInstanceErrorResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     gatewayServerProperties = registerOutput<GatewayServerPropertiesResponse?>(
       'gatewayServerProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GatewayServerPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     health = registerOutput<String>('health');
     instanceNo = registerOutput<String>('instanceNo');
@@ -372,16 +402,39 @@ class SapCentralServerInstance extends pulumi.CustomResource {
     kernelVersion = registerOutput<String>('kernelVersion');
     loadBalancerDetails = registerOutput<LoadBalancerDetailsResponse>(
       'loadBalancerDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     messageServerProperties = registerOutput<MessageServerPropertiesResponse?>(
       'messageServerProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MessageServerPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     status = registerOutput<String>('status');
     subnet = registerOutput<String>('subnet');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     vmDetails = registerOutput<List<Map<String, dynamic>>>('vmDetails');

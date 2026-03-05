@@ -65,20 +65,63 @@ class Job extends pulumi.CustomResource {
       ) {
     appEngineHttpTarget = registerOutput<AppEngineHttpTargetResponse>(
       'appEngineHttpTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppEngineHttpTargetResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     attemptDeadline = registerOutput<String>('attemptDeadline');
     description = registerOutput<String>('description');
-    httpTarget = registerOutput<HttpTargetResponse>('httpTarget');
+    httpTarget = registerOutput<HttpTargetResponse>(
+      'httpTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HttpTargetResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     lastAttemptTime = registerOutput<String>('lastAttemptTime');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pubsubTarget = registerOutput<PubsubTargetResponse>('pubsubTarget');
-    retryConfig = registerOutput<RetryConfigResponse>('retryConfig');
+    pubsubTarget = registerOutput<PubsubTargetResponse>(
+      'pubsubTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PubsubTargetResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    retryConfig = registerOutput<RetryConfigResponse>(
+      'retryConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RetryConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     schedule = registerOutput<String>('schedule');
     scheduleTime = registerOutput<String>('scheduleTime');
     state = registerOutput<String>('state');
-    status = registerOutput<StatusResponse>('status');
+    status = registerOutput<StatusResponse>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     timeZone = registerOutput<String>('timeZone');
     userUpdateTime = registerOutput<String>('userUpdateTime');
   }

@@ -765,21 +765,71 @@ class TransferJob extends pulumi.CustomResource {
     creationTime = registerOutput<String>('creationTime');
     deletionTime = registerOutput<String>('deletionTime');
     description = registerOutput<String>('description');
-    eventStream = registerOutput<TransferJobEventStream?>('eventStream');
+    eventStream = registerOutput<TransferJobEventStream?>(
+      'eventStream',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TransferJobEventStream.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     lastModificationTime = registerOutput<String>('lastModificationTime');
-    loggingConfig = registerOutput<TransferJobLoggingConfig?>('loggingConfig');
+    loggingConfig = registerOutput<TransferJobLoggingConfig?>(
+      'loggingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TransferJobLoggingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     notificationConfig = registerOutput<TransferJobNotificationConfig?>(
       'notificationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TransferJobNotificationConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     replicationSpec = registerOutput<TransferJobReplicationSpec?>(
       'replicationSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TransferJobReplicationSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    schedule = registerOutput<TransferJobSchedule?>('schedule');
+    schedule = registerOutput<TransferJobSchedule?>(
+      'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TransferJobSchedule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     serviceAccount = registerOutput<String?>('serviceAccount');
     status = registerOutput<String?>('status');
-    transferSpec = registerOutput<TransferJobTransferSpec?>('transferSpec');
+    transferSpec = registerOutput<TransferJobTransferSpec?>(
+      'transferSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TransferJobTransferSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [TransferJob] resource's state with the given [name] and [id].
@@ -808,20 +858,70 @@ class TransferJob extends pulumi.CustomResource {
     creationTime = registerOutput<String>('creationTime');
     deletionTime = registerOutput<String>('deletionTime');
     description = registerOutput<String>('description');
-    eventStream = registerOutput<TransferJobEventStream?>('eventStream');
+    eventStream = registerOutput<TransferJobEventStream?>(
+      'eventStream',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TransferJobEventStream.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     lastModificationTime = registerOutput<String>('lastModificationTime');
-    loggingConfig = registerOutput<TransferJobLoggingConfig?>('loggingConfig');
+    loggingConfig = registerOutput<TransferJobLoggingConfig?>(
+      'loggingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TransferJobLoggingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     notificationConfig = registerOutput<TransferJobNotificationConfig?>(
       'notificationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TransferJobNotificationConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     replicationSpec = registerOutput<TransferJobReplicationSpec?>(
       'replicationSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TransferJobReplicationSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    schedule = registerOutput<TransferJobSchedule?>('schedule');
+    schedule = registerOutput<TransferJobSchedule?>(
+      'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TransferJobSchedule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     serviceAccount = registerOutput<String?>('serviceAccount');
     status = registerOutput<String?>('status');
-    transferSpec = registerOutput<TransferJobTransferSpec?>('transferSpec');
+    transferSpec = registerOutput<TransferJobTransferSpec?>(
+      'transferSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TransferJobTransferSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

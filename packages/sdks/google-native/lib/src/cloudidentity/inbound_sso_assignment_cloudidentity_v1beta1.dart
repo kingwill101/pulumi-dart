@@ -50,9 +50,23 @@ class InboundSsoAssignmentCloudidentityV1beta1 extends pulumi.CustomResource {
     rank = registerOutput<int>('rank');
     samlSsoInfo = registerOutput<SamlSsoInfoResponseCloudidentityV1beta1>(
       'samlSsoInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SamlSsoInfoResponseCloudidentityV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     signInBehavior = registerOutput<SignInBehaviorResponseCloudidentityV1beta1>(
       'signInBehavior',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SignInBehaviorResponseCloudidentityV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     ssoMode = registerOutput<String>('ssoMode');
     targetGroup = registerOutput<String>('targetGroup');

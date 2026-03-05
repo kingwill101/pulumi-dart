@@ -230,6 +230,13 @@ class Volume extends pulumi.CustomResource {
     azureFileParameters =
         registerOutput<VolumeProviderParametersAzureFileResponse?>(
           'azureFileParameters',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VolumeProviderParametersAzureFileResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String?>('description');
     location = registerOutput<String>('location');

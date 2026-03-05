@@ -96,6 +96,13 @@ class Community extends pulumi.CustomResource {
     addressSpace = registerOutput<String?>('addressSpace');
     approvalSettings = registerOutput<ApprovalSettingsResponse?>(
       'approvalSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApprovalSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     communityRoleAssignments = registerOutput<List<Map<String, dynamic>>?>(
@@ -106,15 +113,38 @@ class Community extends pulumi.CustomResource {
     governedServiceList = registerOutput<List<Map<String, dynamic>>?>(
       'governedServiceList',
     );
-    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    identity = registerOutput<ManagedServiceIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedServiceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     maintenanceModeConfiguration =
         registerOutput<MaintenanceModeConfigurationModelResponse?>(
           'maintenanceModeConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MaintenanceModeConfigurationModelResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     managedOnBehalfOfConfiguration =
         registerOutput<ManagedOnBehalfOfConfigurationResponse>(
           'managedOnBehalfOfConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ManagedOnBehalfOfConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     managedResourceGroupName = registerOutput<String>(
       'managedResourceGroupName',
@@ -123,7 +153,16 @@ class Community extends pulumi.CustomResource {
     policyOverride = registerOutput<String?>('policyOverride');
     provisioningState = registerOutput<String>('provisioningState');
     resourceCollection = registerOutput<List<String>>('resourceCollection');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

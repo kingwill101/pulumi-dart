@@ -47,6 +47,15 @@ class ConfigMapPatchCoreV1 extends pulumi.CustomResource {
     data = registerOutput<Map<String, String>?>('data');
     immutable = registerOutput<bool?>('immutable');
     kind = registerOutput<String?>('kind');
-    metadata = registerOutput<ObjectMetaPatch?>('metadata');
+    metadata = registerOutput<ObjectMetaPatch?>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMetaPatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

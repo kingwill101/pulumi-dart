@@ -129,7 +129,16 @@ class InterconnectComputeBeta extends pulumi.CustomResource {
     labels = registerOutput<Map<String, String>>('labels');
     linkType = registerOutput<String>('linkType');
     location = registerOutput<String>('location');
-    macsec = registerOutput<InterconnectMacsecResponseComputeBeta>('macsec');
+    macsec = registerOutput<InterconnectMacsecResponseComputeBeta>(
+      'macsec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InterconnectMacsecResponseComputeBeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     macsecEnabled = registerOutput<bool>('macsecEnabled');
     this.name = registerOutput<String>('name');
     nocContactEmail = registerOutput<String>('nocContactEmail');

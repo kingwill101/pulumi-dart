@@ -951,6 +951,13 @@ class Runtime extends pulumi.CustomResource {
     notebookRuntimeTemplateRef =
         registerOutput<RuntimeNotebookRuntimeTemplateRef?>(
           'notebookRuntimeTemplateRef',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RuntimeNotebookRuntimeTemplateRef.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     notebookRuntimeType = registerOutput<String>('notebookRuntimeType');
     project = registerOutput<String>('project');
@@ -992,6 +999,13 @@ class Runtime extends pulumi.CustomResource {
     notebookRuntimeTemplateRef =
         registerOutput<RuntimeNotebookRuntimeTemplateRef?>(
           'notebookRuntimeTemplateRef',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RuntimeNotebookRuntimeTemplateRef.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     notebookRuntimeType = registerOutput<String>('notebookRuntimeType');
     project = registerOutput<String>('project');

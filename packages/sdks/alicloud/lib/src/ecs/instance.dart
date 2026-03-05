@@ -774,7 +774,16 @@ class Instance extends pulumi.CustomResource {
     autoRenewPeriod = registerOutput<int?>('autoRenewPeriod');
     availabilityZone = registerOutput<String>('availabilityZone');
     cpu = registerOutput<int>('cpu');
-    cpuOptions = registerOutput<InstanceCpuOptions>('cpuOptions');
+    cpuOptions = registerOutput<InstanceCpuOptions>(
+      'cpuOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceCpuOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     creditSpecification = registerOutput<String>('creditSpecification');
     dataDisks = registerOutput<List<Map<String, dynamic>>?>('dataDisks');
@@ -793,7 +802,16 @@ class Instance extends pulumi.CustomResource {
     httpPutResponseHopLimit = registerOutput<int>('httpPutResponseHopLimit');
     httpTokens = registerOutput<String>('httpTokens');
     imageId = registerOutput<String>('imageId');
-    imageOptions = registerOutput<InstanceImageOptions>('imageOptions');
+    imageOptions = registerOutput<InstanceImageOptions>(
+      'imageOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceImageOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     includeDataDisks = registerOutput<bool?>('includeDataDisks');
     instanceChargeType = registerOutput<String>('instanceChargeType');
     instanceName = registerOutput<String>('instanceName');
@@ -816,6 +834,13 @@ class Instance extends pulumi.CustomResource {
     maintenanceNotify = registerOutput<bool?>('maintenanceNotify');
     maintenanceTime = registerOutput<InstanceMaintenanceTime?>(
       'maintenanceTime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceMaintenanceTime.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     memory = registerOutput<int>('memory');
     networkCardIndex = registerOutput<int?>('networkCardIndex');
@@ -825,6 +850,13 @@ class Instance extends pulumi.CustomResource {
     );
     networkInterfaces = registerOutput<InstanceNetworkInterfaces>(
       'networkInterfaces',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceNetworkInterfaces.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     operatorType = registerOutput<String?>('operatorType');
     osName = registerOutput<String>('osName');
@@ -918,7 +950,16 @@ class Instance extends pulumi.CustomResource {
     autoRenewPeriod = registerOutput<int?>('autoRenewPeriod');
     availabilityZone = registerOutput<String>('availabilityZone');
     cpu = registerOutput<int>('cpu');
-    cpuOptions = registerOutput<InstanceCpuOptions>('cpuOptions');
+    cpuOptions = registerOutput<InstanceCpuOptions>(
+      'cpuOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceCpuOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     creditSpecification = registerOutput<String>('creditSpecification');
     dataDisks = registerOutput<List<Map<String, dynamic>>?>('dataDisks');
@@ -937,7 +978,16 @@ class Instance extends pulumi.CustomResource {
     httpPutResponseHopLimit = registerOutput<int>('httpPutResponseHopLimit');
     httpTokens = registerOutput<String>('httpTokens');
     imageId = registerOutput<String>('imageId');
-    imageOptions = registerOutput<InstanceImageOptions>('imageOptions');
+    imageOptions = registerOutput<InstanceImageOptions>(
+      'imageOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceImageOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     includeDataDisks = registerOutput<bool?>('includeDataDisks');
     instanceChargeType = registerOutput<String>('instanceChargeType');
     instanceName = registerOutput<String>('instanceName');
@@ -960,6 +1010,13 @@ class Instance extends pulumi.CustomResource {
     maintenanceNotify = registerOutput<bool?>('maintenanceNotify');
     maintenanceTime = registerOutput<InstanceMaintenanceTime?>(
       'maintenanceTime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceMaintenanceTime.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     memory = registerOutput<int>('memory');
     networkCardIndex = registerOutput<int?>('networkCardIndex');
@@ -969,6 +1026,13 @@ class Instance extends pulumi.CustomResource {
     );
     networkInterfaces = registerOutput<InstanceNetworkInterfaces>(
       'networkInterfaces',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceNetworkInterfaces.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     operatorType = registerOutput<String?>('operatorType');
     osName = registerOutput<String>('osName');

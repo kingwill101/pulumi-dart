@@ -423,7 +423,16 @@ class GroupMetricRule extends pulumi.CustomResource {
     dimensions = registerOutput<String>('dimensions');
     effectiveInterval = registerOutput<String?>('effectiveInterval');
     emailSubject = registerOutput<String>('emailSubject');
-    escalations = registerOutput<GroupMetricRuleEscalations>('escalations');
+    escalations = registerOutput<GroupMetricRuleEscalations>(
+      'escalations',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupMetricRuleEscalations.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     groupId = registerOutput<String>('groupId');
     groupMetricRuleName = registerOutput<String>('groupMetricRuleName');
     interval = registerOutput<String?>('interval');
@@ -466,7 +475,16 @@ class GroupMetricRule extends pulumi.CustomResource {
     dimensions = registerOutput<String>('dimensions');
     effectiveInterval = registerOutput<String?>('effectiveInterval');
     emailSubject = registerOutput<String>('emailSubject');
-    escalations = registerOutput<GroupMetricRuleEscalations>('escalations');
+    escalations = registerOutput<GroupMetricRuleEscalations>(
+      'escalations',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupMetricRuleEscalations.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     groupId = registerOutput<String>('groupId');
     groupMetricRuleName = registerOutput<String>('groupMetricRuleName');
     interval = registerOutput<String?>('interval');

@@ -218,7 +218,16 @@ class LocationFsxOntapFileSystem extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     creationTime = registerOutput<String>('creationTime');
     fsxFilesystemArn = registerOutput<String>('fsxFilesystemArn');
-    protocol = registerOutput<LocationFsxOntapFileSystemProtocol>('protocol');
+    protocol = registerOutput<LocationFsxOntapFileSystemProtocol>(
+      'protocol',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LocationFsxOntapFileSystemProtocol.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     securityGroupArns = registerOutput<List<String>>('securityGroupArns');
     storageVirtualMachineArn = registerOutput<String>(
@@ -256,7 +265,16 @@ class LocationFsxOntapFileSystem extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     creationTime = registerOutput<String>('creationTime');
     fsxFilesystemArn = registerOutput<String>('fsxFilesystemArn');
-    protocol = registerOutput<LocationFsxOntapFileSystemProtocol>('protocol');
+    protocol = registerOutput<LocationFsxOntapFileSystemProtocol>(
+      'protocol',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LocationFsxOntapFileSystemProtocol.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     securityGroupArns = registerOutput<List<String>>('securityGroupArns');
     storageVirtualMachineArn = registerOutput<String>(

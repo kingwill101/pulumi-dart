@@ -320,7 +320,16 @@ class AnalyticsSolution extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     location = registerOutput<String>('location');
-    plan = registerOutput<AnalyticsSolutionPlan>('plan');
+    plan = registerOutput<AnalyticsSolutionPlan>(
+      'plan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AnalyticsSolutionPlan.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     solutionName = registerOutput<String>('solutionName');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -352,7 +361,16 @@ class AnalyticsSolution extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     location = registerOutput<String>('location');
-    plan = registerOutput<AnalyticsSolutionPlan>('plan');
+    plan = registerOutput<AnalyticsSolutionPlan>(
+      'plan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AnalyticsSolutionPlan.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     solutionName = registerOutput<String>('solutionName');
     tags = registerOutput<Map<String, String>?>('tags');

@@ -481,10 +481,26 @@ class PolicyVM extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    backup = registerOutput<PolicyVMBackup>('backup');
+    backup = registerOutput<PolicyVMBackup>(
+      'backup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyVMBackup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     instantRestoreResourceGroup =
         registerOutput<PolicyVMInstantRestoreResourceGroup?>(
           'instantRestoreResourceGroup',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PolicyVMInstantRestoreResourceGroup.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     instantRestoreRetentionDays = registerOutput<int>(
       'instantRestoreRetentionDays',
@@ -493,17 +509,56 @@ class PolicyVM extends pulumi.CustomResource {
     policyType = registerOutput<String?>('policyType');
     recoveryVaultName = registerOutput<String>('recoveryVaultName');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    retentionDaily = registerOutput<PolicyVMRetentionDaily?>('retentionDaily');
+    retentionDaily = registerOutput<PolicyVMRetentionDaily?>(
+      'retentionDaily',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyVMRetentionDaily.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     retentionMonthly = registerOutput<PolicyVMRetentionMonthly?>(
       'retentionMonthly',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyVMRetentionMonthly.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     retentionWeekly = registerOutput<PolicyVMRetentionWeekly?>(
       'retentionWeekly',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyVMRetentionWeekly.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     retentionYearly = registerOutput<PolicyVMRetentionYearly?>(
       'retentionYearly',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyVMRetentionYearly.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    tieringPolicy = registerOutput<PolicyVMTieringPolicy?>('tieringPolicy');
+    tieringPolicy = registerOutput<PolicyVMTieringPolicy?>(
+      'tieringPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyVMTieringPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     timezone = registerOutput<String?>('timezone');
   }
 
@@ -530,10 +585,26 @@ class PolicyVM extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    backup = registerOutput<PolicyVMBackup>('backup');
+    backup = registerOutput<PolicyVMBackup>(
+      'backup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyVMBackup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     instantRestoreResourceGroup =
         registerOutput<PolicyVMInstantRestoreResourceGroup?>(
           'instantRestoreResourceGroup',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PolicyVMInstantRestoreResourceGroup.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     instantRestoreRetentionDays = registerOutput<int>(
       'instantRestoreRetentionDays',
@@ -542,17 +613,56 @@ class PolicyVM extends pulumi.CustomResource {
     policyType = registerOutput<String?>('policyType');
     recoveryVaultName = registerOutput<String>('recoveryVaultName');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    retentionDaily = registerOutput<PolicyVMRetentionDaily?>('retentionDaily');
+    retentionDaily = registerOutput<PolicyVMRetentionDaily?>(
+      'retentionDaily',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyVMRetentionDaily.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     retentionMonthly = registerOutput<PolicyVMRetentionMonthly?>(
       'retentionMonthly',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyVMRetentionMonthly.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     retentionWeekly = registerOutput<PolicyVMRetentionWeekly?>(
       'retentionWeekly',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyVMRetentionWeekly.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     retentionYearly = registerOutput<PolicyVMRetentionYearly?>(
       'retentionYearly',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyVMRetentionYearly.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    tieringPolicy = registerOutput<PolicyVMTieringPolicy?>('tieringPolicy');
+    tieringPolicy = registerOutput<PolicyVMTieringPolicy?>(
+      'tieringPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyVMTieringPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     timezone = registerOutput<String?>('timezone');
   }
 }

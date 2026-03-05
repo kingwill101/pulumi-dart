@@ -98,28 +98,103 @@ class AmlFilesystem extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    clientInfo = registerOutput<AmlFilesystemClientInfoResponse>('clientInfo');
+    clientInfo = registerOutput<AmlFilesystemClientInfoResponse>(
+      'clientInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AmlFilesystemClientInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     encryptionSettings =
         registerOutput<AmlFilesystemEncryptionSettingsResponse?>(
           'encryptionSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AmlFilesystemEncryptionSettingsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     filesystemSubnet = registerOutput<String>('filesystemSubnet');
-    health = registerOutput<AmlFilesystemHealthResponse>('health');
-    hsm = registerOutput<AmlFilesystemResponseHsm?>('hsm');
-    identity = registerOutput<AmlFilesystemIdentityResponse?>('identity');
+    health = registerOutput<AmlFilesystemHealthResponse>(
+      'health',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AmlFilesystemHealthResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    hsm = registerOutput<AmlFilesystemResponseHsm?>(
+      'hsm',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AmlFilesystemResponseHsm.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    identity = registerOutput<AmlFilesystemIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AmlFilesystemIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     maintenanceWindow = registerOutput<AmlFilesystemResponseMaintenanceWindow>(
       'maintenanceWindow',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AmlFilesystemResponseMaintenanceWindow.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     rootSquashSettings =
         registerOutput<AmlFilesystemRootSquashSettingsResponse?>(
           'rootSquashSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AmlFilesystemRootSquashSettingsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    sku = registerOutput<SkuNameResponse?>('sku');
+    sku = registerOutput<SkuNameResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuNameResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     storageCapacityTiB = registerOutput<double>('storageCapacityTiB');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     throughputProvisionedMBps = registerOutput<int>(
       'throughputProvisionedMBps',

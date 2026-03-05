@@ -426,6 +426,13 @@ class GoogleApiSource extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     loggingConfig = registerOutput<GoogleApiSourceLoggingConfig>(
       'loggingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleApiSourceLoggingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -472,6 +479,13 @@ class GoogleApiSource extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     loggingConfig = registerOutput<GoogleApiSourceLoggingConfig>(
       'loggingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleApiSourceLoggingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

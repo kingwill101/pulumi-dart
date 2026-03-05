@@ -562,7 +562,16 @@ class ScheduledQueryRulesLog extends pulumi.CustomResource {
     authorizedResourceIds = registerOutput<List<String>?>(
       'authorizedResourceIds',
     );
-    criteria = registerOutput<ScheduledQueryRulesLogCriteria>('criteria');
+    criteria = registerOutput<ScheduledQueryRulesLogCriteria>(
+      'criteria',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduledQueryRulesLogCriteria.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dataSourceId = registerOutput<String>('dataSourceId');
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
@@ -598,7 +607,16 @@ class ScheduledQueryRulesLog extends pulumi.CustomResource {
     authorizedResourceIds = registerOutput<List<String>?>(
       'authorizedResourceIds',
     );
-    criteria = registerOutput<ScheduledQueryRulesLogCriteria>('criteria');
+    criteria = registerOutput<ScheduledQueryRulesLogCriteria>(
+      'criteria',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduledQueryRulesLogCriteria.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dataSourceId = registerOutput<String>('dataSourceId');
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');

@@ -60,7 +60,16 @@ class UtilizationReport extends pulumi.CustomResource {
        ) {
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
-    error = registerOutput<StatusResponse>('error');
+    error = registerOutput<StatusResponse>(
+      'error',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     frameEndTime = registerOutput<String>('frameEndTime');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

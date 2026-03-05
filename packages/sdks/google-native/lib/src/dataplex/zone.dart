@@ -65,12 +65,26 @@ class Zone extends pulumi.CustomResource {
       ) {
     assetStatus = registerOutput<GoogleCloudDataplexV1AssetStatusResponse>(
       'assetStatus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudDataplexV1AssetStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     discoverySpec =
         registerOutput<GoogleCloudDataplexV1ZoneDiscoverySpecResponse>(
           'discoverySpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDataplexV1ZoneDiscoverySpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     displayName = registerOutput<String>('displayName');
     labels = registerOutput<Map<String, String>>('labels');
@@ -81,6 +95,13 @@ class Zone extends pulumi.CustomResource {
     resourceSpec =
         registerOutput<GoogleCloudDataplexV1ZoneResourceSpecResponse>(
           'resourceSpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDataplexV1ZoneResourceSpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     state = registerOutput<String>('state');
     type = registerOutput<String>('type');

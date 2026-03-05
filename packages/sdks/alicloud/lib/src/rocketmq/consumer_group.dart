@@ -581,6 +581,13 @@ class ConsumerGroup extends pulumi.CustomResource {
        ) {
     consumeRetryPolicy = registerOutput<ConsumerGroupConsumeRetryPolicy>(
       'consumeRetryPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConsumerGroupConsumeRetryPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     consumerGroupId = registerOutput<String>('consumerGroupId');
     createTime = registerOutput<String>('createTime');
@@ -617,6 +624,13 @@ class ConsumerGroup extends pulumi.CustomResource {
        ) {
     consumeRetryPolicy = registerOutput<ConsumerGroupConsumeRetryPolicy>(
       'consumeRetryPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConsumerGroupConsumeRetryPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     consumerGroupId = registerOutput<String>('consumerGroupId');
     createTime = registerOutput<String>('createTime');

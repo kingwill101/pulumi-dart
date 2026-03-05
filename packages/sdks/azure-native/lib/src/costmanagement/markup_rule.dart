@@ -224,6 +224,13 @@ class MarkupRule extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     customerDetails = registerOutput<CustomerMetadataResponse>(
       'customerDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomerMetadataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     eTag = registerOutput<String?>('eTag');

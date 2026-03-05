@@ -2264,7 +2264,16 @@ class Entry extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     entryGroupId = registerOutput<String?>('entryGroupId');
     entryId = registerOutput<String?>('entryId');
-    entrySource = registerOutput<EntryEntrySource>('entrySource');
+    entrySource = registerOutput<EntryEntrySource>(
+      'entrySource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EntryEntrySource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     entryType = registerOutput<String>('entryType');
     fullyQualifiedName = registerOutput<String?>('fullyQualifiedName');
     location = registerOutput<String?>('location');
@@ -2297,7 +2306,16 @@ class Entry extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     entryGroupId = registerOutput<String?>('entryGroupId');
     entryId = registerOutput<String?>('entryId');
-    entrySource = registerOutput<EntryEntrySource>('entrySource');
+    entrySource = registerOutput<EntryEntrySource>(
+      'entrySource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EntryEntrySource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     entryType = registerOutput<String>('entryType');
     fullyQualifiedName = registerOutput<String?>('fullyQualifiedName');
     location = registerOutput<String?>('location');

@@ -57,7 +57,16 @@ class TypeProvider extends pulumi.CustomResource {
     collectionOverrides = registerOutput<List<Map<String, dynamic>>>(
       'collectionOverrides',
     );
-    credential = registerOutput<CredentialResponse>('credential');
+    credential = registerOutput<CredentialResponse>(
+      'credential',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CredentialResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     customCertificateAuthorityRoots = registerOutput<List<String>>(
       'customCertificateAuthorityRoots',
     );
@@ -66,8 +75,26 @@ class TypeProvider extends pulumi.CustomResource {
     insertTime = registerOutput<String>('insertTime');
     labels = registerOutput<List<Map<String, dynamic>>>('labels');
     this.name = registerOutput<String>('name');
-    operation = registerOutput<OperationResponse>('operation');
-    this.options = registerOutput<OptionsResponse>('options');
+    operation = registerOutput<OperationResponse>(
+      'operation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OperationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    this.options = registerOutput<OptionsResponse>(
+      'options',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OptionsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     selfLink = registerOutput<String>('selfLink');
   }

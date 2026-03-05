@@ -437,7 +437,16 @@ class Release extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
-    blueprint = registerOutput<ReleaseBlueprint?>('blueprint');
+    blueprint = registerOutput<ReleaseBlueprint?>(
+      'blueprint',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReleaseBlueprint.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     effectiveAnnotations = registerOutput<Map<String, String>>(
       'effectiveAnnotations',
@@ -461,6 +470,13 @@ class Release extends pulumi.CustomResource {
     releaseId = registerOutput<String>('releaseId');
     releaseRequirements = registerOutput<ReleaseReleaseRequirements?>(
       'releaseRequirements',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReleaseReleaseRequirements.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     uid = registerOutput<String>('uid');
     unitKind = registerOutput<String>('unitKind');
@@ -491,7 +507,16 @@ class Release extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
-    blueprint = registerOutput<ReleaseBlueprint?>('blueprint');
+    blueprint = registerOutput<ReleaseBlueprint?>(
+      'blueprint',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReleaseBlueprint.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     effectiveAnnotations = registerOutput<Map<String, String>>(
       'effectiveAnnotations',
@@ -515,6 +540,13 @@ class Release extends pulumi.CustomResource {
     releaseId = registerOutput<String>('releaseId');
     releaseRequirements = registerOutput<ReleaseReleaseRequirements?>(
       'releaseRequirements',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReleaseReleaseRequirements.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     uid = registerOutput<String>('uid');
     unitKind = registerOutput<String>('unitKind');

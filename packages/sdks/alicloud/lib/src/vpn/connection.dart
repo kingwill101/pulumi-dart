@@ -925,7 +925,16 @@ class Connection extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     autoConfigRoute = registerOutput<bool?>('autoConfigRoute');
-    bgpConfig = registerOutput<ConnectionBgpConfig>('bgpConfig');
+    bgpConfig = registerOutput<ConnectionBgpConfig>(
+      'bgpConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionBgpConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<int>('createTime');
     customerGatewayId = registerOutput<String?>('customerGatewayId');
     effectImmediately = registerOutput<bool?>('effectImmediately');
@@ -934,9 +943,34 @@ class Connection extends pulumi.CustomResource {
     enableTunnelsBgp = registerOutput<bool>('enableTunnelsBgp');
     healthCheckConfig = registerOutput<ConnectionHealthCheckConfig>(
       'healthCheckConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionHealthCheckConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    ikeConfig = registerOutput<ConnectionIkeConfig>('ikeConfig');
-    ipsecConfig = registerOutput<ConnectionIpsecConfig>('ipsecConfig');
+    ikeConfig = registerOutput<ConnectionIkeConfig>(
+      'ikeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionIkeConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    ipsecConfig = registerOutput<ConnectionIpsecConfig>(
+      'ipsecConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionIpsecConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     localSubnets = registerOutput<List<String>>('localSubnets');
     this.name = registerOutput<String>('name');
     networkType = registerOutput<String?>('networkType');
@@ -975,7 +1009,16 @@ class Connection extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     autoConfigRoute = registerOutput<bool?>('autoConfigRoute');
-    bgpConfig = registerOutput<ConnectionBgpConfig>('bgpConfig');
+    bgpConfig = registerOutput<ConnectionBgpConfig>(
+      'bgpConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionBgpConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<int>('createTime');
     customerGatewayId = registerOutput<String?>('customerGatewayId');
     effectImmediately = registerOutput<bool?>('effectImmediately');
@@ -984,9 +1027,34 @@ class Connection extends pulumi.CustomResource {
     enableTunnelsBgp = registerOutput<bool>('enableTunnelsBgp');
     healthCheckConfig = registerOutput<ConnectionHealthCheckConfig>(
       'healthCheckConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionHealthCheckConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    ikeConfig = registerOutput<ConnectionIkeConfig>('ikeConfig');
-    ipsecConfig = registerOutput<ConnectionIpsecConfig>('ipsecConfig');
+    ikeConfig = registerOutput<ConnectionIkeConfig>(
+      'ikeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionIkeConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    ipsecConfig = registerOutput<ConnectionIpsecConfig>(
+      'ipsecConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionIpsecConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     localSubnets = registerOutput<List<String>>('localSubnets');
     this.name = registerOutput<String>('name');
     networkType = registerOutput<String?>('networkType');

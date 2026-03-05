@@ -407,6 +407,13 @@ class BareMetalMachine extends pulumi.CustomResource {
     bmcConnectionString = registerOutput<String>('bmcConnectionString');
     bmcCredentials = registerOutput<AdministrativeCredentialsResponse>(
       'bmcCredentials',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AdministrativeCredentialsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     bmcMacAddress = registerOutput<String>('bmcMacAddress');
     bootMacAddress = registerOutput<String>('bootMacAddress');
@@ -417,12 +424,33 @@ class BareMetalMachine extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     extendedLocation = registerOutput<ExtendedLocationResponse>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     hardwareInventory = registerOutput<HardwareInventoryResponse>(
       'hardwareInventory',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HardwareInventoryResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     hardwareValidationStatus = registerOutput<HardwareValidationStatusResponse>(
       'hardwareValidationStatus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HardwareValidationStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     hybridAksClustersAssociatedIds = registerOutput<List<String>>(
       'hybridAksClustersAssociatedIds',
@@ -446,13 +474,29 @@ class BareMetalMachine extends pulumi.CustomResource {
     readyState = registerOutput<String>('readyState');
     runtimeProtectionStatus = registerOutput<RuntimeProtectionStatusResponse>(
       'runtimeProtectionStatus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RuntimeProtectionStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     secretRotationStatus = registerOutput<List<Map<String, dynamic>>>(
       'secretRotationStatus',
     );
     serialNumber = registerOutput<String>('serialNumber');
     serviceTag = registerOutput<String>('serviceTag');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     virtualMachinesAssociatedIds = registerOutput<List<String>>(

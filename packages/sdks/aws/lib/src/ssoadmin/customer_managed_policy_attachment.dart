@@ -327,7 +327,16 @@ class CustomerManagedPolicyAttachment extends pulumi.CustomResource {
     customerManagedPolicyReference =
         registerOutput<
           CustomerManagedPolicyAttachmentCustomerManagedPolicyReference
-        >('customerManagedPolicyReference');
+        >(
+          'customerManagedPolicyReference',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CustomerManagedPolicyAttachmentCustomerManagedPolicyReference.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     instanceArn = registerOutput<String>('instanceArn');
     permissionSetArn = registerOutput<String>('permissionSetArn');
     region = registerOutput<String>('region');
@@ -359,7 +368,16 @@ class CustomerManagedPolicyAttachment extends pulumi.CustomResource {
     customerManagedPolicyReference =
         registerOutput<
           CustomerManagedPolicyAttachmentCustomerManagedPolicyReference
-        >('customerManagedPolicyReference');
+        >(
+          'customerManagedPolicyReference',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CustomerManagedPolicyAttachmentCustomerManagedPolicyReference.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     instanceArn = registerOutput<String>('instanceArn');
     permissionSetArn = registerOutput<String>('permissionSetArn');
     region = registerOutput<String>('region');

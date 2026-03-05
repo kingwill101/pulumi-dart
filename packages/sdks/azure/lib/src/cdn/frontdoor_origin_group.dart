@@ -301,9 +301,23 @@ class FrontdoorOriginGroup extends pulumi.CustomResource {
     cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
     healthProbe = registerOutput<FrontdoorOriginGroupHealthProbe?>(
       'healthProbe',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FrontdoorOriginGroupHealthProbe.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     loadBalancing = registerOutput<FrontdoorOriginGroupLoadBalancing>(
       'loadBalancing',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FrontdoorOriginGroupLoadBalancing.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     restoreTrafficTimeToHealedOrNewEndpointInMinutes = registerOutput<int?>(
@@ -338,9 +352,23 @@ class FrontdoorOriginGroup extends pulumi.CustomResource {
     cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
     healthProbe = registerOutput<FrontdoorOriginGroupHealthProbe?>(
       'healthProbe',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FrontdoorOriginGroupHealthProbe.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     loadBalancing = registerOutput<FrontdoorOriginGroupLoadBalancing>(
       'loadBalancing',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FrontdoorOriginGroupLoadBalancing.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     restoreTrafficTimeToHealedOrNewEndpointInMinutes = registerOutput<int?>(

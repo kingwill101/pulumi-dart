@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getProtection.
 class GetProtectionResult {
   final String id;
+
   /// Name of the protection.
   final String name;
+
   /// ARN of the protection.
   final String protectionArn;
   final String protectionId;
@@ -45,4 +46,3 @@ class GetProtectionResult {
     );
   }
 }
-

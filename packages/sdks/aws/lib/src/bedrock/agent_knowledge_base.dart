@@ -1464,6 +1464,13 @@ class AgentKnowledgeBase extends pulumi.CustomResource {
     knowledgeBaseConfiguration =
         registerOutput<AgentKnowledgeBaseKnowledgeBaseConfiguration>(
           'knowledgeBaseConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AgentKnowledgeBaseKnowledgeBaseConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -1471,10 +1478,26 @@ class AgentKnowledgeBase extends pulumi.CustomResource {
     storageConfiguration =
         registerOutput<AgentKnowledgeBaseStorageConfiguration?>(
           'storageConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AgentKnowledgeBaseStorageConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<AgentKnowledgeBaseTimeouts?>('timeouts');
+    timeouts = registerOutput<AgentKnowledgeBaseTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentKnowledgeBaseTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     updatedAt = registerOutput<String>('updatedAt');
   }
 
@@ -1508,6 +1531,13 @@ class AgentKnowledgeBase extends pulumi.CustomResource {
     knowledgeBaseConfiguration =
         registerOutput<AgentKnowledgeBaseKnowledgeBaseConfiguration>(
           'knowledgeBaseConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AgentKnowledgeBaseKnowledgeBaseConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -1515,10 +1545,26 @@ class AgentKnowledgeBase extends pulumi.CustomResource {
     storageConfiguration =
         registerOutput<AgentKnowledgeBaseStorageConfiguration?>(
           'storageConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AgentKnowledgeBaseStorageConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<AgentKnowledgeBaseTimeouts?>('timeouts');
+    timeouts = registerOutput<AgentKnowledgeBaseTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentKnowledgeBaseTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     updatedAt = registerOutput<String>('updatedAt');
   }
 }

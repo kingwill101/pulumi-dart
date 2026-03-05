@@ -224,6 +224,13 @@ class CompositeAlarm extends pulumi.CustomResource {
     actionsEnabled = registerOutput<bool?>('actionsEnabled');
     actionsSuppressor = registerOutput<CompositeAlarmActionsSuppressor?>(
       'actionsSuppressor',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CompositeAlarmActionsSuppressor.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     alarmActions = registerOutput<List<String>?>('alarmActions');
     alarmDescription = registerOutput<String?>('alarmDescription');
@@ -265,6 +272,13 @@ class CompositeAlarm extends pulumi.CustomResource {
     actionsEnabled = registerOutput<bool?>('actionsEnabled');
     actionsSuppressor = registerOutput<CompositeAlarmActionsSuppressor?>(
       'actionsSuppressor',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CompositeAlarmActionsSuppressor.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     alarmActions = registerOutput<List<String>?>('alarmActions');
     alarmDescription = registerOutput<String?>('alarmDescription');

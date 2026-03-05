@@ -653,6 +653,13 @@ class GroupWithoutMembers extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     dynamicMembership = registerOutput<GroupWithoutMembersDynamicMembership?>(
       'dynamicMembership',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupWithoutMembersDynamicMembership.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     externalSendersAllowed = registerOutput<bool>('externalSendersAllowed');
     hideFromAddressLists = registerOutput<bool>('hideFromAddressLists');
@@ -716,6 +723,13 @@ class GroupWithoutMembers extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     dynamicMembership = registerOutput<GroupWithoutMembersDynamicMembership?>(
       'dynamicMembership',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupWithoutMembersDynamicMembership.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     externalSendersAllowed = registerOutput<bool>('externalSendersAllowed');
     hideFromAddressLists = registerOutput<bool>('hideFromAddressLists');

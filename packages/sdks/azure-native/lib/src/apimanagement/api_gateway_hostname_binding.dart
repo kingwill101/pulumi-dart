@@ -209,15 +209,38 @@ class ApiGatewayHostnameBinding extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     certificate = registerOutput<GatewayHostnameBindingCertificateResponse>(
       'certificate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GatewayHostnameBindingCertificateResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     eTag = registerOutput<String>('eTag');
     hostname = registerOutput<String>('hostname');
     keyVault = registerOutput<GatewayHostnameBindingKeyVaultResponse>(
       'keyVault',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GatewayHostnameBindingKeyVaultResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

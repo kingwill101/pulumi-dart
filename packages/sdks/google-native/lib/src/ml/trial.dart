@@ -53,6 +53,13 @@ class Trial extends pulumi.CustomResource {
     endTime = registerOutput<String>('endTime');
     finalMeasurement = registerOutput<GoogleCloudMlV1MeasurementResponse>(
       'finalMeasurement',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudMlV1MeasurementResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     infeasibleReason = registerOutput<String>('infeasibleReason');
     location = registerOutput<String>('location');

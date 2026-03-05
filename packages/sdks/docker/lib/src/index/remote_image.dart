@@ -44,7 +44,16 @@ class RemoteImage extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    build = registerOutput<RemoteImageBuild?>('build');
+    build = registerOutput<RemoteImageBuild?>(
+      'build',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RemoteImageBuild.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     forceRemove = registerOutput<bool?>('forceRemove');
     imageId = registerOutput<String>('imageId');
     keepLocally = registerOutput<bool?>('keepLocally');
@@ -78,7 +87,16 @@ class RemoteImage extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    build = registerOutput<RemoteImageBuild?>('build');
+    build = registerOutput<RemoteImageBuild?>(
+      'build',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RemoteImageBuild.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     forceRemove = registerOutput<bool?>('forceRemove');
     imageId = registerOutput<String>('imageId');
     keepLocally = registerOutput<bool?>('keepLocally');

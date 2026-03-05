@@ -70,15 +70,36 @@ class DeploymentDeploymentmanagerV2 extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     operation = registerOutput<OperationResponseDeploymentmanagerV2>(
       'operation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OperationResponseDeploymentmanagerV2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     preview = registerOutput<bool?>('preview');
     project = registerOutput<String>('project');
     selfLink = registerOutput<String>('selfLink');
     target = registerOutput<TargetConfigurationResponseDeploymentmanagerV2>(
       'target',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TargetConfigurationResponseDeploymentmanagerV2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     update = registerOutput<DeploymentUpdateResponseDeploymentmanagerV2>(
       'update',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentUpdateResponseDeploymentmanagerV2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     updateTime = registerOutput<String>('updateTime');
   }

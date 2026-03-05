@@ -202,6 +202,13 @@ class ObservabilityConfiguration extends pulumi.CustomResource {
     traceConfiguration =
         registerOutput<ObservabilityConfigurationTraceConfiguration?>(
           'traceConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ObservabilityConfigurationTraceConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 
@@ -243,6 +250,13 @@ class ObservabilityConfiguration extends pulumi.CustomResource {
     traceConfiguration =
         registerOutput<ObservabilityConfigurationTraceConfiguration?>(
           'traceConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ObservabilityConfigurationTraceConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

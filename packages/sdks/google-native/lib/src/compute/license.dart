@@ -61,6 +61,13 @@ class License extends pulumi.CustomResource {
     requestId = registerOutput<String?>('requestId');
     resourceRequirements = registerOutput<LicenseResourceRequirementsResponse>(
       'resourceRequirements',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LicenseResourceRequirementsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     selfLink = registerOutput<String>('selfLink');
     selfLinkWithId = registerOutput<String>('selfLinkWithId');

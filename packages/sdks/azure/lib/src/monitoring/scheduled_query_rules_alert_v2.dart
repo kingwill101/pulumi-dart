@@ -730,7 +730,16 @@ class ScheduledQueryRulesAlertV2 extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    action = registerOutput<ScheduledQueryRulesAlertV2Action?>('action');
+    action = registerOutput<ScheduledQueryRulesAlertV2Action?>(
+      'action',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduledQueryRulesAlertV2Action.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     autoMitigationEnabled = registerOutput<bool?>('autoMitigationEnabled');
     createdWithApiVersion = registerOutput<String>('createdWithApiVersion');
     criterias = registerOutput<List<Map<String, dynamic>>>('criterias');
@@ -738,7 +747,16 @@ class ScheduledQueryRulesAlertV2 extends pulumi.CustomResource {
     displayName = registerOutput<String?>('displayName');
     enabled = registerOutput<bool?>('enabled');
     evaluationFrequency = registerOutput<String>('evaluationFrequency');
-    identity = registerOutput<ScheduledQueryRulesAlertV2Identity?>('identity');
+    identity = registerOutput<ScheduledQueryRulesAlertV2Identity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduledQueryRulesAlertV2Identity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     isALegacyLogAnalyticsRule = registerOutput<bool>(
       'isALegacyLogAnalyticsRule',
     );
@@ -786,7 +804,16 @@ class ScheduledQueryRulesAlertV2 extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    action = registerOutput<ScheduledQueryRulesAlertV2Action?>('action');
+    action = registerOutput<ScheduledQueryRulesAlertV2Action?>(
+      'action',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduledQueryRulesAlertV2Action.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     autoMitigationEnabled = registerOutput<bool?>('autoMitigationEnabled');
     createdWithApiVersion = registerOutput<String>('createdWithApiVersion');
     criterias = registerOutput<List<Map<String, dynamic>>>('criterias');
@@ -794,7 +821,16 @@ class ScheduledQueryRulesAlertV2 extends pulumi.CustomResource {
     displayName = registerOutput<String?>('displayName');
     enabled = registerOutput<bool?>('enabled');
     evaluationFrequency = registerOutput<String>('evaluationFrequency');
-    identity = registerOutput<ScheduledQueryRulesAlertV2Identity?>('identity');
+    identity = registerOutput<ScheduledQueryRulesAlertV2Identity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduledQueryRulesAlertV2Identity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     isALegacyLogAnalyticsRule = registerOutput<bool>(
       'isALegacyLogAnalyticsRule',
     );

@@ -223,6 +223,13 @@ class QuicksetupConfigurationManager extends pulumi.CustomResource {
     configurationDefinition =
         registerOutput<QuicksetupConfigurationManagerConfigurationDefinition>(
           'configurationDefinition',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return QuicksetupConfigurationManagerConfigurationDefinition.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String>('description');
     managerArn = registerOutput<String>('managerArn');
@@ -235,6 +242,13 @@ class QuicksetupConfigurationManager extends pulumi.CustomResource {
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     timeouts = registerOutput<QuicksetupConfigurationManagerTimeouts?>(
       'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return QuicksetupConfigurationManagerTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -264,6 +278,13 @@ class QuicksetupConfigurationManager extends pulumi.CustomResource {
     configurationDefinition =
         registerOutput<QuicksetupConfigurationManagerConfigurationDefinition>(
           'configurationDefinition',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return QuicksetupConfigurationManagerConfigurationDefinition.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String>('description');
     managerArn = registerOutput<String>('managerArn');
@@ -276,6 +297,13 @@ class QuicksetupConfigurationManager extends pulumi.CustomResource {
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     timeouts = registerOutput<QuicksetupConfigurationManagerTimeouts?>(
       'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return QuicksetupConfigurationManagerTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

@@ -215,6 +215,13 @@ class SqlResourceSqlUserDefinedFunction extends pulumi.CustomResource {
     resource =
         registerOutput<SqlUserDefinedFunctionGetPropertiesResponseResource?>(
           'resource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SqlUserDefinedFunctionGetPropertiesResponseResource.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

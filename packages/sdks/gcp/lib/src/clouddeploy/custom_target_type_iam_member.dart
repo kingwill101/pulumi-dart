@@ -28,6 +28,13 @@ class CustomTargetTypeIamMember extends pulumi.CustomResource {
        ) {
     condition = registerOutput<CustomTargetTypeIamMemberCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomTargetTypeIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
@@ -62,6 +69,13 @@ class CustomTargetTypeIamMember extends pulumi.CustomResource {
        ) {
     condition = registerOutput<CustomTargetTypeIamMemberCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomTargetTypeIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');

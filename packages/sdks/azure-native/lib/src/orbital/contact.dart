@@ -249,10 +249,24 @@ class Contact extends pulumi.CustomResource {
     antennaConfiguration =
         registerOutput<ContactsPropertiesResponseAntennaConfiguration>(
           'antennaConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ContactsPropertiesResponseAntennaConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     contactProfile = registerOutput<ContactsPropertiesResponseContactProfile>(
       'contactProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContactsPropertiesResponseContactProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     endAzimuthDegrees = registerOutput<double>('endAzimuthDegrees');
     endElevationDegrees = registerOutput<double>('endElevationDegrees');
@@ -267,7 +281,16 @@ class Contact extends pulumi.CustomResource {
     startAzimuthDegrees = registerOutput<double>('startAzimuthDegrees');
     startElevationDegrees = registerOutput<double>('startElevationDegrees');
     status = registerOutput<String>('status');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     txEndTime = registerOutput<String>('txEndTime');
     txStartTime = registerOutput<String>('txStartTime');
     type = registerOutput<String>('type');

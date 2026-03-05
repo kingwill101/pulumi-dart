@@ -191,6 +191,13 @@ class Gateway extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     locationData = registerOutput<ResourceLocationDataContractResponse?>(
       'locationData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceLocationDataContractResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');

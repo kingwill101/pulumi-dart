@@ -81,16 +81,44 @@ class Spoke extends pulumi.CustomResource {
     linkedInterconnectAttachments =
         registerOutput<LinkedInterconnectAttachmentsResponse>(
           'linkedInterconnectAttachments',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinkedInterconnectAttachmentsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     linkedRouterApplianceInstances =
         registerOutput<LinkedRouterApplianceInstancesResponse>(
           'linkedRouterApplianceInstances',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinkedRouterApplianceInstancesResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     linkedVpcNetwork = registerOutput<LinkedVpcNetworkResponse>(
       'linkedVpcNetwork',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinkedVpcNetworkResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     linkedVpnTunnels = registerOutput<LinkedVpnTunnelsResponse>(
       'linkedVpnTunnels',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinkedVpnTunnelsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

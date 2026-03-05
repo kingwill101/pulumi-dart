@@ -612,6 +612,13 @@ class BackupVault extends pulumi.CustomResource {
     effectiveTime = registerOutput<String?>('effectiveTime');
     encryptionConfig = registerOutput<BackupVaultEncryptionConfig?>(
       'encryptionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackupVaultEncryptionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     forceDelete = registerOutput<bool?>('forceDelete');
@@ -678,6 +685,13 @@ class BackupVault extends pulumi.CustomResource {
     effectiveTime = registerOutput<String?>('effectiveTime');
     encryptionConfig = registerOutput<BackupVaultEncryptionConfig?>(
       'encryptionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackupVaultEncryptionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     forceDelete = registerOutput<bool?>('forceDelete');

@@ -239,8 +239,24 @@ class Subscription extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     clientAffineProperties = registerOutput<SBClientAffinePropertiesResponse?>(
       'clientAffineProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SBClientAffinePropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    countDetails = registerOutput<MessageCountDetailsResponse>('countDetails');
+    countDetails = registerOutput<MessageCountDetailsResponse>(
+      'countDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MessageCountDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createdAt = registerOutput<String>('createdAt');
     deadLetteringOnFilterEvaluationExceptions = registerOutput<bool?>(
       'deadLetteringOnFilterEvaluationExceptions',
@@ -267,7 +283,16 @@ class Subscription extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     requiresSession = registerOutput<bool?>('requiresSession');
     status = registerOutput<String?>('status');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     updatedAt = registerOutput<String>('updatedAt');
   }

@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getSecureCredential.
 class GetSecureCredentialResult {
   final String accountId;
+
   /// The secure credential's description.
   final String description;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String key;
+
   /// The time the secure credential was last updated.
   final String lastUpdated;
 
@@ -46,4 +48,3 @@ class GetSecureCredentialResult {
     );
   }
 }
-

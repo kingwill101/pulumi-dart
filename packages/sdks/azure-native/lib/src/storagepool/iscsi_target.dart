@@ -244,7 +244,16 @@ class IscsiTarget extends pulumi.CustomResource {
     sessions = registerOutput<List<String>>('sessions');
     staticAcls = registerOutput<List<Map<String, dynamic>>?>('staticAcls');
     status = registerOutput<String>('status');
-    systemData = registerOutput<SystemMetadataResponse>('systemData');
+    systemData = registerOutput<SystemMetadataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemMetadataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     targetIqn = registerOutput<String>('targetIqn');
     type = registerOutput<String>('type');
   }

@@ -998,15 +998,38 @@ class Instance extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     directoryServices = registerOutput<InstanceDirectoryServices?>(
       'directoryServices',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceDirectoryServices.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     effectiveReplications = registerOutput<List<Map<String, dynamic>>>(
       'effectiveReplications',
     );
     etag = registerOutput<String>('etag');
-    fileShares = registerOutput<InstanceFileShares>('fileShares');
+    fileShares = registerOutput<InstanceFileShares>(
+      'fileShares',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceFileShares.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     initialReplication = registerOutput<InstanceInitialReplication?>(
       'initialReplication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceInitialReplication.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     kmsKeyName = registerOutput<String?>('kmsKeyName');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -1015,6 +1038,13 @@ class Instance extends pulumi.CustomResource {
     networks = registerOutput<List<Map<String, dynamic>>>('networks');
     performanceConfig = registerOutput<InstancePerformanceConfig?>(
       'performanceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstancePerformanceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     protocol = registerOutput<String?>('protocol');
@@ -1057,15 +1087,38 @@ class Instance extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     directoryServices = registerOutput<InstanceDirectoryServices?>(
       'directoryServices',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceDirectoryServices.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     effectiveReplications = registerOutput<List<Map<String, dynamic>>>(
       'effectiveReplications',
     );
     etag = registerOutput<String>('etag');
-    fileShares = registerOutput<InstanceFileShares>('fileShares');
+    fileShares = registerOutput<InstanceFileShares>(
+      'fileShares',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceFileShares.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     initialReplication = registerOutput<InstanceInitialReplication?>(
       'initialReplication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceInitialReplication.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     kmsKeyName = registerOutput<String?>('kmsKeyName');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -1074,6 +1127,13 @@ class Instance extends pulumi.CustomResource {
     networks = registerOutput<List<Map<String, dynamic>>>('networks');
     performanceConfig = registerOutput<InstancePerformanceConfig?>(
       'performanceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstancePerformanceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     protocol = registerOutput<String?>('protocol');

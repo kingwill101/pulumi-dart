@@ -334,6 +334,13 @@ class MulticastDomain extends pulumi.CustomResource {
     adminNetwork = registerOutput<String>('adminNetwork');
     connectionConfig = registerOutput<MulticastDomainConnectionConfig>(
       'connectionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MulticastDomainConnectionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
@@ -376,6 +383,13 @@ class MulticastDomain extends pulumi.CustomResource {
     adminNetwork = registerOutput<String>('adminNetwork');
     connectionConfig = registerOutput<MulticastDomainConnectionConfig>(
       'connectionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MulticastDomainConnectionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');

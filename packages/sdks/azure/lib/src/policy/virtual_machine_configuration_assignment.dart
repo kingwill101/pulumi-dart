@@ -725,6 +725,13 @@ class VirtualMachineConfigurationAssignment extends pulumi.CustomResource {
     configuration =
         registerOutput<VirtualMachineConfigurationAssignmentConfiguration>(
           'configuration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VirtualMachineConfigurationAssignmentConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -757,6 +764,13 @@ class VirtualMachineConfigurationAssignment extends pulumi.CustomResource {
     configuration =
         registerOutput<VirtualMachineConfigurationAssignmentConfiguration>(
           'configuration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VirtualMachineConfigurationAssignmentConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

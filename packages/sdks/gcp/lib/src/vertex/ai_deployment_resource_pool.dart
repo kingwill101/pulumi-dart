@@ -262,6 +262,13 @@ class AiDeploymentResourcePool extends pulumi.CustomResource {
     dedicatedResources =
         registerOutput<AiDeploymentResourcePoolDedicatedResources?>(
           'dedicatedResources',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AiDeploymentResourcePoolDedicatedResources.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -295,6 +302,13 @@ class AiDeploymentResourcePool extends pulumi.CustomResource {
     dedicatedResources =
         registerOutput<AiDeploymentResourcePoolDedicatedResources?>(
           'dedicatedResources',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AiDeploymentResourcePoolDedicatedResources.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

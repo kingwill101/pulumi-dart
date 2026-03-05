@@ -81,19 +81,56 @@ class RegionHealthCheck extends pulumi.CustomResource {
     description = registerOutput<String>('description');
     grpcHealthCheck = registerOutput<GRPCHealthCheckResponse>(
       'grpcHealthCheck',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GRPCHealthCheckResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     healthyThreshold = registerOutput<int>('healthyThreshold');
     http2HealthCheck = registerOutput<HTTP2HealthCheckResponse>(
       'http2HealthCheck',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HTTP2HealthCheckResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     httpHealthCheck = registerOutput<HTTPHealthCheckResponse>(
       'httpHealthCheck',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HTTPHealthCheckResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     httpsHealthCheck = registerOutput<HTTPSHealthCheckResponse>(
       'httpsHealthCheck',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HTTPSHealthCheckResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     kind = registerOutput<String>('kind');
-    logConfig = registerOutput<HealthCheckLogConfigResponse>('logConfig');
+    logConfig = registerOutput<HealthCheckLogConfigResponse>(
+      'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HealthCheckLogConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
@@ -101,11 +138,38 @@ class RegionHealthCheck extends pulumi.CustomResource {
     selfLink = registerOutput<String>('selfLink');
     selfLinkWithId = registerOutput<String>('selfLinkWithId');
     sourceRegions = registerOutput<List<String>>('sourceRegions');
-    sslHealthCheck = registerOutput<SSLHealthCheckResponse>('sslHealthCheck');
-    tcpHealthCheck = registerOutput<TCPHealthCheckResponse>('tcpHealthCheck');
+    sslHealthCheck = registerOutput<SSLHealthCheckResponse>(
+      'sslHealthCheck',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SSLHealthCheckResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    tcpHealthCheck = registerOutput<TCPHealthCheckResponse>(
+      'tcpHealthCheck',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TCPHealthCheckResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     timeoutSec = registerOutput<int>('timeoutSec');
     type = registerOutput<String>('type');
-    udpHealthCheck = registerOutput<UDPHealthCheckResponse>('udpHealthCheck');
+    udpHealthCheck = registerOutput<UDPHealthCheckResponse>(
+      'udpHealthCheck',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UDPHealthCheckResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     unhealthyThreshold = registerOutput<int>('unhealthyThreshold');
   }
 }

@@ -49,7 +49,16 @@ class NotificationChannel extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    creationRecord = registerOutput<MutationRecordResponse>('creationRecord');
+    creationRecord = registerOutput<MutationRecordResponse>(
+      'creationRecord',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MutationRecordResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool>('enabled');

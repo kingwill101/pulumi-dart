@@ -190,7 +190,16 @@ class EfsLocation extends pulumi.CustomResource {
        ) {
     accessPointArn = registerOutput<String?>('accessPointArn');
     arn = registerOutput<String>('arn');
-    ec2Config = registerOutput<EfsLocationEc2Config>('ec2Config');
+    ec2Config = registerOutput<EfsLocationEc2Config>(
+      'ec2Config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EfsLocationEc2Config.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     efsFileSystemArn = registerOutput<String>('efsFileSystemArn');
     fileSystemAccessRoleArn = registerOutput<String?>(
       'fileSystemAccessRoleArn',
@@ -228,7 +237,16 @@ class EfsLocation extends pulumi.CustomResource {
        ) {
     accessPointArn = registerOutput<String?>('accessPointArn');
     arn = registerOutput<String>('arn');
-    ec2Config = registerOutput<EfsLocationEc2Config>('ec2Config');
+    ec2Config = registerOutput<EfsLocationEc2Config>(
+      'ec2Config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EfsLocationEc2Config.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     efsFileSystemArn = registerOutput<String>('efsFileSystemArn');
     fileSystemAccessRoleArn = registerOutput<String?>(
       'fileSystemAccessRoleArn',

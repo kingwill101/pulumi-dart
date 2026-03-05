@@ -66,11 +66,47 @@ class Pool extends pulumi.CustomResource {
     availableUnit = registerOutput<String?>('availableUnit');
     capacity = registerOutput<double>('capacity');
     capacityUnit = registerOutput<String?>('capacityUnit');
-    features = registerOutput<PoolFeatures?>('features');
+    features = registerOutput<PoolFeatures?>(
+      'features',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PoolFeatures.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
-    refresh = registerOutput<PoolRefresh?>('refresh');
-    source = registerOutput<PoolSource?>('source');
-    target = registerOutput<PoolTarget?>('target');
+    refresh = registerOutput<PoolRefresh?>(
+      'refresh',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PoolRefresh.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    source = registerOutput<PoolSource?>(
+      'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PoolSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    target = registerOutput<PoolTarget?>(
+      'target',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PoolTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     uuid = registerOutput<String>('uuid');
   }
@@ -100,11 +136,47 @@ class Pool extends pulumi.CustomResource {
     availableUnit = registerOutput<String?>('availableUnit');
     capacity = registerOutput<double>('capacity');
     capacityUnit = registerOutput<String?>('capacityUnit');
-    features = registerOutput<PoolFeatures?>('features');
+    features = registerOutput<PoolFeatures?>(
+      'features',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PoolFeatures.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
-    refresh = registerOutput<PoolRefresh?>('refresh');
-    source = registerOutput<PoolSource?>('source');
-    target = registerOutput<PoolTarget?>('target');
+    refresh = registerOutput<PoolRefresh?>(
+      'refresh',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PoolRefresh.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    source = registerOutput<PoolSource?>(
+      'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PoolSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    target = registerOutput<PoolTarget?>(
+      'target',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PoolTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     uuid = registerOutput<String>('uuid');
   }

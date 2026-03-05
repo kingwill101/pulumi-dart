@@ -393,7 +393,16 @@ class ProjectEnvironmentType extends pulumi.CustomResource {
     );
     deploymentTargetId = registerOutput<String>('deploymentTargetId');
     devCenterProjectId = registerOutput<String>('devCenterProjectId');
-    identity = registerOutput<ProjectEnvironmentTypeIdentity>('identity');
+    identity = registerOutput<ProjectEnvironmentTypeIdentity>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectEnvironmentTypeIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -430,7 +439,16 @@ class ProjectEnvironmentType extends pulumi.CustomResource {
     );
     deploymentTargetId = registerOutput<String>('deploymentTargetId');
     devCenterProjectId = registerOutput<String>('devCenterProjectId');
-    identity = registerOutput<ProjectEnvironmentTypeIdentity>('identity');
+    identity = registerOutput<ProjectEnvironmentTypeIdentity>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectEnvironmentTypeIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     tags = registerOutput<Map<String, String>?>('tags');

@@ -1830,6 +1830,13 @@ class WorkloadIdentityPoolIamBinding extends pulumi.CustomResource {
        ) {
     condition = registerOutput<WorkloadIdentityPoolIamBindingCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkloadIdentityPoolIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     members = registerOutput<List<String>>('members');
@@ -1863,6 +1870,13 @@ class WorkloadIdentityPoolIamBinding extends pulumi.CustomResource {
        ) {
     condition = registerOutput<WorkloadIdentityPoolIamBindingCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkloadIdentityPoolIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     members = registerOutput<List<String>>('members');

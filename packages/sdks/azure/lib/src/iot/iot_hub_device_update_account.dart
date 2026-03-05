@@ -230,7 +230,16 @@ class IotHubDeviceUpdateAccount extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     hostName = registerOutput<String>('hostName');
-    identity = registerOutput<IotHubDeviceUpdateAccountIdentity?>('identity');
+    identity = registerOutput<IotHubDeviceUpdateAccountIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IotHubDeviceUpdateAccountIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     publicNetworkAccessEnabled = registerOutput<bool?>(
@@ -265,7 +274,16 @@ class IotHubDeviceUpdateAccount extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     hostName = registerOutput<String>('hostName');
-    identity = registerOutput<IotHubDeviceUpdateAccountIdentity?>('identity');
+    identity = registerOutput<IotHubDeviceUpdateAccountIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IotHubDeviceUpdateAccountIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     publicNetworkAccessEnabled = registerOutput<bool?>(

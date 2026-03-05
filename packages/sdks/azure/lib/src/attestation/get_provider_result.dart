@@ -1,18 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getProvider.
 class GetProviderResult {
   /// The (Endpoint|URI) of the Attestation Service.
   final String attestationUri;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The Azure Region where the Attestation Provider exists.
   final String location;
   final String name;
   final String resourceGroupName;
+
   /// A mapping of tags assigned to the Attestation Provider.
   final Map<String, String> tags;
+
   /// Trust model used for the Attestation Service.
   final String trustModel;
 
@@ -58,4 +61,3 @@ class GetProviderResult {
     );
   }
 }
-

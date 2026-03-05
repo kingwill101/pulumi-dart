@@ -769,12 +769,28 @@ class CodeSigningConfig extends pulumi.CustomResource {
        ) {
     allowedPublishers = registerOutput<CodeSigningConfigAllowedPublishers>(
       'allowedPublishers',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CodeSigningConfigAllowedPublishers.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     arn = registerOutput<String>('arn');
     configId = registerOutput<String>('configId');
     description = registerOutput<String?>('description');
     lastModified = registerOutput<String>('lastModified');
-    policies = registerOutput<CodeSigningConfigPolicies>('policies');
+    policies = registerOutput<CodeSigningConfigPolicies>(
+      'policies',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CodeSigningConfigPolicies.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -805,12 +821,28 @@ class CodeSigningConfig extends pulumi.CustomResource {
        ) {
     allowedPublishers = registerOutput<CodeSigningConfigAllowedPublishers>(
       'allowedPublishers',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CodeSigningConfigAllowedPublishers.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     arn = registerOutput<String>('arn');
     configId = registerOutput<String>('configId');
     description = registerOutput<String?>('description');
     lastModified = registerOutput<String>('lastModified');
-    policies = registerOutput<CodeSigningConfigPolicies>('policies');
+    policies = registerOutput<CodeSigningConfigPolicies>(
+      'policies',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CodeSigningConfigPolicies.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

@@ -63,14 +63,50 @@ class Version extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    config = registerOutput<ServingConfigResponse>('config');
+    config = registerOutput<ServingConfigResponse>(
+      'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServingConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
-    createUser = registerOutput<ActingUserResponse>('createUser');
+    createUser = registerOutput<ActingUserResponse>(
+      'createUser',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ActingUserResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     deleteTime = registerOutput<String>('deleteTime');
-    deleteUser = registerOutput<ActingUserResponse>('deleteUser');
+    deleteUser = registerOutput<ActingUserResponse>(
+      'deleteUser',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ActingUserResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     fileCount = registerOutput<String>('fileCount');
     finalizeTime = registerOutput<String>('finalizeTime');
-    finalizeUser = registerOutput<ActingUserResponse>('finalizeUser');
+    finalizeUser = registerOutput<ActingUserResponse>(
+      'finalizeUser',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ActingUserResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>>('labels');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

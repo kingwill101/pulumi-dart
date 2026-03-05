@@ -720,11 +720,27 @@ class NodeTemplate extends pulumi.CustomResource {
     nodeType = registerOutput<String?>('nodeType');
     nodeTypeFlexibility = registerOutput<NodeTemplateNodeTypeFlexibility?>(
       'nodeTypeFlexibility',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodeTemplateNodeTypeFlexibility.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
     selfLink = registerOutput<String>('selfLink');
-    serverBinding = registerOutput<NodeTemplateServerBinding>('serverBinding');
+    serverBinding = registerOutput<NodeTemplateServerBinding>(
+      'serverBinding',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodeTemplateServerBinding.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [NodeTemplate] resource's state with the given [name] and [id].
@@ -762,10 +778,26 @@ class NodeTemplate extends pulumi.CustomResource {
     nodeType = registerOutput<String?>('nodeType');
     nodeTypeFlexibility = registerOutput<NodeTemplateNodeTypeFlexibility?>(
       'nodeTypeFlexibility',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodeTemplateNodeTypeFlexibility.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
     selfLink = registerOutput<String>('selfLink');
-    serverBinding = registerOutput<NodeTemplateServerBinding>('serverBinding');
+    serverBinding = registerOutput<NodeTemplateServerBinding>(
+      'serverBinding',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodeTemplateServerBinding.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

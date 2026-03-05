@@ -365,9 +365,25 @@ class Policy extends pulumi.CustomResource {
     alternativeNameServerConfig =
         registerOutput<PolicyAlternativeNameServerConfig?>(
           'alternativeNameServerConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PolicyAlternativeNameServerConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String?>('description');
-    dns64Config = registerOutput<PolicyDns64Config>('dns64Config');
+    dns64Config = registerOutput<PolicyDns64Config>(
+      'dns64Config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyDns64Config.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     enableInboundForwarding = registerOutput<bool?>('enableInboundForwarding');
     enableLogging = registerOutput<bool?>('enableLogging');
     this.name = registerOutput<String>('name');
@@ -401,9 +417,25 @@ class Policy extends pulumi.CustomResource {
     alternativeNameServerConfig =
         registerOutput<PolicyAlternativeNameServerConfig?>(
           'alternativeNameServerConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PolicyAlternativeNameServerConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String?>('description');
-    dns64Config = registerOutput<PolicyDns64Config>('dns64Config');
+    dns64Config = registerOutput<PolicyDns64Config>(
+      'dns64Config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyDns64Config.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     enableInboundForwarding = registerOutput<bool?>('enableInboundForwarding');
     enableLogging = registerOutput<bool?>('enableLogging');
     this.name = registerOutput<String>('name');

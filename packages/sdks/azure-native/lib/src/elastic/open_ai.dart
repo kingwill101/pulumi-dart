@@ -160,6 +160,13 @@ class OpenAI extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     properties = registerOutput<OpenAIIntegrationPropertiesResponse>(
       'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OpenAIIntegrationPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     type = registerOutput<String>('type');
   }

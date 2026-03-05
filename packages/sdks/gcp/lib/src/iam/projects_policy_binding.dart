@@ -390,7 +390,16 @@ class ProjectsPolicyBinding extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
-    condition = registerOutput<ProjectsPolicyBindingCondition?>('condition');
+    condition = registerOutput<ProjectsPolicyBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectsPolicyBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String?>('displayName');
     effectiveAnnotations = registerOutput<Map<String, String>>(
@@ -404,7 +413,16 @@ class ProjectsPolicyBinding extends pulumi.CustomResource {
     policyKind = registerOutput<String?>('policyKind');
     policyUid = registerOutput<String>('policyUid');
     project = registerOutput<String>('project');
-    target = registerOutput<ProjectsPolicyBindingTarget>('target');
+    target = registerOutput<ProjectsPolicyBindingTarget>(
+      'target',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectsPolicyBindingTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -433,7 +451,16 @@ class ProjectsPolicyBinding extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
-    condition = registerOutput<ProjectsPolicyBindingCondition?>('condition');
+    condition = registerOutput<ProjectsPolicyBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectsPolicyBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String?>('displayName');
     effectiveAnnotations = registerOutput<Map<String, String>>(
@@ -447,7 +474,16 @@ class ProjectsPolicyBinding extends pulumi.CustomResource {
     policyKind = registerOutput<String?>('policyKind');
     policyUid = registerOutput<String>('policyUid');
     project = registerOutput<String>('project');
-    target = registerOutput<ProjectsPolicyBindingTarget>('target');
+    target = registerOutput<ProjectsPolicyBindingTarget>(
+      'target',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectsPolicyBindingTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }

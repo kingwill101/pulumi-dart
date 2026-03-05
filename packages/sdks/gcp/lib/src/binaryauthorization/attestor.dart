@@ -688,6 +688,13 @@ class Attestor extends pulumi.CustomResource {
        ) {
     attestationAuthorityNote = registerOutput<AttestorAttestationAuthorityNote>(
       'attestationAuthorityNote',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AttestorAttestationAuthorityNote.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
@@ -719,6 +726,13 @@ class Attestor extends pulumi.CustomResource {
        ) {
     attestationAuthorityNote = registerOutput<AttestorAttestationAuthorityNote>(
       'attestationAuthorityNote',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AttestorAttestationAuthorityNote.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

@@ -62,6 +62,13 @@ class BindingResource extends pulumi.CustomResource {
     state =
         registerOutput<MembershipBindingLifecycleStateResponseGkehubV1alpha>(
           'state',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MembershipBindingLifecycleStateResponseGkehubV1alpha.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');

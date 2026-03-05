@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getDirectoryObject.
 class GetDirectoryObjectResult {
   /// The provider-assigned unique ID for this managed resource.
@@ -19,11 +18,7 @@ class GetDirectoryObjectResult {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'objectId': objectId,
-      'type': type,
-    };
+    return <String, dynamic>{'id': id, 'objectId': objectId, 'type': type};
   }
 
   factory GetDirectoryObjectResult.fromMap(Map<String, dynamic> map) {
@@ -34,4 +29,3 @@ class GetDirectoryObjectResult {
     );
   }
 }
-

@@ -27,7 +27,8 @@ Future<GetAgriServiceResult> getAgriService(
 /// Uses Azure REST API version 2024-06-01-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_agricultureplatform_list_agri_service_available_solutions_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListAgriServiceAvailableSolutionsResult> listAgriServiceAvailableSolutions(
+Future<ListAgriServiceAvailableSolutionsResult>
+listAgriServiceAvailableSolutions(
   ListAgriServiceAvailableSolutionsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

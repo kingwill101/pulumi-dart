@@ -885,7 +885,16 @@ class DnsManagedZoneIamBinding extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<DnsManagedZoneIamBindingCondition?>('condition');
+    condition = registerOutput<DnsManagedZoneIamBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DnsManagedZoneIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     managedZone = registerOutput<String>('managedZone');
     members = registerOutput<List<String>>('members');
@@ -916,7 +925,16 @@ class DnsManagedZoneIamBinding extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<DnsManagedZoneIamBindingCondition?>('condition');
+    condition = registerOutput<DnsManagedZoneIamBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DnsManagedZoneIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     managedZone = registerOutput<String>('managedZone');
     members = registerOutput<List<String>>('members');

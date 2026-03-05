@@ -49,14 +49,41 @@ class StorageVersionMigrationPatchResource extends pulumi.CustomResource {
        ) {
     apiVersion = registerOutput<String?>('apiVersion');
     kind = registerOutput<String?>('kind');
-    metadata = registerOutput<ObjectMetaPatch?>('metadata');
+    metadata = registerOutput<ObjectMetaPatch?>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMetaPatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     spec =
         registerOutput<
           StorageVersionMigrationSpecPatchStoragemigrationK8sIoV1beta1?
-        >('spec');
+        >(
+          'spec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return StorageVersionMigrationSpecPatchStoragemigrationK8sIoV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     status =
         registerOutput<
           StorageVersionMigrationStatusPatchStoragemigrationK8sIoV1beta1?
-        >('status');
+        >(
+          'status',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return StorageVersionMigrationStatusPatchStoragemigrationK8sIoV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
   }
 }

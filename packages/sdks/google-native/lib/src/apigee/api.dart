@@ -49,6 +49,13 @@ class Api extends pulumi.CustomResource {
     latestRevisionId = registerOutput<String>('latestRevisionId');
     metaData = registerOutput<GoogleCloudApigeeV1EntityMetadataResponse>(
       'metaData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudApigeeV1EntityMetadataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     organizationId = registerOutput<String>('organizationId');

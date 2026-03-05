@@ -75,10 +75,35 @@ class ImportJobMigrationcenterV1alpha1 extends pulumi.CustomResource {
     executionReport =
         registerOutput<ExecutionReportResponseMigrationcenterV1alpha1>(
           'executionReport',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ExecutionReportResponseMigrationcenterV1alpha1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    gcsPayload = registerOutput<GCSPayloadInfoResponse>('gcsPayload');
+    gcsPayload = registerOutput<GCSPayloadInfoResponse>(
+      'gcsPayload',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GCSPayloadInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     importJobId = registerOutput<String>('importJobId');
-    inlinePayload = registerOutput<InlinePayloadInfoResponse>('inlinePayload');
+    inlinePayload = registerOutput<InlinePayloadInfoResponse>(
+      'inlinePayload',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InlinePayloadInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -89,6 +114,13 @@ class ImportJobMigrationcenterV1alpha1 extends pulumi.CustomResource {
     validationReport =
         registerOutput<ValidationReportResponseMigrationcenterV1alpha1>(
           'validationReport',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ValidationReportResponseMigrationcenterV1alpha1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

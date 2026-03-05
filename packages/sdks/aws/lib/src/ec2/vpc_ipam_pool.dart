@@ -865,6 +865,13 @@ class VpcIpamPool extends pulumi.CustomResource {
     sourceIpamPoolId = registerOutput<String?>('sourceIpamPoolId');
     sourceResource = registerOutput<VpcIpamPoolSourceResource?>(
       'sourceResource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpcIpamPoolSourceResource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     state = registerOutput<String>('state');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -922,6 +929,13 @@ class VpcIpamPool extends pulumi.CustomResource {
     sourceIpamPoolId = registerOutput<String?>('sourceIpamPoolId');
     sourceResource = registerOutput<VpcIpamPoolSourceResource?>(
       'sourceResource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpcIpamPoolSourceResource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.state = registerOutput<String>('state');
     tags = registerOutput<Map<String, String>?>('tags');

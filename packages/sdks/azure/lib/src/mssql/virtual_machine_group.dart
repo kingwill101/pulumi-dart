@@ -237,6 +237,13 @@ class VirtualMachineGroup extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     wsfcDomainProfile = registerOutput<VirtualMachineGroupWsfcDomainProfile>(
       'wsfcDomainProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualMachineGroupWsfcDomainProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -271,6 +278,13 @@ class VirtualMachineGroup extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     wsfcDomainProfile = registerOutput<VirtualMachineGroupWsfcDomainProfile>(
       'wsfcDomainProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualMachineGroupWsfcDomainProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

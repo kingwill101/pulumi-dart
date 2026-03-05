@@ -89,6 +89,13 @@ class RegionCommitmentComputeBeta extends pulumi.CustomResource {
     licenseResource =
         registerOutput<LicenseResourceCommitmentResponseComputeBeta>(
           'licenseResource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LicenseResourceCommitmentResponseComputeBeta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     mergeSourceCommitments = registerOutput<List<String>>(
       'mergeSourceCommitments',

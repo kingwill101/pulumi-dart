@@ -647,6 +647,13 @@ class VoiceConnectorStreaming extends pulumi.CustomResource {
     mediaInsightsConfiguration =
         registerOutput<VoiceConnectorStreamingMediaInsightsConfiguration?>(
           'mediaInsightsConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VoiceConnectorStreamingMediaInsightsConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     streamingNotificationTargets = registerOutput<List<String>?>(
@@ -683,6 +690,13 @@ class VoiceConnectorStreaming extends pulumi.CustomResource {
     mediaInsightsConfiguration =
         registerOutput<VoiceConnectorStreamingMediaInsightsConfiguration?>(
           'mediaInsightsConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VoiceConnectorStreamingMediaInsightsConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     streamingNotificationTargets = registerOutput<List<String>?>(

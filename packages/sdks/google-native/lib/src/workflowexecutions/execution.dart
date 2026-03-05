@@ -69,7 +69,16 @@ class Execution extends pulumi.CustomResource {
     callLogLevel = registerOutput<String>('callLogLevel');
     duration = registerOutput<String>('duration');
     endTime = registerOutput<String>('endTime');
-    error = registerOutput<ErrorResponse>('error');
+    error = registerOutput<ErrorResponse>(
+      'error',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ErrorResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -77,8 +86,26 @@ class Execution extends pulumi.CustomResource {
     result = registerOutput<String>('result');
     startTime = registerOutput<String>('startTime');
     state = registerOutput<String>('state');
-    stateError = registerOutput<StateErrorResponse>('stateError');
-    status = registerOutput<StatusResponse>('status');
+    stateError = registerOutput<StateErrorResponse>(
+      'stateError',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StateErrorResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    status = registerOutput<StatusResponse>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     workflowId = registerOutput<String>('workflowId');
     workflowRevisionId = registerOutput<String>('workflowRevisionId');
   }

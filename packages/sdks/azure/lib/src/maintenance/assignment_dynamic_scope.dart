@@ -40,7 +40,16 @@ class AssignmentDynamicScope extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    filter = registerOutput<AssignmentDynamicScopeFilter>('filter');
+    filter = registerOutput<AssignmentDynamicScopeFilter>(
+      'filter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AssignmentDynamicScopeFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     maintenanceConfigurationId = registerOutput<String>(
       'maintenanceConfigurationId',
     );
@@ -70,7 +79,16 @@ class AssignmentDynamicScope extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    filter = registerOutput<AssignmentDynamicScopeFilter>('filter');
+    filter = registerOutput<AssignmentDynamicScopeFilter>(
+      'filter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AssignmentDynamicScopeFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     maintenanceConfigurationId = registerOutput<String>(
       'maintenanceConfigurationId',
     );

@@ -12,42 +12,59 @@ import 'get_node_group_update_config.dart';
 class GetNodeGroupResult {
   /// Type of Amazon Machine Image (AMI) associated with the EKS Node Group.
   final String amiType;
+
   /// ARN of the EKS Node Group.
   final String arn;
+
   /// Type of capacity associated with the EKS Node Group. Valid values: `ON_DEMAND`, `SPOT`.
   final String capacityType;
   final String clusterName;
+
   /// Disk size in GiB for worker nodes.
   final int diskSize;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Set of instance types associated with the EKS Node Group.
   final List<String> instanceTypes;
+
   /// Key-value map of Kubernetes labels. Only labels that are applied with the EKS API are managed by this argument. Other Kubernetes labels applied to the EKS Node Group will not be managed.
   final Map<String, String> labels;
+
   /// Nested attribute containing information about the launch template used to create the EKS Node Group.
   final List<GetNodeGroupLaunchTemplate> launchTemplates;
   final String nodeGroupName;
+
   /// ARN of the IAM Role that provides permissions for the EKS Node Group.
   final String nodeRoleArn;
   final String region;
+
   /// AMI version of the EKS Node Group.
   final String releaseVersion;
+
   /// Configuration block with remote access settings.
   final List<GetNodeGroupRemoteAccess> remoteAccesses;
+
   /// List of objects containing information about underlying resources.
   final List<GetNodeGroupResource> resources;
+
   /// Configuration block with scaling settings.
   final List<GetNodeGroupScalingConfig> scalingConfigs;
+
   /// Status of the EKS Node Group.
   final String status;
+
   /// Identifiers of EC2 Subnets to associate with the EKS Node Group.
   final List<String> subnetIds;
+
   /// Key-value map of resource tags.
   final Map<String, String> tags;
+
   /// List of objects containing information about taints applied to the nodes in the EKS Node Group.
   final List<GetNodeGroupTaint> taints;
   final List<GetNodeGroupUpdateConfig> updateConfigs;
+
   /// Kubernetes version.
   final String version;
 
@@ -109,19 +126,43 @@ class GetNodeGroupResult {
       'id': id,
       'instanceTypes': instanceTypes,
       'labels': labels,
-      'launchTemplates': pulumi.Input.encodeList<GetNodeGroupLaunchTemplate, Map<String, dynamic>>(launchTemplates, (value) => value.toMap()),
+      'launchTemplates':
+          pulumi.Input.encodeList<
+            GetNodeGroupLaunchTemplate,
+            Map<String, dynamic>
+          >(launchTemplates, (value) => value.toMap()),
       'nodeGroupName': nodeGroupName,
       'nodeRoleArn': nodeRoleArn,
       'region': region,
       'releaseVersion': releaseVersion,
-      'remoteAccesses': pulumi.Input.encodeList<GetNodeGroupRemoteAccess, Map<String, dynamic>>(remoteAccesses, (value) => value.toMap()),
-      'resources': pulumi.Input.encodeList<GetNodeGroupResource, Map<String, dynamic>>(resources, (value) => value.toMap()),
-      'scalingConfigs': pulumi.Input.encodeList<GetNodeGroupScalingConfig, Map<String, dynamic>>(scalingConfigs, (value) => value.toMap()),
+      'remoteAccesses':
+          pulumi.Input.encodeList<
+            GetNodeGroupRemoteAccess,
+            Map<String, dynamic>
+          >(remoteAccesses, (value) => value.toMap()),
+      'resources':
+          pulumi.Input.encodeList<GetNodeGroupResource, Map<String, dynamic>>(
+            resources,
+            (value) => value.toMap(),
+          ),
+      'scalingConfigs':
+          pulumi.Input.encodeList<
+            GetNodeGroupScalingConfig,
+            Map<String, dynamic>
+          >(scalingConfigs, (value) => value.toMap()),
       'status': status,
       'subnetIds': subnetIds,
       'tags': tags,
-      'taints': pulumi.Input.encodeList<GetNodeGroupTaint, Map<String, dynamic>>(taints, (value) => value.toMap()),
-      'updateConfigs': pulumi.Input.encodeList<GetNodeGroupUpdateConfig, Map<String, dynamic>>(updateConfigs, (value) => value.toMap()),
+      'taints':
+          pulumi.Input.encodeList<GetNodeGroupTaint, Map<String, dynamic>>(
+            taints,
+            (value) => value.toMap(),
+          ),
+      'updateConfigs':
+          pulumi.Input.encodeList<
+            GetNodeGroupUpdateConfig,
+            Map<String, dynamic>
+          >(updateConfigs, (value) => value.toMap()),
       'version': version,
     };
   }
@@ -136,21 +177,49 @@ class GetNodeGroupResult {
       id: map['id'] as String,
       instanceTypes: (map['instanceTypes'] as List).cast<String>(),
       labels: (map['labels'] as Map).cast<String, String>(),
-      launchTemplates: pulumi.Input.decodeList<GetNodeGroupLaunchTemplate>(map['launchTemplates']!, (value) => GetNodeGroupLaunchTemplate.fromMap((value as Map).cast<String, dynamic>())),
+      launchTemplates: pulumi.Input.decodeList<GetNodeGroupLaunchTemplate>(
+        map['launchTemplates']!,
+        (value) => GetNodeGroupLaunchTemplate.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       nodeGroupName: map['nodeGroupName'] as String,
       nodeRoleArn: map['nodeRoleArn'] as String,
       region: map['region'] as String,
       releaseVersion: map['releaseVersion'] as String,
-      remoteAccesses: pulumi.Input.decodeList<GetNodeGroupRemoteAccess>(map['remoteAccesses']!, (value) => GetNodeGroupRemoteAccess.fromMap((value as Map).cast<String, dynamic>())),
-      resources: pulumi.Input.decodeList<GetNodeGroupResource>(map['resources']!, (value) => GetNodeGroupResource.fromMap((value as Map).cast<String, dynamic>())),
-      scalingConfigs: pulumi.Input.decodeList<GetNodeGroupScalingConfig>(map['scalingConfigs']!, (value) => GetNodeGroupScalingConfig.fromMap((value as Map).cast<String, dynamic>())),
+      remoteAccesses: pulumi.Input.decodeList<GetNodeGroupRemoteAccess>(
+        map['remoteAccesses']!,
+        (value) => GetNodeGroupRemoteAccess.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      resources: pulumi.Input.decodeList<GetNodeGroupResource>(
+        map['resources']!,
+        (value) => GetNodeGroupResource.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      scalingConfigs: pulumi.Input.decodeList<GetNodeGroupScalingConfig>(
+        map['scalingConfigs']!,
+        (value) => GetNodeGroupScalingConfig.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       status: map['status'] as String,
       subnetIds: (map['subnetIds'] as List).cast<String>(),
       tags: (map['tags'] as Map).cast<String, String>(),
-      taints: pulumi.Input.decodeList<GetNodeGroupTaint>(map['taints']!, (value) => GetNodeGroupTaint.fromMap((value as Map).cast<String, dynamic>())),
-      updateConfigs: pulumi.Input.decodeList<GetNodeGroupUpdateConfig>(map['updateConfigs']!, (value) => GetNodeGroupUpdateConfig.fromMap((value as Map).cast<String, dynamic>())),
+      taints: pulumi.Input.decodeList<GetNodeGroupTaint>(
+        map['taints']!,
+        (value) =>
+            GetNodeGroupTaint.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      updateConfigs: pulumi.Input.decodeList<GetNodeGroupUpdateConfig>(
+        map['updateConfigs']!,
+        (value) => GetNodeGroupUpdateConfig.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       version: map['version'] as String,
     );
   }
 }
-

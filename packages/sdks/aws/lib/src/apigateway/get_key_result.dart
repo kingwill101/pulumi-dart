@@ -1,26 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getKey.
 class GetKeyResult {
   final String arn;
+
   /// Date and time when the API Key was created.
   final String createdDate;
+
   /// Amazon Web Services Marketplace customer identifier, when integrating with the Amazon Web Services SaaS Marketplace.
   final String customerId;
+
   /// Description of the API Key.
   final String description;
+
   /// Whether the API Key is enabled.
   final bool enabled;
+
   /// Set to the ID of the API Key.
   final String id;
+
   /// Date and time when the API Key was last updated.
   final String lastUpdatedDate;
+
   /// Set to the name of the API Key.
   final String name;
   final String region;
+
   /// Map of tags for the resource.
   final Map<String, String> tags;
+
   /// Set to the value of the API Key.
   final String value;
 
@@ -82,4 +90,3 @@ class GetKeyResult {
     );
   }
 }
-

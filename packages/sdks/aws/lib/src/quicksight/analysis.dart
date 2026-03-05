@@ -619,11 +619,29 @@ class Analysis extends pulumi.CustomResource {
     lastPublishedTime = registerOutput<String>('lastPublishedTime');
     lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<AnalysisParameters>('parameters');
+    parameters = registerOutput<AnalysisParameters>(
+      'parameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AnalysisParameters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     permissions = registerOutput<List<Map<String, dynamic>>?>('permissions');
     recoveryWindowInDays = registerOutput<int?>('recoveryWindowInDays');
     region = registerOutput<String>('region');
-    sourceEntity = registerOutput<AnalysisSourceEntity?>('sourceEntity');
+    sourceEntity = registerOutput<AnalysisSourceEntity?>(
+      'sourceEntity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AnalysisSourceEntity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -660,11 +678,29 @@ class Analysis extends pulumi.CustomResource {
     lastPublishedTime = registerOutput<String>('lastPublishedTime');
     lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<AnalysisParameters>('parameters');
+    parameters = registerOutput<AnalysisParameters>(
+      'parameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AnalysisParameters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     permissions = registerOutput<List<Map<String, dynamic>>?>('permissions');
     recoveryWindowInDays = registerOutput<int?>('recoveryWindowInDays');
     region = registerOutput<String>('region');
-    sourceEntity = registerOutput<AnalysisSourceEntity?>('sourceEntity');
+    sourceEntity = registerOutput<AnalysisSourceEntity?>(
+      'sourceEntity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AnalysisSourceEntity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

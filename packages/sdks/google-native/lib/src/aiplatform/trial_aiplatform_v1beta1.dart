@@ -62,6 +62,13 @@ class TrialAiplatformV1beta1 extends pulumi.CustomResource {
     finalMeasurement =
         registerOutput<GoogleCloudAiplatformV1beta1MeasurementResponse>(
           'finalMeasurement',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1beta1MeasurementResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     infeasibleReason = registerOutput<String>('infeasibleReason');
     location = registerOutput<String>('location');

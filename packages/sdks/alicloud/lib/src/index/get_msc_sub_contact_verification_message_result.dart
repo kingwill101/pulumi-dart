@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getMscSubContactVerificationMessage.
 class GetMscSubContactVerificationMessageResult {
   final String contactId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The sending status of the message. Valid values : `Success`, `Failed`.
   final String status;
   final int type;
@@ -31,7 +32,9 @@ class GetMscSubContactVerificationMessageResult {
     };
   }
 
-  factory GetMscSubContactVerificationMessageResult.fromMap(Map<String, dynamic> map) {
+  factory GetMscSubContactVerificationMessageResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetMscSubContactVerificationMessageResult(
       contactId: map['contactId'] as String,
       id: map['id'] as String,
@@ -40,4 +43,3 @@ class GetMscSubContactVerificationMessageResult {
     );
   }
 }
-

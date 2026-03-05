@@ -527,7 +527,16 @@ class AttachedDatabaseConfiguration extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    sharing = registerOutput<AttachedDatabaseConfigurationSharing?>('sharing');
+    sharing = registerOutput<AttachedDatabaseConfigurationSharing?>(
+      'sharing',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AttachedDatabaseConfigurationSharing.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [AttachedDatabaseConfiguration] resource's state with the given [name] and [id].
@@ -566,6 +575,15 @@ class AttachedDatabaseConfiguration extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    sharing = registerOutput<AttachedDatabaseConfigurationSharing?>('sharing');
+    sharing = registerOutput<AttachedDatabaseConfigurationSharing?>(
+      'sharing',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AttachedDatabaseConfigurationSharing.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

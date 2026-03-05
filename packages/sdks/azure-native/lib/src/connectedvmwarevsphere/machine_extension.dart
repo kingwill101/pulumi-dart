@@ -241,6 +241,13 @@ class MachineExtension extends pulumi.CustomResource {
     instanceView =
         registerOutput<MachineExtensionPropertiesResponseInstanceView?>(
           'instanceView',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MachineExtensionPropertiesResponseInstanceView.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
@@ -248,7 +255,16 @@ class MachineExtension extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     publisher = registerOutput<String?>('publisher');
     settings = registerOutput<dynamic>('settings');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     typeHandlerVersion = registerOutput<String?>('typeHandlerVersion');

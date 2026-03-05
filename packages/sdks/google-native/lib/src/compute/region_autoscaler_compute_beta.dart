@@ -62,6 +62,13 @@ class RegionAutoscalerComputeBeta extends pulumi.CustomResource {
        ) {
     autoscalingPolicy = registerOutput<AutoscalingPolicyResponseComputeBeta>(
       'autoscalingPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AutoscalingPolicyResponseComputeBeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');

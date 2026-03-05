@@ -20,7 +20,7 @@ import 'package:pulumi_aws_apigateway/pulumi_aws_apigateway.dart' as provider;
 dependencies:
   pulumi_aws_apigateway:
     git:
-      url: https://github.com/<owner>/<repo>.git
+      url: https://github.com/kingwill101/pulumi-dart.git
       path: packages/aws-apigateway
       ref: main
 ~~~

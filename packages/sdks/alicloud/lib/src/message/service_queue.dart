@@ -210,7 +210,16 @@ class ServiceQueue extends pulumi.CustomResource {
        ) {
     createTime = registerOutput<int>('createTime');
     delaySeconds = registerOutput<int>('delaySeconds');
-    dlqPolicy = registerOutput<ServiceQueueDlqPolicy>('dlqPolicy');
+    dlqPolicy = registerOutput<ServiceQueueDlqPolicy>(
+      'dlqPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceQueueDlqPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     loggingEnabled = registerOutput<bool?>('loggingEnabled');
     maximumMessageSize = registerOutput<int>('maximumMessageSize');
     messageRetentionPeriod = registerOutput<int>('messageRetentionPeriod');
@@ -245,7 +254,16 @@ class ServiceQueue extends pulumi.CustomResource {
        ) {
     createTime = registerOutput<int>('createTime');
     delaySeconds = registerOutput<int>('delaySeconds');
-    dlqPolicy = registerOutput<ServiceQueueDlqPolicy>('dlqPolicy');
+    dlqPolicy = registerOutput<ServiceQueueDlqPolicy>(
+      'dlqPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceQueueDlqPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     loggingEnabled = registerOutput<bool?>('loggingEnabled');
     maximumMessageSize = registerOutput<int>('maximumMessageSize');
     messageRetentionPeriod = registerOutput<int>('messageRetentionPeriod');

@@ -554,8 +554,24 @@ class DeploymentType extends pulumi.CustomResource {
     );
     frontendPublic = registerOutput<DeploymentFrontendPublic?>(
       'frontendPublic',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentFrontendPublic.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    identity = registerOutput<DeploymentIdentity?>('identity');
+    identity = registerOutput<DeploymentIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ipAddress = registerOutput<String>('ipAddress');
     location = registerOutput<String>('location');
     loggingStorageAccounts = registerOutput<List<Map<String, dynamic>>?>(
@@ -572,6 +588,13 @@ class DeploymentType extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     webApplicationFirewall = registerOutput<DeploymentWebApplicationFirewall?>(
       'webApplicationFirewall',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentWebApplicationFirewall.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -613,8 +636,24 @@ class DeploymentType extends pulumi.CustomResource {
     );
     frontendPublic = registerOutput<DeploymentFrontendPublic?>(
       'frontendPublic',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentFrontendPublic.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    identity = registerOutput<DeploymentIdentity?>('identity');
+    identity = registerOutput<DeploymentIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ipAddress = registerOutput<String>('ipAddress');
     location = registerOutput<String>('location');
     loggingStorageAccounts = registerOutput<List<Map<String, dynamic>>?>(
@@ -631,6 +670,13 @@ class DeploymentType extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     webApplicationFirewall = registerOutput<DeploymentWebApplicationFirewall?>(
       'webApplicationFirewall',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentWebApplicationFirewall.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

@@ -249,6 +249,13 @@ class FindingsFilter extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     findingCriteria = registerOutput<FindingsFilterFindingCriteria>(
       'findingCriteria',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FindingsFilterFindingCriteria.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
@@ -286,6 +293,13 @@ class FindingsFilter extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     findingCriteria = registerOutput<FindingsFilterFindingCriteria>(
       'findingCriteria',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FindingsFilterFindingCriteria.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');

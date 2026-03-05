@@ -57,13 +57,38 @@ class SessionTemplate extends pulumi.CustomResource {
     description = registerOutput<String>('description');
     environmentConfig = registerOutput<EnvironmentConfigResponse>(
       'environmentConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnvironmentConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    jupyterSession = registerOutput<JupyterConfigResponse>('jupyterSession');
+    jupyterSession = registerOutput<JupyterConfigResponse>(
+      'jupyterSession',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JupyterConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    runtimeConfig = registerOutput<RuntimeConfigResponse>('runtimeConfig');
+    runtimeConfig = registerOutput<RuntimeConfigResponse>(
+      'runtimeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RuntimeConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     updateTime = registerOutput<String>('updateTime');
     uuid = registerOutput<String>('uuid');
   }

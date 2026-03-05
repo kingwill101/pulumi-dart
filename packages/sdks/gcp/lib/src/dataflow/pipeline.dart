@@ -485,13 +485,31 @@ class Pipeline extends pulumi.CustomResource {
     pipelineSources = registerOutput<Map<String, String>?>('pipelineSources');
     project = registerOutput<String>('project');
     region = registerOutput<String?>('region');
-    scheduleInfo = registerOutput<PipelineScheduleInfo?>('scheduleInfo');
+    scheduleInfo = registerOutput<PipelineScheduleInfo?>(
+      'scheduleInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineScheduleInfo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     schedulerServiceAccountEmail = registerOutput<String>(
       'schedulerServiceAccountEmail',
     );
     state = registerOutput<String>('state');
     type = registerOutput<String>('type');
-    workload = registerOutput<PipelineWorkload?>('workload');
+    workload = registerOutput<PipelineWorkload?>(
+      'workload',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineWorkload.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Pipeline] resource's state with the given [name] and [id].
@@ -525,12 +543,30 @@ class Pipeline extends pulumi.CustomResource {
     pipelineSources = registerOutput<Map<String, String>?>('pipelineSources');
     project = registerOutput<String>('project');
     region = registerOutput<String?>('region');
-    scheduleInfo = registerOutput<PipelineScheduleInfo?>('scheduleInfo');
+    scheduleInfo = registerOutput<PipelineScheduleInfo?>(
+      'scheduleInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineScheduleInfo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     schedulerServiceAccountEmail = registerOutput<String>(
       'schedulerServiceAccountEmail',
     );
     this.state = registerOutput<String>('state');
     type = registerOutput<String>('type');
-    workload = registerOutput<PipelineWorkload?>('workload');
+    workload = registerOutput<PipelineWorkload?>(
+      'workload',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineWorkload.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

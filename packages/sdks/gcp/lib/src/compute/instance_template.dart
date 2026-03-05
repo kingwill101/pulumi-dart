@@ -1839,11 +1839,25 @@ class InstanceTemplate extends pulumi.CustomResource {
     advancedMachineFeatures =
         registerOutput<InstanceTemplateAdvancedMachineFeatures?>(
           'advancedMachineFeatures',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceTemplateAdvancedMachineFeatures.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     canIpForward = registerOutput<bool?>('canIpForward');
     confidentialInstanceConfig =
         registerOutput<InstanceTemplateConfidentialInstanceConfig>(
           'confidentialInstanceConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceTemplateConfidentialInstanceConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String?>('description');
@@ -1871,6 +1885,13 @@ class InstanceTemplate extends pulumi.CustomResource {
     networkPerformanceConfig =
         registerOutput<InstanceTemplateNetworkPerformanceConfig?>(
           'networkPerformanceConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceTemplateNetworkPerformanceConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     numericId = registerOutput<String>('numericId');
     partnerMetadata = registerOutput<Map<String, String>?>('partnerMetadata');
@@ -1879,20 +1900,50 @@ class InstanceTemplate extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     reservationAffinity = registerOutput<InstanceTemplateReservationAffinity?>(
       'reservationAffinity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceTemplateReservationAffinity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     resourceManagerTags = registerOutput<Map<String, String>?>(
       'resourceManagerTags',
     );
     resourcePolicies = registerOutput<String?>('resourcePolicies');
-    scheduling = registerOutput<InstanceTemplateScheduling>('scheduling');
+    scheduling = registerOutput<InstanceTemplateScheduling>(
+      'scheduling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceTemplateScheduling.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     selfLink = registerOutput<String>('selfLink');
     selfLinkUnique = registerOutput<String>('selfLinkUnique');
     serviceAccount = registerOutput<InstanceTemplateServiceAccount?>(
       'serviceAccount',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceTemplateServiceAccount.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     shieldedInstanceConfig =
         registerOutput<InstanceTemplateShieldedInstanceConfig>(
           'shieldedInstanceConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceTemplateShieldedInstanceConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tags = registerOutput<List<String>?>('tags');
     tagsFingerprint = registerOutput<String>('tagsFingerprint');
@@ -1924,11 +1975,25 @@ class InstanceTemplate extends pulumi.CustomResource {
     advancedMachineFeatures =
         registerOutput<InstanceTemplateAdvancedMachineFeatures?>(
           'advancedMachineFeatures',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceTemplateAdvancedMachineFeatures.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     canIpForward = registerOutput<bool?>('canIpForward');
     confidentialInstanceConfig =
         registerOutput<InstanceTemplateConfidentialInstanceConfig>(
           'confidentialInstanceConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceTemplateConfidentialInstanceConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String?>('description');
@@ -1956,6 +2021,13 @@ class InstanceTemplate extends pulumi.CustomResource {
     networkPerformanceConfig =
         registerOutput<InstanceTemplateNetworkPerformanceConfig?>(
           'networkPerformanceConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceTemplateNetworkPerformanceConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     numericId = registerOutput<String>('numericId');
     partnerMetadata = registerOutput<Map<String, String>?>('partnerMetadata');
@@ -1964,20 +2036,50 @@ class InstanceTemplate extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     reservationAffinity = registerOutput<InstanceTemplateReservationAffinity?>(
       'reservationAffinity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceTemplateReservationAffinity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     resourceManagerTags = registerOutput<Map<String, String>?>(
       'resourceManagerTags',
     );
     resourcePolicies = registerOutput<String?>('resourcePolicies');
-    scheduling = registerOutput<InstanceTemplateScheduling>('scheduling');
+    scheduling = registerOutput<InstanceTemplateScheduling>(
+      'scheduling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceTemplateScheduling.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     selfLink = registerOutput<String>('selfLink');
     selfLinkUnique = registerOutput<String>('selfLinkUnique');
     serviceAccount = registerOutput<InstanceTemplateServiceAccount?>(
       'serviceAccount',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceTemplateServiceAccount.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     shieldedInstanceConfig =
         registerOutput<InstanceTemplateShieldedInstanceConfig>(
           'shieldedInstanceConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceTemplateShieldedInstanceConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tags = registerOutput<List<String>?>('tags');
     tagsFingerprint = registerOutput<String>('tagsFingerprint');

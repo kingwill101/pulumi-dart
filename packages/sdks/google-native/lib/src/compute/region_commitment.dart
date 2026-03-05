@@ -98,6 +98,13 @@ class RegionCommitment extends pulumi.CustomResource {
     kind = registerOutput<String>('kind');
     licenseResource = registerOutput<LicenseResourceCommitmentResponse>(
       'licenseResource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LicenseResourceCommitmentResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     mergeSourceCommitments = registerOutput<List<String>>(
       'mergeSourceCommitments',
@@ -110,6 +117,13 @@ class RegionCommitment extends pulumi.CustomResource {
     reservations = registerOutput<List<Map<String, dynamic>>>('reservations');
     resourceStatus = registerOutput<CommitmentResourceStatusResponse>(
       'resourceStatus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CommitmentResourceStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     resources = registerOutput<List<Map<String, dynamic>>>('resources');
     selfLink = registerOutput<String>('selfLink');

@@ -302,7 +302,16 @@ class TriggerSchedule extends pulumi.CustomResource {
       'pipelineParameters',
     );
     pipelines = registerOutput<List<Map<String, dynamic>>>('pipelines');
-    schedule = registerOutput<TriggerScheduleSchedule?>('schedule');
+    schedule = registerOutput<TriggerScheduleSchedule?>(
+      'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TriggerScheduleSchedule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     startTime = registerOutput<String>('startTime');
     timeZone = registerOutput<String?>('timeZone');
   }
@@ -343,7 +352,16 @@ class TriggerSchedule extends pulumi.CustomResource {
       'pipelineParameters',
     );
     pipelines = registerOutput<List<Map<String, dynamic>>>('pipelines');
-    schedule = registerOutput<TriggerScheduleSchedule?>('schedule');
+    schedule = registerOutput<TriggerScheduleSchedule?>(
+      'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TriggerScheduleSchedule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     startTime = registerOutput<String>('startTime');
     timeZone = registerOutput<String?>('timeZone');
   }

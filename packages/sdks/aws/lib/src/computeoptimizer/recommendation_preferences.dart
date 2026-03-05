@@ -375,6 +375,13 @@ class RecommendationPreferences extends pulumi.CustomResource {
     externalMetricsPreference =
         registerOutput<RecommendationPreferencesExternalMetricsPreference?>(
           'externalMetricsPreference',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RecommendationPreferencesExternalMetricsPreference.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     inferredWorkloadTypes = registerOutput<String?>('inferredWorkloadTypes');
     lookBackPeriod = registerOutput<String>('lookBackPeriod');
@@ -384,7 +391,16 @@ class RecommendationPreferences extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     resourceType = registerOutput<String>('resourceType');
     savingsEstimationMode = registerOutput<String?>('savingsEstimationMode');
-    scope = registerOutput<RecommendationPreferencesScope>('scope');
+    scope = registerOutput<RecommendationPreferencesScope>(
+      'scope',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RecommendationPreferencesScope.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     utilizationPreferences = registerOutput<List<Map<String, dynamic>>?>(
       'utilizationPreferences',
     );
@@ -419,6 +435,13 @@ class RecommendationPreferences extends pulumi.CustomResource {
     externalMetricsPreference =
         registerOutput<RecommendationPreferencesExternalMetricsPreference?>(
           'externalMetricsPreference',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RecommendationPreferencesExternalMetricsPreference.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     inferredWorkloadTypes = registerOutput<String?>('inferredWorkloadTypes');
     lookBackPeriod = registerOutput<String>('lookBackPeriod');
@@ -428,7 +451,16 @@ class RecommendationPreferences extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     resourceType = registerOutput<String>('resourceType');
     savingsEstimationMode = registerOutput<String?>('savingsEstimationMode');
-    scope = registerOutput<RecommendationPreferencesScope>('scope');
+    scope = registerOutput<RecommendationPreferencesScope>(
+      'scope',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RecommendationPreferencesScope.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     utilizationPreferences = registerOutput<List<Map<String, dynamic>>?>(
       'utilizationPreferences',
     );

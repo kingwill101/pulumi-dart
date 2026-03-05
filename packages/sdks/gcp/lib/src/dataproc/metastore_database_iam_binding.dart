@@ -969,6 +969,13 @@ class MetastoreDatabaseIamBinding extends pulumi.CustomResource {
        ) {
     condition = registerOutput<MetastoreDatabaseIamBindingCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MetastoreDatabaseIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     database = registerOutput<String>('database');
     etag = registerOutput<String>('etag');
@@ -1004,6 +1011,13 @@ class MetastoreDatabaseIamBinding extends pulumi.CustomResource {
        ) {
     condition = registerOutput<MetastoreDatabaseIamBindingCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MetastoreDatabaseIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     database = registerOutput<String>('database');
     etag = registerOutput<String>('etag');

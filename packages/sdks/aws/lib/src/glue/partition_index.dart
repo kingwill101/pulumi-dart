@@ -624,6 +624,13 @@ class PartitionIndex extends pulumi.CustomResource {
     databaseName = registerOutput<String>('databaseName');
     partitionIndex = registerOutput<PartitionIndexPartitionIndex>(
       'partitionIndex',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PartitionIndexPartitionIndex.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     tableName = registerOutput<String>('tableName');
@@ -656,6 +663,13 @@ class PartitionIndex extends pulumi.CustomResource {
     databaseName = registerOutput<String>('databaseName');
     partitionIndex = registerOutput<PartitionIndexPartitionIndex>(
       'partitionIndex',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PartitionIndexPartitionIndex.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     tableName = registerOutput<String>('tableName');

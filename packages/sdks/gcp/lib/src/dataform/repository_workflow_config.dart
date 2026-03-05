@@ -702,6 +702,13 @@ class RepositoryWorkflowConfig extends pulumi.CustomResource {
     invocationConfig =
         registerOutput<RepositoryWorkflowConfigInvocationConfig?>(
           'invocationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RepositoryWorkflowConfigInvocationConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -742,6 +749,13 @@ class RepositoryWorkflowConfig extends pulumi.CustomResource {
     invocationConfig =
         registerOutput<RepositoryWorkflowConfigInvocationConfig?>(
           'invocationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RepositoryWorkflowConfigInvocationConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

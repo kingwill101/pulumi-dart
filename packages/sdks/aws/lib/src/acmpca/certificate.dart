@@ -357,7 +357,16 @@ class Certificate extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     signingAlgorithm = registerOutput<String>('signingAlgorithm');
     templateArn = registerOutput<String?>('templateArn');
-    validity = registerOutput<CertificateValidity>('validity');
+    validity = registerOutput<CertificateValidity>(
+      'validity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CertificateValidity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Certificate] resource's state with the given [name] and [id].
@@ -394,6 +403,15 @@ class Certificate extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     signingAlgorithm = registerOutput<String>('signingAlgorithm');
     templateArn = registerOutput<String?>('templateArn');
-    validity = registerOutput<CertificateValidity>('validity');
+    validity = registerOutput<CertificateValidity>(
+      'validity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CertificateValidity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

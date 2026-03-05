@@ -1753,13 +1753,36 @@ class RegionSecurityPolicyRuleCompute extends pulumi.CustomResource {
        ) {
     action = registerOutput<String>('action');
     description = registerOutput<String?>('description');
-    match = registerOutput<RegionSecurityPolicyRuleMatch?>('match');
+    match = registerOutput<RegionSecurityPolicyRuleMatch?>(
+      'match',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegionSecurityPolicyRuleMatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     networkMatch = registerOutput<RegionSecurityPolicyRuleNetworkMatch?>(
       'networkMatch',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegionSecurityPolicyRuleNetworkMatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     preconfiguredWafConfig =
         registerOutput<RegionSecurityPolicyRulePreconfiguredWafConfig?>(
           'preconfiguredWafConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RegionSecurityPolicyRulePreconfiguredWafConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     preview = registerOutput<bool?>('preview');
     priority = registerOutput<int>('priority');
@@ -1767,6 +1790,13 @@ class RegionSecurityPolicyRuleCompute extends pulumi.CustomResource {
     rateLimitOptions =
         registerOutput<RegionSecurityPolicyRuleRateLimitOptions?>(
           'rateLimitOptions',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RegionSecurityPolicyRuleRateLimitOptions.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     securityPolicy = registerOutput<String>('securityPolicy');
@@ -1797,13 +1827,36 @@ class RegionSecurityPolicyRuleCompute extends pulumi.CustomResource {
        ) {
     action = registerOutput<String>('action');
     description = registerOutput<String?>('description');
-    match = registerOutput<RegionSecurityPolicyRuleMatch?>('match');
+    match = registerOutput<RegionSecurityPolicyRuleMatch?>(
+      'match',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegionSecurityPolicyRuleMatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     networkMatch = registerOutput<RegionSecurityPolicyRuleNetworkMatch?>(
       'networkMatch',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegionSecurityPolicyRuleNetworkMatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     preconfiguredWafConfig =
         registerOutput<RegionSecurityPolicyRulePreconfiguredWafConfig?>(
           'preconfiguredWafConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RegionSecurityPolicyRulePreconfiguredWafConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     preview = registerOutput<bool?>('preview');
     priority = registerOutput<int>('priority');
@@ -1811,6 +1864,13 @@ class RegionSecurityPolicyRuleCompute extends pulumi.CustomResource {
     rateLimitOptions =
         registerOutput<RegionSecurityPolicyRuleRateLimitOptions?>(
           'rateLimitOptions',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RegionSecurityPolicyRuleRateLimitOptions.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     securityPolicy = registerOutput<String>('securityPolicy');

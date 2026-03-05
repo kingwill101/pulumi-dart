@@ -408,7 +408,16 @@ class Container extends pulumi.CustomResource {
        ) {
     attach = registerOutput<bool?>('attach');
     bridge = registerOutput<String>('bridge');
-    capabilities = registerOutput<ContainerCapabilities?>('capabilities');
+    capabilities = registerOutput<ContainerCapabilities?>(
+      'capabilities',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContainerCapabilities.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     cgroupParent = registerOutput<String?>('cgroupParent');
     cgroupnsMode = registerOutput<String?>('cgroupnsMode');
     command = registerOutput<List<String>>('command');
@@ -432,7 +441,16 @@ class Container extends pulumi.CustomResource {
     exitCode = registerOutput<int>('exitCode');
     gpus = registerOutput<String?>('gpus');
     groupAdds = registerOutput<List<String>?>('groupAdds');
-    healthcheck = registerOutput<ContainerHealthcheck>('healthcheck');
+    healthcheck = registerOutput<ContainerHealthcheck>(
+      'healthcheck',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContainerHealthcheck.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     hostname = registerOutput<String>('hostname');
     hosts = registerOutput<List<Map<String, dynamic>>?>('hosts');
     image = registerOutput<String>('image');
@@ -508,7 +526,16 @@ class Container extends pulumi.CustomResource {
        ) {
     attach = registerOutput<bool?>('attach');
     bridge = registerOutput<String>('bridge');
-    capabilities = registerOutput<ContainerCapabilities?>('capabilities');
+    capabilities = registerOutput<ContainerCapabilities?>(
+      'capabilities',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContainerCapabilities.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     cgroupParent = registerOutput<String?>('cgroupParent');
     cgroupnsMode = registerOutput<String?>('cgroupnsMode');
     command = registerOutput<List<String>>('command');
@@ -532,7 +559,16 @@ class Container extends pulumi.CustomResource {
     exitCode = registerOutput<int>('exitCode');
     gpus = registerOutput<String?>('gpus');
     groupAdds = registerOutput<List<String>?>('groupAdds');
-    healthcheck = registerOutput<ContainerHealthcheck>('healthcheck');
+    healthcheck = registerOutput<ContainerHealthcheck>(
+      'healthcheck',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContainerHealthcheck.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     hostname = registerOutput<String>('hostname');
     hosts = registerOutput<List<Map<String, dynamic>>?>('hosts');
     image = registerOutput<String>('image');

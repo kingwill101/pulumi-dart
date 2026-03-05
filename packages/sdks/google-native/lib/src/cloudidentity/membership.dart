@@ -47,6 +47,13 @@ class Membership extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     preferredMemberKey = registerOutput<EntityKeyResponse>(
       'preferredMemberKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EntityKeyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     roles = registerOutput<List<Map<String, dynamic>>>('roles');
     type = registerOutput<String>('type');

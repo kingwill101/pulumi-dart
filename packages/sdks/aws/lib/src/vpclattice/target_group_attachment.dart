@@ -145,7 +145,16 @@ class TargetGroupAttachment extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     region = registerOutput<String>('region');
-    target = registerOutput<TargetGroupAttachmentTarget>('target');
+    target = registerOutput<TargetGroupAttachmentTarget>(
+      'target',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TargetGroupAttachmentTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     targetGroupIdentifier = registerOutput<String>('targetGroupIdentifier');
   }
 
@@ -173,7 +182,16 @@ class TargetGroupAttachment extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     region = registerOutput<String>('region');
-    target = registerOutput<TargetGroupAttachmentTarget>('target');
+    target = registerOutput<TargetGroupAttachmentTarget>(
+      'target',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TargetGroupAttachmentTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     targetGroupIdentifier = registerOutput<String>('targetGroupIdentifier');
   }
 }

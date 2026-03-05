@@ -459,9 +459,23 @@ class Entitlement extends pulumi.CustomResource {
     additionalNotificationTargets =
         registerOutput<EntitlementAdditionalNotificationTargets?>(
           'additionalNotificationTargets',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EntitlementAdditionalNotificationTargets.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     approvalWorkflow = registerOutput<EntitlementApprovalWorkflow?>(
       'approvalWorkflow',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EntitlementApprovalWorkflow.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     eligibleUsers = registerOutput<List<Map<String, dynamic>>>('eligibleUsers');
@@ -473,10 +487,24 @@ class Entitlement extends pulumi.CustomResource {
     parent = registerOutput<String>('parent');
     privilegedAccess = registerOutput<EntitlementPrivilegedAccess>(
       'privilegedAccess',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EntitlementPrivilegedAccess.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     requesterJustificationConfig =
         registerOutput<EntitlementRequesterJustificationConfig>(
           'requesterJustificationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EntitlementRequesterJustificationConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
@@ -508,9 +536,23 @@ class Entitlement extends pulumi.CustomResource {
     additionalNotificationTargets =
         registerOutput<EntitlementAdditionalNotificationTargets?>(
           'additionalNotificationTargets',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EntitlementAdditionalNotificationTargets.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     approvalWorkflow = registerOutput<EntitlementApprovalWorkflow?>(
       'approvalWorkflow',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EntitlementApprovalWorkflow.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     eligibleUsers = registerOutput<List<Map<String, dynamic>>>('eligibleUsers');
@@ -522,10 +564,24 @@ class Entitlement extends pulumi.CustomResource {
     parent = registerOutput<String>('parent');
     privilegedAccess = registerOutput<EntitlementPrivilegedAccess>(
       'privilegedAccess',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EntitlementPrivilegedAccess.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     requesterJustificationConfig =
         registerOutput<EntitlementRequesterJustificationConfig>(
           'requesterJustificationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EntitlementRequesterJustificationConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');

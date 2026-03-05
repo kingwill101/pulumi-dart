@@ -2678,11 +2678,27 @@ class DataSource extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    configuration = registerOutput<DataSourceConfiguration?>('configuration');
+    configuration = registerOutput<DataSourceConfiguration?>(
+      'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataSourceConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createdAt = registerOutput<String>('createdAt');
     customDocumentEnrichmentConfiguration =
         registerOutput<DataSourceCustomDocumentEnrichmentConfiguration?>(
           'customDocumentEnrichmentConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataSourceCustomDocumentEnrichmentConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dataSourceId = registerOutput<String>('dataSourceId');
     description = registerOutput<String?>('description');
@@ -2724,11 +2740,27 @@ class DataSource extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    configuration = registerOutput<DataSourceConfiguration?>('configuration');
+    configuration = registerOutput<DataSourceConfiguration?>(
+      'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataSourceConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createdAt = registerOutput<String>('createdAt');
     customDocumentEnrichmentConfiguration =
         registerOutput<DataSourceCustomDocumentEnrichmentConfiguration?>(
           'customDocumentEnrichmentConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataSourceCustomDocumentEnrichmentConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dataSourceId = registerOutput<String>('dataSourceId');
     description = registerOutput<String?>('description');

@@ -56,9 +56,27 @@ class Model extends pulumi.CustomResource {
     modelHash = registerOutput<String>('modelHash');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    state = registerOutput<ModelStateResponse>('state');
+    state = registerOutput<ModelStateResponse>(
+      'state',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ModelStateResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<List<String>>('tags');
-    tfliteModel = registerOutput<TfLiteModelResponse>('tfliteModel');
+    tfliteModel = registerOutput<TfLiteModelResponse>(
+      'tfliteModel',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TfLiteModelResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     updateTime = registerOutput<String>('updateTime');
   }
 }

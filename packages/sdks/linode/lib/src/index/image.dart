@@ -678,7 +678,16 @@ class Image extends pulumi.CustomResource {
     expiry = registerOutput<String>('expiry');
     fileHash = registerOutput<String?>('fileHash');
     filePath = registerOutput<String?>('filePath');
-    imageSharing = registerOutput<ImageImageSharing>('imageSharing');
+    imageSharing = registerOutput<ImageImageSharing>(
+      'imageSharing',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImageImageSharing.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     isPublic = registerOutput<bool>('isPublic');
     isShared = registerOutput<bool>('isShared');
     label = registerOutput<String>('label');
@@ -689,7 +698,16 @@ class Image extends pulumi.CustomResource {
     size = registerOutput<int>('size');
     status = registerOutput<String>('status');
     tags = registerOutput<List<String>>('tags');
-    timeouts = registerOutput<ImageTimeouts?>('timeouts');
+    timeouts = registerOutput<ImageTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImageTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     totalSize = registerOutput<int>('totalSize');
     type = registerOutput<String>('type');
     vendor = registerOutput<String>('vendor');
@@ -725,7 +743,16 @@ class Image extends pulumi.CustomResource {
     expiry = registerOutput<String>('expiry');
     fileHash = registerOutput<String?>('fileHash');
     filePath = registerOutput<String?>('filePath');
-    imageSharing = registerOutput<ImageImageSharing>('imageSharing');
+    imageSharing = registerOutput<ImageImageSharing>(
+      'imageSharing',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImageImageSharing.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     isPublic = registerOutput<bool>('isPublic');
     isShared = registerOutput<bool>('isShared');
     label = registerOutput<String>('label');
@@ -736,7 +763,16 @@ class Image extends pulumi.CustomResource {
     size = registerOutput<int>('size');
     status = registerOutput<String>('status');
     tags = registerOutput<List<String>>('tags');
-    timeouts = registerOutput<ImageTimeouts?>('timeouts');
+    timeouts = registerOutput<ImageTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImageTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     totalSize = registerOutput<int>('totalSize');
     type = registerOutput<String>('type');
     vendor = registerOutput<String>('vendor');

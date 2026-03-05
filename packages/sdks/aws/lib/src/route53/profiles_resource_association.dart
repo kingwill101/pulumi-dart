@@ -266,7 +266,16 @@ class ProfilesResourceAssociation extends pulumi.CustomResource {
     resourceType = registerOutput<String>('resourceType');
     status = registerOutput<String>('status');
     statusMessage = registerOutput<String>('statusMessage');
-    timeouts = registerOutput<ProfilesResourceAssociationTimeouts?>('timeouts');
+    timeouts = registerOutput<ProfilesResourceAssociationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProfilesResourceAssociationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [ProfilesResourceAssociation] resource's state with the given [name] and [id].
@@ -301,6 +310,15 @@ class ProfilesResourceAssociation extends pulumi.CustomResource {
     resourceType = registerOutput<String>('resourceType');
     status = registerOutput<String>('status');
     statusMessage = registerOutput<String>('statusMessage');
-    timeouts = registerOutput<ProfilesResourceAssociationTimeouts?>('timeouts');
+    timeouts = registerOutput<ProfilesResourceAssociationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProfilesResourceAssociationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

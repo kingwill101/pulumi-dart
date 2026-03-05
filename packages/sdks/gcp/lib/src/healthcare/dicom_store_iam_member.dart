@@ -657,7 +657,16 @@ class DicomStoreIamMember extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<DicomStoreIamMemberCondition?>('condition');
+    condition = registerOutput<DicomStoreIamMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DicomStoreIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dicomStoreId = registerOutput<String>('dicomStoreId');
     etag = registerOutput<String>('etag');
     member = registerOutput<String>('member');
@@ -687,7 +696,16 @@ class DicomStoreIamMember extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<DicomStoreIamMemberCondition?>('condition');
+    condition = registerOutput<DicomStoreIamMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DicomStoreIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dicomStoreId = registerOutput<String>('dicomStoreId');
     etag = registerOutput<String>('etag');
     member = registerOutput<String>('member');

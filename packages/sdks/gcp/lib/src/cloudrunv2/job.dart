@@ -2785,6 +2785,13 @@ class Job extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     binaryAuthorization = registerOutput<JobBinaryAuthorization?>(
       'binaryAuthorization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobBinaryAuthorization.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     client = registerOutput<String?>('client');
     clientVersion = registerOutput<String?>('clientVersion');
@@ -2815,7 +2822,16 @@ class Job extends pulumi.CustomResource {
     reconciling = registerOutput<bool>('reconciling');
     runExecutionToken = registerOutput<String?>('runExecutionToken');
     startExecutionToken = registerOutput<String?>('startExecutionToken');
-    template = registerOutput<JobTemplate>('template');
+    template = registerOutput<JobTemplate>(
+      'template',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobTemplate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     terminalConditions = registerOutput<List<Map<String, dynamic>>>(
       'terminalConditions',
     );
@@ -2845,6 +2861,13 @@ class Job extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     binaryAuthorization = registerOutput<JobBinaryAuthorization?>(
       'binaryAuthorization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobBinaryAuthorization.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     client = registerOutput<String?>('client');
     clientVersion = registerOutput<String?>('clientVersion');
@@ -2875,7 +2898,16 @@ class Job extends pulumi.CustomResource {
     reconciling = registerOutput<bool>('reconciling');
     runExecutionToken = registerOutput<String?>('runExecutionToken');
     startExecutionToken = registerOutput<String?>('startExecutionToken');
-    template = registerOutput<JobTemplate>('template');
+    template = registerOutput<JobTemplate>(
+      'template',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobTemplate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     terminalConditions = registerOutput<List<Map<String, dynamic>>>(
       'terminalConditions',
     );

@@ -853,7 +853,16 @@ class ContactsRotation extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     contactIds = registerOutput<List<String>>('contactIds');
     this.name = registerOutput<String>('name');
-    recurrence = registerOutput<ContactsRotationRecurrence>('recurrence');
+    recurrence = registerOutput<ContactsRotationRecurrence>(
+      'recurrence',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContactsRotationRecurrence.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     startTime = registerOutput<String?>('startTime');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -887,7 +896,16 @@ class ContactsRotation extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     contactIds = registerOutput<List<String>>('contactIds');
     this.name = registerOutput<String>('name');
-    recurrence = registerOutput<ContactsRotationRecurrence>('recurrence');
+    recurrence = registerOutput<ContactsRotationRecurrence>(
+      'recurrence',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContactsRotationRecurrence.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     startTime = registerOutput<String?>('startTime');
     tags = registerOutput<Map<String, String>?>('tags');

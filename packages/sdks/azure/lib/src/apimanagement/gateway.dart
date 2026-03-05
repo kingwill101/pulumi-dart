@@ -278,7 +278,16 @@ class Gateway extends pulumi.CustomResource {
        ) {
     apiManagementId = registerOutput<String>('apiManagementId');
     description = registerOutput<String?>('description');
-    locationData = registerOutput<GatewayLocationData>('locationData');
+    locationData = registerOutput<GatewayLocationData>(
+      'locationData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GatewayLocationData.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
   }
 
@@ -307,7 +316,16 @@ class Gateway extends pulumi.CustomResource {
        ) {
     apiManagementId = registerOutput<String>('apiManagementId');
     description = registerOutput<String?>('description');
-    locationData = registerOutput<GatewayLocationData>('locationData');
+    locationData = registerOutput<GatewayLocationData>(
+      'locationData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GatewayLocationData.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
   }
 }

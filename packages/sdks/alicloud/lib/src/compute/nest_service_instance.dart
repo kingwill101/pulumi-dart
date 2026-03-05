@@ -543,11 +543,27 @@ class NestServiceInstance extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    commodity = registerOutput<NestServiceInstanceCommodity?>('commodity');
+    commodity = registerOutput<NestServiceInstanceCommodity?>(
+      'commodity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NestServiceInstanceCommodity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     enableInstanceOps = registerOutput<bool>('enableInstanceOps');
     enableUserPrometheus = registerOutput<bool>('enableUserPrometheus');
     operationMetadata = registerOutput<NestServiceInstanceOperationMetadata>(
       'operationMetadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NestServiceInstanceOperationMetadata.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     parameters = registerOutput<String?>('parameters');
     paymentType = registerOutput<String>('paymentType');
@@ -584,11 +600,27 @@ class NestServiceInstance extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    commodity = registerOutput<NestServiceInstanceCommodity?>('commodity');
+    commodity = registerOutput<NestServiceInstanceCommodity?>(
+      'commodity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NestServiceInstanceCommodity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     enableInstanceOps = registerOutput<bool>('enableInstanceOps');
     enableUserPrometheus = registerOutput<bool>('enableUserPrometheus');
     operationMetadata = registerOutput<NestServiceInstanceOperationMetadata>(
       'operationMetadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NestServiceInstanceOperationMetadata.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     parameters = registerOutput<String?>('parameters');
     paymentType = registerOutput<String>('paymentType');

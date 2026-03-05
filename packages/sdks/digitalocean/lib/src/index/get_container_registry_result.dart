@@ -1,22 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getContainerRegistry.
 class GetContainerRegistryResult {
   /// The date and time when the registry was created
   final String createdAt;
+
   /// The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
   final String endpoint;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The name of the container registry
   final String name;
+
   /// The slug identifier for the  region
   final String region;
+
   /// The domain of the container registry. Ex: `registry.digitalocean.com`
   final String serverUrl;
+
   /// The amount of storage used in the registry in bytes.
   final int storageUsageBytes;
+
   /// The slug identifier for the subscription tier
   final String subscriptionTierSlug;
 
@@ -66,4 +72,3 @@ class GetContainerRegistryResult {
     );
   }
 }
-

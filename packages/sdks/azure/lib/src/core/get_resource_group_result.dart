@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getResourceGroup.
 class GetResourceGroupResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The Azure Region where the Resource Group exists.
   final String location;
   final String managedBy;
   final String name;
+
   /// A mapping of tags assigned to the Resource Group.
   final Map<String, String> tags;
 
@@ -46,4 +47,3 @@ class GetResourceGroupResult {
     );
   }
 }
-

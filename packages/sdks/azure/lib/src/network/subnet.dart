@@ -359,7 +359,16 @@ class Subnet extends pulumi.CustomResource {
       'defaultOutboundAccessEnabled',
     );
     delegations = registerOutput<List<Map<String, dynamic>>?>('delegations');
-    ipAddressPool = registerOutput<SubnetIpAddressPool?>('ipAddressPool');
+    ipAddressPool = registerOutput<SubnetIpAddressPool?>(
+      'ipAddressPool',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubnetIpAddressPool.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     privateEndpointNetworkPolicies = registerOutput<String?>(
       'privateEndpointNetworkPolicies',
@@ -404,7 +413,16 @@ class Subnet extends pulumi.CustomResource {
       'defaultOutboundAccessEnabled',
     );
     delegations = registerOutput<List<Map<String, dynamic>>?>('delegations');
-    ipAddressPool = registerOutput<SubnetIpAddressPool?>('ipAddressPool');
+    ipAddressPool = registerOutput<SubnetIpAddressPool?>(
+      'ipAddressPool',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubnetIpAddressPool.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     privateEndpointNetworkPolicies = registerOutput<String?>(
       'privateEndpointNetworkPolicies',

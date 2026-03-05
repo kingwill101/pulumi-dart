@@ -219,7 +219,14 @@ class Node extends pulumi.CustomResource {
     connectionLimit = registerOutput<int>('connectionLimit');
     description = registerOutput<String?>('description');
     dynamicRatio = registerOutput<int>('dynamicRatio');
-    fqdn = registerOutput<NodeFqdn?>('fqdn');
+    fqdn = registerOutput<NodeFqdn?>(
+      'fqdn',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodeFqdn.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     monitor = registerOutput<String?>('monitor');
     this.name = registerOutput<String>('name');
     rateLimit = registerOutput<String>('rateLimit');
@@ -251,7 +258,14 @@ class Node extends pulumi.CustomResource {
     connectionLimit = registerOutput<int>('connectionLimit');
     description = registerOutput<String?>('description');
     dynamicRatio = registerOutput<int>('dynamicRatio');
-    fqdn = registerOutput<NodeFqdn?>('fqdn');
+    fqdn = registerOutput<NodeFqdn?>(
+      'fqdn',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodeFqdn.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     monitor = registerOutput<String?>('monitor');
     this.name = registerOutput<String>('name');
     rateLimit = registerOutput<String>('rateLimit');

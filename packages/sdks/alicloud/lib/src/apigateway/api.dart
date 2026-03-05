@@ -401,20 +401,59 @@ class Api extends pulumi.CustomResource {
       'constantParameters',
     );
     description = registerOutput<String>('description');
-    fcServiceConfig = registerOutput<ApiFcServiceConfig?>('fcServiceConfig');
+    fcServiceConfig = registerOutput<ApiFcServiceConfig?>(
+      'fcServiceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiFcServiceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     forceNonceCheck = registerOutput<bool>('forceNonceCheck');
     groupId = registerOutput<String>('groupId');
     httpServiceConfig = registerOutput<ApiHttpServiceConfig?>(
       'httpServiceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiHttpServiceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     httpVpcServiceConfig = registerOutput<ApiHttpVpcServiceConfig?>(
       'httpVpcServiceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiHttpVpcServiceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     mockServiceConfig = registerOutput<ApiMockServiceConfig?>(
       'mockServiceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiMockServiceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
-    requestConfig = registerOutput<ApiRequestConfig>('requestConfig');
+    requestConfig = registerOutput<ApiRequestConfig>(
+      'requestConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiRequestConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     requestParameters = registerOutput<List<Map<String, dynamic>>?>(
       'requestParameters',
     );
@@ -450,20 +489,59 @@ class Api extends pulumi.CustomResource {
       'constantParameters',
     );
     description = registerOutput<String>('description');
-    fcServiceConfig = registerOutput<ApiFcServiceConfig?>('fcServiceConfig');
+    fcServiceConfig = registerOutput<ApiFcServiceConfig?>(
+      'fcServiceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiFcServiceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     forceNonceCheck = registerOutput<bool>('forceNonceCheck');
     groupId = registerOutput<String>('groupId');
     httpServiceConfig = registerOutput<ApiHttpServiceConfig?>(
       'httpServiceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiHttpServiceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     httpVpcServiceConfig = registerOutput<ApiHttpVpcServiceConfig?>(
       'httpVpcServiceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiHttpVpcServiceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     mockServiceConfig = registerOutput<ApiMockServiceConfig?>(
       'mockServiceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiMockServiceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
-    requestConfig = registerOutput<ApiRequestConfig>('requestConfig');
+    requestConfig = registerOutput<ApiRequestConfig>(
+      'requestConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiRequestConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     requestParameters = registerOutput<List<Map<String, dynamic>>?>(
       'requestParameters',
     );

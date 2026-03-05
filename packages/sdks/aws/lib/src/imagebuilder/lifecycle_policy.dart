@@ -487,6 +487,13 @@ class LifecyclePolicy extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     resourceSelection = registerOutput<LifecyclePolicyResourceSelection>(
       'resourceSelection',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LifecyclePolicyResourceSelection.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     resourceType = registerOutput<String>('resourceType');
     status = registerOutput<String>('status');
@@ -525,6 +532,13 @@ class LifecyclePolicy extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     resourceSelection = registerOutput<LifecyclePolicyResourceSelection>(
       'resourceSelection',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LifecyclePolicyResourceSelection.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     resourceType = registerOutput<String>('resourceType');
     status = registerOutput<String>('status');

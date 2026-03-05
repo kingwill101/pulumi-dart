@@ -79,6 +79,13 @@ class Model extends pulumi.CustomResource {
     modelFeaturesConfig =
         registerOutput<GoogleCloudRetailV2ModelModelFeaturesConfigResponse>(
           'modelFeaturesConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudRetailV2ModelModelFeaturesConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     optimizationObjective = registerOutput<String>('optimizationObjective');

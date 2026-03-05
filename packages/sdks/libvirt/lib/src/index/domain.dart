@@ -305,50 +305,242 @@ class Domain extends pulumi.CustomResource {
         registerPackageRequest: package_registration.registerPackageRequest,
       ) {
     autostart = registerOutput<bool?>('autostart');
-    blockIoTune = registerOutput<DomainBlockIoTune?>('blockIoTune');
+    blockIoTune = registerOutput<DomainBlockIoTune?>(
+      'blockIoTune',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainBlockIoTune.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     bootloader = registerOutput<String?>('bootloader');
     bootloaderArgs = registerOutput<String?>('bootloaderArgs');
-    clock = registerOutput<DomainClock?>('clock');
-    cpu = registerOutput<DomainCpu?>('cpu');
-    cpuTune = registerOutput<DomainCpuTune?>('cpuTune');
-    create = registerOutput<DomainCreate?>('create');
+    clock = registerOutput<DomainClock?>(
+      'clock',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainClock.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    cpu = registerOutput<DomainCpu?>(
+      'cpu',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainCpu.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
+    cpuTune = registerOutput<DomainCpuTune?>(
+      'cpuTune',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainCpuTune.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    create = registerOutput<DomainCreate?>(
+      'create',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainCreate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     currentMemory = registerOutput<double?>('currentMemory');
     currentMemoryUnit = registerOutput<String?>('currentMemoryUnit');
-    defaultIoThread = registerOutput<DomainDefaultIoThread?>('defaultIoThread');
+    defaultIoThread = registerOutput<DomainDefaultIoThread?>(
+      'defaultIoThread',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainDefaultIoThread.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
-    destroy = registerOutput<DomainDestroy?>('destroy');
-    devices = registerOutput<DomainDevices?>('devices');
+    destroy = registerOutput<DomainDestroy?>(
+      'destroy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainDestroy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    devices = registerOutput<DomainDevices?>(
+      'devices',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainDevices.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     domainId = registerOutput<double>('domainId');
-    features = registerOutput<DomainFeatures?>('features');
+    features = registerOutput<DomainFeatures?>(
+      'features',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainFeatures.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     genId = registerOutput<String?>('genId');
     hwuuid = registerOutput<String?>('hwuuid');
-    idMap = registerOutput<DomainIdMap?>('idMap');
-    ioThreadIDs = registerOutput<DomainIoThreadIDs?>('ioThreadIDs');
+    idMap = registerOutput<DomainIdMap?>(
+      'idMap',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainIdMap.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    ioThreadIDs = registerOutput<DomainIoThreadIDs?>(
+      'ioThreadIDs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainIoThreadIDs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ioThreads = registerOutput<double?>('ioThreads');
-    keyWrap = registerOutput<DomainKeyWrap?>('keyWrap');
-    launchSecurity = registerOutput<DomainLaunchSecurity?>('launchSecurity');
+    keyWrap = registerOutput<DomainKeyWrap?>(
+      'keyWrap',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainKeyWrap.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    launchSecurity = registerOutput<DomainLaunchSecurity?>(
+      'launchSecurity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainLaunchSecurity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     maximumMemory = registerOutput<double?>('maximumMemory');
     maximumMemorySlots = registerOutput<double?>('maximumMemorySlots');
     maximumMemoryUnit = registerOutput<String?>('maximumMemoryUnit');
     memory = registerOutput<double?>('memory');
-    memoryBacking = registerOutput<DomainMemoryBacking?>('memoryBacking');
+    memoryBacking = registerOutput<DomainMemoryBacking?>(
+      'memoryBacking',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainMemoryBacking.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     memoryDumpCore = registerOutput<String?>('memoryDumpCore');
-    memoryTune = registerOutput<DomainMemoryTune?>('memoryTune');
+    memoryTune = registerOutput<DomainMemoryTune?>(
+      'memoryTune',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainMemoryTune.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     memoryUnit = registerOutput<String?>('memoryUnit');
-    metadata = registerOutput<DomainMetadata?>('metadata');
+    metadata = registerOutput<DomainMetadata?>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainMetadata.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
-    numaTune = registerOutput<DomainNumaTune?>('numaTune');
+    numaTune = registerOutput<DomainNumaTune?>(
+      'numaTune',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainNumaTune.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     onCrash = registerOutput<String?>('onCrash');
     onPoweroff = registerOutput<String?>('onPoweroff');
     onReboot = registerOutput<String?>('onReboot');
-    os = registerOutput<DomainOs?>('os');
-    perf = registerOutput<DomainPerf?>('perf');
-    pm = registerOutput<DomainPm?>('pm');
-    resource = registerOutput<DomainResource?>('resource');
+    os = registerOutput<DomainOs?>(
+      'os',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainOs.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
+    perf = registerOutput<DomainPerf?>(
+      'perf',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainPerf.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    pm = registerOutput<DomainPm?>(
+      'pm',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainPm.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
+    resource = registerOutput<DomainResource?>(
+      'resource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainResource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     running = registerOutput<bool?>('running');
     secLabels = registerOutput<List<Map<String, dynamic>>?>('secLabels');
     sysInfos = registerOutput<List<Map<String, dynamic>>?>('sysInfos');
-    throttleGroups = registerOutput<DomainThrottleGroups?>('throttleGroups');
+    throttleGroups = registerOutput<DomainThrottleGroups?>(
+      'throttleGroups',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainThrottleGroups.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     title = registerOutput<String?>('title');
     type = registerOutput<String>('type');
     uuid = registerOutput<String>('uuid');
@@ -356,7 +548,16 @@ class Domain extends pulumi.CustomResource {
     vcpuCpuset = registerOutput<String?>('vcpuCpuset');
     vcpuCurrent = registerOutput<double?>('vcpuCurrent');
     vcpuPlacement = registerOutput<String?>('vcpuPlacement');
-    vcpus = registerOutput<DomainVcpus?>('vcpus');
+    vcpus = registerOutput<DomainVcpus?>(
+      'vcpus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainVcpus.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Domain] resource's state with the given [name] and [id].
@@ -383,50 +584,242 @@ class Domain extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     autostart = registerOutput<bool?>('autostart');
-    blockIoTune = registerOutput<DomainBlockIoTune?>('blockIoTune');
+    blockIoTune = registerOutput<DomainBlockIoTune?>(
+      'blockIoTune',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainBlockIoTune.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     bootloader = registerOutput<String?>('bootloader');
     bootloaderArgs = registerOutput<String?>('bootloaderArgs');
-    clock = registerOutput<DomainClock?>('clock');
-    cpu = registerOutput<DomainCpu?>('cpu');
-    cpuTune = registerOutput<DomainCpuTune?>('cpuTune');
-    create = registerOutput<DomainCreate?>('create');
+    clock = registerOutput<DomainClock?>(
+      'clock',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainClock.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    cpu = registerOutput<DomainCpu?>(
+      'cpu',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainCpu.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
+    cpuTune = registerOutput<DomainCpuTune?>(
+      'cpuTune',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainCpuTune.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    create = registerOutput<DomainCreate?>(
+      'create',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainCreate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     currentMemory = registerOutput<double?>('currentMemory');
     currentMemoryUnit = registerOutput<String?>('currentMemoryUnit');
-    defaultIoThread = registerOutput<DomainDefaultIoThread?>('defaultIoThread');
+    defaultIoThread = registerOutput<DomainDefaultIoThread?>(
+      'defaultIoThread',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainDefaultIoThread.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
-    destroy = registerOutput<DomainDestroy?>('destroy');
-    devices = registerOutput<DomainDevices?>('devices');
+    destroy = registerOutput<DomainDestroy?>(
+      'destroy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainDestroy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    devices = registerOutput<DomainDevices?>(
+      'devices',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainDevices.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     domainId = registerOutput<double>('domainId');
-    features = registerOutput<DomainFeatures?>('features');
+    features = registerOutput<DomainFeatures?>(
+      'features',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainFeatures.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     genId = registerOutput<String?>('genId');
     hwuuid = registerOutput<String?>('hwuuid');
-    idMap = registerOutput<DomainIdMap?>('idMap');
-    ioThreadIDs = registerOutput<DomainIoThreadIDs?>('ioThreadIDs');
+    idMap = registerOutput<DomainIdMap?>(
+      'idMap',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainIdMap.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    ioThreadIDs = registerOutput<DomainIoThreadIDs?>(
+      'ioThreadIDs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainIoThreadIDs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ioThreads = registerOutput<double?>('ioThreads');
-    keyWrap = registerOutput<DomainKeyWrap?>('keyWrap');
-    launchSecurity = registerOutput<DomainLaunchSecurity?>('launchSecurity');
+    keyWrap = registerOutput<DomainKeyWrap?>(
+      'keyWrap',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainKeyWrap.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    launchSecurity = registerOutput<DomainLaunchSecurity?>(
+      'launchSecurity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainLaunchSecurity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     maximumMemory = registerOutput<double?>('maximumMemory');
     maximumMemorySlots = registerOutput<double?>('maximumMemorySlots');
     maximumMemoryUnit = registerOutput<String?>('maximumMemoryUnit');
     memory = registerOutput<double?>('memory');
-    memoryBacking = registerOutput<DomainMemoryBacking?>('memoryBacking');
+    memoryBacking = registerOutput<DomainMemoryBacking?>(
+      'memoryBacking',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainMemoryBacking.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     memoryDumpCore = registerOutput<String?>('memoryDumpCore');
-    memoryTune = registerOutput<DomainMemoryTune?>('memoryTune');
+    memoryTune = registerOutput<DomainMemoryTune?>(
+      'memoryTune',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainMemoryTune.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     memoryUnit = registerOutput<String?>('memoryUnit');
-    metadata = registerOutput<DomainMetadata?>('metadata');
+    metadata = registerOutput<DomainMetadata?>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainMetadata.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
-    numaTune = registerOutput<DomainNumaTune?>('numaTune');
+    numaTune = registerOutput<DomainNumaTune?>(
+      'numaTune',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainNumaTune.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     onCrash = registerOutput<String?>('onCrash');
     onPoweroff = registerOutput<String?>('onPoweroff');
     onReboot = registerOutput<String?>('onReboot');
-    os = registerOutput<DomainOs?>('os');
-    perf = registerOutput<DomainPerf?>('perf');
-    pm = registerOutput<DomainPm?>('pm');
-    resource = registerOutput<DomainResource?>('resource');
+    os = registerOutput<DomainOs?>(
+      'os',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainOs.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
+    perf = registerOutput<DomainPerf?>(
+      'perf',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainPerf.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    pm = registerOutput<DomainPm?>(
+      'pm',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainPm.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
+    resource = registerOutput<DomainResource?>(
+      'resource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainResource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     running = registerOutput<bool?>('running');
     secLabels = registerOutput<List<Map<String, dynamic>>?>('secLabels');
     sysInfos = registerOutput<List<Map<String, dynamic>>?>('sysInfos');
-    throttleGroups = registerOutput<DomainThrottleGroups?>('throttleGroups');
+    throttleGroups = registerOutput<DomainThrottleGroups?>(
+      'throttleGroups',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainThrottleGroups.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     title = registerOutput<String?>('title');
     type = registerOutput<String>('type');
     uuid = registerOutput<String>('uuid');
@@ -434,6 +827,15 @@ class Domain extends pulumi.CustomResource {
     vcpuCpuset = registerOutput<String?>('vcpuCpuset');
     vcpuCurrent = registerOutput<double?>('vcpuCurrent');
     vcpuPlacement = registerOutput<String?>('vcpuPlacement');
-    vcpus = registerOutput<DomainVcpus?>('vcpus');
+    vcpus = registerOutput<DomainVcpus?>(
+      'vcpus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainVcpus.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

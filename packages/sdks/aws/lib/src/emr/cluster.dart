@@ -2118,6 +2118,13 @@ class Cluster extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     autoTerminationPolicy = registerOutput<ClusterAutoTerminationPolicy?>(
       'autoTerminationPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterAutoTerminationPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     autoscalingRole = registerOutput<String?>('autoscalingRole');
     bootstrapActions = registerOutput<List<Map<String, dynamic>>?>(
@@ -2128,27 +2135,71 @@ class Cluster extends pulumi.CustomResource {
     configurationsJson = registerOutput<String?>('configurationsJson');
     coreInstanceFleet = registerOutput<ClusterCoreInstanceFleet>(
       'coreInstanceFleet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterCoreInstanceFleet.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     coreInstanceGroup = registerOutput<ClusterCoreInstanceGroup>(
       'coreInstanceGroup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterCoreInstanceGroup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     customAmiId = registerOutput<String?>('customAmiId');
     ebsRootVolumeSize = registerOutput<int?>('ebsRootVolumeSize');
-    ec2Attributes = registerOutput<ClusterEc2Attributes?>('ec2Attributes');
+    ec2Attributes = registerOutput<ClusterEc2Attributes?>(
+      'ec2Attributes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterEc2Attributes.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     keepJobFlowAliveWhenNoSteps = registerOutput<bool>(
       'keepJobFlowAliveWhenNoSteps',
     );
     kerberosAttributes = registerOutput<ClusterKerberosAttributes?>(
       'kerberosAttributes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterKerberosAttributes.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     listStepsStates = registerOutput<List<String>?>('listStepsStates');
     logEncryptionKmsKeyId = registerOutput<String?>('logEncryptionKmsKeyId');
     logUri = registerOutput<String?>('logUri');
     masterInstanceFleet = registerOutput<ClusterMasterInstanceFleet>(
       'masterInstanceFleet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterMasterInstanceFleet.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     masterInstanceGroup = registerOutput<ClusterMasterInstanceGroup>(
       'masterInstanceGroup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterMasterInstanceGroup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     masterPublicDns = registerOutput<String>('masterPublicDns');
     this.name = registerOutput<String>('name');
@@ -2200,6 +2251,13 @@ class Cluster extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     autoTerminationPolicy = registerOutput<ClusterAutoTerminationPolicy?>(
       'autoTerminationPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterAutoTerminationPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     autoscalingRole = registerOutput<String?>('autoscalingRole');
     bootstrapActions = registerOutput<List<Map<String, dynamic>>?>(
@@ -2210,27 +2268,71 @@ class Cluster extends pulumi.CustomResource {
     configurationsJson = registerOutput<String?>('configurationsJson');
     coreInstanceFleet = registerOutput<ClusterCoreInstanceFleet>(
       'coreInstanceFleet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterCoreInstanceFleet.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     coreInstanceGroup = registerOutput<ClusterCoreInstanceGroup>(
       'coreInstanceGroup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterCoreInstanceGroup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     customAmiId = registerOutput<String?>('customAmiId');
     ebsRootVolumeSize = registerOutput<int?>('ebsRootVolumeSize');
-    ec2Attributes = registerOutput<ClusterEc2Attributes?>('ec2Attributes');
+    ec2Attributes = registerOutput<ClusterEc2Attributes?>(
+      'ec2Attributes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterEc2Attributes.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     keepJobFlowAliveWhenNoSteps = registerOutput<bool>(
       'keepJobFlowAliveWhenNoSteps',
     );
     kerberosAttributes = registerOutput<ClusterKerberosAttributes?>(
       'kerberosAttributes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterKerberosAttributes.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     listStepsStates = registerOutput<List<String>?>('listStepsStates');
     logEncryptionKmsKeyId = registerOutput<String?>('logEncryptionKmsKeyId');
     logUri = registerOutput<String?>('logUri');
     masterInstanceFleet = registerOutput<ClusterMasterInstanceFleet>(
       'masterInstanceFleet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterMasterInstanceFleet.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     masterInstanceGroup = registerOutput<ClusterMasterInstanceGroup>(
       'masterInstanceGroup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterMasterInstanceGroup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     masterPublicDns = registerOutput<String>('masterPublicDns');
     this.name = registerOutput<String>('name');

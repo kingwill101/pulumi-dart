@@ -214,7 +214,16 @@ class Image extends pulumi.CustomResource {
     hyperVGeneration = registerOutput<String?>('hyperVGeneration');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    osDisk = registerOutput<ImageOsDisk?>('osDisk');
+    osDisk = registerOutput<ImageOsDisk?>(
+      'osDisk',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImageOsDisk.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sourceVirtualMachineId = registerOutput<String?>('sourceVirtualMachineId');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -244,7 +253,16 @@ class Image extends pulumi.CustomResource {
     hyperVGeneration = registerOutput<String?>('hyperVGeneration');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    osDisk = registerOutput<ImageOsDisk?>('osDisk');
+    osDisk = registerOutput<ImageOsDisk?>(
+      'osDisk',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImageOsDisk.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sourceVirtualMachineId = registerOutput<String?>('sourceVirtualMachineId');
     tags = registerOutput<Map<String, String>?>('tags');

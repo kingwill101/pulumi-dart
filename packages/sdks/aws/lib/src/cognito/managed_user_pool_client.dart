@@ -225,6 +225,13 @@ class ManagedUserPoolClient extends pulumi.CustomResource {
     analyticsConfiguration =
         registerOutput<ManagedUserPoolClientAnalyticsConfiguration?>(
           'analyticsConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ManagedUserPoolClientAnalyticsConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     authSessionValidity = registerOutput<int>('authSessionValidity');
     callbackUrls = registerOutput<List<String>>('callbackUrls');
@@ -247,6 +254,13 @@ class ManagedUserPoolClient extends pulumi.CustomResource {
     refreshTokenRotation =
         registerOutput<ManagedUserPoolClientRefreshTokenRotation?>(
           'refreshTokenRotation',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ManagedUserPoolClientRefreshTokenRotation.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     refreshTokenValidity = registerOutput<int>('refreshTokenValidity');
     region = registerOutput<String>('region');
@@ -256,6 +270,13 @@ class ManagedUserPoolClient extends pulumi.CustomResource {
     tokenValidityUnits =
         registerOutput<ManagedUserPoolClientTokenValidityUnits?>(
           'tokenValidityUnits',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ManagedUserPoolClientTokenValidityUnits.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     userPoolId = registerOutput<String>('userPoolId');
     writeAttributes = registerOutput<List<String>>('writeAttributes');
@@ -293,6 +314,13 @@ class ManagedUserPoolClient extends pulumi.CustomResource {
     analyticsConfiguration =
         registerOutput<ManagedUserPoolClientAnalyticsConfiguration?>(
           'analyticsConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ManagedUserPoolClientAnalyticsConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     authSessionValidity = registerOutput<int>('authSessionValidity');
     callbackUrls = registerOutput<List<String>>('callbackUrls');
@@ -315,6 +343,13 @@ class ManagedUserPoolClient extends pulumi.CustomResource {
     refreshTokenRotation =
         registerOutput<ManagedUserPoolClientRefreshTokenRotation?>(
           'refreshTokenRotation',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ManagedUserPoolClientRefreshTokenRotation.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     refreshTokenValidity = registerOutput<int>('refreshTokenValidity');
     region = registerOutput<String>('region');
@@ -324,6 +359,13 @@ class ManagedUserPoolClient extends pulumi.CustomResource {
     tokenValidityUnits =
         registerOutput<ManagedUserPoolClientTokenValidityUnits?>(
           'tokenValidityUnits',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ManagedUserPoolClientTokenValidityUnits.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     userPoolId = registerOutput<String>('userPoolId');
     writeAttributes = registerOutput<List<String>>('writeAttributes');

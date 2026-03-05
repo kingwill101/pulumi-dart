@@ -117,7 +117,8 @@ Future<ListEndpointCredentialsResult> listEndpointCredentials(
 /// Other available API versions: 2023-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridconnectivity [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_hybridconnectivity_list_endpoint_ingress_gateway_credentials_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListEndpointIngressGatewayCredentialsResult> listEndpointIngressGatewayCredentials(
+Future<ListEndpointIngressGatewayCredentialsResult>
+listEndpointIngressGatewayCredentials(
   ListEndpointIngressGatewayCredentialsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

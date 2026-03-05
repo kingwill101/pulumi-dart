@@ -1413,11 +1413,47 @@ class Job extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     cancellationReason = registerOutput<String>('cancellationReason');
     delayedStage = registerOutput<String>('delayedStage');
-    deliveryInfo = registerOutput<JobDeliveryInfoResponse?>('deliveryInfo');
+    deliveryInfo = registerOutput<JobDeliveryInfoResponse?>(
+      'deliveryInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobDeliveryInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     deliveryType = registerOutput<String?>('deliveryType');
-    details = registerOutput<DataBoxCustomerDiskJobDetailsResponse?>('details');
-    error = registerOutput<CloudErrorResponse>('error');
-    identity = registerOutput<ResourceIdentityResponse?>('identity');
+    details = registerOutput<DataBoxCustomerDiskJobDetailsResponse?>(
+      'details',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataBoxCustomerDiskJobDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    error = registerOutput<CloudErrorResponse>(
+      'error',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CloudErrorResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    identity = registerOutput<ResourceIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     isCancellable = registerOutput<bool>('isCancellable');
     isCancellableWithoutFee = registerOutput<bool>('isCancellableWithoutFee');
     isDeletable = registerOutput<bool>('isDeletable');
@@ -1433,10 +1469,28 @@ class Job extends pulumi.CustomResource {
     reverseTransportPreferenceUpdate = registerOutput<String>(
       'reverseTransportPreferenceUpdate',
     );
-    sku = registerOutput<SkuResponse>('sku');
+    sku = registerOutput<SkuResponse>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     startTime = registerOutput<String>('startTime');
     status = registerOutput<String>('status');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     transferType = registerOutput<String>('transferType');
     type = registerOutput<String>('type');

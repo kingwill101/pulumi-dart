@@ -595,6 +595,13 @@ class MulticastGroupConsumerActivation extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     logConfig = registerOutput<MulticastGroupConsumerActivationLogConfig?>(
       'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MulticastGroupConsumerActivationLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     multicastConsumerAssociation = registerOutput<String>(
       'multicastConsumerAssociation',
@@ -643,6 +650,13 @@ class MulticastGroupConsumerActivation extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     logConfig = registerOutput<MulticastGroupConsumerActivationLogConfig?>(
       'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MulticastGroupConsumerActivationLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     multicastConsumerAssociation = registerOutput<String>(
       'multicastConsumerAssociation',

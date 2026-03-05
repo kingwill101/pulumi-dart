@@ -40,6 +40,13 @@ class AutoscalingPolicy extends pulumi.CustomResource {
        ) {
     basicAlgorithm = registerOutput<BasicAutoscalingAlgorithmResponse>(
       'basicAlgorithm',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BasicAutoscalingAlgorithmResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
@@ -48,9 +55,23 @@ class AutoscalingPolicy extends pulumi.CustomResource {
     secondaryWorkerConfig =
         registerOutput<InstanceGroupAutoscalingPolicyConfigResponse>(
           'secondaryWorkerConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceGroupAutoscalingPolicyConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     workerConfig = registerOutput<InstanceGroupAutoscalingPolicyConfigResponse>(
       'workerConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceGroupAutoscalingPolicyConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

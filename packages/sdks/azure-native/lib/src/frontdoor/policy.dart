@@ -796,15 +796,42 @@ class Policy extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    customRules = registerOutput<CustomRuleListResponse?>('customRules');
+    customRules = registerOutput<CustomRuleListResponse?>(
+      'customRules',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomRuleListResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String?>('etag');
     frontendEndpointLinks = registerOutput<List<Map<String, dynamic>>>(
       'frontendEndpointLinks',
     );
     location = registerOutput<String?>('location');
-    managedRules = registerOutput<ManagedRuleSetListResponse?>('managedRules');
+    managedRules = registerOutput<ManagedRuleSetListResponse?>(
+      'managedRules',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedRuleSetListResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
-    policySettings = registerOutput<PolicySettingsResponse?>('policySettings');
+    policySettings = registerOutput<PolicySettingsResponse?>(
+      'policySettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicySettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     provisioningState = registerOutput<String>('provisioningState');
     resourceState = registerOutput<String>('resourceState');
     routingRuleLinks = registerOutput<List<Map<String, dynamic>>>(
@@ -813,7 +840,16 @@ class Policy extends pulumi.CustomResource {
     securityPolicyLinks = registerOutput<List<Map<String, dynamic>>>(
       'securityPolicyLinks',
     );
-    sku = registerOutput<SkuResponse?>('sku');
+    sku = registerOutput<SkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

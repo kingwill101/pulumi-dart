@@ -20,7 +20,7 @@ import 'package:pulumi_eks/pulumi_eks.dart' as provider;
 dependencies:
   pulumi_eks:
     git:
-      url: https://github.com/<owner>/<repo>.git
+      url: https://github.com/kingwill101/pulumi-dart.git
       path: packages/eks
       ref: main
 ~~~

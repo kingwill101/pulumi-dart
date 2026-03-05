@@ -79,9 +79,25 @@ class HyperparameterTuningJob extends pulumi.CustomResource {
     encryptionSpec =
         registerOutput<GoogleCloudAiplatformV1EncryptionSpecResponse>(
           'encryptionSpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1EncryptionSpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     endTime = registerOutput<String>('endTime');
-    error = registerOutput<GoogleRpcStatusResponse>('error');
+    error = registerOutput<GoogleRpcStatusResponse>(
+      'error',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleRpcStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
     maxFailedTrialCount = registerOutput<int>('maxFailedTrialCount');
@@ -93,9 +109,23 @@ class HyperparameterTuningJob extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     studySpec = registerOutput<GoogleCloudAiplatformV1StudySpecResponse>(
       'studySpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudAiplatformV1StudySpecResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     trialJobSpec = registerOutput<GoogleCloudAiplatformV1CustomJobSpecResponse>(
       'trialJobSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudAiplatformV1CustomJobSpecResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     trials = registerOutput<List<Map<String, dynamic>>>('trials');
     updateTime = registerOutput<String>('updateTime');

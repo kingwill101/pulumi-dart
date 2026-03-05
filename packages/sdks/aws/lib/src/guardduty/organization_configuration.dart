@@ -278,6 +278,13 @@ class OrganizationConfiguration extends pulumi.CustomResource {
     );
     datasources = registerOutput<OrganizationConfigurationDatasources>(
       'datasources',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrganizationConfigurationDatasources.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     detectorId = registerOutput<String>('detectorId');
     region = registerOutput<String>('region');
@@ -311,6 +318,13 @@ class OrganizationConfiguration extends pulumi.CustomResource {
     );
     datasources = registerOutput<OrganizationConfigurationDatasources>(
       'datasources',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrganizationConfigurationDatasources.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     detectorId = registerOutput<String>('detectorId');
     region = registerOutput<String>('region');

@@ -52,7 +52,16 @@ class Control extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    rule = registerOutput<GoogleCloudRetailV2RuleResponse>('rule');
+    rule = registerOutput<GoogleCloudRetailV2RuleResponse>(
+      'rule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudRetailV2RuleResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     searchSolutionUseCase = registerOutput<List<String>>(
       'searchSolutionUseCase',
     );

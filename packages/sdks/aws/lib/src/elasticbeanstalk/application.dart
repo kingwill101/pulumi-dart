@@ -181,6 +181,13 @@ class Application extends pulumi.CustomResource {
        ) {
     appversionLifecycle = registerOutput<ApplicationAppversionLifecycle?>(
       'appversionLifecycle',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationAppversionLifecycle.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
@@ -215,6 +222,13 @@ class Application extends pulumi.CustomResource {
        ) {
     appversionLifecycle = registerOutput<ApplicationAppversionLifecycle?>(
       'appversionLifecycle',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationAppversionLifecycle.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

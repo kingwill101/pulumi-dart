@@ -478,17 +478,51 @@ class Preset extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     arn = registerOutput<String>('arn');
-    audio = registerOutput<PresetAudio?>('audio');
+    audio = registerOutput<PresetAudio?>(
+      'audio',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PresetAudio.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     audioCodecOptions = registerOutput<PresetAudioCodecOptions>(
       'audioCodecOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PresetAudioCodecOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     container = registerOutput<String>('container');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    thumbnails = registerOutput<PresetThumbnails?>('thumbnails');
+    thumbnails = registerOutput<PresetThumbnails?>(
+      'thumbnails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PresetThumbnails.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
-    video = registerOutput<PresetVideo?>('video');
+    video = registerOutput<PresetVideo?>(
+      'video',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PresetVideo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     videoCodecOptions = registerOutput<Map<String, String>?>(
       'videoCodecOptions',
     );
@@ -521,17 +555,51 @@ class Preset extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    audio = registerOutput<PresetAudio?>('audio');
+    audio = registerOutput<PresetAudio?>(
+      'audio',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PresetAudio.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     audioCodecOptions = registerOutput<PresetAudioCodecOptions>(
       'audioCodecOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PresetAudioCodecOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     container = registerOutput<String>('container');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    thumbnails = registerOutput<PresetThumbnails?>('thumbnails');
+    thumbnails = registerOutput<PresetThumbnails?>(
+      'thumbnails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PresetThumbnails.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
-    video = registerOutput<PresetVideo?>('video');
+    video = registerOutput<PresetVideo?>(
+      'video',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PresetVideo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     videoCodecOptions = registerOutput<Map<String, String>?>(
       'videoCodecOptions',
     );

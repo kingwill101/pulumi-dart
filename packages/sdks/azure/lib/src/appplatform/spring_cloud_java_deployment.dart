@@ -352,7 +352,16 @@ class SpringCloudJavaDeployment extends pulumi.CustomResource {
     instanceCount = registerOutput<int?>('instanceCount');
     jvmOptions = registerOutput<String?>('jvmOptions');
     this.name = registerOutput<String>('name');
-    quota = registerOutput<SpringCloudJavaDeploymentQuota>('quota');
+    quota = registerOutput<SpringCloudJavaDeploymentQuota>(
+      'quota',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpringCloudJavaDeploymentQuota.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     runtimeVersion = registerOutput<String?>('runtimeVersion');
     springCloudAppId = registerOutput<String>('springCloudAppId');
   }
@@ -386,7 +395,16 @@ class SpringCloudJavaDeployment extends pulumi.CustomResource {
     instanceCount = registerOutput<int?>('instanceCount');
     jvmOptions = registerOutput<String?>('jvmOptions');
     this.name = registerOutput<String>('name');
-    quota = registerOutput<SpringCloudJavaDeploymentQuota>('quota');
+    quota = registerOutput<SpringCloudJavaDeploymentQuota>(
+      'quota',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpringCloudJavaDeploymentQuota.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     runtimeVersion = registerOutput<String?>('runtimeVersion');
     springCloudAppId = registerOutput<String>('springCloudAppId');
   }

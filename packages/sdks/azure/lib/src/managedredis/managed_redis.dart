@@ -792,13 +792,36 @@ class ManagedRedis extends pulumi.CustomResource {
        ) {
     customerManagedKey = registerOutput<ManagedRedisCustomerManagedKey?>(
       'customerManagedKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedRedisCustomerManagedKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     defaultDatabase = registerOutput<ManagedRedisDefaultDatabase?>(
       'defaultDatabase',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedRedisDefaultDatabase.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     highAvailabilityEnabled = registerOutput<bool?>('highAvailabilityEnabled');
     hostname = registerOutput<String>('hostname');
-    identity = registerOutput<ManagedRedisIdentity?>('identity');
+    identity = registerOutput<ManagedRedisIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedRedisIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
@@ -832,13 +855,36 @@ class ManagedRedis extends pulumi.CustomResource {
        ) {
     customerManagedKey = registerOutput<ManagedRedisCustomerManagedKey?>(
       'customerManagedKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedRedisCustomerManagedKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     defaultDatabase = registerOutput<ManagedRedisDefaultDatabase?>(
       'defaultDatabase',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedRedisDefaultDatabase.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     highAvailabilityEnabled = registerOutput<bool?>('highAvailabilityEnabled');
     hostname = registerOutput<String>('hostname');
-    identity = registerOutput<ManagedRedisIdentity?>('identity');
+    identity = registerOutput<ManagedRedisIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedRedisIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');

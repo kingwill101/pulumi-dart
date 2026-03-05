@@ -207,7 +207,16 @@ class Group extends pulumi.CustomResource {
     instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
     subDomain = registerOutput<String>('subDomain');
-    userLogConfig = registerOutput<GroupUserLogConfig?>('userLogConfig');
+    userLogConfig = registerOutput<GroupUserLogConfig?>(
+      'userLogConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupUserLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vpcDomain = registerOutput<String>('vpcDomain');
     vpcIntranetEnable = registerOutput<bool?>('vpcIntranetEnable');
   }
@@ -236,7 +245,16 @@ class Group extends pulumi.CustomResource {
     instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
     subDomain = registerOutput<String>('subDomain');
-    userLogConfig = registerOutput<GroupUserLogConfig?>('userLogConfig');
+    userLogConfig = registerOutput<GroupUserLogConfig?>(
+      'userLogConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupUserLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vpcDomain = registerOutput<String>('vpcDomain');
     vpcIntranetEnable = registerOutput<bool?>('vpcIntranetEnable');
   }

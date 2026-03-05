@@ -84,7 +84,16 @@ class ExperimentDialogflowV3beta1 extends pulumi.CustomResource {
     definition =
         registerOutput<
           GoogleCloudDialogflowCxV3beta1ExperimentDefinitionResponse
-        >('definition');
+        >(
+          'definition',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowCxV3beta1ExperimentDefinitionResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
     endTime = registerOutput<String>('endTime');
@@ -97,15 +106,36 @@ class ExperimentDialogflowV3beta1 extends pulumi.CustomResource {
     result =
         registerOutput<GoogleCloudDialogflowCxV3beta1ExperimentResultResponse>(
           'result',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowCxV3beta1ExperimentResultResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     rolloutConfig =
         registerOutput<GoogleCloudDialogflowCxV3beta1RolloutConfigResponse>(
           'rolloutConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowCxV3beta1RolloutConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     rolloutFailureReason = registerOutput<String>('rolloutFailureReason');
     rolloutState =
         registerOutput<GoogleCloudDialogflowCxV3beta1RolloutStateResponse>(
           'rolloutState',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowCxV3beta1RolloutStateResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     startTime = registerOutput<String>('startTime');
     state = registerOutput<String>('state');

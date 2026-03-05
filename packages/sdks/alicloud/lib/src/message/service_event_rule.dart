@@ -488,7 +488,16 @@ class ServiceEventRule extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     deliveryMode = registerOutput<String>('deliveryMode');
-    endpoint = registerOutput<ServiceEventRuleEndpoint?>('endpoint');
+    endpoint = registerOutput<ServiceEventRuleEndpoint?>(
+      'endpoint',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceEventRuleEndpoint.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     eventTypes = registerOutput<List<String>>('eventTypes');
     matchRules = registerOutput<List<Map<String, dynamic>>?>('matchRules');
     ruleName = registerOutput<String>('ruleName');
@@ -518,7 +527,16 @@ class ServiceEventRule extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     deliveryMode = registerOutput<String>('deliveryMode');
-    endpoint = registerOutput<ServiceEventRuleEndpoint?>('endpoint');
+    endpoint = registerOutput<ServiceEventRuleEndpoint?>(
+      'endpoint',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceEventRuleEndpoint.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     eventTypes = registerOutput<List<String>>('eventTypes');
     matchRules = registerOutput<List<Map<String, dynamic>>?>('matchRules');
     ruleName = registerOutput<String>('ruleName');

@@ -649,12 +649,26 @@ class CxSecuritySettings extends pulumi.CustomResource {
     audioExportSettings =
         registerOutput<CxSecuritySettingsAudioExportSettings?>(
           'audioExportSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CxSecuritySettingsAudioExportSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     deidentifyTemplate = registerOutput<String?>('deidentifyTemplate');
     displayName = registerOutput<String>('displayName');
     insightsExportSettings =
         registerOutput<CxSecuritySettingsInsightsExportSettings?>(
           'insightsExportSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CxSecuritySettingsInsightsExportSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     inspectTemplate = registerOutput<String?>('inspectTemplate');
     location = registerOutput<String>('location');
@@ -693,12 +707,26 @@ class CxSecuritySettings extends pulumi.CustomResource {
     audioExportSettings =
         registerOutput<CxSecuritySettingsAudioExportSettings?>(
           'audioExportSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CxSecuritySettingsAudioExportSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     deidentifyTemplate = registerOutput<String?>('deidentifyTemplate');
     displayName = registerOutput<String>('displayName');
     insightsExportSettings =
         registerOutput<CxSecuritySettingsInsightsExportSettings?>(
           'insightsExportSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CxSecuritySettingsInsightsExportSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     inspectTemplate = registerOutput<String?>('inspectTemplate');
     location = registerOutput<String>('location');

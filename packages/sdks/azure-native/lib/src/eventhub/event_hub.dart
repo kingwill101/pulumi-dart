@@ -348,6 +348,13 @@ class EventHub extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     captureDescription = registerOutput<CaptureDescriptionResponse?>(
       'captureDescription',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CaptureDescriptionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createdAt = registerOutput<String>('createdAt');
     location = registerOutput<String>('location');
@@ -357,9 +364,25 @@ class EventHub extends pulumi.CustomResource {
     partitionIds = registerOutput<List<String>>('partitionIds');
     retentionDescription = registerOutput<RetentionDescriptionResponse?>(
       'retentionDescription',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RetentionDescriptionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     status = registerOutput<String?>('status');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     updatedAt = registerOutput<String>('updatedAt');
     userMetadata = registerOutput<String?>('userMetadata');

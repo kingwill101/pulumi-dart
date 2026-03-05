@@ -438,6 +438,13 @@ class ReplicationConfiguration extends pulumi.CustomResource {
     creationTime = registerOutput<String>('creationTime');
     destination = registerOutput<ReplicationConfigurationDestination>(
       'destination',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReplicationConfigurationDestination.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     originalSourceFileSystemArn = registerOutput<String>(
       'originalSourceFileSystemArn',
@@ -474,6 +481,13 @@ class ReplicationConfiguration extends pulumi.CustomResource {
     creationTime = registerOutput<String>('creationTime');
     destination = registerOutput<ReplicationConfigurationDestination>(
       'destination',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReplicationConfigurationDestination.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     originalSourceFileSystemArn = registerOutput<String>(
       'originalSourceFileSystemArn',

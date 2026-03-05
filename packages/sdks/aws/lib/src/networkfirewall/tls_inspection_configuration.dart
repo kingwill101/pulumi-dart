@@ -1751,10 +1751,26 @@ class TlsInspectionConfiguration extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<TlsInspectionConfigurationTimeouts?>('timeouts');
+    timeouts = registerOutput<TlsInspectionConfigurationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TlsInspectionConfigurationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tlsInspectionConfiguration =
         registerOutput<TlsInspectionConfigurationTlsInspectionConfiguration>(
           'tlsInspectionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return TlsInspectionConfigurationTlsInspectionConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tlsInspectionConfigurationId = registerOutput<String>(
       'tlsInspectionConfigurationId',
@@ -1799,10 +1815,26 @@ class TlsInspectionConfiguration extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<TlsInspectionConfigurationTimeouts?>('timeouts');
+    timeouts = registerOutput<TlsInspectionConfigurationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TlsInspectionConfigurationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tlsInspectionConfiguration =
         registerOutput<TlsInspectionConfigurationTlsInspectionConfiguration>(
           'tlsInspectionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return TlsInspectionConfigurationTlsInspectionConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tlsInspectionConfigurationId = registerOutput<String>(
       'tlsInspectionConfigurationId',

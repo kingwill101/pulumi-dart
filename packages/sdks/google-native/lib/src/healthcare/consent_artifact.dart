@@ -53,13 +53,40 @@ class ConsentArtifact extends pulumi.CustomResource {
     consentContentVersion = registerOutput<String>('consentContentVersion');
     consentStoreId = registerOutput<String>('consentStoreId');
     datasetId = registerOutput<String>('datasetId');
-    guardianSignature = registerOutput<SignatureResponse>('guardianSignature');
+    guardianSignature = registerOutput<SignatureResponse>(
+      'guardianSignature',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SignatureResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     metadata = registerOutput<Map<String, String>>('metadata');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     userId = registerOutput<String>('userId');
-    userSignature = registerOutput<SignatureResponse>('userSignature');
-    witnessSignature = registerOutput<SignatureResponse>('witnessSignature');
+    userSignature = registerOutput<SignatureResponse>(
+      'userSignature',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SignatureResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    witnessSignature = registerOutput<SignatureResponse>(
+      'witnessSignature',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SignatureResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

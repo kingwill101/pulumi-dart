@@ -447,7 +447,16 @@ class AiFeatureGroup extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    bigQuery = registerOutput<AiFeatureGroupBigQuery?>('bigQuery');
+    bigQuery = registerOutput<AiFeatureGroupBigQuery?>(
+      'bigQuery',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiFeatureGroupBigQuery.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -483,7 +492,16 @@ class AiFeatureGroup extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    bigQuery = registerOutput<AiFeatureGroupBigQuery?>('bigQuery');
+    bigQuery = registerOutput<AiFeatureGroupBigQuery?>(
+      'bigQuery',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiFeatureGroupBigQuery.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

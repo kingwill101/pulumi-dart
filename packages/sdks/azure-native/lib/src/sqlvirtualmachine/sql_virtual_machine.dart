@@ -2126,19 +2126,56 @@ class SqlVirtualMachine extends pulumi.CustomResource {
     additionalVmPatch = registerOutput<String>('additionalVmPatch');
     assessmentSettings = registerOutput<AssessmentSettingsResponse?>(
       'assessmentSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AssessmentSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     autoBackupSettings = registerOutput<AutoBackupSettingsResponse?>(
       'autoBackupSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AutoBackupSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     autoPatchingSettings = registerOutput<AutoPatchingSettingsResponse?>(
       'autoPatchingSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AutoPatchingSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     enableAutomaticUpgrade = registerOutput<bool?>('enableAutomaticUpgrade');
-    identity = registerOutput<ResourceIdentityResponse?>('identity');
+    identity = registerOutput<ResourceIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     keyVaultCredentialSettings =
         registerOutput<KeyVaultCredentialSettingsResponse?>(
           'keyVaultCredentialSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return KeyVaultCredentialSettingsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     leastPrivilegeMode = registerOutput<String?>('leastPrivilegeMode');
     location = registerOutput<String>('location');
@@ -2148,6 +2185,13 @@ class SqlVirtualMachine extends pulumi.CustomResource {
     serverConfigurationsManagementSettings =
         registerOutput<ServerConfigurationsManagementSettingsResponse?>(
           'serverConfigurationsManagementSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ServerConfigurationsManagementSettingsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     sqlImageOffer = registerOutput<String?>('sqlImageOffer');
     sqlImageSku = registerOutput<String?>('sqlImageSku');
@@ -2159,22 +2203,59 @@ class SqlVirtualMachine extends pulumi.CustomResource {
     storageConfigurationSettings =
         registerOutput<StorageConfigurationSettingsResponse?>(
           'storageConfigurationSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return StorageConfigurationSettingsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     troubleshootingStatus = registerOutput<TroubleshootingStatusResponse>(
       'troubleshootingStatus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TroubleshootingStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     type = registerOutput<String>('type');
     virtualMachineIdentitySettings =
         registerOutput<VirtualMachineIdentityResponse?>(
           'virtualMachineIdentitySettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VirtualMachineIdentityResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     virtualMachineResourceId = registerOutput<String?>(
       'virtualMachineResourceId',
     );
     wsfcDomainCredentials = registerOutput<WsfcDomainCredentialsResponse?>(
       'wsfcDomainCredentials',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WsfcDomainCredentialsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     wsfcStaticIp = registerOutput<String?>('wsfcStaticIp');
   }

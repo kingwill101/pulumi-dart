@@ -935,6 +935,13 @@ class ConfigurationSetEventDestination extends pulumi.CustomResource {
     eventDestination =
         registerOutput<ConfigurationSetEventDestinationEventDestination>(
           'eventDestination',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConfigurationSetEventDestinationEventDestination.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     eventDestinationName = registerOutput<String>('eventDestinationName');
     region = registerOutput<String>('region');
@@ -967,6 +974,13 @@ class ConfigurationSetEventDestination extends pulumi.CustomResource {
     eventDestination =
         registerOutput<ConfigurationSetEventDestinationEventDestination>(
           'eventDestination',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConfigurationSetEventDestinationEventDestination.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     eventDestinationName = registerOutput<String>('eventDestinationName');
     region = registerOutput<String>('region');

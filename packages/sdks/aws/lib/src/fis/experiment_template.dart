@@ -1102,13 +1102,34 @@ class ExperimentTemplate extends pulumi.CustomResource {
     description = registerOutput<String>('description');
     experimentOptions = registerOutput<ExperimentTemplateExperimentOptions>(
       'experimentOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExperimentTemplateExperimentOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     experimentReportConfiguration =
         registerOutput<ExperimentTemplateExperimentReportConfiguration?>(
           'experimentReportConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ExperimentTemplateExperimentReportConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     logConfiguration = registerOutput<ExperimentTemplateLogConfiguration?>(
       'logConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExperimentTemplateLogConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
@@ -1147,13 +1168,34 @@ class ExperimentTemplate extends pulumi.CustomResource {
     description = registerOutput<String>('description');
     experimentOptions = registerOutput<ExperimentTemplateExperimentOptions>(
       'experimentOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExperimentTemplateExperimentOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     experimentReportConfiguration =
         registerOutput<ExperimentTemplateExperimentReportConfiguration?>(
           'experimentReportConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ExperimentTemplateExperimentReportConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     logConfiguration = registerOutput<ExperimentTemplateLogConfiguration?>(
       'logConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExperimentTemplateLogConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');

@@ -2481,13 +2481,38 @@ class Budget extends pulumi.CustomResource {
       ) {
     accountId = registerOutput<String>('accountId');
     arn = registerOutput<String>('arn');
-    autoAdjustData = registerOutput<BudgetAutoAdjustData?>('autoAdjustData');
+    autoAdjustData = registerOutput<BudgetAutoAdjustData?>(
+      'autoAdjustData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BudgetAutoAdjustData.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     billingViewArn = registerOutput<String?>('billingViewArn');
     budgetType = registerOutput<String>('budgetType');
     costFilters = registerOutput<List<Map<String, dynamic>>>('costFilters');
-    costTypes = registerOutput<BudgetCostTypes>('costTypes');
+    costTypes = registerOutput<BudgetCostTypes>(
+      'costTypes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BudgetCostTypes.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     filterExpression = registerOutput<BudgetFilterExpression?>(
       'filterExpression',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BudgetFilterExpression.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     limitAmount = registerOutput<String>('limitAmount');
     limitUnit = registerOutput<String>('limitUnit');
@@ -2531,13 +2556,38 @@ class Budget extends pulumi.CustomResource {
        ) {
     accountId = registerOutput<String>('accountId');
     arn = registerOutput<String>('arn');
-    autoAdjustData = registerOutput<BudgetAutoAdjustData?>('autoAdjustData');
+    autoAdjustData = registerOutput<BudgetAutoAdjustData?>(
+      'autoAdjustData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BudgetAutoAdjustData.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     billingViewArn = registerOutput<String?>('billingViewArn');
     budgetType = registerOutput<String>('budgetType');
     costFilters = registerOutput<List<Map<String, dynamic>>>('costFilters');
-    costTypes = registerOutput<BudgetCostTypes>('costTypes');
+    costTypes = registerOutput<BudgetCostTypes>(
+      'costTypes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BudgetCostTypes.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     filterExpression = registerOutput<BudgetFilterExpression?>(
       'filterExpression',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BudgetFilterExpression.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     limitAmount = registerOutput<String>('limitAmount');
     limitUnit = registerOutput<String>('limitUnit');

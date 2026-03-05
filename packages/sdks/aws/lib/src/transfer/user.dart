@@ -486,7 +486,16 @@ class User extends pulumi.CustomResource {
     );
     homeDirectoryType = registerOutput<String?>('homeDirectoryType');
     policy = registerOutput<String?>('policy');
-    posixProfile = registerOutput<UserPosixProfile?>('posixProfile');
+    posixProfile = registerOutput<UserPosixProfile?>(
+      'posixProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserPosixProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     role = registerOutput<String>('role');
     serverId = registerOutput<String>('serverId');
@@ -521,7 +530,16 @@ class User extends pulumi.CustomResource {
     );
     homeDirectoryType = registerOutput<String?>('homeDirectoryType');
     policy = registerOutput<String?>('policy');
-    posixProfile = registerOutput<UserPosixProfile?>('posixProfile');
+    posixProfile = registerOutput<UserPosixProfile?>(
+      'posixProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserPosixProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     role = registerOutput<String>('role');
     serverId = registerOutput<String>('serverId');

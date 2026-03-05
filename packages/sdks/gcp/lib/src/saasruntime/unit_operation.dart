@@ -1335,14 +1335,32 @@ class UnitOperation extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    provision = registerOutput<UnitOperationProvision?>('provision');
+    provision = registerOutput<UnitOperationProvision?>(
+      'provision',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UnitOperationProvision.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
     unit = registerOutput<String>('unit');
     unitOperationId = registerOutput<String>('unitOperationId');
     updateTime = registerOutput<String>('updateTime');
-    upgrade = registerOutput<UnitOperationUpgrade?>('upgrade');
+    upgrade = registerOutput<UnitOperationUpgrade?>(
+      'upgrade',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UnitOperationUpgrade.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     waitForCompletion = registerOutput<bool?>('waitForCompletion');
   }
 
@@ -1384,14 +1402,32 @@ class UnitOperation extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    provision = registerOutput<UnitOperationProvision?>('provision');
+    provision = registerOutput<UnitOperationProvision?>(
+      'provision',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UnitOperationProvision.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     this.state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
     unit = registerOutput<String>('unit');
     unitOperationId = registerOutput<String>('unitOperationId');
     updateTime = registerOutput<String>('updateTime');
-    upgrade = registerOutput<UnitOperationUpgrade?>('upgrade');
+    upgrade = registerOutput<UnitOperationUpgrade?>(
+      'upgrade',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UnitOperationUpgrade.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     waitForCompletion = registerOutput<bool?>('waitForCompletion');
   }
 }

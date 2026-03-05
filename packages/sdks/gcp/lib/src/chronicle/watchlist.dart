@@ -429,6 +429,13 @@ class Watchlist extends pulumi.CustomResource {
     entityPopulationMechanism =
         registerOutput<WatchlistEntityPopulationMechanism>(
           'entityPopulationMechanism',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WatchlistEntityPopulationMechanism.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     instance = registerOutput<String>('instance');
     location = registerOutput<String>('location');
@@ -440,6 +447,13 @@ class Watchlist extends pulumi.CustomResource {
     watchlistUserPreferences =
         registerOutput<WatchlistWatchlistUserPreferences>(
           'watchlistUserPreferences',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WatchlistWatchlistUserPreferences.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 
@@ -473,6 +487,13 @@ class Watchlist extends pulumi.CustomResource {
     entityPopulationMechanism =
         registerOutput<WatchlistEntityPopulationMechanism>(
           'entityPopulationMechanism',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WatchlistEntityPopulationMechanism.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     instance = registerOutput<String>('instance');
     location = registerOutput<String>('location');
@@ -484,6 +505,13 @@ class Watchlist extends pulumi.CustomResource {
     watchlistUserPreferences =
         registerOutput<WatchlistWatchlistUserPreferences>(
           'watchlistUserPreferences',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WatchlistWatchlistUserPreferences.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

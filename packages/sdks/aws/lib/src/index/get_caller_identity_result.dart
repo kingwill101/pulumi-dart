@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getCallerIdentity.
 class GetCallerIdentityResult {
   /// AWS Account ID number of the account that owns or contains the calling entity.
   final String accountId;
+
   /// ARN associated with the calling entity.
   final String arn;
+
   /// Account ID number of the account that owns or contains the calling entity.
   final String id;
+
   /// Unique identifier of the calling entity.
   final String userId;
 
@@ -42,4 +44,3 @@ class GetCallerIdentityResult {
     );
   }
 }
-

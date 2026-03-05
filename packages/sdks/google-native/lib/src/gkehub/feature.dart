@@ -76,6 +76,13 @@ class Feature extends pulumi.CustomResource {
     fleetDefaultMemberConfig =
         registerOutput<CommonFleetDefaultMemberConfigSpecResponse>(
           'fleetDefaultMemberConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CommonFleetDefaultMemberConfigSpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
@@ -86,11 +93,36 @@ class Feature extends pulumi.CustomResource {
     requestId = registerOutput<String?>('requestId');
     resourceState = registerOutput<FeatureResourceStateResponse>(
       'resourceState',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FeatureResourceStateResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     scopeSpecs = registerOutput<Map<String, String>>('scopeSpecs');
     scopeStates = registerOutput<Map<String, String>>('scopeStates');
-    spec = registerOutput<CommonFeatureSpecResponse>('spec');
-    state = registerOutput<CommonFeatureStateResponse>('state');
+    spec = registerOutput<CommonFeatureSpecResponse>(
+      'spec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CommonFeatureSpecResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    state = registerOutput<CommonFeatureStateResponse>(
+      'state',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CommonFeatureStateResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     updateTime = registerOutput<String>('updateTime');
   }
 }

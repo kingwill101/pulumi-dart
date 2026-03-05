@@ -331,22 +331,90 @@ class RegistryTask extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     agentPoolName = registerOutput<String?>('agentPoolName');
-    agentSetting = registerOutput<RegistryTaskAgentSetting?>('agentSetting');
+    agentSetting = registerOutput<RegistryTaskAgentSetting?>(
+      'agentSetting',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegistryTaskAgentSetting.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     baseImageTrigger = registerOutput<RegistryTaskBaseImageTrigger?>(
       'baseImageTrigger',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegistryTaskBaseImageTrigger.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     containerRegistryId = registerOutput<String>('containerRegistryId');
-    dockerStep = registerOutput<RegistryTaskDockerStep?>('dockerStep');
+    dockerStep = registerOutput<RegistryTaskDockerStep?>(
+      'dockerStep',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegistryTaskDockerStep.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     enabled = registerOutput<bool?>('enabled');
-    encodedStep = registerOutput<RegistryTaskEncodedStep?>('encodedStep');
-    fileStep = registerOutput<RegistryTaskFileStep?>('fileStep');
-    identity = registerOutput<RegistryTaskIdentity?>('identity');
+    encodedStep = registerOutput<RegistryTaskEncodedStep?>(
+      'encodedStep',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegistryTaskEncodedStep.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    fileStep = registerOutput<RegistryTaskFileStep?>(
+      'fileStep',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegistryTaskFileStep.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    identity = registerOutput<RegistryTaskIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegistryTaskIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     isSystemTask = registerOutput<bool?>('isSystemTask');
     logTemplate = registerOutput<String?>('logTemplate');
     this.name = registerOutput<String>('name');
-    platform = registerOutput<RegistryTaskPlatform?>('platform');
+    platform = registerOutput<RegistryTaskPlatform?>(
+      'platform',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegistryTaskPlatform.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     registryCredential = registerOutput<RegistryTaskRegistryCredential?>(
       'registryCredential',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegistryTaskRegistryCredential.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sourceTriggers = registerOutput<List<Map<String, dynamic>>?>(
       'sourceTriggers',
@@ -382,22 +450,90 @@ class RegistryTask extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     agentPoolName = registerOutput<String?>('agentPoolName');
-    agentSetting = registerOutput<RegistryTaskAgentSetting?>('agentSetting');
+    agentSetting = registerOutput<RegistryTaskAgentSetting?>(
+      'agentSetting',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegistryTaskAgentSetting.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     baseImageTrigger = registerOutput<RegistryTaskBaseImageTrigger?>(
       'baseImageTrigger',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegistryTaskBaseImageTrigger.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     containerRegistryId = registerOutput<String>('containerRegistryId');
-    dockerStep = registerOutput<RegistryTaskDockerStep?>('dockerStep');
+    dockerStep = registerOutput<RegistryTaskDockerStep?>(
+      'dockerStep',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegistryTaskDockerStep.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     enabled = registerOutput<bool?>('enabled');
-    encodedStep = registerOutput<RegistryTaskEncodedStep?>('encodedStep');
-    fileStep = registerOutput<RegistryTaskFileStep?>('fileStep');
-    identity = registerOutput<RegistryTaskIdentity?>('identity');
+    encodedStep = registerOutput<RegistryTaskEncodedStep?>(
+      'encodedStep',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegistryTaskEncodedStep.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    fileStep = registerOutput<RegistryTaskFileStep?>(
+      'fileStep',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegistryTaskFileStep.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    identity = registerOutput<RegistryTaskIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegistryTaskIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     isSystemTask = registerOutput<bool?>('isSystemTask');
     logTemplate = registerOutput<String?>('logTemplate');
     this.name = registerOutput<String>('name');
-    platform = registerOutput<RegistryTaskPlatform?>('platform');
+    platform = registerOutput<RegistryTaskPlatform?>(
+      'platform',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegistryTaskPlatform.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     registryCredential = registerOutput<RegistryTaskRegistryCredential?>(
       'registryCredential',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegistryTaskRegistryCredential.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sourceTriggers = registerOutput<List<Map<String, dynamic>>?>(
       'sourceTriggers',

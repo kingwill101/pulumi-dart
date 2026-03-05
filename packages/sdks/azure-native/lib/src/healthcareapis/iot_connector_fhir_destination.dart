@@ -350,14 +350,32 @@ class IotConnectorFhirDestination extends pulumi.CustomResource {
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String?>('etag');
-    fhirMapping = registerOutput<IotMappingPropertiesResponse>('fhirMapping');
+    fhirMapping = registerOutput<IotMappingPropertiesResponse>(
+      'fhirMapping',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IotMappingPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     fhirServiceResourceId = registerOutput<String>('fhirServiceResourceId');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     resourceIdentityResolutionType = registerOutput<String>(
       'resourceIdentityResolutionType',
     );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

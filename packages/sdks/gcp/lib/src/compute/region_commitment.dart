@@ -480,6 +480,13 @@ class RegionCommitment extends pulumi.CustomResource {
     existingReservations = registerOutput<String>('existingReservations');
     licenseResource = registerOutput<RegionCommitmentLicenseResource?>(
       'licenseResource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegionCommitmentLicenseResource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     plan = registerOutput<String>('plan');
@@ -525,6 +532,13 @@ class RegionCommitment extends pulumi.CustomResource {
     existingReservations = registerOutput<String>('existingReservations');
     licenseResource = registerOutput<RegionCommitmentLicenseResource?>(
       'licenseResource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegionCommitmentLicenseResource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     plan = registerOutput<String>('plan');

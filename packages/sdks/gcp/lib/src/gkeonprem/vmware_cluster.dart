@@ -1745,18 +1745,55 @@ class VMwareCluster extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     antiAffinityGroups = registerOutput<VMwareClusterAntiAffinityGroups>(
       'antiAffinityGroups',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VMwareClusterAntiAffinityGroups.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     authorization = registerOutput<VMwareClusterAuthorization?>(
       'authorization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VMwareClusterAuthorization.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     autoRepairConfig = registerOutput<VMwareClusterAutoRepairConfig>(
       'autoRepairConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VMwareClusterAutoRepairConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     controlPlaneNode = registerOutput<VMwareClusterControlPlaneNode>(
       'controlPlaneNode',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VMwareClusterControlPlaneNode.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
-    dataplaneV2 = registerOutput<VMwareClusterDataplaneV2>('dataplaneV2');
+    dataplaneV2 = registerOutput<VMwareClusterDataplaneV2>(
+      'dataplaneV2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VMwareClusterDataplaneV2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     deleteTime = registerOutput<String>('deleteTime');
     description = registerOutput<String?>('description');
     disableBundledIngress = registerOutput<bool?>('disableBundledIngress');
@@ -1768,28 +1805,69 @@ class VMwareCluster extends pulumi.CustomResource {
     endpoint = registerOutput<String>('endpoint');
     etag = registerOutput<String>('etag');
     fleets = registerOutput<List<Map<String, dynamic>>>('fleets');
-    loadBalancer = registerOutput<VMwareClusterLoadBalancer?>('loadBalancer');
+    loadBalancer = registerOutput<VMwareClusterLoadBalancer?>(
+      'loadBalancer',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VMwareClusterLoadBalancer.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     localName = registerOutput<String>('localName');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     networkConfig = registerOutput<VMwareClusterNetworkConfig?>(
       'networkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VMwareClusterNetworkConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     onPremVersion = registerOutput<String>('onPremVersion');
     project = registerOutput<String>('project');
     reconciling = registerOutput<bool>('reconciling');
     state = registerOutput<String>('state');
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
-    storage = registerOutput<VMwareClusterStorage>('storage');
+    storage = registerOutput<VMwareClusterStorage>(
+      'storage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VMwareClusterStorage.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
     upgradePolicy = registerOutput<VMwareClusterUpgradePolicy?>(
       'upgradePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VMwareClusterUpgradePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     validationChecks = registerOutput<List<Map<String, dynamic>>>(
       'validationChecks',
     );
-    vcenter = registerOutput<VMwareClusterVcenter>('vcenter');
+    vcenter = registerOutput<VMwareClusterVcenter>(
+      'vcenter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VMwareClusterVcenter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vmTrackingEnabled = registerOutput<bool>('vmTrackingEnabled');
   }
 
@@ -1820,18 +1898,55 @@ class VMwareCluster extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     antiAffinityGroups = registerOutput<VMwareClusterAntiAffinityGroups>(
       'antiAffinityGroups',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VMwareClusterAntiAffinityGroups.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     authorization = registerOutput<VMwareClusterAuthorization?>(
       'authorization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VMwareClusterAuthorization.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     autoRepairConfig = registerOutput<VMwareClusterAutoRepairConfig>(
       'autoRepairConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VMwareClusterAutoRepairConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     controlPlaneNode = registerOutput<VMwareClusterControlPlaneNode>(
       'controlPlaneNode',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VMwareClusterControlPlaneNode.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
-    dataplaneV2 = registerOutput<VMwareClusterDataplaneV2>('dataplaneV2');
+    dataplaneV2 = registerOutput<VMwareClusterDataplaneV2>(
+      'dataplaneV2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VMwareClusterDataplaneV2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     deleteTime = registerOutput<String>('deleteTime');
     description = registerOutput<String?>('description');
     disableBundledIngress = registerOutput<bool?>('disableBundledIngress');
@@ -1843,28 +1958,69 @@ class VMwareCluster extends pulumi.CustomResource {
     endpoint = registerOutput<String>('endpoint');
     etag = registerOutput<String>('etag');
     fleets = registerOutput<List<Map<String, dynamic>>>('fleets');
-    loadBalancer = registerOutput<VMwareClusterLoadBalancer?>('loadBalancer');
+    loadBalancer = registerOutput<VMwareClusterLoadBalancer?>(
+      'loadBalancer',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VMwareClusterLoadBalancer.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     localName = registerOutput<String>('localName');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     networkConfig = registerOutput<VMwareClusterNetworkConfig?>(
       'networkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VMwareClusterNetworkConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     onPremVersion = registerOutput<String>('onPremVersion');
     project = registerOutput<String>('project');
     reconciling = registerOutput<bool>('reconciling');
     this.state = registerOutput<String>('state');
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
-    storage = registerOutput<VMwareClusterStorage>('storage');
+    storage = registerOutput<VMwareClusterStorage>(
+      'storage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VMwareClusterStorage.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
     upgradePolicy = registerOutput<VMwareClusterUpgradePolicy?>(
       'upgradePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VMwareClusterUpgradePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     validationChecks = registerOutput<List<Map<String, dynamic>>>(
       'validationChecks',
     );
-    vcenter = registerOutput<VMwareClusterVcenter>('vcenter');
+    vcenter = registerOutput<VMwareClusterVcenter>(
+      'vcenter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VMwareClusterVcenter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vmTrackingEnabled = registerOutput<bool>('vmTrackingEnabled');
   }
 }

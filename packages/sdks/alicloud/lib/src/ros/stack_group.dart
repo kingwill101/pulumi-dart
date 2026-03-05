@@ -204,6 +204,13 @@ class StackGroup extends pulumi.CustomResource {
     administrationRoleName = registerOutput<String>('administrationRoleName');
     autoDeployment = registerOutput<StackGroupAutoDeployment?>(
       'autoDeployment',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StackGroupAutoDeployment.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     capabilities = registerOutput<List<String>?>('capabilities');
     description = registerOutput<String?>('description');
@@ -247,6 +254,13 @@ class StackGroup extends pulumi.CustomResource {
     administrationRoleName = registerOutput<String>('administrationRoleName');
     autoDeployment = registerOutput<StackGroupAutoDeployment?>(
       'autoDeployment',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StackGroupAutoDeployment.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     capabilities = registerOutput<List<String>?>('capabilities');
     description = registerOutput<String?>('description');

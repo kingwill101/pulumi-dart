@@ -75,11 +75,25 @@ class HostSecurityReport extends pulumi.CustomResource {
     queryParams =
         registerOutput<GoogleCloudApigeeV1SecurityReportMetadataResponse>(
           'queryParams',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudApigeeV1SecurityReportMetadataResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     reportDefinitionId = registerOutput<String>('reportDefinitionId');
     result =
         registerOutput<GoogleCloudApigeeV1SecurityReportResultMetadataResponse>(
           'result',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudApigeeV1SecurityReportResultMetadataResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     resultFileSize = registerOutput<String>('resultFileSize');
     resultRows = registerOutput<String>('resultRows');

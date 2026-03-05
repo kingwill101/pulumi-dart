@@ -462,6 +462,13 @@ class AgentDataSource extends pulumi.CustomResource {
     dataSourceConfiguration =
         registerOutput<AgentDataSourceDataSourceConfiguration>(
           'dataSourceConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AgentDataSourceDataSourceConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dataSourceId = registerOutput<String>('dataSourceId');
     description = registerOutput<String?>('description');
@@ -471,11 +478,34 @@ class AgentDataSource extends pulumi.CustomResource {
     serverSideEncryptionConfiguration =
         registerOutput<AgentDataSourceServerSideEncryptionConfiguration?>(
           'serverSideEncryptionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AgentDataSourceServerSideEncryptionConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    timeouts = registerOutput<AgentDataSourceTimeouts?>('timeouts');
+    timeouts = registerOutput<AgentDataSourceTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentDataSourceTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vectorIngestionConfiguration =
         registerOutput<AgentDataSourceVectorIngestionConfiguration?>(
           'vectorIngestionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AgentDataSourceVectorIngestionConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 
@@ -506,6 +536,13 @@ class AgentDataSource extends pulumi.CustomResource {
     dataSourceConfiguration =
         registerOutput<AgentDataSourceDataSourceConfiguration>(
           'dataSourceConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AgentDataSourceDataSourceConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dataSourceId = registerOutput<String>('dataSourceId');
     description = registerOutput<String?>('description');
@@ -515,11 +552,34 @@ class AgentDataSource extends pulumi.CustomResource {
     serverSideEncryptionConfiguration =
         registerOutput<AgentDataSourceServerSideEncryptionConfiguration?>(
           'serverSideEncryptionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AgentDataSourceServerSideEncryptionConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    timeouts = registerOutput<AgentDataSourceTimeouts?>('timeouts');
+    timeouts = registerOutput<AgentDataSourceTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentDataSourceTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vectorIngestionConfiguration =
         registerOutput<AgentDataSourceVectorIngestionConfiguration?>(
           'vectorIngestionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AgentDataSourceVectorIngestionConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

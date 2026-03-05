@@ -36,8 +36,26 @@ class ClusterRoleBindingResource extends pulumi.CustomResource {
        ) {
     apiVersion = registerOutput<String>('apiVersion');
     kind = registerOutput<String>('kind');
-    metadata = registerOutput<ObjectMeta>('metadata');
-    roleRef = registerOutput<RoleRefRbacAuthorizationK8sIoV1alpha1>('roleRef');
+    metadata = registerOutput<ObjectMeta>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    roleRef = registerOutput<RoleRefRbacAuthorizationK8sIoV1alpha1>(
+      'roleRef',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RoleRefRbacAuthorizationK8sIoV1alpha1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     subjects = registerOutput<List<Map<String, dynamic>>>('subjects');
   }
 }

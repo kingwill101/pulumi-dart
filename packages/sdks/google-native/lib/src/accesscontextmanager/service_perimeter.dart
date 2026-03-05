@@ -45,8 +45,26 @@ class ServicePerimeter extends pulumi.CustomResource {
     description = registerOutput<String>('description');
     this.name = registerOutput<String>('name');
     perimeterType = registerOutput<String>('perimeterType');
-    spec = registerOutput<ServicePerimeterConfigResponse>('spec');
-    status = registerOutput<ServicePerimeterConfigResponse>('status');
+    spec = registerOutput<ServicePerimeterConfigResponse>(
+      'spec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServicePerimeterConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    status = registerOutput<ServicePerimeterConfigResponse>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServicePerimeterConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     title = registerOutput<String>('title');
     useExplicitDryRunSpec = registerOutput<bool>('useExplicitDryRunSpec');
   }

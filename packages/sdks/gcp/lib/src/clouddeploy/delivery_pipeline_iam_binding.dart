@@ -28,6 +28,13 @@ class DeliveryPipelineIamBinding extends pulumi.CustomResource {
        ) {
     condition = registerOutput<DeliveryPipelineIamBindingCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeliveryPipelineIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
@@ -62,6 +69,13 @@ class DeliveryPipelineIamBinding extends pulumi.CustomResource {
        ) {
     condition = registerOutput<DeliveryPipelineIamBindingCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeliveryPipelineIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');

@@ -292,6 +292,13 @@ class PrivateConnection extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     vpcPeeringConfig = registerOutput<PrivateConnectionVpcPeeringConfig>(
       'vpcPeeringConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PrivateConnectionVpcPeeringConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -331,6 +338,13 @@ class PrivateConnection extends pulumi.CustomResource {
     this.state = registerOutput<String>('state');
     vpcPeeringConfig = registerOutput<PrivateConnectionVpcPeeringConfig>(
       'vpcPeeringConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PrivateConnectionVpcPeeringConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

@@ -70,21 +70,58 @@ class PatchDeploymentOsconfigV1beta extends pulumi.CustomResource {
     duration = registerOutput<String>('duration');
     instanceFilter = registerOutput<PatchInstanceFilterResponseOsconfigV1beta>(
       'instanceFilter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PatchInstanceFilterResponseOsconfigV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     lastExecuteTime = registerOutput<String>('lastExecuteTime');
     this.name = registerOutput<String>('name');
     oneTimeSchedule = registerOutput<OneTimeScheduleResponseOsconfigV1beta>(
       'oneTimeSchedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OneTimeScheduleResponseOsconfigV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     patchConfig = registerOutput<PatchConfigResponseOsconfigV1beta>(
       'patchConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PatchConfigResponseOsconfigV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     patchDeploymentId = registerOutput<String>('patchDeploymentId');
     project = registerOutput<String>('project');
     recurringSchedule = registerOutput<RecurringScheduleResponseOsconfigV1beta>(
       'recurringSchedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RecurringScheduleResponseOsconfigV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    rollout = registerOutput<PatchRolloutResponseOsconfigV1beta>('rollout');
+    rollout = registerOutput<PatchRolloutResponseOsconfigV1beta>(
+      'rollout',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PatchRolloutResponseOsconfigV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
   }

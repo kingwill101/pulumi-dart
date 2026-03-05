@@ -314,6 +314,13 @@ class Retrohunt extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     processInterval = registerOutput<RetrohuntProcessInterval>(
       'processInterval',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RetrohuntProcessInterval.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     progressPercentage = registerOutput<double>('progressPercentage');
     project = registerOutput<String>('project');
@@ -353,6 +360,13 @@ class Retrohunt extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     processInterval = registerOutput<RetrohuntProcessInterval>(
       'processInterval',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RetrohuntProcessInterval.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     progressPercentage = registerOutput<double>('progressPercentage');
     project = registerOutput<String>('project');

@@ -52,6 +52,13 @@ class VersionDialogflowV3beta1 extends pulumi.CustomResource {
     nluSettings =
         registerOutput<GoogleCloudDialogflowCxV3beta1NluSettingsResponse>(
           'nluSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowCxV3beta1NluSettingsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     project = registerOutput<String>('project');
     state = registerOutput<String>('state');

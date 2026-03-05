@@ -845,6 +845,13 @@ class BucketAclV2 extends pulumi.CustomResource {
        ) {
     accessControlPolicy = registerOutput<BucketAclV2AccessControlPolicy>(
       'accessControlPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketAclV2AccessControlPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     acl = registerOutput<String?>('acl');
     bucket = registerOutput<String>('bucket');
@@ -877,6 +884,13 @@ class BucketAclV2 extends pulumi.CustomResource {
        ) {
     accessControlPolicy = registerOutput<BucketAclV2AccessControlPolicy>(
       'accessControlPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketAclV2AccessControlPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     acl = registerOutput<String?>('acl');
     bucket = registerOutput<String>('bucket');

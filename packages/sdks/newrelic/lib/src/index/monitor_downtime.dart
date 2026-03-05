@@ -1109,9 +1109,27 @@ class MonitorDowntime extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     accountId = registerOutput<String>('accountId');
-    endRepeat = registerOutput<MonitorDowntimeEndRepeat?>('endRepeat');
+    endRepeat = registerOutput<MonitorDowntimeEndRepeat?>(
+      'endRepeat',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MonitorDowntimeEndRepeat.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     endTime = registerOutput<String>('endTime');
-    frequency = registerOutput<MonitorDowntimeFrequency?>('frequency');
+    frequency = registerOutput<MonitorDowntimeFrequency?>(
+      'frequency',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MonitorDowntimeFrequency.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     maintenanceDays = registerOutput<List<String>?>('maintenanceDays');
     mode = registerOutput<String>('mode');
     monitorGuids = registerOutput<List<String>?>('monitorGuids');
@@ -1144,9 +1162,27 @@ class MonitorDowntime extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     accountId = registerOutput<String>('accountId');
-    endRepeat = registerOutput<MonitorDowntimeEndRepeat?>('endRepeat');
+    endRepeat = registerOutput<MonitorDowntimeEndRepeat?>(
+      'endRepeat',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MonitorDowntimeEndRepeat.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     endTime = registerOutput<String>('endTime');
-    frequency = registerOutput<MonitorDowntimeFrequency?>('frequency');
+    frequency = registerOutput<MonitorDowntimeFrequency?>(
+      'frequency',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MonitorDowntimeFrequency.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     maintenanceDays = registerOutput<List<String>?>('maintenanceDays');
     mode = registerOutput<String>('mode');
     monitorGuids = registerOutput<List<String>?>('monitorGuids');

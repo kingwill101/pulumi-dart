@@ -1,22 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getUserAssignedIdentity.
 class GetUserAssignedIdentityResult {
   /// The Client ID of the User Assigned Identity.
   final String clientId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The isolation scope for the User Assigned Identity.
   final String isolationScope;
+
   /// The Azure location where the User Assigned Identity exists.
   final String location;
   final String name;
+
   /// The Service Principal ID of the User Assigned Identity.
   final String principalId;
   final String resourceGroupName;
+
   /// A mapping of tags assigned to the User Assigned Identity.
   final Map<String, String> tags;
+
   /// The Tenant ID of the User Assigned Identity.
   final String tenantId;
 
@@ -70,4 +75,3 @@ class GetUserAssignedIdentityResult {
     );
   }
 }
-

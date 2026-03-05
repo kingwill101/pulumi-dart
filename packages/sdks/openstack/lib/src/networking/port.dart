@@ -763,7 +763,16 @@ class Port extends pulumi.CustomResource {
     allowedAddressPairs = registerOutput<List<Map<String, dynamic>>?>(
       'allowedAddressPairs',
     );
-    binding = registerOutput<PortBinding>('binding');
+    binding = registerOutput<PortBinding>(
+      'binding',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PortBinding.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     deviceId = registerOutput<String>('deviceId');
     deviceOwner = registerOutput<String>('deviceOwner');
@@ -815,7 +824,16 @@ class Port extends pulumi.CustomResource {
     allowedAddressPairs = registerOutput<List<Map<String, dynamic>>?>(
       'allowedAddressPairs',
     );
-    binding = registerOutput<PortBinding>('binding');
+    binding = registerOutput<PortBinding>(
+      'binding',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PortBinding.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     deviceId = registerOutput<String>('deviceId');
     deviceOwner = registerOutput<String>('deviceOwner');

@@ -204,8 +204,24 @@ class VirtualHubIpConfiguration extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     publicIPAddress = registerOutput<PublicIPAddressResponse?>(
       'publicIPAddress',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PublicIPAddressResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    subnet = registerOutput<SubnetResponse?>('subnet');
+    subnet = registerOutput<SubnetResponse?>(
+      'subnet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubnetResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

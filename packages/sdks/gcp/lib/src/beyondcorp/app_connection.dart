@@ -649,11 +649,27 @@ class AppConnection extends pulumi.CustomResource {
        ) {
     applicationEndpoint = registerOutput<AppConnectionApplicationEndpoint>(
       'applicationEndpoint',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppConnectionApplicationEndpoint.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     connectors = registerOutput<List<String>?>('connectors');
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    gateway = registerOutput<AppConnectionGateway>('gateway');
+    gateway = registerOutput<AppConnectionGateway>(
+      'gateway',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppConnectionGateway.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -687,11 +703,27 @@ class AppConnection extends pulumi.CustomResource {
        ) {
     applicationEndpoint = registerOutput<AppConnectionApplicationEndpoint>(
       'applicationEndpoint',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppConnectionApplicationEndpoint.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     connectors = registerOutput<List<String>?>('connectors');
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    gateway = registerOutput<AppConnectionGateway>('gateway');
+    gateway = registerOutput<AppConnectionGateway>(
+      'gateway',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppConnectionGateway.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

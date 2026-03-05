@@ -44,7 +44,16 @@ class DefaultSupportedIdpConfig extends pulumi.CustomResource {
     appleSignInConfig =
         registerOutput<
           GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponse
-        >('appleSignInConfig');
+        >(
+          'appleSignInConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     clientId = registerOutput<String>('clientId');
     clientSecret = registerOutput<String>('clientSecret');
     enabled = registerOutput<bool>('enabled');

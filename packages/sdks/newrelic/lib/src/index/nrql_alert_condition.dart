@@ -1873,7 +1873,16 @@ class NrqlAlertCondition extends pulumi.CustomResource {
     closeViolationsOnExpiration = registerOutput<bool?>(
       'closeViolationsOnExpiration',
     );
-    critical = registerOutput<NrqlAlertConditionCritical?>('critical');
+    critical = registerOutput<NrqlAlertConditionCritical?>(
+      'critical',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NrqlAlertConditionCritical.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
     entityGuid = registerOutput<String>('entityGuid');
@@ -1885,13 +1894,29 @@ class NrqlAlertCondition extends pulumi.CustomResource {
       'ignoreOnExpectedTermination',
     );
     this.name = registerOutput<String>('name');
-    nrql = registerOutput<NrqlAlertConditionNrql>('nrql');
+    nrql = registerOutput<NrqlAlertConditionNrql>(
+      'nrql',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NrqlAlertConditionNrql.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     openViolationOnExpiration = registerOutput<bool?>(
       'openViolationOnExpiration',
     );
     outlierConfiguration =
         registerOutput<NrqlAlertConditionOutlierConfiguration?>(
           'outlierConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NrqlAlertConditionOutlierConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     policyId = registerOutput<String>('policyId');
     runbookUrl = registerOutput<String?>('runbookUrl');
@@ -1905,7 +1930,16 @@ class NrqlAlertCondition extends pulumi.CustomResource {
     violationTimeLimitSeconds = registerOutput<int?>(
       'violationTimeLimitSeconds',
     );
-    warning = registerOutput<NrqlAlertConditionWarning?>('warning');
+    warning = registerOutput<NrqlAlertConditionWarning?>(
+      'warning',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NrqlAlertConditionWarning.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [NrqlAlertCondition] resource's state with the given [name] and [id].
@@ -1940,7 +1974,16 @@ class NrqlAlertCondition extends pulumi.CustomResource {
     closeViolationsOnExpiration = registerOutput<bool?>(
       'closeViolationsOnExpiration',
     );
-    critical = registerOutput<NrqlAlertConditionCritical?>('critical');
+    critical = registerOutput<NrqlAlertConditionCritical?>(
+      'critical',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NrqlAlertConditionCritical.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
     entityGuid = registerOutput<String>('entityGuid');
@@ -1952,13 +1995,29 @@ class NrqlAlertCondition extends pulumi.CustomResource {
       'ignoreOnExpectedTermination',
     );
     this.name = registerOutput<String>('name');
-    nrql = registerOutput<NrqlAlertConditionNrql>('nrql');
+    nrql = registerOutput<NrqlAlertConditionNrql>(
+      'nrql',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NrqlAlertConditionNrql.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     openViolationOnExpiration = registerOutput<bool?>(
       'openViolationOnExpiration',
     );
     outlierConfiguration =
         registerOutput<NrqlAlertConditionOutlierConfiguration?>(
           'outlierConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NrqlAlertConditionOutlierConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     policyId = registerOutput<String>('policyId');
     runbookUrl = registerOutput<String?>('runbookUrl');
@@ -1972,6 +2031,15 @@ class NrqlAlertCondition extends pulumi.CustomResource {
     violationTimeLimitSeconds = registerOutput<int?>(
       'violationTimeLimitSeconds',
     );
-    warning = registerOutput<NrqlAlertConditionWarning?>('warning');
+    warning = registerOutput<NrqlAlertConditionWarning?>(
+      'warning',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NrqlAlertConditionWarning.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

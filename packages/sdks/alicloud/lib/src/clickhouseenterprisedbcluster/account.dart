@@ -412,7 +412,16 @@ class Account extends pulumi.CustomResource {
     accountType = registerOutput<String>('accountType');
     dbInstanceId = registerOutput<String>('dbInstanceId');
     description = registerOutput<String?>('description');
-    dmlAuthSetting = registerOutput<AccountDmlAuthSetting?>('dmlAuthSetting');
+    dmlAuthSetting = registerOutput<AccountDmlAuthSetting?>(
+      'dmlAuthSetting',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountDmlAuthSetting.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     password = registerOutput<String>('password');
   }
 
@@ -443,7 +452,16 @@ class Account extends pulumi.CustomResource {
     accountType = registerOutput<String>('accountType');
     dbInstanceId = registerOutput<String>('dbInstanceId');
     description = registerOutput<String?>('description');
-    dmlAuthSetting = registerOutput<AccountDmlAuthSetting?>('dmlAuthSetting');
+    dmlAuthSetting = registerOutput<AccountDmlAuthSetting?>(
+      'dmlAuthSetting',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountDmlAuthSetting.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     password = registerOutput<String>('password');
   }
 }

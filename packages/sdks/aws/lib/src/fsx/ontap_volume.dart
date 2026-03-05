@@ -368,6 +368,13 @@ class OntapVolume extends pulumi.CustomResource {
        ) {
     aggregateConfiguration = registerOutput<OntapVolumeAggregateConfiguration?>(
       'aggregateConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OntapVolumeAggregateConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     arn = registerOutput<String>('arn');
     bypassSnaplockEnterpriseRetention = registerOutput<bool?>(
@@ -387,6 +394,13 @@ class OntapVolume extends pulumi.CustomResource {
     skipFinalBackup = registerOutput<bool?>('skipFinalBackup');
     snaplockConfiguration = registerOutput<OntapVolumeSnaplockConfiguration?>(
       'snaplockConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OntapVolumeSnaplockConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     snapshotPolicy = registerOutput<String>('snapshotPolicy');
     storageEfficiencyEnabled = registerOutput<bool?>(
@@ -395,7 +409,16 @@ class OntapVolume extends pulumi.CustomResource {
     storageVirtualMachineId = registerOutput<String>('storageVirtualMachineId');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    tieringPolicy = registerOutput<OntapVolumeTieringPolicy?>('tieringPolicy');
+    tieringPolicy = registerOutput<OntapVolumeTieringPolicy?>(
+      'tieringPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OntapVolumeTieringPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     uuid = registerOutput<String>('uuid');
     volumeStyle = registerOutput<String>('volumeStyle');
     volumeType = registerOutput<String?>('volumeType');
@@ -426,6 +449,13 @@ class OntapVolume extends pulumi.CustomResource {
        ) {
     aggregateConfiguration = registerOutput<OntapVolumeAggregateConfiguration?>(
       'aggregateConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OntapVolumeAggregateConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     arn = registerOutput<String>('arn');
     bypassSnaplockEnterpriseRetention = registerOutput<bool?>(
@@ -445,6 +475,13 @@ class OntapVolume extends pulumi.CustomResource {
     skipFinalBackup = registerOutput<bool?>('skipFinalBackup');
     snaplockConfiguration = registerOutput<OntapVolumeSnaplockConfiguration?>(
       'snaplockConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OntapVolumeSnaplockConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     snapshotPolicy = registerOutput<String>('snapshotPolicy');
     storageEfficiencyEnabled = registerOutput<bool?>(
@@ -453,7 +490,16 @@ class OntapVolume extends pulumi.CustomResource {
     storageVirtualMachineId = registerOutput<String>('storageVirtualMachineId');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    tieringPolicy = registerOutput<OntapVolumeTieringPolicy?>('tieringPolicy');
+    tieringPolicy = registerOutput<OntapVolumeTieringPolicy?>(
+      'tieringPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OntapVolumeTieringPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     uuid = registerOutput<String>('uuid');
     volumeStyle = registerOutput<String>('volumeStyle');
     volumeType = registerOutput<String?>('volumeType');

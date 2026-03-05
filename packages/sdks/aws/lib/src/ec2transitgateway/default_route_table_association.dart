@@ -134,6 +134,13 @@ class DefaultRouteTableAssociation extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     timeouts = registerOutput<DefaultRouteTableAssociationTimeouts?>(
       'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DefaultRouteTableAssociationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     transitGatewayId = registerOutput<String>('transitGatewayId');
     transitGatewayRouteTableId = registerOutput<String>(
@@ -170,6 +177,13 @@ class DefaultRouteTableAssociation extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     timeouts = registerOutput<DefaultRouteTableAssociationTimeouts?>(
       'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DefaultRouteTableAssociationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     transitGatewayId = registerOutput<String>('transitGatewayId');
     transitGatewayRouteTableId = registerOutput<String>(

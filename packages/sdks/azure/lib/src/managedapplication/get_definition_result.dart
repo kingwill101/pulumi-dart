@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getDefinition.
 class GetDefinitionResult {
   /// The provider-assigned unique ID for this managed resource.
@@ -39,4 +38,3 @@ class GetDefinitionResult {
     );
   }
 }
-

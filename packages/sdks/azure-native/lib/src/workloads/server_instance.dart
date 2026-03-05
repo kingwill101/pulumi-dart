@@ -199,20 +199,52 @@ class ServerInstance extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     configurationData = registerOutput<ConfigurationDataResponse>(
       'configurationData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigurationDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    errors = registerOutput<SAPMigrateErrorResponse>('errors');
+    errors = registerOutput<SAPMigrateErrorResponse>(
+      'errors',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SAPMigrateErrorResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     instanceSid = registerOutput<String>('instanceSid');
     this.name = registerOutput<String>('name');
     operatingSystem = registerOutput<String>('operatingSystem');
     performanceData = registerOutput<ExcelPerformanceDataResponse>(
       'performanceData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExcelPerformanceDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     provisioningState = registerOutput<String>('provisioningState');
     sapInstanceType = registerOutput<String>('sapInstanceType');
     sapProduct = registerOutput<String>('sapProduct');
     sapProductVersion = registerOutput<String>('sapProductVersion');
     serverName = registerOutput<String>('serverName');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

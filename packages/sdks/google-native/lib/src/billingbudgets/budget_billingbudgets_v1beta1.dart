@@ -52,15 +52,36 @@ class BudgetBillingbudgetsV1beta1 extends pulumi.CustomResource {
     allUpdatesRule =
         registerOutput<GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse>(
           'allUpdatesRule',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     amount =
         registerOutput<GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse>(
           'amount',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     billingAccountId = registerOutput<String>('billingAccountId');
     budgetFilter =
         registerOutput<GoogleCloudBillingBudgetsV1beta1FilterResponse>(
           'budgetFilter',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudBillingBudgetsV1beta1FilterResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String>('etag');

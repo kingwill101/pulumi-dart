@@ -304,7 +304,16 @@ class StandardWebTest extends pulumi.CustomResource {
     geoLocations = registerOutput<List<String>>('geoLocations');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    request = registerOutput<StandardWebTestRequest>('request');
+    request = registerOutput<StandardWebTestRequest>(
+      'request',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StandardWebTestRequest.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     retryEnabled = registerOutput<bool?>('retryEnabled');
     syntheticMonitorId = registerOutput<String>('syntheticMonitorId');
@@ -312,6 +321,13 @@ class StandardWebTest extends pulumi.CustomResource {
     timeout = registerOutput<int?>('timeout');
     validationRules = registerOutput<StandardWebTestValidationRules?>(
       'validationRules',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StandardWebTestValidationRules.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -345,7 +361,16 @@ class StandardWebTest extends pulumi.CustomResource {
     geoLocations = registerOutput<List<String>>('geoLocations');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    request = registerOutput<StandardWebTestRequest>('request');
+    request = registerOutput<StandardWebTestRequest>(
+      'request',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StandardWebTestRequest.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     retryEnabled = registerOutput<bool?>('retryEnabled');
     syntheticMonitorId = registerOutput<String>('syntheticMonitorId');
@@ -353,6 +378,13 @@ class StandardWebTest extends pulumi.CustomResource {
     timeout = registerOutput<int?>('timeout');
     validationRules = registerOutput<StandardWebTestValidationRules?>(
       'validationRules',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StandardWebTestValidationRules.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

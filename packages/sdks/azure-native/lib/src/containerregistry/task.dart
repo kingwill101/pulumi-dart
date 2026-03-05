@@ -2294,24 +2294,85 @@ class Task extends pulumi.CustomResource {
       ) {
     agentConfiguration = registerOutput<AgentPropertiesResponse?>(
       'agentConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     agentPoolName = registerOutput<String?>('agentPoolName');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     creationDate = registerOutput<String>('creationDate');
-    credentials = registerOutput<CredentialsResponse?>('credentials');
-    identity = registerOutput<IdentityPropertiesResponse?>('identity');
+    credentials = registerOutput<CredentialsResponse?>(
+      'credentials',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CredentialsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    identity = registerOutput<IdentityPropertiesResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IdentityPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     isSystemTask = registerOutput<bool?>('isSystemTask');
     location = registerOutput<String>('location');
     logTemplate = registerOutput<String?>('logTemplate');
     this.name = registerOutput<String>('name');
-    platform = registerOutput<PlatformPropertiesResponse?>('platform');
+    platform = registerOutput<PlatformPropertiesResponse?>(
+      'platform',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PlatformPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     provisioningState = registerOutput<String>('provisioningState');
     status = registerOutput<String?>('status');
-    step = registerOutput<DockerBuildStepResponse?>('step');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    step = registerOutput<DockerBuildStepResponse?>(
+      'step',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DockerBuildStepResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     timeout = registerOutput<int?>('timeout');
-    trigger = registerOutput<TriggerPropertiesResponse?>('trigger');
+    trigger = registerOutput<TriggerPropertiesResponse?>(
+      'trigger',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TriggerPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

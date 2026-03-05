@@ -179,9 +179,25 @@ class OpenZfsVolume extends pulumi.CustomResource {
     dataCompressionType = registerOutput<String?>('dataCompressionType');
     deleteVolumeOptions = registerOutput<String?>('deleteVolumeOptions');
     this.name = registerOutput<String>('name');
-    nfsExports = registerOutput<OpenZfsVolumeNfsExports?>('nfsExports');
+    nfsExports = registerOutput<OpenZfsVolumeNfsExports?>(
+      'nfsExports',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OpenZfsVolumeNfsExports.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     originSnapshot = registerOutput<OpenZfsVolumeOriginSnapshot?>(
       'originSnapshot',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OpenZfsVolumeOriginSnapshot.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     parentVolumeId = registerOutput<String>('parentVolumeId');
     readOnly = registerOutput<bool>('readOnly');
@@ -227,9 +243,25 @@ class OpenZfsVolume extends pulumi.CustomResource {
     dataCompressionType = registerOutput<String?>('dataCompressionType');
     deleteVolumeOptions = registerOutput<String?>('deleteVolumeOptions');
     this.name = registerOutput<String>('name');
-    nfsExports = registerOutput<OpenZfsVolumeNfsExports?>('nfsExports');
+    nfsExports = registerOutput<OpenZfsVolumeNfsExports?>(
+      'nfsExports',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OpenZfsVolumeNfsExports.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     originSnapshot = registerOutput<OpenZfsVolumeOriginSnapshot?>(
       'originSnapshot',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OpenZfsVolumeOriginSnapshot.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     parentVolumeId = registerOutput<String>('parentVolumeId');
     readOnly = registerOutput<bool>('readOnly');

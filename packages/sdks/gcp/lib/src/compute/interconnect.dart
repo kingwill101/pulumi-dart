@@ -378,6 +378,13 @@ class Interconnect extends pulumi.CustomResource {
     applicationAwareInterconnect =
         registerOutput<InterconnectApplicationAwareInterconnect?>(
           'applicationAwareInterconnect',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InterconnectApplicationAwareInterconnect.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     availableFeatures = registerOutput<List<String>>('availableFeatures');
     circuitInfos = registerOutput<List<Map<String, dynamic>>>('circuitInfos');
@@ -399,12 +406,30 @@ class Interconnect extends pulumi.CustomResource {
     labels = registerOutput<Map<String, String>?>('labels');
     linkType = registerOutput<String>('linkType');
     location = registerOutput<String>('location');
-    macsec = registerOutput<InterconnectMacsec?>('macsec');
+    macsec = registerOutput<InterconnectMacsec?>(
+      'macsec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InterconnectMacsec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     macsecEnabled = registerOutput<bool?>('macsecEnabled');
     this.name = registerOutput<String>('name');
     nocContactEmail = registerOutput<String?>('nocContactEmail');
     operationalStatus = registerOutput<String>('operationalStatus');
-    params = registerOutput<InterconnectParams?>('params');
+    params = registerOutput<InterconnectParams?>(
+      'params',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InterconnectParams.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     peerIpAddress = registerOutput<String>('peerIpAddress');
     project = registerOutput<String>('project');
     provisionedLinkCount = registerOutput<int>('provisionedLinkCount');
@@ -445,6 +470,13 @@ class Interconnect extends pulumi.CustomResource {
     applicationAwareInterconnect =
         registerOutput<InterconnectApplicationAwareInterconnect?>(
           'applicationAwareInterconnect',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InterconnectApplicationAwareInterconnect.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     availableFeatures = registerOutput<List<String>>('availableFeatures');
     circuitInfos = registerOutput<List<Map<String, dynamic>>>('circuitInfos');
@@ -466,12 +498,30 @@ class Interconnect extends pulumi.CustomResource {
     labels = registerOutput<Map<String, String>?>('labels');
     linkType = registerOutput<String>('linkType');
     location = registerOutput<String>('location');
-    macsec = registerOutput<InterconnectMacsec?>('macsec');
+    macsec = registerOutput<InterconnectMacsec?>(
+      'macsec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InterconnectMacsec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     macsecEnabled = registerOutput<bool?>('macsecEnabled');
     this.name = registerOutput<String>('name');
     nocContactEmail = registerOutput<String?>('nocContactEmail');
     operationalStatus = registerOutput<String>('operationalStatus');
-    params = registerOutput<InterconnectParams?>('params');
+    params = registerOutput<InterconnectParams?>(
+      'params',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InterconnectParams.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     peerIpAddress = registerOutput<String>('peerIpAddress');
     project = registerOutput<String>('project');
     provisionedLinkCount = registerOutput<int>('provisionedLinkCount');

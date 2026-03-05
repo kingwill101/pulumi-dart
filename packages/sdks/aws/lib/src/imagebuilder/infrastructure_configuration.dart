@@ -318,14 +318,37 @@ class InfrastructureConfiguration extends pulumi.CustomResource {
     instanceMetadataOptions =
         registerOutput<InfrastructureConfigurationInstanceMetadataOptions?>(
           'instanceMetadataOptions',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InfrastructureConfigurationInstanceMetadataOptions.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     instanceProfileName = registerOutput<String>('instanceProfileName');
     instanceTypes = registerOutput<List<String>?>('instanceTypes');
     keyPair = registerOutput<String?>('keyPair');
-    logging = registerOutput<InfrastructureConfigurationLogging?>('logging');
+    logging = registerOutput<InfrastructureConfigurationLogging?>(
+      'logging',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InfrastructureConfigurationLogging.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     placement = registerOutput<InfrastructureConfigurationPlacement?>(
       'placement',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InfrastructureConfigurationPlacement.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     resourceTags = registerOutput<Map<String, String>?>('resourceTags');
@@ -369,14 +392,37 @@ class InfrastructureConfiguration extends pulumi.CustomResource {
     instanceMetadataOptions =
         registerOutput<InfrastructureConfigurationInstanceMetadataOptions?>(
           'instanceMetadataOptions',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InfrastructureConfigurationInstanceMetadataOptions.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     instanceProfileName = registerOutput<String>('instanceProfileName');
     instanceTypes = registerOutput<List<String>?>('instanceTypes');
     keyPair = registerOutput<String?>('keyPair');
-    logging = registerOutput<InfrastructureConfigurationLogging?>('logging');
+    logging = registerOutput<InfrastructureConfigurationLogging?>(
+      'logging',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InfrastructureConfigurationLogging.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     placement = registerOutput<InfrastructureConfigurationPlacement?>(
       'placement',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InfrastructureConfigurationPlacement.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     resourceTags = registerOutput<Map<String, String>?>('resourceTags');

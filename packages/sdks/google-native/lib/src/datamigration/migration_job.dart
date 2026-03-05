@@ -109,18 +109,50 @@ class MigrationJob extends pulumi.CustomResource {
     cmekKeyName = registerOutput<String>('cmekKeyName');
     conversionWorkspace = registerOutput<ConversionWorkspaceInfoResponse>(
       'conversionWorkspace',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConversionWorkspaceInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     destination = registerOutput<String>('destination');
     destinationDatabase = registerOutput<DatabaseTypeResponse>(
       'destinationDatabase',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseTypeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     displayName = registerOutput<String>('displayName');
-    dumpFlags = registerOutput<DumpFlagsResponse>('dumpFlags');
+    dumpFlags = registerOutput<DumpFlagsResponse>(
+      'dumpFlags',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DumpFlagsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dumpPath = registerOutput<String>('dumpPath');
     duration = registerOutput<String>('duration');
     endTime = registerOutput<String>('endTime');
-    error = registerOutput<StatusResponse>('error');
+    error = registerOutput<StatusResponse>(
+      'error',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     filter = registerOutput<String>('filter');
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
@@ -128,15 +160,38 @@ class MigrationJob extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     performanceConfig = registerOutput<PerformanceConfigResponse>(
       'performanceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PerformanceConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     phase = registerOutput<String>('phase');
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');
     reverseSshConnectivity = registerOutput<ReverseSshConnectivityResponse>(
       'reverseSshConnectivity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReverseSshConnectivityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     source = registerOutput<String>('source');
-    sourceDatabase = registerOutput<DatabaseTypeResponse>('sourceDatabase');
+    sourceDatabase = registerOutput<DatabaseTypeResponse>(
+      'sourceDatabase',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseTypeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     state = registerOutput<String>('state');
     staticIpConnectivity = registerOutput<Map<String, dynamic>>(
       'staticIpConnectivity',
@@ -145,6 +200,13 @@ class MigrationJob extends pulumi.CustomResource {
     updateTime = registerOutput<String>('updateTime');
     vpcPeeringConnectivity = registerOutput<VpcPeeringConnectivityResponse>(
       'vpcPeeringConnectivity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpcPeeringConnectivityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

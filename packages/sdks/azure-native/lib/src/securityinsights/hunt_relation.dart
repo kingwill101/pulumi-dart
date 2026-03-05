@@ -209,7 +209,16 @@ class HuntRelation extends pulumi.CustomResource {
     relatedResourceKind = registerOutput<String>('relatedResourceKind');
     relatedResourceName = registerOutput<String>('relatedResourceName');
     relationType = registerOutput<String>('relationType');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

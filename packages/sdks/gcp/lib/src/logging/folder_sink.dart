@@ -313,6 +313,13 @@ class FolderSink extends pulumi.CustomResource {
        ) {
     bigqueryOptions = registerOutput<FolderSinkBigqueryOptions>(
       'bigqueryOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FolderSinkBigqueryOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     destination = registerOutput<String>('destination');
@@ -351,6 +358,13 @@ class FolderSink extends pulumi.CustomResource {
        ) {
     bigqueryOptions = registerOutput<FolderSinkBigqueryOptions>(
       'bigqueryOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FolderSinkBigqueryOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     destination = registerOutput<String>('destination');

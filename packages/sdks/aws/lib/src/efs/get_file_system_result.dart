@@ -8,34 +8,47 @@ import 'get_file_system_protection.dart';
 class GetFileSystemResult {
   /// Amazon Resource Name of the file system.
   final String arn;
+
   /// The identifier of the Availability Zone in which the file system's One Zone storage classes exist.
   final String availabilityZoneId;
+
   /// The Availability Zone name in which the file system's One Zone storage classes exist.
   final String availabilityZoneName;
   final String creationToken;
+
   /// DNS name for the filesystem per [documented convention](http://docs.aws.amazon.com/efs/latest/ug/mounting-fs-mount-cmd-dns-name.html).
   final String dnsName;
+
   /// Whether EFS is encrypted.
   final bool encrypted;
   final String fileSystemId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// ARN for the KMS encryption key.
   final String kmsKeyId;
+
   /// File system [lifecycle policy](https://docs.aws.amazon.com/efs/latest/ug/API_LifecyclePolicy.html) object.
   final List<GetFileSystemLifecyclePolicy> lifecyclePolicies;
+
   /// The value of the file system's `Name` tag.
   final String name;
+
   /// File system performance mode.
   final String performanceMode;
   final List<GetFileSystemProtection> protections;
+
   /// The throughput, measured in MiB/s, that you want to provision for the file system.
   final double provisionedThroughputInMibps;
   final String region;
+
   /// Current byte count used by the file system.
   final int sizeInBytes;
+
   /// A map of tags to assign to the file system.
   final Map<String, String> tags;
+
   /// Throughput mode for the file system.
   final String throughputMode;
 
@@ -90,10 +103,18 @@ class GetFileSystemResult {
       'fileSystemId': fileSystemId,
       'id': id,
       'kmsKeyId': kmsKeyId,
-      'lifecyclePolicies': pulumi.Input.encodeList<GetFileSystemLifecyclePolicy, Map<String, dynamic>>(lifecyclePolicies, (value) => value.toMap()),
+      'lifecyclePolicies':
+          pulumi.Input.encodeList<
+            GetFileSystemLifecyclePolicy,
+            Map<String, dynamic>
+          >(lifecyclePolicies, (value) => value.toMap()),
       'name': name,
       'performanceMode': performanceMode,
-      'protections': pulumi.Input.encodeList<GetFileSystemProtection, Map<String, dynamic>>(protections, (value) => value.toMap()),
+      'protections':
+          pulumi.Input.encodeList<
+            GetFileSystemProtection,
+            Map<String, dynamic>
+          >(protections, (value) => value.toMap()),
       'provisionedThroughputInMibps': provisionedThroughputInMibps,
       'region': region,
       'sizeInBytes': sizeInBytes,
@@ -113,11 +134,22 @@ class GetFileSystemResult {
       fileSystemId: map['fileSystemId'] as String,
       id: map['id'] as String,
       kmsKeyId: map['kmsKeyId'] as String,
-      lifecyclePolicies: pulumi.Input.decodeList<GetFileSystemLifecyclePolicy>(map['lifecyclePolicies']!, (value) => GetFileSystemLifecyclePolicy.fromMap((value as Map).cast<String, dynamic>())),
+      lifecyclePolicies: pulumi.Input.decodeList<GetFileSystemLifecyclePolicy>(
+        map['lifecyclePolicies']!,
+        (value) => GetFileSystemLifecyclePolicy.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       name: map['name'] as String,
       performanceMode: map['performanceMode'] as String,
-      protections: pulumi.Input.decodeList<GetFileSystemProtection>(map['protections']!, (value) => GetFileSystemProtection.fromMap((value as Map).cast<String, dynamic>())),
-      provisionedThroughputInMibps: map['provisionedThroughputInMibps'] as double,
+      protections: pulumi.Input.decodeList<GetFileSystemProtection>(
+        map['protections']!,
+        (value) => GetFileSystemProtection.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      provisionedThroughputInMibps:
+          map['provisionedThroughputInMibps'] as double,
       region: map['region'] as String,
       sizeInBytes: map['sizeInBytes'] as int,
       tags: (map['tags'] as Map).cast<String, String>(),
@@ -125,4 +157,3 @@ class GetFileSystemResult {
     );
   }
 }
-

@@ -375,7 +375,16 @@ class Application extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     instanceArn = registerOutput<String>('instanceArn');
     this.name = registerOutput<String>('name');
-    portalOptions = registerOutput<ApplicationPortalOptions?>('portalOptions');
+    portalOptions = registerOutput<ApplicationPortalOptions?>(
+      'portalOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationPortalOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -413,7 +422,16 @@ class Application extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     instanceArn = registerOutput<String>('instanceArn');
     this.name = registerOutput<String>('name');
-    portalOptions = registerOutput<ApplicationPortalOptions?>('portalOptions');
+    portalOptions = registerOutput<ApplicationPortalOptions?>(
+      'portalOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationPortalOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');

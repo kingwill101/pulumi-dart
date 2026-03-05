@@ -885,7 +885,16 @@ class ConsentStoreIamBinding extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<ConsentStoreIamBindingCondition?>('condition');
+    condition = registerOutput<ConsentStoreIamBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConsentStoreIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     consentStoreId = registerOutput<String>('consentStoreId');
     dataset = registerOutput<String>('dataset');
     etag = registerOutput<String>('etag');
@@ -916,7 +925,16 @@ class ConsentStoreIamBinding extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<ConsentStoreIamBindingCondition?>('condition');
+    condition = registerOutput<ConsentStoreIamBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConsentStoreIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     consentStoreId = registerOutput<String>('consentStoreId');
     dataset = registerOutput<String>('dataset');
     etag = registerOutput<String>('etag');

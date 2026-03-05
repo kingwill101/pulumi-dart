@@ -822,6 +822,13 @@ class Listener extends pulumi.CustomResource {
     mss = registerOutput<int?>('mss');
     proxyProtocolConfig = registerOutput<ListenerProxyProtocolConfig>(
       'proxyProtocolConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ListenerProxyProtocolConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     proxyProtocolEnabled = registerOutput<bool>('proxyProtocolEnabled');
     regionId = registerOutput<String>('regionId');
@@ -871,6 +878,13 @@ class Listener extends pulumi.CustomResource {
     mss = registerOutput<int?>('mss');
     proxyProtocolConfig = registerOutput<ListenerProxyProtocolConfig>(
       'proxyProtocolConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ListenerProxyProtocolConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     proxyProtocolEnabled = registerOutput<bool>('proxyProtocolEnabled');
     regionId = registerOutput<String>('regionId');

@@ -1,15 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getQosMinimumBandwidthRule.
 class GetQosMinimumBandwidthRuleResult {
   final String direction;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// See Argument Reference above.
   final int minKbps;
+
   /// See Argument Reference above.
   final String qosPolicyId;
+
   /// See Argument Reference above.
   final String region;
 
@@ -47,4 +50,3 @@ class GetQosMinimumBandwidthRuleResult {
     );
   }
 }
-

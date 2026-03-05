@@ -720,14 +720,37 @@ class GovernanceRule extends pulumi.CustomResource {
     governanceEmailNotification =
         registerOutput<GovernanceRuleEmailNotificationResponse?>(
           'governanceEmailNotification',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GovernanceRuleEmailNotificationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     includeMemberScopes = registerOutput<bool?>('includeMemberScopes');
     isDisabled = registerOutput<bool?>('isDisabled');
     isGracePeriod = registerOutput<bool?>('isGracePeriod');
-    metadata = registerOutput<GovernanceRuleMetadataResponse?>('metadata');
+    metadata = registerOutput<GovernanceRuleMetadataResponse?>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GovernanceRuleMetadataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     ownerSource = registerOutput<GovernanceRuleOwnerSourceResponse>(
       'ownerSource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GovernanceRuleOwnerSourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     remediationTimeframe = registerOutput<String?>('remediationTimeframe');
     rulePriority = registerOutput<int>('rulePriority');

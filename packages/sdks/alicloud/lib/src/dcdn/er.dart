@@ -234,7 +234,14 @@ class Er extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     description = registerOutput<String?>('description');
-    envConf = registerOutput<ErEnvConf>('envConf');
+    envConf = registerOutput<ErEnvConf>(
+      'envConf',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ErEnvConf.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     erName = registerOutput<String>('erName');
   }
 
@@ -258,7 +265,14 @@ class Er extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     description = registerOutput<String?>('description');
-    envConf = registerOutput<ErEnvConf>('envConf');
+    envConf = registerOutput<ErEnvConf>(
+      'envConf',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ErEnvConf.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     erName = registerOutput<String>('erName');
   }
 }

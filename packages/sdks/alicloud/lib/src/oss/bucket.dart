@@ -3550,7 +3550,16 @@ class Bucket extends pulumi.CustomResource {
         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
         options ?? pulumi.CustomResourceOptions(),
       ) {
-    accessMonitor = registerOutput<BucketAccessMonitor>('accessMonitor');
+    accessMonitor = registerOutput<BucketAccessMonitor>(
+      'accessMonitor',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketAccessMonitor.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     acl = registerOutput<String>('acl');
     bucket = registerOutput<String>('bucket');
     corsRules = registerOutput<List<Map<String, dynamic>>?>('corsRules');
@@ -3565,23 +3574,73 @@ class Bucket extends pulumi.CustomResource {
       'lifecycleRules',
     );
     location = registerOutput<String>('location');
-    logging = registerOutput<BucketLogging?>('logging');
+    logging = registerOutput<BucketLogging?>(
+      'logging',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketLogging.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     loggingIsenable = registerOutput<bool?>('loggingIsenable');
     owner = registerOutput<String>('owner');
     policy = registerOutput<String?>('policy');
     redundancyType = registerOutput<String?>('redundancyType');
-    refererConfig = registerOutput<BucketRefererConfig?>('refererConfig');
+    refererConfig = registerOutput<BucketRefererConfig?>(
+      'refererConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketRefererConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupId = registerOutput<String>('resourceGroupId');
     serverSideEncryptionRule = registerOutput<BucketServerSideEncryptionRule?>(
       'serverSideEncryptionRule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketServerSideEncryptionRule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     storageClass = registerOutput<String?>('storageClass');
     tags = registerOutput<Map<String, String>?>('tags');
     transferAcceleration = registerOutput<BucketTransferAcceleration?>(
       'transferAcceleration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketTransferAcceleration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    versioning = registerOutput<BucketVersioning?>('versioning');
-    website = registerOutput<BucketWebsite?>('website');
+    versioning = registerOutput<BucketVersioning?>(
+      'versioning',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketVersioning.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    website = registerOutput<BucketWebsite?>(
+      'website',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketWebsite.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Bucket] resource's state with the given [name] and [id].
@@ -3607,7 +3666,16 @@ class Bucket extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    accessMonitor = registerOutput<BucketAccessMonitor>('accessMonitor');
+    accessMonitor = registerOutput<BucketAccessMonitor>(
+      'accessMonitor',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketAccessMonitor.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     acl = registerOutput<String>('acl');
     bucket = registerOutput<String>('bucket');
     corsRules = registerOutput<List<Map<String, dynamic>>?>('corsRules');
@@ -3622,22 +3690,72 @@ class Bucket extends pulumi.CustomResource {
       'lifecycleRules',
     );
     location = registerOutput<String>('location');
-    logging = registerOutput<BucketLogging?>('logging');
+    logging = registerOutput<BucketLogging?>(
+      'logging',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketLogging.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     loggingIsenable = registerOutput<bool?>('loggingIsenable');
     owner = registerOutput<String>('owner');
     policy = registerOutput<String?>('policy');
     redundancyType = registerOutput<String?>('redundancyType');
-    refererConfig = registerOutput<BucketRefererConfig?>('refererConfig');
+    refererConfig = registerOutput<BucketRefererConfig?>(
+      'refererConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketRefererConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupId = registerOutput<String>('resourceGroupId');
     serverSideEncryptionRule = registerOutput<BucketServerSideEncryptionRule?>(
       'serverSideEncryptionRule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketServerSideEncryptionRule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     storageClass = registerOutput<String?>('storageClass');
     tags = registerOutput<Map<String, String>?>('tags');
     transferAcceleration = registerOutput<BucketTransferAcceleration?>(
       'transferAcceleration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketTransferAcceleration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    versioning = registerOutput<BucketVersioning?>('versioning');
-    website = registerOutput<BucketWebsite?>('website');
+    versioning = registerOutput<BucketVersioning?>(
+      'versioning',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketVersioning.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    website = registerOutput<BucketWebsite?>(
+      'website',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketWebsite.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

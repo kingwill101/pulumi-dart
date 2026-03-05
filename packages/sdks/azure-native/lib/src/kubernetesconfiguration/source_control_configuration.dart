@@ -305,6 +305,13 @@ class SourceControlConfiguration extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     complianceStatus = registerOutput<ComplianceStatusResponse>(
       'complianceStatus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ComplianceStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     configurationProtectedSettings = registerOutput<Map<String, String>?>(
       'configurationProtectedSettings',
@@ -312,6 +319,13 @@ class SourceControlConfiguration extends pulumi.CustomResource {
     enableHelmOperator = registerOutput<bool?>('enableHelmOperator');
     helmOperatorProperties = registerOutput<HelmOperatorPropertiesResponse?>(
       'helmOperatorProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HelmOperatorPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     operatorInstanceName = registerOutput<String?>('operatorInstanceName');
@@ -323,7 +337,16 @@ class SourceControlConfiguration extends pulumi.CustomResource {
     repositoryPublicKey = registerOutput<String>('repositoryPublicKey');
     repositoryUrl = registerOutput<String?>('repositoryUrl');
     sshKnownHostsContents = registerOutput<String?>('sshKnownHostsContents');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

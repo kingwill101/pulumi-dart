@@ -169,7 +169,16 @@ class SourceApiAssociation extends pulumi.CustomResource {
       'sourceApiAssociationConfigs',
     );
     sourceApiId = registerOutput<String>('sourceApiId');
-    timeouts = registerOutput<SourceApiAssociationTimeouts?>('timeouts');
+    timeouts = registerOutput<SourceApiAssociationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SourceApiAssociationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [SourceApiAssociation] resource's state with the given [name] and [id].
@@ -206,6 +215,15 @@ class SourceApiAssociation extends pulumi.CustomResource {
       'sourceApiAssociationConfigs',
     );
     sourceApiId = registerOutput<String>('sourceApiId');
-    timeouts = registerOutput<SourceApiAssociationTimeouts?>('timeouts');
+    timeouts = registerOutput<SourceApiAssociationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SourceApiAssociationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

@@ -1,24 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getPublicIpPrefix.
 class GetPublicIpPrefixResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The Public IP address range, in CIDR notation.
   final String ipPrefix;
+
   /// The supported Azure location where the resource exists.
   final String location;
   final String name;
+
   /// The number of bits of the prefix.
   final int prefixLength;
   final String resourceGroupName;
+
   /// The SKU of the Public IP Prefix.
   final String sku;
+
   /// The SKU Tier of the Public IP.
   final String skuTier;
+
   /// A mapping of tags to assigned to the resource.
   final Map<String, String> tags;
+
   /// A list of Availability Zones in which this Public IP Prefix is located.
   final List<String> zones;
 
@@ -76,4 +82,3 @@ class GetPublicIpPrefixResult {
     );
   }
 }
-

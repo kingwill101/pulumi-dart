@@ -41,6 +41,13 @@ class EntryGroupDatacatalogV1beta1 extends pulumi.CustomResource {
     dataCatalogTimestamps =
         registerOutput<GoogleCloudDatacatalogV1beta1SystemTimestampsResponse>(
           'dataCatalogTimestamps',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDatacatalogV1beta1SystemTimestampsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');

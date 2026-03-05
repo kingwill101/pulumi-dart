@@ -679,9 +679,23 @@ class VirtualNetworkGateway extends pulumi.CustomResource {
     );
     bgpSettings = registerOutput<VirtualNetworkGatewayBgpSettings>(
       'bgpSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualNetworkGatewayBgpSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     customRoute = registerOutput<VirtualNetworkGatewayCustomRoute?>(
       'customRoute',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualNetworkGatewayCustomRoute.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     defaultLocalNetworkGatewayId = registerOutput<String?>(
       'defaultLocalNetworkGatewayId',
@@ -713,6 +727,13 @@ class VirtualNetworkGateway extends pulumi.CustomResource {
     vpnClientConfiguration =
         registerOutput<VirtualNetworkGatewayVpnClientConfiguration?>(
           'vpnClientConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VirtualNetworkGatewayVpnClientConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     vpnType = registerOutput<String?>('vpnType');
   }
@@ -746,9 +767,23 @@ class VirtualNetworkGateway extends pulumi.CustomResource {
     );
     bgpSettings = registerOutput<VirtualNetworkGatewayBgpSettings>(
       'bgpSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualNetworkGatewayBgpSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     customRoute = registerOutput<VirtualNetworkGatewayCustomRoute?>(
       'customRoute',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualNetworkGatewayCustomRoute.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     defaultLocalNetworkGatewayId = registerOutput<String?>(
       'defaultLocalNetworkGatewayId',
@@ -780,6 +815,13 @@ class VirtualNetworkGateway extends pulumi.CustomResource {
     vpnClientConfiguration =
         registerOutput<VirtualNetworkGatewayVpnClientConfiguration?>(
           'vpnClientConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VirtualNetworkGatewayVpnClientConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     vpnType = registerOutput<String?>('vpnType');
   }

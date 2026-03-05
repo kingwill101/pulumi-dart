@@ -133,6 +133,13 @@ class Instance extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     cryptoKeyConfig = registerOutput<CryptoKeyConfigResponse>(
       'cryptoKeyConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CryptoKeyConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dataprocServiceAccount = registerOutput<String>('dataprocServiceAccount');
     description = registerOutput<String>('description');
@@ -146,13 +153,29 @@ class Instance extends pulumi.CustomResource {
     enableZoneSeparation = registerOutput<bool>('enableZoneSeparation');
     eventPublishConfig = registerOutput<EventPublishConfigResponse>(
       'eventPublishConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventPublishConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     gcsBucket = registerOutput<String>('gcsBucket');
     instanceId = registerOutput<String>('instanceId');
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkConfig = registerOutput<NetworkConfigResponse>('networkConfig');
+    networkConfig = registerOutput<NetworkConfigResponse>(
+      'networkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.options = registerOutput<Map<String, String>>('options');
     p4ServiceAccount = registerOutput<String>('p4ServiceAccount');
     patchRevision = registerOutput<String>('patchRevision');

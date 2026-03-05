@@ -517,6 +517,13 @@ class LanguageModel extends pulumi.CustomResource {
     baseModelName = registerOutput<String>('baseModelName');
     inputDataConfig = registerOutput<LanguageModelInputDataConfig>(
       'inputDataConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LanguageModelInputDataConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     languageCode = registerOutput<String>('languageCode');
     modelName = registerOutput<String>('modelName');
@@ -552,6 +559,13 @@ class LanguageModel extends pulumi.CustomResource {
     baseModelName = registerOutput<String>('baseModelName');
     inputDataConfig = registerOutput<LanguageModelInputDataConfig>(
       'inputDataConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LanguageModelInputDataConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     languageCode = registerOutput<String>('languageCode');
     modelName = registerOutput<String>('modelName');

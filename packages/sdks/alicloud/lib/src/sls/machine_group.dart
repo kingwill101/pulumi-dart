@@ -274,6 +274,13 @@ class MachineGroup extends pulumi.CustomResource {
        ) {
     groupAttribute = registerOutput<MachineGroupGroupAttribute?>(
       'groupAttribute',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MachineGroupGroupAttribute.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     groupName = registerOutput<String>('groupName');
     groupType = registerOutput<String?>('groupType');
@@ -307,6 +314,13 @@ class MachineGroup extends pulumi.CustomResource {
        ) {
     groupAttribute = registerOutput<MachineGroupGroupAttribute?>(
       'groupAttribute',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MachineGroupGroupAttribute.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     groupName = registerOutput<String>('groupName');
     groupType = registerOutput<String?>('groupType');

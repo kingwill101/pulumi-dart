@@ -158,6 +158,13 @@ class Room extends pulumi.CustomResource {
     );
     messageReviewHandler = registerOutput<RoomMessageReviewHandler?>(
       'messageReviewHandler',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RoomMessageReviewHandler.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -194,6 +201,13 @@ class Room extends pulumi.CustomResource {
     );
     messageReviewHandler = registerOutput<RoomMessageReviewHandler?>(
       'messageReviewHandler',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RoomMessageReviewHandler.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

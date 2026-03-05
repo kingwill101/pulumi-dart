@@ -339,6 +339,13 @@ class ProfileClientSsl extends pulumi.CustomResource {
     );
     certKeyChain = registerOutput<ProfileClientSslCertKeyChain?>(
       'certKeyChain',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProfileClientSslCertKeyChain.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     certLifeSpan = registerOutput<int>('certLifeSpan');
     certLookupByIpaddrPort = registerOutput<String>('certLookupByIpaddrPort');
@@ -430,6 +437,13 @@ class ProfileClientSsl extends pulumi.CustomResource {
     );
     certKeyChain = registerOutput<ProfileClientSslCertKeyChain?>(
       'certKeyChain',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProfileClientSslCertKeyChain.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     certLifeSpan = registerOutput<int>('certLifeSpan');
     certLookupByIpaddrPort = registerOutput<String>('certLookupByIpaddrPort');

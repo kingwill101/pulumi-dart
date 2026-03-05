@@ -679,9 +679,23 @@ class StackInstances extends pulumi.CustomResource {
     callAs = registerOutput<String?>('callAs');
     deploymentTargets = registerOutput<StackInstancesDeploymentTargets?>(
       'deploymentTargets',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StackInstancesDeploymentTargets.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     operationPreferences = registerOutput<StackInstancesOperationPreferences?>(
       'operationPreferences',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StackInstancesOperationPreferences.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     parameterOverrides = registerOutput<Map<String, String>?>(
       'parameterOverrides',
@@ -723,9 +737,23 @@ class StackInstances extends pulumi.CustomResource {
     callAs = registerOutput<String?>('callAs');
     deploymentTargets = registerOutput<StackInstancesDeploymentTargets?>(
       'deploymentTargets',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StackInstancesDeploymentTargets.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     operationPreferences = registerOutput<StackInstancesOperationPreferences?>(
       'operationPreferences',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StackInstancesOperationPreferences.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     parameterOverrides = registerOutput<Map<String, String>?>(
       'parameterOverrides',

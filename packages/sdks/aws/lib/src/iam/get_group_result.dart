@@ -7,13 +7,17 @@ import 'get_group_user.dart';
 class GetGroupResult {
   /// User ARN.
   final String arn;
+
   /// Stable and unique string identifying the group.
   final String groupId;
   final String groupName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Path to the IAM user.
   final String path;
+
   /// List of objects containing group member information. See below.
   final List<GetGroupUser> users;
 
@@ -40,7 +44,10 @@ class GetGroupResult {
       'groupName': groupName,
       'id': id,
       'path': path,
-      'users': pulumi.Input.encodeList<GetGroupUser, Map<String, dynamic>>(users, (value) => value.toMap()),
+      'users': pulumi.Input.encodeList<GetGroupUser, Map<String, dynamic>>(
+        users,
+        (value) => value.toMap(),
+      ),
     };
   }
 
@@ -51,8 +58,10 @@ class GetGroupResult {
       groupName: map['groupName'] as String,
       id: map['id'] as String,
       path: map['path'] as String,
-      users: pulumi.Input.decodeList<GetGroupUser>(map['users']!, (value) => GetGroupUser.fromMap((value as Map).cast<String, dynamic>())),
+      users: pulumi.Input.decodeList<GetGroupUser>(
+        map['users']!,
+        (value) => GetGroupUser.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

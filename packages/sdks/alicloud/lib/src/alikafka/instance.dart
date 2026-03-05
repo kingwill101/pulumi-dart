@@ -173,6 +173,13 @@ class Instance extends pulumi.CustomResource {
     config = registerOutput<String>('config');
     confluentConfig = registerOutput<InstanceConfluentConfig>(
       'confluentConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceConfluentConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     defaultTopicPartitionNum = registerOutput<int>('defaultTopicPartitionNum');
     deployType = registerOutput<int>('deployType');
@@ -202,6 +209,13 @@ class Instance extends pulumi.CustomResource {
     selectedZones = registerOutput<List<String>?>('selectedZones');
     serverlessConfig = registerOutput<InstanceServerlessConfig>(
       'serverlessConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceServerlessConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     serviceVersion = registerOutput<String>('serviceVersion');
     specType = registerOutput<String?>('specType');
@@ -245,6 +259,13 @@ class Instance extends pulumi.CustomResource {
     config = registerOutput<String>('config');
     confluentConfig = registerOutput<InstanceConfluentConfig>(
       'confluentConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceConfluentConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     defaultTopicPartitionNum = registerOutput<int>('defaultTopicPartitionNum');
     deployType = registerOutput<int>('deployType');
@@ -274,6 +295,13 @@ class Instance extends pulumi.CustomResource {
     selectedZones = registerOutput<List<String>?>('selectedZones');
     serverlessConfig = registerOutput<InstanceServerlessConfig>(
       'serverlessConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceServerlessConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     serviceVersion = registerOutput<String>('serviceVersion');
     specType = registerOutput<String?>('specType');

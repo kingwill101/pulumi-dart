@@ -389,6 +389,13 @@ class NotebookInstance extends pulumi.CustomResource {
     instanceMetadataServiceConfiguration =
         registerOutput<NotebookInstanceInstanceMetadataServiceConfiguration?>(
           'instanceMetadataServiceConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NotebookInstanceInstanceMetadataServiceConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     instanceType = registerOutput<String>('instanceType');
     kmsKeyId = registerOutput<String?>('kmsKeyId');
@@ -439,6 +446,13 @@ class NotebookInstance extends pulumi.CustomResource {
     instanceMetadataServiceConfiguration =
         registerOutput<NotebookInstanceInstanceMetadataServiceConfiguration?>(
           'instanceMetadataServiceConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NotebookInstanceInstanceMetadataServiceConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     instanceType = registerOutput<String>('instanceType');
     kmsKeyId = registerOutput<String?>('kmsKeyId');

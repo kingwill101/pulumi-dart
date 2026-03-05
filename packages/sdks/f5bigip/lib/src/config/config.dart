@@ -119,8 +119,6 @@ class F5bigipConfig {
   }
 
   bool get validateCertsDisableIsSecret => _isSecret('validateCertsDisable');
-
 }
 
 final config = F5bigipConfig();
-

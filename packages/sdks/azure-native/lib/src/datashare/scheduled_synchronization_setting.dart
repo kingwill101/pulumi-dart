@@ -207,7 +207,16 @@ class ScheduledSynchronizationSetting extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     recurrenceInterval = registerOutput<String>('recurrenceInterval');
     synchronizationTime = registerOutput<String>('synchronizationTime');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     userName = registerOutput<String>('userName');
   }

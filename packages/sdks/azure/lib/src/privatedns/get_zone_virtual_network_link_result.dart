@@ -1,19 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getZoneVirtualNetworkLink.
 class GetZoneVirtualNetworkLinkResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
   final String privateDnsZoneName;
+
   /// Whether the auto-registration of virtual machine records in the virtual network in the Private DNS zone is enabled or not.
   final bool registrationEnabled;
+
   /// The resolution policy of the Private DNS Zone Virtual Network Link.
   final String resolutionPolicy;
   final String resourceGroupName;
+
   /// A mapping of tags to assign to the resource.
   final Map<String, String> tags;
+
   /// The ID of the Virtual Network that is linked to the DNS Zone.
   final String virtualNetworkId;
 
@@ -63,4 +66,3 @@ class GetZoneVirtualNetworkLinkResult {
     );
   }
 }
-

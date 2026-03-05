@@ -77,10 +77,24 @@ class Asset extends pulumi.CustomResource {
     discoverySpec =
         registerOutput<GoogleCloudDataplexV1AssetDiscoverySpecResponse>(
           'discoverySpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDataplexV1AssetDiscoverySpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     discoveryStatus =
         registerOutput<GoogleCloudDataplexV1AssetDiscoveryStatusResponse>(
           'discoveryStatus',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDataplexV1AssetDiscoveryStatusResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     displayName = registerOutput<String>('displayName');
     labels = registerOutput<Map<String, String>>('labels');
@@ -91,14 +105,35 @@ class Asset extends pulumi.CustomResource {
     resourceSpec =
         registerOutput<GoogleCloudDataplexV1AssetResourceSpecResponse>(
           'resourceSpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDataplexV1AssetResourceSpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     resourceStatus =
         registerOutput<GoogleCloudDataplexV1AssetResourceStatusResponse>(
           'resourceStatus',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDataplexV1AssetResourceStatusResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     securityStatus =
         registerOutput<GoogleCloudDataplexV1AssetSecurityStatusResponse>(
           'securityStatus',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDataplexV1AssetSecurityStatusResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');

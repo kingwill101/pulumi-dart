@@ -627,6 +627,13 @@ class ReplicationConfiguration extends pulumi.CustomResource {
     replicationConfiguration =
         registerOutput<ReplicationConfigurationReplicationConfiguration?>(
           'replicationConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ReplicationConfigurationReplicationConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 
@@ -658,6 +665,13 @@ class ReplicationConfiguration extends pulumi.CustomResource {
     replicationConfiguration =
         registerOutput<ReplicationConfigurationReplicationConfiguration?>(
           'replicationConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ReplicationConfigurationReplicationConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

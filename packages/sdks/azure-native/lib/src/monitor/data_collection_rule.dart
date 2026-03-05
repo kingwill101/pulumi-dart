@@ -715,27 +715,74 @@ class DataCollectionRule extends pulumi.CustomResource {
     dataFlows = registerOutput<List<Map<String, dynamic>>?>('dataFlows');
     dataSources = registerOutput<DataCollectionRuleResponseDataSources?>(
       'dataSources',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataCollectionRuleResponseDataSources.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     destinations = registerOutput<DataCollectionRuleResponseDestinations?>(
       'destinations',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataCollectionRuleResponseDestinations.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     identity = registerOutput<DataCollectionRuleResourceResponseIdentity?>(
       'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataCollectionRuleResourceResponseIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     immutableId = registerOutput<String>('immutableId');
     kind = registerOutput<String?>('kind');
     location = registerOutput<String>('location');
-    metadata = registerOutput<DataCollectionRuleResponseMetadata>('metadata');
+    metadata = registerOutput<DataCollectionRuleResponseMetadata>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataCollectionRuleResponseMetadata.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     streamDeclarations =
         registerOutput<Map<String, StreamDeclarationResponse>?>(
           'streamDeclarations',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return pulumi.Input.decodeMapValues<StreamDeclarationResponse>(
+              guardedValue,
+              (value) => StreamDeclarationResponse.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            );
+          },
         );
     systemData = registerOutput<DataCollectionRuleResourceResponseSystemData>(
       'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataCollectionRuleResourceResponseSystemData.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

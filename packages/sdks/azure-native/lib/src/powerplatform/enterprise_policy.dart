@@ -231,17 +231,60 @@ class EnterprisePolicy extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    encryption = registerOutput<PropertiesResponseEncryption?>('encryption');
+    encryption = registerOutput<PropertiesResponseEncryption?>(
+      'encryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PropertiesResponseEncryption.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     healthStatus = registerOutput<String?>('healthStatus');
-    identity = registerOutput<EnterprisePolicyIdentityResponse?>('identity');
+    identity = registerOutput<EnterprisePolicyIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnterprisePolicyIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
-    lockbox = registerOutput<PropertiesResponseLockbox?>('lockbox');
+    lockbox = registerOutput<PropertiesResponseLockbox?>(
+      'lockbox',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PropertiesResponseLockbox.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     networkInjection = registerOutput<PropertiesResponseNetworkInjection?>(
       'networkInjection',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PropertiesResponseNetworkInjection.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     systemId = registerOutput<String>('systemId');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

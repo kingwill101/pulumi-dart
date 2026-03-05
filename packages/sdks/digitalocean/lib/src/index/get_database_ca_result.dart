@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getDatabaseCa.
 class GetDatabaseCaResult {
   /// The CA certificate used to secure database connections decoded to a string.
   final String certificate;
   final String clusterId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
 
@@ -35,4 +35,3 @@ class GetDatabaseCaResult {
     );
   }
 }
-

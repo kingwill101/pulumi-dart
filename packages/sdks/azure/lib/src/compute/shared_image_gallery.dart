@@ -225,7 +225,16 @@ class SharedImageGallery extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    sharing = registerOutput<SharedImageGallerySharing?>('sharing');
+    sharing = registerOutput<SharedImageGallerySharing?>(
+      'sharing',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SharedImageGallerySharing.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     uniqueName = registerOutput<String>('uniqueName');
   }
@@ -257,7 +266,16 @@ class SharedImageGallery extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    sharing = registerOutput<SharedImageGallerySharing?>('sharing');
+    sharing = registerOutput<SharedImageGallerySharing?>(
+      'sharing',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SharedImageGallerySharing.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     uniqueName = registerOutput<String>('uniqueName');
   }

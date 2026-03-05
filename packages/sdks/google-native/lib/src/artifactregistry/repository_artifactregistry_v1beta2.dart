@@ -63,6 +63,13 @@ class RepositoryArtifactregistryV1beta2 extends pulumi.CustomResource {
     mavenConfig =
         registerOutput<MavenRepositoryConfigResponseArtifactregistryV1beta2>(
           'mavenConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MavenRepositoryConfigResponseArtifactregistryV1beta2.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

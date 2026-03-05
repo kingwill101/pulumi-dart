@@ -80,6 +80,13 @@ class IndexEndpoint extends pulumi.CustomResource {
     encryptionSpec =
         registerOutput<GoogleCloudAiplatformV1EncryptionSpecResponse>(
           'encryptionSpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1EncryptionSpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     etag = registerOutput<String>('etag');
     labels = registerOutput<Map<String, String>>('labels');
@@ -89,7 +96,16 @@ class IndexEndpoint extends pulumi.CustomResource {
     privateServiceConnectConfig =
         registerOutput<
           GoogleCloudAiplatformV1PrivateServiceConnectConfigResponse
-        >('privateServiceConnectConfig');
+        >(
+          'privateServiceConnectConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1PrivateServiceConnectConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     project = registerOutput<String>('project');
     publicEndpointDomainName = registerOutput<String>(
       'publicEndpointDomainName',

@@ -1876,7 +1876,16 @@ class Service extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    authOptions = registerOutput<DataPlaneAuthOptionsResponse?>('authOptions');
+    authOptions = registerOutput<DataPlaneAuthOptionsResponse?>(
+      'authOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataPlaneAuthOptionsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     computeType = registerOutput<String?>('computeType');
     dataExfiltrationProtections = registerOutput<List<String>?>(
@@ -1886,13 +1895,38 @@ class Service extends pulumi.CustomResource {
     eTag = registerOutput<String>('eTag');
     encryptionWithCmk = registerOutput<EncryptionWithCmkResponse?>(
       'encryptionWithCmk',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EncryptionWithCmkResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     endpoint = registerOutput<String?>('endpoint');
     hostingMode = registerOutput<String?>('hostingMode');
-    identity = registerOutput<IdentityResponse?>('identity');
+    identity = registerOutput<IdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkRuleSet = registerOutput<NetworkRuleSetResponse?>('networkRuleSet');
+    networkRuleSet = registerOutput<NetworkRuleSetResponse?>(
+      'networkRuleSet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkRuleSetResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     partitionCount = registerOutput<int?>('partitionCount');
     privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
       'privateEndpointConnections',
@@ -1905,10 +1939,28 @@ class Service extends pulumi.CustomResource {
     sharedPrivateLinkResources = registerOutput<List<Map<String, dynamic>>>(
       'sharedPrivateLinkResources',
     );
-    sku = registerOutput<SkuResponse?>('sku');
+    sku = registerOutput<SkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String>('status');
     statusDetails = registerOutput<String>('statusDetails');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     upgradeAvailable = registerOutput<String?>('upgradeAvailable');

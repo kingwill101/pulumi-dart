@@ -58,14 +58,32 @@ class ExecutionWorkflowexecutionsV1beta extends pulumi.CustomResource {
     argument = registerOutput<String>('argument');
     callLogLevel = registerOutput<String>('callLogLevel');
     endTime = registerOutput<String>('endTime');
-    error = registerOutput<ErrorResponseWorkflowexecutionsV1beta>('error');
+    error = registerOutput<ErrorResponseWorkflowexecutionsV1beta>(
+      'error',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ErrorResponseWorkflowexecutionsV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     result = registerOutput<String>('result');
     startTime = registerOutput<String>('startTime');
     state = registerOutput<String>('state');
-    status = registerOutput<StatusResponseWorkflowexecutionsV1beta>('status');
+    status = registerOutput<StatusResponseWorkflowexecutionsV1beta>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StatusResponseWorkflowexecutionsV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     workflowId = registerOutput<String>('workflowId');
     workflowRevisionId = registerOutput<String>('workflowRevisionId');
   }

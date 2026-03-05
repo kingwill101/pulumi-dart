@@ -548,7 +548,16 @@ class ManagementProjectSecurityHealthAnalyticsCustomModule
     customConfig =
         registerOutput<
           ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfig?
-        >('customConfig');
+        >(
+          'customConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     displayName = registerOutput<String?>('displayName');
     enablementState = registerOutput<String?>('enablementState');
     lastEditor = registerOutput<String>('lastEditor');
@@ -585,7 +594,16 @@ class ManagementProjectSecurityHealthAnalyticsCustomModule
     customConfig =
         registerOutput<
           ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfig?
-        >('customConfig');
+        >(
+          'customConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     displayName = registerOutput<String?>('displayName');
     enablementState = registerOutput<String?>('enablementState');
     lastEditor = registerOutput<String>('lastEditor');

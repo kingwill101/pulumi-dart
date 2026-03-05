@@ -1,19 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getApiVersionSet.
 class GetApiVersionSetResult {
   final String apiManagementName;
+
   /// The description of API Version Set.
   final String description;
+
   /// The display name of this API Version Set.
   final String displayName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
   final String resourceGroupName;
+
   /// The name of the Header which should be read from Inbound Requests which defines the API Version.
   final String versionHeaderName;
+
   /// The name of the Query String which should be read from Inbound Requests which defines the API Version.
   final String versionQueryName;
   final String versioningScheme;
@@ -68,4 +72,3 @@ class GetApiVersionSetResult {
     );
   }
 }
-

@@ -693,10 +693,26 @@ class VirtualNetworkGatewayConnection extends pulumi.CustomResource {
     );
     localNetworkGateway2 = registerOutput<LocalNetworkGatewayResponse?>(
       'localNetworkGateway2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LocalNetworkGatewayResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    peer = registerOutput<SubResourceResponse?>('peer');
+    peer = registerOutput<SubResourceResponse?>(
+      'peer',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     provisioningState = registerOutput<String>('provisioningState');
     resourceGuid = registerOutput<String>('resourceGuid');
     routingWeight = registerOutput<int?>('routingWeight');
@@ -715,9 +731,23 @@ class VirtualNetworkGatewayConnection extends pulumi.CustomResource {
     );
     virtualNetworkGateway1 = registerOutput<VirtualNetworkGatewayResponse>(
       'virtualNetworkGateway1',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualNetworkGatewayResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     virtualNetworkGateway2 = registerOutput<VirtualNetworkGatewayResponse?>(
       'virtualNetworkGateway2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualNetworkGatewayResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

@@ -496,16 +496,50 @@ class Rule extends pulumi.CustomResource {
         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
         options ?? pulumi.CustomResourceOptions(),
       ) {
-    action = registerOutput<ActionResponse?>('action');
+    action = registerOutput<ActionResponse?>(
+      'action',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ActionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     correlationFilter = registerOutput<CorrelationFilterResponse?>(
       'correlationFilter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CorrelationFilterResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     filterType = registerOutput<String?>('filterType');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    sqlFilter = registerOutput<SqlFilterResponse?>('sqlFilter');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    sqlFilter = registerOutput<SqlFilterResponse?>(
+      'sqlFilter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SqlFilterResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

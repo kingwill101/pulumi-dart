@@ -171,6 +171,13 @@ class ProfilingGroup extends pulumi.CustomResource {
     agentOrchestrationConfig =
         registerOutput<ProfilingGroupAgentOrchestrationConfig>(
           'agentOrchestrationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ProfilingGroupAgentOrchestrationConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     arn = registerOutput<String>('arn');
     computePlatform = registerOutput<String>('computePlatform');
@@ -206,6 +213,13 @@ class ProfilingGroup extends pulumi.CustomResource {
     agentOrchestrationConfig =
         registerOutput<ProfilingGroupAgentOrchestrationConfig>(
           'agentOrchestrationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ProfilingGroupAgentOrchestrationConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     arn = registerOutput<String>('arn');
     computePlatform = registerOutput<String>('computePlatform');

@@ -164,7 +164,16 @@ class LogicallyAirGappedVault extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<LogicallyAirGappedVaultTimeouts?>('timeouts');
+    timeouts = registerOutput<LogicallyAirGappedVaultTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LogicallyAirGappedVaultTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [LogicallyAirGappedVault] resource's state with the given [name] and [id].
@@ -198,6 +207,15 @@ class LogicallyAirGappedVault extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<LogicallyAirGappedVaultTimeouts?>('timeouts');
+    timeouts = registerOutput<LogicallyAirGappedVaultTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LogicallyAirGappedVaultTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

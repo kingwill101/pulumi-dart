@@ -348,6 +348,13 @@ class SpringCloudCustomizedAccelerator extends pulumi.CustomResource {
     gitRepository =
         registerOutput<SpringCloudCustomizedAcceleratorGitRepository>(
           'gitRepository',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SpringCloudCustomizedAcceleratorGitRepository.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     iconUrl = registerOutput<String?>('iconUrl');
     this.name = registerOutput<String>('name');
@@ -386,6 +393,13 @@ class SpringCloudCustomizedAccelerator extends pulumi.CustomResource {
     gitRepository =
         registerOutput<SpringCloudCustomizedAcceleratorGitRepository>(
           'gitRepository',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SpringCloudCustomizedAcceleratorGitRepository.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     iconUrl = registerOutput<String?>('iconUrl');
     this.name = registerOutput<String>('name');

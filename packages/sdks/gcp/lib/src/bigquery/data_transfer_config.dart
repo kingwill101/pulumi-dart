@@ -1014,10 +1014,24 @@ class DataTransferConfig extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     emailPreferences = registerOutput<DataTransferConfigEmailPreferences?>(
       'emailPreferences',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataTransferConfigEmailPreferences.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     encryptionConfiguration =
         registerOutput<DataTransferConfigEncryptionConfiguration?>(
           'encryptionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataTransferConfigEncryptionConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
@@ -1029,9 +1043,23 @@ class DataTransferConfig extends pulumi.CustomResource {
     schedule = registerOutput<String?>('schedule');
     scheduleOptions = registerOutput<DataTransferConfigScheduleOptions?>(
       'scheduleOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataTransferConfigScheduleOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sensitiveParams = registerOutput<DataTransferConfigSensitiveParams?>(
       'sensitiveParams',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataTransferConfigSensitiveParams.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     serviceAccountName = registerOutput<String?>('serviceAccountName');
   }
@@ -1066,10 +1094,24 @@ class DataTransferConfig extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     emailPreferences = registerOutput<DataTransferConfigEmailPreferences?>(
       'emailPreferences',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataTransferConfigEmailPreferences.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     encryptionConfiguration =
         registerOutput<DataTransferConfigEncryptionConfiguration?>(
           'encryptionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataTransferConfigEncryptionConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
@@ -1081,9 +1123,23 @@ class DataTransferConfig extends pulumi.CustomResource {
     schedule = registerOutput<String?>('schedule');
     scheduleOptions = registerOutput<DataTransferConfigScheduleOptions?>(
       'scheduleOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataTransferConfigScheduleOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sensitiveParams = registerOutput<DataTransferConfigSensitiveParams?>(
       'sensitiveParams',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataTransferConfigSensitiveParams.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     serviceAccountName = registerOutput<String?>('serviceAccountName');
   }

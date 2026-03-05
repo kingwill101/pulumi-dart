@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getOutboundFirewallRule.
 class GetOutboundFirewallRuleResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Resource ID.
   final String id;
+
   /// Resource name.
   final String name;
+
   /// The state of the outbound rule.
   final String provisioningState;
+
   /// Resource type.
   final String type;
 
@@ -48,4 +51,3 @@ class GetOutboundFirewallRuleResult {
     );
   }
 }
-

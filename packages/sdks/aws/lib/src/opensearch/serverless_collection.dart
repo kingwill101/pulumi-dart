@@ -279,7 +279,16 @@ class ServerlessCollection extends pulumi.CustomResource {
     standbyReplicas = registerOutput<String>('standbyReplicas');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ServerlessCollectionTimeouts?>('timeouts');
+    timeouts = registerOutput<ServerlessCollectionTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerlessCollectionTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 
@@ -316,7 +325,16 @@ class ServerlessCollection extends pulumi.CustomResource {
     standbyReplicas = registerOutput<String>('standbyReplicas');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ServerlessCollectionTimeouts?>('timeouts');
+    timeouts = registerOutput<ServerlessCollectionTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerlessCollectionTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

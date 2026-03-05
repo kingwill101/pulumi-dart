@@ -298,6 +298,13 @@ class Server extends pulumi.CustomResource {
     administratorLogin = registerOutput<String?>('administratorLogin');
     administrators = registerOutput<ServerExternalAdministratorResponse?>(
       'administrators',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerExternalAdministratorResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     externalGovernanceStatus = registerOutput<String>(
@@ -307,7 +314,16 @@ class Server extends pulumi.CustomResource {
     fullyQualifiedDomainName = registerOutput<String>(
       'fullyQualifiedDomainName',
     );
-    identity = registerOutput<ResourceIdentityResponse?>('identity');
+    identity = registerOutput<ResourceIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     isIPv6Enabled = registerOutput<String?>('isIPv6Enabled');
     keyId = registerOutput<String?>('keyId');
     kind = registerOutput<String>('kind');

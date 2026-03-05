@@ -432,6 +432,13 @@ class ResolverInboundEndpoint extends pulumi.CustomResource {
        ) {
     ipConfigurations = registerOutput<ResolverInboundEndpointIpConfigurations>(
       'ipConfigurations',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResolverInboundEndpointIpConfigurations.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -464,6 +471,13 @@ class ResolverInboundEndpoint extends pulumi.CustomResource {
        ) {
     ipConfigurations = registerOutput<ResolverInboundEndpointIpConfigurations>(
       'ipConfigurations',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResolverInboundEndpointIpConfigurations.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

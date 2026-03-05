@@ -1018,18 +1018,52 @@ class DatasetAccessBigquery extends pulumi.CustomResource {
     apiUpdatedMember = registerOutput<bool>('apiUpdatedMember');
     authorizedDataset = registerOutput<DatasetAccessAuthorizedDataset?>(
       'authorizedDataset',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatasetAccessAuthorizedDataset.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    condition = registerOutput<DatasetAccessCondition?>('condition');
+    condition = registerOutput<DatasetAccessCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatasetAccessCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     datasetId = registerOutput<String>('datasetId');
     domain = registerOutput<String?>('domain');
     groupByEmail = registerOutput<String?>('groupByEmail');
     iamMember = registerOutput<String?>('iamMember');
     project = registerOutput<String>('project');
     role = registerOutput<String?>('role');
-    routine = registerOutput<DatasetAccessRoutine?>('routine');
+    routine = registerOutput<DatasetAccessRoutine?>(
+      'routine',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatasetAccessRoutine.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     specialGroup = registerOutput<String?>('specialGroup');
     userByEmail = registerOutput<String?>('userByEmail');
-    view = registerOutput<DatasetAccessView?>('view');
+    view = registerOutput<DatasetAccessView?>(
+      'view',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatasetAccessView.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [DatasetAccessBigquery] resource's state with the given [name] and [id].
@@ -1058,17 +1092,51 @@ class DatasetAccessBigquery extends pulumi.CustomResource {
     apiUpdatedMember = registerOutput<bool>('apiUpdatedMember');
     authorizedDataset = registerOutput<DatasetAccessAuthorizedDataset?>(
       'authorizedDataset',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatasetAccessAuthorizedDataset.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    condition = registerOutput<DatasetAccessCondition?>('condition');
+    condition = registerOutput<DatasetAccessCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatasetAccessCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     datasetId = registerOutput<String>('datasetId');
     domain = registerOutput<String?>('domain');
     groupByEmail = registerOutput<String?>('groupByEmail');
     iamMember = registerOutput<String?>('iamMember');
     project = registerOutput<String>('project');
     role = registerOutput<String?>('role');
-    routine = registerOutput<DatasetAccessRoutine?>('routine');
+    routine = registerOutput<DatasetAccessRoutine?>(
+      'routine',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatasetAccessRoutine.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     specialGroup = registerOutput<String?>('specialGroup');
     userByEmail = registerOutput<String?>('userByEmail');
-    view = registerOutput<DatasetAccessView?>('view');
+    view = registerOutput<DatasetAccessView?>(
+      'view',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatasetAccessView.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

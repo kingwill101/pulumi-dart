@@ -820,7 +820,16 @@ class Broker extends pulumi.CustomResource {
     authenticationStrategy = registerOutput<String>('authenticationStrategy');
     autoMinorVersionUpgrade = registerOutput<bool?>('autoMinorVersionUpgrade');
     brokerName = registerOutput<String>('brokerName');
-    configuration = registerOutput<BrokerConfiguration>('configuration');
+    configuration = registerOutput<BrokerConfiguration>(
+      'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BrokerConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dataReplicationMode = registerOutput<String>('dataReplicationMode');
     dataReplicationPrimaryBrokerArn = registerOutput<String?>(
       'dataReplicationPrimaryBrokerArn',
@@ -828,6 +837,13 @@ class Broker extends pulumi.CustomResource {
     deploymentMode = registerOutput<String?>('deploymentMode');
     encryptionOptions = registerOutput<BrokerEncryptionOptions?>(
       'encryptionOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BrokerEncryptionOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     engineType = registerOutput<String>('engineType');
     engineVersion = registerOutput<String>('engineVersion');
@@ -835,11 +851,34 @@ class Broker extends pulumi.CustomResource {
     instances = registerOutput<List<Map<String, dynamic>>>('instances');
     ldapServerMetadata = registerOutput<BrokerLdapServerMetadata?>(
       'ldapServerMetadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BrokerLdapServerMetadata.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    logs = registerOutput<BrokerLogs?>('logs');
+    logs = registerOutput<BrokerLogs?>(
+      'logs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BrokerLogs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     maintenanceWindowStartTime =
         registerOutput<BrokerMaintenanceWindowStartTime>(
           'maintenanceWindowStartTime',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return BrokerMaintenanceWindowStartTime.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     pendingDataReplicationMode = registerOutput<String>(
       'pendingDataReplicationMode',
@@ -882,7 +921,16 @@ class Broker extends pulumi.CustomResource {
     authenticationStrategy = registerOutput<String>('authenticationStrategy');
     autoMinorVersionUpgrade = registerOutput<bool?>('autoMinorVersionUpgrade');
     brokerName = registerOutput<String>('brokerName');
-    configuration = registerOutput<BrokerConfiguration>('configuration');
+    configuration = registerOutput<BrokerConfiguration>(
+      'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BrokerConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dataReplicationMode = registerOutput<String>('dataReplicationMode');
     dataReplicationPrimaryBrokerArn = registerOutput<String?>(
       'dataReplicationPrimaryBrokerArn',
@@ -890,6 +938,13 @@ class Broker extends pulumi.CustomResource {
     deploymentMode = registerOutput<String?>('deploymentMode');
     encryptionOptions = registerOutput<BrokerEncryptionOptions?>(
       'encryptionOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BrokerEncryptionOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     engineType = registerOutput<String>('engineType');
     engineVersion = registerOutput<String>('engineVersion');
@@ -897,11 +952,34 @@ class Broker extends pulumi.CustomResource {
     instances = registerOutput<List<Map<String, dynamic>>>('instances');
     ldapServerMetadata = registerOutput<BrokerLdapServerMetadata?>(
       'ldapServerMetadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BrokerLdapServerMetadata.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    logs = registerOutput<BrokerLogs?>('logs');
+    logs = registerOutput<BrokerLogs?>(
+      'logs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BrokerLogs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     maintenanceWindowStartTime =
         registerOutput<BrokerMaintenanceWindowStartTime>(
           'maintenanceWindowStartTime',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return BrokerMaintenanceWindowStartTime.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     pendingDataReplicationMode = registerOutput<String>(
       'pendingDataReplicationMode',

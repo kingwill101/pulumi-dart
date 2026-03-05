@@ -303,7 +303,16 @@ class DeploymentType extends pulumi.CustomResource {
     preview = registerOutput<bool?>('preview');
     project = registerOutput<String>('project');
     selfLink = registerOutput<String>('selfLink');
-    target = registerOutput<DeploymentTarget>('target');
+    target = registerOutput<DeploymentTarget>(
+      'target',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [DeploymentType] resource's state with the given [name] and [id].
@@ -339,6 +348,15 @@ class DeploymentType extends pulumi.CustomResource {
     preview = registerOutput<bool?>('preview');
     project = registerOutput<String>('project');
     selfLink = registerOutput<String>('selfLink');
-    target = registerOutput<DeploymentTarget>('target');
+    target = registerOutput<DeploymentTarget>(
+      'target',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

@@ -413,10 +413,24 @@ class StandardAssignment extends pulumi.CustomResource {
        ) {
     assignedStandard = registerOutput<AssignedStandardItemResponse?>(
       'assignedStandard',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AssignedStandardItemResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     attestationData =
         registerOutput<StandardAssignmentPropertiesResponseAttestationData?>(
           'attestationData',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return StandardAssignmentPropertiesResponseAttestationData.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
@@ -426,9 +440,25 @@ class StandardAssignment extends pulumi.CustomResource {
     exemptionData =
         registerOutput<StandardAssignmentPropertiesResponseExemptionData?>(
           'exemptionData',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return StandardAssignmentPropertiesResponseExemptionData.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     expiresOn = registerOutput<String?>('expiresOn');
-    metadata = registerOutput<StandardAssignmentMetadataResponse?>('metadata');
+    metadata = registerOutput<StandardAssignmentMetadataResponse?>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StandardAssignmentMetadataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');
   }

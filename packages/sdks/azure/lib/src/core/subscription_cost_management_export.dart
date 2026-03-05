@@ -377,11 +377,27 @@ class SubscriptionCostManagementExport extends pulumi.CustomResource {
     exportDataOptions =
         registerOutput<SubscriptionCostManagementExportExportDataOptions>(
           'exportDataOptions',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SubscriptionCostManagementExportExportDataOptions.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     exportDataStorageLocation =
         registerOutput<
           SubscriptionCostManagementExportExportDataStorageLocation
-        >('exportDataStorageLocation');
+        >(
+          'exportDataStorageLocation',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SubscriptionCostManagementExportExportDataStorageLocation.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     fileFormat = registerOutput<String?>('fileFormat');
     this.name = registerOutput<String>('name');
     recurrencePeriodEndDate = registerOutput<String>('recurrencePeriodEndDate');
@@ -419,11 +435,27 @@ class SubscriptionCostManagementExport extends pulumi.CustomResource {
     exportDataOptions =
         registerOutput<SubscriptionCostManagementExportExportDataOptions>(
           'exportDataOptions',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SubscriptionCostManagementExportExportDataOptions.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     exportDataStorageLocation =
         registerOutput<
           SubscriptionCostManagementExportExportDataStorageLocation
-        >('exportDataStorageLocation');
+        >(
+          'exportDataStorageLocation',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SubscriptionCostManagementExportExportDataStorageLocation.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     fileFormat = registerOutput<String?>('fileFormat');
     this.name = registerOutput<String>('name');
     recurrencePeriodEndDate = registerOutput<String>('recurrencePeriodEndDate');

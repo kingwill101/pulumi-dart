@@ -54,7 +54,16 @@ class ConversationModel extends pulumi.CustomResource {
     articleSuggestionModelMetadata =
         registerOutput<
           GoogleCloudDialogflowV2ArticleSuggestionModelMetadataResponse
-        >('articleSuggestionModelMetadata');
+        >(
+          'articleSuggestionModelMetadata',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowV2ArticleSuggestionModelMetadataResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     createTime = registerOutput<String>('createTime');
     datasets = registerOutput<List<Map<String, dynamic>>>('datasets');
     displayName = registerOutput<String>('displayName');
@@ -65,6 +74,13 @@ class ConversationModel extends pulumi.CustomResource {
     smartReplyModelMetadata =
         registerOutput<GoogleCloudDialogflowV2SmartReplyModelMetadataResponse>(
           'smartReplyModelMetadata',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowV2SmartReplyModelMetadataResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     state = registerOutput<String>('state');
   }

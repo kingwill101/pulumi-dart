@@ -75,12 +75,28 @@ class AppAppengineV1beta extends pulumi.CustomResource {
     dispatchRules = registerOutput<List<Map<String, dynamic>>>('dispatchRules');
     featureSettings = registerOutput<FeatureSettingsResponseAppengineV1beta>(
       'featureSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FeatureSettingsResponseAppengineV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     gcrDomain = registerOutput<String>('gcrDomain');
     generatedCustomerMetadata = registerOutput<Map<String, String>>(
       'generatedCustomerMetadata',
     );
-    iap = registerOutput<IdentityAwareProxyResponseAppengineV1beta>('iap');
+    iap = registerOutput<IdentityAwareProxyResponseAppengineV1beta>(
+      'iap',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IdentityAwareProxyResponseAppengineV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     serviceAccount = registerOutput<String>('serviceAccount');

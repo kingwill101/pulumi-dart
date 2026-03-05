@@ -662,7 +662,16 @@ class DbSystem extends pulumi.CustomResource {
     odbNetwork = registerOutput<String?>('odbNetwork');
     odbSubnet = registerOutput<String>('odbSubnet');
     project = registerOutput<String>('project');
-    properties = registerOutput<DbSystemProperties?>('properties');
+    properties = registerOutput<DbSystemProperties?>(
+      'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DbSystemProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
   }
 
@@ -703,7 +712,16 @@ class DbSystem extends pulumi.CustomResource {
     odbNetwork = registerOutput<String?>('odbNetwork');
     odbSubnet = registerOutput<String>('odbSubnet');
     project = registerOutput<String>('project');
-    properties = registerOutput<DbSystemProperties?>('properties');
+    properties = registerOutput<DbSystemProperties?>(
+      'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DbSystemProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
   }
 }

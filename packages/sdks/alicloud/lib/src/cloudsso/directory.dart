@@ -193,19 +193,56 @@ class Directory extends pulumi.CustomResource {
     directoryName = registerOutput<String?>('directoryName');
     loginPreference = registerOutput<DirectoryLoginPreference>(
       'loginPreference',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DirectoryLoginPreference.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     mfaAuthenticationSettingInfo =
         registerOutput<DirectoryMfaAuthenticationSettingInfo>(
           'mfaAuthenticationSettingInfo',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DirectoryMfaAuthenticationSettingInfo.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     mfaAuthenticationStatus = registerOutput<String>('mfaAuthenticationStatus');
-    passwordPolicy = registerOutput<DirectoryPasswordPolicy>('passwordPolicy');
+    passwordPolicy = registerOutput<DirectoryPasswordPolicy>(
+      'passwordPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DirectoryPasswordPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     samlIdentityProviderConfiguration =
         registerOutput<DirectorySamlIdentityProviderConfiguration>(
           'samlIdentityProviderConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DirectorySamlIdentityProviderConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     samlServiceProvider = registerOutput<DirectorySamlServiceProvider>(
       'samlServiceProvider',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DirectorySamlServiceProvider.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     scimSynchronizationStatus = registerOutput<String>(
       'scimSynchronizationStatus',
@@ -213,6 +250,13 @@ class Directory extends pulumi.CustomResource {
     userProvisioningConfiguration =
         registerOutput<DirectoryUserProvisioningConfiguration>(
           'userProvisioningConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DirectoryUserProvisioningConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 
@@ -246,19 +290,56 @@ class Directory extends pulumi.CustomResource {
     directoryName = registerOutput<String?>('directoryName');
     loginPreference = registerOutput<DirectoryLoginPreference>(
       'loginPreference',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DirectoryLoginPreference.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     mfaAuthenticationSettingInfo =
         registerOutput<DirectoryMfaAuthenticationSettingInfo>(
           'mfaAuthenticationSettingInfo',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DirectoryMfaAuthenticationSettingInfo.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     mfaAuthenticationStatus = registerOutput<String>('mfaAuthenticationStatus');
-    passwordPolicy = registerOutput<DirectoryPasswordPolicy>('passwordPolicy');
+    passwordPolicy = registerOutput<DirectoryPasswordPolicy>(
+      'passwordPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DirectoryPasswordPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     samlIdentityProviderConfiguration =
         registerOutput<DirectorySamlIdentityProviderConfiguration>(
           'samlIdentityProviderConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DirectorySamlIdentityProviderConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     samlServiceProvider = registerOutput<DirectorySamlServiceProvider>(
       'samlServiceProvider',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DirectorySamlServiceProvider.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     scimSynchronizationStatus = registerOutput<String>(
       'scimSynchronizationStatus',
@@ -266,6 +347,13 @@ class Directory extends pulumi.CustomResource {
     userProvisioningConfiguration =
         registerOutput<DirectoryUserProvisioningConfiguration>(
           'userProvisioningConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DirectoryUserProvisioningConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

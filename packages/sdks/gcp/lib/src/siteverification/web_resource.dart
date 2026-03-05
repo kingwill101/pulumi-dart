@@ -301,7 +301,16 @@ class WebResource extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     owners = registerOutput<List<String>>('owners');
-    site = registerOutput<WebResourceSite>('site');
+    site = registerOutput<WebResourceSite>(
+      'site',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebResourceSite.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     verificationMethod = registerOutput<String>('verificationMethod');
     webResourceId = registerOutput<String>('webResourceId');
   }
@@ -330,7 +339,16 @@ class WebResource extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     owners = registerOutput<List<String>>('owners');
-    site = registerOutput<WebResourceSite>('site');
+    site = registerOutput<WebResourceSite>(
+      'site',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebResourceSite.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     verificationMethod = registerOutput<String>('verificationMethod');
     webResourceId = registerOutput<String>('webResourceId');
   }

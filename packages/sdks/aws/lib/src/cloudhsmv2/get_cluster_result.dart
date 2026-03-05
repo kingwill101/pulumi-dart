@@ -9,13 +9,17 @@ class GetClusterResult {
   final List<GetClusterClusterCertificate> clusterCertificates;
   final String clusterId;
   final String clusterState;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
+
   /// ID of the security group associated with the CloudHSM cluster.
   final String securityGroupId;
+
   /// IDs of subnets in which cluster operates.
   final List<String> subnetIds;
+
   /// ID of the VPC that the CloudHSM cluster resides in.
   final String vpcId;
 
@@ -41,7 +45,11 @@ class GetClusterResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clusterCertificates': pulumi.Input.encodeList<GetClusterClusterCertificate, Map<String, dynamic>>(clusterCertificates, (value) => value.toMap()),
+      'clusterCertificates':
+          pulumi.Input.encodeList<
+            GetClusterClusterCertificate,
+            Map<String, dynamic>
+          >(clusterCertificates, (value) => value.toMap()),
       'clusterId': clusterId,
       'clusterState': clusterState,
       'id': id,
@@ -54,7 +62,13 @@ class GetClusterResult {
 
   factory GetClusterResult.fromMap(Map<String, dynamic> map) {
     return GetClusterResult(
-      clusterCertificates: pulumi.Input.decodeList<GetClusterClusterCertificate>(map['clusterCertificates']!, (value) => GetClusterClusterCertificate.fromMap((value as Map).cast<String, dynamic>())),
+      clusterCertificates:
+          pulumi.Input.decodeList<GetClusterClusterCertificate>(
+            map['clusterCertificates']!,
+            (value) => GetClusterClusterCertificate.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       clusterId: map['clusterId'] as String,
       clusterState: map['clusterState'] as String,
       id: map['id'] as String,
@@ -65,4 +79,3 @@ class GetClusterResult {
     );
   }
 }
-

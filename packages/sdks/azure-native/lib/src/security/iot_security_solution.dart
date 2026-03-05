@@ -362,7 +362,16 @@ class IotSecuritySolution extends pulumi.CustomResource {
       'recommendationsConfiguration',
     );
     status = registerOutput<String?>('status');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     unmaskedIpLoggingStatus = registerOutput<String?>(
@@ -371,6 +380,13 @@ class IotSecuritySolution extends pulumi.CustomResource {
     userDefinedResources =
         registerOutput<UserDefinedResourcesPropertiesResponse?>(
           'userDefinedResources',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return UserDefinedResourcesPropertiesResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     workspace = registerOutput<String?>('workspace');
   }

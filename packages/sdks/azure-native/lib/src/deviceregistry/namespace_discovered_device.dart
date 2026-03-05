@@ -324,9 +324,23 @@ class NamespaceDiscoveredDevice extends pulumi.CustomResource {
     discoveryId = registerOutput<String>('discoveryId');
     endpoints = registerOutput<DiscoveredMessagingEndpointsResponse?>(
       'endpoints',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiscoveredMessagingEndpointsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     extendedLocation = registerOutput<ExtendedLocationResponse>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     externalDeviceId = registerOutput<String?>('externalDeviceId');
     location = registerOutput<String>('location');
@@ -336,7 +350,16 @@ class NamespaceDiscoveredDevice extends pulumi.CustomResource {
     operatingSystem = registerOutput<String?>('operatingSystem');
     operatingSystemVersion = registerOutput<String?>('operatingSystemVersion');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     version = registerOutput<double>('version');

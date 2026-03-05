@@ -477,12 +477,26 @@ class ConfigurationAggregator extends pulumi.CustomResource {
     accountAggregationSource =
         registerOutput<ConfigurationAggregatorAccountAggregationSource?>(
           'accountAggregationSource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConfigurationAggregatorAccountAggregationSource.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     organizationAggregationSource =
         registerOutput<ConfigurationAggregatorOrganizationAggregationSource?>(
           'organizationAggregationSource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConfigurationAggregatorOrganizationAggregationSource.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -515,12 +529,26 @@ class ConfigurationAggregator extends pulumi.CustomResource {
     accountAggregationSource =
         registerOutput<ConfigurationAggregatorAccountAggregationSource?>(
           'accountAggregationSource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConfigurationAggregatorAccountAggregationSource.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     organizationAggregationSource =
         registerOutput<ConfigurationAggregatorOrganizationAggregationSource?>(
           'organizationAggregationSource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConfigurationAggregatorOrganizationAggregationSource.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');

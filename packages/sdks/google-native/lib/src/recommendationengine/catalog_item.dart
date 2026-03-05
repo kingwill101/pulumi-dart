@@ -62,14 +62,32 @@ class CatalogItem extends pulumi.CustomResource {
     itemAttributes =
         registerOutput<
           GoogleCloudRecommendationengineV1beta1FeatureMapResponse
-        >('itemAttributes');
+        >(
+          'itemAttributes',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudRecommendationengineV1beta1FeatureMapResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     itemGroupId = registerOutput<String>('itemGroupId');
     languageCode = registerOutput<String>('languageCode');
     location = registerOutput<String>('location');
     productMetadata =
         registerOutput<
           GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse
-        >('productMetadata');
+        >(
+          'productMetadata',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     project = registerOutput<String>('project');
     tags = registerOutput<List<String>>('tags');
     title = registerOutput<String>('title');

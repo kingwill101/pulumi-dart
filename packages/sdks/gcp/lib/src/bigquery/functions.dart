@@ -241,7 +241,8 @@ Future<GetConnectionIamPolicyResult> getConnectionIamPolicy(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_bigquery_get_datapolicyv2_data_policy_iam_policy_get_datapolicyv2_data_policy_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDatapolicyv2DataPolicyIamPolicyResult> getDatapolicyv2DataPolicyIamPolicy(
+Future<GetDatapolicyv2DataPolicyIamPolicyResult>
+getDatapolicyv2DataPolicyIamPolicy(
   GetDatapolicyv2DataPolicyIamPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

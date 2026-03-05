@@ -338,10 +338,33 @@ class Cluster extends pulumi.CustomResource {
     addOnFeatures = registerOutput<List<String>?>('addOnFeatures');
     azureActiveDirectory = registerOutput<ClusterAzureActiveDirectory?>(
       'azureActiveDirectory',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterAzureActiveDirectory.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    certificate = registerOutput<ClusterCertificate?>('certificate');
+    certificate = registerOutput<ClusterCertificate?>(
+      'certificate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterCertificate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     certificateCommonNames = registerOutput<ClusterCertificateCommonNames?>(
       'certificateCommonNames',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterCertificateCommonNames.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clientCertificateCommonNames = registerOutput<List<Map<String, dynamic>>?>(
       'clientCertificateCommonNames',
@@ -353,6 +376,13 @@ class Cluster extends pulumi.CustomResource {
     clusterEndpoint = registerOutput<String>('clusterEndpoint');
     diagnosticsConfig = registerOutput<ClusterDiagnosticsConfig?>(
       'diagnosticsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterDiagnosticsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     fabricSettings = registerOutput<List<Map<String, dynamic>>?>(
       'fabricSettings',
@@ -365,17 +395,40 @@ class Cluster extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     reverseProxyCertificate = registerOutput<ClusterReverseProxyCertificate?>(
       'reverseProxyCertificate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterReverseProxyCertificate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     reverseProxyCertificateCommonNames =
         registerOutput<ClusterReverseProxyCertificateCommonNames?>(
           'reverseProxyCertificateCommonNames',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ClusterReverseProxyCertificateCommonNames.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     serviceFabricZonalUpgradeMode = registerOutput<String?>(
       'serviceFabricZonalUpgradeMode',
     );
     tags = registerOutput<Map<String, String>?>('tags');
     upgradeMode = registerOutput<String>('upgradeMode');
-    upgradePolicy = registerOutput<ClusterUpgradePolicy?>('upgradePolicy');
+    upgradePolicy = registerOutput<ClusterUpgradePolicy?>(
+      'upgradePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterUpgradePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vmImage = registerOutput<String>('vmImage');
     vmssZonalUpgradeMode = registerOutput<String?>('vmssZonalUpgradeMode');
   }
@@ -406,10 +459,33 @@ class Cluster extends pulumi.CustomResource {
     addOnFeatures = registerOutput<List<String>?>('addOnFeatures');
     azureActiveDirectory = registerOutput<ClusterAzureActiveDirectory?>(
       'azureActiveDirectory',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterAzureActiveDirectory.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    certificate = registerOutput<ClusterCertificate?>('certificate');
+    certificate = registerOutput<ClusterCertificate?>(
+      'certificate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterCertificate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     certificateCommonNames = registerOutput<ClusterCertificateCommonNames?>(
       'certificateCommonNames',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterCertificateCommonNames.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clientCertificateCommonNames = registerOutput<List<Map<String, dynamic>>?>(
       'clientCertificateCommonNames',
@@ -421,6 +497,13 @@ class Cluster extends pulumi.CustomResource {
     clusterEndpoint = registerOutput<String>('clusterEndpoint');
     diagnosticsConfig = registerOutput<ClusterDiagnosticsConfig?>(
       'diagnosticsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterDiagnosticsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     fabricSettings = registerOutput<List<Map<String, dynamic>>?>(
       'fabricSettings',
@@ -433,17 +516,40 @@ class Cluster extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     reverseProxyCertificate = registerOutput<ClusterReverseProxyCertificate?>(
       'reverseProxyCertificate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterReverseProxyCertificate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     reverseProxyCertificateCommonNames =
         registerOutput<ClusterReverseProxyCertificateCommonNames?>(
           'reverseProxyCertificateCommonNames',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ClusterReverseProxyCertificateCommonNames.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     serviceFabricZonalUpgradeMode = registerOutput<String?>(
       'serviceFabricZonalUpgradeMode',
     );
     tags = registerOutput<Map<String, String>?>('tags');
     upgradeMode = registerOutput<String>('upgradeMode');
-    upgradePolicy = registerOutput<ClusterUpgradePolicy?>('upgradePolicy');
+    upgradePolicy = registerOutput<ClusterUpgradePolicy?>(
+      'upgradePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterUpgradePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vmImage = registerOutput<String>('vmImage');
     vmssZonalUpgradeMode = registerOutput<String?>('vmssZonalUpgradeMode');
   }

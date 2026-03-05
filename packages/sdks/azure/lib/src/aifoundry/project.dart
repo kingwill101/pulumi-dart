@@ -528,7 +528,16 @@ class Project extends pulumi.CustomResource {
     highBusinessImpactEnabled = registerOutput<bool>(
       'highBusinessImpactEnabled',
     );
-    identity = registerOutput<ProjectIdentity?>('identity');
+    identity = registerOutput<ProjectIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     primaryUserAssignedIdentity = registerOutput<String?>(
@@ -567,7 +576,16 @@ class Project extends pulumi.CustomResource {
     highBusinessImpactEnabled = registerOutput<bool>(
       'highBusinessImpactEnabled',
     );
-    identity = registerOutput<ProjectIdentity?>('identity');
+    identity = registerOutput<ProjectIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     primaryUserAssignedIdentity = registerOutput<String?>(

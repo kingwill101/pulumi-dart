@@ -358,10 +358,24 @@ class AccountCostManagementExport extends pulumi.CustomResource {
     exportDataOptions =
         registerOutput<AccountCostManagementExportExportDataOptions>(
           'exportDataOptions',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AccountCostManagementExportExportDataOptions.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     exportDataStorageLocation =
         registerOutput<AccountCostManagementExportExportDataStorageLocation>(
           'exportDataStorageLocation',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AccountCostManagementExportExportDataStorageLocation.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     fileFormat = registerOutput<String?>('fileFormat');
     this.name = registerOutput<String>('name');
@@ -400,10 +414,24 @@ class AccountCostManagementExport extends pulumi.CustomResource {
     exportDataOptions =
         registerOutput<AccountCostManagementExportExportDataOptions>(
           'exportDataOptions',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AccountCostManagementExportExportDataOptions.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     exportDataStorageLocation =
         registerOutput<AccountCostManagementExportExportDataStorageLocation>(
           'exportDataStorageLocation',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AccountCostManagementExportExportDataStorageLocation.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     fileFormat = registerOutput<String?>('fileFormat');
     this.name = registerOutput<String>('name');

@@ -321,6 +321,13 @@ class CachePolicy extends pulumi.CustomResource {
     parametersInCacheKeyAndForwardedToOrigin =
         registerOutput<CachePolicyParametersInCacheKeyAndForwardedToOrigin>(
           'parametersInCacheKeyAndForwardedToOrigin',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CachePolicyParametersInCacheKeyAndForwardedToOrigin.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 
@@ -357,6 +364,13 @@ class CachePolicy extends pulumi.CustomResource {
     parametersInCacheKeyAndForwardedToOrigin =
         registerOutput<CachePolicyParametersInCacheKeyAndForwardedToOrigin>(
           'parametersInCacheKeyAndForwardedToOrigin',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CachePolicyParametersInCacheKeyAndForwardedToOrigin.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

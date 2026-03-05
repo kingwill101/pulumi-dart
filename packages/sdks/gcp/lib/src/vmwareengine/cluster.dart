@@ -790,6 +790,13 @@ class Cluster extends pulumi.CustomResource {
        ) {
     autoscalingSettings = registerOutput<ClusterAutoscalingSettings?>(
       'autoscalingSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterAutoscalingSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     management = registerOutput<bool>('management');
@@ -828,6 +835,13 @@ class Cluster extends pulumi.CustomResource {
        ) {
     autoscalingSettings = registerOutput<ClusterAutoscalingSettings?>(
       'autoscalingSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterAutoscalingSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     management = registerOutput<bool>('management');

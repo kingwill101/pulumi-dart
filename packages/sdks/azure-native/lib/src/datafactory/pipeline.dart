@@ -70,16 +70,54 @@ class Pipeline extends pulumi.CustomResource {
     concurrency = registerOutput<int?>('concurrency');
     description = registerOutput<String?>('description');
     etag = registerOutput<String>('etag');
-    folder = registerOutput<PipelineResponseFolder?>('folder');
+    folder = registerOutput<PipelineResponseFolder?>(
+      'folder',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineResponseFolder.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, ParameterSpecificationResponse>?>(
       'parameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(
+          guardedValue,
+          (value) => ParameterSpecificationResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      },
     );
-    policy = registerOutput<PipelinePolicyResponse?>('policy');
+    policy = registerOutput<PipelinePolicyResponse?>(
+      'policy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelinePolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     runDimensions = registerOutput<Map<String, dynamic>?>('runDimensions');
     type = registerOutput<String>('type');
     variables = registerOutput<Map<String, VariableSpecificationResponse>?>(
       'variables',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeMapValues<VariableSpecificationResponse>(
+          guardedValue,
+          (value) => VariableSpecificationResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      },
     );
   }
 }

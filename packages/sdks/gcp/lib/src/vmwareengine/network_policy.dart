@@ -454,9 +454,25 @@ class NetworkPolicy extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     edgeServicesCidr = registerOutput<String>('edgeServicesCidr');
-    externalIp = registerOutput<NetworkPolicyExternalIp>('externalIp');
+    externalIp = registerOutput<NetworkPolicyExternalIp>(
+      'externalIp',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkPolicyExternalIp.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     internetAccess = registerOutput<NetworkPolicyInternetAccess>(
       'internetAccess',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkPolicyInternetAccess.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -495,9 +511,25 @@ class NetworkPolicy extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     edgeServicesCidr = registerOutput<String>('edgeServicesCidr');
-    externalIp = registerOutput<NetworkPolicyExternalIp>('externalIp');
+    externalIp = registerOutput<NetworkPolicyExternalIp>(
+      'externalIp',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkPolicyExternalIp.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     internetAccess = registerOutput<NetworkPolicyInternetAccess>(
       'internetAccess',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkPolicyInternetAccess.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

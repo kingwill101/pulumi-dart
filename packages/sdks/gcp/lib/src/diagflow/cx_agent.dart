@@ -923,14 +923,35 @@ class CxAgent extends pulumi.CustomResource {
        ) {
     advancedSettings = registerOutput<CxAgentAdvancedSettings>(
       'advancedSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxAgentAdvancedSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     answerFeedbackSettings = registerOutput<CxAgentAnswerFeedbackSettings?>(
       'answerFeedbackSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxAgentAnswerFeedbackSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     avatarUri = registerOutput<String?>('avatarUri');
     clientCertificateSettings =
         registerOutput<CxAgentClientCertificateSettings?>(
           'clientCertificateSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CxAgentClientCertificateSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     defaultLanguageCode = registerOutput<String>('defaultLanguageCode');
     deleteChatEngineOnDestroy = registerOutput<bool?>(
@@ -947,15 +968,36 @@ class CxAgent extends pulumi.CustomResource {
     );
     genAppBuilderSettings = registerOutput<CxAgentGenAppBuilderSettings>(
       'genAppBuilderSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxAgentGenAppBuilderSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     gitIntegrationSettings = registerOutput<CxAgentGitIntegrationSettings?>(
       'gitIntegrationSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxAgentGitIntegrationSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     locked = registerOutput<bool?>('locked');
     this.name = registerOutput<String>('name');
     personalizationSettings = registerOutput<CxAgentPersonalizationSettings?>(
       'personalizationSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxAgentPersonalizationSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     satisfiesPzi = registerOutput<bool>('satisfiesPzi');
@@ -963,6 +1005,13 @@ class CxAgent extends pulumi.CustomResource {
     securitySettings = registerOutput<String?>('securitySettings');
     speechToTextSettings = registerOutput<CxAgentSpeechToTextSettings?>(
       'speechToTextSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxAgentSpeechToTextSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     startFlow = registerOutput<String>('startFlow');
     startPlaybook = registerOutput<String?>('startPlaybook');
@@ -971,6 +1020,13 @@ class CxAgent extends pulumi.CustomResource {
     );
     textToSpeechSettings = registerOutput<CxAgentTextToSpeechSettings?>(
       'textToSpeechSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxAgentTextToSpeechSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     timeZone = registerOutput<String>('timeZone');
   }
@@ -1000,14 +1056,35 @@ class CxAgent extends pulumi.CustomResource {
        ) {
     advancedSettings = registerOutput<CxAgentAdvancedSettings>(
       'advancedSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxAgentAdvancedSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     answerFeedbackSettings = registerOutput<CxAgentAnswerFeedbackSettings?>(
       'answerFeedbackSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxAgentAnswerFeedbackSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     avatarUri = registerOutput<String?>('avatarUri');
     clientCertificateSettings =
         registerOutput<CxAgentClientCertificateSettings?>(
           'clientCertificateSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CxAgentClientCertificateSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     defaultLanguageCode = registerOutput<String>('defaultLanguageCode');
     deleteChatEngineOnDestroy = registerOutput<bool?>(
@@ -1024,15 +1101,36 @@ class CxAgent extends pulumi.CustomResource {
     );
     genAppBuilderSettings = registerOutput<CxAgentGenAppBuilderSettings>(
       'genAppBuilderSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxAgentGenAppBuilderSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     gitIntegrationSettings = registerOutput<CxAgentGitIntegrationSettings?>(
       'gitIntegrationSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxAgentGitIntegrationSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     locked = registerOutput<bool?>('locked');
     this.name = registerOutput<String>('name');
     personalizationSettings = registerOutput<CxAgentPersonalizationSettings?>(
       'personalizationSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxAgentPersonalizationSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     satisfiesPzi = registerOutput<bool>('satisfiesPzi');
@@ -1040,6 +1138,13 @@ class CxAgent extends pulumi.CustomResource {
     securitySettings = registerOutput<String?>('securitySettings');
     speechToTextSettings = registerOutput<CxAgentSpeechToTextSettings?>(
       'speechToTextSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxAgentSpeechToTextSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     startFlow = registerOutput<String>('startFlow');
     startPlaybook = registerOutput<String?>('startPlaybook');
@@ -1048,6 +1153,13 @@ class CxAgent extends pulumi.CustomResource {
     );
     textToSpeechSettings = registerOutput<CxAgentTextToSpeechSettings?>(
       'textToSpeechSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxAgentTextToSpeechSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     timeZone = registerOutput<String>('timeZone');
   }

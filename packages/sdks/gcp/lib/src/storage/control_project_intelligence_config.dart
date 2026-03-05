@@ -209,7 +209,16 @@ class ControlProjectIntelligenceConfig extends pulumi.CustomResource {
     effectiveIntelligenceConfigs = registerOutput<List<Map<String, dynamic>>>(
       'effectiveIntelligenceConfigs',
     );
-    filter = registerOutput<ControlProjectIntelligenceConfigFilter?>('filter');
+    filter = registerOutput<ControlProjectIntelligenceConfigFilter?>(
+      'filter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ControlProjectIntelligenceConfigFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     trialConfigs = registerOutput<List<Map<String, dynamic>>>('trialConfigs');
     updateTime = registerOutput<String>('updateTime');
@@ -242,7 +251,16 @@ class ControlProjectIntelligenceConfig extends pulumi.CustomResource {
     effectiveIntelligenceConfigs = registerOutput<List<Map<String, dynamic>>>(
       'effectiveIntelligenceConfigs',
     );
-    filter = registerOutput<ControlProjectIntelligenceConfigFilter?>('filter');
+    filter = registerOutput<ControlProjectIntelligenceConfigFilter?>(
+      'filter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ControlProjectIntelligenceConfigFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     trialConfigs = registerOutput<List<Map<String, dynamic>>>('trialConfigs');
     updateTime = registerOutput<String>('updateTime');

@@ -2418,6 +2418,13 @@ class Instance extends pulumi.CustomResource {
     authorizationMode = registerOutput<String>('authorizationMode');
     automatedBackupConfig = registerOutput<InstanceAutomatedBackupConfig?>(
       'automatedBackupConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceAutomatedBackupConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     availableMaintenanceVersions = registerOutput<List<String>>(
       'availableMaintenanceVersions',
@@ -2427,6 +2434,13 @@ class Instance extends pulumi.CustomResource {
     crossInstanceReplicationConfig =
         registerOutput<InstanceCrossInstanceReplicationConfig>(
           'crossInstanceReplicationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceCrossInstanceReplicationConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     deletionProtectionEnabled = registerOutput<bool?>(
       'deletionProtectionEnabled',
@@ -2447,13 +2461,29 @@ class Instance extends pulumi.CustomResource {
     endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
     engineConfigs = registerOutput<Map<String, String>?>('engineConfigs');
     engineVersion = registerOutput<String>('engineVersion');
-    gcsSource = registerOutput<InstanceGcsSource?>('gcsSource');
+    gcsSource = registerOutput<InstanceGcsSource?>(
+      'gcsSource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceGcsSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     instanceId = registerOutput<String>('instanceId');
     kmsKey = registerOutput<String?>('kmsKey');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     maintenancePolicy = registerOutput<InstanceMaintenancePolicy?>(
       'maintenancePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceMaintenancePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     maintenanceSchedules = registerOutput<List<Map<String, dynamic>>>(
       'maintenanceSchedules',
@@ -2461,6 +2491,13 @@ class Instance extends pulumi.CustomResource {
     maintenanceVersion = registerOutput<String?>('maintenanceVersion');
     managedBackupSource = registerOutput<InstanceManagedBackupSource?>(
       'managedBackupSource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceManagedBackupSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     managedServerCas = registerOutput<List<Map<String, dynamic>>>(
       'managedServerCas',
@@ -2471,6 +2508,13 @@ class Instance extends pulumi.CustomResource {
     nodeType = registerOutput<String>('nodeType');
     persistenceConfig = registerOutput<InstancePersistenceConfig>(
       'persistenceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstancePersistenceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     pscAttachmentDetails = registerOutput<List<Map<String, dynamic>>>(
@@ -2489,6 +2533,13 @@ class Instance extends pulumi.CustomResource {
     updateTime = registerOutput<String>('updateTime');
     zoneDistributionConfig = registerOutput<InstanceZoneDistributionConfig>(
       'zoneDistributionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceZoneDistributionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -2518,6 +2569,13 @@ class Instance extends pulumi.CustomResource {
     authorizationMode = registerOutput<String>('authorizationMode');
     automatedBackupConfig = registerOutput<InstanceAutomatedBackupConfig?>(
       'automatedBackupConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceAutomatedBackupConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     availableMaintenanceVersions = registerOutput<List<String>>(
       'availableMaintenanceVersions',
@@ -2527,6 +2585,13 @@ class Instance extends pulumi.CustomResource {
     crossInstanceReplicationConfig =
         registerOutput<InstanceCrossInstanceReplicationConfig>(
           'crossInstanceReplicationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceCrossInstanceReplicationConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     deletionProtectionEnabled = registerOutput<bool?>(
       'deletionProtectionEnabled',
@@ -2547,13 +2612,29 @@ class Instance extends pulumi.CustomResource {
     endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
     engineConfigs = registerOutput<Map<String, String>?>('engineConfigs');
     engineVersion = registerOutput<String>('engineVersion');
-    gcsSource = registerOutput<InstanceGcsSource?>('gcsSource');
+    gcsSource = registerOutput<InstanceGcsSource?>(
+      'gcsSource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceGcsSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     instanceId = registerOutput<String>('instanceId');
     kmsKey = registerOutput<String?>('kmsKey');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     maintenancePolicy = registerOutput<InstanceMaintenancePolicy?>(
       'maintenancePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceMaintenancePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     maintenanceSchedules = registerOutput<List<Map<String, dynamic>>>(
       'maintenanceSchedules',
@@ -2561,6 +2642,13 @@ class Instance extends pulumi.CustomResource {
     maintenanceVersion = registerOutput<String?>('maintenanceVersion');
     managedBackupSource = registerOutput<InstanceManagedBackupSource?>(
       'managedBackupSource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceManagedBackupSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     managedServerCas = registerOutput<List<Map<String, dynamic>>>(
       'managedServerCas',
@@ -2571,6 +2659,13 @@ class Instance extends pulumi.CustomResource {
     nodeType = registerOutput<String>('nodeType');
     persistenceConfig = registerOutput<InstancePersistenceConfig>(
       'persistenceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstancePersistenceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     pscAttachmentDetails = registerOutput<List<Map<String, dynamic>>>(
@@ -2589,6 +2684,13 @@ class Instance extends pulumi.CustomResource {
     updateTime = registerOutput<String>('updateTime');
     zoneDistributionConfig = registerOutput<InstanceZoneDistributionConfig>(
       'zoneDistributionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceZoneDistributionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

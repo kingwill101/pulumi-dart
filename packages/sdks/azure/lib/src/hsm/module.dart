@@ -715,9 +715,25 @@ class Module extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     managementNetworkProfile = registerOutput<ModuleManagementNetworkProfile?>(
       'managementNetworkProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ModuleManagementNetworkProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
-    networkProfile = registerOutput<ModuleNetworkProfile>('networkProfile');
+    networkProfile = registerOutput<ModuleNetworkProfile>(
+      'networkProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ModuleNetworkProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');
     stampId = registerOutput<String?>('stampId');
@@ -751,9 +767,25 @@ class Module extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     managementNetworkProfile = registerOutput<ModuleManagementNetworkProfile?>(
       'managementNetworkProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ModuleManagementNetworkProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
-    networkProfile = registerOutput<ModuleNetworkProfile>('networkProfile');
+    networkProfile = registerOutput<ModuleNetworkProfile>(
+      'networkProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ModuleNetworkProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');
     stampId = registerOutput<String?>('stampId');

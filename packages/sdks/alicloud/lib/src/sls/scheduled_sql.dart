@@ -465,10 +465,26 @@ class ScheduledSql extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     project = registerOutput<String>('project');
-    schedule = registerOutput<ScheduledSqlSchedule>('schedule');
+    schedule = registerOutput<ScheduledSqlSchedule>(
+      'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduledSqlSchedule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     scheduledSqlConfiguration =
         registerOutput<ScheduledSqlScheduledSqlConfiguration>(
           'scheduledSqlConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ScheduledSqlScheduledSqlConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     scheduledSqlName = registerOutput<String>('scheduledSqlName');
     status = registerOutput<String>('status');
@@ -500,10 +516,26 @@ class ScheduledSql extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     project = registerOutput<String>('project');
-    schedule = registerOutput<ScheduledSqlSchedule>('schedule');
+    schedule = registerOutput<ScheduledSqlSchedule>(
+      'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduledSqlSchedule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     scheduledSqlConfiguration =
         registerOutput<ScheduledSqlScheduledSqlConfiguration>(
           'scheduledSqlConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ScheduledSqlScheduledSqlConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     scheduledSqlName = registerOutput<String>('scheduledSqlName');
     status = registerOutput<String>('status');

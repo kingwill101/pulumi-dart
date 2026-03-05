@@ -294,7 +294,16 @@ class EventRule extends pulumi.CustomResource {
       'contactParameters',
     );
     description = registerOutput<String?>('description');
-    eventPattern = registerOutput<EventRuleEventPattern>('eventPattern');
+    eventPattern = registerOutput<EventRuleEventPattern>(
+      'eventPattern',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventRuleEventPattern.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     fcParameters = registerOutput<List<Map<String, dynamic>>?>('fcParameters');
     groupId = registerOutput<String?>('groupId');
     mnsParameters = registerOutput<List<Map<String, dynamic>>?>(
@@ -341,7 +350,16 @@ class EventRule extends pulumi.CustomResource {
       'contactParameters',
     );
     description = registerOutput<String?>('description');
-    eventPattern = registerOutput<EventRuleEventPattern>('eventPattern');
+    eventPattern = registerOutput<EventRuleEventPattern>(
+      'eventPattern',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventRuleEventPattern.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     fcParameters = registerOutput<List<Map<String, dynamic>>?>('fcParameters');
     groupId = registerOutput<String?>('groupId');
     mnsParameters = registerOutput<List<Map<String, dynamic>>?>(

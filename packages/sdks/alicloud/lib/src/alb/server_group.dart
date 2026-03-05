@@ -769,12 +769,26 @@ class ServerGroup extends pulumi.CustomResource {
        ) {
     connectionDrainConfig = registerOutput<ServerGroupConnectionDrainConfig>(
       'connectionDrainConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerGroupConnectionDrainConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     crossZoneEnabled = registerOutput<bool>('crossZoneEnabled');
     dryRun = registerOutput<bool?>('dryRun');
     healthCheckConfig = registerOutput<ServerGroupHealthCheckConfig>(
       'healthCheckConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerGroupHealthCheckConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     healthCheckTemplateId = registerOutput<String?>('healthCheckTemplateId');
     ipv6Enabled = registerOutput<bool?>('ipv6Enabled');
@@ -787,13 +801,36 @@ class ServerGroup extends pulumi.CustomResource {
     serviceName = registerOutput<String?>('serviceName');
     slowStartConfig = registerOutput<ServerGroupSlowStartConfig>(
       'slowStartConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerGroupSlowStartConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     status = registerOutput<String>('status');
     stickySessionConfig = registerOutput<ServerGroupStickySessionConfig?>(
       'stickySessionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerGroupStickySessionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
-    uchConfig = registerOutput<ServerGroupUchConfig?>('uchConfig');
+    uchConfig = registerOutput<ServerGroupUchConfig?>(
+      'uchConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerGroupUchConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     upstreamKeepaliveEnabled = registerOutput<bool?>(
       'upstreamKeepaliveEnabled',
     );
@@ -825,12 +862,26 @@ class ServerGroup extends pulumi.CustomResource {
        ) {
     connectionDrainConfig = registerOutput<ServerGroupConnectionDrainConfig>(
       'connectionDrainConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerGroupConnectionDrainConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     crossZoneEnabled = registerOutput<bool>('crossZoneEnabled');
     dryRun = registerOutput<bool?>('dryRun');
     healthCheckConfig = registerOutput<ServerGroupHealthCheckConfig>(
       'healthCheckConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerGroupHealthCheckConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     healthCheckTemplateId = registerOutput<String?>('healthCheckTemplateId');
     ipv6Enabled = registerOutput<bool?>('ipv6Enabled');
@@ -843,13 +894,36 @@ class ServerGroup extends pulumi.CustomResource {
     serviceName = registerOutput<String?>('serviceName');
     slowStartConfig = registerOutput<ServerGroupSlowStartConfig>(
       'slowStartConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerGroupSlowStartConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     status = registerOutput<String>('status');
     stickySessionConfig = registerOutput<ServerGroupStickySessionConfig?>(
       'stickySessionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerGroupStickySessionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
-    uchConfig = registerOutput<ServerGroupUchConfig?>('uchConfig');
+    uchConfig = registerOutput<ServerGroupUchConfig?>(
+      'uchConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerGroupUchConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     upstreamKeepaliveEnabled = registerOutput<bool?>(
       'upstreamKeepaliveEnabled',
     );

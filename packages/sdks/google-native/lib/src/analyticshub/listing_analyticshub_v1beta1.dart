@@ -73,11 +73,25 @@ class ListingAnalyticshubV1beta1 extends pulumi.CustomResource {
     bigqueryDataset =
         registerOutput<BigQueryDatasetSourceResponseAnalyticshubV1beta1>(
           'bigqueryDataset',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return BigQueryDatasetSourceResponseAnalyticshubV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     categories = registerOutput<List<String>>('categories');
     dataExchangeId = registerOutput<String>('dataExchangeId');
     dataProvider = registerOutput<DataProviderResponseAnalyticshubV1beta1>(
       'dataProvider',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataProviderResponseAnalyticshubV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
@@ -90,11 +104,25 @@ class ListingAnalyticshubV1beta1 extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     publisher = registerOutput<PublisherResponseAnalyticshubV1beta1>(
       'publisher',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PublisherResponseAnalyticshubV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     requestAccess = registerOutput<String>('requestAccess');
     restrictedExportConfig =
         registerOutput<RestrictedExportConfigResponseAnalyticshubV1beta1>(
           'restrictedExportConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RestrictedExportConfigResponseAnalyticshubV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     state = registerOutput<String>('state');
   }

@@ -319,15 +319,38 @@ class Model extends pulumi.CustomResource {
     executionRoleArn = registerOutput<String>('executionRoleArn');
     inferenceExecutionConfig = registerOutput<ModelInferenceExecutionConfig>(
       'inferenceExecutionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ModelInferenceExecutionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     primaryContainer = registerOutput<ModelPrimaryContainer?>(
       'primaryContainer',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ModelPrimaryContainer.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    vpcConfig = registerOutput<ModelVpcConfig?>('vpcConfig');
+    vpcConfig = registerOutput<ModelVpcConfig?>(
+      'vpcConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ModelVpcConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Model] resource's state with the given [name] and [id].
@@ -355,14 +378,37 @@ class Model extends pulumi.CustomResource {
     executionRoleArn = registerOutput<String>('executionRoleArn');
     inferenceExecutionConfig = registerOutput<ModelInferenceExecutionConfig>(
       'inferenceExecutionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ModelInferenceExecutionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     primaryContainer = registerOutput<ModelPrimaryContainer?>(
       'primaryContainer',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ModelPrimaryContainer.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    vpcConfig = registerOutput<ModelVpcConfig?>('vpcConfig');
+    vpcConfig = registerOutput<ModelVpcConfig?>(
+      'vpcConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ModelVpcConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

@@ -133,7 +133,16 @@ class EnrollmentStatus extends pulumi.CustomResource {
     );
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    timeouts = registerOutput<EnrollmentStatusTimeouts?>('timeouts');
+    timeouts = registerOutput<EnrollmentStatusTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnrollmentStatusTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [EnrollmentStatus] resource's state with the given [name] and [id].
@@ -165,6 +174,15 @@ class EnrollmentStatus extends pulumi.CustomResource {
     );
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    timeouts = registerOutput<EnrollmentStatusTimeouts?>('timeouts');
+    timeouts = registerOutput<EnrollmentStatusTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnrollmentStatusTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

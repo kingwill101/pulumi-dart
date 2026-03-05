@@ -706,12 +706,28 @@ class ChatEngine extends pulumi.CustomResource {
        ) {
     chatEngineConfig = registerOutput<ChatEngineChatEngineConfig>(
       'chatEngineConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ChatEngineChatEngineConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     chatEngineMetadatas = registerOutput<List<Map<String, dynamic>>>(
       'chatEngineMetadatas',
     );
     collectionId = registerOutput<String>('collectionId');
-    commonConfig = registerOutput<ChatEngineCommonConfig?>('commonConfig');
+    commonConfig = registerOutput<ChatEngineCommonConfig?>(
+      'commonConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ChatEngineCommonConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     dataStoreIds = registerOutput<List<String>>('dataStoreIds');
     displayName = registerOutput<String>('displayName');
@@ -748,12 +764,28 @@ class ChatEngine extends pulumi.CustomResource {
        ) {
     chatEngineConfig = registerOutput<ChatEngineChatEngineConfig>(
       'chatEngineConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ChatEngineChatEngineConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     chatEngineMetadatas = registerOutput<List<Map<String, dynamic>>>(
       'chatEngineMetadatas',
     );
     collectionId = registerOutput<String>('collectionId');
-    commonConfig = registerOutput<ChatEngineCommonConfig?>('commonConfig');
+    commonConfig = registerOutput<ChatEngineCommonConfig?>(
+      'commonConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ChatEngineCommonConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     dataStoreIds = registerOutput<List<String>>('dataStoreIds');
     displayName = registerOutput<String>('displayName');

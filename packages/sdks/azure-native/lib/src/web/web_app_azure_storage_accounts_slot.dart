@@ -50,6 +50,16 @@ class WebAppAzureStorageAccountsSlot extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     properties = registerOutput<Map<String, AzureStorageInfoValueResponse>>(
       'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeMapValues<AzureStorageInfoValueResponse>(
+          guardedValue,
+          (value) => AzureStorageInfoValueResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      },
     );
     type = registerOutput<String>('type');
   }

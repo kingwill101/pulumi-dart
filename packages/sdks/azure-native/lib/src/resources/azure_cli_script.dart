@@ -755,12 +755,28 @@ class AzureCliScript extends pulumi.CustomResource {
     cleanupPreference = registerOutput<String?>('cleanupPreference');
     containerSettings = registerOutput<ContainerConfigurationResponse?>(
       'containerSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContainerConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     environmentVariables = registerOutput<List<Map<String, dynamic>>?>(
       'environmentVariables',
     );
     forceUpdateTag = registerOutput<String?>('forceUpdateTag');
-    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    identity = registerOutput<ManagedServiceIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedServiceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -769,15 +785,40 @@ class AzureCliScript extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     retentionInterval = registerOutput<String>('retentionInterval');
     scriptContent = registerOutput<String?>('scriptContent');
-    status = registerOutput<ScriptStatusResponse>('status');
+    status = registerOutput<ScriptStatusResponse>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScriptStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     storageAccountSettings =
         registerOutput<StorageAccountConfigurationResponse?>(
           'storageAccountSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return StorageAccountConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     supportingScriptUris = registerOutput<List<String>?>(
       'supportingScriptUris',
     );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     timeout = registerOutput<String?>('timeout');
     type = registerOutput<String>('type');

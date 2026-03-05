@@ -292,7 +292,16 @@ class Project extends pulumi.CustomResource {
     projectStatus = registerOutput<String>('projectStatus');
     region = registerOutput<String>('region');
     skipDeletionCheck = registerOutput<bool?>('skipDeletionCheck');
-    timeouts = registerOutput<ProjectTimeouts?>('timeouts');
+    timeouts = registerOutput<ProjectTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Project] resource's state with the given [name] and [id].
@@ -331,6 +340,15 @@ class Project extends pulumi.CustomResource {
     projectStatus = registerOutput<String>('projectStatus');
     region = registerOutput<String>('region');
     skipDeletionCheck = registerOutput<bool?>('skipDeletionCheck');
-    timeouts = registerOutput<ProjectTimeouts?>('timeouts');
+    timeouts = registerOutput<ProjectTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

@@ -633,6 +633,13 @@ class ConnectionFunction extends pulumi.CustomResource {
     connectionFunctionConfig =
         registerOutput<ConnectionFunctionConnectionFunctionConfig>(
           'connectionFunctionConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConnectionFunctionConnectionFunctionConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     etag = registerOutput<String>('etag');
     liveStageEtag = registerOutput<String>('liveStageEtag');
@@ -671,6 +678,13 @@ class ConnectionFunction extends pulumi.CustomResource {
     connectionFunctionConfig =
         registerOutput<ConnectionFunctionConnectionFunctionConfig>(
           'connectionFunctionConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConnectionFunctionConnectionFunctionConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     etag = registerOutput<String>('etag');
     liveStageEtag = registerOutput<String>('liveStageEtag');

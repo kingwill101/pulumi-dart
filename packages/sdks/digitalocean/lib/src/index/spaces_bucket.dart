@@ -486,7 +486,16 @@ class SpacesBucket extends pulumi.CustomResource {
     );
     this.name = registerOutput<String>('name');
     region = registerOutput<String?>('region');
-    versioning = registerOutput<SpacesBucketVersioning?>('versioning');
+    versioning = registerOutput<SpacesBucketVersioning?>(
+      'versioning',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpacesBucketVersioning.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [SpacesBucket] resource's state with the given [name] and [id].
@@ -523,6 +532,15 @@ class SpacesBucket extends pulumi.CustomResource {
     );
     this.name = registerOutput<String>('name');
     region = registerOutput<String?>('region');
-    versioning = registerOutput<SpacesBucketVersioning?>('versioning');
+    versioning = registerOutput<SpacesBucketVersioning?>(
+      'versioning',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpacesBucketVersioning.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

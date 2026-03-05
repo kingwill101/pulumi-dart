@@ -1528,7 +1528,16 @@ class Database extends pulumi.CustomResource {
     appEngineIntegrationMode = registerOutput<String>(
       'appEngineIntegrationMode',
     );
-    cmekConfig = registerOutput<DatabaseCmekConfig?>('cmekConfig');
+    cmekConfig = registerOutput<DatabaseCmekConfig?>(
+      'cmekConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseCmekConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     concurrencyMode = registerOutput<String>('concurrencyMode');
     createTime = registerOutput<String>('createTime');
     databaseEdition = registerOutput<String>('databaseEdition');
@@ -1576,7 +1585,16 @@ class Database extends pulumi.CustomResource {
     appEngineIntegrationMode = registerOutput<String>(
       'appEngineIntegrationMode',
     );
-    cmekConfig = registerOutput<DatabaseCmekConfig?>('cmekConfig');
+    cmekConfig = registerOutput<DatabaseCmekConfig?>(
+      'cmekConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseCmekConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     concurrencyMode = registerOutput<String>('concurrencyMode');
     createTime = registerOutput<String>('createTime');
     databaseEdition = registerOutput<String>('databaseEdition');

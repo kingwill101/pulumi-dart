@@ -56,7 +56,16 @@ class Channel extends pulumi.CustomResource {
     labels = registerOutput<Map<String, String>>('labels');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    release = registerOutput<ReleaseResponse>('release');
+    release = registerOutput<ReleaseResponse>(
+      'release',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReleaseResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     retainedReleaseCount = registerOutput<int>('retainedReleaseCount');
     siteId = registerOutput<String>('siteId');
     ttl = registerOutput<String>('ttl');

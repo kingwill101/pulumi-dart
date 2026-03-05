@@ -287,6 +287,13 @@ class LinkedServiceAzureFunction extends pulumi.CustomResource {
     key = registerOutput<String?>('key');
     keyVaultKey = registerOutput<LinkedServiceAzureFunctionKeyVaultKey?>(
       'keyVaultKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinkedServiceAzureFunctionKeyVaultKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');
@@ -326,6 +333,13 @@ class LinkedServiceAzureFunction extends pulumi.CustomResource {
     key = registerOutput<String?>('key');
     keyVaultKey = registerOutput<LinkedServiceAzureFunctionKeyVaultKey?>(
       'keyVaultKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinkedServiceAzureFunctionKeyVaultKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');

@@ -278,7 +278,16 @@ class EventHubNamespace extends pulumi.CustomResource {
       'defaultSecondaryConnectionStringAlias',
     );
     defaultSecondaryKey = registerOutput<String>('defaultSecondaryKey');
-    identity = registerOutput<EventHubNamespaceIdentity?>('identity');
+    identity = registerOutput<EventHubNamespaceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventHubNamespaceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     localAuthenticationEnabled = registerOutput<bool?>(
       'localAuthenticationEnabled',
     );
@@ -288,6 +297,13 @@ class EventHubNamespace extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkRulesets = registerOutput<EventHubNamespaceNetworkRulesets>(
       'networkRulesets',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventHubNamespaceNetworkRulesets.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     publicNetworkAccessEnabled = registerOutput<bool?>(
       'publicNetworkAccessEnabled',
@@ -337,7 +353,16 @@ class EventHubNamespace extends pulumi.CustomResource {
       'defaultSecondaryConnectionStringAlias',
     );
     defaultSecondaryKey = registerOutput<String>('defaultSecondaryKey');
-    identity = registerOutput<EventHubNamespaceIdentity?>('identity');
+    identity = registerOutput<EventHubNamespaceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventHubNamespaceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     localAuthenticationEnabled = registerOutput<bool?>(
       'localAuthenticationEnabled',
     );
@@ -347,6 +372,13 @@ class EventHubNamespace extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkRulesets = registerOutput<EventHubNamespaceNetworkRulesets>(
       'networkRulesets',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventHubNamespaceNetworkRulesets.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     publicNetworkAccessEnabled = registerOutput<bool?>(
       'publicNetworkAccessEnabled',

@@ -369,6 +369,13 @@ class Workteam extends pulumi.CustomResource {
     notificationConfiguration =
         registerOutput<WorkteamNotificationConfiguration?>(
           'notificationConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WorkteamNotificationConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     subdomain = registerOutput<String>('subdomain');
@@ -377,6 +384,13 @@ class Workteam extends pulumi.CustomResource {
     workerAccessConfiguration =
         registerOutput<WorkteamWorkerAccessConfiguration>(
           'workerAccessConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WorkteamWorkerAccessConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     workforceName = registerOutput<String?>('workforceName');
     workteamName = registerOutput<String>('workteamName');
@@ -413,6 +427,13 @@ class Workteam extends pulumi.CustomResource {
     notificationConfiguration =
         registerOutput<WorkteamNotificationConfiguration?>(
           'notificationConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WorkteamNotificationConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     subdomain = registerOutput<String>('subdomain');
@@ -421,6 +442,13 @@ class Workteam extends pulumi.CustomResource {
     workerAccessConfiguration =
         registerOutput<WorkteamWorkerAccessConfiguration>(
           'workerAccessConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WorkteamWorkerAccessConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     workforceName = registerOutput<String?>('workforceName');
     workteamName = registerOutput<String>('workteamName');

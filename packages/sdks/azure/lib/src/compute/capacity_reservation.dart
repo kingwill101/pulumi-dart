@@ -247,7 +247,16 @@ class CapacityReservation extends pulumi.CustomResource {
       'capacityReservationGroupId',
     );
     this.name = registerOutput<String>('name');
-    sku = registerOutput<CapacityReservationSku>('sku');
+    sku = registerOutput<CapacityReservationSku>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CapacityReservationSku.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     zone = registerOutput<String?>('zone');
   }
@@ -279,7 +288,16 @@ class CapacityReservation extends pulumi.CustomResource {
       'capacityReservationGroupId',
     );
     this.name = registerOutput<String>('name');
-    sku = registerOutput<CapacityReservationSku>('sku');
+    sku = registerOutput<CapacityReservationSku>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CapacityReservationSku.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     zone = registerOutput<String?>('zone');
   }

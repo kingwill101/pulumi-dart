@@ -223,9 +223,27 @@ class IpAllocation extends pulumi.CustomResource {
     prefix = registerOutput<String?>('prefix');
     prefixLength = registerOutput<int?>('prefixLength');
     prefixType = registerOutput<String?>('prefixType');
-    subnet = registerOutput<SubResourceResponse>('subnet');
+    subnet = registerOutput<SubResourceResponse>(
+      'subnet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
-    virtualNetwork = registerOutput<SubResourceResponse>('virtualNetwork');
+    virtualNetwork = registerOutput<SubResourceResponse>(
+      'virtualNetwork',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

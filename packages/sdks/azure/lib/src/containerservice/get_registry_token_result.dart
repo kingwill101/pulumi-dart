@@ -1,15 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getRegistryToken.
 class GetRegistryTokenResult {
   final String containerRegistryName;
+
   /// Whether this Token is enabled.
   final bool enabled;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
   final String resourceGroupName;
+
   /// The Scope Map ID used by the token.
   final String scopeMapId;
 
@@ -51,4 +53,3 @@ class GetRegistryTokenResult {
     );
   }
 }
-

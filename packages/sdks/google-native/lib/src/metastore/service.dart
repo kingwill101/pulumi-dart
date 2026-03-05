@@ -105,36 +105,96 @@ class Service extends pulumi.CustomResource {
     databaseType = registerOutput<String>('databaseType');
     encryptionConfig = registerOutput<EncryptionConfigResponse>(
       'encryptionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EncryptionConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     endpointUri = registerOutput<String>('endpointUri');
     hiveMetastoreConfig = registerOutput<HiveMetastoreConfigResponse>(
       'hiveMetastoreConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HiveMetastoreConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
     maintenanceWindow = registerOutput<MaintenanceWindowResponse>(
       'maintenanceWindow',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MaintenanceWindowResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     metadataIntegration = registerOutput<MetadataIntegrationResponse>(
       'metadataIntegration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MetadataIntegrationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     metadataManagementActivity =
         registerOutput<MetadataManagementActivityResponse>(
           'metadataManagementActivity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MetadataManagementActivityResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
-    networkConfig = registerOutput<NetworkConfigResponse>('networkConfig');
+    networkConfig = registerOutput<NetworkConfigResponse>(
+      'networkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     port = registerOutput<int>('port');
     project = registerOutput<String>('project');
     releaseChannel = registerOutput<String>('releaseChannel');
     requestId = registerOutput<String?>('requestId');
-    scalingConfig = registerOutput<ScalingConfigResponse>('scalingConfig');
+    scalingConfig = registerOutput<ScalingConfigResponse>(
+      'scalingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScalingConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     serviceId = registerOutput<String>('serviceId');
     state = registerOutput<String>('state');
     stateMessage = registerOutput<String>('stateMessage');
     telemetryConfig = registerOutput<TelemetryConfigResponse>(
       'telemetryConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TelemetryConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tier = registerOutput<String>('tier');
     uid = registerOutput<String>('uid');

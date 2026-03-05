@@ -88,15 +88,36 @@ class ApiProduct extends pulumi.CustomResource {
     graphqlOperationGroup =
         registerOutput<GoogleCloudApigeeV1GraphQLOperationGroupResponse>(
           'graphqlOperationGroup',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudApigeeV1GraphQLOperationGroupResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     grpcOperationGroup =
         registerOutput<GoogleCloudApigeeV1GrpcOperationGroupResponse>(
           'grpcOperationGroup',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudApigeeV1GrpcOperationGroupResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     lastModifiedAt = registerOutput<String>('lastModifiedAt');
     this.name = registerOutput<String>('name');
     operationGroup = registerOutput<GoogleCloudApigeeV1OperationGroupResponse>(
       'operationGroup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudApigeeV1OperationGroupResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     organizationId = registerOutput<String>('organizationId');
     proxies = registerOutput<List<String>>('proxies');

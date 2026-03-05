@@ -208,7 +208,16 @@ class Project extends pulumi.CustomResource {
     eTag = registerOutput<String?>('eTag');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<ProjectPropertiesResponse>('properties');
+    properties = registerOutput<ProjectPropertiesResponse>(
+      'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<dynamic>('tags');
     type = registerOutput<String>('type');
   }

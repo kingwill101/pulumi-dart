@@ -612,12 +612,28 @@ class LoadBalancer extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    accessLogs = registerOutput<LoadBalancerAccessLogs?>('accessLogs');
+    accessLogs = registerOutput<LoadBalancerAccessLogs?>(
+      'accessLogs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerAccessLogs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     arn = registerOutput<String>('arn');
     arnSuffix = registerOutput<String>('arnSuffix');
     clientKeepAlive = registerOutput<int?>('clientKeepAlive');
     connectionLogs = registerOutput<LoadBalancerConnectionLogs?>(
       'connectionLogs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerConnectionLogs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     customerOwnedIpv4Pool = registerOutput<String?>('customerOwnedIpv4Pool');
     desyncMitigationMode = registerOutput<String?>('desyncMitigationMode');
@@ -645,15 +661,45 @@ class LoadBalancer extends pulumi.CustomResource {
         );
     healthCheckLogs = registerOutput<LoadBalancerHealthCheckLogs?>(
       'healthCheckLogs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerHealthCheckLogs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     idleTimeout = registerOutput<int?>('idleTimeout');
     internal = registerOutput<bool>('internal');
     ipAddressType = registerOutput<String>('ipAddressType');
-    ipamPools = registerOutput<LoadBalancerIpamPools?>('ipamPools');
-    loadBalancerType = registerOutput<LoadBalancerType?>('loadBalancerType');
+    ipamPools = registerOutput<LoadBalancerIpamPools?>(
+      'ipamPools',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerIpamPools.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    loadBalancerType = registerOutput<LoadBalancerType?>(
+      'loadBalancerType',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerType.fromValue(guardedValue as String);
+      },
+    );
     minimumLoadBalancerCapacity =
         registerOutput<LoadBalancerMinimumLoadBalancerCapacity?>(
           'minimumLoadBalancerCapacity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LoadBalancerMinimumLoadBalancerCapacity.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
@@ -699,12 +745,28 @@ class LoadBalancer extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    accessLogs = registerOutput<LoadBalancerAccessLogs?>('accessLogs');
+    accessLogs = registerOutput<LoadBalancerAccessLogs?>(
+      'accessLogs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerAccessLogs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     arn = registerOutput<String>('arn');
     arnSuffix = registerOutput<String>('arnSuffix');
     clientKeepAlive = registerOutput<int?>('clientKeepAlive');
     connectionLogs = registerOutput<LoadBalancerConnectionLogs?>(
       'connectionLogs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerConnectionLogs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     customerOwnedIpv4Pool = registerOutput<String?>('customerOwnedIpv4Pool');
     desyncMitigationMode = registerOutput<String?>('desyncMitigationMode');
@@ -732,15 +794,45 @@ class LoadBalancer extends pulumi.CustomResource {
         );
     healthCheckLogs = registerOutput<LoadBalancerHealthCheckLogs?>(
       'healthCheckLogs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerHealthCheckLogs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     idleTimeout = registerOutput<int?>('idleTimeout');
     internal = registerOutput<bool>('internal');
     ipAddressType = registerOutput<String>('ipAddressType');
-    ipamPools = registerOutput<LoadBalancerIpamPools?>('ipamPools');
-    loadBalancerType = registerOutput<LoadBalancerType?>('loadBalancerType');
+    ipamPools = registerOutput<LoadBalancerIpamPools?>(
+      'ipamPools',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerIpamPools.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    loadBalancerType = registerOutput<LoadBalancerType?>(
+      'loadBalancerType',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerType.fromValue(guardedValue as String);
+      },
+    );
     minimumLoadBalancerCapacity =
         registerOutput<LoadBalancerMinimumLoadBalancerCapacity?>(
           'minimumLoadBalancerCapacity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LoadBalancerMinimumLoadBalancerCapacity.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');

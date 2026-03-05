@@ -445,15 +445,40 @@ class Environment extends pulumi.CustomResource {
     clientIpResolutionConfig =
         registerOutput<EnvironmentClientIpResolutionConfig?>(
           'clientIpResolutionConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EnvironmentClientIpResolutionConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     deploymentType = registerOutput<String>('deploymentType');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     forwardProxyUri = registerOutput<String?>('forwardProxyUri');
     this.name = registerOutput<String>('name');
-    nodeConfig = registerOutput<EnvironmentNodeConfig>('nodeConfig');
+    nodeConfig = registerOutput<EnvironmentNodeConfig>(
+      'nodeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnvironmentNodeConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     orgId = registerOutput<String>('orgId');
-    properties = registerOutput<EnvironmentProperties?>('properties');
+    properties = registerOutput<EnvironmentProperties?>(
+      'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnvironmentProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 
@@ -484,15 +509,40 @@ class Environment extends pulumi.CustomResource {
     clientIpResolutionConfig =
         registerOutput<EnvironmentClientIpResolutionConfig?>(
           'clientIpResolutionConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EnvironmentClientIpResolutionConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     deploymentType = registerOutput<String>('deploymentType');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     forwardProxyUri = registerOutput<String?>('forwardProxyUri');
     this.name = registerOutput<String>('name');
-    nodeConfig = registerOutput<EnvironmentNodeConfig>('nodeConfig');
+    nodeConfig = registerOutput<EnvironmentNodeConfig>(
+      'nodeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnvironmentNodeConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     orgId = registerOutput<String>('orgId');
-    properties = registerOutput<EnvironmentProperties?>('properties');
+    properties = registerOutput<EnvironmentProperties?>(
+      'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnvironmentProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

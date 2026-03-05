@@ -59,7 +59,16 @@ class Company extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     careerSiteUri = registerOutput<String>('careerSiteUri');
-    derivedInfo = registerOutput<CompanyDerivedInfoResponse>('derivedInfo');
+    derivedInfo = registerOutput<CompanyDerivedInfoResponse>(
+      'derivedInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CompanyDerivedInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     displayName = registerOutput<String>('displayName');
     eeoText = registerOutput<String>('eeoText');
     externalId = registerOutput<String>('externalId');

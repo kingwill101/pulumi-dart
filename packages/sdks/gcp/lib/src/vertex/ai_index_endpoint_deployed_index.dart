@@ -1298,15 +1298,36 @@ class AiIndexEndpointDeployedIndex extends pulumi.CustomResource {
     automaticResources =
         registerOutput<AiIndexEndpointDeployedIndexAutomaticResources>(
           'automaticResources',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AiIndexEndpointDeployedIndexAutomaticResources.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     createTime = registerOutput<String>('createTime');
     dedicatedResources =
         registerOutput<AiIndexEndpointDeployedIndexDedicatedResources?>(
           'dedicatedResources',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AiIndexEndpointDeployedIndexDedicatedResources.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     deployedIndexAuthConfig =
         registerOutput<AiIndexEndpointDeployedIndexDeployedIndexAuthConfig?>(
           'deployedIndexAuthConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AiIndexEndpointDeployedIndexDeployedIndexAuthConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     deployedIndexId = registerOutput<String>('deployedIndexId');
     deploymentGroup = registerOutput<String?>('deploymentGroup');
@@ -1349,15 +1370,36 @@ class AiIndexEndpointDeployedIndex extends pulumi.CustomResource {
     automaticResources =
         registerOutput<AiIndexEndpointDeployedIndexAutomaticResources>(
           'automaticResources',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AiIndexEndpointDeployedIndexAutomaticResources.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     createTime = registerOutput<String>('createTime');
     dedicatedResources =
         registerOutput<AiIndexEndpointDeployedIndexDedicatedResources?>(
           'dedicatedResources',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AiIndexEndpointDeployedIndexDedicatedResources.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     deployedIndexAuthConfig =
         registerOutput<AiIndexEndpointDeployedIndexDeployedIndexAuthConfig?>(
           'deployedIndexAuthConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AiIndexEndpointDeployedIndexDeployedIndexAuthConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     deployedIndexId = registerOutput<String>('deployedIndexId');
     deploymentGroup = registerOutput<String?>('deploymentGroup');

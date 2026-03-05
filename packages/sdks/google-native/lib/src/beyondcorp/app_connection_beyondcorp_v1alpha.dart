@@ -70,14 +70,32 @@ class AppConnectionBeyondcorpV1alpha extends pulumi.CustomResource {
     applicationEndpoint =
         registerOutput<
           GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionApplicationEndpointResponse
-        >('applicationEndpoint');
+        >(
+          'applicationEndpoint',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionApplicationEndpointResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     connectors = registerOutput<List<String>>('connectors');
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
     gateway =
         registerOutput<
           GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayResponse
-        >('gateway');
+        >(
+          'gateway',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

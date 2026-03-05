@@ -1,26 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getService.
 class GetServiceResult {
   /// The location where the Communication service stores its data at rest.
   final String dataLocation;
+
   /// The hostname of the Communication Service.
   final String hostname;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The immutable resource id of the Communication Service.
   final String immutableResourceId;
   final String name;
+
   /// The primary connection string of the Communication Service.
   final String primaryConnectionString;
+
   /// The primary key of the Communication Service.
   final String primaryKey;
   final String resourceGroupName;
+
   /// The secondary connection string of the Communication Service.
   final String secondaryConnectionString;
+
   /// The secondary key of the Communication Service.
   final String secondaryKey;
+
   /// A mapping of tags assigned to the Communication Service.
   final Map<String, String> tags;
 
@@ -82,4 +89,3 @@ class GetServiceResult {
     );
   }
 }
-

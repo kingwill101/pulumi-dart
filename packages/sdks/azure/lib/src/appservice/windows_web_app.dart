@@ -368,11 +368,36 @@ class WindowsWebApp extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     appSettings = registerOutput<Map<String, String>?>('appSettings');
-    authSettings = registerOutput<WindowsWebAppAuthSettings?>('authSettings');
+    authSettings = registerOutput<WindowsWebAppAuthSettings?>(
+      'authSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WindowsWebAppAuthSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     authSettingsV2 = registerOutput<WindowsWebAppAuthSettingsV2?>(
       'authSettingsV2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WindowsWebAppAuthSettingsV2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    backup = registerOutput<WindowsWebAppBackup?>('backup');
+    backup = registerOutput<WindowsWebAppBackup?>(
+      'backup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WindowsWebAppBackup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     clientAffinityEnabled = registerOutput<bool?>('clientAffinityEnabled');
     clientCertificateEnabled = registerOutput<bool?>(
       'clientCertificateEnabled',
@@ -394,13 +419,31 @@ class WindowsWebApp extends pulumi.CustomResource {
     );
     hostingEnvironmentId = registerOutput<String>('hostingEnvironmentId');
     httpsOnly = registerOutput<bool?>('httpsOnly');
-    identity = registerOutput<WindowsWebAppIdentity?>('identity');
+    identity = registerOutput<WindowsWebAppIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WindowsWebAppIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     keyVaultReferenceIdentityId = registerOutput<String>(
       'keyVaultReferenceIdentityId',
     );
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
-    logs = registerOutput<WindowsWebAppLogs?>('logs');
+    logs = registerOutput<WindowsWebAppLogs?>(
+      'logs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WindowsWebAppLogs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     outboundIpAddressLists = registerOutput<List<String>>(
       'outboundIpAddressLists',
@@ -417,12 +460,28 @@ class WindowsWebApp extends pulumi.CustomResource {
     );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     servicePlanId = registerOutput<String>('servicePlanId');
-    siteConfig = registerOutput<WindowsWebAppSiteConfig>('siteConfig');
+    siteConfig = registerOutput<WindowsWebAppSiteConfig>(
+      'siteConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WindowsWebAppSiteConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     siteCredentials = registerOutput<List<Map<String, dynamic>>>(
       'siteCredentials',
     );
     stickySettings = registerOutput<WindowsWebAppStickySettings?>(
       'stickySettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WindowsWebAppStickySettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     storageAccounts = registerOutput<List<Map<String, dynamic>>?>(
       'storageAccounts',
@@ -465,11 +524,36 @@ class WindowsWebApp extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     appSettings = registerOutput<Map<String, String>?>('appSettings');
-    authSettings = registerOutput<WindowsWebAppAuthSettings?>('authSettings');
+    authSettings = registerOutput<WindowsWebAppAuthSettings?>(
+      'authSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WindowsWebAppAuthSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     authSettingsV2 = registerOutput<WindowsWebAppAuthSettingsV2?>(
       'authSettingsV2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WindowsWebAppAuthSettingsV2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    backup = registerOutput<WindowsWebAppBackup?>('backup');
+    backup = registerOutput<WindowsWebAppBackup?>(
+      'backup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WindowsWebAppBackup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     clientAffinityEnabled = registerOutput<bool?>('clientAffinityEnabled');
     clientCertificateEnabled = registerOutput<bool?>(
       'clientCertificateEnabled',
@@ -491,13 +575,31 @@ class WindowsWebApp extends pulumi.CustomResource {
     );
     hostingEnvironmentId = registerOutput<String>('hostingEnvironmentId');
     httpsOnly = registerOutput<bool?>('httpsOnly');
-    identity = registerOutput<WindowsWebAppIdentity?>('identity');
+    identity = registerOutput<WindowsWebAppIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WindowsWebAppIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     keyVaultReferenceIdentityId = registerOutput<String>(
       'keyVaultReferenceIdentityId',
     );
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
-    logs = registerOutput<WindowsWebAppLogs?>('logs');
+    logs = registerOutput<WindowsWebAppLogs?>(
+      'logs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WindowsWebAppLogs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     outboundIpAddressLists = registerOutput<List<String>>(
       'outboundIpAddressLists',
@@ -514,12 +616,28 @@ class WindowsWebApp extends pulumi.CustomResource {
     );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     servicePlanId = registerOutput<String>('servicePlanId');
-    siteConfig = registerOutput<WindowsWebAppSiteConfig>('siteConfig');
+    siteConfig = registerOutput<WindowsWebAppSiteConfig>(
+      'siteConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WindowsWebAppSiteConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     siteCredentials = registerOutput<List<Map<String, dynamic>>>(
       'siteCredentials',
     );
     stickySettings = registerOutput<WindowsWebAppStickySettings?>(
       'stickySettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WindowsWebAppStickySettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     storageAccounts = registerOutput<List<Map<String, dynamic>>?>(
       'storageAccounts',

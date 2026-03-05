@@ -807,9 +807,27 @@ class BusinessCaseOperation extends pulumi.CustomResource {
     reportStatusDetails = registerOutput<List<Map<String, dynamic>>>(
       'reportStatusDetails',
     );
-    settings = registerOutput<SettingsResponse?>('settings');
+    settings = registerOutput<SettingsResponse?>(
+      'settings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     state = registerOutput<String>('state');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

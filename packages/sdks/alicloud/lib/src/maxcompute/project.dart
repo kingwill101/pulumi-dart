@@ -211,15 +211,40 @@ class Project extends pulumi.CustomResource {
     comment = registerOutput<String?>('comment');
     createTime = registerOutput<String>('createTime');
     defaultQuota = registerOutput<String?>('defaultQuota');
-    ipWhiteList = registerOutput<ProjectIpWhiteList?>('ipWhiteList');
+    ipWhiteList = registerOutput<ProjectIpWhiteList?>(
+      'ipWhiteList',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectIpWhiteList.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     isLogical = registerOutput<String?>('isLogical');
     owner = registerOutput<String>('owner');
     productType = registerOutput<String?>('productType');
     projectName = registerOutput<String>('projectName');
-    properties = registerOutput<ProjectProperties>('properties');
+    properties = registerOutput<ProjectProperties>(
+      'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     regionId = registerOutput<String>('regionId');
     securityProperties = registerOutput<ProjectSecurityProperties>(
       'securityProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectSecurityProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -253,15 +278,40 @@ class Project extends pulumi.CustomResource {
     comment = registerOutput<String?>('comment');
     createTime = registerOutput<String>('createTime');
     defaultQuota = registerOutput<String?>('defaultQuota');
-    ipWhiteList = registerOutput<ProjectIpWhiteList?>('ipWhiteList');
+    ipWhiteList = registerOutput<ProjectIpWhiteList?>(
+      'ipWhiteList',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectIpWhiteList.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     isLogical = registerOutput<String?>('isLogical');
     owner = registerOutput<String>('owner');
     productType = registerOutput<String?>('productType');
     projectName = registerOutput<String>('projectName');
-    properties = registerOutput<ProjectProperties>('properties');
+    properties = registerOutput<ProjectProperties>(
+      'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     regionId = registerOutput<String>('regionId');
     securityProperties = registerOutput<ProjectSecurityProperties>(
       'securityProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectSecurityProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');

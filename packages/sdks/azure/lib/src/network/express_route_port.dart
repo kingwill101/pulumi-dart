@@ -237,9 +237,36 @@ class ExpressRoutePort extends pulumi.CustomResource {
     encapsulation = registerOutput<String>('encapsulation');
     ethertype = registerOutput<String>('ethertype');
     guid = registerOutput<String>('guid');
-    identity = registerOutput<ExpressRoutePortIdentity?>('identity');
-    link1 = registerOutput<ExpressRoutePortLink1>('link1');
-    link2 = registerOutput<ExpressRoutePortLink2>('link2');
+    identity = registerOutput<ExpressRoutePortIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExpressRoutePortIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    link1 = registerOutput<ExpressRoutePortLink1>(
+      'link1',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExpressRoutePortLink1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    link2 = registerOutput<ExpressRoutePortLink2>(
+      'link2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExpressRoutePortLink2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     mtu = registerOutput<String>('mtu');
     this.name = registerOutput<String>('name');
@@ -276,9 +303,36 @@ class ExpressRoutePort extends pulumi.CustomResource {
     encapsulation = registerOutput<String>('encapsulation');
     ethertype = registerOutput<String>('ethertype');
     guid = registerOutput<String>('guid');
-    identity = registerOutput<ExpressRoutePortIdentity?>('identity');
-    link1 = registerOutput<ExpressRoutePortLink1>('link1');
-    link2 = registerOutput<ExpressRoutePortLink2>('link2');
+    identity = registerOutput<ExpressRoutePortIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExpressRoutePortIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    link1 = registerOutput<ExpressRoutePortLink1>(
+      'link1',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExpressRoutePortLink1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    link2 = registerOutput<ExpressRoutePortLink2>(
+      'link2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExpressRoutePortLink2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     mtu = registerOutput<String>('mtu');
     this.name = registerOutput<String>('name');

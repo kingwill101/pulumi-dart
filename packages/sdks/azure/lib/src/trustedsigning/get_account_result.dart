@@ -1,18 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAccount.
 class GetAccountResult {
   /// The URI of the Trusted Signing Account.
   final String accountUri;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The Azure Region where the Trusted Signing Account exists.
   final String location;
   final String name;
   final String resourceGroupName;
+
   /// The sku name of the Trusted Signing Account.
   final String skuName;
+
   /// A mapping of tags assigned to the Trusted Signing Account.
   final Map<String, String> tags;
 
@@ -58,4 +61,3 @@ class GetAccountResult {
     );
   }
 }
-

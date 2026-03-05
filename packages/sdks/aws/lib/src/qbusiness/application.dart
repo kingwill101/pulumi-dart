@@ -190,12 +190,26 @@ class Application extends pulumi.CustomResource {
     attachmentsConfiguration =
         registerOutput<ApplicationAttachmentsConfiguration>(
           'attachmentsConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ApplicationAttachmentsConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     encryptionConfiguration =
         registerOutput<ApplicationEncryptionConfiguration?>(
           'encryptionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ApplicationEncryptionConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     iamServiceRoleArn = registerOutput<String>('iamServiceRoleArn');
     identityCenterApplicationArn = registerOutput<String>(
@@ -207,7 +221,16 @@ class Application extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ApplicationTimeouts?>('timeouts');
+    timeouts = registerOutput<ApplicationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Application] resource's state with the given [name] and [id].
@@ -237,12 +260,26 @@ class Application extends pulumi.CustomResource {
     attachmentsConfiguration =
         registerOutput<ApplicationAttachmentsConfiguration>(
           'attachmentsConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ApplicationAttachmentsConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     encryptionConfiguration =
         registerOutput<ApplicationEncryptionConfiguration?>(
           'encryptionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ApplicationEncryptionConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     iamServiceRoleArn = registerOutput<String>('iamServiceRoleArn');
     identityCenterApplicationArn = registerOutput<String>(
@@ -254,6 +291,15 @@ class Application extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ApplicationTimeouts?>('timeouts');
+    timeouts = registerOutput<ApplicationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

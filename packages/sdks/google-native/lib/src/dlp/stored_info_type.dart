@@ -34,6 +34,13 @@ class StoredInfoType extends pulumi.CustomResource {
     currentVersion =
         registerOutput<GooglePrivacyDlpV2StoredInfoTypeVersionResponse>(
           'currentVersion',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GooglePrivacyDlpV2StoredInfoTypeVersionResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

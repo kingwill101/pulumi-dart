@@ -78,8 +78,24 @@ class PersistentResource extends pulumi.CustomResource {
     encryptionSpec =
         registerOutput<GoogleCloudAiplatformV1beta1EncryptionSpecResponse>(
           'encryptionSpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1beta1EncryptionSpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    error = registerOutput<GoogleRpcStatusResponseAiplatformV1beta1>('error');
+    error = registerOutput<GoogleRpcStatusResponseAiplatformV1beta1>(
+      'error',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleRpcStatusResponseAiplatformV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -91,10 +107,24 @@ class PersistentResource extends pulumi.CustomResource {
     resourceRuntime =
         registerOutput<GoogleCloudAiplatformV1beta1ResourceRuntimeResponse>(
           'resourceRuntime',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1beta1ResourceRuntimeResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     resourceRuntimeSpec =
         registerOutput<GoogleCloudAiplatformV1beta1ResourceRuntimeSpecResponse>(
           'resourceRuntimeSpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1beta1ResourceRuntimeSpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     startTime = registerOutput<String>('startTime');
     state = registerOutput<String>('state');

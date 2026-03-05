@@ -75,11 +75,25 @@ class JobCloudschedulerV1beta1 extends pulumi.CustomResource {
     appEngineHttpTarget =
         registerOutput<AppEngineHttpTargetResponseCloudschedulerV1beta1>(
           'appEngineHttpTarget',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AppEngineHttpTargetResponseCloudschedulerV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     attemptDeadline = registerOutput<String>('attemptDeadline');
     description = registerOutput<String>('description');
     httpTarget = registerOutput<HttpTargetResponseCloudschedulerV1beta1>(
       'httpTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HttpTargetResponseCloudschedulerV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     lastAttemptTime = registerOutput<String>('lastAttemptTime');
     legacyAppEngineCron = registerOutput<bool>('legacyAppEngineCron');
@@ -88,14 +102,37 @@ class JobCloudschedulerV1beta1 extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     pubsubTarget = registerOutput<PubsubTargetResponseCloudschedulerV1beta1>(
       'pubsubTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PubsubTargetResponseCloudschedulerV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     retryConfig = registerOutput<RetryConfigResponseCloudschedulerV1beta1>(
       'retryConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RetryConfigResponseCloudschedulerV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     schedule = registerOutput<String>('schedule');
     scheduleTime = registerOutput<String>('scheduleTime');
     state = registerOutput<String>('state');
-    status = registerOutput<StatusResponseCloudschedulerV1beta1>('status');
+    status = registerOutput<StatusResponseCloudschedulerV1beta1>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StatusResponseCloudschedulerV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     timeZone = registerOutput<String>('timeZone');
     userUpdateTime = registerOutput<String>('userUpdateTime');
   }

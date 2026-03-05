@@ -208,7 +208,16 @@ class VirtualMachineAvailabilityGroupListener extends pulumi.CustomResource {
     loadBalancerConfiguration =
         registerOutput<
           VirtualMachineAvailabilityGroupListenerLoadBalancerConfiguration?
-        >('loadBalancerConfiguration');
+        >(
+          'loadBalancerConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VirtualMachineAvailabilityGroupListenerLoadBalancerConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     multiSubnetIpConfigurations = registerOutput<List<Map<String, dynamic>>?>(
       'multiSubnetIpConfigurations',
     );
@@ -247,7 +256,16 @@ class VirtualMachineAvailabilityGroupListener extends pulumi.CustomResource {
     loadBalancerConfiguration =
         registerOutput<
           VirtualMachineAvailabilityGroupListenerLoadBalancerConfiguration?
-        >('loadBalancerConfiguration');
+        >(
+          'loadBalancerConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VirtualMachineAvailabilityGroupListenerLoadBalancerConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     multiSubnetIpConfigurations = registerOutput<List<Map<String, dynamic>>?>(
       'multiSubnetIpConfigurations',
     );

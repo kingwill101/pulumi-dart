@@ -762,6 +762,13 @@ class FileShare extends pulumi.CustomResource {
     fileSharePaidBursting =
         registerOutput<FileSharePropertiesResponseFileSharePaidBursting?>(
           'fileSharePaidBursting',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FileSharePropertiesResponseFileSharePaidBursting.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     includedBurstIops = registerOutput<int>('includedBurstIops');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');

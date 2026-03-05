@@ -263,7 +263,16 @@ class CustomPlugin extends pulumi.CustomResource {
     contentType = registerOutput<String>('contentType');
     description = registerOutput<String?>('description');
     latestRevision = registerOutput<int>('latestRevision');
-    location = registerOutput<CustomPluginLocation>('location');
+    location = registerOutput<CustomPluginLocation>(
+      'location',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomPluginLocation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     state = registerOutput<String>('state');
@@ -298,7 +307,16 @@ class CustomPlugin extends pulumi.CustomResource {
     contentType = registerOutput<String>('contentType');
     description = registerOutput<String?>('description');
     latestRevision = registerOutput<int>('latestRevision');
-    location = registerOutput<CustomPluginLocation>('location');
+    location = registerOutput<CustomPluginLocation>(
+      'location',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomPluginLocation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');

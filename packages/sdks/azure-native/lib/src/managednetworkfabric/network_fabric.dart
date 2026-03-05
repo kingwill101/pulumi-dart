@@ -776,6 +776,13 @@ class NetworkFabric extends pulumi.CustomResource {
     managementNetworkConfiguration =
         registerOutput<ManagementNetworkConfigurationPropertiesResponse>(
           'managementNetworkConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ManagementNetworkConfigurationPropertiesResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     networkFabricControllerId = registerOutput<String>(
@@ -787,11 +794,27 @@ class NetworkFabric extends pulumi.CustomResource {
     racks = registerOutput<List<String>>('racks');
     routerIds = registerOutput<List<String>>('routerIds');
     serverCountPerRack = registerOutput<int>('serverCountPerRack');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     terminalServerConfiguration =
         registerOutput<TerminalServerConfigurationResponse>(
           'terminalServerConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return TerminalServerConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     type = registerOutput<String>('type');
   }

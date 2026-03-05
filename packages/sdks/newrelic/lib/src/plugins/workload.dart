@@ -1009,9 +1009,23 @@ class Workload extends pulumi.CustomResource {
     scopeAccountIds = registerOutput<List<String>>('scopeAccountIds');
     statusConfigAutomatic = registerOutput<WorkloadStatusConfigAutomatic?>(
       'statusConfigAutomatic',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkloadStatusConfigAutomatic.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     statusConfigStatic = registerOutput<WorkloadStatusConfigStatic?>(
       'statusConfigStatic',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkloadStatusConfigStatic.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     workloadId = registerOutput<String>('workloadId');
   }
@@ -1054,9 +1068,23 @@ class Workload extends pulumi.CustomResource {
     scopeAccountIds = registerOutput<List<String>>('scopeAccountIds');
     statusConfigAutomatic = registerOutput<WorkloadStatusConfigAutomatic?>(
       'statusConfigAutomatic',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkloadStatusConfigAutomatic.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     statusConfigStatic = registerOutput<WorkloadStatusConfigStatic?>(
       'statusConfigStatic',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkloadStatusConfigStatic.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     workloadId = registerOutput<String>('workloadId');
   }

@@ -414,7 +414,16 @@ class WorkspaceConfiguration extends pulumi.CustomResource {
     );
     region = registerOutput<String>('region');
     retentionPeriodInDays = registerOutput<int>('retentionPeriodInDays');
-    timeouts = registerOutput<WorkspaceConfigurationTimeouts?>('timeouts');
+    timeouts = registerOutput<WorkspaceConfigurationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkspaceConfigurationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     workspaceId = registerOutput<String>('workspaceId');
   }
 
@@ -446,7 +455,16 @@ class WorkspaceConfiguration extends pulumi.CustomResource {
     );
     region = registerOutput<String>('region');
     retentionPeriodInDays = registerOutput<int>('retentionPeriodInDays');
-    timeouts = registerOutput<WorkspaceConfigurationTimeouts?>('timeouts');
+    timeouts = registerOutput<WorkspaceConfigurationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkspaceConfigurationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     workspaceId = registerOutput<String>('workspaceId');
   }
 }

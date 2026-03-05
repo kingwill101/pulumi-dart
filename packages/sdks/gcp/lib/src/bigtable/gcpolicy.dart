@@ -888,7 +888,16 @@ class GCPolicy extends pulumi.CustomResource {
     gcRules = registerOutput<String?>('gcRules');
     ignoreWarnings = registerOutput<bool?>('ignoreWarnings');
     instanceName = registerOutput<String>('instanceName');
-    maxAge = registerOutput<GCPolicyMaxAge?>('maxAge');
+    maxAge = registerOutput<GCPolicyMaxAge?>(
+      'maxAge',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GCPolicyMaxAge.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     maxVersions = registerOutput<List<Map<String, dynamic>>?>('maxVersions');
     mode = registerOutput<String?>('mode');
     project = registerOutput<String>('project');
@@ -923,7 +932,16 @@ class GCPolicy extends pulumi.CustomResource {
     gcRules = registerOutput<String?>('gcRules');
     ignoreWarnings = registerOutput<bool?>('ignoreWarnings');
     instanceName = registerOutput<String>('instanceName');
-    maxAge = registerOutput<GCPolicyMaxAge?>('maxAge');
+    maxAge = registerOutput<GCPolicyMaxAge?>(
+      'maxAge',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GCPolicyMaxAge.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     maxVersions = registerOutput<List<Map<String, dynamic>>?>('maxVersions');
     mode = registerOutput<String?>('mode');
     project = registerOutput<String>('project');

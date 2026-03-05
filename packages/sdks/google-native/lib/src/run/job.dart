@@ -101,6 +101,13 @@ class Job extends pulumi.CustomResource {
     binaryAuthorization =
         registerOutput<GoogleCloudRunV2BinaryAuthorizationResponse>(
           'binaryAuthorization',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudRunV2BinaryAuthorizationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     client = registerOutput<String>('client');
     clientVersion = registerOutput<String>('clientVersion');
@@ -118,6 +125,13 @@ class Job extends pulumi.CustomResource {
     latestCreatedExecution =
         registerOutput<GoogleCloudRunV2ExecutionReferenceResponse>(
           'latestCreatedExecution',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudRunV2ExecutionReferenceResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     launchStage = registerOutput<String>('launchStage');
     location = registerOutput<String>('location');
@@ -128,9 +142,23 @@ class Job extends pulumi.CustomResource {
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
     template = registerOutput<GoogleCloudRunV2ExecutionTemplateResponse>(
       'template',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudRunV2ExecutionTemplateResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     terminalCondition = registerOutput<GoogleCloudRunV2ConditionResponse>(
       'terminalCondition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudRunV2ConditionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');

@@ -819,7 +819,16 @@ class ResourcePolicy extends pulumi.CustomResource {
     policyDocument = registerOutput<String>('policyDocument');
     region = registerOutput<String>('region');
     revisionId = registerOutput<String>('revisionId');
-    timeouts = registerOutput<ResourcePolicyTimeouts?>('timeouts');
+    timeouts = registerOutput<ResourcePolicyTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourcePolicyTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     workspaceId = registerOutput<String>('workspaceId');
   }
 
@@ -849,7 +858,16 @@ class ResourcePolicy extends pulumi.CustomResource {
     policyDocument = registerOutput<String>('policyDocument');
     region = registerOutput<String>('region');
     revisionId = registerOutput<String>('revisionId');
-    timeouts = registerOutput<ResourcePolicyTimeouts?>('timeouts');
+    timeouts = registerOutput<ResourcePolicyTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourcePolicyTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     workspaceId = registerOutput<String>('workspaceId');
   }
 }

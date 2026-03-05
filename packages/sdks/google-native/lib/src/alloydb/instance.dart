@@ -104,6 +104,13 @@ class Instance extends pulumi.CustomResource {
     availabilityType = registerOutput<String>('availabilityType');
     clientConnectionConfig = registerOutput<ClientConnectionConfigResponse>(
       'clientConnectionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClientConnectionConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clusterId = registerOutput<String>('clusterId');
     createTime = registerOutput<String>('createTime');
@@ -117,19 +124,53 @@ class Instance extends pulumi.CustomResource {
     ipAddress = registerOutput<String>('ipAddress');
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
-    machineConfig = registerOutput<MachineConfigResponse>('machineConfig');
+    machineConfig = registerOutput<MachineConfigResponse>(
+      'machineConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MachineConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     nodes = registerOutput<List<Map<String, dynamic>>>('nodes');
     project = registerOutput<String>('project');
     queryInsightsConfig = registerOutput<QueryInsightsInstanceConfigResponse>(
       'queryInsightsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return QueryInsightsInstanceConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    readPoolConfig = registerOutput<ReadPoolConfigResponse>('readPoolConfig');
+    readPoolConfig = registerOutput<ReadPoolConfigResponse>(
+      'readPoolConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReadPoolConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     reconciling = registerOutput<bool>('reconciling');
     requestId = registerOutput<String?>('requestId');
     state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
-    writableNode = registerOutput<NodeResponse>('writableNode');
+    writableNode = registerOutput<NodeResponse>(
+      'writableNode',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

@@ -144,9 +144,27 @@ class AccessPoint extends pulumi.CustomResource {
     fileSystemArn = registerOutput<String>('fileSystemArn');
     fileSystemId = registerOutput<String>('fileSystemId');
     ownerId = registerOutput<String>('ownerId');
-    posixUser = registerOutput<AccessPointPosixUser?>('posixUser');
+    posixUser = registerOutput<AccessPointPosixUser?>(
+      'posixUser',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccessPointPosixUser.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
-    rootDirectory = registerOutput<AccessPointRootDirectory>('rootDirectory');
+    rootDirectory = registerOutput<AccessPointRootDirectory>(
+      'rootDirectory',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccessPointRootDirectory.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
@@ -178,9 +196,27 @@ class AccessPoint extends pulumi.CustomResource {
     fileSystemArn = registerOutput<String>('fileSystemArn');
     fileSystemId = registerOutput<String>('fileSystemId');
     ownerId = registerOutput<String>('ownerId');
-    posixUser = registerOutput<AccessPointPosixUser?>('posixUser');
+    posixUser = registerOutput<AccessPointPosixUser?>(
+      'posixUser',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccessPointPosixUser.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
-    rootDirectory = registerOutput<AccessPointRootDirectory>('rootDirectory');
+    rootDirectory = registerOutput<AccessPointRootDirectory>(
+      'rootDirectory',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccessPointRootDirectory.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }

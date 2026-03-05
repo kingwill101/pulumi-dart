@@ -175,7 +175,16 @@ class NetworkingIp extends pulumi.CustomResource {
     reserved = registerOutput<bool>('reserved');
     subnetMask = registerOutput<String>('subnetMask');
     type = registerOutput<String>('type');
-    vpcNat11 = registerOutput<NetworkingIpVpcNat11>('vpcNat11');
+    vpcNat11 = registerOutput<NetworkingIpVpcNat11>(
+      'vpcNat11',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkingIpVpcNat11.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [NetworkingIp] resource's state with the given [name] and [id].
@@ -211,6 +220,15 @@ class NetworkingIp extends pulumi.CustomResource {
     reserved = registerOutput<bool>('reserved');
     subnetMask = registerOutput<String>('subnetMask');
     type = registerOutput<String>('type');
-    vpcNat11 = registerOutput<NetworkingIpVpcNat11>('vpcNat11');
+    vpcNat11 = registerOutput<NetworkingIpVpcNat11>(
+      'vpcNat11',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkingIpVpcNat11.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

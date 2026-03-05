@@ -444,7 +444,16 @@ class Application extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     outputs = registerOutput<Map<String, String>>('outputs');
     parameterValues = registerOutput<String>('parameterValues');
-    plan = registerOutput<ApplicationPlan?>('plan');
+    plan = registerOutput<ApplicationPlan?>(
+      'plan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationPlan.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
   }
@@ -483,7 +492,16 @@ class Application extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     outputs = registerOutput<Map<String, String>>('outputs');
     parameterValues = registerOutput<String>('parameterValues');
-    plan = registerOutput<ApplicationPlan?>('plan');
+    plan = registerOutput<ApplicationPlan?>(
+      'plan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationPlan.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
   }

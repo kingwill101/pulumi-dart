@@ -38,25 +38,66 @@ class Domain extends pulumi.CustomResource {
         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
         options ?? pulumi.CustomResourceOptions(),
       ) {
-    authConfig = registerOutput<DomainAuthConfig?>('authConfig');
+    authConfig = registerOutput<DomainAuthConfig?>(
+      'authConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainAuthConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     blockIps = registerOutput<List<String>?>('blockIps');
     cacheConfigs = registerOutput<List<Map<String, dynamic>>?>('cacheConfigs');
     cdnType = registerOutput<String>('cdnType');
     certificateConfig = registerOutput<DomainCertificateConfig?>(
       'certificateConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainCertificateConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     domainName = registerOutput<String>('domainName');
     httpHeaderConfigs = registerOutput<List<Map<String, dynamic>>?>(
       'httpHeaderConfigs',
     );
     optimizeEnable = registerOutput<String?>('optimizeEnable');
-    page404Config = registerOutput<DomainPage404Config?>('page404Config');
+    page404Config = registerOutput<DomainPage404Config?>(
+      'page404Config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainPage404Config.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     pageCompressEnable = registerOutput<String?>('pageCompressEnable');
     parameterFilterConfig = registerOutput<DomainParameterFilterConfig?>(
       'parameterFilterConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainParameterFilterConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     rangeEnable = registerOutput<String?>('rangeEnable');
-    referConfig = registerOutput<DomainReferConfig?>('referConfig');
+    referConfig = registerOutput<DomainReferConfig?>(
+      'referConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainReferConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     scope = registerOutput<String>('scope');
     sourcePort = registerOutput<int?>('sourcePort');
     sourceType = registerOutput<String?>('sourceType');
@@ -87,25 +128,66 @@ class Domain extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    authConfig = registerOutput<DomainAuthConfig?>('authConfig');
+    authConfig = registerOutput<DomainAuthConfig?>(
+      'authConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainAuthConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     blockIps = registerOutput<List<String>?>('blockIps');
     cacheConfigs = registerOutput<List<Map<String, dynamic>>?>('cacheConfigs');
     cdnType = registerOutput<String>('cdnType');
     certificateConfig = registerOutput<DomainCertificateConfig?>(
       'certificateConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainCertificateConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     domainName = registerOutput<String>('domainName');
     httpHeaderConfigs = registerOutput<List<Map<String, dynamic>>?>(
       'httpHeaderConfigs',
     );
     optimizeEnable = registerOutput<String?>('optimizeEnable');
-    page404Config = registerOutput<DomainPage404Config?>('page404Config');
+    page404Config = registerOutput<DomainPage404Config?>(
+      'page404Config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainPage404Config.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     pageCompressEnable = registerOutput<String?>('pageCompressEnable');
     parameterFilterConfig = registerOutput<DomainParameterFilterConfig?>(
       'parameterFilterConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainParameterFilterConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     rangeEnable = registerOutput<String?>('rangeEnable');
-    referConfig = registerOutput<DomainReferConfig?>('referConfig');
+    referConfig = registerOutput<DomainReferConfig?>(
+      'referConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainReferConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     scope = registerOutput<String>('scope');
     sourcePort = registerOutput<int?>('sourcePort');
     sourceType = registerOutput<String?>('sourceType');

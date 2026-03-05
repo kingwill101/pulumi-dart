@@ -108,10 +108,24 @@ class PreventionDiscoveryConfig extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     orgConfig = registerOutput<PreventionDiscoveryConfigOrgConfig?>(
       'orgConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PreventionDiscoveryConfigOrgConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     otherCloudStartingLocation =
         registerOutput<PreventionDiscoveryConfigOtherCloudStartingLocation?>(
           'otherCloudStartingLocation',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PreventionDiscoveryConfigOtherCloudStartingLocation.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     parent = registerOutput<String>('parent');
     status = registerOutput<String?>('status');
@@ -152,10 +166,24 @@ class PreventionDiscoveryConfig extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     orgConfig = registerOutput<PreventionDiscoveryConfigOrgConfig?>(
       'orgConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PreventionDiscoveryConfigOrgConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     otherCloudStartingLocation =
         registerOutput<PreventionDiscoveryConfigOtherCloudStartingLocation?>(
           'otherCloudStartingLocation',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PreventionDiscoveryConfigOtherCloudStartingLocation.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     parent = registerOutput<String>('parent');
     status = registerOutput<String?>('status');

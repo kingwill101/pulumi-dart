@@ -278,16 +278,44 @@ class Endpoint extends pulumi.CustomResource {
     clientCidrBlock = registerOutput<String?>('clientCidrBlock');
     clientConnectOptions = registerOutput<EndpointClientConnectOptions>(
       'clientConnectOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointClientConnectOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clientLoginBannerOptions = registerOutput<EndpointClientLoginBannerOptions>(
       'clientLoginBannerOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointClientLoginBannerOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clientRouteEnforcementOptions =
         registerOutput<EndpointClientRouteEnforcementOptions>(
           'clientRouteEnforcementOptions',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EndpointClientRouteEnforcementOptions.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     connectionLogOptions = registerOutput<EndpointConnectionLogOptions>(
       'connectionLogOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointConnectionLogOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     disconnectOnSessionTimeout = registerOutput<bool>(
@@ -341,16 +369,44 @@ class Endpoint extends pulumi.CustomResource {
     clientCidrBlock = registerOutput<String?>('clientCidrBlock');
     clientConnectOptions = registerOutput<EndpointClientConnectOptions>(
       'clientConnectOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointClientConnectOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clientLoginBannerOptions = registerOutput<EndpointClientLoginBannerOptions>(
       'clientLoginBannerOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointClientLoginBannerOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clientRouteEnforcementOptions =
         registerOutput<EndpointClientRouteEnforcementOptions>(
           'clientRouteEnforcementOptions',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EndpointClientRouteEnforcementOptions.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     connectionLogOptions = registerOutput<EndpointConnectionLogOptions>(
       'connectionLogOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointConnectionLogOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     disconnectOnSessionTimeout = registerOutput<bool>(

@@ -51,12 +51,28 @@ class GitLabConfig extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     enterpriseConfig = registerOutput<GitLabEnterpriseConfigResponse>(
       'enterpriseConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GitLabEnterpriseConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     gitlabConfigId = registerOutput<String?>('gitlabConfigId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    secrets = registerOutput<GitLabSecretsResponse>('secrets');
+    secrets = registerOutput<GitLabSecretsResponse>(
+      'secrets',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GitLabSecretsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     username = registerOutput<String>('username');
     webhookKey = registerOutput<String>('webhookKey');
   }

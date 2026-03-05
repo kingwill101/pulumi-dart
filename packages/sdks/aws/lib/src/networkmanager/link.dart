@@ -181,7 +181,16 @@ class Link extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     arn = registerOutput<String>('arn');
-    bandwidth = registerOutput<LinkBandwidth>('bandwidth');
+    bandwidth = registerOutput<LinkBandwidth>(
+      'bandwidth',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinkBandwidth.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     globalNetworkId = registerOutput<String>('globalNetworkId');
     providerName = registerOutput<String?>('providerName');
@@ -211,7 +220,16 @@ class Link extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    bandwidth = registerOutput<LinkBandwidth>('bandwidth');
+    bandwidth = registerOutput<LinkBandwidth>(
+      'bandwidth',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinkBandwidth.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     globalNetworkId = registerOutput<String>('globalNetworkId');
     providerName = registerOutput<String?>('providerName');

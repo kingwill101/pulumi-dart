@@ -161,6 +161,13 @@ class DrtAccessLogBucketAssociation extends pulumi.CustomResource {
     roleArnAssociationId = registerOutput<String>('roleArnAssociationId');
     timeouts = registerOutput<DrtAccessLogBucketAssociationTimeouts?>(
       'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DrtAccessLogBucketAssociationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -191,6 +198,13 @@ class DrtAccessLogBucketAssociation extends pulumi.CustomResource {
     roleArnAssociationId = registerOutput<String>('roleArnAssociationId');
     timeouts = registerOutput<DrtAccessLogBucketAssociationTimeouts?>(
       'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DrtAccessLogBucketAssociationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

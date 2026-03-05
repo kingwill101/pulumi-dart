@@ -274,6 +274,13 @@ class SecurityConnector extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     environmentData = registerOutput<AwsEnvironmentDataResponse?>(
       'environmentData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsEnvironmentDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     environmentName = registerOutput<String?>('environmentName');
     etag = registerOutput<String?>('etag');
@@ -285,7 +292,16 @@ class SecurityConnector extends pulumi.CustomResource {
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     offerings = registerOutput<List<Map<String, dynamic>>?>('offerings');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

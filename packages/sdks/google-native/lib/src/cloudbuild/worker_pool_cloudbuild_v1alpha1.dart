@@ -56,6 +56,13 @@ class WorkerPoolCloudbuildV1alpha1 extends pulumi.CustomResource {
     updateTime = registerOutput<String>('updateTime');
     workerConfig = registerOutput<WorkerConfigResponseCloudbuildV1alpha1>(
       'workerConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkerConfigResponseCloudbuildV1alpha1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     workerCount = registerOutput<String>('workerCount');
   }

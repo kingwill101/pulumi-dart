@@ -1957,6 +1957,13 @@ class Schedule extends pulumi.CustomResource {
     createNotebookExecutionJobRequest =
         registerOutput<ScheduleCreateNotebookExecutionJobRequest>(
           'createNotebookExecutionJobRequest',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ScheduleCreateNotebookExecutionJobRequest.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     cron = registerOutput<String>('cron');
     desiredState = registerOutput<String?>('desiredState');
@@ -1998,6 +2005,13 @@ class Schedule extends pulumi.CustomResource {
     createNotebookExecutionJobRequest =
         registerOutput<ScheduleCreateNotebookExecutionJobRequest>(
           'createNotebookExecutionJobRequest',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ScheduleCreateNotebookExecutionJobRequest.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     cron = registerOutput<String>('cron');
     desiredState = registerOutput<String?>('desiredState');

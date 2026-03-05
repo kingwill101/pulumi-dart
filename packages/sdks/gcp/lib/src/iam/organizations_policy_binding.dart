@@ -366,6 +366,13 @@ class OrganizationsPolicyBinding extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     condition = registerOutput<OrganizationsPolicyBindingCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrganizationsPolicyBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String?>('displayName');
@@ -380,7 +387,16 @@ class OrganizationsPolicyBinding extends pulumi.CustomResource {
     policyBindingId = registerOutput<String>('policyBindingId');
     policyKind = registerOutput<String?>('policyKind');
     policyUid = registerOutput<String>('policyUid');
-    target = registerOutput<OrganizationsPolicyBindingTarget>('target');
+    target = registerOutput<OrganizationsPolicyBindingTarget>(
+      'target',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrganizationsPolicyBindingTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -411,6 +427,13 @@ class OrganizationsPolicyBinding extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     condition = registerOutput<OrganizationsPolicyBindingCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrganizationsPolicyBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String?>('displayName');
@@ -425,7 +448,16 @@ class OrganizationsPolicyBinding extends pulumi.CustomResource {
     policyBindingId = registerOutput<String>('policyBindingId');
     policyKind = registerOutput<String?>('policyKind');
     policyUid = registerOutput<String>('policyUid');
-    target = registerOutput<OrganizationsPolicyBindingTarget>('target');
+    target = registerOutput<OrganizationsPolicyBindingTarget>(
+      'target',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrganizationsPolicyBindingTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }

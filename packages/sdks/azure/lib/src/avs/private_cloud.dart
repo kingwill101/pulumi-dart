@@ -288,6 +288,13 @@ class PrivateCloud extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     managementCluster = registerOutput<PrivateCloudManagementCluster>(
       'managementCluster',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PrivateCloudManagementCluster.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     managementSubnetCidr = registerOutput<String>('managementSubnetCidr');
     this.name = registerOutput<String>('name');
@@ -340,6 +347,13 @@ class PrivateCloud extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     managementCluster = registerOutput<PrivateCloudManagementCluster>(
       'managementCluster',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PrivateCloudManagementCluster.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     managementSubnetCidr = registerOutput<String>('managementSubnetCidr');
     this.name = registerOutput<String>('name');

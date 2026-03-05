@@ -1374,7 +1374,16 @@ class RouterNat extends pulumi.CustomResource {
     endpointTypes = registerOutput<List<String>>('endpointTypes');
     icmpIdleTimeoutSec = registerOutput<int?>('icmpIdleTimeoutSec');
     initialNatIps = registerOutput<List<String>?>('initialNatIps');
-    logConfig = registerOutput<RouterNatLogConfig?>('logConfig');
+    logConfig = registerOutput<RouterNatLogConfig?>(
+      'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RouterNatLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     maxPortsPerVm = registerOutput<int?>('maxPortsPerVm');
     minPortsPerVm = registerOutput<int>('minPortsPerVm');
     this.name = registerOutput<String>('name');
@@ -1439,7 +1448,16 @@ class RouterNat extends pulumi.CustomResource {
     endpointTypes = registerOutput<List<String>>('endpointTypes');
     icmpIdleTimeoutSec = registerOutput<int?>('icmpIdleTimeoutSec');
     initialNatIps = registerOutput<List<String>?>('initialNatIps');
-    logConfig = registerOutput<RouterNatLogConfig?>('logConfig');
+    logConfig = registerOutput<RouterNatLogConfig?>(
+      'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RouterNatLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     maxPortsPerVm = registerOutput<int?>('maxPortsPerVm');
     minPortsPerVm = registerOutput<int>('minPortsPerVm');
     this.name = registerOutput<String>('name');

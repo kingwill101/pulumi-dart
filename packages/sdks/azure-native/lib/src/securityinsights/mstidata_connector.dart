@@ -561,11 +561,29 @@ class MSTIDataConnector extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    dataTypes = registerOutput<MSTIDataConnectorDataTypesResponse>('dataTypes');
+    dataTypes = registerOutput<MSTIDataConnectorDataTypesResponse>(
+      'dataTypes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MSTIDataConnectorDataTypesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String?>('etag');
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tenantId = registerOutput<String>('tenantId');
     type = registerOutput<String>('type');
   }

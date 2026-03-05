@@ -413,13 +413,31 @@ class DataLake extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    configuration = registerOutput<DataLakeConfiguration>('configuration');
+    configuration = registerOutput<DataLakeConfiguration>(
+      'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataLakeConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     metaStoreManagerRoleArn = registerOutput<String>('metaStoreManagerRoleArn');
     region = registerOutput<String>('region');
     s3BucketArn = registerOutput<String>('s3BucketArn');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<DataLakeTimeouts?>('timeouts');
+    timeouts = registerOutput<DataLakeTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataLakeTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [DataLake] resource's state with the given [name] and [id].
@@ -446,12 +464,30 @@ class DataLake extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    configuration = registerOutput<DataLakeConfiguration>('configuration');
+    configuration = registerOutput<DataLakeConfiguration>(
+      'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataLakeConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     metaStoreManagerRoleArn = registerOutput<String>('metaStoreManagerRoleArn');
     region = registerOutput<String>('region');
     s3BucketArn = registerOutput<String>('s3BucketArn');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<DataLakeTimeouts?>('timeouts');
+    timeouts = registerOutput<DataLakeTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataLakeTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

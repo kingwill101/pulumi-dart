@@ -347,6 +347,13 @@ class SacRealm extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     symantecOptions = registerOutput<SacRealmSymantecOptions?>(
       'symantecOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SacRealmSymantecOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     updateTime = registerOutput<String>('updateTime');
   }
@@ -385,6 +392,13 @@ class SacRealm extends pulumi.CustomResource {
     this.state = registerOutput<String>('state');
     symantecOptions = registerOutput<SacRealmSymantecOptions?>(
       'symantecOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SacRealmSymantecOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     updateTime = registerOutput<String>('updateTime');
   }

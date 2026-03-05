@@ -338,11 +338,29 @@ class AlertMutingRule extends pulumi.CustomResource {
     actionOnMutingRuleWindowEnded = registerOutput<String>(
       'actionOnMutingRuleWindowEnded',
     );
-    condition = registerOutput<AlertMutingRuleCondition>('condition');
+    condition = registerOutput<AlertMutingRuleCondition>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlertMutingRuleCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool>('enabled');
     this.name = registerOutput<String>('name');
-    schedule = registerOutput<AlertMutingRuleSchedule?>('schedule');
+    schedule = registerOutput<AlertMutingRuleSchedule?>(
+      'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlertMutingRuleSchedule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [AlertMutingRule] resource's state with the given [name] and [id].
@@ -372,10 +390,28 @@ class AlertMutingRule extends pulumi.CustomResource {
     actionOnMutingRuleWindowEnded = registerOutput<String>(
       'actionOnMutingRuleWindowEnded',
     );
-    condition = registerOutput<AlertMutingRuleCondition>('condition');
+    condition = registerOutput<AlertMutingRuleCondition>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlertMutingRuleCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool>('enabled');
     this.name = registerOutput<String>('name');
-    schedule = registerOutput<AlertMutingRuleSchedule?>('schedule');
+    schedule = registerOutput<AlertMutingRuleSchedule?>(
+      'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AlertMutingRuleSchedule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

@@ -321,6 +321,13 @@ class Endpoint extends pulumi.CustomResource {
     geoFilters = registerOutput<List<Map<String, dynamic>>?>('geoFilters');
     globalDeliveryRule = registerOutput<EndpointGlobalDeliveryRule?>(
       'globalDeliveryRule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointGlobalDeliveryRule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     isCompressionEnabled = registerOutput<bool?>('isCompressionEnabled');
     isHttpAllowed = registerOutput<bool?>('isHttpAllowed');
@@ -373,6 +380,13 @@ class Endpoint extends pulumi.CustomResource {
     geoFilters = registerOutput<List<Map<String, dynamic>>?>('geoFilters');
     globalDeliveryRule = registerOutput<EndpointGlobalDeliveryRule?>(
       'globalDeliveryRule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointGlobalDeliveryRule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     isCompressionEnabled = registerOutput<bool?>('isCompressionEnabled');
     isHttpAllowed = registerOutput<bool?>('isHttpAllowed');

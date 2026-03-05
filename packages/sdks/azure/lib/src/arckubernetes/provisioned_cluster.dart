@@ -346,9 +346,25 @@ class ProvisionedCluster extends pulumi.CustomResource {
     azureActiveDirectory =
         registerOutput<ProvisionedClusterAzureActiveDirectory?>(
           'azureActiveDirectory',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ProvisionedClusterAzureActiveDirectory.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     distribution = registerOutput<String>('distribution');
-    identity = registerOutput<ProvisionedClusterIdentity>('identity');
+    identity = registerOutput<ProvisionedClusterIdentity>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProvisionedClusterIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     infrastructure = registerOutput<String>('infrastructure');
     kubernetesVersion = registerOutput<String>('kubernetesVersion');
     location = registerOutput<String>('location');
@@ -391,9 +407,25 @@ class ProvisionedCluster extends pulumi.CustomResource {
     azureActiveDirectory =
         registerOutput<ProvisionedClusterAzureActiveDirectory?>(
           'azureActiveDirectory',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ProvisionedClusterAzureActiveDirectory.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     distribution = registerOutput<String>('distribution');
-    identity = registerOutput<ProvisionedClusterIdentity>('identity');
+    identity = registerOutput<ProvisionedClusterIdentity>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProvisionedClusterIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     infrastructure = registerOutput<String>('infrastructure');
     kubernetesVersion = registerOutput<String>('kubernetesVersion');
     location = registerOutput<String>('location');

@@ -121,7 +121,8 @@ Future<GetSyncSetResult> getSyncSet(
 /// Other available API versions: 2022-09-04, 2023-04-01, 2023-07-01-preview, 2023-09-04, 2024-08-12-preview, 2025-07-25. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redhatopenshift [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_redhatopenshift_list_open_shift_cluster_admin_credentials_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListOpenShiftClusterAdminCredentialsResult> listOpenShiftClusterAdminCredentials(
+Future<ListOpenShiftClusterAdminCredentialsResult>
+listOpenShiftClusterAdminCredentials(
   ListOpenShiftClusterAdminCredentialsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

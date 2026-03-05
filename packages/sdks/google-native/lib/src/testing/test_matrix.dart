@@ -64,9 +64,25 @@ class TestMatrix extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    clientInfo = registerOutput<ClientInfoResponse>('clientInfo');
+    clientInfo = registerOutput<ClientInfoResponse>(
+      'clientInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClientInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     environmentMatrix = registerOutput<EnvironmentMatrixResponse>(
       'environmentMatrix',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnvironmentMatrixResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     failFast = registerOutput<bool>('failFast');
     flakyTestAttempts = registerOutput<int>('flakyTestAttempts');
@@ -74,7 +90,16 @@ class TestMatrix extends pulumi.CustomResource {
     outcomeSummary = registerOutput<String>('outcomeSummary');
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');
-    resultStorage = registerOutput<ResultStorageResponse>('resultStorage');
+    resultStorage = registerOutput<ResultStorageResponse>(
+      'resultStorage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResultStorageResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     state = registerOutput<String>('state');
     testExecutions = registerOutput<List<Map<String, dynamic>>>(
       'testExecutions',
@@ -82,6 +107,13 @@ class TestMatrix extends pulumi.CustomResource {
     testMatrixId = registerOutput<String>('testMatrixId');
     testSpecification = registerOutput<TestSpecificationResponse>(
       'testSpecification',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TestSpecificationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     timestamp = registerOutput<String>('timestamp');
   }

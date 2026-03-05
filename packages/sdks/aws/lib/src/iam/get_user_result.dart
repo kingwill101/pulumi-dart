@@ -1,20 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getUser.
 class GetUserResult {
   /// ARN assigned by AWS for this user.
   final String arn;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Path in which this user was created.
   final String path;
+
   /// The ARN of the policy that is used to set the permissions boundary for the user.
   final String permissionsBoundary;
+
   /// Map of key-value pairs associated with the user.
   final Map<String, String> tags;
+
   /// Unique ID assigned by AWS for this user.
   final String userId;
+
   /// Name associated to this User
   final String userName;
 
@@ -60,4 +65,3 @@ class GetUserResult {
     );
   }
 }
-

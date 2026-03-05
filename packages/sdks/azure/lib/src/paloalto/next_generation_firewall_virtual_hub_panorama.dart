@@ -458,6 +458,13 @@ class NextGenerationFirewallVirtualHubPanorama extends pulumi.CustomResource {
     dnsSettings =
         registerOutput<NextGenerationFirewallVirtualHubPanoramaDnsSettings?>(
           'dnsSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NextGenerationFirewallVirtualHubPanoramaDnsSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     location = registerOutput<String>('location');
     marketplaceOfferId = registerOutput<String?>('marketplaceOfferId');
@@ -465,6 +472,13 @@ class NextGenerationFirewallVirtualHubPanorama extends pulumi.CustomResource {
     networkProfile =
         registerOutput<NextGenerationFirewallVirtualHubPanoramaNetworkProfile>(
           'networkProfile',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NextGenerationFirewallVirtualHubPanoramaNetworkProfile.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     panoramaBase64Config = registerOutput<String>('panoramaBase64Config');
     panoramas = registerOutput<List<Map<String, dynamic>>>('panoramas');
@@ -502,6 +516,13 @@ class NextGenerationFirewallVirtualHubPanorama extends pulumi.CustomResource {
     dnsSettings =
         registerOutput<NextGenerationFirewallVirtualHubPanoramaDnsSettings?>(
           'dnsSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NextGenerationFirewallVirtualHubPanoramaDnsSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     location = registerOutput<String>('location');
     marketplaceOfferId = registerOutput<String?>('marketplaceOfferId');
@@ -509,6 +530,13 @@ class NextGenerationFirewallVirtualHubPanorama extends pulumi.CustomResource {
     networkProfile =
         registerOutput<NextGenerationFirewallVirtualHubPanoramaNetworkProfile>(
           'networkProfile',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NextGenerationFirewallVirtualHubPanoramaNetworkProfile.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     panoramaBase64Config = registerOutput<String>('panoramaBase64Config');
     panoramas = registerOutput<List<Map<String, dynamic>>>('panoramas');

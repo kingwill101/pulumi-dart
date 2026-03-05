@@ -249,16 +249,39 @@ class ProximityPlacementGroup extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     colocationStatus = registerOutput<InstanceViewStatusResponse?>(
       'colocationStatus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceViewStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     intent = registerOutput<ProximityPlacementGroupPropertiesIntentResponse?>(
       'intent',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProximityPlacementGroupPropertiesIntentResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     proximityPlacementGroupType = registerOutput<String?>(
       'proximityPlacementGroupType',
     );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     virtualMachineScaleSets = registerOutput<List<Map<String, dynamic>>>(

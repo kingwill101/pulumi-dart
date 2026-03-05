@@ -2841,19 +2841,43 @@ class Group extends pulumi.CustomResource {
     availabilityZoneDistribution =
         registerOutput<GroupAvailabilityZoneDistribution>(
           'availabilityZoneDistribution',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GroupAvailabilityZoneDistribution.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     availabilityZones = registerOutput<List<String>>('availabilityZones');
     capacityRebalance = registerOutput<bool?>('capacityRebalance');
     capacityReservationSpecification =
         registerOutput<GroupCapacityReservationSpecification>(
           'capacityReservationSpecification',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GroupCapacityReservationSpecification.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     context = registerOutput<String?>('context');
     defaultCooldown = registerOutput<int>('defaultCooldown');
     defaultInstanceWarmup = registerOutput<int?>('defaultInstanceWarmup');
     desiredCapacity = registerOutput<int>('desiredCapacity');
     desiredCapacityType = registerOutput<String?>('desiredCapacityType');
-    enabledMetrics = registerOutput<List<Metric>?>('enabledMetrics');
+    enabledMetrics = registerOutput<List<Metric>?>(
+      'enabledMetrics',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<Metric>(
+          guardedValue,
+          (value) => Metric.fromValue(value as String),
+        );
+      },
+    );
     forceDelete = registerOutput<bool?>('forceDelete');
     forceDeleteWarmPool = registerOutput<bool?>('forceDeleteWarmPool');
     healthCheckGracePeriod = registerOutput<int?>('healthCheckGracePeriod');
@@ -2866,10 +2890,35 @@ class Group extends pulumi.CustomResource {
     );
     instanceMaintenancePolicy = registerOutput<GroupInstanceMaintenancePolicy?>(
       'instanceMaintenancePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupInstanceMaintenancePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    instanceRefresh = registerOutput<GroupInstanceRefresh?>('instanceRefresh');
+    instanceRefresh = registerOutput<GroupInstanceRefresh?>(
+      'instanceRefresh',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupInstanceRefresh.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     launchConfiguration = registerOutput<String?>('launchConfiguration');
-    launchTemplate = registerOutput<GroupLaunchTemplate>('launchTemplate');
+    launchTemplate = registerOutput<GroupLaunchTemplate>(
+      'launchTemplate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupLaunchTemplate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     loadBalancers = registerOutput<List<String>>('loadBalancers');
     maxInstanceLifetime = registerOutput<int?>('maxInstanceLifetime');
     maxSize = registerOutput<int>('maxSize');
@@ -2878,6 +2927,13 @@ class Group extends pulumi.CustomResource {
     minSize = registerOutput<int>('minSize');
     mixedInstancesPolicy = registerOutput<GroupMixedInstancesPolicy>(
       'mixedInstancesPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupMixedInstancesPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
@@ -2896,7 +2952,16 @@ class Group extends pulumi.CustomResource {
     vpcZoneIdentifiers = registerOutput<List<String>>('vpcZoneIdentifiers');
     waitForCapacityTimeout = registerOutput<String?>('waitForCapacityTimeout');
     waitForElbCapacity = registerOutput<int?>('waitForElbCapacity');
-    warmPool = registerOutput<GroupWarmPool?>('warmPool');
+    warmPool = registerOutput<GroupWarmPool?>(
+      'warmPool',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupWarmPool.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     warmPoolSize = registerOutput<int>('warmPoolSize');
   }
 
@@ -2923,19 +2988,43 @@ class Group extends pulumi.CustomResource {
     availabilityZoneDistribution =
         registerOutput<GroupAvailabilityZoneDistribution>(
           'availabilityZoneDistribution',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GroupAvailabilityZoneDistribution.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     availabilityZones = registerOutput<List<String>>('availabilityZones');
     capacityRebalance = registerOutput<bool?>('capacityRebalance');
     capacityReservationSpecification =
         registerOutput<GroupCapacityReservationSpecification>(
           'capacityReservationSpecification',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GroupCapacityReservationSpecification.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     context = registerOutput<String?>('context');
     defaultCooldown = registerOutput<int>('defaultCooldown');
     defaultInstanceWarmup = registerOutput<int?>('defaultInstanceWarmup');
     desiredCapacity = registerOutput<int>('desiredCapacity');
     desiredCapacityType = registerOutput<String?>('desiredCapacityType');
-    enabledMetrics = registerOutput<List<Metric>?>('enabledMetrics');
+    enabledMetrics = registerOutput<List<Metric>?>(
+      'enabledMetrics',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<Metric>(
+          guardedValue,
+          (value) => Metric.fromValue(value as String),
+        );
+      },
+    );
     forceDelete = registerOutput<bool?>('forceDelete');
     forceDeleteWarmPool = registerOutput<bool?>('forceDeleteWarmPool');
     healthCheckGracePeriod = registerOutput<int?>('healthCheckGracePeriod');
@@ -2948,10 +3037,35 @@ class Group extends pulumi.CustomResource {
     );
     instanceMaintenancePolicy = registerOutput<GroupInstanceMaintenancePolicy?>(
       'instanceMaintenancePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupInstanceMaintenancePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    instanceRefresh = registerOutput<GroupInstanceRefresh?>('instanceRefresh');
+    instanceRefresh = registerOutput<GroupInstanceRefresh?>(
+      'instanceRefresh',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupInstanceRefresh.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     launchConfiguration = registerOutput<String?>('launchConfiguration');
-    launchTemplate = registerOutput<GroupLaunchTemplate>('launchTemplate');
+    launchTemplate = registerOutput<GroupLaunchTemplate>(
+      'launchTemplate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupLaunchTemplate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     loadBalancers = registerOutput<List<String>>('loadBalancers');
     maxInstanceLifetime = registerOutput<int?>('maxInstanceLifetime');
     maxSize = registerOutput<int>('maxSize');
@@ -2960,6 +3074,13 @@ class Group extends pulumi.CustomResource {
     minSize = registerOutput<int>('minSize');
     mixedInstancesPolicy = registerOutput<GroupMixedInstancesPolicy>(
       'mixedInstancesPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupMixedInstancesPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
@@ -2978,7 +3099,16 @@ class Group extends pulumi.CustomResource {
     vpcZoneIdentifiers = registerOutput<List<String>>('vpcZoneIdentifiers');
     waitForCapacityTimeout = registerOutput<String?>('waitForCapacityTimeout');
     waitForElbCapacity = registerOutput<int?>('waitForElbCapacity');
-    warmPool = registerOutput<GroupWarmPool?>('warmPool');
+    warmPool = registerOutput<GroupWarmPool?>(
+      'warmPool',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupWarmPool.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     warmPoolSize = registerOutput<int>('warmPoolSize');
   }
 }

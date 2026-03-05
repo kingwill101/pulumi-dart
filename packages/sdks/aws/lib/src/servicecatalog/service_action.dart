@@ -162,7 +162,16 @@ class ServiceAction extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     acceptLanguage = registerOutput<String?>('acceptLanguage');
-    definition = registerOutput<ServiceActionDefinition>('definition');
+    definition = registerOutput<ServiceActionDefinition>(
+      'definition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceActionDefinition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -192,7 +201,16 @@ class ServiceAction extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     acceptLanguage = registerOutput<String?>('acceptLanguage');
-    definition = registerOutput<ServiceActionDefinition>('definition');
+    definition = registerOutput<ServiceActionDefinition>(
+      'definition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceActionDefinition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String>('description');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

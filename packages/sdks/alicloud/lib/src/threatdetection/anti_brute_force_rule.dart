@@ -185,6 +185,13 @@ class AntiBruteForceRule extends pulumi.CustomResource {
     forbiddenTime = registerOutput<int>('forbiddenTime');
     protocolType = registerOutput<AntiBruteForceRuleProtocolType>(
       'protocolType',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AntiBruteForceRuleProtocolType.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     span = registerOutput<int>('span');
     uuidLists = registerOutput<List<String>>('uuidLists');
@@ -219,6 +226,13 @@ class AntiBruteForceRule extends pulumi.CustomResource {
     forbiddenTime = registerOutput<int>('forbiddenTime');
     protocolType = registerOutput<AntiBruteForceRuleProtocolType>(
       'protocolType',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AntiBruteForceRuleProtocolType.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     span = registerOutput<int>('span');
     uuidLists = registerOutput<List<String>>('uuidLists');

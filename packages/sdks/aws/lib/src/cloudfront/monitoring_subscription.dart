@@ -160,6 +160,13 @@ class MonitoringSubscription extends pulumi.CustomResource {
     monitoringSubscription =
         registerOutput<MonitoringSubscriptionMonitoringSubscription>(
           'monitoringSubscription',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MonitoringSubscriptionMonitoringSubscription.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 
@@ -190,6 +197,13 @@ class MonitoringSubscription extends pulumi.CustomResource {
     monitoringSubscription =
         registerOutput<MonitoringSubscriptionMonitoringSubscription>(
           'monitoringSubscription',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MonitoringSubscriptionMonitoringSubscription.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

@@ -1145,9 +1145,23 @@ class SecurityPolicy extends pulumi.CustomResource {
     adaptiveProtectionConfig =
         registerOutput<SecurityPolicyAdaptiveProtectionConfig?>(
           'adaptiveProtectionConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SecurityPolicyAdaptiveProtectionConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     advancedOptionsConfig = registerOutput<SecurityPolicyAdvancedOptionsConfig>(
       'advancedOptionsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityPolicyAdvancedOptionsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -1160,6 +1174,13 @@ class SecurityPolicy extends pulumi.CustomResource {
     recaptchaOptionsConfig =
         registerOutput<SecurityPolicyRecaptchaOptionsConfig?>(
           'recaptchaOptionsConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SecurityPolicyRecaptchaOptionsConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     rules = registerOutput<List<Map<String, dynamic>>>('rules');
     selfLink = registerOutput<String>('selfLink');
@@ -1192,9 +1213,23 @@ class SecurityPolicy extends pulumi.CustomResource {
     adaptiveProtectionConfig =
         registerOutput<SecurityPolicyAdaptiveProtectionConfig?>(
           'adaptiveProtectionConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SecurityPolicyAdaptiveProtectionConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     advancedOptionsConfig = registerOutput<SecurityPolicyAdvancedOptionsConfig>(
       'advancedOptionsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityPolicyAdvancedOptionsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -1207,6 +1242,13 @@ class SecurityPolicy extends pulumi.CustomResource {
     recaptchaOptionsConfig =
         registerOutput<SecurityPolicyRecaptchaOptionsConfig?>(
           'recaptchaOptionsConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SecurityPolicyRecaptchaOptionsConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     rules = registerOutput<List<Map<String, dynamic>>>('rules');
     selfLink = registerOutput<String>('selfLink');

@@ -62,6 +62,13 @@ class SearchApplication extends pulumi.CustomResource {
     );
     defaultSortOptions = registerOutput<SortOptionsResponse>(
       'defaultSortOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SortOptionsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     displayName = registerOutput<String>('displayName');
     enableAuditLog = registerOutput<bool>('enableAuditLog');
@@ -70,11 +77,27 @@ class SearchApplication extends pulumi.CustomResource {
     queryInterpretationConfig =
         registerOutput<QueryInterpretationConfigResponse>(
           'queryInterpretationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return QueryInterpretationConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     returnResultThumbnailUrls = registerOutput<bool>(
       'returnResultThumbnailUrls',
     );
-    scoringConfig = registerOutput<ScoringConfigResponse>('scoringConfig');
+    scoringConfig = registerOutput<ScoringConfigResponse>(
+      'scoringConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScoringConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sourceConfig = registerOutput<List<Map<String, dynamic>>>('sourceConfig');
   }
 }

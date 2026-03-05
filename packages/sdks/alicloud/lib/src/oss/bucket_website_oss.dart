@@ -381,11 +381,34 @@ class BucketWebsiteOss extends pulumi.CustomResource {
     bucket = registerOutput<String>('bucket');
     errorDocument = registerOutput<BucketWebsiteErrorDocument?>(
       'errorDocument',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketWebsiteErrorDocument.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     indexDocument = registerOutput<BucketWebsiteIndexDocument?>(
       'indexDocument',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketWebsiteIndexDocument.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    routingRules = registerOutput<BucketWebsiteRoutingRules?>('routingRules');
+    routingRules = registerOutput<BucketWebsiteRoutingRules?>(
+      'routingRules',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketWebsiteRoutingRules.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [BucketWebsiteOss] resource's state with the given [name] and [id].
@@ -414,10 +437,33 @@ class BucketWebsiteOss extends pulumi.CustomResource {
     bucket = registerOutput<String>('bucket');
     errorDocument = registerOutput<BucketWebsiteErrorDocument?>(
       'errorDocument',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketWebsiteErrorDocument.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     indexDocument = registerOutput<BucketWebsiteIndexDocument?>(
       'indexDocument',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketWebsiteIndexDocument.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    routingRules = registerOutput<BucketWebsiteRoutingRules?>('routingRules');
+    routingRules = registerOutput<BucketWebsiteRoutingRules?>(
+      'routingRules',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketWebsiteRoutingRules.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

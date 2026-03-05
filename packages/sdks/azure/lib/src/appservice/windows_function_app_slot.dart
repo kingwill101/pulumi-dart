@@ -483,11 +483,34 @@ class WindowsFunctionAppSlot extends pulumi.CustomResource {
     appSettings = registerOutput<Map<String, String>?>('appSettings');
     authSettings = registerOutput<WindowsFunctionAppSlotAuthSettings?>(
       'authSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WindowsFunctionAppSlotAuthSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     authSettingsV2 = registerOutput<WindowsFunctionAppSlotAuthSettingsV2?>(
       'authSettingsV2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WindowsFunctionAppSlotAuthSettingsV2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    backup = registerOutput<WindowsFunctionAppSlotBackup?>('backup');
+    backup = registerOutput<WindowsFunctionAppSlotBackup?>(
+      'backup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WindowsFunctionAppSlotBackup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     builtinLoggingEnabled = registerOutput<bool?>('builtinLoggingEnabled');
     clientCertificateEnabled = registerOutput<bool?>(
       'clientCertificateEnabled',
@@ -517,7 +540,16 @@ class WindowsFunctionAppSlot extends pulumi.CustomResource {
     );
     hostingEnvironmentId = registerOutput<String>('hostingEnvironmentId');
     httpsOnly = registerOutput<bool?>('httpsOnly');
-    identity = registerOutput<WindowsFunctionAppSlotIdentity?>('identity');
+    identity = registerOutput<WindowsFunctionAppSlotIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WindowsFunctionAppSlotIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     keyVaultReferenceIdentityId = registerOutput<String>(
       'keyVaultReferenceIdentityId',
     );
@@ -537,7 +569,16 @@ class WindowsFunctionAppSlot extends pulumi.CustomResource {
       'publicNetworkAccessEnabled',
     );
     servicePlanId = registerOutput<String?>('servicePlanId');
-    siteConfig = registerOutput<WindowsFunctionAppSlotSiteConfig>('siteConfig');
+    siteConfig = registerOutput<WindowsFunctionAppSlotSiteConfig>(
+      'siteConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WindowsFunctionAppSlotSiteConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     siteCredentials = registerOutput<List<Map<String, dynamic>>>(
       'siteCredentials',
     );
@@ -591,11 +632,34 @@ class WindowsFunctionAppSlot extends pulumi.CustomResource {
     appSettings = registerOutput<Map<String, String>?>('appSettings');
     authSettings = registerOutput<WindowsFunctionAppSlotAuthSettings?>(
       'authSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WindowsFunctionAppSlotAuthSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     authSettingsV2 = registerOutput<WindowsFunctionAppSlotAuthSettingsV2?>(
       'authSettingsV2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WindowsFunctionAppSlotAuthSettingsV2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    backup = registerOutput<WindowsFunctionAppSlotBackup?>('backup');
+    backup = registerOutput<WindowsFunctionAppSlotBackup?>(
+      'backup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WindowsFunctionAppSlotBackup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     builtinLoggingEnabled = registerOutput<bool?>('builtinLoggingEnabled');
     clientCertificateEnabled = registerOutput<bool?>(
       'clientCertificateEnabled',
@@ -625,7 +689,16 @@ class WindowsFunctionAppSlot extends pulumi.CustomResource {
     );
     hostingEnvironmentId = registerOutput<String>('hostingEnvironmentId');
     httpsOnly = registerOutput<bool?>('httpsOnly');
-    identity = registerOutput<WindowsFunctionAppSlotIdentity?>('identity');
+    identity = registerOutput<WindowsFunctionAppSlotIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WindowsFunctionAppSlotIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     keyVaultReferenceIdentityId = registerOutput<String>(
       'keyVaultReferenceIdentityId',
     );
@@ -645,7 +718,16 @@ class WindowsFunctionAppSlot extends pulumi.CustomResource {
       'publicNetworkAccessEnabled',
     );
     servicePlanId = registerOutput<String?>('servicePlanId');
-    siteConfig = registerOutput<WindowsFunctionAppSlotSiteConfig>('siteConfig');
+    siteConfig = registerOutput<WindowsFunctionAppSlotSiteConfig>(
+      'siteConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WindowsFunctionAppSlotSiteConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     siteCredentials = registerOutput<List<Map<String, dynamic>>>(
       'siteCredentials',
     );

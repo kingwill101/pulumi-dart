@@ -341,7 +341,16 @@ class ServiceConnectionPolicy extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     project = registerOutput<String>('project');
-    pscConfig = registerOutput<ServiceConnectionPolicyPscConfig?>('pscConfig');
+    pscConfig = registerOutput<ServiceConnectionPolicyPscConfig?>(
+      'pscConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceConnectionPolicyPscConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     pscConnections = registerOutput<List<Map<String, dynamic>>>(
       'pscConnections',
     );
@@ -383,7 +392,16 @@ class ServiceConnectionPolicy extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     project = registerOutput<String>('project');
-    pscConfig = registerOutput<ServiceConnectionPolicyPscConfig?>('pscConfig');
+    pscConfig = registerOutput<ServiceConnectionPolicyPscConfig?>(
+      'pscConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceConnectionPolicyPscConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     pscConnections = registerOutput<List<Map<String, dynamic>>>(
       'pscConnections',
     );

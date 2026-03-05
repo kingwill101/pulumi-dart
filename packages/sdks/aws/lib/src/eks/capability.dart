@@ -246,13 +246,31 @@ class Capability extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     capabilityName = registerOutput<String>('capabilityName');
     clusterName = registerOutput<String>('clusterName');
-    configuration = registerOutput<CapabilityConfiguration?>('configuration');
+    configuration = registerOutput<CapabilityConfiguration?>(
+      'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CapabilityConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     deletePropagationPolicy = registerOutput<String>('deletePropagationPolicy');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<CapabilityTimeouts?>('timeouts');
+    timeouts = registerOutput<CapabilityTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CapabilityTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     version = registerOutput<String>('version');
   }
@@ -283,13 +301,31 @@ class Capability extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     capabilityName = registerOutput<String>('capabilityName');
     clusterName = registerOutput<String>('clusterName');
-    configuration = registerOutput<CapabilityConfiguration?>('configuration');
+    configuration = registerOutput<CapabilityConfiguration?>(
+      'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CapabilityConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     deletePropagationPolicy = registerOutput<String>('deletePropagationPolicy');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<CapabilityTimeouts?>('timeouts');
+    timeouts = registerOutput<CapabilityTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CapabilityTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     version = registerOutput<String>('version');
   }

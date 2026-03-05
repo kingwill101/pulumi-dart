@@ -45,6 +45,13 @@ class PolicyDnsV1beta2 extends pulumi.CustomResource {
     alternativeNameServerConfig =
         registerOutput<PolicyAlternativeNameServerConfigResponseDnsV1beta2>(
           'alternativeNameServerConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PolicyAlternativeNameServerConfigResponseDnsV1beta2.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     clientOperationId = registerOutput<String?>('clientOperationId');
     description = registerOutput<String>('description');

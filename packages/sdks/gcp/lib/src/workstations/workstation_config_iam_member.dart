@@ -969,6 +969,13 @@ class WorkstationConfigIamMember extends pulumi.CustomResource {
        ) {
     condition = registerOutput<WorkstationConfigIamMemberCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkstationConfigIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
@@ -1004,6 +1011,13 @@ class WorkstationConfigIamMember extends pulumi.CustomResource {
        ) {
     condition = registerOutput<WorkstationConfigIamMemberCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkstationConfigIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');

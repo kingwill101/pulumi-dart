@@ -1302,7 +1302,16 @@ class DiskEncryptionSet extends pulumi.CustomResource {
     autoKeyRotationEnabled = registerOutput<bool?>('autoKeyRotationEnabled');
     encryptionType = registerOutput<String?>('encryptionType');
     federatedClientId = registerOutput<String?>('federatedClientId');
-    identity = registerOutput<DiskEncryptionSetIdentity>('identity');
+    identity = registerOutput<DiskEncryptionSetIdentity>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiskEncryptionSetIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
     keyVaultKeyUrl = registerOutput<String>('keyVaultKeyUrl');
     location = registerOutput<String>('location');
@@ -1338,7 +1347,16 @@ class DiskEncryptionSet extends pulumi.CustomResource {
     autoKeyRotationEnabled = registerOutput<bool?>('autoKeyRotationEnabled');
     encryptionType = registerOutput<String?>('encryptionType');
     federatedClientId = registerOutput<String?>('federatedClientId');
-    identity = registerOutput<DiskEncryptionSetIdentity>('identity');
+    identity = registerOutput<DiskEncryptionSetIdentity>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiskEncryptionSetIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
     keyVaultKeyUrl = registerOutput<String>('keyVaultKeyUrl');
     location = registerOutput<String>('location');

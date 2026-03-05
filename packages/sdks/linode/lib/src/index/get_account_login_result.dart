@@ -1,17 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAccountLogin.
 class GetAccountLoginResult {
   /// When the login was initiated.
   final String datetime;
+
   /// The unique ID of this login object.
   final int id;
+
   /// The remote IP address that requested the login.
   final String ip;
+
   /// True if the User that was logged into was a restricted User, false otherwise.
   final bool restricted;
   final String status;
+
   /// The username of the User that was logged into.
   final String username;
 
@@ -53,4 +56,3 @@ class GetAccountLoginResult {
     );
   }
 }
-

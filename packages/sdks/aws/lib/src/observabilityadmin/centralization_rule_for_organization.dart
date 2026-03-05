@@ -870,13 +870,29 @@ class CentralizationRuleForOrganization extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     region = registerOutput<String>('region');
-    rule = registerOutput<CentralizationRuleForOrganizationRule>('rule');
+    rule = registerOutput<CentralizationRuleForOrganizationRule>(
+      'rule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CentralizationRuleForOrganizationRule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ruleArn = registerOutput<String>('ruleArn');
     ruleName = registerOutput<String>('ruleName');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     timeouts = registerOutput<CentralizationRuleForOrganizationTimeouts?>(
       'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CentralizationRuleForOrganizationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -904,13 +920,29 @@ class CentralizationRuleForOrganization extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     region = registerOutput<String>('region');
-    rule = registerOutput<CentralizationRuleForOrganizationRule>('rule');
+    rule = registerOutput<CentralizationRuleForOrganizationRule>(
+      'rule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CentralizationRuleForOrganizationRule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ruleArn = registerOutput<String>('ruleArn');
     ruleName = registerOutput<String>('ruleName');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     timeouts = registerOutput<CentralizationRuleForOrganizationTimeouts?>(
       'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CentralizationRuleForOrganizationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

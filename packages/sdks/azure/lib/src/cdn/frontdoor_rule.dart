@@ -1110,11 +1110,29 @@ class FrontdoorRule extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    actions = registerOutput<FrontdoorRuleActions>('actions');
+    actions = registerOutput<FrontdoorRuleActions>(
+      'actions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FrontdoorRuleActions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     behaviorOnMatch = registerOutput<String?>('behaviorOnMatch');
     cdnFrontdoorRuleSetId = registerOutput<String>('cdnFrontdoorRuleSetId');
     cdnFrontdoorRuleSetName = registerOutput<String>('cdnFrontdoorRuleSetName');
-    conditions = registerOutput<FrontdoorRuleConditions?>('conditions');
+    conditions = registerOutput<FrontdoorRuleConditions?>(
+      'conditions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FrontdoorRuleConditions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     order = registerOutput<int>('order');
   }
@@ -1142,11 +1160,29 @@ class FrontdoorRule extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    actions = registerOutput<FrontdoorRuleActions>('actions');
+    actions = registerOutput<FrontdoorRuleActions>(
+      'actions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FrontdoorRuleActions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     behaviorOnMatch = registerOutput<String?>('behaviorOnMatch');
     cdnFrontdoorRuleSetId = registerOutput<String>('cdnFrontdoorRuleSetId');
     cdnFrontdoorRuleSetName = registerOutput<String>('cdnFrontdoorRuleSetName');
-    conditions = registerOutput<FrontdoorRuleConditions?>('conditions');
+    conditions = registerOutput<FrontdoorRuleConditions?>(
+      'conditions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FrontdoorRuleConditions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     order = registerOutput<int>('order');
   }

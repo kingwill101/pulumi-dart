@@ -206,6 +206,13 @@ class LocationAzureBlob extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     sasConfiguration = registerOutput<LocationAzureBlobSasConfiguration?>(
       'sasConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LocationAzureBlobSasConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     subdirectory = registerOutput<String>('subdirectory');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -245,6 +252,13 @@ class LocationAzureBlob extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     sasConfiguration = registerOutput<LocationAzureBlobSasConfiguration?>(
       'sasConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LocationAzureBlobSasConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     subdirectory = registerOutput<String>('subdirectory');
     tags = registerOutput<Map<String, String>?>('tags');

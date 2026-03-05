@@ -515,7 +515,16 @@ class BotAssociation extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     instanceId = registerOutput<String>('instanceId');
-    lexBot = registerOutput<BotAssociationLexBot>('lexBot');
+    lexBot = registerOutput<BotAssociationLexBot>(
+      'lexBot',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BotAssociationLexBot.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
   }
 
@@ -543,7 +552,16 @@ class BotAssociation extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     instanceId = registerOutput<String>('instanceId');
-    lexBot = registerOutput<BotAssociationLexBot>('lexBot');
+    lexBot = registerOutput<BotAssociationLexBot>(
+      'lexBot',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BotAssociationLexBot.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
   }
 }

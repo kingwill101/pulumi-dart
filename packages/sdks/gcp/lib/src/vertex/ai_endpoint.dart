@@ -1029,6 +1029,13 @@ class AiEndpoint extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     encryptionSpec = registerOutput<AiEndpointEncryptionSpec?>(
       'encryptionSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiEndpointEncryptionSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -1041,10 +1048,24 @@ class AiEndpoint extends pulumi.CustomResource {
     predictRequestResponseLoggingConfig =
         registerOutput<AiEndpointPredictRequestResponseLoggingConfig?>(
           'predictRequestResponseLoggingConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AiEndpointPredictRequestResponseLoggingConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     privateServiceConnectConfig =
         registerOutput<AiEndpointPrivateServiceConnectConfig?>(
           'privateServiceConnectConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AiEndpointPrivateServiceConnectConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
@@ -1089,6 +1110,13 @@ class AiEndpoint extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     encryptionSpec = registerOutput<AiEndpointEncryptionSpec?>(
       'encryptionSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiEndpointEncryptionSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -1101,10 +1129,24 @@ class AiEndpoint extends pulumi.CustomResource {
     predictRequestResponseLoggingConfig =
         registerOutput<AiEndpointPredictRequestResponseLoggingConfig?>(
           'predictRequestResponseLoggingConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AiEndpointPredictRequestResponseLoggingConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     privateServiceConnectConfig =
         registerOutput<AiEndpointPrivateServiceConnectConfig?>(
           'privateServiceConnectConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AiEndpointPrivateServiceConnectConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');

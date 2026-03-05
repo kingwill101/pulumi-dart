@@ -1124,10 +1124,28 @@ class Workflow extends pulumi.CustomResource {
     destinations = registerOutput<List<Map<String, dynamic>>>('destinations');
     destinationsEnabled = registerOutput<bool?>('destinationsEnabled');
     enabled = registerOutput<bool?>('enabled');
-    enrichments = registerOutput<WorkflowEnrichments?>('enrichments');
+    enrichments = registerOutput<WorkflowEnrichments?>(
+      'enrichments',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkflowEnrichments.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     enrichmentsEnabled = registerOutput<bool?>('enrichmentsEnabled');
     guid = registerOutput<String>('guid');
-    issuesFilter = registerOutput<WorkflowIssuesFilter>('issuesFilter');
+    issuesFilter = registerOutput<WorkflowIssuesFilter>(
+      'issuesFilter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkflowIssuesFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     lastRun = registerOutput<String>('lastRun');
     mutingRulesHandling = registerOutput<String>('mutingRulesHandling');
     this.name = registerOutput<String>('name');
@@ -1161,10 +1179,28 @@ class Workflow extends pulumi.CustomResource {
     destinations = registerOutput<List<Map<String, dynamic>>>('destinations');
     destinationsEnabled = registerOutput<bool?>('destinationsEnabled');
     enabled = registerOutput<bool?>('enabled');
-    enrichments = registerOutput<WorkflowEnrichments?>('enrichments');
+    enrichments = registerOutput<WorkflowEnrichments?>(
+      'enrichments',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkflowEnrichments.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     enrichmentsEnabled = registerOutput<bool?>('enrichmentsEnabled');
     guid = registerOutput<String>('guid');
-    issuesFilter = registerOutput<WorkflowIssuesFilter>('issuesFilter');
+    issuesFilter = registerOutput<WorkflowIssuesFilter>(
+      'issuesFilter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkflowIssuesFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     lastRun = registerOutput<String>('lastRun');
     mutingRulesHandling = registerOutput<String>('mutingRulesHandling');
     this.name = registerOutput<String>('name');

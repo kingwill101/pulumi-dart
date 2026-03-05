@@ -533,6 +533,13 @@ class VirtualMachineExtension extends pulumi.CustomResource {
     forceUpdateTag = registerOutput<String?>('forceUpdateTag');
     instanceView = registerOutput<VirtualMachineExtensionInstanceViewResponse?>(
       'instanceView',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualMachineExtensionInstanceViewResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -540,6 +547,13 @@ class VirtualMachineExtension extends pulumi.CustomResource {
     protectedSettingsFromKeyVault =
         registerOutput<KeyVaultSecretReferenceResponse?>(
           'protectedSettingsFromKeyVault',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return KeyVaultSecretReferenceResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     provisionAfterExtensions = registerOutput<List<String>?>(
       'provisionAfterExtensions',
@@ -548,7 +562,16 @@ class VirtualMachineExtension extends pulumi.CustomResource {
     publisher = registerOutput<String?>('publisher');
     settings = registerOutput<dynamic>('settings');
     suppressFailures = registerOutput<bool?>('suppressFailures');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     typeHandlerVersion = registerOutput<String?>('typeHandlerVersion');

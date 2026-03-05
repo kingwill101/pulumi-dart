@@ -284,18 +284,50 @@ class L2Connection extends pulumi.CustomResource {
     circuitId = registerOutput<String>('circuitId');
     edgeSite = registerOutput<L2ConnectionsPropertiesResponseEdgeSite>(
       'edgeSite',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return L2ConnectionsPropertiesResponseEdgeSite.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     groundStation =
         registerOutput<L2ConnectionsPropertiesResponseGroundStation>(
           'groundStation',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return L2ConnectionsPropertiesResponseGroundStation.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     groundStationPartnerRouter =
         registerOutput<
           L2ConnectionsPropertiesResponseGroundStationPartnerRouter
-        >('groundStationPartnerRouter');
+        >(
+          'groundStationPartnerRouter',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return L2ConnectionsPropertiesResponseGroundStationPartnerRouter.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     vlanId = registerOutput<int>('vlanId');

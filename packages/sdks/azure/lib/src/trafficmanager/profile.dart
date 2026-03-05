@@ -345,10 +345,28 @@ class Profile extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    dnsConfig = registerOutput<ProfileDnsConfig>('dnsConfig');
+    dnsConfig = registerOutput<ProfileDnsConfig>(
+      'dnsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProfileDnsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     fqdn = registerOutput<String>('fqdn');
     maxReturn = registerOutput<int?>('maxReturn');
-    monitorConfig = registerOutput<ProfileMonitorConfig>('monitorConfig');
+    monitorConfig = registerOutput<ProfileMonitorConfig>(
+      'monitorConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProfileMonitorConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     profileStatus = registerOutput<String?>('profileStatus');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -380,10 +398,28 @@ class Profile extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    dnsConfig = registerOutput<ProfileDnsConfig>('dnsConfig');
+    dnsConfig = registerOutput<ProfileDnsConfig>(
+      'dnsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProfileDnsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     fqdn = registerOutput<String>('fqdn');
     maxReturn = registerOutput<int?>('maxReturn');
-    monitorConfig = registerOutput<ProfileMonitorConfig>('monitorConfig');
+    monitorConfig = registerOutput<ProfileMonitorConfig>(
+      'monitorConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProfileMonitorConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     profileStatus = registerOutput<String?>('profileStatus');
     resourceGroupName = registerOutput<String>('resourceGroupName');

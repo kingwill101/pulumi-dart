@@ -465,7 +465,16 @@ class Client extends pulumi.CustomResource {
         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
         options ?? pulumi.CustomResourceOptions(),
       ) {
-    cloudKmsConfig = registerOutput<ClientCloudKmsConfig?>('cloudKmsConfig');
+    cloudKmsConfig = registerOutput<ClientCloudKmsConfig?>(
+      'cloudKmsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClientCloudKmsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createSampleIntegrations = registerOutput<bool?>(
       'createSampleIntegrations',
     );
@@ -497,7 +506,16 @@ class Client extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    cloudKmsConfig = registerOutput<ClientCloudKmsConfig?>('cloudKmsConfig');
+    cloudKmsConfig = registerOutput<ClientCloudKmsConfig?>(
+      'cloudKmsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClientCloudKmsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createSampleIntegrations = registerOutput<bool?>(
       'createSampleIntegrations',
     );

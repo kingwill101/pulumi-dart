@@ -721,21 +721,71 @@ class BucketReplication extends pulumi.CustomResource {
        ) {
     action = registerOutput<String?>('action');
     bucket = registerOutput<String>('bucket');
-    destination = registerOutput<BucketReplicationDestination>('destination');
+    destination = registerOutput<BucketReplicationDestination>(
+      'destination',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketReplicationDestination.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     encryptionConfiguration =
         registerOutput<BucketReplicationEncryptionConfiguration?>(
           'encryptionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return BucketReplicationEncryptionConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     historicalObjectReplication = registerOutput<String?>(
       'historicalObjectReplication',
     );
-    prefixSet = registerOutput<BucketReplicationPrefixSet?>('prefixSet');
-    progress = registerOutput<BucketReplicationProgress>('progress');
-    rtc = registerOutput<BucketReplicationRtc>('rtc');
+    prefixSet = registerOutput<BucketReplicationPrefixSet?>(
+      'prefixSet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketReplicationPrefixSet.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    progress = registerOutput<BucketReplicationProgress>(
+      'progress',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketReplicationProgress.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    rtc = registerOutput<BucketReplicationRtc>(
+      'rtc',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketReplicationRtc.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ruleId = registerOutput<String>('ruleId');
     sourceSelectionCriteria =
         registerOutput<BucketReplicationSourceSelectionCriteria?>(
           'sourceSelectionCriteria',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return BucketReplicationSourceSelectionCriteria.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     status = registerOutput<String>('status');
     syncRole = registerOutput<String?>('syncRole');
@@ -766,21 +816,71 @@ class BucketReplication extends pulumi.CustomResource {
        ) {
     action = registerOutput<String?>('action');
     bucket = registerOutput<String>('bucket');
-    destination = registerOutput<BucketReplicationDestination>('destination');
+    destination = registerOutput<BucketReplicationDestination>(
+      'destination',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketReplicationDestination.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     encryptionConfiguration =
         registerOutput<BucketReplicationEncryptionConfiguration?>(
           'encryptionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return BucketReplicationEncryptionConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     historicalObjectReplication = registerOutput<String?>(
       'historicalObjectReplication',
     );
-    prefixSet = registerOutput<BucketReplicationPrefixSet?>('prefixSet');
-    progress = registerOutput<BucketReplicationProgress>('progress');
-    rtc = registerOutput<BucketReplicationRtc>('rtc');
+    prefixSet = registerOutput<BucketReplicationPrefixSet?>(
+      'prefixSet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketReplicationPrefixSet.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    progress = registerOutput<BucketReplicationProgress>(
+      'progress',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketReplicationProgress.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    rtc = registerOutput<BucketReplicationRtc>(
+      'rtc',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketReplicationRtc.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ruleId = registerOutput<String>('ruleId');
     sourceSelectionCriteria =
         registerOutput<BucketReplicationSourceSelectionCriteria?>(
           'sourceSelectionCriteria',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return BucketReplicationSourceSelectionCriteria.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     status = registerOutput<String>('status');
     syncRole = registerOutput<String?>('syncRole');

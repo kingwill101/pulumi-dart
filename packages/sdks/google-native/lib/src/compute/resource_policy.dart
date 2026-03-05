@@ -76,10 +76,24 @@ class ResourcePolicy extends pulumi.CustomResource {
     groupPlacementPolicy =
         registerOutput<ResourcePolicyGroupPlacementPolicyResponse>(
           'groupPlacementPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResourcePolicyGroupPlacementPolicyResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     instanceSchedulePolicy =
         registerOutput<ResourcePolicyInstanceSchedulePolicyResponse>(
           'instanceSchedulePolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResourcePolicyInstanceSchedulePolicyResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
@@ -88,17 +102,38 @@ class ResourcePolicy extends pulumi.CustomResource {
     requestId = registerOutput<String?>('requestId');
     resourceStatus = registerOutput<ResourcePolicyResourceStatusResponse>(
       'resourceStatus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourcePolicyResourceStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     selfLink = registerOutput<String>('selfLink');
     selfLinkWithId = registerOutput<String>('selfLinkWithId');
     snapshotSchedulePolicy =
         registerOutput<ResourcePolicySnapshotSchedulePolicyResponse>(
           'snapshotSchedulePolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResourcePolicySnapshotSchedulePolicyResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     status = registerOutput<String>('status');
     vmMaintenancePolicy =
         registerOutput<ResourcePolicyVmMaintenancePolicyResponse>(
           'vmMaintenancePolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResourcePolicyVmMaintenancePolicyResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

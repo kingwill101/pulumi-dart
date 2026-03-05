@@ -63,12 +63,28 @@ class UsagePlan extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     productCode = registerOutput<String?>('productCode');
-    quotaSettings = registerOutput<UsagePlanQuotaSettings?>('quotaSettings');
+    quotaSettings = registerOutput<UsagePlanQuotaSettings?>(
+      'quotaSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UsagePlanQuotaSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     throttleSettings = registerOutput<UsagePlanThrottleSettings?>(
       'throttleSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UsagePlanThrottleSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -100,12 +116,28 @@ class UsagePlan extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     productCode = registerOutput<String?>('productCode');
-    quotaSettings = registerOutput<UsagePlanQuotaSettings?>('quotaSettings');
+    quotaSettings = registerOutput<UsagePlanQuotaSettings?>(
+      'quotaSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UsagePlanQuotaSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     throttleSettings = registerOutput<UsagePlanThrottleSettings?>(
       'throttleSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UsagePlanThrottleSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

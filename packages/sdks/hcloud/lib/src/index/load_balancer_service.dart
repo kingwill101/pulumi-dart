@@ -298,8 +298,26 @@ class LoadBalancerService extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     destinationPort = registerOutput<int>('destinationPort');
-    healthCheck = registerOutput<LoadBalancerServiceHealthCheck>('healthCheck');
-    http = registerOutput<LoadBalancerServiceHttp>('http');
+    healthCheck = registerOutput<LoadBalancerServiceHealthCheck>(
+      'healthCheck',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerServiceHealthCheck.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    http = registerOutput<LoadBalancerServiceHttp>(
+      'http',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerServiceHttp.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     listenPort = registerOutput<int>('listenPort');
     loadBalancerId = registerOutput<String>('loadBalancerId');
     protocol = registerOutput<String>('protocol');
@@ -330,8 +348,26 @@ class LoadBalancerService extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     destinationPort = registerOutput<int>('destinationPort');
-    healthCheck = registerOutput<LoadBalancerServiceHealthCheck>('healthCheck');
-    http = registerOutput<LoadBalancerServiceHttp>('http');
+    healthCheck = registerOutput<LoadBalancerServiceHealthCheck>(
+      'healthCheck',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerServiceHealthCheck.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    http = registerOutput<LoadBalancerServiceHttp>(
+      'http',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerServiceHttp.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     listenPort = registerOutput<int>('listenPort');
     loadBalancerId = registerOutput<String>('loadBalancerId');
     protocol = registerOutput<String>('protocol');

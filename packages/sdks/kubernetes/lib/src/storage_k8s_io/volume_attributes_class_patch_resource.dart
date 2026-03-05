@@ -44,7 +44,16 @@ class VolumeAttributesClassPatchResource extends pulumi.CustomResource {
     apiVersion = registerOutput<String?>('apiVersion');
     driverName = registerOutput<String?>('driverName');
     kind = registerOutput<String?>('kind');
-    metadata = registerOutput<ObjectMetaPatch?>('metadata');
+    metadata = registerOutput<ObjectMetaPatch?>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMetaPatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     parameters = registerOutput<Map<String, String>?>('parameters');
   }
 }

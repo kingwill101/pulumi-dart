@@ -113,6 +113,13 @@ class PimRoleEligibilitySchedule extends pulumi.CustomResource {
     createdOn = registerOutput<String>('createdOn');
     expandedProperties = registerOutput<ExpandedPropertiesResponse>(
       'expandedProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExpandedPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     justification = registerOutput<String?>('justification');
     this.name = registerOutput<String>('name');
@@ -124,7 +131,16 @@ class PimRoleEligibilitySchedule extends pulumi.CustomResource {
     scheduleInfo =
         registerOutput<
           RoleEligibilityScheduleRequestPropertiesResponseScheduleInfo?
-        >('scheduleInfo');
+        >(
+          'scheduleInfo',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RoleEligibilityScheduleRequestPropertiesResponseScheduleInfo.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     scope = registerOutput<String>('scope');
     status = registerOutput<String>('status');
     targetRoleEligibilityScheduleId = registerOutput<String?>(
@@ -136,7 +152,16 @@ class PimRoleEligibilitySchedule extends pulumi.CustomResource {
     ticketInfo =
         registerOutput<
           RoleEligibilityScheduleRequestPropertiesResponseTicketInfo?
-        >('ticketInfo');
+        >(
+          'ticketInfo',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RoleEligibilityScheduleRequestPropertiesResponseTicketInfo.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     type = registerOutput<String>('type');
   }
 }

@@ -774,7 +774,16 @@ class StreamingJob extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    cluster = registerOutput<ClusterInfoResponse?>('cluster');
+    cluster = registerOutput<ClusterInfoResponse?>(
+      'cluster',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     compatibilityLevel = registerOutput<String?>('compatibilityLevel');
     contentStoragePolicy = registerOutput<String?>('contentStoragePolicy');
     createdDate = registerOutput<String>('createdDate');
@@ -788,12 +797,28 @@ class StreamingJob extends pulumi.CustomResource {
     );
     eventsOutOfOrderPolicy = registerOutput<String?>('eventsOutOfOrderPolicy');
     functions = registerOutput<List<Map<String, dynamic>>?>('functions');
-    identity = registerOutput<IdentityResponse?>('identity');
+    identity = registerOutput<IdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     inputs = registerOutput<List<Map<String, dynamic>>?>('inputs');
     jobId = registerOutput<String>('jobId');
     jobState = registerOutput<String>('jobState');
     jobStorageAccount = registerOutput<JobStorageAccountResponse?>(
       'jobStorageAccount',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobStorageAccountResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     jobType = registerOutput<String?>('jobType');
     lastOutputEventTime = registerOutput<String>('lastOutputEventTime');
@@ -804,9 +829,27 @@ class StreamingJob extends pulumi.CustomResource {
     outputStartTime = registerOutput<String?>('outputStartTime');
     outputs = registerOutput<List<Map<String, dynamic>>?>('outputs');
     provisioningState = registerOutput<String>('provisioningState');
-    sku = registerOutput<SkuResponse?>('sku');
+    sku = registerOutput<SkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
-    transformation = registerOutput<TransformationResponse?>('transformation');
+    transformation = registerOutput<TransformationResponse?>(
+      'transformation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TransformationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

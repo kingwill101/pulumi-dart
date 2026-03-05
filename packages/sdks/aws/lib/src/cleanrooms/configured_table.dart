@@ -256,6 +256,13 @@ class ConfiguredTable extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     tableReference = registerOutput<ConfiguredTableTableReference>(
       'tableReference',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfiguredTableTableReference.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -294,6 +301,13 @@ class ConfiguredTable extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     tableReference = registerOutput<ConfiguredTableTableReference>(
       'tableReference',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfiguredTableTableReference.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

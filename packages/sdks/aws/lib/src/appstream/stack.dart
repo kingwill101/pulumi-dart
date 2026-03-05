@@ -459,6 +459,13 @@ class Stack extends pulumi.CustomResource {
     );
     applicationSettings = registerOutput<StackApplicationSettings>(
       'applicationSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StackApplicationSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     arn = registerOutput<String>('arn');
     createdTime = registerOutput<String>('createdTime');
@@ -475,6 +482,13 @@ class Stack extends pulumi.CustomResource {
     streamingExperienceSettings =
         registerOutput<StackStreamingExperienceSettings>(
           'streamingExperienceSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return StackStreamingExperienceSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -505,6 +519,13 @@ class Stack extends pulumi.CustomResource {
     );
     applicationSettings = registerOutput<StackApplicationSettings>(
       'applicationSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StackApplicationSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     arn = registerOutput<String>('arn');
     createdTime = registerOutput<String>('createdTime');
@@ -521,6 +542,13 @@ class Stack extends pulumi.CustomResource {
     streamingExperienceSettings =
         registerOutput<StackStreamingExperienceSettings>(
           'streamingExperienceSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return StackStreamingExperienceSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

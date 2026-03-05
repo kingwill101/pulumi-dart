@@ -43,7 +43,16 @@ class Project extends pulumi.CustomResource {
     labels = registerOutput<Map<String, String>>('labels');
     lifecycleState = registerOutput<String>('lifecycleState');
     this.name = registerOutput<String>('name');
-    parent = registerOutput<ResourceIdResponse>('parent');
+    parent = registerOutput<ResourceIdResponse>(
+      'parent',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceIdResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     projectId = registerOutput<String>('projectId');
     projectNumber = registerOutput<String>('projectNumber');
   }

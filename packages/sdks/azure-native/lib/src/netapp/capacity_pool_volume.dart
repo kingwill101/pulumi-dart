@@ -397,6 +397,13 @@ class CapacityPoolVolume extends pulumi.CustomResource {
     creationToken = registerOutput<String>('creationToken');
     dataProtection = registerOutput<VolumePropertiesResponseDataProtection?>(
       'dataProtection',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VolumePropertiesResponseDataProtection.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dataStoreResourceId = registerOutput<List<String>>('dataStoreResourceId');
     defaultGroupQuotaInKiBs = registerOutput<double?>(
@@ -413,6 +420,13 @@ class CapacityPoolVolume extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     exportPolicy = registerOutput<VolumePropertiesResponseExportPolicy?>(
       'exportPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VolumePropertiesResponseExportPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     fileAccessLogs = registerOutput<String>('fileAccessLogs');
     fileSystemId = registerOutput<String>('fileSystemId');
@@ -460,7 +474,16 @@ class CapacityPoolVolume extends pulumi.CustomResource {
       'storageToNetworkProximity',
     );
     subnetId = registerOutput<String>('subnetId');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     t2Network = registerOutput<String>('t2Network');
     tags = registerOutput<Map<String, String>?>('tags');
     throughputMibps = registerOutput<double?>('throughputMibps');

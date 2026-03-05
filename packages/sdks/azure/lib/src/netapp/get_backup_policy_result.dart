@@ -1,24 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getBackupPolicy.
 class GetBackupPolicyResult {
   /// The name of the NetApp account in which the NetApp Policy exists.
   final String accountName;
+
   /// The number of daily backups to keep.
   final int dailyBackupsToKeep;
+
   /// Whether the Backup Policy is enabled.
   final bool enabled;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// NetApp Backup Policy location.
   final String location;
+
   /// The number of monthly backups to keep.
   final int monthlyBackupsToKeep;
   final String name;
   final String resourceGroupName;
+
   /// List of tags assigned to the resource.
   final Map<String, String> tags;
+
   /// The number of weekly backups to keep.
   final int weeklyBackupsToKeep;
 
@@ -76,4 +82,3 @@ class GetBackupPolicyResult {
     );
   }
 }
-

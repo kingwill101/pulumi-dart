@@ -824,6 +824,13 @@ class ConfigurationPolicy extends pulumi.CustomResource {
     configurationPolicy =
         registerOutput<ConfigurationPolicyConfigurationPolicy>(
           'configurationPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConfigurationPolicyConfigurationPolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
@@ -857,6 +864,13 @@ class ConfigurationPolicy extends pulumi.CustomResource {
     configurationPolicy =
         registerOutput<ConfigurationPolicyConfigurationPolicy>(
           'configurationPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConfigurationPolicyConfigurationPolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

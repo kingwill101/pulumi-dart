@@ -54,10 +54,35 @@ class ResourceClassPatchResourceK8sIoV1alpha1 extends pulumi.CustomResource {
     apiVersion = registerOutput<String?>('apiVersion');
     driverName = registerOutput<String?>('driverName');
     kind = registerOutput<String?>('kind');
-    metadata = registerOutput<ObjectMetaPatch?>('metadata');
+    metadata = registerOutput<ObjectMetaPatch?>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMetaPatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     parametersRef = registerOutput<ResourceClassParametersReferencePatch?>(
       'parametersRef',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceClassParametersReferencePatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    suitableNodes = registerOutput<NodeSelectorPatch?>('suitableNodes');
+    suitableNodes = registerOutput<NodeSelectorPatch?>(
+      'suitableNodes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodeSelectorPatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

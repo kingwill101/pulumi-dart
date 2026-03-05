@@ -356,12 +356,39 @@ class LoadBalancer extends pulumi.CustomResource {
     dropletTag = registerOutput<String?>('dropletTag');
     enableBackendKeepalive = registerOutput<bool?>('enableBackendKeepalive');
     enableProxyProtocol = registerOutput<bool?>('enableProxyProtocol');
-    firewall = registerOutput<LoadBalancerFirewall>('firewall');
+    firewall = registerOutput<LoadBalancerFirewall>(
+      'firewall',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerFirewall.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     forwardingRules = registerOutput<List<Map<String, dynamic>>?>(
       'forwardingRules',
     );
-    glbSettings = registerOutput<LoadBalancerGlbSettings>('glbSettings');
-    healthcheck = registerOutput<LoadBalancerHealthcheck>('healthcheck');
+    glbSettings = registerOutput<LoadBalancerGlbSettings>(
+      'glbSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerGlbSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    healthcheck = registerOutput<LoadBalancerHealthcheck>(
+      'healthcheck',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerHealthcheck.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     httpIdleTimeoutSeconds = registerOutput<int>('httpIdleTimeoutSeconds');
     ip = registerOutput<String>('ip');
     ipv6 = registerOutput<String>('ipv6');
@@ -377,6 +404,13 @@ class LoadBalancer extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     stickySessions = registerOutput<LoadBalancerStickySessions>(
       'stickySessions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerStickySessions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     targetLoadBalancerIds = registerOutput<List<String>>(
       'targetLoadBalancerIds',
@@ -418,12 +452,39 @@ class LoadBalancer extends pulumi.CustomResource {
     dropletTag = registerOutput<String?>('dropletTag');
     enableBackendKeepalive = registerOutput<bool?>('enableBackendKeepalive');
     enableProxyProtocol = registerOutput<bool?>('enableProxyProtocol');
-    firewall = registerOutput<LoadBalancerFirewall>('firewall');
+    firewall = registerOutput<LoadBalancerFirewall>(
+      'firewall',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerFirewall.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     forwardingRules = registerOutput<List<Map<String, dynamic>>?>(
       'forwardingRules',
     );
-    glbSettings = registerOutput<LoadBalancerGlbSettings>('glbSettings');
-    healthcheck = registerOutput<LoadBalancerHealthcheck>('healthcheck');
+    glbSettings = registerOutput<LoadBalancerGlbSettings>(
+      'glbSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerGlbSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    healthcheck = registerOutput<LoadBalancerHealthcheck>(
+      'healthcheck',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerHealthcheck.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     httpIdleTimeoutSeconds = registerOutput<int>('httpIdleTimeoutSeconds');
     ip = registerOutput<String>('ip');
     ipv6 = registerOutput<String>('ipv6');
@@ -439,6 +500,13 @@ class LoadBalancer extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     stickySessions = registerOutput<LoadBalancerStickySessions>(
       'stickySessions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerStickySessions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     targetLoadBalancerIds = registerOutput<List<String>>(
       'targetLoadBalancerIds',

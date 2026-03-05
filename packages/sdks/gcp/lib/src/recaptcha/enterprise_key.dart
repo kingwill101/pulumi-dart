@@ -1070,20 +1070,61 @@ class EnterpriseKey extends pulumi.CustomResource {
        ) {
     androidSettings = registerOutput<EnterpriseKeyAndroidSettings?>(
       'androidSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnterpriseKeyAndroidSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    iosSettings = registerOutput<EnterpriseKeyIosSettings?>('iosSettings');
+    iosSettings = registerOutput<EnterpriseKeyIosSettings?>(
+      'iosSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnterpriseKeyIosSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     testingOptions = registerOutput<EnterpriseKeyTestingOptions?>(
       'testingOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnterpriseKeyTestingOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    wafSettings = registerOutput<EnterpriseKeyWafSettings?>('wafSettings');
-    webSettings = registerOutput<EnterpriseKeyWebSettings?>('webSettings');
+    wafSettings = registerOutput<EnterpriseKeyWafSettings?>(
+      'wafSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnterpriseKeyWafSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    webSettings = registerOutput<EnterpriseKeyWebSettings?>(
+      'webSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnterpriseKeyWebSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [EnterpriseKey] resource's state with the given [name] and [id].
@@ -1111,19 +1152,60 @@ class EnterpriseKey extends pulumi.CustomResource {
        ) {
     androidSettings = registerOutput<EnterpriseKeyAndroidSettings?>(
       'androidSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnterpriseKeyAndroidSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    iosSettings = registerOutput<EnterpriseKeyIosSettings?>('iosSettings');
+    iosSettings = registerOutput<EnterpriseKeyIosSettings?>(
+      'iosSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnterpriseKeyIosSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     testingOptions = registerOutput<EnterpriseKeyTestingOptions?>(
       'testingOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnterpriseKeyTestingOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    wafSettings = registerOutput<EnterpriseKeyWafSettings?>('wafSettings');
-    webSettings = registerOutput<EnterpriseKeyWebSettings?>('webSettings');
+    wafSettings = registerOutput<EnterpriseKeyWafSettings?>(
+      'wafSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnterpriseKeyWafSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    webSettings = registerOutput<EnterpriseKeyWebSettings?>(
+      'webSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnterpriseKeyWebSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

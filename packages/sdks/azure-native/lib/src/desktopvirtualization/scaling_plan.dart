@@ -530,6 +530,13 @@ class ScalingPlan extends pulumi.CustomResource {
     identity =
         registerOutput<ResourceModelWithAllowedPropertySetResponseIdentity?>(
           'identity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResourceModelWithAllowedPropertySetResponseIdentity.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     kind = registerOutput<String?>('kind');
     location = registerOutput<String>('location');
@@ -538,12 +545,35 @@ class ScalingPlan extends pulumi.CustomResource {
     objectId = registerOutput<String>('objectId');
     plan = registerOutput<ResourceModelWithAllowedPropertySetResponsePlan?>(
       'plan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceModelWithAllowedPropertySetResponsePlan.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     schedules = registerOutput<List<Map<String, dynamic>>?>('schedules');
     sku = registerOutput<ResourceModelWithAllowedPropertySetResponseSku?>(
       'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceModelWithAllowedPropertySetResponseSku.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     timeZone = registerOutput<String>('timeZone');
     type = registerOutput<String>('type');

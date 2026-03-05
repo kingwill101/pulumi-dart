@@ -1,28 +1,37 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getSource.
 class GetSourceResult {
   /// The timestamp when the source was created.
   final String createTime;
+
   /// Free-text description.
   final String description;
+
   /// User-friendly display name.
   final String displayName;
+
   /// The number of frames that were reported by the source and contained errors.
   final int errorFrameCount;
+
   /// If `true`, the source is managed by other service(s).
   final bool managed;
+
   /// The full name of the source.
   final String name;
+
   /// Number of frames that are still being processed.
   final int pendingFrameCount;
+
   /// The information confidence of the source. The higher the value, the higher the confidence.
   final int priority;
+
   /// The state of the source.
   final String state;
+
   /// Data source type.
   final String type;
+
   /// The timestamp when the source was last updated.
   final String updateTime;
 
@@ -84,4 +93,3 @@ class GetSourceResult {
     );
   }
 }
-

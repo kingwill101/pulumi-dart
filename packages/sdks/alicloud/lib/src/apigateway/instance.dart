@@ -661,6 +661,13 @@ class Instance extends pulumi.CustomResource {
     supportIpv6 = registerOutput<bool>('supportIpv6');
     toConnectVpcIpBlock = registerOutput<InstanceToConnectVpcIpBlock?>(
       'toConnectVpcIpBlock',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceToConnectVpcIpBlock.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     userVpcId = registerOutput<String?>('userVpcId');
     vpcSlbIntranetEnable = registerOutput<bool?>('vpcSlbIntranetEnable');
@@ -714,6 +721,13 @@ class Instance extends pulumi.CustomResource {
     supportIpv6 = registerOutput<bool>('supportIpv6');
     toConnectVpcIpBlock = registerOutput<InstanceToConnectVpcIpBlock?>(
       'toConnectVpcIpBlock',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceToConnectVpcIpBlock.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     userVpcId = registerOutput<String?>('userVpcId');
     vpcSlbIntranetEnable = registerOutput<bool?>('vpcSlbIntranetEnable');

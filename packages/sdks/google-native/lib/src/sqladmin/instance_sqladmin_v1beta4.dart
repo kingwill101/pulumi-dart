@@ -168,16 +168,37 @@ class InstanceSqladminV1beta4 extends pulumi.CustomResource {
     diskEncryptionConfiguration =
         registerOutput<DiskEncryptionConfigurationResponseSqladminV1beta4>(
           'diskEncryptionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DiskEncryptionConfigurationResponseSqladminV1beta4.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     diskEncryptionStatus =
         registerOutput<DiskEncryptionStatusResponseSqladminV1beta4>(
           'diskEncryptionStatus',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DiskEncryptionStatusResponseSqladminV1beta4.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dnsName = registerOutput<String>('dnsName');
     etag = registerOutput<String>('etag');
     failoverReplica =
         registerOutput<InstanceFailoverReplicaResponseSqladminV1beta4>(
           'failoverReplica',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceFailoverReplicaResponseSqladminV1beta4.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     gceZone = registerOutput<String>('gceZone');
     instanceType = registerOutput<String>('instanceType');
@@ -191,9 +212,23 @@ class InstanceSqladminV1beta4 extends pulumi.CustomResource {
     onPremisesConfiguration =
         registerOutput<OnPremisesConfigurationResponseSqladminV1beta4>(
           'onPremisesConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return OnPremisesConfigurationResponseSqladminV1beta4.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     outOfDiskReport = registerOutput<SqlOutOfDiskReportResponseSqladminV1beta4>(
       'outOfDiskReport',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SqlOutOfDiskReportResponseSqladminV1beta4.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     primaryDnsName = registerOutput<String>('primaryDnsName');
     project = registerOutput<String>('project');
@@ -204,6 +239,13 @@ class InstanceSqladminV1beta4 extends pulumi.CustomResource {
     replicaConfiguration =
         registerOutput<ReplicaConfigurationResponseSqladminV1beta4>(
           'replicaConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ReplicaConfigurationResponseSqladminV1beta4.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     replicaNames = registerOutput<List<String>>('replicaNames');
     rootPassword = registerOutput<String>('rootPassword');
@@ -211,16 +253,39 @@ class InstanceSqladminV1beta4 extends pulumi.CustomResource {
     scheduledMaintenance =
         registerOutput<SqlScheduledMaintenanceResponseSqladminV1beta4>(
           'scheduledMaintenance',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SqlScheduledMaintenanceResponseSqladminV1beta4.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     secondaryGceZone = registerOutput<String>('secondaryGceZone');
     selfLink = registerOutput<String>('selfLink');
     serverCaCert = registerOutput<SslCertResponseSqladminV1beta4>(
       'serverCaCert',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SslCertResponseSqladminV1beta4.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     serviceAccountEmailAddress = registerOutput<String>(
       'serviceAccountEmailAddress',
     );
-    settings = registerOutput<SettingsResponseSqladminV1beta4>('settings');
+    settings = registerOutput<SettingsResponseSqladminV1beta4>(
+      'settings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SettingsResponseSqladminV1beta4.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sqlNetworkArchitecture = registerOutput<String>('sqlNetworkArchitecture');
     state = registerOutput<String>('state');
     suspensionReason = registerOutput<List<String>>('suspensionReason');

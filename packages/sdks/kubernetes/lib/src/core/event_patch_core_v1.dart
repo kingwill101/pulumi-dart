@@ -83,17 +83,62 @@ class EventPatchCoreV1 extends pulumi.CustomResource {
     count = registerOutput<int?>('count');
     eventTime = registerOutput<String?>('eventTime');
     firstTimestamp = registerOutput<String?>('firstTimestamp');
-    involvedObject = registerOutput<ObjectReferencePatch?>('involvedObject');
+    involvedObject = registerOutput<ObjectReferencePatch?>(
+      'involvedObject',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectReferencePatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kind = registerOutput<String?>('kind');
     lastTimestamp = registerOutput<String?>('lastTimestamp');
     message = registerOutput<String?>('message');
-    metadata = registerOutput<ObjectMetaPatch?>('metadata');
+    metadata = registerOutput<ObjectMetaPatch?>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMetaPatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     reason = registerOutput<String?>('reason');
-    related = registerOutput<ObjectReferencePatch?>('related');
+    related = registerOutput<ObjectReferencePatch?>(
+      'related',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectReferencePatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     reportingComponent = registerOutput<String?>('reportingComponent');
     reportingInstance = registerOutput<String?>('reportingInstance');
-    series = registerOutput<EventSeriesPatch?>('series');
-    source = registerOutput<EventSourcePatch?>('source');
+    series = registerOutput<EventSeriesPatch?>(
+      'series',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventSeriesPatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    source = registerOutput<EventSourcePatch?>(
+      'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventSourcePatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String?>('type');
   }
 }

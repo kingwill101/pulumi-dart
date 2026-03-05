@@ -296,6 +296,13 @@ class Incident extends pulumi.CustomResource {
        ) {
     additionalData = registerOutput<IncidentAdditionalDataResponse>(
       'additionalData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IncidentAdditionalDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     classification = registerOutput<String?>('classification');
@@ -311,7 +318,16 @@ class Incident extends pulumi.CustomResource {
     lastActivityTimeUtc = registerOutput<String?>('lastActivityTimeUtc');
     lastModifiedTimeUtc = registerOutput<String>('lastModifiedTimeUtc');
     this.name = registerOutput<String>('name');
-    owner = registerOutput<IncidentOwnerInfoResponse?>('owner');
+    owner = registerOutput<IncidentOwnerInfoResponse?>(
+      'owner',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IncidentOwnerInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     providerIncidentId = registerOutput<String>('providerIncidentId');
     providerName = registerOutput<String>('providerName');
     relatedAnalyticRuleIds = registerOutput<List<String>>(
@@ -319,7 +335,16 @@ class Incident extends pulumi.CustomResource {
     );
     severity = registerOutput<String>('severity');
     status = registerOutput<String>('status');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     title = registerOutput<String>('title');
     type = registerOutput<String>('type');
   }

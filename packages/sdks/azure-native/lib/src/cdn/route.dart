@@ -400,6 +400,13 @@ class Route extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     cacheConfiguration = registerOutput<AfdRouteCacheConfigurationResponse?>(
       'cacheConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AfdRouteCacheConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     customDomains = registerOutput<List<Map<String, dynamic>>?>(
       'customDomains',
@@ -411,13 +418,31 @@ class Route extends pulumi.CustomResource {
     httpsRedirect = registerOutput<String?>('httpsRedirect');
     linkToDefaultDomain = registerOutput<String?>('linkToDefaultDomain');
     this.name = registerOutput<String>('name');
-    originGroup = registerOutput<ResourceReferenceResponse?>('originGroup');
+    originGroup = registerOutput<ResourceReferenceResponse?>(
+      'originGroup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceReferenceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     originPath = registerOutput<String?>('originPath');
     patternsToMatch = registerOutput<List<String>?>('patternsToMatch');
     provisioningState = registerOutput<String>('provisioningState');
     ruleSets = registerOutput<List<Map<String, dynamic>>?>('ruleSets');
     supportedProtocols = registerOutput<List<String>?>('supportedProtocols');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

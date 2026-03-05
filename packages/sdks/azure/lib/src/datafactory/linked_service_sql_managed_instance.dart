@@ -262,10 +262,26 @@ class LinkedServiceSqlManagedInstance extends pulumi.CustomResource {
     keyVaultConnectionString =
         registerOutput<
           LinkedServiceSqlManagedInstanceKeyVaultConnectionString?
-        >('keyVaultConnectionString');
+        >(
+          'keyVaultConnectionString',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinkedServiceSqlManagedInstanceKeyVaultConnectionString.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     keyVaultPassword =
         registerOutput<LinkedServiceSqlManagedInstanceKeyVaultPassword?>(
           'keyVaultPassword',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinkedServiceSqlManagedInstanceKeyVaultPassword.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');
@@ -305,10 +321,26 @@ class LinkedServiceSqlManagedInstance extends pulumi.CustomResource {
     keyVaultConnectionString =
         registerOutput<
           LinkedServiceSqlManagedInstanceKeyVaultConnectionString?
-        >('keyVaultConnectionString');
+        >(
+          'keyVaultConnectionString',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinkedServiceSqlManagedInstanceKeyVaultConnectionString.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     keyVaultPassword =
         registerOutput<LinkedServiceSqlManagedInstanceKeyVaultPassword?>(
           'keyVaultPassword',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinkedServiceSqlManagedInstanceKeyVaultPassword.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');

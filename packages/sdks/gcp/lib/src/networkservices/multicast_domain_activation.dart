@@ -358,6 +358,13 @@ class MulticastDomainActivation extends pulumi.CustomResource {
     states = registerOutput<List<Map<String, dynamic>>>('states');
     trafficSpec = registerOutput<MulticastDomainActivationTrafficSpec?>(
       'trafficSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MulticastDomainActivationTrafficSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     uniqueId = registerOutput<String>('uniqueId');
     updateTime = registerOutput<String>('updateTime');
@@ -403,6 +410,13 @@ class MulticastDomainActivation extends pulumi.CustomResource {
     states = registerOutput<List<Map<String, dynamic>>>('states');
     trafficSpec = registerOutput<MulticastDomainActivationTrafficSpec?>(
       'trafficSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MulticastDomainActivationTrafficSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     uniqueId = registerOutput<String>('uniqueId');
     updateTime = registerOutput<String>('updateTime');

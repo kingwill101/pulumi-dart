@@ -802,6 +802,13 @@ class WebTest extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     configuration = registerOutput<WebTestPropertiesResponseConfiguration?>(
       'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebTestPropertiesResponseConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
@@ -811,7 +818,16 @@ class WebTest extends pulumi.CustomResource {
     locations = registerOutput<List<Map<String, dynamic>>>('locations');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    request = registerOutput<WebTestPropertiesResponseRequest?>('request');
+    request = registerOutput<WebTestPropertiesResponseRequest?>(
+      'request',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebTestPropertiesResponseRequest.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     retryEnabled = registerOutput<bool?>('retryEnabled');
     syntheticMonitorId = registerOutput<String>('syntheticMonitorId');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -819,6 +835,13 @@ class WebTest extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     validationRules = registerOutput<WebTestPropertiesResponseValidationRules?>(
       'validationRules',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebTestPropertiesResponseValidationRules.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     webTestKind = registerOutput<String>('webTestKind');
     webTestName = registerOutput<String>('webTestName');

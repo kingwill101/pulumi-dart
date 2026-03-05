@@ -227,6 +227,13 @@ class CloudEndpoint extends pulumi.CustomResource {
     changeEnumerationStatus =
         registerOutput<CloudEndpointChangeEnumerationStatusResponse>(
           'changeEnumerationStatus',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CloudEndpointChangeEnumerationStatusResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     friendlyName = registerOutput<String?>('friendlyName');
     lastOperationName = registerOutput<String?>('lastOperationName');
@@ -238,7 +245,16 @@ class CloudEndpoint extends pulumi.CustomResource {
       'storageAccountResourceId',
     );
     storageAccountTenantId = registerOutput<String?>('storageAccountTenantId');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

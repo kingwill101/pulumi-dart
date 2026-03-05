@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getJobCredential.
 class GetJobCredentialResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Resource ID.
   final String id;
+
   /// Resource name.
   final String name;
+
   /// Resource type.
   final String type;
+
   /// The credential user name.
   final String username;
 
@@ -48,4 +51,3 @@ class GetJobCredentialResult {
     );
   }
 }
-

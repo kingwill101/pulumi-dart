@@ -2195,6 +2195,13 @@ class Connection extends pulumi.CustomResource {
     physicalConnectionRequirements =
         registerOutput<ConnectionPhysicalConnectionRequirements?>(
           'physicalConnectionRequirements',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConnectionPhysicalConnectionRequirements.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -2237,6 +2244,13 @@ class Connection extends pulumi.CustomResource {
     physicalConnectionRequirements =
         registerOutput<ConnectionPhysicalConnectionRequirements?>(
           'physicalConnectionRequirements',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConnectionPhysicalConnectionRequirements.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');

@@ -517,6 +517,13 @@ class Repository extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     gitRemoteSettings = registerOutput<RepositoryGitRemoteSettings?>(
       'gitRemoteSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RepositoryGitRemoteSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     kmsKeyName = registerOutput<String?>('kmsKeyName');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -531,6 +538,13 @@ class Repository extends pulumi.CustomResource {
     workspaceCompilationOverrides =
         registerOutput<RepositoryWorkspaceCompilationOverrides?>(
           'workspaceCompilationOverrides',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RepositoryWorkspaceCompilationOverrides.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 
@@ -562,6 +576,13 @@ class Repository extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     gitRemoteSettings = registerOutput<RepositoryGitRemoteSettings?>(
       'gitRemoteSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RepositoryGitRemoteSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     kmsKeyName = registerOutput<String?>('kmsKeyName');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -576,6 +597,13 @@ class Repository extends pulumi.CustomResource {
     workspaceCompilationOverrides =
         registerOutput<RepositoryWorkspaceCompilationOverrides?>(
           'workspaceCompilationOverrides',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RepositoryWorkspaceCompilationOverrides.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

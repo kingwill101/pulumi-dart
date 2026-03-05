@@ -1411,6 +1411,13 @@ class ServerGroupCluster extends pulumi.CustomResource {
     administratorLogin = registerOutput<String>('administratorLogin');
     authConfig = registerOutput<ServerGroupClusterAuthConfigResponse?>(
       'authConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerGroupClusterAuthConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     citusVersion = registerOutput<String?>('citusVersion');
@@ -1426,6 +1433,13 @@ class ServerGroupCluster extends pulumi.CustomResource {
     coordinatorVCores = registerOutput<int?>('coordinatorVCores');
     dataEncryption = registerOutput<ServerGroupClusterDataEncryptionResponse?>(
       'dataEncryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerGroupClusterDataEncryptionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     databaseName = registerOutput<String?>('databaseName');
     earliestRestoreTime = registerOutput<String>('earliestRestoreTime');
@@ -1434,11 +1448,27 @@ class ServerGroupCluster extends pulumi.CustomResource {
     enableShardsOnCoordinator = registerOutput<bool?>(
       'enableShardsOnCoordinator',
     );
-    identity = registerOutput<IdentityPropertiesResponse?>('identity');
+    identity = registerOutput<IdentityPropertiesResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IdentityPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     maintenanceWindow =
         registerOutput<ServerGroupClusterMaintenanceWindowResponse?>(
           'maintenanceWindow',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ServerGroupClusterMaintenanceWindowResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     nodeCount = registerOutput<int?>('nodeCount');
@@ -1461,7 +1491,16 @@ class ServerGroupCluster extends pulumi.CustomResource {
     sourceLocation = registerOutput<String?>('sourceLocation');
     sourceResourceId = registerOutput<String?>('sourceResourceId');
     state = registerOutput<String>('state');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

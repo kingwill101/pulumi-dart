@@ -1287,13 +1287,29 @@ class App extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     autoBranchCreationConfig = registerOutput<AppAutoBranchCreationConfig>(
       'autoBranchCreationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppAutoBranchCreationConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     autoBranchCreationPatterns = registerOutput<List<String>?>(
       'autoBranchCreationPatterns',
     );
     basicAuthCredentials = registerOutput<String?>('basicAuthCredentials');
     buildSpec = registerOutput<String>('buildSpec');
-    cacheConfig = registerOutput<AppCacheConfig>('cacheConfig');
+    cacheConfig = registerOutput<AppCacheConfig>(
+      'cacheConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppCacheConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     computeRoleArn = registerOutput<String?>('computeRoleArn');
     customHeaders = registerOutput<String>('customHeaders');
     customRules = registerOutput<List<Map<String, dynamic>>?>('customRules');
@@ -1311,7 +1327,16 @@ class App extends pulumi.CustomResource {
       'environmentVariables',
     );
     iamServiceRoleArn = registerOutput<String?>('iamServiceRoleArn');
-    jobConfig = registerOutput<AppJobConfig>('jobConfig');
+    jobConfig = registerOutput<AppJobConfig>(
+      'jobConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppJobConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     oauthToken = registerOutput<String?>('oauthToken');
     platform = registerOutput<String?>('platform');
@@ -1347,13 +1372,29 @@ class App extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     autoBranchCreationConfig = registerOutput<AppAutoBranchCreationConfig>(
       'autoBranchCreationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppAutoBranchCreationConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     autoBranchCreationPatterns = registerOutput<List<String>?>(
       'autoBranchCreationPatterns',
     );
     basicAuthCredentials = registerOutput<String?>('basicAuthCredentials');
     buildSpec = registerOutput<String>('buildSpec');
-    cacheConfig = registerOutput<AppCacheConfig>('cacheConfig');
+    cacheConfig = registerOutput<AppCacheConfig>(
+      'cacheConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppCacheConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     computeRoleArn = registerOutput<String?>('computeRoleArn');
     customHeaders = registerOutput<String>('customHeaders');
     customRules = registerOutput<List<Map<String, dynamic>>?>('customRules');
@@ -1371,7 +1412,16 @@ class App extends pulumi.CustomResource {
       'environmentVariables',
     );
     iamServiceRoleArn = registerOutput<String?>('iamServiceRoleArn');
-    jobConfig = registerOutput<AppJobConfig>('jobConfig');
+    jobConfig = registerOutput<AppJobConfig>(
+      'jobConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppJobConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     oauthToken = registerOutput<String?>('oauthToken');
     platform = registerOutput<String?>('platform');

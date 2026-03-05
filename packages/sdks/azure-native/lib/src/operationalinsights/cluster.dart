@@ -251,10 +251,26 @@ class Cluster extends pulumi.CustomResource {
     capacityReservationProperties =
         registerOutput<CapacityReservationPropertiesResponse?>(
           'capacityReservationProperties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CapacityReservationPropertiesResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     clusterId = registerOutput<String>('clusterId');
     createdDate = registerOutput<String>('createdDate');
-    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    identity = registerOutput<ManagedServiceIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedServiceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     isAvailabilityZonesEnabled = registerOutput<bool?>(
       'isAvailabilityZonesEnabled',
     );
@@ -263,12 +279,28 @@ class Cluster extends pulumi.CustomResource {
     );
     keyVaultProperties = registerOutput<KeyVaultPropertiesResponse?>(
       'keyVaultProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KeyVaultPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     lastModifiedDate = registerOutput<String>('lastModifiedDate');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    sku = registerOutput<ClusterSkuResponse?>('sku');
+    sku = registerOutput<ClusterSkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterSkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

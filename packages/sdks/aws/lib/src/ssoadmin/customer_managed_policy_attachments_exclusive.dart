@@ -457,6 +457,13 @@ class CustomerManagedPolicyAttachmentsExclusive extends pulumi.CustomResource {
     timeouts =
         registerOutput<CustomerManagedPolicyAttachmentsExclusiveTimeouts?>(
           'timeouts',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CustomerManagedPolicyAttachmentsExclusiveTimeouts.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 
@@ -493,6 +500,13 @@ class CustomerManagedPolicyAttachmentsExclusive extends pulumi.CustomResource {
     timeouts =
         registerOutput<CustomerManagedPolicyAttachmentsExclusiveTimeouts?>(
           'timeouts',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CustomerManagedPolicyAttachmentsExclusiveTimeouts.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

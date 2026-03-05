@@ -469,12 +469,30 @@ class BudgetManagementGroup extends pulumi.CustomResource {
        ) {
     amount = registerOutput<double>('amount');
     etag = registerOutput<String>('etag');
-    filter = registerOutput<BudgetManagementGroupFilter?>('filter');
+    filter = registerOutput<BudgetManagementGroupFilter?>(
+      'filter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BudgetManagementGroupFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     managementGroupId = registerOutput<String>('managementGroupId');
     this.name = registerOutput<String>('name');
     notifications = registerOutput<List<Map<String, dynamic>>>('notifications');
     timeGrain = registerOutput<String?>('timeGrain');
-    timePeriod = registerOutput<BudgetManagementGroupTimePeriod>('timePeriod');
+    timePeriod = registerOutput<BudgetManagementGroupTimePeriod>(
+      'timePeriod',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BudgetManagementGroupTimePeriod.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [BudgetManagementGroup] resource's state with the given [name] and [id].
@@ -502,11 +520,29 @@ class BudgetManagementGroup extends pulumi.CustomResource {
        ) {
     amount = registerOutput<double>('amount');
     etag = registerOutput<String>('etag');
-    filter = registerOutput<BudgetManagementGroupFilter?>('filter');
+    filter = registerOutput<BudgetManagementGroupFilter?>(
+      'filter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BudgetManagementGroupFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     managementGroupId = registerOutput<String>('managementGroupId');
     this.name = registerOutput<String>('name');
     notifications = registerOutput<List<Map<String, dynamic>>>('notifications');
     timeGrain = registerOutput<String?>('timeGrain');
-    timePeriod = registerOutput<BudgetManagementGroupTimePeriod>('timePeriod');
+    timePeriod = registerOutput<BudgetManagementGroupTimePeriod>(
+      'timePeriod',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BudgetManagementGroupTimePeriod.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

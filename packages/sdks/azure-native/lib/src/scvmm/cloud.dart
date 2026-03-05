@@ -226,10 +226,26 @@ class Cloud extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    cloudCapacity = registerOutput<CloudCapacityResponse>('cloudCapacity');
+    cloudCapacity = registerOutput<CloudCapacityResponse>(
+      'cloudCapacity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CloudCapacityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     cloudName = registerOutput<String>('cloudName');
     extendedLocation = registerOutput<ExtendedLocationResponse>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     inventoryItemId = registerOutput<String?>('inventoryItemId');
     location = registerOutput<String>('location');
@@ -238,7 +254,16 @@ class Cloud extends pulumi.CustomResource {
     storageQoSPolicies = registerOutput<List<Map<String, dynamic>>>(
       'storageQoSPolicies',
     );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     uuid = registerOutput<String?>('uuid');

@@ -264,6 +264,13 @@ class CustomImage extends pulumi.CustomResource {
     creationDate = registerOutput<String>('creationDate');
     customImagePlan = registerOutput<CustomImagePropertiesFromPlanResponse?>(
       'customImagePlan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomImagePropertiesFromPlanResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dataDiskStorageInfo = registerOutput<List<Map<String, dynamic>>?>(
       'dataDiskStorageInfo',
@@ -278,7 +285,25 @@ class CustomImage extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
-    vhd = registerOutput<CustomImagePropertiesCustomResponse?>('vhd');
-    vm = registerOutput<CustomImagePropertiesFromVmResponse?>('vm');
+    vhd = registerOutput<CustomImagePropertiesCustomResponse?>(
+      'vhd',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomImagePropertiesCustomResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    vm = registerOutput<CustomImagePropertiesFromVmResponse?>(
+      'vm',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomImagePropertiesFromVmResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

@@ -85,6 +85,13 @@ class WorkstationCluster extends pulumi.CustomResource {
     network = registerOutput<String>('network');
     privateClusterConfig = registerOutput<PrivateClusterConfigResponse>(
       'privateClusterConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PrivateClusterConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     reconciling = registerOutput<bool>('reconciling');

@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getGroup.
 class GetGroupResult {
   /// A description of the group.
   final String description;
+
   /// See Argument Reference above.
   final String domainId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// See Argument Reference above.
   final String name;
+
   /// See Argument Reference above.
   final String region;
 
@@ -48,4 +51,3 @@ class GetGroupResult {
     );
   }
 }
-

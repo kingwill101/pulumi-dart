@@ -574,11 +574,34 @@ class AgentPool extends pulumi.CustomResource {
     administratorConfiguration =
         registerOutput<AdministratorConfigurationResponse?>(
           'administratorConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AdministratorConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    agentOptions = registerOutput<AgentOptionsResponse?>('agentOptions');
+    agentOptions = registerOutput<AgentOptionsResponse?>(
+      'agentOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentOptionsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     attachedNetworkConfiguration =
         registerOutput<AttachedNetworkConfigurationResponse?>(
           'attachedNetworkConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AttachedNetworkConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     availabilityZones = registerOutput<List<String>?>('availabilityZones');
     azureApiVersion = registerOutput<String>('azureApiVersion');
@@ -588,6 +611,13 @@ class AgentPool extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     extendedLocation = registerOutput<ExtendedLocationResponse?>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     kubernetesVersion = registerOutput<String>('kubernetesVersion');
     labels = registerOutput<List<Map<String, dynamic>>?>('labels');
@@ -595,12 +625,28 @@ class AgentPool extends pulumi.CustomResource {
     mode = registerOutput<String>('mode');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     taints = registerOutput<List<Map<String, dynamic>>?>('taints');
     type = registerOutput<String>('type');
     upgradeSettings = registerOutput<AgentPoolUpgradeSettingsResponse?>(
       'upgradeSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentPoolUpgradeSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     vmSkuName = registerOutput<String>('vmSkuName');
   }

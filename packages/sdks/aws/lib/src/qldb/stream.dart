@@ -199,6 +199,13 @@ class Stream extends pulumi.CustomResource {
     inclusiveStartTime = registerOutput<String>('inclusiveStartTime');
     kinesisConfiguration = registerOutput<StreamKinesisConfiguration>(
       'kinesisConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StreamKinesisConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     ledgerName = registerOutput<String>('ledgerName');
     region = registerOutput<String>('region');
@@ -236,6 +243,13 @@ class Stream extends pulumi.CustomResource {
     inclusiveStartTime = registerOutput<String>('inclusiveStartTime');
     kinesisConfiguration = registerOutput<StreamKinesisConfiguration>(
       'kinesisConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StreamKinesisConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     ledgerName = registerOutput<String>('ledgerName');
     region = registerOutput<String>('region');

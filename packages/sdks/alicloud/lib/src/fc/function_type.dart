@@ -107,6 +107,13 @@ class FunctionType extends pulumi.CustomResource {
     codeChecksum = registerOutput<String>('codeChecksum');
     customContainerConfig = registerOutput<FunctionCustomContainerConfig?>(
       'customContainerConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionCustomContainerConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     environmentVariables = registerOutput<Map<String, String>?>(
@@ -159,6 +166,13 @@ class FunctionType extends pulumi.CustomResource {
     codeChecksum = registerOutput<String>('codeChecksum');
     customContainerConfig = registerOutput<FunctionCustomContainerConfig?>(
       'customContainerConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionCustomContainerConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     environmentVariables = registerOutput<Map<String, String>?>(

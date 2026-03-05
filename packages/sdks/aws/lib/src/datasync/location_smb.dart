@@ -193,7 +193,16 @@ class LocationSmb extends pulumi.CustomResource {
     agentArns = registerOutput<List<String>>('agentArns');
     arn = registerOutput<String>('arn');
     domain = registerOutput<String>('domain');
-    mountOptions = registerOutput<LocationSmbMountOptions?>('mountOptions');
+    mountOptions = registerOutput<LocationSmbMountOptions?>(
+      'mountOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LocationSmbMountOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     password = registerOutput<String>('password');
     region = registerOutput<String>('region');
     serverHostname = registerOutput<String>('serverHostname');
@@ -230,7 +239,16 @@ class LocationSmb extends pulumi.CustomResource {
     agentArns = registerOutput<List<String>>('agentArns');
     arn = registerOutput<String>('arn');
     domain = registerOutput<String>('domain');
-    mountOptions = registerOutput<LocationSmbMountOptions?>('mountOptions');
+    mountOptions = registerOutput<LocationSmbMountOptions?>(
+      'mountOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LocationSmbMountOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     password = registerOutput<String>('password');
     region = registerOutput<String>('region');
     serverHostname = registerOutput<String>('serverHostname');

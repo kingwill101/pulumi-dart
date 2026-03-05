@@ -49,6 +49,13 @@ class StudyAiplatformV1beta1 extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     studySpec = registerOutput<GoogleCloudAiplatformV1beta1StudySpecResponse>(
       'studySpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudAiplatformV1beta1StudySpecResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

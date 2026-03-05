@@ -63,7 +63,16 @@ class UtilizationReportVmmigrationV1alpha1 extends pulumi.CustomResource {
        ) {
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
-    error = registerOutput<StatusResponseVmmigrationV1alpha1>('error');
+    error = registerOutput<StatusResponseVmmigrationV1alpha1>(
+      'error',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StatusResponseVmmigrationV1alpha1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     frameEndTime = registerOutput<String>('frameEndTime');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

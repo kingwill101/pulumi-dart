@@ -60,6 +60,13 @@ class ImportDataFileMigrationcenterV1alpha1 extends pulumi.CustomResource {
     uploadFileInfo =
         registerOutput<UploadFileInfoResponseMigrationcenterV1alpha1>(
           'uploadFileInfo',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return UploadFileInfoResponseMigrationcenterV1alpha1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

@@ -505,6 +505,13 @@ class ServiceNetworkAcl extends pulumi.CustomResource {
     );
     publicNetwork = registerOutput<ServiceNetworkAclPublicNetwork>(
       'publicNetwork',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceNetworkAclPublicNetwork.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     signalrServiceId = registerOutput<String>('signalrServiceId');
   }
@@ -538,6 +545,13 @@ class ServiceNetworkAcl extends pulumi.CustomResource {
     );
     publicNetwork = registerOutput<ServiceNetworkAclPublicNetwork>(
       'publicNetwork',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceNetworkAclPublicNetwork.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     signalrServiceId = registerOutput<String>('signalrServiceId');
   }

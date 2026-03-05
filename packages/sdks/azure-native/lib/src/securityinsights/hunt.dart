@@ -283,9 +283,27 @@ class Hunt extends pulumi.CustomResource {
     hypothesisStatus = registerOutput<String?>('hypothesisStatus');
     labels = registerOutput<List<String>?>('labels');
     this.name = registerOutput<String>('name');
-    owner = registerOutput<HuntOwnerResponse?>('owner');
+    owner = registerOutput<HuntOwnerResponse?>(
+      'owner',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HuntOwnerResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String?>('status');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

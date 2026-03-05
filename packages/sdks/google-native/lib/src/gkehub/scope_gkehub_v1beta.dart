@@ -56,7 +56,16 @@ class ScopeGkehubV1beta extends pulumi.CustomResource {
     namespaceLabels = registerOutput<Map<String, String>>('namespaceLabels');
     project = registerOutput<String>('project');
     scopeId = registerOutput<String>('scopeId');
-    state = registerOutput<ScopeLifecycleStateResponseGkehubV1beta>('state');
+    state = registerOutput<ScopeLifecycleStateResponseGkehubV1beta>(
+      'state',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScopeLifecycleStateResponseGkehubV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }

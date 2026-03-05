@@ -519,7 +519,16 @@ class NetworkManagerConnectivityConfiguration extends pulumi.CustomResource {
     );
     description = registerOutput<String?>('description');
     globalMeshEnabled = registerOutput<bool?>('globalMeshEnabled');
-    hub = registerOutput<NetworkManagerConnectivityConfigurationHub?>('hub');
+    hub = registerOutput<NetworkManagerConnectivityConfigurationHub?>(
+      'hub',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkManagerConnectivityConfigurationHub.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     networkManagerId = registerOutput<String>('networkManagerId');
   }
@@ -556,7 +565,16 @@ class NetworkManagerConnectivityConfiguration extends pulumi.CustomResource {
     );
     description = registerOutput<String?>('description');
     globalMeshEnabled = registerOutput<bool?>('globalMeshEnabled');
-    hub = registerOutput<NetworkManagerConnectivityConfigurationHub?>('hub');
+    hub = registerOutput<NetworkManagerConnectivityConfigurationHub?>(
+      'hub',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkManagerConnectivityConfigurationHub.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     networkManagerId = registerOutput<String>('networkManagerId');
   }

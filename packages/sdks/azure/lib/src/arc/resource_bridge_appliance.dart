@@ -242,7 +242,16 @@ class ResourceBridgeAppliance extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     distro = registerOutput<String>('distro');
-    identity = registerOutput<ResourceBridgeApplianceIdentity>('identity');
+    identity = registerOutput<ResourceBridgeApplianceIdentity>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceBridgeApplianceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     infrastructureProvider = registerOutput<String>('infrastructureProvider');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -275,7 +284,16 @@ class ResourceBridgeAppliance extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     distro = registerOutput<String>('distro');
-    identity = registerOutput<ResourceBridgeApplianceIdentity>('identity');
+    identity = registerOutput<ResourceBridgeApplianceIdentity>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceBridgeApplianceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     infrastructureProvider = registerOutput<String>('infrastructureProvider');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

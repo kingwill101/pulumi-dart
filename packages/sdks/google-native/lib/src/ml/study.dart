@@ -44,6 +44,13 @@ class Study extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     studyConfig = registerOutput<GoogleCloudMlV1StudyConfigResponse>(
       'studyConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudMlV1StudyConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     studyId = registerOutput<String>('studyId');
   }

@@ -68,16 +68,43 @@ class FeatureOnlineStoreAiplatformV1beta1 extends pulumi.CustomResource {
     bigtable =
         registerOutput<
           GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableResponse
-        >('bigtable');
+        >(
+          'bigtable',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     createTime = registerOutput<String>('createTime');
     dedicatedServingEndpoint =
         registerOutput<
           GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResponse
-        >('dedicatedServingEndpoint');
+        >(
+          'dedicatedServingEndpoint',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     embeddingManagement =
         registerOutput<
           GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse
-        >('embeddingManagement');
+        >(
+          'embeddingManagement',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     etag = registerOutput<String>('etag');
     featureOnlineStoreId = registerOutput<String>('featureOnlineStoreId');
     labels = registerOutput<Map<String, String>>('labels');

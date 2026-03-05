@@ -3686,6 +3686,13 @@ class Cluster extends pulumi.CustomResource {
     authorizationMode = registerOutput<String?>('authorizationMode');
     automatedBackupConfig = registerOutput<ClusterAutomatedBackupConfig?>(
       'automatedBackupConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterAutomatedBackupConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     availableMaintenanceVersions = registerOutput<List<String>>(
       'availableMaintenanceVersions',
@@ -3695,6 +3702,13 @@ class Cluster extends pulumi.CustomResource {
     crossClusterReplicationConfig =
         registerOutput<ClusterCrossClusterReplicationConfig>(
           'crossClusterReplicationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ClusterCrossClusterReplicationConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     deletionProtectionEnabled = registerOutput<bool?>(
       'deletionProtectionEnabled',
@@ -3706,11 +3720,27 @@ class Cluster extends pulumi.CustomResource {
     effectiveMaintenanceVersion = registerOutput<String>(
       'effectiveMaintenanceVersion',
     );
-    gcsSource = registerOutput<ClusterGcsSource?>('gcsSource');
+    gcsSource = registerOutput<ClusterGcsSource?>(
+      'gcsSource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterGcsSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kmsKey = registerOutput<String?>('kmsKey');
     labels = registerOutput<Map<String, String>?>('labels');
     maintenancePolicy = registerOutput<ClusterMaintenancePolicy?>(
       'maintenancePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterMaintenancePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     maintenanceSchedules = registerOutput<List<Map<String, dynamic>>>(
       'maintenanceSchedules',
@@ -3718,6 +3748,13 @@ class Cluster extends pulumi.CustomResource {
     maintenanceVersion = registerOutput<String?>('maintenanceVersion');
     managedBackupSource = registerOutput<ClusterManagedBackupSource?>(
       'managedBackupSource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterManagedBackupSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     managedServerCas = registerOutput<List<Map<String, dynamic>>>(
       'managedServerCas',
@@ -3726,6 +3763,13 @@ class Cluster extends pulumi.CustomResource {
     nodeType = registerOutput<String>('nodeType');
     persistenceConfig = registerOutput<ClusterPersistenceConfig>(
       'persistenceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterPersistenceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     preciseSizeGb = registerOutput<double>('preciseSizeGb');
     project = registerOutput<String>('project');
@@ -3748,6 +3792,13 @@ class Cluster extends pulumi.CustomResource {
     uid = registerOutput<String>('uid');
     zoneDistributionConfig = registerOutput<ClusterZoneDistributionConfig>(
       'zoneDistributionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterZoneDistributionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -3777,6 +3828,13 @@ class Cluster extends pulumi.CustomResource {
     authorizationMode = registerOutput<String?>('authorizationMode');
     automatedBackupConfig = registerOutput<ClusterAutomatedBackupConfig?>(
       'automatedBackupConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterAutomatedBackupConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     availableMaintenanceVersions = registerOutput<List<String>>(
       'availableMaintenanceVersions',
@@ -3786,6 +3844,13 @@ class Cluster extends pulumi.CustomResource {
     crossClusterReplicationConfig =
         registerOutput<ClusterCrossClusterReplicationConfig>(
           'crossClusterReplicationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ClusterCrossClusterReplicationConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     deletionProtectionEnabled = registerOutput<bool?>(
       'deletionProtectionEnabled',
@@ -3797,11 +3862,27 @@ class Cluster extends pulumi.CustomResource {
     effectiveMaintenanceVersion = registerOutput<String>(
       'effectiveMaintenanceVersion',
     );
-    gcsSource = registerOutput<ClusterGcsSource?>('gcsSource');
+    gcsSource = registerOutput<ClusterGcsSource?>(
+      'gcsSource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterGcsSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kmsKey = registerOutput<String?>('kmsKey');
     labels = registerOutput<Map<String, String>?>('labels');
     maintenancePolicy = registerOutput<ClusterMaintenancePolicy?>(
       'maintenancePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterMaintenancePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     maintenanceSchedules = registerOutput<List<Map<String, dynamic>>>(
       'maintenanceSchedules',
@@ -3809,6 +3890,13 @@ class Cluster extends pulumi.CustomResource {
     maintenanceVersion = registerOutput<String?>('maintenanceVersion');
     managedBackupSource = registerOutput<ClusterManagedBackupSource?>(
       'managedBackupSource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterManagedBackupSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     managedServerCas = registerOutput<List<Map<String, dynamic>>>(
       'managedServerCas',
@@ -3817,6 +3905,13 @@ class Cluster extends pulumi.CustomResource {
     nodeType = registerOutput<String>('nodeType');
     persistenceConfig = registerOutput<ClusterPersistenceConfig>(
       'persistenceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterPersistenceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     preciseSizeGb = registerOutput<double>('preciseSizeGb');
     project = registerOutput<String>('project');
@@ -3839,6 +3934,13 @@ class Cluster extends pulumi.CustomResource {
     uid = registerOutput<String>('uid');
     zoneDistributionConfig = registerOutput<ClusterZoneDistributionConfig>(
       'zoneDistributionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterZoneDistributionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

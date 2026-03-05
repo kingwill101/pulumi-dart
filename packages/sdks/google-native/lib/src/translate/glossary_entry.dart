@@ -39,7 +39,25 @@ class GlossaryEntry extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    termsPair = registerOutput<GlossaryTermsPairResponse>('termsPair');
-    termsSet = registerOutput<GlossaryTermsSetResponse>('termsSet');
+    termsPair = registerOutput<GlossaryTermsPairResponse>(
+      'termsPair',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GlossaryTermsPairResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    termsSet = registerOutput<GlossaryTermsSetResponse>(
+      'termsSet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GlossaryTermsSetResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

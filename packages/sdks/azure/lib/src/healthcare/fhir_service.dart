@@ -449,6 +449,13 @@ class FhirService extends pulumi.CustomResource {
     );
     authentication = registerOutput<FhirServiceAuthentication>(
       'authentication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FhirServiceAuthentication.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     configurationExportStorageAccountName = registerOutput<String?>(
       'configurationExportStorageAccountName',
@@ -456,8 +463,26 @@ class FhirService extends pulumi.CustomResource {
     containerRegistryLoginServerUrls = registerOutput<List<String>?>(
       'containerRegistryLoginServerUrls',
     );
-    cors = registerOutput<FhirServiceCors?>('cors');
-    identity = registerOutput<FhirServiceIdentity?>('identity');
+    cors = registerOutput<FhirServiceCors?>(
+      'cors',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FhirServiceCors.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    identity = registerOutput<FhirServiceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FhirServiceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kind = registerOutput<String?>('kind');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -498,6 +523,13 @@ class FhirService extends pulumi.CustomResource {
     );
     authentication = registerOutput<FhirServiceAuthentication>(
       'authentication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FhirServiceAuthentication.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     configurationExportStorageAccountName = registerOutput<String?>(
       'configurationExportStorageAccountName',
@@ -505,8 +537,26 @@ class FhirService extends pulumi.CustomResource {
     containerRegistryLoginServerUrls = registerOutput<List<String>?>(
       'containerRegistryLoginServerUrls',
     );
-    cors = registerOutput<FhirServiceCors?>('cors');
-    identity = registerOutput<FhirServiceIdentity?>('identity');
+    cors = registerOutput<FhirServiceCors?>(
+      'cors',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FhirServiceCors.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    identity = registerOutput<FhirServiceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FhirServiceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kind = registerOutput<String?>('kind');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

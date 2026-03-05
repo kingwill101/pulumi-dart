@@ -90,7 +90,16 @@ class AccessReviewHistoryDefinitionById extends pulumi.CustomResource {
     principalId = registerOutput<String>('principalId');
     principalName = registerOutput<String>('principalName');
     principalType = registerOutput<String>('principalType');
-    range = registerOutput<AccessReviewRecurrenceRangeResponse?>('range');
+    range = registerOutput<AccessReviewRecurrenceRangeResponse?>(
+      'range',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccessReviewRecurrenceRangeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     reviewHistoryPeriodEndDateTime = registerOutput<String>(
       'reviewHistoryPeriodEndDateTime',
     );

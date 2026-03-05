@@ -817,18 +817,54 @@ class Resolver extends pulumi.CustomResource {
        ) {
     apiId = registerOutput<String>('apiId');
     arn = registerOutput<String>('arn');
-    cachingConfig = registerOutput<ResolverCachingConfig?>('cachingConfig');
+    cachingConfig = registerOutput<ResolverCachingConfig?>(
+      'cachingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResolverCachingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     code = registerOutput<String?>('code');
     dataSource = registerOutput<String?>('dataSource');
     field = registerOutput<String>('field');
     kind = registerOutput<String?>('kind');
     maxBatchSize = registerOutput<int?>('maxBatchSize');
-    pipelineConfig = registerOutput<ResolverPipelineConfig?>('pipelineConfig');
+    pipelineConfig = registerOutput<ResolverPipelineConfig?>(
+      'pipelineConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResolverPipelineConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     requestTemplate = registerOutput<String?>('requestTemplate');
     responseTemplate = registerOutput<String?>('responseTemplate');
-    runtime = registerOutput<ResolverRuntime?>('runtime');
-    syncConfig = registerOutput<ResolverSyncConfig?>('syncConfig');
+    runtime = registerOutput<ResolverRuntime?>(
+      'runtime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResolverRuntime.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    syncConfig = registerOutput<ResolverSyncConfig?>(
+      'syncConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResolverSyncConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 
@@ -857,18 +893,54 @@ class Resolver extends pulumi.CustomResource {
        ) {
     apiId = registerOutput<String>('apiId');
     arn = registerOutput<String>('arn');
-    cachingConfig = registerOutput<ResolverCachingConfig?>('cachingConfig');
+    cachingConfig = registerOutput<ResolverCachingConfig?>(
+      'cachingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResolverCachingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     code = registerOutput<String?>('code');
     dataSource = registerOutput<String?>('dataSource');
     field = registerOutput<String>('field');
     kind = registerOutput<String?>('kind');
     maxBatchSize = registerOutput<int?>('maxBatchSize');
-    pipelineConfig = registerOutput<ResolverPipelineConfig?>('pipelineConfig');
+    pipelineConfig = registerOutput<ResolverPipelineConfig?>(
+      'pipelineConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResolverPipelineConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     requestTemplate = registerOutput<String?>('requestTemplate');
     responseTemplate = registerOutput<String?>('responseTemplate');
-    runtime = registerOutput<ResolverRuntime?>('runtime');
-    syncConfig = registerOutput<ResolverSyncConfig?>('syncConfig');
+    runtime = registerOutput<ResolverRuntime?>(
+      'runtime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResolverRuntime.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    syncConfig = registerOutput<ResolverSyncConfig?>(
+      'syncConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResolverSyncConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

@@ -849,6 +849,13 @@ class V2OrganizationSourceIamMember extends pulumi.CustomResource {
        ) {
     condition = registerOutput<V2OrganizationSourceIamMemberCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2OrganizationSourceIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     member = registerOutput<String>('member');
@@ -882,6 +889,13 @@ class V2OrganizationSourceIamMember extends pulumi.CustomResource {
        ) {
     condition = registerOutput<V2OrganizationSourceIamMemberCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2OrganizationSourceIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     member = registerOutput<String>('member');

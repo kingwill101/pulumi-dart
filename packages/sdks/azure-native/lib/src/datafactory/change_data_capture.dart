@@ -7993,9 +7993,27 @@ class ChangeDataCapture extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
     etag = registerOutput<String>('etag');
-    folder = registerOutput<ChangeDataCaptureResponseFolder?>('folder');
+    folder = registerOutput<ChangeDataCaptureResponseFolder?>(
+      'folder',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ChangeDataCaptureResponseFolder.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
-    policy = registerOutput<MapperPolicyResponse>('policy');
+    policy = registerOutput<MapperPolicyResponse>(
+      'policy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MapperPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sourceConnectionsInfo = registerOutput<List<Map<String, dynamic>>>(
       'sourceConnectionsInfo',
     );

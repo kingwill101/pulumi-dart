@@ -820,6 +820,13 @@ class Environment extends pulumi.CustomResource {
     lastUpdateds = registerOutput<List<Map<String, dynamic>>>('lastUpdateds');
     loggingConfiguration = registerOutput<EnvironmentLoggingConfiguration>(
       'loggingConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnvironmentLoggingConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     maxWebservers = registerOutput<int>('maxWebservers');
     maxWorkers = registerOutput<int>('maxWorkers');
@@ -828,6 +835,13 @@ class Environment extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkConfiguration = registerOutput<EnvironmentNetworkConfiguration>(
       'networkConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnvironmentNetworkConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     pluginsS3ObjectVersion = registerOutput<String>('pluginsS3ObjectVersion');
     pluginsS3Path = registerOutput<String?>('pluginsS3Path');
@@ -899,6 +913,13 @@ class Environment extends pulumi.CustomResource {
     lastUpdateds = registerOutput<List<Map<String, dynamic>>>('lastUpdateds');
     loggingConfiguration = registerOutput<EnvironmentLoggingConfiguration>(
       'loggingConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnvironmentLoggingConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     maxWebservers = registerOutput<int>('maxWebservers');
     maxWorkers = registerOutput<int>('maxWorkers');
@@ -907,6 +928,13 @@ class Environment extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkConfiguration = registerOutput<EnvironmentNetworkConfiguration>(
       'networkConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnvironmentNetworkConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     pluginsS3ObjectVersion = registerOutput<String>('pluginsS3ObjectVersion');
     pluginsS3Path = registerOutput<String?>('pluginsS3Path');

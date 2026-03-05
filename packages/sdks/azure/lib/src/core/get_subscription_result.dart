@@ -1,24 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getSubscription.
 class GetSubscriptionResult {
   /// The subscription display name.
   final String displayName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The subscription location placement ID.
   final String locationPlacementId;
+
   /// The subscription quota ID.
   final String quotaId;
+
   /// The subscription spending limit.
   final String spendingLimit;
+
   /// The subscription state. Possible values are Enabled, Warned, PastDue, Disabled, and Deleted.
   final String state;
+
   /// The subscription GUID.
   final String subscriptionId;
+
   /// A mapping of tags assigned to the Subscription.
   final Map<String, String> tags;
+
   /// The subscription tenant ID.
   final String tenantId;
 
@@ -72,4 +79,3 @@ class GetSubscriptionResult {
     );
   }
 }
-

@@ -846,7 +846,16 @@ class IoTHub extends pulumi.CustomResource {
         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
         options ?? pulumi.CustomResourceOptions(),
       ) {
-    cloudToDevice = registerOutput<IoTHubCloudToDevice>('cloudToDevice');
+    cloudToDevice = registerOutput<IoTHubCloudToDevice>(
+      'cloudToDevice',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IoTHubCloudToDevice.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
     enrichments = registerOutput<List<Map<String, dynamic>>>('enrichments');
     eventHubEventsEndpoint = registerOutput<String>('eventHubEventsEndpoint');
@@ -858,10 +867,37 @@ class IoTHub extends pulumi.CustomResource {
     eventHubOperationsPath = registerOutput<String>('eventHubOperationsPath');
     eventHubPartitionCount = registerOutput<int?>('eventHubPartitionCount');
     eventHubRetentionInDays = registerOutput<int?>('eventHubRetentionInDays');
-    fallbackRoute = registerOutput<IoTHubFallbackRoute>('fallbackRoute');
-    fileUpload = registerOutput<IoTHubFileUpload?>('fileUpload');
+    fallbackRoute = registerOutput<IoTHubFallbackRoute>(
+      'fallbackRoute',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IoTHubFallbackRoute.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    fileUpload = registerOutput<IoTHubFileUpload?>(
+      'fileUpload',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IoTHubFileUpload.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     hostname = registerOutput<String>('hostname');
-    identity = registerOutput<IoTHubIdentity?>('identity');
+    identity = registerOutput<IoTHubIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IoTHubIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     localAuthenticationEnabled = registerOutput<bool?>(
       'localAuthenticationEnabled',
     );
@@ -879,7 +915,14 @@ class IoTHub extends pulumi.CustomResource {
     sharedAccessPolicies = registerOutput<List<Map<String, dynamic>>>(
       'sharedAccessPolicies',
     );
-    sku = registerOutput<IoTHubSku>('sku');
+    sku = registerOutput<IoTHubSku>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IoTHubSku.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }
@@ -907,7 +950,16 @@ class IoTHub extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    cloudToDevice = registerOutput<IoTHubCloudToDevice>('cloudToDevice');
+    cloudToDevice = registerOutput<IoTHubCloudToDevice>(
+      'cloudToDevice',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IoTHubCloudToDevice.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
     enrichments = registerOutput<List<Map<String, dynamic>>>('enrichments');
     eventHubEventsEndpoint = registerOutput<String>('eventHubEventsEndpoint');
@@ -919,10 +971,37 @@ class IoTHub extends pulumi.CustomResource {
     eventHubOperationsPath = registerOutput<String>('eventHubOperationsPath');
     eventHubPartitionCount = registerOutput<int?>('eventHubPartitionCount');
     eventHubRetentionInDays = registerOutput<int?>('eventHubRetentionInDays');
-    fallbackRoute = registerOutput<IoTHubFallbackRoute>('fallbackRoute');
-    fileUpload = registerOutput<IoTHubFileUpload?>('fileUpload');
+    fallbackRoute = registerOutput<IoTHubFallbackRoute>(
+      'fallbackRoute',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IoTHubFallbackRoute.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    fileUpload = registerOutput<IoTHubFileUpload?>(
+      'fileUpload',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IoTHubFileUpload.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     hostname = registerOutput<String>('hostname');
-    identity = registerOutput<IoTHubIdentity?>('identity');
+    identity = registerOutput<IoTHubIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IoTHubIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     localAuthenticationEnabled = registerOutput<bool?>(
       'localAuthenticationEnabled',
     );
@@ -940,7 +1019,14 @@ class IoTHub extends pulumi.CustomResource {
     sharedAccessPolicies = registerOutput<List<Map<String, dynamic>>>(
       'sharedAccessPolicies',
     );
-    sku = registerOutput<IoTHubSku>('sku');
+    sku = registerOutput<IoTHubSku>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IoTHubSku.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

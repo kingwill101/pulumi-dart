@@ -187,6 +187,13 @@ class ApplicationGateway extends pulumi.CustomResource {
     autoscaleConfiguration =
         registerOutput<ApplicationGatewayAutoscaleConfigurationResponse?>(
           'autoscaleConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ApplicationGatewayAutoscaleConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     backendAddressPools = registerOutput<List<Map<String, dynamic>>?>(
@@ -207,7 +214,16 @@ class ApplicationGateway extends pulumi.CustomResource {
     enableFips = registerOutput<bool?>('enableFips');
     enableHttp2 = registerOutput<bool?>('enableHttp2');
     etag = registerOutput<String>('etag');
-    firewallPolicy = registerOutput<SubResourceResponse?>('firewallPolicy');
+    firewallPolicy = registerOutput<SubResourceResponse?>(
+      'firewallPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     forceFirewallPolicyAssociation = registerOutput<bool?>(
       'forceFirewallPolicyAssociation',
     );
@@ -223,11 +239,27 @@ class ApplicationGateway extends pulumi.CustomResource {
     globalConfiguration =
         registerOutput<ApplicationGatewayGlobalConfigurationResponse?>(
           'globalConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ApplicationGatewayGlobalConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     httpListeners = registerOutput<List<Map<String, dynamic>>?>(
       'httpListeners',
     );
-    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    identity = registerOutput<ManagedServiceIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedServiceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     listeners = registerOutput<List<Map<String, dynamic>>?>('listeners');
     loadDistributionPolicies = registerOutput<List<Map<String, dynamic>>?>(
       'loadDistributionPolicies',
@@ -254,12 +286,28 @@ class ApplicationGateway extends pulumi.CustomResource {
       'rewriteRuleSets',
     );
     routingRules = registerOutput<List<Map<String, dynamic>>?>('routingRules');
-    sku = registerOutput<ApplicationGatewaySkuResponse?>('sku');
+    sku = registerOutput<ApplicationGatewaySkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationGatewaySkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sslCertificates = registerOutput<List<Map<String, dynamic>>?>(
       'sslCertificates',
     );
     sslPolicy = registerOutput<ApplicationGatewaySslPolicyResponse?>(
       'sslPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationGatewaySslPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sslProfiles = registerOutput<List<Map<String, dynamic>>?>('sslProfiles');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -274,7 +322,16 @@ class ApplicationGateway extends pulumi.CustomResource {
     webApplicationFirewallConfiguration =
         registerOutput<
           ApplicationGatewayWebApplicationFirewallConfigurationResponse?
-        >('webApplicationFirewallConfiguration');
+        >(
+          'webApplicationFirewallConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ApplicationGatewayWebApplicationFirewallConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     zones = registerOutput<List<String>?>('zones');
   }
 }

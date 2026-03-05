@@ -218,7 +218,16 @@ class InvoiceUnit extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     taxInheritanceDisabled = registerOutput<bool>('taxInheritanceDisabled');
-    timeouts = registerOutput<InvoiceUnitTimeouts?>('timeouts');
+    timeouts = registerOutput<InvoiceUnitTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InvoiceUnitTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [InvoiceUnit] resource's state with the given [name] and [id].
@@ -254,6 +263,15 @@ class InvoiceUnit extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     taxInheritanceDisabled = registerOutput<bool>('taxInheritanceDisabled');
-    timeouts = registerOutput<InvoiceUnitTimeouts?>('timeouts');
+    timeouts = registerOutput<InvoiceUnitTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InvoiceUnitTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

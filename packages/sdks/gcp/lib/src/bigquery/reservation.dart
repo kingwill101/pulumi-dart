@@ -315,7 +315,16 @@ class Reservation extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    autoscale = registerOutput<ReservationAutoscale?>('autoscale');
+    autoscale = registerOutput<ReservationAutoscale?>(
+      'autoscale',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReservationAutoscale.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     concurrency = registerOutput<int?>('concurrency');
     edition = registerOutput<String>('edition');
     ignoreIdleSlots = registerOutput<bool?>('ignoreIdleSlots');
@@ -356,7 +365,16 @@ class Reservation extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    autoscale = registerOutput<ReservationAutoscale?>('autoscale');
+    autoscale = registerOutput<ReservationAutoscale?>(
+      'autoscale',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReservationAutoscale.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     concurrency = registerOutput<int?>('concurrency');
     edition = registerOutput<String>('edition');
     ignoreIdleSlots = registerOutput<bool?>('ignoreIdleSlots');

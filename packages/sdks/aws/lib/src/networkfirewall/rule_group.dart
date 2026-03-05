@@ -2236,10 +2236,26 @@ class RuleGroup extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     encryptionConfiguration = registerOutput<RuleGroupEncryptionConfiguration?>(
       'encryptionConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RuleGroupEncryptionConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    ruleGroup = registerOutput<RuleGroupRuleGroup>('ruleGroup');
+    ruleGroup = registerOutput<RuleGroupRuleGroup>(
+      'ruleGroup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RuleGroupRuleGroup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     rules = registerOutput<String?>('rules');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -2275,10 +2291,26 @@ class RuleGroup extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     encryptionConfiguration = registerOutput<RuleGroupEncryptionConfiguration?>(
       'encryptionConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RuleGroupEncryptionConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    ruleGroup = registerOutput<RuleGroupRuleGroup>('ruleGroup');
+    ruleGroup = registerOutput<RuleGroupRuleGroup>(
+      'ruleGroup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RuleGroupRuleGroup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     rules = registerOutput<String?>('rules');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

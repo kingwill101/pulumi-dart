@@ -743,6 +743,13 @@ class KxEnvironment extends pulumi.CustomResource {
     transitGatewayConfiguration =
         registerOutput<KxEnvironmentTransitGatewayConfiguration?>(
           'transitGatewayConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return KxEnvironmentTransitGatewayConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 
@@ -787,6 +794,13 @@ class KxEnvironment extends pulumi.CustomResource {
     transitGatewayConfiguration =
         registerOutput<KxEnvironmentTransitGatewayConfiguration?>(
           'transitGatewayConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return KxEnvironmentTransitGatewayConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

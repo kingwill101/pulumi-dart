@@ -354,7 +354,16 @@ class ResourceGroupCostManagementView extends pulumi.CustomResource {
        ) {
     accumulated = registerOutput<bool>('accumulated');
     chartType = registerOutput<String>('chartType');
-    dataset = registerOutput<ResourceGroupCostManagementViewDataset>('dataset');
+    dataset = registerOutput<ResourceGroupCostManagementViewDataset>(
+      'dataset',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceGroupCostManagementViewDataset.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     displayName = registerOutput<String>('displayName');
     kpis = registerOutput<List<Map<String, dynamic>>?>('kpis');
     this.name = registerOutput<String>('name');
@@ -389,7 +398,16 @@ class ResourceGroupCostManagementView extends pulumi.CustomResource {
        ) {
     accumulated = registerOutput<bool>('accumulated');
     chartType = registerOutput<String>('chartType');
-    dataset = registerOutput<ResourceGroupCostManagementViewDataset>('dataset');
+    dataset = registerOutput<ResourceGroupCostManagementViewDataset>(
+      'dataset',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceGroupCostManagementViewDataset.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     displayName = registerOutput<String>('displayName');
     kpis = registerOutput<List<Map<String, dynamic>>?>('kpis');
     this.name = registerOutput<String>('name');

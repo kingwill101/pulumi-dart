@@ -2224,21 +2224,53 @@ class Routine extends pulumi.CustomResource {
     determinismLevel = registerOutput<String?>('determinismLevel');
     externalRuntimeOptions = registerOutput<RoutineExternalRuntimeOptions?>(
       'externalRuntimeOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RoutineExternalRuntimeOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     importedLibraries = registerOutput<List<String>?>('importedLibraries');
     language = registerOutput<String?>('language');
     lastModifiedTime = registerOutput<int>('lastModifiedTime');
     project = registerOutput<String>('project');
-    pythonOptions = registerOutput<RoutinePythonOptions?>('pythonOptions');
+    pythonOptions = registerOutput<RoutinePythonOptions?>(
+      'pythonOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RoutinePythonOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     remoteFunctionOptions = registerOutput<RoutineRemoteFunctionOptions?>(
       'remoteFunctionOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RoutineRemoteFunctionOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     returnTableType = registerOutput<String?>('returnTableType');
     returnType = registerOutput<String?>('returnType');
     routineId = registerOutput<String>('routineId');
     routineType = registerOutput<String>('routineType');
     securityMode = registerOutput<String?>('securityMode');
-    sparkOptions = registerOutput<RoutineSparkOptions?>('sparkOptions');
+    sparkOptions = registerOutput<RoutineSparkOptions?>(
+      'sparkOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RoutineSparkOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Routine] resource's state with the given [name] and [id].
@@ -2273,20 +2305,52 @@ class Routine extends pulumi.CustomResource {
     determinismLevel = registerOutput<String?>('determinismLevel');
     externalRuntimeOptions = registerOutput<RoutineExternalRuntimeOptions?>(
       'externalRuntimeOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RoutineExternalRuntimeOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     importedLibraries = registerOutput<List<String>?>('importedLibraries');
     language = registerOutput<String?>('language');
     lastModifiedTime = registerOutput<int>('lastModifiedTime');
     project = registerOutput<String>('project');
-    pythonOptions = registerOutput<RoutinePythonOptions?>('pythonOptions');
+    pythonOptions = registerOutput<RoutinePythonOptions?>(
+      'pythonOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RoutinePythonOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     remoteFunctionOptions = registerOutput<RoutineRemoteFunctionOptions?>(
       'remoteFunctionOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RoutineRemoteFunctionOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     returnTableType = registerOutput<String?>('returnTableType');
     returnType = registerOutput<String?>('returnType');
     routineId = registerOutput<String>('routineId');
     routineType = registerOutput<String>('routineType');
     securityMode = registerOutput<String?>('securityMode');
-    sparkOptions = registerOutput<RoutineSparkOptions?>('sparkOptions');
+    sparkOptions = registerOutput<RoutineSparkOptions?>(
+      'sparkOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RoutineSparkOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

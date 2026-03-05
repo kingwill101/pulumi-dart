@@ -248,21 +248,62 @@ class DevBoxDefinition extends pulumi.CustomResource {
        ) {
     activeImageReference = registerOutput<ImageReferenceResponse>(
       'activeImageReference',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImageReferenceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     hibernateSupport = registerOutput<String?>('hibernateSupport');
-    imageReference = registerOutput<ImageReferenceResponse>('imageReference');
+    imageReference = registerOutput<ImageReferenceResponse>(
+      'imageReference',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImageReferenceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     imageValidationErrorDetails =
         registerOutput<ImageValidationErrorDetailsResponse>(
           'imageValidationErrorDetails',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ImageValidationErrorDetailsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     imageValidationStatus = registerOutput<String>('imageValidationStatus');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     osStorageType = registerOutput<String?>('osStorageType');
     provisioningState = registerOutput<String>('provisioningState');
-    sku = registerOutput<SkuResponse>('sku');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    sku = registerOutput<SkuResponse>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     validationStatus = registerOutput<String>('validationStatus');

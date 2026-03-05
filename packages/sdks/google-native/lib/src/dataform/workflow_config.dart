@@ -47,6 +47,13 @@ class WorkflowConfig extends pulumi.CustomResource {
     cronSchedule = registerOutput<String>('cronSchedule');
     invocationConfig = registerOutput<InvocationConfigResponse>(
       'invocationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InvocationConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

@@ -323,14 +323,39 @@ class Domain extends pulumi.CustomResource {
     dataResidencyBoundary = registerOutput<String?>('dataResidencyBoundary');
     disableLocalAuth = registerOutput<bool?>('disableLocalAuth');
     endpoint = registerOutput<String>('endpoint');
-    eventTypeInfo = registerOutput<EventTypeInfoResponse?>('eventTypeInfo');
-    identity = registerOutput<IdentityInfoResponse?>('identity');
+    eventTypeInfo = registerOutput<EventTypeInfoResponse?>(
+      'eventTypeInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventTypeInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    identity = registerOutput<IdentityInfoResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IdentityInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     inboundIpRules = registerOutput<List<Map<String, dynamic>>?>(
       'inboundIpRules',
     );
     inputSchema = registerOutput<String?>('inputSchema');
     inputSchemaMapping = registerOutput<JsonInputSchemaMappingResponse?>(
       'inputSchemaMapping',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JsonInputSchemaMappingResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     metricResourceId = registerOutput<String>('metricResourceId');
@@ -343,7 +368,16 @@ class Domain extends pulumi.CustomResource {
     );
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

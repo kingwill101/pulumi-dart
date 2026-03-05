@@ -2620,8 +2620,24 @@ class AutoscaleSetting extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     notification = registerOutput<AutoscaleSettingNotification?>(
       'notification',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AutoscaleSettingNotification.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    predictive = registerOutput<AutoscaleSettingPredictive?>('predictive');
+    predictive = registerOutput<AutoscaleSettingPredictive?>(
+      'predictive',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AutoscaleSettingPredictive.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     profiles = registerOutput<List<Map<String, dynamic>>>('profiles');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -2656,8 +2672,24 @@ class AutoscaleSetting extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     notification = registerOutput<AutoscaleSettingNotification?>(
       'notification',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AutoscaleSettingNotification.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    predictive = registerOutput<AutoscaleSettingPredictive?>('predictive');
+    predictive = registerOutput<AutoscaleSettingPredictive?>(
+      'predictive',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AutoscaleSettingPredictive.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     profiles = registerOutput<List<Map<String, dynamic>>>('profiles');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');

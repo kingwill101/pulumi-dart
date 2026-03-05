@@ -178,6 +178,13 @@ class Group extends pulumi.CustomResource {
     groupName = registerOutput<String>('groupName');
     insightsConfiguration = registerOutput<GroupInsightsConfiguration>(
       'insightsConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupInsightsConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -208,6 +215,13 @@ class Group extends pulumi.CustomResource {
     groupName = registerOutput<String>('groupName');
     insightsConfiguration = registerOutput<GroupInsightsConfiguration>(
       'insightsConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupInsightsConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');

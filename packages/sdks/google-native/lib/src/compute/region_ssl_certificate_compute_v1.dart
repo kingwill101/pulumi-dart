@@ -72,6 +72,13 @@ class RegionSslCertificateComputeV1 extends pulumi.CustomResource {
     managed =
         registerOutput<SslCertificateManagedSslCertificateResponseComputeV1>(
           'managed',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SslCertificateManagedSslCertificateResponseComputeV1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     privateKey = registerOutput<String>('privateKey');
@@ -82,7 +89,16 @@ class RegionSslCertificateComputeV1 extends pulumi.CustomResource {
     selfManaged =
         registerOutput<
           SslCertificateSelfManagedSslCertificateResponseComputeV1
-        >('selfManaged');
+        >(
+          'selfManaged',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SslCertificateSelfManagedSslCertificateResponseComputeV1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     subjectAlternativeNames = registerOutput<List<String>>(
       'subjectAlternativeNames',
     );

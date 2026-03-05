@@ -47,10 +47,26 @@ class ResourceType extends pulumi.CustomResource {
     clusterDesc = registerOutput<String?>('clusterDesc');
     clusterId = registerOutput<String>('clusterId');
     clusterName = registerOutput<String>('clusterName');
-    machineTypes = registerOutput<ResourceMachineTypes>('machineTypes');
+    machineTypes = registerOutput<ResourceMachineTypes>(
+      'machineTypes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceMachineTypes.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceId = registerOutput<String>('resourceId');
     userAccessParam = registerOutput<ResourceUserAccessParam>(
       'userAccessParam',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceUserAccessParam.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -80,10 +96,26 @@ class ResourceType extends pulumi.CustomResource {
     clusterDesc = registerOutput<String?>('clusterDesc');
     clusterId = registerOutput<String>('clusterId');
     clusterName = registerOutput<String>('clusterName');
-    machineTypes = registerOutput<ResourceMachineTypes>('machineTypes');
+    machineTypes = registerOutput<ResourceMachineTypes>(
+      'machineTypes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceMachineTypes.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceId = registerOutput<String>('resourceId');
     userAccessParam = registerOutput<ResourceUserAccessParam>(
       'userAccessParam',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceUserAccessParam.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

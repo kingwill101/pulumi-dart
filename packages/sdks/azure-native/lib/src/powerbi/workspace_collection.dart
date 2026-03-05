@@ -46,7 +46,16 @@ class WorkspaceCollection extends pulumi.CustomResource {
     location = registerOutput<String?>('location');
     this.name = registerOutput<String?>('name');
     properties = registerOutput<dynamic>('properties');
-    sku = registerOutput<AzureSkuResponse?>('sku');
+    sku = registerOutput<AzureSkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AzureSkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String?>('type');
   }

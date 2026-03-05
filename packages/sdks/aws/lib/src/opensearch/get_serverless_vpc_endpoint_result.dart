@@ -1,20 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getServerlessVpcEndpoint.
 class GetServerlessVpcEndpointResult {
   /// The date the endpoint was created.
   final String createdDate;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The name of the endpoint.
   final String name;
   final String region;
+
   /// The IDs of the security groups that define the ports, protocols, and sources for inbound traffic that you are authorizing into your endpoint.
   final List<String> securityGroupIds;
+
   /// The IDs of the subnets from which you access OpenSearch Serverless.
   final List<String> subnetIds;
   final String vpcEndpointId;
+
   /// The ID of the VPC from which you access OpenSearch Serverless.
   final String vpcId;
 
@@ -64,4 +68,3 @@ class GetServerlessVpcEndpointResult {
     );
   }
 }
-

@@ -409,7 +409,16 @@ class Connector extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     selfLink = registerOutput<String>('selfLink');
     state = registerOutput<String>('state');
-    subnet = registerOutput<ConnectorSubnet?>('subnet');
+    subnet = registerOutput<ConnectorSubnet?>(
+      'subnet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectorSubnet.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Connector] resource's state with the given [name] and [id].
@@ -448,6 +457,15 @@ class Connector extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     selfLink = registerOutput<String>('selfLink');
     this.state = registerOutput<String>('state');
-    subnet = registerOutput<ConnectorSubnet?>('subnet');
+    subnet = registerOutput<ConnectorSubnet?>(
+      'subnet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectorSubnet.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

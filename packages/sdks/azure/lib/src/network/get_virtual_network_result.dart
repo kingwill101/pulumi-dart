@@ -1,26 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getVirtualNetwork.
 class GetVirtualNetworkResult {
   /// The list of address spaces used by the virtual network.
   final List<String> addressSpaces;
+
   /// The list of DNS servers used by the virtual network.
   final List<String> dnsServers;
+
   /// The GUID of the virtual network.
   final String guid;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Location of the virtual network.
   final String location;
   final String name;
   final String resourceGroupName;
+
   /// The list of name of the subnets that are attached to this virtual network.
   final List<String> subnets;
+
   /// A mapping of tags to assigned to the resource.
   final Map<String, String> tags;
+
   /// A mapping of name - virtual network id of the virtual network peerings.
   final Map<String, String> vnetPeerings;
+
   /// A list of virtual network peerings IP addresses.
   final List<String> vnetPeeringsAddresses;
 
@@ -78,8 +85,8 @@ class GetVirtualNetworkResult {
       subnets: (map['subnets'] as List).cast<String>(),
       tags: (map['tags'] as Map).cast<String, String>(),
       vnetPeerings: (map['vnetPeerings'] as Map).cast<String, String>(),
-      vnetPeeringsAddresses: (map['vnetPeeringsAddresses'] as List).cast<String>(),
+      vnetPeeringsAddresses: (map['vnetPeeringsAddresses'] as List)
+          .cast<String>(),
     );
   }
 }
-

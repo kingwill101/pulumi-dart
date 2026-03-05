@@ -467,8 +467,26 @@ class TriggerTumblingWindow extends pulumi.CustomResource {
     interval = registerOutput<int>('interval');
     maxConcurrency = registerOutput<int?>('maxConcurrency');
     this.name = registerOutput<String>('name');
-    pipeline = registerOutput<TriggerTumblingWindowPipeline>('pipeline');
-    retry = registerOutput<TriggerTumblingWindowRetry?>('retry');
+    pipeline = registerOutput<TriggerTumblingWindowPipeline>(
+      'pipeline',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TriggerTumblingWindowPipeline.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    retry = registerOutput<TriggerTumblingWindowRetry?>(
+      'retry',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TriggerTumblingWindowRetry.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     startTime = registerOutput<String>('startTime');
     triggerDependencies = registerOutput<List<Map<String, dynamic>>?>(
       'triggerDependencies',
@@ -511,8 +529,26 @@ class TriggerTumblingWindow extends pulumi.CustomResource {
     interval = registerOutput<int>('interval');
     maxConcurrency = registerOutput<int?>('maxConcurrency');
     this.name = registerOutput<String>('name');
-    pipeline = registerOutput<TriggerTumblingWindowPipeline>('pipeline');
-    retry = registerOutput<TriggerTumblingWindowRetry?>('retry');
+    pipeline = registerOutput<TriggerTumblingWindowPipeline>(
+      'pipeline',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TriggerTumblingWindowPipeline.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    retry = registerOutput<TriggerTumblingWindowRetry?>(
+      'retry',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TriggerTumblingWindowRetry.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     startTime = registerOutput<String>('startTime');
     triggerDependencies = registerOutput<List<Map<String, dynamic>>?>(
       'triggerDependencies',

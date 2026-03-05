@@ -404,10 +404,26 @@ class VirtualNetwork extends pulumi.CustomResource {
     bgpCommunity = registerOutput<String?>('bgpCommunity');
     ddosProtectionPlan = registerOutput<VirtualNetworkDdosProtectionPlan?>(
       'ddosProtectionPlan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualNetworkDdosProtectionPlan.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dnsServers = registerOutput<List<String>>('dnsServers');
     edgeZone = registerOutput<String?>('edgeZone');
-    encryption = registerOutput<VirtualNetworkEncryption?>('encryption');
+    encryption = registerOutput<VirtualNetworkEncryption?>(
+      'encryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualNetworkEncryption.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     flowTimeoutInMinutes = registerOutput<int?>('flowTimeoutInMinutes');
     guid = registerOutput<String>('guid');
     ipAddressPools = registerOutput<List<Map<String, dynamic>>?>(
@@ -450,10 +466,26 @@ class VirtualNetwork extends pulumi.CustomResource {
     bgpCommunity = registerOutput<String?>('bgpCommunity');
     ddosProtectionPlan = registerOutput<VirtualNetworkDdosProtectionPlan?>(
       'ddosProtectionPlan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualNetworkDdosProtectionPlan.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dnsServers = registerOutput<List<String>>('dnsServers');
     edgeZone = registerOutput<String?>('edgeZone');
-    encryption = registerOutput<VirtualNetworkEncryption?>('encryption');
+    encryption = registerOutput<VirtualNetworkEncryption?>(
+      'encryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualNetworkEncryption.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     flowTimeoutInMinutes = registerOutput<int?>('flowTimeoutInMinutes');
     guid = registerOutput<String>('guid');
     ipAddressPools = registerOutput<List<Map<String, dynamic>>?>(

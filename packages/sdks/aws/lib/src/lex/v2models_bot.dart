@@ -357,7 +357,16 @@ class V2modelsBot extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     testBotAliasTags = registerOutput<Map<String, String>?>('testBotAliasTags');
-    timeouts = registerOutput<V2modelsBotTimeouts?>('timeouts');
+    timeouts = registerOutput<V2modelsBotTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2modelsBotTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 
@@ -395,7 +404,16 @@ class V2modelsBot extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     testBotAliasTags = registerOutput<Map<String, String>?>('testBotAliasTags');
-    timeouts = registerOutput<V2modelsBotTimeouts?>('timeouts');
+    timeouts = registerOutput<V2modelsBotTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2modelsBotTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

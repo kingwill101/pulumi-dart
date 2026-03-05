@@ -2495,16 +2495,48 @@ class WorkforcePoolProvider extends pulumi.CustomResource {
     extendedAttributesOauth2Client =
         registerOutput<WorkforcePoolProviderExtendedAttributesOauth2Client?>(
           'extendedAttributesOauth2Client',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WorkforcePoolProviderExtendedAttributesOauth2Client.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     extraAttributesOauth2Client =
         registerOutput<WorkforcePoolProviderExtraAttributesOauth2Client?>(
           'extraAttributesOauth2Client',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WorkforcePoolProviderExtraAttributesOauth2Client.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    oidc = registerOutput<WorkforcePoolProviderOidc?>('oidc');
+    oidc = registerOutput<WorkforcePoolProviderOidc?>(
+      'oidc',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkforcePoolProviderOidc.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     providerId = registerOutput<String>('providerId');
-    saml = registerOutput<WorkforcePoolProviderSaml?>('saml');
+    saml = registerOutput<WorkforcePoolProviderSaml?>(
+      'saml',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkforcePoolProviderSaml.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     scimUsage = registerOutput<String?>('scimUsage');
     state = registerOutput<String>('state');
     workforcePoolId = registerOutput<String>('workforcePoolId');
@@ -2541,16 +2573,48 @@ class WorkforcePoolProvider extends pulumi.CustomResource {
     extendedAttributesOauth2Client =
         registerOutput<WorkforcePoolProviderExtendedAttributesOauth2Client?>(
           'extendedAttributesOauth2Client',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WorkforcePoolProviderExtendedAttributesOauth2Client.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     extraAttributesOauth2Client =
         registerOutput<WorkforcePoolProviderExtraAttributesOauth2Client?>(
           'extraAttributesOauth2Client',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WorkforcePoolProviderExtraAttributesOauth2Client.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    oidc = registerOutput<WorkforcePoolProviderOidc?>('oidc');
+    oidc = registerOutput<WorkforcePoolProviderOidc?>(
+      'oidc',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkforcePoolProviderOidc.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     providerId = registerOutput<String>('providerId');
-    saml = registerOutput<WorkforcePoolProviderSaml?>('saml');
+    saml = registerOutput<WorkforcePoolProviderSaml?>(
+      'saml',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkforcePoolProviderSaml.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     scimUsage = registerOutput<String?>('scimUsage');
     this.state = registerOutput<String>('state');
     workforcePoolId = registerOutput<String>('workforcePoolId');

@@ -610,13 +610,36 @@ class DeploymentConfig extends pulumi.CustomResource {
     deploymentConfigName = registerOutput<String>('deploymentConfigName');
     minimumHealthyHosts = registerOutput<DeploymentConfigMinimumHealthyHosts?>(
       'minimumHealthyHosts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentConfigMinimumHealthyHosts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     trafficRoutingConfig =
         registerOutput<DeploymentConfigTrafficRoutingConfig?>(
           'trafficRoutingConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DeploymentConfigTrafficRoutingConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    zonalConfig = registerOutput<DeploymentConfigZonalConfig?>('zonalConfig');
+    zonalConfig = registerOutput<DeploymentConfigZonalConfig?>(
+      'zonalConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentConfigZonalConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [DeploymentConfig] resource's state with the given [name] and [id].
@@ -648,12 +671,35 @@ class DeploymentConfig extends pulumi.CustomResource {
     deploymentConfigName = registerOutput<String>('deploymentConfigName');
     minimumHealthyHosts = registerOutput<DeploymentConfigMinimumHealthyHosts?>(
       'minimumHealthyHosts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentConfigMinimumHealthyHosts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     trafficRoutingConfig =
         registerOutput<DeploymentConfigTrafficRoutingConfig?>(
           'trafficRoutingConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DeploymentConfigTrafficRoutingConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    zonalConfig = registerOutput<DeploymentConfigZonalConfig?>('zonalConfig');
+    zonalConfig = registerOutput<DeploymentConfigZonalConfig?>(
+      'zonalConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentConfigZonalConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

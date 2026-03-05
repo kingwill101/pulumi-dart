@@ -322,7 +322,16 @@ class Cache extends pulumi.CustomResource {
     capacity = registerOutput<int>('capacity');
     family = registerOutput<String>('family');
     hostname = registerOutput<String>('hostname');
-    identity = registerOutput<CacheIdentity?>('identity');
+    identity = registerOutput<CacheIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CacheIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
     this.name = registerOutput<String>('name');
@@ -339,6 +348,13 @@ class Cache extends pulumi.CustomResource {
     );
     redisConfiguration = registerOutput<CacheRedisConfiguration>(
       'redisConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CacheRedisConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     redisVersion = registerOutput<String?>('redisVersion');
     replicasPerMaster = registerOutput<int>('replicasPerMaster');
@@ -382,7 +398,16 @@ class Cache extends pulumi.CustomResource {
     capacity = registerOutput<int>('capacity');
     family = registerOutput<String>('family');
     hostname = registerOutput<String>('hostname');
-    identity = registerOutput<CacheIdentity?>('identity');
+    identity = registerOutput<CacheIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CacheIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
     this.name = registerOutput<String>('name');
@@ -399,6 +424,13 @@ class Cache extends pulumi.CustomResource {
     );
     redisConfiguration = registerOutput<CacheRedisConfiguration>(
       'redisConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CacheRedisConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     redisVersion = registerOutput<String?>('redisVersion');
     replicasPerMaster = registerOutput<int>('replicasPerMaster');

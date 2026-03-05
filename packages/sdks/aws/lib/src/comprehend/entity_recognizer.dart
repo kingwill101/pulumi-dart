@@ -343,6 +343,13 @@ class EntityRecognizer extends pulumi.CustomResource {
     dataAccessRoleArn = registerOutput<String>('dataAccessRoleArn');
     inputDataConfig = registerOutput<EntityRecognizerInputDataConfig>(
       'inputDataConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EntityRecognizerInputDataConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     languageCode = registerOutput<String>('languageCode');
     modelKmsKeyId = registerOutput<String?>('modelKmsKeyId');
@@ -353,7 +360,16 @@ class EntityRecognizer extends pulumi.CustomResource {
     versionName = registerOutput<String>('versionName');
     versionNamePrefix = registerOutput<String>('versionNamePrefix');
     volumeKmsKeyId = registerOutput<String?>('volumeKmsKeyId');
-    vpcConfig = registerOutput<EntityRecognizerVpcConfig?>('vpcConfig');
+    vpcConfig = registerOutput<EntityRecognizerVpcConfig?>(
+      'vpcConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EntityRecognizerVpcConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [EntityRecognizer] resource's state with the given [name] and [id].
@@ -383,6 +399,13 @@ class EntityRecognizer extends pulumi.CustomResource {
     dataAccessRoleArn = registerOutput<String>('dataAccessRoleArn');
     inputDataConfig = registerOutput<EntityRecognizerInputDataConfig>(
       'inputDataConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EntityRecognizerInputDataConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     languageCode = registerOutput<String>('languageCode');
     modelKmsKeyId = registerOutput<String?>('modelKmsKeyId');
@@ -393,6 +416,15 @@ class EntityRecognizer extends pulumi.CustomResource {
     versionName = registerOutput<String>('versionName');
     versionNamePrefix = registerOutput<String>('versionNamePrefix');
     volumeKmsKeyId = registerOutput<String?>('volumeKmsKeyId');
-    vpcConfig = registerOutput<EntityRecognizerVpcConfig?>('vpcConfig');
+    vpcConfig = registerOutput<EntityRecognizerVpcConfig?>(
+      'vpcConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EntityRecognizerVpcConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

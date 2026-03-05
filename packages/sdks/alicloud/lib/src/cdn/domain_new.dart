@@ -263,6 +263,13 @@ class DomainNew extends pulumi.CustomResource {
     cdnType = registerOutput<String>('cdnType');
     certificateConfig = registerOutput<DomainNewCertificateConfig>(
       'certificateConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainNewCertificateConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     checkUrl = registerOutput<String?>('checkUrl');
     cname = registerOutput<String>('cname');
@@ -301,6 +308,13 @@ class DomainNew extends pulumi.CustomResource {
     cdnType = registerOutput<String>('cdnType');
     certificateConfig = registerOutput<DomainNewCertificateConfig>(
       'certificateConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainNewCertificateConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     checkUrl = registerOutput<String?>('checkUrl');
     cname = registerOutput<String>('cname');

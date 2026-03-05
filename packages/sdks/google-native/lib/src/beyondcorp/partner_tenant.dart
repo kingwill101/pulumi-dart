@@ -53,13 +53,31 @@ class PartnerTenant extends pulumi.CustomResource {
     group =
         registerOutput<
           GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse
-        >('group');
+        >(
+          'group',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     this.name = registerOutput<String>('name');
     organizationId = registerOutput<String>('organizationId');
     partnerMetadata =
         registerOutput<
           GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponse
-        >('partnerMetadata');
+        >(
+          'partnerMetadata',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     requestId = registerOutput<String?>('requestId');
     updateTime = registerOutput<String>('updateTime');
   }

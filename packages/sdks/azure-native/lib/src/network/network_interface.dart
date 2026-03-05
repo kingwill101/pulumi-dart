@@ -553,9 +553,23 @@ class NetworkInterface extends pulumi.CustomResource {
     disableTcpStateTracking = registerOutput<bool?>('disableTcpStateTracking');
     dnsSettings = registerOutput<NetworkInterfaceDnsSettingsResponse?>(
       'dnsSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkInterfaceDnsSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dscpConfiguration = registerOutput<SubResourceResponse>(
       'dscpConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     enableAcceleratedNetworking = registerOutput<bool?>(
       'enableAcceleratedNetworking',
@@ -564,6 +578,13 @@ class NetworkInterface extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     extendedLocation = registerOutput<ExtendedLocationResponse?>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     hostedWorkloads = registerOutput<List<String>>('hostedWorkloads');
     ipConfigurations = registerOutput<List<Map<String, dynamic>>?>(
@@ -575,14 +596,35 @@ class NetworkInterface extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkSecurityGroup = registerOutput<NetworkSecurityGroupResponse?>(
       'networkSecurityGroup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkSecurityGroupResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     nicType = registerOutput<String?>('nicType');
     primary = registerOutput<bool>('primary');
     privateEndpoint = registerOutput<PrivateEndpointResponse>(
       'privateEndpoint',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PrivateEndpointResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     privateLinkService = registerOutput<PrivateLinkServiceResponse?>(
       'privateLinkService',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PrivateLinkServiceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     provisioningState = registerOutput<String>('provisioningState');
     resourceGuid = registerOutput<String>('resourceGuid');
@@ -591,7 +633,16 @@ class NetworkInterface extends pulumi.CustomResource {
       'tapConfigurations',
     );
     type = registerOutput<String>('type');
-    virtualMachine = registerOutput<SubResourceResponse>('virtualMachine');
+    virtualMachine = registerOutput<SubResourceResponse>(
+      'virtualMachine',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vnetEncryptionSupported = registerOutput<bool>('vnetEncryptionSupported');
     workloadType = registerOutput<String?>('workloadType');
   }

@@ -500,7 +500,16 @@ class ExpressRouteCircuit extends pulumi.CustomResource {
       'enableDirectPortRateLimit',
     );
     etag = registerOutput<String>('etag');
-    expressRoutePort = registerOutput<SubResourceResponse?>('expressRoutePort');
+    expressRoutePort = registerOutput<SubResourceResponse?>(
+      'expressRoutePort',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     gatewayManagerEtag = registerOutput<String?>('gatewayManagerEtag');
     globalReachEnabled = registerOutput<bool?>('globalReachEnabled');
     location = registerOutput<String?>('location');
@@ -512,11 +521,27 @@ class ExpressRouteCircuit extends pulumi.CustomResource {
     serviceProviderProperties =
         registerOutput<ExpressRouteCircuitServiceProviderPropertiesResponse?>(
           'serviceProviderProperties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ExpressRouteCircuitServiceProviderPropertiesResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     serviceProviderProvisioningState = registerOutput<String?>(
       'serviceProviderProvisioningState',
     );
-    sku = registerOutput<ExpressRouteCircuitSkuResponse?>('sku');
+    sku = registerOutput<ExpressRouteCircuitSkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExpressRouteCircuitSkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     stag = registerOutput<int>('stag');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

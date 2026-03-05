@@ -304,7 +304,16 @@ class DatabaseAccountCassandraTable extends pulumi.CustomResource {
     defaultTtl = registerOutput<int?>('defaultTtl');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    schema = registerOutput<CassandraSchemaResponse?>('schema');
+    schema = registerOutput<CassandraSchemaResponse?>(
+      'schema',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CassandraSchemaResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

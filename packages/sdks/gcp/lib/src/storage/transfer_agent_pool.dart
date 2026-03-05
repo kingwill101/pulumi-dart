@@ -280,6 +280,13 @@ class TransferAgentPool extends pulumi.CustomResource {
        ) {
     bandwidthLimit = registerOutput<TransferAgentPoolBandwidthLimit?>(
       'bandwidthLimit',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TransferAgentPoolBandwidthLimit.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
@@ -312,6 +319,13 @@ class TransferAgentPool extends pulumi.CustomResource {
        ) {
     bandwidthLimit = registerOutput<TransferAgentPoolBandwidthLimit?>(
       'bandwidthLimit',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TransferAgentPoolBandwidthLimit.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');

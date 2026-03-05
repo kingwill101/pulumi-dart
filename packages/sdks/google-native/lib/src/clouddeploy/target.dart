@@ -72,7 +72,16 @@ class Target extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     annotations = registerOutput<Map<String, String>>('annotations');
-    anthosCluster = registerOutput<AnthosClusterResponse>('anthosCluster');
+    anthosCluster = registerOutput<AnthosClusterResponse>(
+      'anthosCluster',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AnthosClusterResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     deployParameters = registerOutput<Map<String, String>>('deployParameters');
     description = registerOutput<String>('description');
@@ -80,15 +89,42 @@ class Target extends pulumi.CustomResource {
     executionConfigs = registerOutput<List<Map<String, dynamic>>>(
       'executionConfigs',
     );
-    gke = registerOutput<GkeClusterResponse>('gke');
+    gke = registerOutput<GkeClusterResponse>(
+      'gke',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GkeClusterResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
-    multiTarget = registerOutput<MultiTargetResponse>('multiTarget');
+    multiTarget = registerOutput<MultiTargetResponse>(
+      'multiTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MultiTargetResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');
     requireApproval = registerOutput<bool>('requireApproval');
-    run = registerOutput<CloudRunLocationResponse>('run');
+    run = registerOutput<CloudRunLocationResponse>(
+      'run',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CloudRunLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     targetId = registerOutput<String>('targetId');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');

@@ -217,6 +217,13 @@ class CustomRoutingAccelerator extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     attributes = registerOutput<CustomRoutingAcceleratorAttributes?>(
       'attributes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomRoutingAcceleratorAttributes.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dnsName = registerOutput<String>('dnsName');
     enabled = registerOutput<bool?>('enabled');
@@ -255,6 +262,13 @@ class CustomRoutingAccelerator extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     attributes = registerOutput<CustomRoutingAcceleratorAttributes?>(
       'attributes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomRoutingAcceleratorAttributes.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dnsName = registerOutput<String>('dnsName');
     enabled = registerOutput<bool?>('enabled');

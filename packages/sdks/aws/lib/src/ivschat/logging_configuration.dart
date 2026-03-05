@@ -708,6 +708,13 @@ class LoggingConfiguration extends pulumi.CustomResource {
     destinationConfiguration =
         registerOutput<LoggingConfigurationDestinationConfiguration?>(
           'destinationConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LoggingConfigurationDestinationConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -743,6 +750,13 @@ class LoggingConfiguration extends pulumi.CustomResource {
     destinationConfiguration =
         registerOutput<LoggingConfigurationDestinationConfiguration?>(
           'destinationConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LoggingConfigurationDestinationConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

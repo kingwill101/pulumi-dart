@@ -730,7 +730,16 @@ class ADLSGen2FileDataSetMapping extends pulumi.CustomResource {
     resourceGroup = registerOutput<String>('resourceGroup');
     storageAccountName = registerOutput<String>('storageAccountName');
     subscriptionId = registerOutput<String>('subscriptionId');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

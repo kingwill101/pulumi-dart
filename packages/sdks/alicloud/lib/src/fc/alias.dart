@@ -235,7 +235,16 @@ class Alias extends pulumi.CustomResource {
       ) {
     aliasName = registerOutput<String>('aliasName');
     description = registerOutput<String?>('description');
-    routingConfig = registerOutput<AliasRoutingConfig?>('routingConfig');
+    routingConfig = registerOutput<AliasRoutingConfig?>(
+      'routingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AliasRoutingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     serviceName = registerOutput<String>('serviceName');
     serviceVersion = registerOutput<String>('serviceVersion');
   }
@@ -261,7 +270,16 @@ class Alias extends pulumi.CustomResource {
        ) {
     aliasName = registerOutput<String>('aliasName');
     description = registerOutput<String?>('description');
-    routingConfig = registerOutput<AliasRoutingConfig?>('routingConfig');
+    routingConfig = registerOutput<AliasRoutingConfig?>(
+      'routingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AliasRoutingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     serviceName = registerOutput<String>('serviceName');
     serviceVersion = registerOutput<String>('serviceVersion');
   }

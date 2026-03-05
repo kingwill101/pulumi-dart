@@ -1007,9 +1007,27 @@ class ConfigurationStore extends pulumi.CustomResource {
     dataPlaneProxyPrivateLinkDelegationEnabled = registerOutput<bool?>(
       'dataPlaneProxyPrivateLinkDelegationEnabled',
     );
-    encryption = registerOutput<ConfigurationStoreEncryption?>('encryption');
+    encryption = registerOutput<ConfigurationStoreEncryption?>(
+      'encryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigurationStoreEncryption.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     endpoint = registerOutput<String>('endpoint');
-    identity = registerOutput<ConfigurationStoreIdentity?>('identity');
+    identity = registerOutput<ConfigurationStoreIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigurationStoreIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -1063,9 +1081,27 @@ class ConfigurationStore extends pulumi.CustomResource {
     dataPlaneProxyPrivateLinkDelegationEnabled = registerOutput<bool?>(
       'dataPlaneProxyPrivateLinkDelegationEnabled',
     );
-    encryption = registerOutput<ConfigurationStoreEncryption?>('encryption');
+    encryption = registerOutput<ConfigurationStoreEncryption?>(
+      'encryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigurationStoreEncryption.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     endpoint = registerOutput<String>('endpoint');
-    identity = registerOutput<ConfigurationStoreIdentity?>('identity');
+    identity = registerOutput<ConfigurationStoreIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigurationStoreIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

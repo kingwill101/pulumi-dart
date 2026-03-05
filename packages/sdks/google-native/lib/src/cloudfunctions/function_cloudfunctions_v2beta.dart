@@ -68,11 +68,25 @@ class FunctionCloudfunctionsV2beta extends pulumi.CustomResource {
        ) {
     buildConfig = registerOutput<BuildConfigResponseCloudfunctionsV2beta>(
       'buildConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BuildConfigResponseCloudfunctionsV2beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String>('description');
     environment = registerOutput<String>('environment');
     eventTrigger = registerOutput<EventTriggerResponseCloudfunctionsV2beta>(
       'eventTrigger',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventTriggerResponseCloudfunctionsV2beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     functionId = registerOutput<String?>('functionId');
     kmsKeyName = registerOutput<String>('kmsKeyName');
@@ -83,6 +97,13 @@ class FunctionCloudfunctionsV2beta extends pulumi.CustomResource {
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
     serviceConfig = registerOutput<ServiceConfigResponseCloudfunctionsV2beta>(
       'serviceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceConfigResponseCloudfunctionsV2beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     state = registerOutput<String>('state');
     stateMessages = registerOutput<List<Map<String, dynamic>>>('stateMessages');

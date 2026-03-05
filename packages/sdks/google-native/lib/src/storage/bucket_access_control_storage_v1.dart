@@ -71,6 +71,13 @@ class BucketAccessControlStorageV1 extends pulumi.CustomResource {
     kind = registerOutput<String>('kind');
     projectTeam = registerOutput<BucketAccessControlProjectTeamResponse>(
       'projectTeam',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketAccessControlProjectTeamResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     role = registerOutput<String>('role');
     selfLink = registerOutput<String>('selfLink');

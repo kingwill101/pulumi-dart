@@ -741,6 +741,13 @@ class Environment extends pulumi.CustomResource {
     forceUpdate = registerOutput<bool?>('forceUpdate');
     highAvailabilityConfig = registerOutput<EnvironmentHighAvailabilityConfig?>(
       'highAvailabilityConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnvironmentHighAvailabilityConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     instanceType = registerOutput<String>('instanceType');
     kmsKeyId = registerOutput<String?>('kmsKeyId');
@@ -754,11 +761,27 @@ class Environment extends pulumi.CustomResource {
     securityGroupIds = registerOutput<List<String>>('securityGroupIds');
     storageConfiguration = registerOutput<EnvironmentStorageConfiguration?>(
       'storageConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnvironmentStorageConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     subnetIds = registerOutput<List<String>>('subnetIds');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<EnvironmentTimeouts?>('timeouts');
+    timeouts = registerOutput<EnvironmentTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnvironmentTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Environment] resource's state with the given [name] and [id].
@@ -795,6 +818,13 @@ class Environment extends pulumi.CustomResource {
     forceUpdate = registerOutput<bool?>('forceUpdate');
     highAvailabilityConfig = registerOutput<EnvironmentHighAvailabilityConfig?>(
       'highAvailabilityConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnvironmentHighAvailabilityConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     instanceType = registerOutput<String>('instanceType');
     kmsKeyId = registerOutput<String?>('kmsKeyId');
@@ -808,10 +838,26 @@ class Environment extends pulumi.CustomResource {
     securityGroupIds = registerOutput<List<String>>('securityGroupIds');
     storageConfiguration = registerOutput<EnvironmentStorageConfiguration?>(
       'storageConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnvironmentStorageConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     subnetIds = registerOutput<List<String>>('subnetIds');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<EnvironmentTimeouts?>('timeouts');
+    timeouts = registerOutput<EnvironmentTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnvironmentTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

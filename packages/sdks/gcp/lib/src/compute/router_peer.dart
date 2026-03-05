@@ -2630,7 +2630,16 @@ class RouterPeer extends pulumi.CustomResource {
       'advertisedIpRanges',
     );
     advertisedRoutePriority = registerOutput<int?>('advertisedRoutePriority');
-    bfd = registerOutput<RouterPeerBfd>('bfd');
+    bfd = registerOutput<RouterPeerBfd>(
+      'bfd',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RouterPeerBfd.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     customLearnedIpRanges = registerOutput<List<Map<String, dynamic>>?>(
       'customLearnedIpRanges',
     );
@@ -2655,6 +2664,13 @@ class RouterPeer extends pulumi.CustomResource {
     managementType = registerOutput<String>('managementType');
     md5AuthenticationKey = registerOutput<RouterPeerMd5AuthenticationKey?>(
       'md5AuthenticationKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RouterPeerMd5AuthenticationKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     peerAsn = registerOutput<int>('peerAsn');
@@ -2704,7 +2720,16 @@ class RouterPeer extends pulumi.CustomResource {
       'advertisedIpRanges',
     );
     advertisedRoutePriority = registerOutput<int?>('advertisedRoutePriority');
-    bfd = registerOutput<RouterPeerBfd>('bfd');
+    bfd = registerOutput<RouterPeerBfd>(
+      'bfd',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RouterPeerBfd.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     customLearnedIpRanges = registerOutput<List<Map<String, dynamic>>?>(
       'customLearnedIpRanges',
     );
@@ -2729,6 +2754,13 @@ class RouterPeer extends pulumi.CustomResource {
     managementType = registerOutput<String>('managementType');
     md5AuthenticationKey = registerOutput<RouterPeerMd5AuthenticationKey?>(
       'md5AuthenticationKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RouterPeerMd5AuthenticationKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     peerAsn = registerOutput<int>('peerAsn');

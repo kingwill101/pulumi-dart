@@ -557,7 +557,16 @@ class Alias extends pulumi.CustomResource {
     invokeArn = registerOutput<String>('invokeArn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    routingConfig = registerOutput<AliasRoutingConfig?>('routingConfig');
+    routingConfig = registerOutput<AliasRoutingConfig?>(
+      'routingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AliasRoutingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Alias] resource's state with the given [name] and [id].
@@ -586,6 +595,15 @@ class Alias extends pulumi.CustomResource {
     invokeArn = registerOutput<String>('invokeArn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    routingConfig = registerOutput<AliasRoutingConfig?>('routingConfig');
+    routingConfig = registerOutput<AliasRoutingConfig?>(
+      'routingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AliasRoutingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

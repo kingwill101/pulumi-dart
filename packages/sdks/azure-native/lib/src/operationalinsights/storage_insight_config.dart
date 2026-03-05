@@ -239,8 +239,26 @@ class StorageInsightConfig extends pulumi.CustomResource {
     containers = registerOutput<List<String>?>('containers');
     eTag = registerOutput<String?>('eTag');
     this.name = registerOutput<String>('name');
-    status = registerOutput<StorageInsightStatusResponse>('status');
-    storageAccount = registerOutput<StorageAccountResponse>('storageAccount');
+    status = registerOutput<StorageInsightStatusResponse>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StorageInsightStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    storageAccount = registerOutput<StorageAccountResponse>(
+      'storageAccount',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StorageAccountResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tables = registerOutput<List<String>?>('tables');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

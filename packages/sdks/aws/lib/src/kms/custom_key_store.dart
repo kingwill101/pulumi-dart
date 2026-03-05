@@ -475,6 +475,13 @@ class CustomKeyStore extends pulumi.CustomResource {
     xksProxyAuthenticationCredential =
         registerOutput<CustomKeyStoreXksProxyAuthenticationCredential?>(
           'xksProxyAuthenticationCredential',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CustomKeyStoreXksProxyAuthenticationCredential.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     xksProxyConnectivity = registerOutput<String?>('xksProxyConnectivity');
     xksProxyUriEndpoint = registerOutput<String?>('xksProxyUriEndpoint');
@@ -516,6 +523,13 @@ class CustomKeyStore extends pulumi.CustomResource {
     xksProxyAuthenticationCredential =
         registerOutput<CustomKeyStoreXksProxyAuthenticationCredential?>(
           'xksProxyAuthenticationCredential',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CustomKeyStoreXksProxyAuthenticationCredential.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     xksProxyConnectivity = registerOutput<String?>('xksProxyConnectivity');
     xksProxyUriEndpoint = registerOutput<String?>('xksProxyUriEndpoint');

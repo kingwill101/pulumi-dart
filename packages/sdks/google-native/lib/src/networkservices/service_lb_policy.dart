@@ -53,11 +53,25 @@ class ServiceLbPolicy extends pulumi.CustomResource {
     autoCapacityDrain =
         registerOutput<ServiceLbPolicyAutoCapacityDrainResponse>(
           'autoCapacityDrain',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ServiceLbPolicyAutoCapacityDrainResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     failoverConfig = registerOutput<ServiceLbPolicyFailoverConfigResponse>(
       'failoverConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceLbPolicyFailoverConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     labels = registerOutput<Map<String, String>>('labels');
     loadBalancingAlgorithm = registerOutput<String>('loadBalancingAlgorithm');

@@ -225,6 +225,13 @@ class ExpressGatewayService extends pulumi.CustomResource {
     );
     primaryContainer = registerOutput<ExpressGatewayServicePrimaryContainer>(
       'primaryContainer',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExpressGatewayServicePrimaryContainer.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     scalingTargets = registerOutput<List<Map<String, dynamic>>>(
@@ -236,7 +243,16 @@ class ExpressGatewayService extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     taskRoleArn = registerOutput<String?>('taskRoleArn');
-    timeouts = registerOutput<ExpressGatewayServiceTimeouts?>('timeouts');
+    timeouts = registerOutput<ExpressGatewayServiceTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExpressGatewayServiceTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     waitForSteadyState = registerOutput<bool>('waitForSteadyState');
   }
 
@@ -276,6 +292,13 @@ class ExpressGatewayService extends pulumi.CustomResource {
     );
     primaryContainer = registerOutput<ExpressGatewayServicePrimaryContainer>(
       'primaryContainer',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExpressGatewayServicePrimaryContainer.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     scalingTargets = registerOutput<List<Map<String, dynamic>>>(
@@ -287,7 +310,16 @@ class ExpressGatewayService extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     taskRoleArn = registerOutput<String?>('taskRoleArn');
-    timeouts = registerOutput<ExpressGatewayServiceTimeouts?>('timeouts');
+    timeouts = registerOutput<ExpressGatewayServiceTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExpressGatewayServiceTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     waitForSteadyState = registerOutput<bool>('waitForSteadyState');
   }
 }

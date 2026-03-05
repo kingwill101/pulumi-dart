@@ -272,8 +272,24 @@ class OrchestratorInstanceServiceDetails extends pulumi.CustomResource {
     clusterRootCA = registerOutput<String?>('clusterRootCA');
     controllerDetails = registerOutput<ControllerDetailsResponse>(
       'controllerDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ControllerDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    identity = registerOutput<OrchestratorIdentityResponse?>('identity');
+    identity = registerOutput<OrchestratorIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrchestratorIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kind = registerOutput<String>('kind');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');

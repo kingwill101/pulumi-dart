@@ -153,7 +153,16 @@ class GuardrailVersion extends pulumi.CustomResource {
     guardrailArn = registerOutput<String>('guardrailArn');
     region = registerOutput<String>('region');
     skipDestroy = registerOutput<bool?>('skipDestroy');
-    timeouts = registerOutput<GuardrailVersionTimeouts?>('timeouts');
+    timeouts = registerOutput<GuardrailVersionTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GuardrailVersionTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     version = registerOutput<String>('version');
   }
 
@@ -184,7 +193,16 @@ class GuardrailVersion extends pulumi.CustomResource {
     guardrailArn = registerOutput<String>('guardrailArn');
     region = registerOutput<String>('region');
     skipDestroy = registerOutput<bool?>('skipDestroy');
-    timeouts = registerOutput<GuardrailVersionTimeouts?>('timeouts');
+    timeouts = registerOutput<GuardrailVersionTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GuardrailVersionTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     version = registerOutput<String>('version');
   }
 }

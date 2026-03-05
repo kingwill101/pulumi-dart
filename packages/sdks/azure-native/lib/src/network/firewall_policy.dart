@@ -752,17 +752,69 @@ class FirewallPolicy extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    basePolicy = registerOutput<SubResourceResponse?>('basePolicy');
+    basePolicy = registerOutput<SubResourceResponse?>(
+      'basePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     childPolicies = registerOutput<List<Map<String, dynamic>>>('childPolicies');
-    dnsSettings = registerOutput<DnsSettingsResponse?>('dnsSettings');
+    dnsSettings = registerOutput<DnsSettingsResponse?>(
+      'dnsSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DnsSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
-    explicitProxy = registerOutput<ExplicitProxyResponse?>('explicitProxy');
+    explicitProxy = registerOutput<ExplicitProxyResponse?>(
+      'explicitProxy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExplicitProxyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     firewalls = registerOutput<List<Map<String, dynamic>>>('firewalls');
-    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
-    insights = registerOutput<FirewallPolicyInsightsResponse?>('insights');
+    identity = registerOutput<ManagedServiceIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedServiceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    insights = registerOutput<FirewallPolicyInsightsResponse?>(
+      'insights',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FirewallPolicyInsightsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     intrusionDetection =
         registerOutput<FirewallPolicyIntrusionDetectionResponse?>(
           'intrusionDetection',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FirewallPolicyIntrusionDetectionResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
@@ -771,18 +823,59 @@ class FirewallPolicy extends pulumi.CustomResource {
       'ruleCollectionGroups',
     );
     size = registerOutput<String>('size');
-    sku = registerOutput<FirewallPolicySkuResponse?>('sku');
-    snat = registerOutput<FirewallPolicySNATResponse?>('snat');
-    sql = registerOutput<FirewallPolicySQLResponse?>('sql');
+    sku = registerOutput<FirewallPolicySkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FirewallPolicySkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    snat = registerOutput<FirewallPolicySNATResponse?>(
+      'snat',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FirewallPolicySNATResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    sql = registerOutput<FirewallPolicySQLResponse?>(
+      'sql',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FirewallPolicySQLResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     threatIntelMode = registerOutput<String?>('threatIntelMode');
     threatIntelWhitelist =
         registerOutput<FirewallPolicyThreatIntelWhitelistResponse?>(
           'threatIntelWhitelist',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FirewallPolicyThreatIntelWhitelistResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     transportSecurity =
         registerOutput<FirewallPolicyTransportSecurityResponse?>(
           'transportSecurity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FirewallPolicyTransportSecurityResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     type = registerOutput<String>('type');
   }

@@ -1,15 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getIpv6Range.
 class GetIpv6RangeResult {
   final String id;
   final bool isBgp;
+
   /// A set of Linodes targeted by this IPv6 range. Includes Linodes with IP sharing.
   final List<int> linodes;
+
   /// The prefix length of the address, denoting how many addresses can be assigned from this range.
   final int prefix;
   final String range;
+
   /// The region for this range of IPv6 addresses.
   final String region;
 
@@ -51,4 +53,3 @@ class GetIpv6RangeResult {
     );
   }
 }
-

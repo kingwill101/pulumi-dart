@@ -967,7 +967,16 @@ class ZoneIamBinding extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<ZoneIamBindingCondition?>('condition');
+    condition = registerOutput<ZoneIamBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ZoneIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dataplexZone = registerOutput<String>('dataplexZone');
     etag = registerOutput<String>('etag');
     lake = registerOutput<String>('lake');
@@ -1000,7 +1009,16 @@ class ZoneIamBinding extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<ZoneIamBindingCondition?>('condition');
+    condition = registerOutput<ZoneIamBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ZoneIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dataplexZone = registerOutput<String>('dataplexZone');
     etag = registerOutput<String>('etag');
     lake = registerOutput<String>('lake');

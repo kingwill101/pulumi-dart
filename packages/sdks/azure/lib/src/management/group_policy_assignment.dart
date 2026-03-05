@@ -332,7 +332,16 @@ class GroupPolicyAssignment extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     enforce = registerOutput<bool?>('enforce');
-    identity = registerOutput<GroupPolicyAssignmentIdentity?>('identity');
+    identity = registerOutput<GroupPolicyAssignmentIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupPolicyAssignmentIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     managementGroupId = registerOutput<String>('managementGroupId');
     metadata = registerOutput<String>('metadata');
@@ -375,7 +384,16 @@ class GroupPolicyAssignment extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     enforce = registerOutput<bool?>('enforce');
-    identity = registerOutput<GroupPolicyAssignmentIdentity?>('identity');
+    identity = registerOutput<GroupPolicyAssignmentIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GroupPolicyAssignmentIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     managementGroupId = registerOutput<String>('managementGroupId');
     metadata = registerOutput<String>('metadata');

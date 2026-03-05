@@ -93,17 +93,56 @@ class Routine extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     remoteFunctionOptions = registerOutput<RemoteFunctionOptionsResponse>(
       'remoteFunctionOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RemoteFunctionOptionsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     returnTableType = registerOutput<StandardSqlTableTypeResponse>(
       'returnTableType',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StandardSqlTableTypeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    returnType = registerOutput<StandardSqlDataTypeResponse>('returnType');
+    returnType = registerOutput<StandardSqlDataTypeResponse>(
+      'returnType',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StandardSqlDataTypeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     routineReference = registerOutput<RoutineReferenceResponse>(
       'routineReference',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RoutineReferenceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     routineType = registerOutput<String>('routineType');
     securityMode = registerOutput<String>('securityMode');
-    sparkOptions = registerOutput<SparkOptionsResponse>('sparkOptions');
+    sparkOptions = registerOutput<SparkOptionsResponse>(
+      'sparkOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkOptionsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     strictMode = registerOutput<bool>('strictMode');
   }
 }

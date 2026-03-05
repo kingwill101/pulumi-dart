@@ -553,9 +553,23 @@ class SparkCluster extends pulumi.CustomResource {
     clusterVersion = registerOutput<String>('clusterVersion');
     componentVersion = registerOutput<SparkClusterComponentVersion>(
       'componentVersion',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkClusterComponentVersion.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     computeIsolation = registerOutput<SparkClusterComputeIsolation?>(
       'computeIsolation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkClusterComputeIsolation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     diskEncryptions = registerOutput<List<Map<String, dynamic>>?>(
       'diskEncryptions',
@@ -563,26 +577,101 @@ class SparkCluster extends pulumi.CustomResource {
     encryptionInTransitEnabled = registerOutput<bool?>(
       'encryptionInTransitEnabled',
     );
-    extension = registerOutput<SparkClusterExtension?>('extension');
-    gateway = registerOutput<SparkClusterGateway>('gateway');
+    extension = registerOutput<SparkClusterExtension?>(
+      'extension',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkClusterExtension.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    gateway = registerOutput<SparkClusterGateway>(
+      'gateway',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkClusterGateway.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     httpsEndpoint = registerOutput<String>('httpsEndpoint');
     location = registerOutput<String>('location');
-    metastores = registerOutput<SparkClusterMetastores?>('metastores');
-    monitor = registerOutput<SparkClusterMonitor?>('monitor');
+    metastores = registerOutput<SparkClusterMetastores?>(
+      'metastores',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkClusterMetastores.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    monitor = registerOutput<SparkClusterMonitor?>(
+      'monitor',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkClusterMonitor.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
-    network = registerOutput<SparkClusterNetwork?>('network');
+    network = registerOutput<SparkClusterNetwork?>(
+      'network',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkClusterNetwork.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     privateLinkConfiguration =
         registerOutput<SparkClusterPrivateLinkConfiguration?>(
           'privateLinkConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SparkClusterPrivateLinkConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    roles = registerOutput<SparkClusterRoles>('roles');
+    roles = registerOutput<SparkClusterRoles>(
+      'roles',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkClusterRoles.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     securityProfile = registerOutput<SparkClusterSecurityProfile?>(
       'securityProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkClusterSecurityProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sshEndpoint = registerOutput<String>('sshEndpoint');
     storageAccountGen2 = registerOutput<SparkClusterStorageAccountGen2?>(
       'storageAccountGen2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkClusterStorageAccountGen2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     storageAccounts = registerOutput<List<Map<String, dynamic>>?>(
       'storageAccounts',
@@ -619,9 +708,23 @@ class SparkCluster extends pulumi.CustomResource {
     clusterVersion = registerOutput<String>('clusterVersion');
     componentVersion = registerOutput<SparkClusterComponentVersion>(
       'componentVersion',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkClusterComponentVersion.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     computeIsolation = registerOutput<SparkClusterComputeIsolation?>(
       'computeIsolation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkClusterComputeIsolation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     diskEncryptions = registerOutput<List<Map<String, dynamic>>?>(
       'diskEncryptions',
@@ -629,26 +732,101 @@ class SparkCluster extends pulumi.CustomResource {
     encryptionInTransitEnabled = registerOutput<bool?>(
       'encryptionInTransitEnabled',
     );
-    extension = registerOutput<SparkClusterExtension?>('extension');
-    gateway = registerOutput<SparkClusterGateway>('gateway');
+    extension = registerOutput<SparkClusterExtension?>(
+      'extension',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkClusterExtension.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    gateway = registerOutput<SparkClusterGateway>(
+      'gateway',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkClusterGateway.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     httpsEndpoint = registerOutput<String>('httpsEndpoint');
     location = registerOutput<String>('location');
-    metastores = registerOutput<SparkClusterMetastores?>('metastores');
-    monitor = registerOutput<SparkClusterMonitor?>('monitor');
+    metastores = registerOutput<SparkClusterMetastores?>(
+      'metastores',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkClusterMetastores.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    monitor = registerOutput<SparkClusterMonitor?>(
+      'monitor',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkClusterMonitor.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
-    network = registerOutput<SparkClusterNetwork?>('network');
+    network = registerOutput<SparkClusterNetwork?>(
+      'network',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkClusterNetwork.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     privateLinkConfiguration =
         registerOutput<SparkClusterPrivateLinkConfiguration?>(
           'privateLinkConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SparkClusterPrivateLinkConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    roles = registerOutput<SparkClusterRoles>('roles');
+    roles = registerOutput<SparkClusterRoles>(
+      'roles',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkClusterRoles.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     securityProfile = registerOutput<SparkClusterSecurityProfile?>(
       'securityProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkClusterSecurityProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sshEndpoint = registerOutput<String>('sshEndpoint');
     storageAccountGen2 = registerOutput<SparkClusterStorageAccountGen2?>(
       'storageAccountGen2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkClusterStorageAccountGen2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     storageAccounts = registerOutput<List<Map<String, dynamic>>?>(
       'storageAccounts',

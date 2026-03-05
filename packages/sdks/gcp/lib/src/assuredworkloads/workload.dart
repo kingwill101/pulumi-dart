@@ -876,7 +876,16 @@ class Workload extends pulumi.CustomResource {
     );
     enableSovereignControls = registerOutput<bool>('enableSovereignControls');
     kajEnrollmentState = registerOutput<String>('kajEnrollmentState');
-    kmsSettings = registerOutput<WorkloadKmsSettings?>('kmsSettings');
+    kmsSettings = registerOutput<WorkloadKmsSettings?>(
+      'kmsSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkloadKmsSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -884,6 +893,13 @@ class Workload extends pulumi.CustomResource {
     partner = registerOutput<String?>('partner');
     partnerPermissions = registerOutput<WorkloadPartnerPermissions?>(
       'partnerPermissions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkloadPartnerPermissions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     partnerServicesBillingAccount = registerOutput<String?>(
       'partnerServicesBillingAccount',
@@ -904,6 +920,13 @@ class Workload extends pulumi.CustomResource {
     );
     workloadOptions = registerOutput<WorkloadWorkloadOptions?>(
       'workloadOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkloadWorkloadOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -946,7 +969,16 @@ class Workload extends pulumi.CustomResource {
     );
     enableSovereignControls = registerOutput<bool>('enableSovereignControls');
     kajEnrollmentState = registerOutput<String>('kajEnrollmentState');
-    kmsSettings = registerOutput<WorkloadKmsSettings?>('kmsSettings');
+    kmsSettings = registerOutput<WorkloadKmsSettings?>(
+      'kmsSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkloadKmsSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -954,6 +986,13 @@ class Workload extends pulumi.CustomResource {
     partner = registerOutput<String?>('partner');
     partnerPermissions = registerOutput<WorkloadPartnerPermissions?>(
       'partnerPermissions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkloadPartnerPermissions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     partnerServicesBillingAccount = registerOutput<String?>(
       'partnerServicesBillingAccount',
@@ -974,6 +1013,13 @@ class Workload extends pulumi.CustomResource {
     );
     workloadOptions = registerOutput<WorkloadWorkloadOptions?>(
       'workloadOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkloadWorkloadOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

@@ -713,6 +713,13 @@ class DataExchangeSubscription extends pulumi.CustomResource {
     destinationDataset =
         registerOutput<DataExchangeSubscriptionDestinationDataset?>(
           'destinationDataset',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataExchangeSubscriptionDestinationDataset.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     lastModifyTime = registerOutput<String>('lastModifyTime');
     linkedDatasetMaps = registerOutput<List<Map<String, dynamic>>>(
@@ -767,6 +774,13 @@ class DataExchangeSubscription extends pulumi.CustomResource {
     destinationDataset =
         registerOutput<DataExchangeSubscriptionDestinationDataset?>(
           'destinationDataset',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataExchangeSubscriptionDestinationDataset.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     lastModifyTime = registerOutput<String>('lastModifyTime');
     linkedDatasetMaps = registerOutput<List<Map<String, dynamic>>>(

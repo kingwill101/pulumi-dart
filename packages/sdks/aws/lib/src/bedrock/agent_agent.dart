@@ -581,7 +581,16 @@ class AgentAgent extends pulumi.CustomResource {
     skipResourceInUseCheck = registerOutput<bool>('skipResourceInUseCheck');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<AgentAgentTimeouts?>('timeouts');
+    timeouts = registerOutput<AgentAgentTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentAgentTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [AgentAgent] resource's state with the given [name] and [id].
@@ -635,6 +644,15 @@ class AgentAgent extends pulumi.CustomResource {
     skipResourceInUseCheck = registerOutput<bool>('skipResourceInUseCheck');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<AgentAgentTimeouts?>('timeouts');
+    timeouts = registerOutput<AgentAgentTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentAgentTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

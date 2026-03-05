@@ -206,6 +206,13 @@ class Project extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     azureAuthenticationInfo = registerOutput<AzureActiveDirectoryAppResponse?>(
       'azureAuthenticationInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AzureActiveDirectoryAppResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     creationTime = registerOutput<String>('creationTime');
     databasesInfo = registerOutput<List<Map<String, dynamic>>?>(
@@ -217,12 +224,35 @@ class Project extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     sourceConnectionInfo = registerOutput<MiSqlConnectionInfoResponse?>(
       'sourceConnectionInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MiSqlConnectionInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sourcePlatform = registerOutput<String>('sourcePlatform');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     targetConnectionInfo = registerOutput<MiSqlConnectionInfoResponse?>(
       'targetConnectionInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MiSqlConnectionInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     targetPlatform = registerOutput<String>('targetPlatform');
     type = registerOutput<String>('type');

@@ -818,7 +818,16 @@ class Trigger extends pulumi.CustomResource {
       'eventBatchingConditions',
     );
     this.name = registerOutput<String>('name');
-    predicate = registerOutput<TriggerPredicate?>('predicate');
+    predicate = registerOutput<TriggerPredicate?>(
+      'predicate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TriggerPredicate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     schedule = registerOutput<String?>('schedule');
     startOnCreation = registerOutput<bool?>('startOnCreation');
@@ -860,7 +869,16 @@ class Trigger extends pulumi.CustomResource {
       'eventBatchingConditions',
     );
     this.name = registerOutput<String>('name');
-    predicate = registerOutput<TriggerPredicate?>('predicate');
+    predicate = registerOutput<TriggerPredicate?>(
+      'predicate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TriggerPredicate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     schedule = registerOutput<String?>('schedule');
     startOnCreation = registerOutput<bool?>('startOnCreation');

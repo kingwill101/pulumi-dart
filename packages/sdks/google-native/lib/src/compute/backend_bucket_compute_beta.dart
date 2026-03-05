@@ -58,6 +58,13 @@ class BackendBucketComputeBeta extends pulumi.CustomResource {
     bucketName = registerOutput<String>('bucketName');
     cdnPolicy = registerOutput<BackendBucketCdnPolicyResponseComputeBeta>(
       'cdnPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackendBucketCdnPolicyResponseComputeBeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     compressionMode = registerOutput<String>('compressionMode');
     creationTimestamp = registerOutput<String>('creationTimestamp');

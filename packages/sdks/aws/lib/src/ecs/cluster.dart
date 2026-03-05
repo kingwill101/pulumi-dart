@@ -944,11 +944,27 @@ class Cluster extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    configuration = registerOutput<ClusterConfiguration?>('configuration');
+    configuration = registerOutput<ClusterConfiguration?>(
+      'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     serviceConnectDefaults = registerOutput<ClusterServiceConnectDefaults?>(
       'serviceConnectDefaults',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterServiceConnectDefaults.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     settings = registerOutput<List<Map<String, dynamic>>>('settings');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -979,11 +995,27 @@ class Cluster extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    configuration = registerOutput<ClusterConfiguration?>('configuration');
+    configuration = registerOutput<ClusterConfiguration?>(
+      'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     serviceConnectDefaults = registerOutput<ClusterServiceConnectDefaults?>(
       'serviceConnectDefaults',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterServiceConnectDefaults.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     settings = registerOutput<List<Map<String, dynamic>>>('settings');
     tags = registerOutput<Map<String, String>?>('tags');

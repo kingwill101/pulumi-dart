@@ -321,7 +321,16 @@ class OrderV1 extends pulumi.CustomResource {
     containerRef = registerOutput<String>('containerRef');
     created = registerOutput<String>('created');
     creatorId = registerOutput<String>('creatorId');
-    meta = registerOutput<OrderV1Meta>('meta');
+    meta = registerOutput<OrderV1Meta>(
+      'meta',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrderV1Meta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     orderRef = registerOutput<String>('orderRef');
     region = registerOutput<String>('region');
     secretRef = registerOutput<String>('secretRef');
@@ -358,7 +367,16 @@ class OrderV1 extends pulumi.CustomResource {
     containerRef = registerOutput<String>('containerRef');
     created = registerOutput<String>('created');
     creatorId = registerOutput<String>('creatorId');
-    meta = registerOutput<OrderV1Meta>('meta');
+    meta = registerOutput<OrderV1Meta>(
+      'meta',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrderV1Meta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     orderRef = registerOutput<String>('orderRef');
     region = registerOutput<String>('region');
     secretRef = registerOutput<String>('secretRef');

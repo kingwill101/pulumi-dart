@@ -262,6 +262,13 @@ class AppServiceEnvironment extends pulumi.CustomResource {
     customDnsSuffixConfiguration =
         registerOutput<CustomDnsSuffixConfigurationResponse?>(
           'customDnsSuffixConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CustomDnsSuffixConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dedicatedHostCount = registerOutput<int?>('dedicatedHostCount');
     dnsSuffix = registerOutput<String?>('dnsSuffix');
@@ -280,6 +287,13 @@ class AppServiceEnvironment extends pulumi.CustomResource {
     networkingConfiguration =
         registerOutput<AseV3NetworkingConfigurationResponse?>(
           'networkingConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AseV3NetworkingConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     provisioningState = registerOutput<String>('provisioningState');
     status = registerOutput<String>('status');
@@ -293,6 +307,13 @@ class AppServiceEnvironment extends pulumi.CustomResource {
     );
     virtualNetwork = registerOutput<VirtualNetworkProfileResponse>(
       'virtualNetwork',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualNetworkProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     zoneRedundant = registerOutput<bool?>('zoneRedundant');
   }

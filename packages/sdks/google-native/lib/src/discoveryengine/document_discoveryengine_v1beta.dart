@@ -56,6 +56,13 @@ class DocumentDiscoveryengineV1beta extends pulumi.CustomResource {
     content =
         registerOutput<GoogleCloudDiscoveryengineV1betaDocumentContentResponse>(
           'content',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDiscoveryengineV1betaDocumentContentResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dataStoreId = registerOutput<String>('dataStoreId');
     derivedStructData = registerOutput<Map<String, String>>(

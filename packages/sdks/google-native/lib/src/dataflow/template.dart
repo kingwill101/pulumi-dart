@@ -39,12 +39,37 @@ class Template extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     location = registerOutput<String>('location');
-    metadata = registerOutput<TemplateMetadataResponse>('metadata');
+    metadata = registerOutput<TemplateMetadataResponse>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TemplateMetadataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     runtimeMetadata = registerOutput<RuntimeMetadataResponse>(
       'runtimeMetadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RuntimeMetadataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    status = registerOutput<StatusResponse>('status');
+    status = registerOutput<StatusResponse>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     templateType = registerOutput<String>('templateType');
   }
 }

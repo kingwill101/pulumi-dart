@@ -435,6 +435,13 @@ class LocationHdfs extends pulumi.CustomResource {
     nameNodes = registerOutput<List<Map<String, dynamic>>>('nameNodes');
     qopConfiguration = registerOutput<LocationHdfsQopConfiguration>(
       'qopConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LocationHdfsQopConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     replicationFactor = registerOutput<int?>('replicationFactor');
@@ -481,6 +488,13 @@ class LocationHdfs extends pulumi.CustomResource {
     nameNodes = registerOutput<List<Map<String, dynamic>>>('nameNodes');
     qopConfiguration = registerOutput<LocationHdfsQopConfiguration>(
       'qopConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LocationHdfsQopConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     replicationFactor = registerOutput<int?>('replicationFactor');

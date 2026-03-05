@@ -355,6 +355,13 @@ class LustreFileSystem extends pulumi.CustomResource {
     dataReadCacheConfiguration =
         registerOutput<LustreFileSystemDataReadCacheConfiguration?>(
           'dataReadCacheConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LustreFileSystemDataReadCacheConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     deploymentType = registerOutput<String?>('deploymentType');
     dnsName = registerOutput<String>('dnsName');
@@ -368,10 +375,24 @@ class LustreFileSystem extends pulumi.CustomResource {
     kmsKeyId = registerOutput<String>('kmsKeyId');
     logConfiguration = registerOutput<LustreFileSystemLogConfiguration>(
       'logConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LustreFileSystemLogConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     metadataConfiguration =
         registerOutput<LustreFileSystemMetadataConfiguration>(
           'metadataConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LustreFileSystemMetadataConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     mountName = registerOutput<String>('mountName');
     networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds');
@@ -381,6 +402,13 @@ class LustreFileSystem extends pulumi.CustomResource {
     rootSquashConfiguration =
         registerOutput<LustreFileSystemRootSquashConfiguration?>(
           'rootSquashConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LustreFileSystemRootSquashConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
     skipFinalBackup = registerOutput<bool?>('skipFinalBackup');
@@ -433,6 +461,13 @@ class LustreFileSystem extends pulumi.CustomResource {
     dataReadCacheConfiguration =
         registerOutput<LustreFileSystemDataReadCacheConfiguration?>(
           'dataReadCacheConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LustreFileSystemDataReadCacheConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     deploymentType = registerOutput<String?>('deploymentType');
     dnsName = registerOutput<String>('dnsName');
@@ -446,10 +481,24 @@ class LustreFileSystem extends pulumi.CustomResource {
     kmsKeyId = registerOutput<String>('kmsKeyId');
     logConfiguration = registerOutput<LustreFileSystemLogConfiguration>(
       'logConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LustreFileSystemLogConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     metadataConfiguration =
         registerOutput<LustreFileSystemMetadataConfiguration>(
           'metadataConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LustreFileSystemMetadataConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     mountName = registerOutput<String>('mountName');
     networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds');
@@ -459,6 +508,13 @@ class LustreFileSystem extends pulumi.CustomResource {
     rootSquashConfiguration =
         registerOutput<LustreFileSystemRootSquashConfiguration?>(
           'rootSquashConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LustreFileSystemRootSquashConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
     skipFinalBackup = registerOutput<bool?>('skipFinalBackup');

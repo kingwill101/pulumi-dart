@@ -619,6 +619,13 @@ class AuthorizationProvider extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     oauth2 = registerOutput<AuthorizationProviderOAuth2SettingsResponse?>(
       'oauth2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AuthorizationProviderOAuth2SettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     type = registerOutput<String>('type');
   }

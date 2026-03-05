@@ -1132,6 +1132,13 @@ class DeploymentSetting extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     deploymentConfiguration = registerOutput<DeploymentConfigurationResponse>(
       'deploymentConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     deploymentMode = registerOutput<String>('deploymentMode');
     this.name = registerOutput<String>('name');
@@ -1139,8 +1146,24 @@ class DeploymentSetting extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     reportedProperties = registerOutput<EceReportedPropertiesResponse>(
       'reportedProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EceReportedPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

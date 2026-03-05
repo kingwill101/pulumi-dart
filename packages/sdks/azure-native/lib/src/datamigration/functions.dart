@@ -35,7 +35,8 @@ import 'list_sql_migration_service_monitoring_data_result.dart';
 /// Other available API versions: 2025-03-15-preview, 2025-06-30, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datamigration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datamigration_get_database_migrations_mongo_to_cosmos_db_rumongo_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDatabaseMigrationsMongoToCosmosDbRUMongoResult> getDatabaseMigrationsMongoToCosmosDbRUMongo(
+Future<GetDatabaseMigrationsMongoToCosmosDbRUMongoResult>
+getDatabaseMigrationsMongoToCosmosDbRUMongo(
   GetDatabaseMigrationsMongoToCosmosDbRUMongoArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -55,7 +56,8 @@ Future<GetDatabaseMigrationsMongoToCosmosDbRUMongoResult> getDatabaseMigrationsM
 /// Other available API versions: 2025-03-15-preview, 2025-06-30, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datamigration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datamigration_get_database_migrations_mongo_to_cosmos_dbv_core_mongo_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDatabaseMigrationsMongoToCosmosDbvCoreMongoResult> getDatabaseMigrationsMongoToCosmosDbvCoreMongo(
+Future<GetDatabaseMigrationsMongoToCosmosDbvCoreMongoResult>
+getDatabaseMigrationsMongoToCosmosDbvCoreMongo(
   GetDatabaseMigrationsMongoToCosmosDbvCoreMongoArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -295,7 +297,8 @@ Future<ListSqlMigrationServiceAuthKeysResult> listSqlMigrationServiceAuthKeys(
 /// Other available API versions: 2021-10-30-preview, 2022-01-30-preview, 2022-03-30-preview, 2025-03-15-preview, 2025-06-30, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datamigration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datamigration_list_sql_migration_service_monitoring_data_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListSqlMigrationServiceMonitoringDataResult> listSqlMigrationServiceMonitoringData(
+Future<ListSqlMigrationServiceMonitoringDataResult>
+listSqlMigrationServiceMonitoringData(
   ListSqlMigrationServiceMonitoringDataArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

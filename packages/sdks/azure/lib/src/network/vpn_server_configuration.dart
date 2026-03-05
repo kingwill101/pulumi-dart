@@ -373,10 +373,26 @@ class VpnServerConfiguration extends pulumi.CustomResource {
     );
     ipsecPolicy = registerOutput<VpnServerConfigurationIpsecPolicy?>(
       'ipsecPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpnServerConfigurationIpsecPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    radius = registerOutput<VpnServerConfigurationRadius?>('radius');
+    radius = registerOutput<VpnServerConfigurationRadius?>(
+      'radius',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpnServerConfigurationRadius.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
     vpnAuthenticationTypes = registerOutput<List<String>>(
@@ -420,10 +436,26 @@ class VpnServerConfiguration extends pulumi.CustomResource {
     );
     ipsecPolicy = registerOutput<VpnServerConfigurationIpsecPolicy?>(
       'ipsecPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpnServerConfigurationIpsecPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    radius = registerOutput<VpnServerConfigurationRadius?>('radius');
+    radius = registerOutput<VpnServerConfigurationRadius?>(
+      'radius',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpnServerConfigurationRadius.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
     vpnAuthenticationTypes = registerOutput<List<String>>(

@@ -1652,7 +1652,16 @@ class Migration extends pulumi.CustomResource {
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     cancel = registerOutput<String?>('cancel');
-    currentStatus = registerOutput<MigrationStatusResponse>('currentStatus');
+    currentStatus = registerOutput<MigrationStatusResponse>(
+      'currentStatus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MigrationStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dbsToCancelMigrationOn = registerOutput<List<String>?>(
       'dbsToCancelMigrationOn',
     );
@@ -1684,6 +1693,13 @@ class Migration extends pulumi.CustomResource {
     );
     sourceDbServerMetadata = registerOutput<DbServerMetadataResponse>(
       'sourceDbServerMetadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DbServerMetadataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sourceDbServerResourceId = registerOutput<String?>(
       'sourceDbServerResourceId',
@@ -1691,13 +1707,29 @@ class Migration extends pulumi.CustomResource {
     sourceType = registerOutput<String?>('sourceType');
     sslMode = registerOutput<String?>('sslMode');
     startDataMigration = registerOutput<String?>('startDataMigration');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     targetDbServerFullyQualifiedDomainName = registerOutput<String?>(
       'targetDbServerFullyQualifiedDomainName',
     );
     targetDbServerMetadata = registerOutput<DbServerMetadataResponse>(
       'targetDbServerMetadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DbServerMetadataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     targetDbServerResourceId = registerOutput<String>(
       'targetDbServerResourceId',

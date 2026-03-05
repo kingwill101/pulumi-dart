@@ -438,6 +438,13 @@ class SystemTopicEventSubscription extends pulumi.CustomResource {
     advancedFilter =
         registerOutput<SystemTopicEventSubscriptionAdvancedFilter?>(
           'advancedFilter',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SystemTopicEventSubscriptionAdvancedFilter.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     advancedFilteringOnArraysEnabled = registerOutput<bool?>(
       'advancedFilteringOnArraysEnabled',
@@ -445,14 +452,35 @@ class SystemTopicEventSubscription extends pulumi.CustomResource {
     azureFunctionEndpoint =
         registerOutput<SystemTopicEventSubscriptionAzureFunctionEndpoint?>(
           'azureFunctionEndpoint',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SystemTopicEventSubscriptionAzureFunctionEndpoint.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     deadLetterIdentity =
         registerOutput<SystemTopicEventSubscriptionDeadLetterIdentity?>(
           'deadLetterIdentity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SystemTopicEventSubscriptionDeadLetterIdentity.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     deliveryIdentity =
         registerOutput<SystemTopicEventSubscriptionDeliveryIdentity?>(
           'deliveryIdentity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SystemTopicEventSubscriptionDeliveryIdentity.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     deliveryProperties = registerOutput<List<Map<String, dynamic>>?>(
       'deliveryProperties',
@@ -469,6 +497,13 @@ class SystemTopicEventSubscription extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     retryPolicy = registerOutput<SystemTopicEventSubscriptionRetryPolicy>(
       'retryPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemTopicEventSubscriptionRetryPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     serviceBusQueueEndpointId = registerOutput<String?>(
       'serviceBusQueueEndpointId',
@@ -479,18 +514,48 @@ class SystemTopicEventSubscription extends pulumi.CustomResource {
     storageBlobDeadLetterDestination =
         registerOutput<
           SystemTopicEventSubscriptionStorageBlobDeadLetterDestination?
-        >('storageBlobDeadLetterDestination');
+        >(
+          'storageBlobDeadLetterDestination',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SystemTopicEventSubscriptionStorageBlobDeadLetterDestination.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     storageQueueEndpoint =
         registerOutput<SystemTopicEventSubscriptionStorageQueueEndpoint?>(
           'storageQueueEndpoint',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SystemTopicEventSubscriptionStorageQueueEndpoint.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     subjectFilter = registerOutput<SystemTopicEventSubscriptionSubjectFilter?>(
       'subjectFilter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemTopicEventSubscriptionSubjectFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     systemTopic = registerOutput<String>('systemTopic');
     webhookEndpoint =
         registerOutput<SystemTopicEventSubscriptionWebhookEndpoint?>(
           'webhookEndpoint',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SystemTopicEventSubscriptionWebhookEndpoint.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 
@@ -520,6 +585,13 @@ class SystemTopicEventSubscription extends pulumi.CustomResource {
     advancedFilter =
         registerOutput<SystemTopicEventSubscriptionAdvancedFilter?>(
           'advancedFilter',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SystemTopicEventSubscriptionAdvancedFilter.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     advancedFilteringOnArraysEnabled = registerOutput<bool?>(
       'advancedFilteringOnArraysEnabled',
@@ -527,14 +599,35 @@ class SystemTopicEventSubscription extends pulumi.CustomResource {
     azureFunctionEndpoint =
         registerOutput<SystemTopicEventSubscriptionAzureFunctionEndpoint?>(
           'azureFunctionEndpoint',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SystemTopicEventSubscriptionAzureFunctionEndpoint.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     deadLetterIdentity =
         registerOutput<SystemTopicEventSubscriptionDeadLetterIdentity?>(
           'deadLetterIdentity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SystemTopicEventSubscriptionDeadLetterIdentity.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     deliveryIdentity =
         registerOutput<SystemTopicEventSubscriptionDeliveryIdentity?>(
           'deliveryIdentity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SystemTopicEventSubscriptionDeliveryIdentity.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     deliveryProperties = registerOutput<List<Map<String, dynamic>>?>(
       'deliveryProperties',
@@ -551,6 +644,13 @@ class SystemTopicEventSubscription extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     retryPolicy = registerOutput<SystemTopicEventSubscriptionRetryPolicy>(
       'retryPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemTopicEventSubscriptionRetryPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     serviceBusQueueEndpointId = registerOutput<String?>(
       'serviceBusQueueEndpointId',
@@ -561,18 +661,48 @@ class SystemTopicEventSubscription extends pulumi.CustomResource {
     storageBlobDeadLetterDestination =
         registerOutput<
           SystemTopicEventSubscriptionStorageBlobDeadLetterDestination?
-        >('storageBlobDeadLetterDestination');
+        >(
+          'storageBlobDeadLetterDestination',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SystemTopicEventSubscriptionStorageBlobDeadLetterDestination.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     storageQueueEndpoint =
         registerOutput<SystemTopicEventSubscriptionStorageQueueEndpoint?>(
           'storageQueueEndpoint',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SystemTopicEventSubscriptionStorageQueueEndpoint.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     subjectFilter = registerOutput<SystemTopicEventSubscriptionSubjectFilter?>(
       'subjectFilter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemTopicEventSubscriptionSubjectFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     systemTopic = registerOutput<String>('systemTopic');
     webhookEndpoint =
         registerOutput<SystemTopicEventSubscriptionWebhookEndpoint?>(
           'webhookEndpoint',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SystemTopicEventSubscriptionWebhookEndpoint.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

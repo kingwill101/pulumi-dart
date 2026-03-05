@@ -38,6 +38,13 @@ class ChannelPartnerRepricingConfig extends pulumi.CustomResource {
     repricingConfig =
         registerOutput<GoogleCloudChannelV1RepricingConfigResponse>(
           'repricingConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudChannelV1RepricingConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     updateTime = registerOutput<String>('updateTime');
   }

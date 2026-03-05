@@ -867,6 +867,13 @@ class ProjectBucketConfig extends pulumi.CustomResource {
     bucketId = registerOutput<String>('bucketId');
     cmekSettings = registerOutput<ProjectBucketConfigCmekSettings?>(
       'cmekSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectBucketConfigCmekSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String>('description');
     enableAnalytics = registerOutput<bool?>('enableAnalytics');
@@ -905,6 +912,13 @@ class ProjectBucketConfig extends pulumi.CustomResource {
     bucketId = registerOutput<String>('bucketId');
     cmekSettings = registerOutput<ProjectBucketConfigCmekSettings?>(
       'cmekSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectBucketConfigCmekSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String>('description');
     enableAnalytics = registerOutput<bool?>('enableAnalytics');

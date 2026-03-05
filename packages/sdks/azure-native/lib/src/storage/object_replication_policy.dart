@@ -993,6 +993,13 @@ class ObjectReplicationPolicy extends pulumi.CustomResource {
     enabledTime = registerOutput<String>('enabledTime');
     metrics = registerOutput<ObjectReplicationPolicyPropertiesResponseMetrics?>(
       'metrics',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectReplicationPolicyPropertiesResponseMetrics.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     policyId = registerOutput<String>('policyId');

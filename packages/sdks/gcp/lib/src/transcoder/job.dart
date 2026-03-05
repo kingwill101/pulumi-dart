@@ -5074,7 +5074,14 @@ class Job extends pulumi.CustomResource {
         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
         options ?? pulumi.CustomResourceOptions(),
       ) {
-    config = registerOutput<JobConfig>('config');
+    config = registerOutput<JobConfig>(
+      'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobConfig.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     createTime = registerOutput<String>('createTime');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     endTime = registerOutput<String>('endTime');
@@ -5107,7 +5114,14 @@ class Job extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    config = registerOutput<JobConfig>('config');
+    config = registerOutput<JobConfig>(
+      'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobConfig.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     createTime = registerOutput<String>('createTime');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     endTime = registerOutput<String>('endTime');

@@ -431,11 +431,27 @@ class NodePool extends pulumi.CustomResource {
     labels = registerOutput<Map<String, String>?>('labels');
     localDiskEncryption = registerOutput<NodePoolLocalDiskEncryption?>(
       'localDiskEncryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolLocalDiskEncryption.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     machineFilter = registerOutput<String>('machineFilter');
     this.name = registerOutput<String>('name');
-    nodeConfig = registerOutput<NodePoolNodeConfig>('nodeConfig');
+    nodeConfig = registerOutput<NodePoolNodeConfig>(
+      'nodeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolNodeConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     nodeCount = registerOutput<int>('nodeCount');
     nodeLocation = registerOutput<String>('nodeLocation');
     nodeVersion = registerOutput<String>('nodeVersion');
@@ -473,11 +489,27 @@ class NodePool extends pulumi.CustomResource {
     labels = registerOutput<Map<String, String>?>('labels');
     localDiskEncryption = registerOutput<NodePoolLocalDiskEncryption?>(
       'localDiskEncryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolLocalDiskEncryption.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     machineFilter = registerOutput<String>('machineFilter');
     this.name = registerOutput<String>('name');
-    nodeConfig = registerOutput<NodePoolNodeConfig>('nodeConfig');
+    nodeConfig = registerOutput<NodePoolNodeConfig>(
+      'nodeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolNodeConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     nodeCount = registerOutput<int>('nodeCount');
     nodeLocation = registerOutput<String>('nodeLocation');
     nodeVersion = registerOutput<String>('nodeVersion');

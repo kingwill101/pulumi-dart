@@ -729,7 +729,16 @@ class BatchAccount extends pulumi.CustomResource {
     allowedAuthenticationModes = registerOutput<List<String>>(
       'allowedAuthenticationModes',
     );
-    autoStorage = registerOutput<AutoStoragePropertiesResponse>('autoStorage');
+    autoStorage = registerOutput<AutoStoragePropertiesResponse>(
+      'autoStorage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AutoStoragePropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     dedicatedCoreQuota = registerOutput<int>('dedicatedCoreQuota');
     dedicatedCoreQuotaPerVMFamily = registerOutput<List<Map<String, dynamic>>>(
@@ -738,15 +747,49 @@ class BatchAccount extends pulumi.CustomResource {
     dedicatedCoreQuotaPerVMFamilyEnforced = registerOutput<bool>(
       'dedicatedCoreQuotaPerVMFamilyEnforced',
     );
-    encryption = registerOutput<EncryptionPropertiesResponse>('encryption');
-    identity = registerOutput<BatchAccountIdentityResponse?>('identity');
+    encryption = registerOutput<EncryptionPropertiesResponse>(
+      'encryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EncryptionPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    identity = registerOutput<BatchAccountIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BatchAccountIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     keyVaultReference = registerOutput<KeyVaultReferenceResponse>(
       'keyVaultReference',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KeyVaultReferenceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     lowPriorityCoreQuota = registerOutput<int>('lowPriorityCoreQuota');
     this.name = registerOutput<String>('name');
-    networkProfile = registerOutput<NetworkProfileResponse?>('networkProfile');
+    networkProfile = registerOutput<NetworkProfileResponse?>(
+      'networkProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     nodeManagementEndpoint = registerOutput<String>('nodeManagementEndpoint');
     poolAllocationMode = registerOutput<String>('poolAllocationMode');
     poolQuota = registerOutput<int>('poolQuota');
@@ -755,7 +798,16 @@ class BatchAccount extends pulumi.CustomResource {
     );
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

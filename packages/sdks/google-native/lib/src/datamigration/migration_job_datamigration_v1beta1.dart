@@ -95,12 +95,28 @@ class MigrationJobDatamigrationV1beta1 extends pulumi.CustomResource {
     destinationDatabase =
         registerOutput<DatabaseTypeResponseDatamigrationV1beta1>(
           'destinationDatabase',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DatabaseTypeResponseDatamigrationV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     displayName = registerOutput<String>('displayName');
     dumpPath = registerOutput<String>('dumpPath');
     duration = registerOutput<String>('duration');
     endTime = registerOutput<String>('endTime');
-    error = registerOutput<StatusResponseDatamigrationV1beta1>('error');
+    error = registerOutput<StatusResponseDatamigrationV1beta1>(
+      'error',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StatusResponseDatamigrationV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
     migrationJobId = registerOutput<String>('migrationJobId');
@@ -111,10 +127,24 @@ class MigrationJobDatamigrationV1beta1 extends pulumi.CustomResource {
     reverseSshConnectivity =
         registerOutput<ReverseSshConnectivityResponseDatamigrationV1beta1>(
           'reverseSshConnectivity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ReverseSshConnectivityResponseDatamigrationV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     source = registerOutput<String>('source');
     sourceDatabase = registerOutput<DatabaseTypeResponseDatamigrationV1beta1>(
       'sourceDatabase',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseTypeResponseDatamigrationV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     state = registerOutput<String>('state');
     staticIpConnectivity = registerOutput<Map<String, dynamic>>(
@@ -125,6 +155,13 @@ class MigrationJobDatamigrationV1beta1 extends pulumi.CustomResource {
     vpcPeeringConnectivity =
         registerOutput<VpcPeeringConnectivityResponseDatamigrationV1beta1>(
           'vpcPeeringConnectivity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VpcPeeringConnectivityResponseDatamigrationV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

@@ -222,12 +222,28 @@ class LocalNetworkGatewayNetwork extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    bgpSettings = registerOutput<BgpSettingsResponse?>('bgpSettings');
+    bgpSettings = registerOutput<BgpSettingsResponse?>(
+      'bgpSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BgpSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     fqdn = registerOutput<String?>('fqdn');
     gatewayIpAddress = registerOutput<String?>('gatewayIpAddress');
     localNetworkAddressSpace = registerOutput<AddressSpaceResponse?>(
       'localNetworkAddressSpace',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AddressSpaceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');

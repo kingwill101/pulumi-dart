@@ -197,6 +197,13 @@ class VirtualCluster extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     containerProvider = registerOutput<VirtualClusterContainerProvider>(
       'containerProvider',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualClusterContainerProvider.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -230,6 +237,13 @@ class VirtualCluster extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     containerProvider = registerOutput<VirtualClusterContainerProvider>(
       'containerProvider',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VirtualClusterContainerProvider.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

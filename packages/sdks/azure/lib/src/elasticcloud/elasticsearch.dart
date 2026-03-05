@@ -242,7 +242,16 @@ class Elasticsearch extends pulumi.CustomResource {
     kibanaServiceUrl = registerOutput<String>('kibanaServiceUrl');
     kibanaSsoUri = registerOutput<String>('kibanaSsoUri');
     location = registerOutput<String>('location');
-    logs = registerOutput<ElasticsearchLogs?>('logs');
+    logs = registerOutput<ElasticsearchLogs?>(
+      'logs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ElasticsearchLogs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     monitoringEnabled = registerOutput<bool?>('monitoringEnabled');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -287,7 +296,16 @@ class Elasticsearch extends pulumi.CustomResource {
     kibanaServiceUrl = registerOutput<String>('kibanaServiceUrl');
     kibanaSsoUri = registerOutput<String>('kibanaSsoUri');
     location = registerOutput<String>('location');
-    logs = registerOutput<ElasticsearchLogs?>('logs');
+    logs = registerOutput<ElasticsearchLogs?>(
+      'logs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ElasticsearchLogs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     monitoringEnabled = registerOutput<bool?>('monitoringEnabled');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

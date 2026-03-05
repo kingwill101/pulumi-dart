@@ -51,6 +51,13 @@ class Rollout extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     trafficPercentStrategy = registerOutput<TrafficPercentStrategyResponse>(
       'trafficPercentStrategy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TrafficPercentStrategyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

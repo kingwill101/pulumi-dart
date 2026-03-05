@@ -245,6 +245,13 @@ class DiskAsyncReplication extends pulumi.CustomResource {
     primaryDisk = registerOutput<String>('primaryDisk');
     secondaryDisk = registerOutput<DiskAsyncReplicationSecondaryDisk>(
       'secondaryDisk',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiskAsyncReplicationSecondaryDisk.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -274,6 +281,13 @@ class DiskAsyncReplication extends pulumi.CustomResource {
     primaryDisk = registerOutput<String>('primaryDisk');
     secondaryDisk = registerOutput<DiskAsyncReplicationSecondaryDisk>(
       'secondaryDisk',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiskAsyncReplicationSecondaryDisk.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

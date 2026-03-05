@@ -1,27 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getDomain.
 class GetDomainResult {
   /// ARN of the Domain.
   final String arn;
+
   /// The date and time the Domain was created.
   final String createdAt;
+
   /// Description of the Domain.
   final String description;
+
   /// Version of the Domain.
   final String domainVersion;
   final String id;
+
   /// The date and time the Domain was last updated.
   final String lastUpdatedAt;
+
   /// The AWS account ID that owns the Domain.
   final String managedAccountId;
   final String name;
+
   /// URL of the Domain.
   final String portalUrl;
   final String region;
+
   /// ID of the root domain unit.
   final String rootDomainUnitId;
+
   /// Status of the Domain.
   final String status;
 
@@ -87,4 +94,3 @@ class GetDomainResult {
     );
   }
 }
-

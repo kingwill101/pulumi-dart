@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getExtendedLocations.
 class GetExtendedLocationsResult {
   /// The available extended locations for the Azure Location.
   final List<String> extendedLocations;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
@@ -35,4 +35,3 @@ class GetExtendedLocationsResult {
     );
   }
 }
-

@@ -2090,6 +2090,13 @@ class Batch extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     environmentConfig = registerOutput<BatchEnvironmentConfig?>(
       'environmentConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BatchEnvironmentConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String?>('location');
@@ -2097,12 +2104,57 @@ class Batch extends pulumi.CustomResource {
     operation = registerOutput<String>('operation');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    pysparkBatch = registerOutput<BatchPysparkBatch?>('pysparkBatch');
-    runtimeConfig = registerOutput<BatchRuntimeConfig?>('runtimeConfig');
+    pysparkBatch = registerOutput<BatchPysparkBatch?>(
+      'pysparkBatch',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BatchPysparkBatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    runtimeConfig = registerOutput<BatchRuntimeConfig?>(
+      'runtimeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BatchRuntimeConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     runtimeInfos = registerOutput<List<Map<String, dynamic>>>('runtimeInfos');
-    sparkBatch = registerOutput<BatchSparkBatch?>('sparkBatch');
-    sparkRBatch = registerOutput<BatchSparkRBatch?>('sparkRBatch');
-    sparkSqlBatch = registerOutput<BatchSparkSqlBatch?>('sparkSqlBatch');
+    sparkBatch = registerOutput<BatchSparkBatch?>(
+      'sparkBatch',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BatchSparkBatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    sparkRBatch = registerOutput<BatchSparkRBatch?>(
+      'sparkRBatch',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BatchSparkRBatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    sparkSqlBatch = registerOutput<BatchSparkSqlBatch?>(
+      'sparkSqlBatch',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BatchSparkSqlBatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     state = registerOutput<String>('state');
     stateHistories = registerOutput<List<Map<String, dynamic>>>(
       'stateHistories',
@@ -2137,6 +2189,13 @@ class Batch extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     environmentConfig = registerOutput<BatchEnvironmentConfig?>(
       'environmentConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BatchEnvironmentConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String?>('location');
@@ -2144,12 +2203,57 @@ class Batch extends pulumi.CustomResource {
     operation = registerOutput<String>('operation');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    pysparkBatch = registerOutput<BatchPysparkBatch?>('pysparkBatch');
-    runtimeConfig = registerOutput<BatchRuntimeConfig?>('runtimeConfig');
+    pysparkBatch = registerOutput<BatchPysparkBatch?>(
+      'pysparkBatch',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BatchPysparkBatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    runtimeConfig = registerOutput<BatchRuntimeConfig?>(
+      'runtimeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BatchRuntimeConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     runtimeInfos = registerOutput<List<Map<String, dynamic>>>('runtimeInfos');
-    sparkBatch = registerOutput<BatchSparkBatch?>('sparkBatch');
-    sparkRBatch = registerOutput<BatchSparkRBatch?>('sparkRBatch');
-    sparkSqlBatch = registerOutput<BatchSparkSqlBatch?>('sparkSqlBatch');
+    sparkBatch = registerOutput<BatchSparkBatch?>(
+      'sparkBatch',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BatchSparkBatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    sparkRBatch = registerOutput<BatchSparkRBatch?>(
+      'sparkRBatch',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BatchSparkRBatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    sparkSqlBatch = registerOutput<BatchSparkSqlBatch?>(
+      'sparkSqlBatch',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BatchSparkSqlBatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.state = registerOutput<String>('state');
     stateHistories = registerOutput<List<Map<String, dynamic>>>(
       'stateHistories',

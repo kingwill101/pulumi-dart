@@ -1870,6 +1870,13 @@ class LifecyclePolicy extends pulumi.CustomResource {
     executionRoleArn = registerOutput<String>('executionRoleArn');
     policyDetails = registerOutput<LifecyclePolicyPolicyDetails>(
       'policyDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LifecyclePolicyPolicyDetails.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     state = registerOutput<String?>('state');
@@ -1906,6 +1913,13 @@ class LifecyclePolicy extends pulumi.CustomResource {
     executionRoleArn = registerOutput<String>('executionRoleArn');
     policyDetails = registerOutput<LifecyclePolicyPolicyDetails>(
       'policyDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LifecyclePolicyPolicyDetails.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     this.state = registerOutput<String?>('state');

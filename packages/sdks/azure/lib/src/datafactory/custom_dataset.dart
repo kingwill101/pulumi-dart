@@ -732,7 +732,16 @@ class CustomDataset extends pulumi.CustomResource {
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     folder = registerOutput<String?>('folder');
-    linkedService = registerOutput<CustomDatasetLinkedService>('linkedService');
+    linkedService = registerOutput<CustomDatasetLinkedService>(
+      'linkedService',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomDatasetLinkedService.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');
     schemaJson = registerOutput<String?>('schemaJson');
@@ -770,7 +779,16 @@ class CustomDataset extends pulumi.CustomResource {
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     folder = registerOutput<String?>('folder');
-    linkedService = registerOutput<CustomDatasetLinkedService>('linkedService');
+    linkedService = registerOutput<CustomDatasetLinkedService>(
+      'linkedService',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomDatasetLinkedService.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');
     schemaJson = registerOutput<String?>('schemaJson');

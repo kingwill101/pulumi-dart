@@ -1197,21 +1197,56 @@ class V2modelsIntent extends pulumi.CustomResource {
     botVersion = registerOutput<String>('botVersion');
     closingSetting = registerOutput<V2modelsIntentClosingSetting?>(
       'closingSetting',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2modelsIntentClosingSetting.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     confirmationSetting = registerOutput<V2modelsIntentConfirmationSetting?>(
       'confirmationSetting',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2modelsIntentConfirmationSetting.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     creationDateTime = registerOutput<String>('creationDateTime');
     description = registerOutput<String?>('description');
     dialogCodeHook = registerOutput<V2modelsIntentDialogCodeHook?>(
       'dialogCodeHook',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2modelsIntentDialogCodeHook.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     fulfillmentCodeHook = registerOutput<V2modelsIntentFulfillmentCodeHook?>(
       'fulfillmentCodeHook',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2modelsIntentFulfillmentCodeHook.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     initialResponseSetting =
         registerOutput<V2modelsIntentInitialResponseSetting?>(
           'initialResponseSetting',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return V2modelsIntentInitialResponseSetting.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     inputContexts = registerOutput<List<Map<String, dynamic>>?>(
       'inputContexts',
@@ -1219,6 +1254,13 @@ class V2modelsIntent extends pulumi.CustomResource {
     intentId = registerOutput<String>('intentId');
     kendraConfiguration = registerOutput<V2modelsIntentKendraConfiguration?>(
       'kendraConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2modelsIntentKendraConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     lastUpdatedDateTime = registerOutput<String>('lastUpdatedDateTime');
     localeId = registerOutput<String>('localeId');
@@ -1230,6 +1272,13 @@ class V2modelsIntent extends pulumi.CustomResource {
     qnaIntentConfiguration =
         registerOutput<V2modelsIntentQnaIntentConfiguration?>(
           'qnaIntentConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return V2modelsIntentQnaIntentConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     sampleUtterances = registerOutput<List<Map<String, dynamic>>?>(
@@ -1238,7 +1287,16 @@ class V2modelsIntent extends pulumi.CustomResource {
     slotPriorities = registerOutput<List<Map<String, dynamic>>?>(
       'slotPriorities',
     );
-    timeouts = registerOutput<V2modelsIntentTimeouts?>('timeouts');
+    timeouts = registerOutput<V2modelsIntentTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2modelsIntentTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [V2modelsIntent] resource's state with the given [name] and [id].
@@ -1268,21 +1326,56 @@ class V2modelsIntent extends pulumi.CustomResource {
     botVersion = registerOutput<String>('botVersion');
     closingSetting = registerOutput<V2modelsIntentClosingSetting?>(
       'closingSetting',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2modelsIntentClosingSetting.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     confirmationSetting = registerOutput<V2modelsIntentConfirmationSetting?>(
       'confirmationSetting',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2modelsIntentConfirmationSetting.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     creationDateTime = registerOutput<String>('creationDateTime');
     description = registerOutput<String?>('description');
     dialogCodeHook = registerOutput<V2modelsIntentDialogCodeHook?>(
       'dialogCodeHook',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2modelsIntentDialogCodeHook.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     fulfillmentCodeHook = registerOutput<V2modelsIntentFulfillmentCodeHook?>(
       'fulfillmentCodeHook',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2modelsIntentFulfillmentCodeHook.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     initialResponseSetting =
         registerOutput<V2modelsIntentInitialResponseSetting?>(
           'initialResponseSetting',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return V2modelsIntentInitialResponseSetting.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     inputContexts = registerOutput<List<Map<String, dynamic>>?>(
       'inputContexts',
@@ -1290,6 +1383,13 @@ class V2modelsIntent extends pulumi.CustomResource {
     intentId = registerOutput<String>('intentId');
     kendraConfiguration = registerOutput<V2modelsIntentKendraConfiguration?>(
       'kendraConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2modelsIntentKendraConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     lastUpdatedDateTime = registerOutput<String>('lastUpdatedDateTime');
     localeId = registerOutput<String>('localeId');
@@ -1301,6 +1401,13 @@ class V2modelsIntent extends pulumi.CustomResource {
     qnaIntentConfiguration =
         registerOutput<V2modelsIntentQnaIntentConfiguration?>(
           'qnaIntentConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return V2modelsIntentQnaIntentConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     sampleUtterances = registerOutput<List<Map<String, dynamic>>?>(
@@ -1309,6 +1416,15 @@ class V2modelsIntent extends pulumi.CustomResource {
     slotPriorities = registerOutput<List<Map<String, dynamic>>?>(
       'slotPriorities',
     );
-    timeouts = registerOutput<V2modelsIntentTimeouts?>('timeouts');
+    timeouts = registerOutput<V2modelsIntentTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2modelsIntentTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

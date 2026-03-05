@@ -506,6 +506,13 @@ class ObjectCopy extends pulumi.CustomResource {
     );
     overrideProvider = registerOutput<ObjectCopyOverrideProvider?>(
       'overrideProvider',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectCopyOverrideProvider.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     requestCharged = registerOutput<bool>('requestCharged');
@@ -595,6 +602,13 @@ class ObjectCopy extends pulumi.CustomResource {
     );
     overrideProvider = registerOutput<ObjectCopyOverrideProvider?>(
       'overrideProvider',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectCopyOverrideProvider.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     requestCharged = registerOutput<bool>('requestCharged');

@@ -389,9 +389,34 @@ class App extends pulumi.CustomResource {
     customDomainVerificationId = registerOutput<String>(
       'customDomainVerificationId',
     );
-    dapr = registerOutput<AppDapr?>('dapr');
-    identity = registerOutput<AppIdentity?>('identity');
-    ingress = registerOutput<AppIngress?>('ingress');
+    dapr = registerOutput<AppDapr?>(
+      'dapr',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppDapr.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
+    identity = registerOutput<AppIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    ingress = registerOutput<AppIngress?>(
+      'ingress',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppIngress.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     latestRevisionFqdn = registerOutput<String>('latestRevisionFqdn');
     latestRevisionName = registerOutput<String>('latestRevisionName');
     location = registerOutput<String>('location');
@@ -403,7 +428,16 @@ class App extends pulumi.CustomResource {
     revisionMode = registerOutput<String>('revisionMode');
     secrets = registerOutput<List<Map<String, dynamic>>?>('secrets');
     tags = registerOutput<Map<String, String>?>('tags');
-    template = registerOutput<AppTemplate>('template');
+    template = registerOutput<AppTemplate>(
+      'template',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppTemplate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     workloadProfileName = registerOutput<String?>('workloadProfileName');
   }
 
@@ -432,9 +466,34 @@ class App extends pulumi.CustomResource {
     customDomainVerificationId = registerOutput<String>(
       'customDomainVerificationId',
     );
-    dapr = registerOutput<AppDapr?>('dapr');
-    identity = registerOutput<AppIdentity?>('identity');
-    ingress = registerOutput<AppIngress?>('ingress');
+    dapr = registerOutput<AppDapr?>(
+      'dapr',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppDapr.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
+    identity = registerOutput<AppIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    ingress = registerOutput<AppIngress?>(
+      'ingress',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppIngress.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     latestRevisionFqdn = registerOutput<String>('latestRevisionFqdn');
     latestRevisionName = registerOutput<String>('latestRevisionName');
     location = registerOutput<String>('location');
@@ -446,7 +505,16 @@ class App extends pulumi.CustomResource {
     revisionMode = registerOutput<String>('revisionMode');
     secrets = registerOutput<List<Map<String, dynamic>>?>('secrets');
     tags = registerOutput<Map<String, String>?>('tags');
-    template = registerOutput<AppTemplate>('template');
+    template = registerOutput<AppTemplate>(
+      'template',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppTemplate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     workloadProfileName = registerOutput<String?>('workloadProfileName');
   }
 }

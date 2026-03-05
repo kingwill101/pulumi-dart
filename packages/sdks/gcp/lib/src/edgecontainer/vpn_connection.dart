@@ -497,7 +497,16 @@ class VpnConnection extends pulumi.CustomResource {
     router = registerOutput<String?>('router');
     updateTime = registerOutput<String>('updateTime');
     vpc = registerOutput<String?>('vpc');
-    vpcProject = registerOutput<VpnConnectionVpcProject?>('vpcProject');
+    vpcProject = registerOutput<VpnConnectionVpcProject?>(
+      'vpcProject',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpnConnectionVpcProject.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [VpnConnection] resource's state with the given [name] and [id].
@@ -537,6 +546,15 @@ class VpnConnection extends pulumi.CustomResource {
     router = registerOutput<String?>('router');
     updateTime = registerOutput<String>('updateTime');
     vpc = registerOutput<String?>('vpc');
-    vpcProject = registerOutput<VpnConnectionVpcProject?>('vpcProject');
+    vpcProject = registerOutput<VpnConnectionVpcProject?>(
+      'vpcProject',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpnConnectionVpcProject.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

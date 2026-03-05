@@ -1076,6 +1076,13 @@ class Cluster extends pulumi.CustomResource {
     securityMode = registerOutput<String>('securityMode');
     subscriptionConfig = registerOutput<ClusterSubscriptionConfig?>(
       'subscriptionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterSubscriptionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
   }
@@ -1125,6 +1132,13 @@ class Cluster extends pulumi.CustomResource {
     securityMode = registerOutput<String>('securityMode');
     subscriptionConfig = registerOutput<ClusterSubscriptionConfig?>(
       'subscriptionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterSubscriptionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
   }

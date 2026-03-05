@@ -35,6 +35,13 @@ class ValidatingAdmissionPolicyBindingListAdmissionregistrationK8sIoV1beta1Resou
     apiVersion = registerOutput<String>('apiVersion');
     items = registerOutput<List<Map<String, dynamic>>>('items');
     kind = registerOutput<String>('kind');
-    metadata = registerOutput<ListMeta>('metadata');
+    metadata = registerOutput<ListMeta>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ListMeta.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
   }
 }

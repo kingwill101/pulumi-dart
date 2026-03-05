@@ -352,8 +352,24 @@ class LabelingJob extends pulumi.CustomResource {
     failureReason = registerOutput<String>('failureReason');
     humanTaskConfig = registerOutput<LabelingJobHumanTaskConfig>(
       'humanTaskConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LabelingJobHumanTaskConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    inputConfig = registerOutput<LabelingJobInputConfig>('inputConfig');
+    inputConfig = registerOutput<LabelingJobInputConfig>(
+      'inputConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LabelingJobInputConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     jobReferenceCode = registerOutput<String>('jobReferenceCode');
     labelAttributeName = registerOutput<String>('labelAttributeName');
     labelCategoryConfigS3Uri = registerOutput<String?>(
@@ -363,11 +379,27 @@ class LabelingJob extends pulumi.CustomResource {
     labelingJobAlgorithmsConfig =
         registerOutput<LabelingJobLabelingJobAlgorithmsConfig?>(
           'labelingJobAlgorithmsConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LabelingJobLabelingJobAlgorithmsConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     labelingJobArn = registerOutput<String>('labelingJobArn');
     labelingJobName = registerOutput<String>('labelingJobName');
     labelingJobStatus = registerOutput<String>('labelingJobStatus');
-    outputConfig = registerOutput<LabelingJobOutputConfig>('outputConfig');
+    outputConfig = registerOutput<LabelingJobOutputConfig>(
+      'outputConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LabelingJobOutputConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     stoppingConditions = registerOutput<List<Map<String, dynamic>>>(
@@ -403,8 +435,24 @@ class LabelingJob extends pulumi.CustomResource {
     failureReason = registerOutput<String>('failureReason');
     humanTaskConfig = registerOutput<LabelingJobHumanTaskConfig>(
       'humanTaskConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LabelingJobHumanTaskConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    inputConfig = registerOutput<LabelingJobInputConfig>('inputConfig');
+    inputConfig = registerOutput<LabelingJobInputConfig>(
+      'inputConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LabelingJobInputConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     jobReferenceCode = registerOutput<String>('jobReferenceCode');
     labelAttributeName = registerOutput<String>('labelAttributeName');
     labelCategoryConfigS3Uri = registerOutput<String?>(
@@ -414,11 +462,27 @@ class LabelingJob extends pulumi.CustomResource {
     labelingJobAlgorithmsConfig =
         registerOutput<LabelingJobLabelingJobAlgorithmsConfig?>(
           'labelingJobAlgorithmsConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LabelingJobLabelingJobAlgorithmsConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     labelingJobArn = registerOutput<String>('labelingJobArn');
     labelingJobName = registerOutput<String>('labelingJobName');
     labelingJobStatus = registerOutput<String>('labelingJobStatus');
-    outputConfig = registerOutput<LabelingJobOutputConfig>('outputConfig');
+    outputConfig = registerOutput<LabelingJobOutputConfig>(
+      'outputConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LabelingJobOutputConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     stoppingConditions = registerOutput<List<Map<String, dynamic>>>(

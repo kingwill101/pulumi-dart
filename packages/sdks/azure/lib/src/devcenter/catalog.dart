@@ -286,8 +286,26 @@ class Catalog extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    catalogAdogit = registerOutput<CatalogCatalogAdogit?>('catalogAdogit');
-    catalogGithub = registerOutput<CatalogCatalogGithub?>('catalogGithub');
+    catalogAdogit = registerOutput<CatalogCatalogAdogit?>(
+      'catalogAdogit',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CatalogCatalogAdogit.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    catalogGithub = registerOutput<CatalogCatalogGithub?>(
+      'catalogGithub',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CatalogCatalogGithub.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     devCenterId = registerOutput<String>('devCenterId');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -316,8 +334,26 @@ class Catalog extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    catalogAdogit = registerOutput<CatalogCatalogAdogit?>('catalogAdogit');
-    catalogGithub = registerOutput<CatalogCatalogGithub?>('catalogGithub');
+    catalogAdogit = registerOutput<CatalogCatalogAdogit?>(
+      'catalogAdogit',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CatalogCatalogAdogit.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    catalogGithub = registerOutput<CatalogCatalogGithub?>(
+      'catalogGithub',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CatalogCatalogGithub.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     devCenterId = registerOutput<String>('devCenterId');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

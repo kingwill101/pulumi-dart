@@ -886,7 +886,14 @@ class Router extends pulumi.CustomResource {
         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
         options ?? pulumi.CustomResourceOptions(),
       ) {
-    bgp = registerOutput<RouterBgp?>('bgp');
+    bgp = registerOutput<RouterBgp?>(
+      'bgp',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RouterBgp.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String?>('description');
     encryptedInterconnectRouter = registerOutput<bool?>(
@@ -894,11 +901,27 @@ class Router extends pulumi.CustomResource {
     );
     md5AuthenticationKeys = registerOutput<RouterMd5AuthenticationKeys?>(
       'md5AuthenticationKeys',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RouterMd5AuthenticationKeys.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     nccGateway = registerOutput<String?>('nccGateway');
     network = registerOutput<String?>('network');
-    params = registerOutput<RouterParams?>('params');
+    params = registerOutput<RouterParams?>(
+      'params',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RouterParams.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
     selfLink = registerOutput<String>('selfLink');
@@ -927,7 +950,14 @@ class Router extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    bgp = registerOutput<RouterBgp?>('bgp');
+    bgp = registerOutput<RouterBgp?>(
+      'bgp',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RouterBgp.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String?>('description');
     encryptedInterconnectRouter = registerOutput<bool?>(
@@ -935,11 +965,27 @@ class Router extends pulumi.CustomResource {
     );
     md5AuthenticationKeys = registerOutput<RouterMd5AuthenticationKeys?>(
       'md5AuthenticationKeys',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RouterMd5AuthenticationKeys.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     nccGateway = registerOutput<String?>('nccGateway');
     network = registerOutput<String?>('network');
-    params = registerOutput<RouterParams?>('params');
+    params = registerOutput<RouterParams?>(
+      'params',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RouterParams.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
     selfLink = registerOutput<String>('selfLink');

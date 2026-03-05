@@ -276,6 +276,13 @@ class FieldLevelEncryptionProfile extends pulumi.CustomResource {
     encryptionEntities =
         registerOutput<FieldLevelEncryptionProfileEncryptionEntities>(
           'encryptionEntities',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FieldLevelEncryptionProfileEncryptionEntities.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
@@ -310,6 +317,13 @@ class FieldLevelEncryptionProfile extends pulumi.CustomResource {
     encryptionEntities =
         registerOutput<FieldLevelEncryptionProfileEncryptionEntities>(
           'encryptionEntities',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FieldLevelEncryptionProfileEncryptionEntities.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');

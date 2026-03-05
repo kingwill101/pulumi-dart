@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getClientConfig.
 class GetClientConfigResult {
   /// The client ID (application ID) linked to the authenticated principal, or the application used for delegated authentication.
   final String clientId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The object ID of the authenticated principal.
   final String objectId;
+
   /// The tenant ID of the authenticated principal.
   final String tenantId;
 
@@ -42,4 +44,3 @@ class GetClientConfigResult {
     );
   }
 }
-

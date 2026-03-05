@@ -223,6 +223,13 @@ class NfsFileShare extends pulumi.CustomResource {
     bucketRegion = registerOutput<String?>('bucketRegion');
     cacheAttributes = registerOutput<NfsFileShareCacheAttributes?>(
       'cacheAttributes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NfsFileShareCacheAttributes.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clientLists = registerOutput<List<String>>('clientLists');
     defaultStorageClass = registerOutput<String?>('defaultStorageClass');
@@ -235,6 +242,13 @@ class NfsFileShare extends pulumi.CustomResource {
     locationArn = registerOutput<String>('locationArn');
     nfsFileShareDefaults = registerOutput<NfsFileShareNfsFileShareDefaults?>(
       'nfsFileShareDefaults',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NfsFileShareNfsFileShareDefaults.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     notificationPolicy = registerOutput<String?>('notificationPolicy');
     objectAcl = registerOutput<String?>('objectAcl');
@@ -277,6 +291,13 @@ class NfsFileShare extends pulumi.CustomResource {
     bucketRegion = registerOutput<String?>('bucketRegion');
     cacheAttributes = registerOutput<NfsFileShareCacheAttributes?>(
       'cacheAttributes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NfsFileShareCacheAttributes.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clientLists = registerOutput<List<String>>('clientLists');
     defaultStorageClass = registerOutput<String?>('defaultStorageClass');
@@ -289,6 +310,13 @@ class NfsFileShare extends pulumi.CustomResource {
     locationArn = registerOutput<String>('locationArn');
     nfsFileShareDefaults = registerOutput<NfsFileShareNfsFileShareDefaults?>(
       'nfsFileShareDefaults',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NfsFileShareNfsFileShareDefaults.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     notificationPolicy = registerOutput<String?>('notificationPolicy');
     objectAcl = registerOutput<String?>('objectAcl');

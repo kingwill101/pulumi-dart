@@ -449,20 +449,57 @@ class Cluster extends pulumi.CustomResource {
     enableStreamingIngest = registerOutput<bool?>('enableStreamingIngest');
     engineType = registerOutput<String?>('engineType');
     etag = registerOutput<String>('etag');
-    identity = registerOutput<IdentityResponse?>('identity');
+    identity = registerOutput<IdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     keyVaultProperties = registerOutput<KeyVaultPropertiesResponse?>(
       'keyVaultProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KeyVaultPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     languageExtensions = registerOutput<LanguageExtensionsListResponse?>(
       'languageExtensions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LanguageExtensionsListResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     migrationCluster = registerOutput<MigrationClusterPropertiesResponse>(
       'migrationCluster',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MigrationClusterPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     optimizedAutoscale = registerOutput<OptimizedAutoscaleResponse?>(
       'optimizedAutoscale',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OptimizedAutoscaleResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
       'privateEndpointConnections',
@@ -473,10 +510,28 @@ class Cluster extends pulumi.CustomResource {
     restrictOutboundNetworkAccess = registerOutput<String?>(
       'restrictOutboundNetworkAccess',
     );
-    sku = registerOutput<AzureSkuResponse>('sku');
+    sku = registerOutput<AzureSkuResponse>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AzureSkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     state = registerOutput<String>('state');
     stateReason = registerOutput<String>('stateReason');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     trustedExternalTenants = registerOutput<List<Map<String, dynamic>>?>(
       'trustedExternalTenants',
@@ -486,6 +541,13 @@ class Cluster extends pulumi.CustomResource {
     virtualNetworkConfiguration =
         registerOutput<VirtualNetworkConfigurationResponse?>(
           'virtualNetworkConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VirtualNetworkConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     zoneStatus = registerOutput<String>('zoneStatus');
     zones = registerOutput<List<String>?>('zones');

@@ -657,7 +657,16 @@ class FhirStoreIamMember extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<FhirStoreIamMemberCondition?>('condition');
+    condition = registerOutput<FhirStoreIamMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FhirStoreIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     fhirStoreId = registerOutput<String>('fhirStoreId');
     member = registerOutput<String>('member');
@@ -687,7 +696,16 @@ class FhirStoreIamMember extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<FhirStoreIamMemberCondition?>('condition');
+    condition = registerOutput<FhirStoreIamMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FhirStoreIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     fhirStoreId = registerOutput<String>('fhirStoreId');
     member = registerOutput<String>('member');

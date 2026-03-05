@@ -233,7 +233,16 @@ class OauthIdpConfig extends pulumi.CustomResource {
     issuer = registerOutput<String>('issuer');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    responseType = registerOutput<OauthIdpConfigResponseType?>('responseType');
+    responseType = registerOutput<OauthIdpConfigResponseType?>(
+      'responseType',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OauthIdpConfigResponseType.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [OauthIdpConfig] resource's state with the given [name] and [id].
@@ -266,6 +275,15 @@ class OauthIdpConfig extends pulumi.CustomResource {
     issuer = registerOutput<String>('issuer');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    responseType = registerOutput<OauthIdpConfigResponseType?>('responseType');
+    responseType = registerOutput<OauthIdpConfigResponseType?>(
+      'responseType',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OauthIdpConfigResponseType.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

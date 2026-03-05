@@ -312,13 +312,29 @@ class Account extends pulumi.CustomResource {
     customSubdomainName = registerOutput<String?>('customSubdomainName');
     customerManagedKey = registerOutput<AccountCustomerManagedKey?>(
       'customerManagedKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountCustomerManagedKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dynamicThrottlingEnabled = registerOutput<bool?>(
       'dynamicThrottlingEnabled',
     );
     endpoint = registerOutput<String>('endpoint');
     fqdns = registerOutput<List<String>?>('fqdns');
-    identity = registerOutput<AccountIdentity?>('identity');
+    identity = registerOutput<AccountIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kind = registerOutput<String>('kind');
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
     location = registerOutput<String>('location');
@@ -335,9 +351,25 @@ class Account extends pulumi.CustomResource {
       'metricsAdvisorWebsiteName',
     );
     this.name = registerOutput<String>('name');
-    networkAcls = registerOutput<AccountNetworkAcls?>('networkAcls');
+    networkAcls = registerOutput<AccountNetworkAcls?>(
+      'networkAcls',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountNetworkAcls.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     networkInjection = registerOutput<AccountNetworkInjection?>(
       'networkInjection',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountNetworkInjection.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     outboundNetworkAccessRestricted = registerOutput<bool?>(
       'outboundNetworkAccessRestricted',
@@ -389,13 +421,29 @@ class Account extends pulumi.CustomResource {
     customSubdomainName = registerOutput<String?>('customSubdomainName');
     customerManagedKey = registerOutput<AccountCustomerManagedKey?>(
       'customerManagedKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountCustomerManagedKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dynamicThrottlingEnabled = registerOutput<bool?>(
       'dynamicThrottlingEnabled',
     );
     endpoint = registerOutput<String>('endpoint');
     fqdns = registerOutput<List<String>?>('fqdns');
-    identity = registerOutput<AccountIdentity?>('identity');
+    identity = registerOutput<AccountIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kind = registerOutput<String>('kind');
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
     location = registerOutput<String>('location');
@@ -412,9 +460,25 @@ class Account extends pulumi.CustomResource {
       'metricsAdvisorWebsiteName',
     );
     this.name = registerOutput<String>('name');
-    networkAcls = registerOutput<AccountNetworkAcls?>('networkAcls');
+    networkAcls = registerOutput<AccountNetworkAcls?>(
+      'networkAcls',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountNetworkAcls.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     networkInjection = registerOutput<AccountNetworkInjection?>(
       'networkInjection',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountNetworkInjection.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     outboundNetworkAccessRestricted = registerOutput<bool?>(
       'outboundNetworkAccessRestricted',

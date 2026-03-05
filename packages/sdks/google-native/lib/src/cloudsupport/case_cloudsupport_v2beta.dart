@@ -75,10 +75,26 @@ class CaseCloudsupportV2beta extends pulumi.CustomResource {
     classification =
         registerOutput<CaseClassificationResponseCloudsupportV2beta>(
           'classification',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CaseClassificationResponseCloudsupportV2beta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     contactEmail = registerOutput<String>('contactEmail');
     createTime = registerOutput<String>('createTime');
-    creator = registerOutput<ActorResponseCloudsupportV2beta>('creator');
+    creator = registerOutput<ActorResponseCloudsupportV2beta>(
+      'creator',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ActorResponseCloudsupportV2beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
     escalated = registerOutput<bool>('escalated');

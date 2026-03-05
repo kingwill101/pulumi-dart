@@ -43,14 +43,41 @@ class PriorityLevelConfigurationResource extends pulumi.CustomResource {
        ) {
     apiVersion = registerOutput<String>('apiVersion');
     kind = registerOutput<String>('kind');
-    metadata = registerOutput<ObjectMeta>('metadata');
+    metadata = registerOutput<ObjectMeta>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     spec =
         registerOutput<
           PriorityLevelConfigurationSpecFlowcontrolApiserverK8sIoV1alpha1
-        >('spec');
+        >(
+          'spec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PriorityLevelConfigurationSpecFlowcontrolApiserverK8sIoV1alpha1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     status =
         registerOutput<
           PriorityLevelConfigurationStatusFlowcontrolApiserverK8sIoV1alpha1?
-        >('status');
+        >(
+          'status',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PriorityLevelConfigurationStatusFlowcontrolApiserverK8sIoV1alpha1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
   }
 }

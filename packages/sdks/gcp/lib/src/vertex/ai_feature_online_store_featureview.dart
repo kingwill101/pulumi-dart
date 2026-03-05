@@ -2909,6 +2909,13 @@ class AiFeatureOnlineStoreFeatureview extends pulumi.CustomResource {
     bigQuerySource =
         registerOutput<AiFeatureOnlineStoreFeatureviewBigQuerySource?>(
           'bigQuerySource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AiFeatureOnlineStoreFeatureviewBigQuerySource.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     createTime = registerOutput<String>('createTime');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -2916,6 +2923,13 @@ class AiFeatureOnlineStoreFeatureview extends pulumi.CustomResource {
     featureRegistrySource =
         registerOutput<AiFeatureOnlineStoreFeatureviewFeatureRegistrySource?>(
           'featureRegistrySource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AiFeatureOnlineStoreFeatureviewFeatureRegistrySource.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
@@ -2924,11 +2938,25 @@ class AiFeatureOnlineStoreFeatureview extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     syncConfig = registerOutput<AiFeatureOnlineStoreFeatureviewSyncConfig?>(
       'syncConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiFeatureOnlineStoreFeatureviewSyncConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     updateTime = registerOutput<String>('updateTime');
     vectorSearchConfig =
         registerOutput<AiFeatureOnlineStoreFeatureviewVectorSearchConfig?>(
           'vectorSearchConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AiFeatureOnlineStoreFeatureviewVectorSearchConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 
@@ -2958,6 +2986,13 @@ class AiFeatureOnlineStoreFeatureview extends pulumi.CustomResource {
     bigQuerySource =
         registerOutput<AiFeatureOnlineStoreFeatureviewBigQuerySource?>(
           'bigQuerySource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AiFeatureOnlineStoreFeatureviewBigQuerySource.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     createTime = registerOutput<String>('createTime');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -2965,6 +3000,13 @@ class AiFeatureOnlineStoreFeatureview extends pulumi.CustomResource {
     featureRegistrySource =
         registerOutput<AiFeatureOnlineStoreFeatureviewFeatureRegistrySource?>(
           'featureRegistrySource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AiFeatureOnlineStoreFeatureviewFeatureRegistrySource.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
@@ -2973,11 +3015,25 @@ class AiFeatureOnlineStoreFeatureview extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     syncConfig = registerOutput<AiFeatureOnlineStoreFeatureviewSyncConfig?>(
       'syncConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiFeatureOnlineStoreFeatureviewSyncConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     updateTime = registerOutput<String>('updateTime');
     vectorSearchConfig =
         registerOutput<AiFeatureOnlineStoreFeatureviewVectorSearchConfig?>(
           'vectorSearchConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AiFeatureOnlineStoreFeatureviewVectorSearchConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

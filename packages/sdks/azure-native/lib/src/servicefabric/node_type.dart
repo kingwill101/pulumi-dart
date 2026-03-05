@@ -2539,6 +2539,13 @@ class NodeType extends pulumi.CustomResource {
         );
     applicationPorts = registerOutput<EndpointRangeDescriptionResponse?>(
       'applicationPorts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointRangeDescriptionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     capacities = registerOutput<Map<String, String>?>('capacities');
@@ -2556,6 +2563,13 @@ class NodeType extends pulumi.CustomResource {
     enableOverProvisioning = registerOutput<bool?>('enableOverProvisioning');
     ephemeralPorts = registerOutput<EndpointRangeDescriptionResponse?>(
       'ephemeralPorts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointRangeDescriptionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     evictionPolicy = registerOutput<String?>('evictionPolicy');
     frontendConfigurations = registerOutput<List<Map<String, dynamic>>?>(
@@ -2583,10 +2597,28 @@ class NodeType extends pulumi.CustomResource {
     serviceArtifactReferenceId = registerOutput<String?>(
       'serviceArtifactReferenceId',
     );
-    sku = registerOutput<NodeTypeSkuResponse?>('sku');
+    sku = registerOutput<NodeTypeSkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodeTypeSkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     spotRestoreTimeout = registerOutput<String?>('spotRestoreTimeout');
     subnetId = registerOutput<String?>('subnetId');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     useDefaultPublicLoadBalancer = registerOutput<bool?>(
@@ -2596,7 +2628,16 @@ class NodeType extends pulumi.CustomResource {
     useTempDataDisk = registerOutput<bool?>('useTempDataDisk');
     vmExtensions = registerOutput<List<Map<String, dynamic>>?>('vmExtensions');
     vmImageOffer = registerOutput<String?>('vmImageOffer');
-    vmImagePlan = registerOutput<VmImagePlanResponse?>('vmImagePlan');
+    vmImagePlan = registerOutput<VmImagePlanResponse?>(
+      'vmImagePlan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VmImagePlanResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vmImagePublisher = registerOutput<String?>('vmImagePublisher');
     vmImageResourceId = registerOutput<String?>('vmImageResourceId');
     vmImageSku = registerOutput<String?>('vmImageSku');
@@ -2604,6 +2645,13 @@ class NodeType extends pulumi.CustomResource {
     vmInstanceCount = registerOutput<int>('vmInstanceCount');
     vmManagedIdentity = registerOutput<VmManagedIdentityResponse?>(
       'vmManagedIdentity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VmManagedIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     vmSecrets = registerOutput<List<Map<String, dynamic>>?>('vmSecrets');
     vmSetupActions = registerOutput<List<String>?>('vmSetupActions');

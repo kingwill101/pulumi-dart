@@ -1664,6 +1664,13 @@ class EventSourceMapping extends pulumi.CustomResource {
     amazonManagedKafkaEventSourceConfig =
         registerOutput<EventSourceMappingAmazonManagedKafkaEventSourceConfig>(
           'amazonManagedKafkaEventSourceConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EventSourceMappingAmazonManagedKafkaEventSourceConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     arn = registerOutput<String>('arn');
     batchSize = registerOutput<int?>('batchSize');
@@ -1672,15 +1679,36 @@ class EventSourceMapping extends pulumi.CustomResource {
     );
     destinationConfig = registerOutput<EventSourceMappingDestinationConfig?>(
       'destinationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventSourceMappingDestinationConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     documentDbEventSourceConfig =
         registerOutput<EventSourceMappingDocumentDbEventSourceConfig?>(
           'documentDbEventSourceConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EventSourceMappingDocumentDbEventSourceConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     enabled = registerOutput<bool?>('enabled');
     eventSourceArn = registerOutput<String?>('eventSourceArn');
     filterCriteria = registerOutput<EventSourceMappingFilterCriteria?>(
       'filterCriteria',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventSourceMappingFilterCriteria.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     functionArn = registerOutput<String>('functionArn');
     functionName = registerOutput<String>('functionName');
@@ -1699,24 +1727,59 @@ class EventSourceMapping extends pulumi.CustomResource {
     maximumRetryAttempts = registerOutput<int>('maximumRetryAttempts');
     metricsConfig = registerOutput<EventSourceMappingMetricsConfig?>(
       'metricsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventSourceMappingMetricsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     parallelizationFactor = registerOutput<int>('parallelizationFactor');
     provisionedPollerConfig =
         registerOutput<EventSourceMappingProvisionedPollerConfig?>(
           'provisionedPollerConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EventSourceMappingProvisionedPollerConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     queues = registerOutput<String?>('queues');
     region = registerOutput<String>('region');
     scalingConfig = registerOutput<EventSourceMappingScalingConfig?>(
       'scalingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventSourceMappingScalingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     selfManagedEventSource =
         registerOutput<EventSourceMappingSelfManagedEventSource?>(
           'selfManagedEventSource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EventSourceMappingSelfManagedEventSource.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     selfManagedKafkaEventSourceConfig =
         registerOutput<EventSourceMappingSelfManagedKafkaEventSourceConfig>(
           'selfManagedKafkaEventSourceConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EventSourceMappingSelfManagedKafkaEventSourceConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     sourceAccessConfigurations = registerOutput<List<Map<String, dynamic>>?>(
       'sourceAccessConfigurations',
@@ -1760,6 +1823,13 @@ class EventSourceMapping extends pulumi.CustomResource {
     amazonManagedKafkaEventSourceConfig =
         registerOutput<EventSourceMappingAmazonManagedKafkaEventSourceConfig>(
           'amazonManagedKafkaEventSourceConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EventSourceMappingAmazonManagedKafkaEventSourceConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     arn = registerOutput<String>('arn');
     batchSize = registerOutput<int?>('batchSize');
@@ -1768,15 +1838,36 @@ class EventSourceMapping extends pulumi.CustomResource {
     );
     destinationConfig = registerOutput<EventSourceMappingDestinationConfig?>(
       'destinationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventSourceMappingDestinationConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     documentDbEventSourceConfig =
         registerOutput<EventSourceMappingDocumentDbEventSourceConfig?>(
           'documentDbEventSourceConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EventSourceMappingDocumentDbEventSourceConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     enabled = registerOutput<bool?>('enabled');
     eventSourceArn = registerOutput<String?>('eventSourceArn');
     filterCriteria = registerOutput<EventSourceMappingFilterCriteria?>(
       'filterCriteria',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventSourceMappingFilterCriteria.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     functionArn = registerOutput<String>('functionArn');
     functionName = registerOutput<String>('functionName');
@@ -1795,24 +1886,59 @@ class EventSourceMapping extends pulumi.CustomResource {
     maximumRetryAttempts = registerOutput<int>('maximumRetryAttempts');
     metricsConfig = registerOutput<EventSourceMappingMetricsConfig?>(
       'metricsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventSourceMappingMetricsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     parallelizationFactor = registerOutput<int>('parallelizationFactor');
     provisionedPollerConfig =
         registerOutput<EventSourceMappingProvisionedPollerConfig?>(
           'provisionedPollerConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EventSourceMappingProvisionedPollerConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     queues = registerOutput<String?>('queues');
     region = registerOutput<String>('region');
     scalingConfig = registerOutput<EventSourceMappingScalingConfig?>(
       'scalingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EventSourceMappingScalingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     selfManagedEventSource =
         registerOutput<EventSourceMappingSelfManagedEventSource?>(
           'selfManagedEventSource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EventSourceMappingSelfManagedEventSource.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     selfManagedKafkaEventSourceConfig =
         registerOutput<EventSourceMappingSelfManagedKafkaEventSourceConfig>(
           'selfManagedKafkaEventSourceConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EventSourceMappingSelfManagedKafkaEventSourceConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     sourceAccessConfigurations = registerOutput<List<Map<String, dynamic>>?>(
       'sourceAccessConfigurations',

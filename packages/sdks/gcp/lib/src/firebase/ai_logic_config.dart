@@ -832,12 +832,26 @@ class AiLogicConfig extends pulumi.CustomResource {
     generativeLanguageConfig =
         registerOutput<AiLogicConfigGenerativeLanguageConfig?>(
           'generativeLanguageConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AiLogicConfigGenerativeLanguageConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     telemetryConfig = registerOutput<AiLogicConfigTelemetryConfig?>(
       'telemetryConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiLogicConfigTelemetryConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -867,12 +881,26 @@ class AiLogicConfig extends pulumi.CustomResource {
     generativeLanguageConfig =
         registerOutput<AiLogicConfigGenerativeLanguageConfig?>(
           'generativeLanguageConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AiLogicConfigGenerativeLanguageConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     telemetryConfig = registerOutput<AiLogicConfigTelemetryConfig?>(
       'telemetryConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AiLogicConfigTelemetryConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

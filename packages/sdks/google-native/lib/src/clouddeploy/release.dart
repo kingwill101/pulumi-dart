@@ -98,11 +98,27 @@ class Release extends pulumi.CustomResource {
     buildArtifacts = registerOutput<List<Map<String, dynamic>>>(
       'buildArtifacts',
     );
-    condition = registerOutput<ReleaseConditionResponse>('condition');
+    condition = registerOutput<ReleaseConditionResponse>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReleaseConditionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     deliveryPipelineId = registerOutput<String>('deliveryPipelineId');
     deliveryPipelineSnapshot = registerOutput<DeliveryPipelineResponse>(
       'deliveryPipelineSnapshot',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeliveryPipelineResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     deployParameters = registerOutput<Map<String, String>>('deployParameters');
     description = registerOutput<String>('description');

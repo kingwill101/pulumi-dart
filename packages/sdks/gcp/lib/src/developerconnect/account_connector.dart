@@ -988,6 +988,13 @@ class AccountConnector extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     providerOauthConfig = registerOutput<AccountConnectorProviderOauthConfig?>(
       'providerOauthConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountConnectorProviderOauthConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     updateTime = registerOutput<String>('updateTime');
@@ -1030,6 +1037,13 @@ class AccountConnector extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     providerOauthConfig = registerOutput<AccountConnectorProviderOauthConfig?>(
       'providerOauthConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountConnectorProviderOauthConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     updateTime = registerOutput<String>('updateTime');

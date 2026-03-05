@@ -1,20 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getApiConnection.
 class GetApiConnectionResult {
   /// The display name of the API Connection.
   final String displayName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The Azure Region where the API Connection exists.
   final String location;
+
   /// The ID of the Managed API that this connection is linked to.
   final String managedApiId;
   final String name;
+
   /// A mapping of parameter names to their values for the API Connection.
   final Map<String, String> parameterValues;
   final String resourceGroupName;
+
   /// A mapping of tags assigned to the API Connection.
   final Map<String, String> tags;
 
@@ -64,4 +68,3 @@ class GetApiConnectionResult {
     );
   }
 }
-

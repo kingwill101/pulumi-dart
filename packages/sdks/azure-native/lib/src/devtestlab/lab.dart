@@ -244,6 +244,13 @@ class Lab extends pulumi.CustomResource {
       ) {
     announcement = registerOutput<LabAnnouncementPropertiesResponse?>(
       'announcement',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LabAnnouncementPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     artifactsStorageAccount = registerOutput<String>('artifactsStorageAccount');
     azureApiVersion = registerOutput<String>('azureApiVersion');
@@ -273,7 +280,16 @@ class Lab extends pulumi.CustomResource {
     premiumDataDisks = registerOutput<String?>('premiumDataDisks');
     provisioningState = registerOutput<String>('provisioningState');
     publicIpId = registerOutput<String>('publicIpId');
-    support = registerOutput<LabSupportPropertiesResponse?>('support');
+    support = registerOutput<LabSupportPropertiesResponse?>(
+      'support',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LabSupportPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     uniqueIdentifier = registerOutput<String>('uniqueIdentifier');

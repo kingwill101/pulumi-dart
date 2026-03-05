@@ -878,6 +878,13 @@ class Directory extends pulumi.CustomResource {
     alias = registerOutput<String>('alias');
     connectSettings = registerOutput<DirectoryConnectSettings?>(
       'connectSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DirectoryConnectSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     desiredNumberOfDomainControllers = registerOutput<int>(
@@ -895,7 +902,16 @@ class Directory extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     type = registerOutput<String?>('type');
-    vpcSettings = registerOutput<DirectoryVpcSettings?>('vpcSettings');
+    vpcSettings = registerOutput<DirectoryVpcSettings?>(
+      'vpcSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DirectoryVpcSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Directory] resource's state with the given [name] and [id].
@@ -925,6 +941,13 @@ class Directory extends pulumi.CustomResource {
     alias = registerOutput<String>('alias');
     connectSettings = registerOutput<DirectoryConnectSettings?>(
       'connectSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DirectoryConnectSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     desiredNumberOfDomainControllers = registerOutput<int>(
@@ -942,6 +965,15 @@ class Directory extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     type = registerOutput<String?>('type');
-    vpcSettings = registerOutput<DirectoryVpcSettings?>('vpcSettings');
+    vpcSettings = registerOutput<DirectoryVpcSettings?>(
+      'vpcSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DirectoryVpcSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

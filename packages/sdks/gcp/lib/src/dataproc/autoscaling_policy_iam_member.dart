@@ -932,6 +932,13 @@ class AutoscalingPolicyIamMember extends pulumi.CustomResource {
        ) {
     condition = registerOutput<AutoscalingPolicyIamMemberCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AutoscalingPolicyIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
@@ -966,6 +973,13 @@ class AutoscalingPolicyIamMember extends pulumi.CustomResource {
        ) {
     condition = registerOutput<AutoscalingPolicyIamMemberCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AutoscalingPolicyIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');

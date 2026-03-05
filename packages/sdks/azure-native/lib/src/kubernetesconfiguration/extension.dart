@@ -494,6 +494,13 @@ class Extension extends pulumi.CustomResource {
        ) {
     aksAssignedIdentity = registerOutput<ExtensionResponseAksAssignedIdentity?>(
       'aksAssignedIdentity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtensionResponseAksAssignedIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     autoUpgradeMinorVersion = registerOutput<bool?>('autoUpgradeMinorVersion');
     azureApiVersion = registerOutput<String>('azureApiVersion');
@@ -507,18 +514,63 @@ class Extension extends pulumi.CustomResource {
     customLocationSettings = registerOutput<Map<String, String>>(
       'customLocationSettings',
     );
-    errorInfo = registerOutput<ErrorDetailResponse>('errorInfo');
+    errorInfo = registerOutput<ErrorDetailResponse>(
+      'errorInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ErrorDetailResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     extensionType = registerOutput<String?>('extensionType');
-    identity = registerOutput<IdentityResponse?>('identity');
+    identity = registerOutput<IdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     isSystemExtension = registerOutput<bool>('isSystemExtension');
     this.name = registerOutput<String>('name');
     packageUri = registerOutput<String>('packageUri');
-    plan = registerOutput<PlanResponse?>('plan');
+    plan = registerOutput<PlanResponse?>(
+      'plan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PlanResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     provisioningState = registerOutput<String>('provisioningState');
     releaseTrain = registerOutput<String?>('releaseTrain');
-    scope = registerOutput<ScopeResponse?>('scope');
+    scope = registerOutput<ScopeResponse?>(
+      'scope',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScopeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     statuses = registerOutput<List<Map<String, dynamic>>?>('statuses');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     version = registerOutput<String?>('version');
   }

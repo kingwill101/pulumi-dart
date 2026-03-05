@@ -100,6 +100,13 @@ class NodeTpuV2 extends pulumi.CustomResource {
        ) {
     acceleratorConfig = registerOutput<AcceleratorConfigResponse>(
       'acceleratorConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AcceleratorConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     acceleratorType = registerOutput<String>('acceleratorType');
     apiVersion = registerOutput<String>('apiVersion');
@@ -114,7 +121,16 @@ class NodeTpuV2 extends pulumi.CustomResource {
     metadata = registerOutput<Map<String, String>>('metadata');
     multisliceNode = registerOutput<bool>('multisliceNode');
     this.name = registerOutput<String>('name');
-    networkConfig = registerOutput<NetworkConfigResponse>('networkConfig');
+    networkConfig = registerOutput<NetworkConfigResponse>(
+      'networkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     networkEndpoints = registerOutput<List<Map<String, dynamic>>>(
       'networkEndpoints',
     );
@@ -124,10 +140,33 @@ class NodeTpuV2 extends pulumi.CustomResource {
     runtimeVersion = registerOutput<String>('runtimeVersion');
     schedulingConfig = registerOutput<SchedulingConfigResponseTpuV2>(
       'schedulingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SchedulingConfigResponseTpuV2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    serviceAccount = registerOutput<ServiceAccountResponse>('serviceAccount');
+    serviceAccount = registerOutput<ServiceAccountResponse>(
+      'serviceAccount',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceAccountResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     shieldedInstanceConfig = registerOutput<ShieldedInstanceConfigResponse>(
       'shieldedInstanceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ShieldedInstanceConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     state = registerOutput<String>('state');
     symptoms = registerOutput<List<Map<String, dynamic>>>('symptoms');

@@ -40,9 +40,23 @@ class AccessLevelAccesscontextmanagerV1beta extends pulumi.CustomResource {
     accessPolicyId = registerOutput<String>('accessPolicyId');
     basic = registerOutput<BasicLevelResponseAccesscontextmanagerV1beta>(
       'basic',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BasicLevelResponseAccesscontextmanagerV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     custom = registerOutput<CustomLevelResponseAccesscontextmanagerV1beta>(
       'custom',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomLevelResponseAccesscontextmanagerV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String>('description');
     this.name = registerOutput<String>('name');

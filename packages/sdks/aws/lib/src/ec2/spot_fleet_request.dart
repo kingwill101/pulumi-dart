@@ -1315,6 +1315,13 @@ class SpotFleetRequest extends pulumi.CustomResource {
     spotMaintenanceStrategies =
         registerOutput<SpotFleetRequestSpotMaintenanceStrategies?>(
           'spotMaintenanceStrategies',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SpotFleetRequestSpotMaintenanceStrategies.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     spotPrice = registerOutput<String?>('spotPrice');
     spotRequestState = registerOutput<String>('spotRequestState');
@@ -1388,6 +1395,13 @@ class SpotFleetRequest extends pulumi.CustomResource {
     spotMaintenanceStrategies =
         registerOutput<SpotFleetRequestSpotMaintenanceStrategies?>(
           'spotMaintenanceStrategies',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SpotFleetRequestSpotMaintenanceStrategies.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     spotPrice = registerOutput<String?>('spotPrice');
     spotRequestState = registerOutput<String>('spotRequestState');

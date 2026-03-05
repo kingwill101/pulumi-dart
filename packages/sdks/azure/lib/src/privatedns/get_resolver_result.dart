@@ -1,16 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getResolver.
 class GetResolverResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The Azure Region where the Private DNS Resolver exists.
   final String location;
   final String name;
   final String resourceGroupName;
+
   /// The tags assigned to the Private DNS Resolver.
   final Map<String, String> tags;
+
   /// The ID of the Virtual Network that is linked to the Private DNS Resolver.
   final String virtualNetworkId;
 
@@ -52,4 +54,3 @@ class GetResolverResult {
     );
   }
 }
-

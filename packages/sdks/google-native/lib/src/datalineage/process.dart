@@ -42,6 +42,13 @@ class Process extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     origin = registerOutput<GoogleCloudDatacatalogLineageV1OriginResponse>(
       'origin',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudDatacatalogLineageV1OriginResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');

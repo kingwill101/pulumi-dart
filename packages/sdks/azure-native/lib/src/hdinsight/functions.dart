@@ -103,7 +103,8 @@ Future<GetExtensionResult> getExtension(
 /// Other available API versions: 2025-01-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hdinsight [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_hdinsight_get_extension_azure_monitor_agent_status_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetExtensionAzureMonitorAgentStatusResult> getExtensionAzureMonitorAgentStatus(
+Future<GetExtensionAzureMonitorAgentStatusResult>
+getExtensionAzureMonitorAgentStatus(
   GetExtensionAzureMonitorAgentStatusArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

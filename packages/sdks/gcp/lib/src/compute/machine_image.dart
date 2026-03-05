@@ -544,6 +544,13 @@ class MachineImage extends pulumi.CustomResource {
     machineImageEncryptionKey =
         registerOutput<MachineImageMachineImageEncryptionKey?>(
           'machineImageEncryptionKey',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MachineImageMachineImageEncryptionKey.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -580,6 +587,13 @@ class MachineImage extends pulumi.CustomResource {
     machineImageEncryptionKey =
         registerOutput<MachineImageMachineImageEncryptionKey?>(
           'machineImageEncryptionKey',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MachineImageMachineImageEncryptionKey.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

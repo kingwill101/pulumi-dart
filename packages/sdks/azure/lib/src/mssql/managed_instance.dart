@@ -1423,6 +1423,13 @@ class ManagedInstance extends pulumi.CustomResource {
     azureActiveDirectoryAdministrator =
         registerOutput<ManagedInstanceAzureActiveDirectoryAdministrator?>(
           'azureActiveDirectoryAdministrator',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ManagedInstanceAzureActiveDirectoryAdministrator.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     collation = registerOutput<String?>('collation');
     databaseFormat = registerOutput<String?>('databaseFormat');
@@ -1430,7 +1437,16 @@ class ManagedInstance extends pulumi.CustomResource {
     dnsZonePartnerId = registerOutput<String?>('dnsZonePartnerId');
     fqdn = registerOutput<String>('fqdn');
     hybridSecondaryUsage = registerOutput<String?>('hybridSecondaryUsage');
-    identity = registerOutput<ManagedInstanceIdentity?>('identity');
+    identity = registerOutput<ManagedInstanceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedInstanceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     licenseType = registerOutput<String>('licenseType');
     location = registerOutput<String>('location');
     maintenanceConfigurationName = registerOutput<String?>(
@@ -1484,6 +1500,13 @@ class ManagedInstance extends pulumi.CustomResource {
     azureActiveDirectoryAdministrator =
         registerOutput<ManagedInstanceAzureActiveDirectoryAdministrator?>(
           'azureActiveDirectoryAdministrator',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ManagedInstanceAzureActiveDirectoryAdministrator.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     collation = registerOutput<String?>('collation');
     databaseFormat = registerOutput<String?>('databaseFormat');
@@ -1491,7 +1514,16 @@ class ManagedInstance extends pulumi.CustomResource {
     dnsZonePartnerId = registerOutput<String?>('dnsZonePartnerId');
     fqdn = registerOutput<String>('fqdn');
     hybridSecondaryUsage = registerOutput<String?>('hybridSecondaryUsage');
-    identity = registerOutput<ManagedInstanceIdentity?>('identity');
+    identity = registerOutput<ManagedInstanceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedInstanceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     licenseType = registerOutput<String>('licenseType');
     location = registerOutput<String>('location');
     maintenanceConfigurationName = registerOutput<String?>(

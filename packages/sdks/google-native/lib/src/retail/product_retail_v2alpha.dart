@@ -130,6 +130,13 @@ class ProductRetailV2alpha extends pulumi.CustomResource {
     attributes = registerOutput<Map<String, String>>('attributes');
     audience = registerOutput<GoogleCloudRetailV2alphaAudienceResponse>(
       'audience',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudRetailV2alphaAudienceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     availability = registerOutput<String>('availability');
     availableQuantity = registerOutput<int>('availableQuantity');
@@ -141,6 +148,13 @@ class ProductRetailV2alpha extends pulumi.CustomResource {
     collectionMemberIds = registerOutput<List<String>>('collectionMemberIds');
     colorInfo = registerOutput<GoogleCloudRetailV2alphaColorInfoResponse>(
       'colorInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudRetailV2alphaColorInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     conditions = registerOutput<List<String>>('conditions');
     description = registerOutput<String>('description');
@@ -160,13 +174,29 @@ class ProductRetailV2alpha extends pulumi.CustomResource {
     patterns = registerOutput<List<String>>('patterns');
     priceInfo = registerOutput<GoogleCloudRetailV2alphaPriceInfoResponse>(
       'priceInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudRetailV2alphaPriceInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     primaryProductId = registerOutput<String>('primaryProductId');
     productId = registerOutput<String>('productId');
     project = registerOutput<String>('project');
     promotions = registerOutput<List<Map<String, dynamic>>>('promotions');
     publishTime = registerOutput<String>('publishTime');
-    rating = registerOutput<GoogleCloudRetailV2alphaRatingResponse>('rating');
+    rating = registerOutput<GoogleCloudRetailV2alphaRatingResponse>(
+      'rating',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudRetailV2alphaRatingResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     retrievableFields = registerOutput<String>('retrievableFields');
     sizes = registerOutput<List<String>>('sizes');
     tags = registerOutput<List<String>>('tags');

@@ -4690,11 +4690,36 @@ class AzureFirewall extends pulumi.CustomResource {
     autoscaleConfiguration =
         registerOutput<AzureFirewallAutoscaleConfigurationResponse?>(
           'autoscaleConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AzureFirewallAutoscaleConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
-    firewallPolicy = registerOutput<SubResourceResponse?>('firewallPolicy');
-    hubIPAddresses = registerOutput<HubIPAddressesResponse?>('hubIPAddresses');
+    firewallPolicy = registerOutput<SubResourceResponse?>(
+      'firewallPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    hubIPAddresses = registerOutput<HubIPAddressesResponse?>(
+      'hubIPAddresses',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HubIPAddressesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ipConfigurations = registerOutput<List<Map<String, dynamic>>?>(
       'ipConfigurations',
     );
@@ -4703,6 +4728,13 @@ class AzureFirewall extends pulumi.CustomResource {
     managementIpConfiguration =
         registerOutput<AzureFirewallIPConfigurationResponse?>(
           'managementIpConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AzureFirewallIPConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     natRuleCollections = registerOutput<List<Map<String, dynamic>>?>(
@@ -4712,11 +4744,29 @@ class AzureFirewall extends pulumi.CustomResource {
       'networkRuleCollections',
     );
     provisioningState = registerOutput<String>('provisioningState');
-    sku = registerOutput<AzureFirewallSkuResponse?>('sku');
+    sku = registerOutput<AzureFirewallSkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AzureFirewallSkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     threatIntelMode = registerOutput<String?>('threatIntelMode');
     type = registerOutput<String>('type');
-    virtualHub = registerOutput<SubResourceResponse?>('virtualHub');
+    virtualHub = registerOutput<SubResourceResponse?>(
+      'virtualHub',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     zones = registerOutput<List<String>?>('zones');
   }
 }

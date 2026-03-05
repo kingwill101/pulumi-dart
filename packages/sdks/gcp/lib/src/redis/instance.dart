@@ -1681,6 +1681,13 @@ class Instance extends pulumi.CustomResource {
     locationId = registerOutput<String>('locationId');
     maintenancePolicy = registerOutput<InstanceMaintenancePolicy?>(
       'maintenancePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceMaintenancePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     maintenanceSchedules = registerOutput<List<Map<String, dynamic>>>(
       'maintenanceSchedules',
@@ -1691,6 +1698,13 @@ class Instance extends pulumi.CustomResource {
     nodes = registerOutput<List<Map<String, dynamic>>>('nodes');
     persistenceConfig = registerOutput<InstancePersistenceConfig>(
       'persistenceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstancePersistenceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     persistenceIamIdentity = registerOutput<String>('persistenceIamIdentity');
     port = registerOutput<int>('port');
@@ -1752,6 +1766,13 @@ class Instance extends pulumi.CustomResource {
     locationId = registerOutput<String>('locationId');
     maintenancePolicy = registerOutput<InstanceMaintenancePolicy?>(
       'maintenancePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceMaintenancePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     maintenanceSchedules = registerOutput<List<Map<String, dynamic>>>(
       'maintenanceSchedules',
@@ -1762,6 +1783,13 @@ class Instance extends pulumi.CustomResource {
     nodes = registerOutput<List<Map<String, dynamic>>>('nodes');
     persistenceConfig = registerOutput<InstancePersistenceConfig>(
       'persistenceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstancePersistenceConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     persistenceIamIdentity = registerOutput<String>('persistenceIamIdentity');
     port = registerOutput<int>('port');

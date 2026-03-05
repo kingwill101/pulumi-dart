@@ -2913,37 +2913,141 @@ class Server extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     administratorLogin = registerOutput<String?>('administratorLogin');
-    authConfig = registerOutput<AuthConfigResponse?>('authConfig');
+    authConfig = registerOutput<AuthConfigResponse?>(
+      'authConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AuthConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     availabilityZone = registerOutput<String?>('availabilityZone');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    backup = registerOutput<BackupResponse?>('backup');
-    cluster = registerOutput<ClusterResponse?>('cluster');
-    dataEncryption = registerOutput<DataEncryptionResponse?>('dataEncryption');
+    backup = registerOutput<BackupResponse?>(
+      'backup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackupResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    cluster = registerOutput<ClusterResponse?>(
+      'cluster',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    dataEncryption = registerOutput<DataEncryptionResponse?>(
+      'dataEncryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataEncryptionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     fullyQualifiedDomainName = registerOutput<String>(
       'fullyQualifiedDomainName',
     );
     highAvailability = registerOutput<HighAvailabilityResponse?>(
       'highAvailability',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HighAvailabilityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    identity = registerOutput<UserAssignedIdentityResponse?>('identity');
+    identity = registerOutput<UserAssignedIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserAssignedIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     maintenanceWindow = registerOutput<MaintenanceWindowResponse?>(
       'maintenanceWindow',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MaintenanceWindowResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     minorVersion = registerOutput<String>('minorVersion');
     this.name = registerOutput<String>('name');
-    network = registerOutput<NetworkResponse?>('network');
+    network = registerOutput<NetworkResponse?>(
+      'network',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
       'privateEndpointConnections',
     );
-    replica = registerOutput<ReplicaResponse?>('replica');
+    replica = registerOutput<ReplicaResponse?>(
+      'replica',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReplicaResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     replicaCapacity = registerOutput<int>('replicaCapacity');
     replicationRole = registerOutput<String?>('replicationRole');
-    sku = registerOutput<SkuResponse?>('sku');
+    sku = registerOutput<SkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sourceServerResourceId = registerOutput<String?>('sourceServerResourceId');
     state = registerOutput<String>('state');
-    storage = registerOutput<StorageResponse?>('storage');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    storage = registerOutput<StorageResponse?>(
+      'storage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StorageResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     version = registerOutput<String?>('version');

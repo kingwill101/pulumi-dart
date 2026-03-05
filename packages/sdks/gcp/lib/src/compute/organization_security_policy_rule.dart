@@ -344,7 +344,16 @@ class OrganizationSecurityPolicyRule extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     direction = registerOutput<String?>('direction');
     enableLogging = registerOutput<bool?>('enableLogging');
-    match = registerOutput<OrganizationSecurityPolicyRuleMatch>('match');
+    match = registerOutput<OrganizationSecurityPolicyRuleMatch>(
+      'match',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrganizationSecurityPolicyRuleMatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     policyId = registerOutput<String>('policyId');
     preview = registerOutput<bool?>('preview');
     priority = registerOutput<int>('priority');
@@ -381,7 +390,16 @@ class OrganizationSecurityPolicyRule extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     direction = registerOutput<String?>('direction');
     enableLogging = registerOutput<bool?>('enableLogging');
-    match = registerOutput<OrganizationSecurityPolicyRuleMatch>('match');
+    match = registerOutput<OrganizationSecurityPolicyRuleMatch>(
+      'match',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OrganizationSecurityPolicyRuleMatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     policyId = registerOutput<String>('policyId');
     preview = registerOutput<bool?>('preview');
     priority = registerOutput<int>('priority');

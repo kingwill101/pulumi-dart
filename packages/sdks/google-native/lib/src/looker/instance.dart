@@ -99,34 +99,96 @@ class Instance extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    adminSettings = registerOutput<AdminSettingsResponse>('adminSettings');
+    adminSettings = registerOutput<AdminSettingsResponse>(
+      'adminSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AdminSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     consumerNetwork = registerOutput<String>('consumerNetwork');
     createTime = registerOutput<String>('createTime');
-    customDomain = registerOutput<CustomDomainResponse>('customDomain');
+    customDomain = registerOutput<CustomDomainResponse>(
+      'customDomain',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomDomainResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     denyMaintenancePeriod = registerOutput<DenyMaintenancePeriodResponse>(
       'denyMaintenancePeriod',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DenyMaintenancePeriodResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     egressPublicIp = registerOutput<String>('egressPublicIp');
     encryptionConfig = registerOutput<EncryptionConfigResponse>(
       'encryptionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EncryptionConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     ingressPrivateIp = registerOutput<String>('ingressPrivateIp');
     ingressPublicIp = registerOutput<String>('ingressPublicIp');
     instanceId = registerOutput<String>('instanceId');
     lastDenyMaintenancePeriod = registerOutput<DenyMaintenancePeriodResponse>(
       'lastDenyMaintenancePeriod',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DenyMaintenancePeriodResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     lookerUri = registerOutput<String>('lookerUri');
     lookerVersion = registerOutput<String>('lookerVersion');
     maintenanceSchedule = registerOutput<MaintenanceScheduleResponse>(
       'maintenanceSchedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MaintenanceScheduleResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     maintenanceWindow = registerOutput<MaintenanceWindowResponse>(
       'maintenanceWindow',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MaintenanceWindowResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
-    oauthConfig = registerOutput<OAuthConfigResponse>('oauthConfig');
+    oauthConfig = registerOutput<OAuthConfigResponse>(
+      'oauthConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OAuthConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     platformEdition = registerOutput<String>('platformEdition');
     privateIpEnabled = registerOutput<bool>('privateIpEnabled');
     project = registerOutput<String>('project');
@@ -134,6 +196,15 @@ class Instance extends pulumi.CustomResource {
     reservedRange = registerOutput<String>('reservedRange');
     state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
-    userMetadata = registerOutput<UserMetadataResponse>('userMetadata');
+    userMetadata = registerOutput<UserMetadataResponse>(
+      'userMetadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserMetadataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

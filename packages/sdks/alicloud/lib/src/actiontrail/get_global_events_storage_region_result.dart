@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getGlobalEventsStorageRegion.
 class GetGlobalEventsStorageRegionResult {
   /// The provider-assigned unique ID for this managed resource.
@@ -16,10 +15,7 @@ class GetGlobalEventsStorageRegionResult {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'storageRegion': storageRegion,
-    };
+    return <String, dynamic>{'id': id, 'storageRegion': storageRegion};
   }
 
   factory GetGlobalEventsStorageRegionResult.fromMap(Map<String, dynamic> map) {
@@ -29,4 +25,3 @@ class GetGlobalEventsStorageRegionResult {
     );
   }
 }
-

@@ -521,10 +521,28 @@ class Connection extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     appServiceId = registerOutput<String>('appServiceId');
-    authentication = registerOutput<ConnectionAuthentication>('authentication');
+    authentication = registerOutput<ConnectionAuthentication>(
+      'authentication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionAuthentication.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     clientType = registerOutput<String?>('clientType');
     this.name = registerOutput<String>('name');
-    secretStore = registerOutput<ConnectionSecretStore?>('secretStore');
+    secretStore = registerOutput<ConnectionSecretStore?>(
+      'secretStore',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionSecretStore.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     targetResourceId = registerOutput<String>('targetResourceId');
     vnetSolution = registerOutput<String?>('vnetSolution');
   }
@@ -553,10 +571,28 @@ class Connection extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     appServiceId = registerOutput<String>('appServiceId');
-    authentication = registerOutput<ConnectionAuthentication>('authentication');
+    authentication = registerOutput<ConnectionAuthentication>(
+      'authentication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionAuthentication.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     clientType = registerOutput<String?>('clientType');
     this.name = registerOutput<String>('name');
-    secretStore = registerOutput<ConnectionSecretStore?>('secretStore');
+    secretStore = registerOutput<ConnectionSecretStore?>(
+      'secretStore',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionSecretStore.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     targetResourceId = registerOutput<String>('targetResourceId');
     vnetSolution = registerOutput<String?>('vnetSolution');
   }

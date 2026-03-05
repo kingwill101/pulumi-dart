@@ -56,6 +56,13 @@ class EnvironmentDialogflowV2beta1 extends pulumi.CustomResource {
     fulfillment =
         registerOutput<GoogleCloudDialogflowV2beta1FulfillmentResponse>(
           'fulfillment',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowV2beta1FulfillmentResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -64,7 +71,16 @@ class EnvironmentDialogflowV2beta1 extends pulumi.CustomResource {
     textToSpeechSettings =
         registerOutput<
           GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse
-        >('textToSpeechSettings');
+        >(
+          'textToSpeechSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     updateTime = registerOutput<String>('updateTime');
   }
 }

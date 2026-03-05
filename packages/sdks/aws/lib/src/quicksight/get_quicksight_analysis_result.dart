@@ -9,6 +9,7 @@ class GetQuicksightAnalysisResult {
   final String arn;
   final String awsAccountId;
   final String createdTime;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String lastPublishedTime;
@@ -60,7 +61,11 @@ class GetQuicksightAnalysisResult {
       'lastPublishedTime': lastPublishedTime,
       'lastUpdatedTime': lastUpdatedTime,
       'name': name,
-      'permissions': pulumi.Input.encodeList<GetQuicksightAnalysisPermission, Map<String, dynamic>>(permissions, (value) => value.toMap()),
+      'permissions':
+          pulumi.Input.encodeList<
+            GetQuicksightAnalysisPermission,
+            Map<String, dynamic>
+          >(permissions, (value) => value.toMap()),
       'region': region,
       'status': status,
       'tags': tags,
@@ -78,7 +83,12 @@ class GetQuicksightAnalysisResult {
       lastPublishedTime: map['lastPublishedTime'] as String,
       lastUpdatedTime: map['lastUpdatedTime'] as String,
       name: map['name'] as String,
-      permissions: pulumi.Input.decodeList<GetQuicksightAnalysisPermission>(map['permissions']!, (value) => GetQuicksightAnalysisPermission.fromMap((value as Map).cast<String, dynamic>())),
+      permissions: pulumi.Input.decodeList<GetQuicksightAnalysisPermission>(
+        map['permissions']!,
+        (value) => GetQuicksightAnalysisPermission.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       region: map['region'] as String,
       status: map['status'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
@@ -86,4 +96,3 @@ class GetQuicksightAnalysisResult {
     );
   }
 }
-

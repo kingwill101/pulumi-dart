@@ -45,21 +45,49 @@ class Annotation extends pulumi.CustomResource {
        ) {
     annotationSource = registerOutput<AnnotationSourceResponse>(
       'annotationSource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AnnotationSourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     annotationStoreId = registerOutput<String>('annotationStoreId');
     customData = registerOutput<Map<String, String>>('customData');
     datasetId = registerOutput<String>('datasetId');
     imageAnnotation = registerOutput<ImageAnnotationResponse>(
       'imageAnnotation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImageAnnotationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     resourceAnnotation = registerOutput<ResourceAnnotationResponse>(
       'resourceAnnotation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceAnnotationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     textAnnotation = registerOutput<SensitiveTextAnnotationResponse>(
       'textAnnotation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SensitiveTextAnnotationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

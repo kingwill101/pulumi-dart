@@ -724,10 +724,26 @@ class V2modelsSlot extends pulumi.CustomResource {
     subSlotSettings = registerOutput<List<Map<String, dynamic>>?>(
       'subSlotSettings',
     );
-    timeouts = registerOutput<V2modelsSlotTimeouts?>('timeouts');
+    timeouts = registerOutput<V2modelsSlotTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2modelsSlotTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     valueElicitationSetting =
         registerOutput<V2modelsSlotValueElicitationSetting>(
           'valueElicitationSetting',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return V2modelsSlotValueElicitationSetting.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 
@@ -772,10 +788,26 @@ class V2modelsSlot extends pulumi.CustomResource {
     subSlotSettings = registerOutput<List<Map<String, dynamic>>?>(
       'subSlotSettings',
     );
-    timeouts = registerOutput<V2modelsSlotTimeouts?>('timeouts');
+    timeouts = registerOutput<V2modelsSlotTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return V2modelsSlotTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     valueElicitationSetting =
         registerOutput<V2modelsSlotValueElicitationSetting>(
           'valueElicitationSetting',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return V2modelsSlotValueElicitationSetting.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

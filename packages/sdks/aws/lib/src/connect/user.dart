@@ -915,11 +915,29 @@ class User extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     directoryUserId = registerOutput<String>('directoryUserId');
     hierarchyGroupId = registerOutput<String?>('hierarchyGroupId');
-    identityInfo = registerOutput<UserIdentityInfo?>('identityInfo');
+    identityInfo = registerOutput<UserIdentityInfo?>(
+      'identityInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserIdentityInfo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
     password = registerOutput<String?>('password');
-    phoneConfig = registerOutput<UserPhoneConfig>('phoneConfig');
+    phoneConfig = registerOutput<UserPhoneConfig>(
+      'phoneConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserPhoneConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     routingProfileId = registerOutput<String>('routingProfileId');
     securityProfileIds = registerOutput<List<String>>('securityProfileIds');
@@ -950,11 +968,29 @@ class User extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     directoryUserId = registerOutput<String>('directoryUserId');
     hierarchyGroupId = registerOutput<String?>('hierarchyGroupId');
-    identityInfo = registerOutput<UserIdentityInfo?>('identityInfo');
+    identityInfo = registerOutput<UserIdentityInfo?>(
+      'identityInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserIdentityInfo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
     password = registerOutput<String?>('password');
-    phoneConfig = registerOutput<UserPhoneConfig>('phoneConfig');
+    phoneConfig = registerOutput<UserPhoneConfig>(
+      'phoneConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserPhoneConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     routingProfileId = registerOutput<String>('routingProfileId');
     securityProfileIds = registerOutput<List<String>>('securityProfileIds');

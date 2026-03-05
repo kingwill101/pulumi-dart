@@ -329,7 +329,16 @@ class Rule extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     accountId = registerOutput<int>('accountId');
-    compliance = registerOutput<RuleCompliance>('compliance');
+    compliance = registerOutput<RuleCompliance>(
+      'compliance',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RuleCompliance.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     compliancePackId = registerOutput<String>('compliancePackId');
     configRuleArn = registerOutput<String>('configRuleArn');
     configRuleId = registerOutput<String>('configRuleId');
@@ -384,7 +393,16 @@ class Rule extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     accountId = registerOutput<int>('accountId');
-    compliance = registerOutput<RuleCompliance>('compliance');
+    compliance = registerOutput<RuleCompliance>(
+      'compliance',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RuleCompliance.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     compliancePackId = registerOutput<String>('compliancePackId');
     configRuleArn = registerOutput<String>('configRuleArn');
     configRuleId = registerOutput<String>('configRuleId');

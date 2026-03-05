@@ -168,8 +168,26 @@ class SharedLimit extends pulumi.CustomResource {
     limit = registerOutput<int>('limit');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    resourceName = registerOutput<LimitNameResponse>('resourceName');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    resourceName = registerOutput<LimitNameResponse>(
+      'resourceName',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LimitNameResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     unit = registerOutput<String>('unit');
   }

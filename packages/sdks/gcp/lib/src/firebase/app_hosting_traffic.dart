@@ -1168,8 +1168,24 @@ class AppHostingTraffic extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     rolloutPolicy = registerOutput<AppHostingTrafficRolloutPolicy?>(
       'rolloutPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppHostingTrafficRolloutPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    target = registerOutput<AppHostingTrafficTarget?>('target');
+    target = registerOutput<AppHostingTrafficTarget?>(
+      'target',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppHostingTrafficTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -1207,8 +1223,24 @@ class AppHostingTraffic extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     rolloutPolicy = registerOutput<AppHostingTrafficRolloutPolicy?>(
       'rolloutPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppHostingTrafficRolloutPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    target = registerOutput<AppHostingTrafficTarget?>('target');
+    target = registerOutput<AppHostingTrafficTarget?>(
+      'target',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppHostingTrafficTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }

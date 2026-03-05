@@ -874,10 +874,24 @@ class RegionInstanceGroupManager extends pulumi.CustomResource {
     allInstancesConfig =
         registerOutput<RegionInstanceGroupManagerAllInstancesConfig?>(
           'allInstancesConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RegionInstanceGroupManagerAllInstancesConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     autoHealingPolicies =
         registerOutput<RegionInstanceGroupManagerAutoHealingPolicies?>(
           'autoHealingPolicies',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RegionInstanceGroupManagerAutoHealingPolicies.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     baseInstanceName = registerOutput<String>('baseInstanceName');
     creationTimestamp = registerOutput<String>('creationTimestamp');
@@ -892,24 +906,54 @@ class RegionInstanceGroupManager extends pulumi.CustomResource {
     instanceFlexibilityPolicy =
         registerOutput<RegionInstanceGroupManagerInstanceFlexibilityPolicy?>(
           'instanceFlexibilityPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RegionInstanceGroupManagerInstanceFlexibilityPolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     instanceGroup = registerOutput<String>('instanceGroup');
     instanceGroupManagerId = registerOutput<int>('instanceGroupManagerId');
     instanceLifecyclePolicy =
         registerOutput<RegionInstanceGroupManagerInstanceLifecyclePolicy>(
           'instanceLifecyclePolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RegionInstanceGroupManagerInstanceLifecyclePolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     listManagedInstancesResults = registerOutput<String?>(
       'listManagedInstancesResults',
     );
     this.name = registerOutput<String>('name');
     namedPorts = registerOutput<List<Map<String, dynamic>>?>('namedPorts');
-    params = registerOutput<RegionInstanceGroupManagerParams?>('params');
+    params = registerOutput<RegionInstanceGroupManagerParams?>(
+      'params',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegionInstanceGroupManagerParams.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
     selfLink = registerOutput<String>('selfLink');
     standbyPolicy = registerOutput<RegionInstanceGroupManagerStandbyPolicy>(
       'standbyPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegionInstanceGroupManagerStandbyPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     statefulDisks = registerOutput<List<Map<String, dynamic>>?>(
       'statefulDisks',
@@ -927,6 +971,13 @@ class RegionInstanceGroupManager extends pulumi.CustomResource {
     targetSuspendedSize = registerOutput<int>('targetSuspendedSize');
     updatePolicy = registerOutput<RegionInstanceGroupManagerUpdatePolicy>(
       'updatePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegionInstanceGroupManagerUpdatePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     versions = registerOutput<List<Map<String, dynamic>>>('versions');
     waitForInstances = registerOutput<bool?>('waitForInstances');
@@ -959,10 +1010,24 @@ class RegionInstanceGroupManager extends pulumi.CustomResource {
     allInstancesConfig =
         registerOutput<RegionInstanceGroupManagerAllInstancesConfig?>(
           'allInstancesConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RegionInstanceGroupManagerAllInstancesConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     autoHealingPolicies =
         registerOutput<RegionInstanceGroupManagerAutoHealingPolicies?>(
           'autoHealingPolicies',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RegionInstanceGroupManagerAutoHealingPolicies.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     baseInstanceName = registerOutput<String>('baseInstanceName');
     creationTimestamp = registerOutput<String>('creationTimestamp');
@@ -977,24 +1042,54 @@ class RegionInstanceGroupManager extends pulumi.CustomResource {
     instanceFlexibilityPolicy =
         registerOutput<RegionInstanceGroupManagerInstanceFlexibilityPolicy?>(
           'instanceFlexibilityPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RegionInstanceGroupManagerInstanceFlexibilityPolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     instanceGroup = registerOutput<String>('instanceGroup');
     instanceGroupManagerId = registerOutput<int>('instanceGroupManagerId');
     instanceLifecyclePolicy =
         registerOutput<RegionInstanceGroupManagerInstanceLifecyclePolicy>(
           'instanceLifecyclePolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RegionInstanceGroupManagerInstanceLifecyclePolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     listManagedInstancesResults = registerOutput<String?>(
       'listManagedInstancesResults',
     );
     this.name = registerOutput<String>('name');
     namedPorts = registerOutput<List<Map<String, dynamic>>?>('namedPorts');
-    params = registerOutput<RegionInstanceGroupManagerParams?>('params');
+    params = registerOutput<RegionInstanceGroupManagerParams?>(
+      'params',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegionInstanceGroupManagerParams.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
     selfLink = registerOutput<String>('selfLink');
     standbyPolicy = registerOutput<RegionInstanceGroupManagerStandbyPolicy>(
       'standbyPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegionInstanceGroupManagerStandbyPolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     statefulDisks = registerOutput<List<Map<String, dynamic>>?>(
       'statefulDisks',
@@ -1012,6 +1107,13 @@ class RegionInstanceGroupManager extends pulumi.CustomResource {
     targetSuspendedSize = registerOutput<int>('targetSuspendedSize');
     updatePolicy = registerOutput<RegionInstanceGroupManagerUpdatePolicy>(
       'updatePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegionInstanceGroupManagerUpdatePolicy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     versions = registerOutput<List<Map<String, dynamic>>>('versions');
     waitForInstances = registerOutput<bool?>('waitForInstances');

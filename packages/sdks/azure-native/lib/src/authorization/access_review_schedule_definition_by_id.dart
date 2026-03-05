@@ -138,7 +138,16 @@ class AccessReviewScheduleDefinitionById extends pulumi.CustomResource {
     principalId = registerOutput<String>('principalId');
     principalName = registerOutput<String>('principalName');
     principalType = registerOutput<String>('principalType');
-    range = registerOutput<AccessReviewRecurrenceRangeResponse?>('range');
+    range = registerOutput<AccessReviewRecurrenceRangeResponse?>(
+      'range',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccessReviewRecurrenceRangeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     recommendationLookBackDuration = registerOutput<String?>(
       'recommendationLookBackDuration',
     );
@@ -148,7 +157,16 @@ class AccessReviewScheduleDefinitionById extends pulumi.CustomResource {
     );
     reviewers = registerOutput<List<Map<String, dynamic>>?>('reviewers');
     reviewersType = registerOutput<String>('reviewersType');
-    scope = registerOutput<AccessReviewScopeResponse>('scope');
+    scope = registerOutput<AccessReviewScopeResponse>(
+      'scope',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccessReviewScopeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String>('status');
     type = registerOutput<String>('type');
     userPrincipalName = registerOutput<String>('userPrincipalName');

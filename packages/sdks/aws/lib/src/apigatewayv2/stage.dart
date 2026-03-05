@@ -183,6 +183,13 @@ class Stage extends pulumi.CustomResource {
       ) {
     accessLogSettings = registerOutput<StageAccessLogSettings?>(
       'accessLogSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StageAccessLogSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     apiId = registerOutput<String>('apiId');
     arn = registerOutput<String>('arn');
@@ -190,6 +197,13 @@ class Stage extends pulumi.CustomResource {
     clientCertificateId = registerOutput<String?>('clientCertificateId');
     defaultRouteSettings = registerOutput<StageDefaultRouteSettings?>(
       'defaultRouteSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StageDefaultRouteSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     deploymentId = registerOutput<String>('deploymentId');
     description = registerOutput<String?>('description');
@@ -226,6 +240,13 @@ class Stage extends pulumi.CustomResource {
        ) {
     accessLogSettings = registerOutput<StageAccessLogSettings?>(
       'accessLogSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StageAccessLogSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     apiId = registerOutput<String>('apiId');
     arn = registerOutput<String>('arn');
@@ -233,6 +254,13 @@ class Stage extends pulumi.CustomResource {
     clientCertificateId = registerOutput<String?>('clientCertificateId');
     defaultRouteSettings = registerOutput<StageDefaultRouteSettings?>(
       'defaultRouteSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StageDefaultRouteSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     deploymentId = registerOutput<String>('deploymentId');
     description = registerOutput<String?>('description');

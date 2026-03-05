@@ -1084,7 +1084,14 @@ class App extends pulumi.CustomResource {
     liveDomain = registerOutput<String>('liveDomain');
     liveUrl = registerOutput<String>('liveUrl');
     projectId = registerOutput<String>('projectId');
-    spec = registerOutput<AppSpec?>('spec');
+    spec = registerOutput<AppSpec?>(
+      'spec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppSpec.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     updatedAt = registerOutput<String>('updatedAt');
   }
 
@@ -1116,7 +1123,14 @@ class App extends pulumi.CustomResource {
     liveDomain = registerOutput<String>('liveDomain');
     liveUrl = registerOutput<String>('liveUrl');
     projectId = registerOutput<String>('projectId');
-    spec = registerOutput<AppSpec?>('spec');
+    spec = registerOutput<AppSpec?>(
+      'spec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppSpec.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     updatedAt = registerOutput<String>('updatedAt');
   }
 }

@@ -254,22 +254,81 @@ class Connector extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    authInfo = registerOutput<AccessKeyInfoBaseResponse?>('authInfo');
+    authInfo = registerOutput<AccessKeyInfoBaseResponse?>(
+      'authInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccessKeyInfoBaseResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     clientType = registerOutput<String?>('clientType');
     configurationInfo = registerOutput<ConfigurationInfoResponse?>(
       'configurationInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConfigurationInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkSolution = registerOutput<PublicNetworkSolutionResponse?>(
       'publicNetworkSolution',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PublicNetworkSolutionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     scope = registerOutput<String?>('scope');
-    secretStore = registerOutput<SecretStoreResponse?>('secretStore');
-    systemData = registerOutput<SystemDataResponse>('systemData');
-    targetService = registerOutput<AzureResourceResponse?>('targetService');
+    secretStore = registerOutput<SecretStoreResponse?>(
+      'secretStore',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecretStoreResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    targetService = registerOutput<AzureResourceResponse?>(
+      'targetService',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AzureResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
-    vNetSolution = registerOutput<VNetSolutionResponse?>('vNetSolution');
+    vNetSolution = registerOutput<VNetSolutionResponse?>(
+      'vNetSolution',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VNetSolutionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

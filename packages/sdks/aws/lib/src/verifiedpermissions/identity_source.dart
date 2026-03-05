@@ -524,6 +524,13 @@ class IdentitySource extends pulumi.CustomResource {
        ) {
     configuration = registerOutput<IdentitySourceConfiguration>(
       'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IdentitySourceConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     policyStoreId = registerOutput<String>('policyStoreId');
     principalEntityType = registerOutput<String>('principalEntityType');
@@ -555,6 +562,13 @@ class IdentitySource extends pulumi.CustomResource {
        ) {
     configuration = registerOutput<IdentitySourceConfiguration>(
       'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IdentitySourceConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     policyStoreId = registerOutput<String>('policyStoreId');
     principalEntityType = registerOutput<String>('principalEntityType');

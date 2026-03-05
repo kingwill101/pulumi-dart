@@ -233,6 +233,13 @@ class ConnectionGateway extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     properties = registerOutput<ConnectionGatewayDefinitionResponseProperties>(
       'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionGatewayDefinitionResponseProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

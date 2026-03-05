@@ -68,10 +68,24 @@ class Environment extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     nodeConfig = registerOutput<GoogleCloudApigeeV1NodeConfigResponse>(
       'nodeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudApigeeV1NodeConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     organizationId = registerOutput<String>('organizationId');
     properties = registerOutput<GoogleCloudApigeeV1PropertiesResponse>(
       'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudApigeeV1PropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     state = registerOutput<String>('state');
     type = registerOutput<String>('type');

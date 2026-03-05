@@ -551,6 +551,13 @@ class LinkedServiceSynapse extends pulumi.CustomResource {
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
     keyVaultPassword = registerOutput<LinkedServiceSynapseKeyVaultPassword?>(
       'keyVaultPassword',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinkedServiceSynapseKeyVaultPassword.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');
@@ -589,6 +596,13 @@ class LinkedServiceSynapse extends pulumi.CustomResource {
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
     keyVaultPassword = registerOutput<LinkedServiceSynapseKeyVaultPassword?>(
       'keyVaultPassword',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LinkedServiceSynapseKeyVaultPassword.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, String>?>('parameters');

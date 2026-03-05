@@ -183,7 +183,16 @@ class ConnectionGroup extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ConnectionGroupTimeouts?>('timeouts');
+    timeouts = registerOutput<ConnectionGroupTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionGroupTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     waitForDeployment = registerOutput<bool>('waitForDeployment');
   }
 
@@ -222,7 +231,16 @@ class ConnectionGroup extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ConnectionGroupTimeouts?>('timeouts');
+    timeouts = registerOutput<ConnectionGroupTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionGroupTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     waitForDeployment = registerOutput<bool>('waitForDeployment');
   }
 }

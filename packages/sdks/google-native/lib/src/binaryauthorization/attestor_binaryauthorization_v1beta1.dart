@@ -45,6 +45,13 @@ class AttestorBinaryauthorizationV1beta1 extends pulumi.CustomResource {
     updateTime = registerOutput<String>('updateTime');
     userOwnedDrydockNote = registerOutput<UserOwnedDrydockNoteResponse>(
       'userOwnedDrydockNote',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserOwnedDrydockNoteResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

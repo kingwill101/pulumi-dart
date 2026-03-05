@@ -1,18 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getARecord.
 class GetARecordResult {
   /// The FQDN of the Private DNS A Record.
   final String fqdn;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
+
   /// List of IPv4 Addresses.
   final List<String> records;
   final String resourceGroupName;
+
   /// A mapping of tags assigned to the Private DNS A Record.
   final Map<String, String> tags;
+
   /// The Time To Live (TTL) of the Private DNS record in seconds.
   final int ttl;
   final String zoneName;
@@ -63,4 +66,3 @@ class GetARecordResult {
     );
   }
 }
-

@@ -1725,16 +1725,43 @@ class NotificationDestination extends pulumi.CustomResource {
        ) {
     accountId = registerOutput<String>('accountId');
     active = registerOutput<bool?>('active');
-    authBasic = registerOutput<NotificationDestinationAuthBasic?>('authBasic');
+    authBasic = registerOutput<NotificationDestinationAuthBasic?>(
+      'authBasic',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NotificationDestinationAuthBasic.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     authCustomHeaders = registerOutput<List<Map<String, dynamic>>?>(
       'authCustomHeaders',
     );
-    authToken = registerOutput<NotificationDestinationAuthToken?>('authToken');
+    authToken = registerOutput<NotificationDestinationAuthToken?>(
+      'authToken',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NotificationDestinationAuthToken.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     guid = registerOutput<String>('guid');
     lastSent = registerOutput<String>('lastSent');
     this.name = registerOutput<String>('name');
     properties = registerOutput<List<Map<String, dynamic>>>('properties');
-    secureUrl = registerOutput<NotificationDestinationSecureUrl?>('secureUrl');
+    secureUrl = registerOutput<NotificationDestinationSecureUrl?>(
+      'secureUrl',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NotificationDestinationSecureUrl.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String>('status');
     type = registerOutput<String>('type');
   }
@@ -1764,16 +1791,43 @@ class NotificationDestination extends pulumi.CustomResource {
        ) {
     accountId = registerOutput<String>('accountId');
     active = registerOutput<bool?>('active');
-    authBasic = registerOutput<NotificationDestinationAuthBasic?>('authBasic');
+    authBasic = registerOutput<NotificationDestinationAuthBasic?>(
+      'authBasic',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NotificationDestinationAuthBasic.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     authCustomHeaders = registerOutput<List<Map<String, dynamic>>?>(
       'authCustomHeaders',
     );
-    authToken = registerOutput<NotificationDestinationAuthToken?>('authToken');
+    authToken = registerOutput<NotificationDestinationAuthToken?>(
+      'authToken',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NotificationDestinationAuthToken.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     guid = registerOutput<String>('guid');
     lastSent = registerOutput<String>('lastSent');
     this.name = registerOutput<String>('name');
     properties = registerOutput<List<Map<String, dynamic>>>('properties');
-    secureUrl = registerOutput<NotificationDestinationSecureUrl?>('secureUrl');
+    secureUrl = registerOutput<NotificationDestinationSecureUrl?>(
+      'secureUrl',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NotificationDestinationSecureUrl.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String>('status');
     type = registerOutput<String>('type');
   }

@@ -722,7 +722,16 @@ class LkeNodePool extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    autoscaler = registerOutput<LkeNodePoolAutoscaler?>('autoscaler');
+    autoscaler = registerOutput<LkeNodePoolAutoscaler?>(
+      'autoscaler',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LkeNodePoolAutoscaler.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     clusterId = registerOutput<int>('clusterId');
     diskEncryption = registerOutput<String>('diskEncryption');
     firewallId = registerOutput<int>('firewallId');
@@ -760,7 +769,16 @@ class LkeNodePool extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    autoscaler = registerOutput<LkeNodePoolAutoscaler?>('autoscaler');
+    autoscaler = registerOutput<LkeNodePoolAutoscaler?>(
+      'autoscaler',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LkeNodePoolAutoscaler.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     clusterId = registerOutput<int>('clusterId');
     diskEncryption = registerOutput<String>('diskEncryption');
     firewallId = registerOutput<int>('firewallId');

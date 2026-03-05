@@ -83,7 +83,16 @@ class Cluster extends pulumi.CustomResource {
     shardCount = registerOutput<int>('shardCount');
     sizeGb = registerOutput<int>('sizeGb');
     state = registerOutput<String>('state');
-    stateInfo = registerOutput<StateInfoResponse>('stateInfo');
+    stateInfo = registerOutput<StateInfoResponse>(
+      'stateInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StateInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     transitEncryptionMode = registerOutput<String>('transitEncryptionMode');
     uid = registerOutput<String>('uid');
   }

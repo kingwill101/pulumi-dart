@@ -174,9 +174,25 @@ class ModelCardExportJob extends pulumi.CustomResource {
     modelCardVersion = registerOutput<int>('modelCardVersion');
     outputConfig = registerOutput<ModelCardExportJobOutputConfig>(
       'outputConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ModelCardExportJobOutputConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
-    timeouts = registerOutput<ModelCardExportJobTimeouts?>('timeouts');
+    timeouts = registerOutput<ModelCardExportJobTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ModelCardExportJobTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [ModelCardExportJob] resource's state with the given [name] and [id].
@@ -211,8 +227,24 @@ class ModelCardExportJob extends pulumi.CustomResource {
     modelCardVersion = registerOutput<int>('modelCardVersion');
     outputConfig = registerOutput<ModelCardExportJobOutputConfig>(
       'outputConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ModelCardExportJobOutputConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
-    timeouts = registerOutput<ModelCardExportJobTimeouts?>('timeouts');
+    timeouts = registerOutput<ModelCardExportJobTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ModelCardExportJobTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

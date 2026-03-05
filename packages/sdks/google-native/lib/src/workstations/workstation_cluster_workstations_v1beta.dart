@@ -83,7 +83,16 @@ class WorkstationClusterWorkstationsV1beta extends pulumi.CustomResource {
     degraded = registerOutput<bool>('degraded');
     deleteTime = registerOutput<String>('deleteTime');
     displayName = registerOutput<String>('displayName');
-    domainConfig = registerOutput<DomainConfigResponse>('domainConfig');
+    domainConfig = registerOutput<DomainConfigResponse>(
+      'domainConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
@@ -92,6 +101,13 @@ class WorkstationClusterWorkstationsV1beta extends pulumi.CustomResource {
     privateClusterConfig =
         registerOutput<PrivateClusterConfigResponseWorkstationsV1beta>(
           'privateClusterConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PrivateClusterConfigResponseWorkstationsV1beta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     project = registerOutput<String>('project');
     reconciling = registerOutput<bool>('reconciling');

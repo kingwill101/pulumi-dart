@@ -563,9 +563,23 @@ class KafkaCluster extends pulumi.CustomResource {
     clusterVersion = registerOutput<String>('clusterVersion');
     componentVersion = registerOutput<KafkaClusterComponentVersion>(
       'componentVersion',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KafkaClusterComponentVersion.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     computeIsolation = registerOutput<KafkaClusterComputeIsolation?>(
       'computeIsolation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KafkaClusterComputeIsolation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     diskEncryptions = registerOutput<List<Map<String, dynamic>>?>(
       'diskEncryptions',
@@ -573,28 +587,112 @@ class KafkaCluster extends pulumi.CustomResource {
     encryptionInTransitEnabled = registerOutput<bool?>(
       'encryptionInTransitEnabled',
     );
-    extension = registerOutput<KafkaClusterExtension?>('extension');
-    gateway = registerOutput<KafkaClusterGateway>('gateway');
+    extension = registerOutput<KafkaClusterExtension?>(
+      'extension',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KafkaClusterExtension.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    gateway = registerOutput<KafkaClusterGateway>(
+      'gateway',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KafkaClusterGateway.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     httpsEndpoint = registerOutput<String>('httpsEndpoint');
     kafkaRestProxyEndpoint = registerOutput<String>('kafkaRestProxyEndpoint');
     location = registerOutput<String>('location');
-    metastores = registerOutput<KafkaClusterMetastores?>('metastores');
-    monitor = registerOutput<KafkaClusterMonitor?>('monitor');
+    metastores = registerOutput<KafkaClusterMetastores?>(
+      'metastores',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KafkaClusterMetastores.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    monitor = registerOutput<KafkaClusterMonitor?>(
+      'monitor',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KafkaClusterMonitor.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
-    network = registerOutput<KafkaClusterNetwork?>('network');
+    network = registerOutput<KafkaClusterNetwork?>(
+      'network',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KafkaClusterNetwork.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     privateLinkConfiguration =
         registerOutput<KafkaClusterPrivateLinkConfiguration?>(
           'privateLinkConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return KafkaClusterPrivateLinkConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    restProxy = registerOutput<KafkaClusterRestProxy?>('restProxy');
-    roles = registerOutput<KafkaClusterRoles>('roles');
+    restProxy = registerOutput<KafkaClusterRestProxy?>(
+      'restProxy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KafkaClusterRestProxy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    roles = registerOutput<KafkaClusterRoles>(
+      'roles',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KafkaClusterRoles.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     securityProfile = registerOutput<KafkaClusterSecurityProfile?>(
       'securityProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KafkaClusterSecurityProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sshEndpoint = registerOutput<String>('sshEndpoint');
     storageAccountGen2 = registerOutput<KafkaClusterStorageAccountGen2?>(
       'storageAccountGen2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KafkaClusterStorageAccountGen2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     storageAccounts = registerOutput<List<Map<String, dynamic>>?>(
       'storageAccounts',
@@ -630,9 +728,23 @@ class KafkaCluster extends pulumi.CustomResource {
     clusterVersion = registerOutput<String>('clusterVersion');
     componentVersion = registerOutput<KafkaClusterComponentVersion>(
       'componentVersion',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KafkaClusterComponentVersion.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     computeIsolation = registerOutput<KafkaClusterComputeIsolation?>(
       'computeIsolation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KafkaClusterComputeIsolation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     diskEncryptions = registerOutput<List<Map<String, dynamic>>?>(
       'diskEncryptions',
@@ -640,28 +752,112 @@ class KafkaCluster extends pulumi.CustomResource {
     encryptionInTransitEnabled = registerOutput<bool?>(
       'encryptionInTransitEnabled',
     );
-    extension = registerOutput<KafkaClusterExtension?>('extension');
-    gateway = registerOutput<KafkaClusterGateway>('gateway');
+    extension = registerOutput<KafkaClusterExtension?>(
+      'extension',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KafkaClusterExtension.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    gateway = registerOutput<KafkaClusterGateway>(
+      'gateway',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KafkaClusterGateway.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     httpsEndpoint = registerOutput<String>('httpsEndpoint');
     kafkaRestProxyEndpoint = registerOutput<String>('kafkaRestProxyEndpoint');
     location = registerOutput<String>('location');
-    metastores = registerOutput<KafkaClusterMetastores?>('metastores');
-    monitor = registerOutput<KafkaClusterMonitor?>('monitor');
+    metastores = registerOutput<KafkaClusterMetastores?>(
+      'metastores',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KafkaClusterMetastores.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    monitor = registerOutput<KafkaClusterMonitor?>(
+      'monitor',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KafkaClusterMonitor.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
-    network = registerOutput<KafkaClusterNetwork?>('network');
+    network = registerOutput<KafkaClusterNetwork?>(
+      'network',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KafkaClusterNetwork.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     privateLinkConfiguration =
         registerOutput<KafkaClusterPrivateLinkConfiguration?>(
           'privateLinkConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return KafkaClusterPrivateLinkConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    restProxy = registerOutput<KafkaClusterRestProxy?>('restProxy');
-    roles = registerOutput<KafkaClusterRoles>('roles');
+    restProxy = registerOutput<KafkaClusterRestProxy?>(
+      'restProxy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KafkaClusterRestProxy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    roles = registerOutput<KafkaClusterRoles>(
+      'roles',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KafkaClusterRoles.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     securityProfile = registerOutput<KafkaClusterSecurityProfile?>(
       'securityProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KafkaClusterSecurityProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sshEndpoint = registerOutput<String>('sshEndpoint');
     storageAccountGen2 = registerOutput<KafkaClusterStorageAccountGen2?>(
       'storageAccountGen2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KafkaClusterStorageAccountGen2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     storageAccounts = registerOutput<List<Map<String, dynamic>>?>(
       'storageAccounts',

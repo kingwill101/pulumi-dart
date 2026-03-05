@@ -370,6 +370,13 @@ class InstanceFleet extends pulumi.CustomResource {
     );
     launchSpecifications = registerOutput<InstanceFleetLaunchSpecifications?>(
       'launchSpecifications',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceFleetLaunchSpecifications.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     provisionedOnDemandCapacity = registerOutput<int>(
@@ -410,6 +417,13 @@ class InstanceFleet extends pulumi.CustomResource {
     );
     launchSpecifications = registerOutput<InstanceFleetLaunchSpecifications?>(
       'launchSpecifications',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceFleetLaunchSpecifications.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     provisionedOnDemandCapacity = registerOutput<int>(

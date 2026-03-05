@@ -193,8 +193,26 @@ class MigrateProject extends pulumi.CustomResource {
     eTag = registerOutput<String?>('eTag');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<MigrateProjectPropertiesResponse>('properties');
-    tags = registerOutput<MigrateProjectResponseTags?>('tags');
+    properties = registerOutput<MigrateProjectPropertiesResponse>(
+      'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MigrateProjectPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    tags = registerOutput<MigrateProjectResponseTags?>(
+      'tags',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MigrateProjectResponseTags.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

@@ -277,24 +277,67 @@ class GalleryImage extends pulumi.CustomResource {
     architecture = registerOutput<String?>('architecture');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
-    disallowed = registerOutput<DisallowedResponse?>('disallowed');
+    disallowed = registerOutput<DisallowedResponse?>(
+      'disallowed',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DisallowedResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     endOfLifeDate = registerOutput<String?>('endOfLifeDate');
     eula = registerOutput<String?>('eula');
     features = registerOutput<List<Map<String, dynamic>>?>('features');
     hyperVGeneration = registerOutput<String?>('hyperVGeneration');
-    identifier = registerOutput<GalleryImageIdentifierResponse>('identifier');
+    identifier = registerOutput<GalleryImageIdentifierResponse>(
+      'identifier',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GalleryImageIdentifierResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     osState = registerOutput<String>('osState');
     osType = registerOutput<String>('osType');
     privacyStatementUri = registerOutput<String?>('privacyStatementUri');
     provisioningState = registerOutput<String>('provisioningState');
-    purchasePlan = registerOutput<ImagePurchasePlanResponse?>('purchasePlan');
+    purchasePlan = registerOutput<ImagePurchasePlanResponse?>(
+      'purchasePlan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImagePurchasePlanResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     recommended = registerOutput<RecommendedMachineConfigurationResponse?>(
       'recommended',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RecommendedMachineConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     releaseNoteUri = registerOutput<String?>('releaseNoteUri');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

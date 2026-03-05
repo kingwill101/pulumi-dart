@@ -81,6 +81,13 @@ class ProjectSink extends pulumi.CustomResource {
        ) {
     bigqueryOptions = registerOutput<ProjectSinkBigqueryOptions>(
       'bigqueryOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectSinkBigqueryOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     customWriterIdentity = registerOutput<String?>('customWriterIdentity');
     description = registerOutput<String?>('description');
@@ -119,6 +126,13 @@ class ProjectSink extends pulumi.CustomResource {
        ) {
     bigqueryOptions = registerOutput<ProjectSinkBigqueryOptions>(
       'bigqueryOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProjectSinkBigqueryOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     customWriterIdentity = registerOutput<String?>('customWriterIdentity');
     description = registerOutput<String?>('description');

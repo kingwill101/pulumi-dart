@@ -308,6 +308,13 @@ class DomainAssociation extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     certificateSettings = registerOutput<DomainAssociationCertificateSettings>(
       'certificateSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainAssociationCertificateSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     certificateVerificationDnsRecord = registerOutput<String>(
       'certificateVerificationDnsRecord',
@@ -346,6 +353,13 @@ class DomainAssociation extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     certificateSettings = registerOutput<DomainAssociationCertificateSettings>(
       'certificateSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainAssociationCertificateSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     certificateVerificationDnsRecord = registerOutput<String>(
       'certificateVerificationDnsRecord',

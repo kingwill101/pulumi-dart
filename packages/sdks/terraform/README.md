@@ -20,7 +20,7 @@ import 'package:pulumi_terraform/pulumi_terraform.dart' as provider;
 dependencies:
   pulumi_terraform:
     git:
-      url: https://github.com/<owner>/<repo>.git
+      url: https://github.com/kingwill101/pulumi-dart.git
       path: packages/terraform
       ref: main
 ~~~

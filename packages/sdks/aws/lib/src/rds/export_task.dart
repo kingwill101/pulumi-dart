@@ -892,7 +892,16 @@ class ExportTask extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     taskEndTime = registerOutput<String>('taskEndTime');
     taskStartTime = registerOutput<String>('taskStartTime');
-    timeouts = registerOutput<ExportTaskTimeouts?>('timeouts');
+    timeouts = registerOutput<ExportTaskTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExportTaskTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     warningMessage = registerOutput<String>('warningMessage');
   }
 
@@ -934,7 +943,16 @@ class ExportTask extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     taskEndTime = registerOutput<String>('taskEndTime');
     taskStartTime = registerOutput<String>('taskStartTime');
-    timeouts = registerOutput<ExportTaskTimeouts?>('timeouts');
+    timeouts = registerOutput<ExportTaskTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExportTaskTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     warningMessage = registerOutput<String>('warningMessage');
   }
 }

@@ -176,7 +176,16 @@ class AssetType extends pulumi.CustomResource {
     owningProjectIdentifier = registerOutput<String>('owningProjectIdentifier');
     region = registerOutput<String>('region');
     revision = registerOutput<String>('revision');
-    timeouts = registerOutput<AssetTypeTimeouts?>('timeouts');
+    timeouts = registerOutput<AssetTypeTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AssetTypeTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [AssetType] resource's state with the given [name] and [id].
@@ -211,6 +220,15 @@ class AssetType extends pulumi.CustomResource {
     owningProjectIdentifier = registerOutput<String>('owningProjectIdentifier');
     region = registerOutput<String>('region');
     revision = registerOutput<String>('revision');
-    timeouts = registerOutput<AssetTypeTimeouts?>('timeouts');
+    timeouts = registerOutput<AssetTypeTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AssetTypeTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

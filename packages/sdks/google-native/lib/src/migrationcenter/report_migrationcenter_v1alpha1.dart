@@ -65,6 +65,13 @@ class ReportMigrationcenterV1alpha1 extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     summary = registerOutput<ReportSummaryResponseMigrationcenterV1alpha1>(
       'summary',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReportSummaryResponseMigrationcenterV1alpha1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     type = registerOutput<String>('type');
     updateTime = registerOutput<String>('updateTime');

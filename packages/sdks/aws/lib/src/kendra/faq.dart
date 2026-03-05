@@ -486,7 +486,14 @@ class Faq extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    s3Path = registerOutput<FaqS3Path>('s3Path');
+    s3Path = registerOutput<FaqS3Path>(
+      's3Path',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FaqS3Path.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -523,7 +530,14 @@ class Faq extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    s3Path = registerOutput<FaqS3Path>('s3Path');
+    s3Path = registerOutput<FaqS3Path>(
+      's3Path',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FaqS3Path.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

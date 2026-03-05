@@ -66,8 +66,26 @@ class CSIStorageCapacityPatchResource extends pulumi.CustomResource {
     capacity = registerOutput<String?>('capacity');
     kind = registerOutput<String?>('kind');
     maximumVolumeSize = registerOutput<String?>('maximumVolumeSize');
-    metadata = registerOutput<ObjectMetaPatch?>('metadata');
-    nodeTopology = registerOutput<LabelSelectorPatch?>('nodeTopology');
+    metadata = registerOutput<ObjectMetaPatch?>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMetaPatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    nodeTopology = registerOutput<LabelSelectorPatch?>(
+      'nodeTopology',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LabelSelectorPatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     storageClassName = registerOutput<String?>('storageClassName');
   }
 }

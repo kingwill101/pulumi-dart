@@ -403,7 +403,16 @@ class MedtechService extends pulumi.CustomResource {
     );
     eventhubName = registerOutput<String>('eventhubName');
     eventhubNamespaceName = registerOutput<String>('eventhubNamespaceName');
-    identity = registerOutput<MedtechServiceIdentity?>('identity');
+    identity = registerOutput<MedtechServiceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MedtechServiceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     tags = registerOutput<Map<String, String>?>('tags');
@@ -439,7 +448,16 @@ class MedtechService extends pulumi.CustomResource {
     );
     eventhubName = registerOutput<String>('eventhubName');
     eventhubNamespaceName = registerOutput<String>('eventhubNamespaceName');
-    identity = registerOutput<MedtechServiceIdentity?>('identity');
+    identity = registerOutput<MedtechServiceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MedtechServiceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     tags = registerOutput<Map<String, String>?>('tags');

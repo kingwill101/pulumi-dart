@@ -969,6 +969,13 @@ class RepositoryGroupIamBinding extends pulumi.CustomResource {
     codeRepositoryIndex = registerOutput<String>('codeRepositoryIndex');
     condition = registerOutput<RepositoryGroupIamBindingCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RepositoryGroupIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
@@ -1004,6 +1011,13 @@ class RepositoryGroupIamBinding extends pulumi.CustomResource {
     codeRepositoryIndex = registerOutput<String>('codeRepositoryIndex');
     condition = registerOutput<RepositoryGroupIamBindingCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RepositoryGroupIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');

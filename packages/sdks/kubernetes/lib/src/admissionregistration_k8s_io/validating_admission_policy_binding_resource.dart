@@ -37,10 +37,28 @@ class ValidatingAdmissionPolicyBindingResource extends pulumi.CustomResource {
        ) {
     apiVersion = registerOutput<String>('apiVersion');
     kind = registerOutput<String>('kind');
-    metadata = registerOutput<ObjectMeta>('metadata');
+    metadata = registerOutput<ObjectMeta>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     spec =
         registerOutput<
           ValidatingAdmissionPolicyBindingSpecAdmissionregistrationK8sIoV1alpha1
-        >('spec');
+        >(
+          'spec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ValidatingAdmissionPolicyBindingSpecAdmissionregistrationK8sIoV1alpha1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
   }
 }

@@ -332,7 +332,16 @@ class WorkspaceCertificate extends pulumi.CustomResource {
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     expirationDate = registerOutput<String>('expirationDate');
-    keyVault = registerOutput<KeyVaultContractPropertiesResponse?>('keyVault');
+    keyVault = registerOutput<KeyVaultContractPropertiesResponse?>(
+      'keyVault',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KeyVaultContractPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     subject = registerOutput<String>('subject');
     thumbprint = registerOutput<String>('thumbprint');

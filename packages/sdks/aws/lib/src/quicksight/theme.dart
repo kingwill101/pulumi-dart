@@ -304,7 +304,16 @@ class Theme extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     awsAccountId = registerOutput<String>('awsAccountId');
     baseThemeId = registerOutput<String>('baseThemeId');
-    configuration = registerOutput<ThemeConfiguration?>('configuration');
+    configuration = registerOutput<ThemeConfiguration?>(
+      'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ThemeConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createdTime = registerOutput<String>('createdTime');
     lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
     this.name = registerOutput<String>('name');
@@ -340,7 +349,16 @@ class Theme extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     awsAccountId = registerOutput<String>('awsAccountId');
     baseThemeId = registerOutput<String>('baseThemeId');
-    configuration = registerOutput<ThemeConfiguration?>('configuration');
+    configuration = registerOutput<ThemeConfiguration?>(
+      'configuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ThemeConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createdTime = registerOutput<String>('createdTime');
     lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
     this.name = registerOutput<String>('name');

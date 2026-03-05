@@ -380,12 +380,28 @@ class DelegatedSubnetServiceDetails extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     controllerDetails = registerOutput<ControllerDetailsResponse?>(
       'controllerDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ControllerDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     resourceGuid = registerOutput<String>('resourceGuid');
-    subnetDetails = registerOutput<SubnetDetailsResponse?>('subnetDetails');
+    subnetDetails = registerOutput<SubnetDetailsResponse?>(
+      'subnetDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubnetDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

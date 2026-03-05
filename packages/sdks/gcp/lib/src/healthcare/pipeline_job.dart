@@ -1953,6 +1953,13 @@ class PipelineJob extends pulumi.CustomResource {
        ) {
     backfillPipelineJob = registerOutput<PipelineJobBackfillPipelineJob?>(
       'backfillPipelineJob',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineJobBackfillPipelineJob.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dataset = registerOutput<String>('dataset');
     disableLineage = registerOutput<bool?>('disableLineage');
@@ -1961,12 +1968,26 @@ class PipelineJob extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     mappingPipelineJob = registerOutput<PipelineJobMappingPipelineJob?>(
       'mappingPipelineJob',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineJobMappingPipelineJob.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     reconciliationPipelineJob =
         registerOutput<PipelineJobReconciliationPipelineJob?>(
           'reconciliationPipelineJob',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PipelineJobReconciliationPipelineJob.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     selfLink = registerOutput<String>('selfLink');
   }
@@ -1996,6 +2017,13 @@ class PipelineJob extends pulumi.CustomResource {
        ) {
     backfillPipelineJob = registerOutput<PipelineJobBackfillPipelineJob?>(
       'backfillPipelineJob',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineJobBackfillPipelineJob.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dataset = registerOutput<String>('dataset');
     disableLineage = registerOutput<bool?>('disableLineage');
@@ -2004,12 +2032,26 @@ class PipelineJob extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     mappingPipelineJob = registerOutput<PipelineJobMappingPipelineJob?>(
       'mappingPipelineJob',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineJobMappingPipelineJob.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     reconciliationPipelineJob =
         registerOutput<PipelineJobReconciliationPipelineJob?>(
           'reconciliationPipelineJob',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PipelineJobReconciliationPipelineJob.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     selfLink = registerOutput<String>('selfLink');
   }

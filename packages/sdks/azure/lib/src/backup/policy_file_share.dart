@@ -473,22 +473,59 @@ class PolicyFileShare extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    backup = registerOutput<PolicyFileShareBackup>('backup');
+    backup = registerOutput<PolicyFileShareBackup>(
+      'backup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyFileShareBackup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     backupTier = registerOutput<String?>('backupTier');
     this.name = registerOutput<String>('name');
     recoveryVaultName = registerOutput<String>('recoveryVaultName');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     retentionDaily = registerOutput<PolicyFileShareRetentionDaily>(
       'retentionDaily',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyFileShareRetentionDaily.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     retentionMonthly = registerOutput<PolicyFileShareRetentionMonthly?>(
       'retentionMonthly',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyFileShareRetentionMonthly.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     retentionWeekly = registerOutput<PolicyFileShareRetentionWeekly?>(
       'retentionWeekly',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyFileShareRetentionWeekly.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     retentionYearly = registerOutput<PolicyFileShareRetentionYearly?>(
       'retentionYearly',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyFileShareRetentionYearly.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     snapshotRetentionInDays = registerOutput<int?>('snapshotRetentionInDays');
     timezone = registerOutput<String?>('timezone');
@@ -517,22 +554,59 @@ class PolicyFileShare extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    backup = registerOutput<PolicyFileShareBackup>('backup');
+    backup = registerOutput<PolicyFileShareBackup>(
+      'backup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyFileShareBackup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     backupTier = registerOutput<String?>('backupTier');
     this.name = registerOutput<String>('name');
     recoveryVaultName = registerOutput<String>('recoveryVaultName');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     retentionDaily = registerOutput<PolicyFileShareRetentionDaily>(
       'retentionDaily',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyFileShareRetentionDaily.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     retentionMonthly = registerOutput<PolicyFileShareRetentionMonthly?>(
       'retentionMonthly',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyFileShareRetentionMonthly.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     retentionWeekly = registerOutput<PolicyFileShareRetentionWeekly?>(
       'retentionWeekly',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyFileShareRetentionWeekly.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     retentionYearly = registerOutput<PolicyFileShareRetentionYearly?>(
       'retentionYearly',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyFileShareRetentionYearly.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     snapshotRetentionInDays = registerOutput<int?>('snapshotRetentionInDays');
     timezone = registerOutput<String?>('timezone');

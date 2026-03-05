@@ -1355,7 +1355,16 @@ class Application extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    api = registerOutput<ApplicationApi?>('api');
+    api = registerOutput<ApplicationApi?>(
+      'api',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationApi.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     appRoleIds = registerOutput<Map<String, String>>('appRoleIds');
     appRoles = registerOutput<List<Map<String, dynamic>>?>('appRoles');
     clientId = registerOutput<String>('clientId');
@@ -1384,12 +1393,37 @@ class Application extends pulumi.CustomResource {
     objectId = registerOutput<String>('objectId');
     optionalClaims = registerOutput<ApplicationOptionalClaims?>(
       'optionalClaims',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationOptionalClaims.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     owners = registerOutput<List<String>?>('owners');
-    password = registerOutput<ApplicationPassword?>('password');
+    password = registerOutput<ApplicationPassword?>(
+      'password',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationPassword.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     preventDuplicateNames = registerOutput<bool?>('preventDuplicateNames');
     privacyStatementUrl = registerOutput<String?>('privacyStatementUrl');
-    publicClient = registerOutput<ApplicationPublicClient?>('publicClient');
+    publicClient = registerOutput<ApplicationPublicClient?>(
+      'publicClient',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationPublicClient.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     publisherDomain = registerOutput<String>('publisherDomain');
     requiredResourceAccesses = registerOutput<List<Map<String, dynamic>>?>(
       'requiredResourceAccesses',
@@ -1400,12 +1434,28 @@ class Application extends pulumi.CustomResource {
     signInAudience = registerOutput<String?>('signInAudience');
     singlePageApplication = registerOutput<ApplicationSinglePageApplication?>(
       'singlePageApplication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationSinglePageApplication.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     supportUrl = registerOutput<String?>('supportUrl');
     tags = registerOutput<List<String>>('tags');
     templateId = registerOutput<String>('templateId');
     termsOfServiceUrl = registerOutput<String?>('termsOfServiceUrl');
-    web = registerOutput<ApplicationWeb?>('web');
+    web = registerOutput<ApplicationWeb?>(
+      'web',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationWeb.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Application] resource's state with the given [name] and [id].
@@ -1431,7 +1481,16 @@ class Application extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    api = registerOutput<ApplicationApi?>('api');
+    api = registerOutput<ApplicationApi?>(
+      'api',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationApi.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     appRoleIds = registerOutput<Map<String, String>>('appRoleIds');
     appRoles = registerOutput<List<Map<String, dynamic>>?>('appRoles');
     clientId = registerOutput<String>('clientId');
@@ -1460,12 +1519,37 @@ class Application extends pulumi.CustomResource {
     objectId = registerOutput<String>('objectId');
     optionalClaims = registerOutput<ApplicationOptionalClaims?>(
       'optionalClaims',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationOptionalClaims.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     owners = registerOutput<List<String>?>('owners');
-    password = registerOutput<ApplicationPassword?>('password');
+    password = registerOutput<ApplicationPassword?>(
+      'password',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationPassword.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     preventDuplicateNames = registerOutput<bool?>('preventDuplicateNames');
     privacyStatementUrl = registerOutput<String?>('privacyStatementUrl');
-    publicClient = registerOutput<ApplicationPublicClient?>('publicClient');
+    publicClient = registerOutput<ApplicationPublicClient?>(
+      'publicClient',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationPublicClient.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     publisherDomain = registerOutput<String>('publisherDomain');
     requiredResourceAccesses = registerOutput<List<Map<String, dynamic>>?>(
       'requiredResourceAccesses',
@@ -1476,11 +1560,27 @@ class Application extends pulumi.CustomResource {
     signInAudience = registerOutput<String?>('signInAudience');
     singlePageApplication = registerOutput<ApplicationSinglePageApplication?>(
       'singlePageApplication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationSinglePageApplication.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     supportUrl = registerOutput<String?>('supportUrl');
     tags = registerOutput<List<String>>('tags');
     templateId = registerOutput<String>('templateId');
     termsOfServiceUrl = registerOutput<String?>('termsOfServiceUrl');
-    web = registerOutput<ApplicationWeb?>('web');
+    web = registerOutput<ApplicationWeb?>(
+      'web',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicationWeb.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

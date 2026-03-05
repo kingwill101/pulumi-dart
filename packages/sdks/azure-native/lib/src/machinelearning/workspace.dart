@@ -246,7 +246,16 @@ class Workspace extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     ownerEmail = registerOutput<String>('ownerEmail');
-    sku = registerOutput<SkuResponse?>('sku');
+    sku = registerOutput<SkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     studioEndpoint = registerOutput<String>('studioEndpoint');
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');

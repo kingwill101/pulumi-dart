@@ -304,6 +304,13 @@ class Workspace extends pulumi.CustomResource {
     accessConnectorId = registerOutput<String?>('accessConnectorId');
     customParameters = registerOutput<WorkspaceCustomParameters>(
       'customParameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkspaceCustomParameters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     customerManagedKeyEnabled = registerOutput<bool?>(
       'customerManagedKeyEnabled',
@@ -315,6 +322,13 @@ class Workspace extends pulumi.CustomResource {
     enhancedSecurityCompliance =
         registerOutput<WorkspaceEnhancedSecurityCompliance?>(
           'enhancedSecurityCompliance',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WorkspaceEnhancedSecurityCompliance.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     infrastructureEncryptionEnabled = registerOutput<bool?>(
       'infrastructureEncryptionEnabled',
@@ -388,6 +402,13 @@ class Workspace extends pulumi.CustomResource {
     accessConnectorId = registerOutput<String?>('accessConnectorId');
     customParameters = registerOutput<WorkspaceCustomParameters>(
       'customParameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkspaceCustomParameters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     customerManagedKeyEnabled = registerOutput<bool?>(
       'customerManagedKeyEnabled',
@@ -399,6 +420,13 @@ class Workspace extends pulumi.CustomResource {
     enhancedSecurityCompliance =
         registerOutput<WorkspaceEnhancedSecurityCompliance?>(
           'enhancedSecurityCompliance',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WorkspaceEnhancedSecurityCompliance.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     infrastructureEncryptionEnabled = registerOutput<bool?>(
       'infrastructureEncryptionEnabled',

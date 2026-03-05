@@ -339,6 +339,13 @@ class ContactChannel extends pulumi.CustomResource {
     contactId = registerOutput<String>('contactId');
     deliveryAddress = registerOutput<ContactChannelDeliveryAddress>(
       'deliveryAddress',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContactChannelDeliveryAddress.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -373,6 +380,13 @@ class ContactChannel extends pulumi.CustomResource {
     contactId = registerOutput<String>('contactId');
     deliveryAddress = registerOutput<ContactChannelDeliveryAddress>(
       'deliveryAddress',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContactChannelDeliveryAddress.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

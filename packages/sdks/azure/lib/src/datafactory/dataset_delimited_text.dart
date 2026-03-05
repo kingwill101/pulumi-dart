@@ -399,10 +399,24 @@ class DatasetDelimitedText extends pulumi.CustomResource {
     azureBlobFsLocation =
         registerOutput<DatasetDelimitedTextAzureBlobFsLocation?>(
           'azureBlobFsLocation',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DatasetDelimitedTextAzureBlobFsLocation.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     azureBlobStorageLocation =
         registerOutput<DatasetDelimitedTextAzureBlobStorageLocation?>(
           'azureBlobStorageLocation',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DatasetDelimitedTextAzureBlobStorageLocation.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     columnDelimiter = registerOutput<String?>('columnDelimiter');
     compressionCodec = registerOutput<String?>('compressionCodec');
@@ -416,6 +430,13 @@ class DatasetDelimitedText extends pulumi.CustomResource {
     httpServerLocation =
         registerOutput<DatasetDelimitedTextHttpServerLocation?>(
           'httpServerLocation',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DatasetDelimitedTextHttpServerLocation.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');
@@ -458,10 +479,24 @@ class DatasetDelimitedText extends pulumi.CustomResource {
     azureBlobFsLocation =
         registerOutput<DatasetDelimitedTextAzureBlobFsLocation?>(
           'azureBlobFsLocation',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DatasetDelimitedTextAzureBlobFsLocation.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     azureBlobStorageLocation =
         registerOutput<DatasetDelimitedTextAzureBlobStorageLocation?>(
           'azureBlobStorageLocation',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DatasetDelimitedTextAzureBlobStorageLocation.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     columnDelimiter = registerOutput<String?>('columnDelimiter');
     compressionCodec = registerOutput<String?>('compressionCodec');
@@ -475,6 +510,13 @@ class DatasetDelimitedText extends pulumi.CustomResource {
     httpServerLocation =
         registerOutput<DatasetDelimitedTextHttpServerLocation?>(
           'httpServerLocation',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DatasetDelimitedTextHttpServerLocation.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');

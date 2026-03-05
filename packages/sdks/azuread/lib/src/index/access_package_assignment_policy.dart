@@ -459,10 +459,24 @@ class AccessPackageAssignmentPolicy extends pulumi.CustomResource {
     approvalSettings =
         registerOutput<AccessPackageAssignmentPolicyApprovalSettings?>(
           'approvalSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AccessPackageAssignmentPolicyApprovalSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     assignmentReviewSettings =
         registerOutput<AccessPackageAssignmentPolicyAssignmentReviewSettings?>(
           'assignmentReviewSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AccessPackageAssignmentPolicyAssignmentReviewSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
@@ -473,6 +487,13 @@ class AccessPackageAssignmentPolicy extends pulumi.CustomResource {
     requestorSettings =
         registerOutput<AccessPackageAssignmentPolicyRequestorSettings?>(
           'requestorSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AccessPackageAssignmentPolicyRequestorSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 
@@ -503,10 +524,24 @@ class AccessPackageAssignmentPolicy extends pulumi.CustomResource {
     approvalSettings =
         registerOutput<AccessPackageAssignmentPolicyApprovalSettings?>(
           'approvalSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AccessPackageAssignmentPolicyApprovalSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     assignmentReviewSettings =
         registerOutput<AccessPackageAssignmentPolicyAssignmentReviewSettings?>(
           'assignmentReviewSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AccessPackageAssignmentPolicyAssignmentReviewSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
@@ -517,6 +552,13 @@ class AccessPackageAssignmentPolicy extends pulumi.CustomResource {
     requestorSettings =
         registerOutput<AccessPackageAssignmentPolicyRequestorSettings?>(
           'requestorSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AccessPackageAssignmentPolicyRequestorSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

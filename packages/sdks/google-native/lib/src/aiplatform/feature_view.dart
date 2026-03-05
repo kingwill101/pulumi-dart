@@ -64,14 +64,32 @@ class FeatureView extends pulumi.CustomResource {
     bigQuerySource =
         registerOutput<
           GoogleCloudAiplatformV1FeatureViewBigQuerySourceResponse
-        >('bigQuerySource');
+        >(
+          'bigQuerySource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1FeatureViewBigQuerySourceResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     createTime = registerOutput<String>('createTime');
     etag = registerOutput<String>('etag');
     featureOnlineStoreId = registerOutput<String>('featureOnlineStoreId');
     featureRegistrySource =
         registerOutput<
           GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceResponse
-        >('featureRegistrySource');
+        >(
+          'featureRegistrySource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     featureViewId = registerOutput<String>('featureViewId');
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
@@ -81,6 +99,13 @@ class FeatureView extends pulumi.CustomResource {
     syncConfig =
         registerOutput<GoogleCloudAiplatformV1FeatureViewSyncConfigResponse>(
           'syncConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1FeatureViewSyncConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     updateTime = registerOutput<String>('updateTime');
   }

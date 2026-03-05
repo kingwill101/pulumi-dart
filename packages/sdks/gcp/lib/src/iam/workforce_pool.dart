@@ -372,6 +372,13 @@ class WorkforcePool extends pulumi.CustomResource {
        ) {
     accessRestrictions = registerOutput<WorkforcePoolAccessRestrictions?>(
       'accessRestrictions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkforcePoolAccessRestrictions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');
@@ -409,6 +416,13 @@ class WorkforcePool extends pulumi.CustomResource {
        ) {
     accessRestrictions = registerOutput<WorkforcePoolAccessRestrictions?>(
       'accessRestrictions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkforcePoolAccessRestrictions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');

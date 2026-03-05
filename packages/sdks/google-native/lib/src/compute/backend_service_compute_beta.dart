@@ -167,21 +167,58 @@ class BackendServiceComputeBeta extends pulumi.CustomResource {
     backends = registerOutput<List<Map<String, dynamic>>>('backends');
     cdnPolicy = registerOutput<BackendServiceCdnPolicyResponseComputeBeta>(
       'cdnPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackendServiceCdnPolicyResponseComputeBeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     circuitBreakers = registerOutput<CircuitBreakersResponseComputeBeta>(
       'circuitBreakers',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CircuitBreakersResponseComputeBeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     compressionMode = registerOutput<String>('compressionMode');
     connectionDraining = registerOutput<ConnectionDrainingResponseComputeBeta>(
       'connectionDraining',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionDrainingResponseComputeBeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     connectionTrackingPolicy =
         registerOutput<
           BackendServiceConnectionTrackingPolicyResponseComputeBeta
-        >('connectionTrackingPolicy');
+        >(
+          'connectionTrackingPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return BackendServiceConnectionTrackingPolicyResponseComputeBeta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     consistentHash =
         registerOutput<ConsistentHashLoadBalancerSettingsResponseComputeBeta>(
           'consistentHash',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConsistentHashLoadBalancerSettingsResponseComputeBeta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     creationTimestamp = registerOutput<String>('creationTimestamp');
     customRequestHeaders = registerOutput<List<String>>('customRequestHeaders');
@@ -194,10 +231,26 @@ class BackendServiceComputeBeta extends pulumi.CustomResource {
     failoverPolicy =
         registerOutput<BackendServiceFailoverPolicyResponseComputeBeta>(
           'failoverPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return BackendServiceFailoverPolicyResponseComputeBeta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     fingerprint = registerOutput<String>('fingerprint');
     healthChecks = registerOutput<List<String>>('healthChecks');
-    iap = registerOutput<BackendServiceIAPResponseComputeBeta>('iap');
+    iap = registerOutput<BackendServiceIAPResponseComputeBeta>(
+      'iap',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackendServiceIAPResponseComputeBeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ipAddressSelectionPolicy = registerOutput<String>(
       'ipAddressSelectionPolicy',
     );
@@ -209,15 +262,36 @@ class BackendServiceComputeBeta extends pulumi.CustomResource {
     localityLbPolicy = registerOutput<String>('localityLbPolicy');
     logConfig = registerOutput<BackendServiceLogConfigResponseComputeBeta>(
       'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackendServiceLogConfigResponseComputeBeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     maxStreamDuration = registerOutput<DurationResponseComputeBeta>(
       'maxStreamDuration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DurationResponseComputeBeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     metadatas = registerOutput<Map<String, String>>('metadatas');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     outlierDetection = registerOutput<OutlierDetectionResponseComputeBeta>(
       'outlierDetection',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OutlierDetectionResponseComputeBeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     port = registerOutput<int>('port');
     portName = registerOutput<String>('portName');
@@ -228,12 +302,28 @@ class BackendServiceComputeBeta extends pulumi.CustomResource {
     securityPolicy = registerOutput<String>('securityPolicy');
     securitySettings = registerOutput<SecuritySettingsResponseComputeBeta>(
       'securitySettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecuritySettingsResponseComputeBeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     selfLink = registerOutput<String>('selfLink');
     serviceBindings = registerOutput<List<String>>('serviceBindings');
     serviceLbPolicy = registerOutput<String>('serviceLbPolicy');
     sessionAffinity = registerOutput<String>('sessionAffinity');
-    subsetting = registerOutput<SubsettingResponseComputeBeta>('subsetting');
+    subsetting = registerOutput<SubsettingResponseComputeBeta>(
+      'subsetting',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubsettingResponseComputeBeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     timeoutSec = registerOutput<int>('timeoutSec');
     usedBy = registerOutput<List<Map<String, dynamic>>>('usedBy');
   }

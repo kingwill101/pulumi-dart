@@ -53,12 +53,26 @@ class Hl7V2StoreHealthcareV1beta1 extends pulumi.CustomResource {
     notificationConfig =
         registerOutput<NotificationConfigResponseHealthcareV1beta1>(
           'notificationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NotificationConfigResponseHealthcareV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     notificationConfigs = registerOutput<List<Map<String, dynamic>>>(
       'notificationConfigs',
     );
     parserConfig = registerOutput<ParserConfigResponseHealthcareV1beta1>(
       'parserConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ParserConfigResponseHealthcareV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     rejectDuplicateMessage = registerOutput<bool>('rejectDuplicateMessage');

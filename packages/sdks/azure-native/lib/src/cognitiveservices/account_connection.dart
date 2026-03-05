@@ -199,6 +199,13 @@ class AccountConnection extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     properties = registerOutput<AADAuthTypeConnectionPropertiesResponse>(
       'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AADAuthTypeConnectionPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     type = registerOutput<String>('type');
   }

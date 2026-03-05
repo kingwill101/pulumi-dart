@@ -618,12 +618,28 @@ class BudgetAction extends pulumi.CustomResource {
     actionId = registerOutput<String>('actionId');
     actionThreshold = registerOutput<BudgetActionActionThreshold>(
       'actionThreshold',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BudgetActionActionThreshold.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     actionType = registerOutput<String>('actionType');
     approvalModel = registerOutput<String>('approvalModel');
     arn = registerOutput<String>('arn');
     budgetName = registerOutput<String>('budgetName');
-    definition = registerOutput<BudgetActionDefinition>('definition');
+    definition = registerOutput<BudgetActionDefinition>(
+      'definition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BudgetActionDefinition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     executionRoleArn = registerOutput<String>('executionRoleArn');
     notificationType = registerOutput<String>('notificationType');
     status = registerOutput<String>('status');
@@ -659,12 +675,28 @@ class BudgetAction extends pulumi.CustomResource {
     actionId = registerOutput<String>('actionId');
     actionThreshold = registerOutput<BudgetActionActionThreshold>(
       'actionThreshold',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BudgetActionActionThreshold.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     actionType = registerOutput<String>('actionType');
     approvalModel = registerOutput<String>('approvalModel');
     arn = registerOutput<String>('arn');
     budgetName = registerOutput<String>('budgetName');
-    definition = registerOutput<BudgetActionDefinition>('definition');
+    definition = registerOutput<BudgetActionDefinition>(
+      'definition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BudgetActionDefinition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     executionRoleArn = registerOutput<String>('executionRoleArn');
     notificationType = registerOutput<String>('notificationType');
     status = registerOutput<String>('status');

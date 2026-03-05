@@ -455,6 +455,13 @@ class User extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     authenticationMode = registerOutput<UserAuthenticationMode>(
       'authenticationMode',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserAuthenticationMode.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     engine = registerOutput<String>('engine');
     noPasswordRequired = registerOutput<bool?>('noPasswordRequired');
@@ -489,6 +496,13 @@ class User extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     authenticationMode = registerOutput<UserAuthenticationMode>(
       'authenticationMode',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserAuthenticationMode.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     engine = registerOutput<String>('engine');
     noPasswordRequired = registerOutput<bool?>('noPasswordRequired');

@@ -285,19 +285,60 @@ class Backend extends pulumi.CustomResource {
     apiManagementName = registerOutput<String>('apiManagementName');
     circuitBreakerRule = registerOutput<BackendCircuitBreakerRule?>(
       'circuitBreakerRule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackendCircuitBreakerRule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    credentials = registerOutput<BackendCredentials?>('credentials');
+    credentials = registerOutput<BackendCredentials?>(
+      'credentials',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackendCredentials.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     protocol = registerOutput<String>('protocol');
-    proxy = registerOutput<BackendProxy?>('proxy');
+    proxy = registerOutput<BackendProxy?>(
+      'proxy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackendProxy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     resourceId = registerOutput<String?>('resourceId');
     serviceFabricCluster = registerOutput<BackendServiceFabricCluster?>(
       'serviceFabricCluster',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackendServiceFabricCluster.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     title = registerOutput<String?>('title');
-    tls = registerOutput<BackendTls?>('tls');
+    tls = registerOutput<BackendTls?>(
+      'tls',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackendTls.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     url = registerOutput<String>('url');
   }
 
@@ -327,19 +368,60 @@ class Backend extends pulumi.CustomResource {
     apiManagementName = registerOutput<String>('apiManagementName');
     circuitBreakerRule = registerOutput<BackendCircuitBreakerRule?>(
       'circuitBreakerRule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackendCircuitBreakerRule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    credentials = registerOutput<BackendCredentials?>('credentials');
+    credentials = registerOutput<BackendCredentials?>(
+      'credentials',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackendCredentials.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     protocol = registerOutput<String>('protocol');
-    proxy = registerOutput<BackendProxy?>('proxy');
+    proxy = registerOutput<BackendProxy?>(
+      'proxy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackendProxy.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     resourceId = registerOutput<String?>('resourceId');
     serviceFabricCluster = registerOutput<BackendServiceFabricCluster?>(
       'serviceFabricCluster',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackendServiceFabricCluster.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     title = registerOutput<String?>('title');
-    tls = registerOutput<BackendTls?>('tls');
+    tls = registerOutput<BackendTls?>(
+      'tls',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BackendTls.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     url = registerOutput<String>('url');
   }
 }

@@ -53,6 +53,13 @@ class MetadataImportMetastoreV1alpha extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     databaseDump = registerOutput<DatabaseDumpResponseMetastoreV1alpha>(
       'databaseDump',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseDumpResponseMetastoreV1alpha.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String>('description');
     endTime = registerOutput<String>('endTime');

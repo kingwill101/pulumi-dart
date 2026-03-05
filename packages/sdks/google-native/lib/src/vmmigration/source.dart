@@ -54,11 +54,38 @@ class Source extends pulumi.CustomResource {
         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
         options ?? pulumi.CustomResourceOptions(),
       ) {
-    aws = registerOutput<AwsSourceDetailsResponse>('aws');
-    azure = registerOutput<AzureSourceDetailsResponse>('azure');
+    aws = registerOutput<AwsSourceDetailsResponse>(
+      'aws',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsSourceDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    azure = registerOutput<AzureSourceDetailsResponse>(
+      'azure',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AzureSourceDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
-    encryption = registerOutput<EncryptionResponse>('encryption');
+    encryption = registerOutput<EncryptionResponse>(
+      'encryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EncryptionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -66,6 +93,15 @@ class Source extends pulumi.CustomResource {
     requestId = registerOutput<String?>('requestId');
     sourceId = registerOutput<String>('sourceId');
     updateTime = registerOutput<String>('updateTime');
-    vmware = registerOutput<VmwareSourceDetailsResponse>('vmware');
+    vmware = registerOutput<VmwareSourceDetailsResponse>(
+      'vmware',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VmwareSourceDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

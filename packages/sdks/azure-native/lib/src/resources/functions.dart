@@ -99,7 +99,8 @@ Future<GetDeploymentResult> getDeployment(
 /// Other available API versions: 2020-10-01, 2021-01-01, 2021-04-01, 2022-09-01, 2023-07-01, 2024-07-01, 2024-11-01, 2025-03-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resources [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_resources_get_deployment_at_management_group_scope_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDeploymentAtManagementGroupScopeResult> getDeploymentAtManagementGroupScope(
+Future<GetDeploymentAtManagementGroupScopeResult>
+getDeploymentAtManagementGroupScope(
   GetDeploymentAtManagementGroupScopeArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -179,7 +180,8 @@ Future<GetDeploymentAtTenantScopeResult> getDeploymentAtTenantScope(
 /// Other available API versions: 2022-08-01-preview, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resources [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_resources_get_deployment_stack_at_management_group_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDeploymentStackAtManagementGroupResult> getDeploymentStackAtManagementGroup(
+Future<GetDeploymentStackAtManagementGroupResult>
+getDeploymentStackAtManagementGroup(
   GetDeploymentStackAtManagementGroupArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -199,7 +201,8 @@ Future<GetDeploymentStackAtManagementGroupResult> getDeploymentStackAtManagement
 /// Other available API versions: 2022-08-01-preview, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resources [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_resources_get_deployment_stack_at_resource_group_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDeploymentStackAtResourceGroupResult> getDeploymentStackAtResourceGroup(
+Future<GetDeploymentStackAtResourceGroupResult>
+getDeploymentStackAtResourceGroup(
   GetDeploymentStackAtResourceGroupArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -237,7 +240,8 @@ Future<GetDeploymentStackAtSubscriptionResult> getDeploymentStackAtSubscription(
 /// Uses Azure REST API version 2025-07-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_resources_get_deployment_stacks_what_if_results_at_management_group_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDeploymentStacksWhatIfResultsAtManagementGroupResult> getDeploymentStacksWhatIfResultsAtManagementGroup(
+Future<GetDeploymentStacksWhatIfResultsAtManagementGroupResult>
+getDeploymentStacksWhatIfResultsAtManagementGroup(
   GetDeploymentStacksWhatIfResultsAtManagementGroupArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -247,7 +251,9 @@ Future<GetDeploymentStacksWhatIfResultsAtManagementGroupResult> getDeploymentSta
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetDeploymentStacksWhatIfResultsAtManagementGroupResult.fromMap(result);
+  return GetDeploymentStacksWhatIfResultsAtManagementGroupResult.fromMap(
+    result,
+  );
 }
 
 /// Gets the Deployment stack with the given name.
@@ -255,7 +261,8 @@ Future<GetDeploymentStacksWhatIfResultsAtManagementGroupResult> getDeploymentSta
 /// Uses Azure REST API version 2025-07-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_resources_get_deployment_stacks_what_if_results_at_resource_group_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDeploymentStacksWhatIfResultsAtResourceGroupResult> getDeploymentStacksWhatIfResultsAtResourceGroup(
+Future<GetDeploymentStacksWhatIfResultsAtResourceGroupResult>
+getDeploymentStacksWhatIfResultsAtResourceGroup(
   GetDeploymentStacksWhatIfResultsAtResourceGroupArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -273,7 +280,8 @@ Future<GetDeploymentStacksWhatIfResultsAtResourceGroupResult> getDeploymentStack
 /// Uses Azure REST API version 2025-07-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_resources_get_deployment_stacks_what_if_results_at_subscription_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDeploymentStacksWhatIfResultsAtSubscriptionResult> getDeploymentStacksWhatIfResultsAtSubscription(
+Future<GetDeploymentStacksWhatIfResultsAtSubscriptionResult>
+getDeploymentStacksWhatIfResultsAtSubscription(
   GetDeploymentStacksWhatIfResultsAtSubscriptionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

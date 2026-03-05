@@ -2128,7 +2128,16 @@ class Authority extends pulumi.CustomResource {
        ) {
     accessUrls = registerOutput<List<Map<String, dynamic>>>('accessUrls');
     certificateAuthorityId = registerOutput<String>('certificateAuthorityId');
-    config = registerOutput<AuthorityConfig>('config');
+    config = registerOutput<AuthorityConfig>(
+      'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AuthorityConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     desiredState = registerOutput<String?>('desiredState');
@@ -2137,7 +2146,16 @@ class Authority extends pulumi.CustomResource {
     ignoreActiveCertificatesOnDeletion = registerOutput<bool?>(
       'ignoreActiveCertificatesOnDeletion',
     );
-    keySpec = registerOutput<AuthorityKeySpec>('keySpec');
+    keySpec = registerOutput<AuthorityKeySpec>(
+      'keySpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AuthorityKeySpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>?>('labels');
     lifetime = registerOutput<String?>('lifetime');
     location = registerOutput<String>('location');
@@ -2151,11 +2169,25 @@ class Authority extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     subordinateConfig = registerOutput<AuthoritySubordinateConfig?>(
       'subordinateConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AuthoritySubordinateConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     type = registerOutput<String?>('type');
     updateTime = registerOutput<String>('updateTime');
     userDefinedAccessUrls = registerOutput<AuthorityUserDefinedAccessUrls?>(
       'userDefinedAccessUrls',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AuthorityUserDefinedAccessUrls.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -2184,7 +2216,16 @@ class Authority extends pulumi.CustomResource {
        ) {
     accessUrls = registerOutput<List<Map<String, dynamic>>>('accessUrls');
     certificateAuthorityId = registerOutput<String>('certificateAuthorityId');
-    config = registerOutput<AuthorityConfig>('config');
+    config = registerOutput<AuthorityConfig>(
+      'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AuthorityConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     desiredState = registerOutput<String?>('desiredState');
@@ -2193,7 +2234,16 @@ class Authority extends pulumi.CustomResource {
     ignoreActiveCertificatesOnDeletion = registerOutput<bool?>(
       'ignoreActiveCertificatesOnDeletion',
     );
-    keySpec = registerOutput<AuthorityKeySpec>('keySpec');
+    keySpec = registerOutput<AuthorityKeySpec>(
+      'keySpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AuthorityKeySpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>?>('labels');
     lifetime = registerOutput<String?>('lifetime');
     location = registerOutput<String>('location');
@@ -2207,11 +2257,25 @@ class Authority extends pulumi.CustomResource {
     this.state = registerOutput<String>('state');
     subordinateConfig = registerOutput<AuthoritySubordinateConfig?>(
       'subordinateConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AuthoritySubordinateConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     type = registerOutput<String?>('type');
     updateTime = registerOutput<String>('updateTime');
     userDefinedAccessUrls = registerOutput<AuthorityUserDefinedAccessUrls?>(
       'userDefinedAccessUrls',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AuthorityUserDefinedAccessUrls.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

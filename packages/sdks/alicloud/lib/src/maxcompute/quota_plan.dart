@@ -320,7 +320,16 @@ class QuotaPlan extends pulumi.CustomResource {
     isEffective = registerOutput<bool?>('isEffective');
     nickname = registerOutput<String>('nickname');
     planName = registerOutput<String>('planName');
-    quota = registerOutput<QuotaPlanQuota?>('quota');
+    quota = registerOutput<QuotaPlanQuota?>(
+      'quota',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return QuotaPlanQuota.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [QuotaPlan] resource's state with the given [name] and [id].
@@ -349,6 +358,15 @@ class QuotaPlan extends pulumi.CustomResource {
     isEffective = registerOutput<bool?>('isEffective');
     nickname = registerOutput<String>('nickname');
     planName = registerOutput<String>('planName');
-    quota = registerOutput<QuotaPlanQuota?>('quota');
+    quota = registerOutput<QuotaPlanQuota?>(
+      'quota',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return QuotaPlanQuota.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

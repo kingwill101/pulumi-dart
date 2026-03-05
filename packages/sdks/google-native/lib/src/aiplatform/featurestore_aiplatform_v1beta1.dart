@@ -60,6 +60,13 @@ class FeaturestoreAiplatformV1beta1 extends pulumi.CustomResource {
     encryptionSpec =
         registerOutput<GoogleCloudAiplatformV1beta1EncryptionSpecResponse>(
           'encryptionSpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1beta1EncryptionSpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     etag = registerOutput<String>('etag');
     featurestoreId = registerOutput<String>('featurestoreId');
@@ -69,7 +76,16 @@ class FeaturestoreAiplatformV1beta1 extends pulumi.CustomResource {
     onlineServingConfig =
         registerOutput<
           GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigResponse
-        >('onlineServingConfig');
+        >(
+          'onlineServingConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     onlineStorageTtlDays = registerOutput<int>('onlineStorageTtlDays');
     project = registerOutput<String>('project');
     state = registerOutput<String>('state');

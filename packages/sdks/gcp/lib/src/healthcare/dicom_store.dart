@@ -621,6 +621,13 @@ class DicomStore extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     notificationConfig = registerOutput<DicomStoreNotificationConfig?>(
       'notificationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DicomStoreNotificationConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     selfLink = registerOutput<String>('selfLink');
@@ -658,6 +665,13 @@ class DicomStore extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     notificationConfig = registerOutput<DicomStoreNotificationConfig?>(
       'notificationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DicomStoreNotificationConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     selfLink = registerOutput<String>('selfLink');

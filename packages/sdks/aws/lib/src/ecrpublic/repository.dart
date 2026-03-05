@@ -246,7 +246,16 @@ class Repository extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    catalogData = registerOutput<RepositoryCatalogData?>('catalogData');
+    catalogData = registerOutput<RepositoryCatalogData?>(
+      'catalogData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RepositoryCatalogData.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     forceDestroy = registerOutput<bool?>('forceDestroy');
     region = registerOutput<String>('region');
     registryId = registerOutput<String>('registryId');
@@ -280,7 +289,16 @@ class Repository extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    catalogData = registerOutput<RepositoryCatalogData?>('catalogData');
+    catalogData = registerOutput<RepositoryCatalogData?>(
+      'catalogData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RepositoryCatalogData.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     forceDestroy = registerOutput<bool?>('forceDestroy');
     region = registerOutput<String>('region');
     registryId = registerOutput<String>('registryId');

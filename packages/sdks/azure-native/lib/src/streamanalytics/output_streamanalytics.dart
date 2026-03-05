@@ -2253,11 +2253,36 @@ class OutputStreamanalytics extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     datasource = registerOutput<AzureDataLakeStoreOutputDataSourceResponse?>(
       'datasource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AzureDataLakeStoreOutputDataSourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    diagnostics = registerOutput<DiagnosticsResponse>('diagnostics');
+    diagnostics = registerOutput<DiagnosticsResponse>(
+      'diagnostics',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiagnosticsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String?>('name');
-    serialization = registerOutput<AvroSerializationResponse?>('serialization');
+    serialization = registerOutput<AvroSerializationResponse?>(
+      'serialization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AvroSerializationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sizeWindow = registerOutput<int?>('sizeWindow');
     timeWindow = registerOutput<String?>('timeWindow');
     type = registerOutput<String>('type');

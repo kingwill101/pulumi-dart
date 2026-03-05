@@ -421,6 +421,13 @@ class Workspace extends pulumi.CustomResource {
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     loggingConfiguration = registerOutput<WorkspaceLoggingConfiguration?>(
       'loggingConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkspaceLoggingConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     prometheusEndpoint = registerOutput<String>('prometheusEndpoint');
     region = registerOutput<String>('region');
@@ -456,6 +463,13 @@ class Workspace extends pulumi.CustomResource {
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     loggingConfiguration = registerOutput<WorkspaceLoggingConfiguration?>(
       'loggingConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkspaceLoggingConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     prometheusEndpoint = registerOutput<String>('prometheusEndpoint');
     region = registerOutput<String>('region');

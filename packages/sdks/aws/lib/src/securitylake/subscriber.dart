@@ -492,12 +492,28 @@ class Subscriber extends pulumi.CustomResource {
     subscriberEndpoint = registerOutput<String>('subscriberEndpoint');
     subscriberIdentity = registerOutput<SubscriberSubscriberIdentity>(
       'subscriberIdentity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubscriberSubscriberIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     subscriberName = registerOutput<String?>('subscriberName');
     subscriberStatus = registerOutput<String>('subscriberStatus');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<SubscriberTimeouts?>('timeouts');
+    timeouts = registerOutput<SubscriberTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubscriberTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Subscriber] resource's state with the given [name] and [id].
@@ -535,11 +551,27 @@ class Subscriber extends pulumi.CustomResource {
     subscriberEndpoint = registerOutput<String>('subscriberEndpoint');
     subscriberIdentity = registerOutput<SubscriberSubscriberIdentity>(
       'subscriberIdentity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubscriberSubscriberIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     subscriberName = registerOutput<String?>('subscriberName');
     subscriberStatus = registerOutput<String>('subscriberStatus');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<SubscriberTimeouts?>('timeouts');
+    timeouts = registerOutput<SubscriberTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubscriberTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

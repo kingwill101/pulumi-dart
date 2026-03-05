@@ -640,8 +640,26 @@ class GlossaryTerm extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     shortDescription = registerOutput<String?>('shortDescription');
     status = registerOutput<String?>('status');
-    termRelations = registerOutput<GlossaryTermTermRelations?>('termRelations');
-    timeouts = registerOutput<GlossaryTermTimeouts?>('timeouts');
+    termRelations = registerOutput<GlossaryTermTermRelations?>(
+      'termRelations',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GlossaryTermTermRelations.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    timeouts = registerOutput<GlossaryTermTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GlossaryTermTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [GlossaryTerm] resource's state with the given [name] and [id].
@@ -676,7 +694,25 @@ class GlossaryTerm extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     shortDescription = registerOutput<String?>('shortDescription');
     status = registerOutput<String?>('status');
-    termRelations = registerOutput<GlossaryTermTermRelations?>('termRelations');
-    timeouts = registerOutput<GlossaryTermTimeouts?>('timeouts');
+    termRelations = registerOutput<GlossaryTermTermRelations?>(
+      'termRelations',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GlossaryTermTermRelations.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    timeouts = registerOutput<GlossaryTermTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GlossaryTermTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

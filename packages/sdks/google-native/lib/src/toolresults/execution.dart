@@ -52,17 +52,53 @@ class Execution extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    completionTime = registerOutput<TimestampResponse>('completionTime');
-    creationTime = registerOutput<TimestampResponse>('creationTime');
+    completionTime = registerOutput<TimestampResponse>(
+      'completionTime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TimestampResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    creationTime = registerOutput<TimestampResponse>(
+      'creationTime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TimestampResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dimensionDefinitions = registerOutput<List<Map<String, dynamic>>>(
       'dimensionDefinitions',
     );
     executionId = registerOutput<String>('executionId');
     historyId = registerOutput<String>('historyId');
-    outcome = registerOutput<OutcomeResponse>('outcome');
+    outcome = registerOutput<OutcomeResponse>(
+      'outcome',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OutcomeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');
-    specification = registerOutput<SpecificationResponse>('specification');
+    specification = registerOutput<SpecificationResponse>(
+      'specification',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpecificationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     state = registerOutput<String>('state');
     testExecutionMatrixId = registerOutput<String>('testExecutionMatrixId');
   }

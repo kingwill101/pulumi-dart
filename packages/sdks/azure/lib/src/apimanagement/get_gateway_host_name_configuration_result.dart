@@ -1,23 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getGatewayHostNameConfiguration.
 class GetGatewayHostNameConfigurationResult {
   final String apiManagementId;
+
   /// The ID of the certificate used for TLS connection establishment.
   final String certificateId;
   final String gatewayName;
+
   /// The host name used for the API Management Gateway Host Name Configuration.
   final String hostName;
+
   /// Whether HTTP/2.0 is supported.
   final bool http2Enabled;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
+
   /// Whether the API Management Gateway requests a client certificate.
   final bool requestClientCertificateEnabled;
+
   /// Whether TLS 1.0 is supported.
   final bool tls10Enabled;
+
   /// Whether TLS 1.1 is supported.
   final bool tls11Enabled;
 
@@ -60,7 +66,9 @@ class GetGatewayHostNameConfigurationResult {
     };
   }
 
-  factory GetGatewayHostNameConfigurationResult.fromMap(Map<String, dynamic> map) {
+  factory GetGatewayHostNameConfigurationResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGatewayHostNameConfigurationResult(
       apiManagementId: map['apiManagementId'] as String,
       certificateId: map['certificateId'] as String,
@@ -69,10 +77,10 @@ class GetGatewayHostNameConfigurationResult {
       http2Enabled: map['http2Enabled'] as bool,
       id: map['id'] as String,
       name: map['name'] as String,
-      requestClientCertificateEnabled: map['requestClientCertificateEnabled'] as bool,
+      requestClientCertificateEnabled:
+          map['requestClientCertificateEnabled'] as bool,
       tls10Enabled: map['tls10Enabled'] as bool,
       tls11Enabled: map['tls11Enabled'] as bool,
     );
   }
 }
-

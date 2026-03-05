@@ -274,6 +274,13 @@ class NamedValue extends pulumi.CustomResource {
     value = registerOutput<String?>('value');
     valueFromKeyVault = registerOutput<NamedValueValueFromKeyVault?>(
       'valueFromKeyVault',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NamedValueValueFromKeyVault.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -309,6 +316,13 @@ class NamedValue extends pulumi.CustomResource {
     value = registerOutput<String?>('value');
     valueFromKeyVault = registerOutput<NamedValueValueFromKeyVault?>(
       'valueFromKeyVault',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NamedValueValueFromKeyVault.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

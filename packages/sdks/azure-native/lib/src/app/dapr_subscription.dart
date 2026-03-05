@@ -641,14 +641,39 @@ class DaprSubscription extends pulumi.CustomResource {
     bulkSubscribe =
         registerOutput<DaprSubscriptionBulkSubscribeOptionsResponse?>(
           'bulkSubscribe',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DaprSubscriptionBulkSubscribeOptionsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     deadLetterTopic = registerOutput<String?>('deadLetterTopic');
     metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');
     pubsubName = registerOutput<String?>('pubsubName');
-    routes = registerOutput<DaprSubscriptionRoutesResponse?>('routes');
+    routes = registerOutput<DaprSubscriptionRoutesResponse?>(
+      'routes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DaprSubscriptionRoutesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     scopes = registerOutput<List<String>?>('scopes');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     topic = registerOutput<String?>('topic');
     type = registerOutput<String>('type');
   }

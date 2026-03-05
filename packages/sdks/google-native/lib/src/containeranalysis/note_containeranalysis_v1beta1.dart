@@ -114,52 +114,160 @@ class NoteContaineranalysisV1beta1 extends pulumi.CustomResource {
        ) {
     attestationAuthority = registerOutput<AuthorityResponse>(
       'attestationAuthority',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AuthorityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     baseImage = registerOutput<BasisResponseContaineranalysisV1beta1>(
       'baseImage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BasisResponseContaineranalysisV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    build = registerOutput<BuildResponse>('build');
+    build = registerOutput<BuildResponse>(
+      'build',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BuildResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     deployable = registerOutput<DeployableResponseContaineranalysisV1beta1>(
       'deployable',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeployableResponseContaineranalysisV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     discovery = registerOutput<DiscoveryResponseContaineranalysisV1beta1>(
       'discovery',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiscoveryResponseContaineranalysisV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     expirationTime = registerOutput<String>('expirationTime');
-    intoto = registerOutput<InTotoResponse>('intoto');
+    intoto = registerOutput<InTotoResponse>(
+      'intoto',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InTotoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kind = registerOutput<String>('kind');
     longDescription = registerOutput<String>('longDescription');
     this.name = registerOutput<String>('name');
     noteId = registerOutput<String>('noteId');
     package = registerOutput<PackageResponseContaineranalysisV1beta1>(
       'package',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PackageResponseContaineranalysisV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     relatedNoteNames = registerOutput<List<String>>('relatedNoteNames');
     relatedUrl = registerOutput<List<Map<String, dynamic>>>('relatedUrl');
-    sbom = registerOutput<DocumentNoteResponseContaineranalysisV1beta1>('sbom');
+    sbom = registerOutput<DocumentNoteResponseContaineranalysisV1beta1>(
+      'sbom',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DocumentNoteResponseContaineranalysisV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sbomReference =
         registerOutput<SBOMReferenceNoteResponseContaineranalysisV1beta1>(
           'sbomReference',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SBOMReferenceNoteResponseContaineranalysisV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     shortDescription = registerOutput<String>('shortDescription');
     spdxFile = registerOutput<FileNoteResponseContaineranalysisV1beta1>(
       'spdxFile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FileNoteResponseContaineranalysisV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     spdxPackage =
         registerOutput<PackageInfoNoteResponseContaineranalysisV1beta1>(
           'spdxPackage',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PackageInfoNoteResponseContaineranalysisV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     spdxRelationship =
         registerOutput<RelationshipNoteResponseContaineranalysisV1beta1>(
           'spdxRelationship',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RelationshipNoteResponseContaineranalysisV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     updateTime = registerOutput<String>('updateTime');
-    vulnerability = registerOutput<VulnerabilityResponse>('vulnerability');
+    vulnerability = registerOutput<VulnerabilityResponse>(
+      'vulnerability',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VulnerabilityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vulnerabilityAssessment =
         registerOutput<
           VulnerabilityAssessmentNoteResponseContaineranalysisV1beta1
-        >('vulnerabilityAssessment');
+        >(
+          'vulnerabilityAssessment',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VulnerabilityAssessmentNoteResponseContaineranalysisV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
   }
 }

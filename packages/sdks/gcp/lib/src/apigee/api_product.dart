@@ -1081,14 +1081,35 @@ class ApiProduct extends pulumi.CustomResource {
     environments = registerOutput<List<String>?>('environments');
     graphqlOperationGroup = registerOutput<ApiProductGraphqlOperationGroup?>(
       'graphqlOperationGroup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiProductGraphqlOperationGroup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     grpcOperationGroup = registerOutput<ApiProductGrpcOperationGroup?>(
       'grpcOperationGroup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiProductGrpcOperationGroup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     lastModifiedAt = registerOutput<String>('lastModifiedAt');
     this.name = registerOutput<String>('name');
     operationGroup = registerOutput<ApiProductOperationGroup?>(
       'operationGroup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiProductOperationGroup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     orgId = registerOutput<String>('orgId');
     proxies = registerOutput<List<String>?>('proxies');
@@ -1132,14 +1153,35 @@ class ApiProduct extends pulumi.CustomResource {
     environments = registerOutput<List<String>?>('environments');
     graphqlOperationGroup = registerOutput<ApiProductGraphqlOperationGroup?>(
       'graphqlOperationGroup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiProductGraphqlOperationGroup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     grpcOperationGroup = registerOutput<ApiProductGrpcOperationGroup?>(
       'grpcOperationGroup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiProductGrpcOperationGroup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     lastModifiedAt = registerOutput<String>('lastModifiedAt');
     this.name = registerOutput<String>('name');
     operationGroup = registerOutput<ApiProductOperationGroup?>(
       'operationGroup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiProductOperationGroup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     orgId = registerOutput<String>('orgId');
     proxies = registerOutput<List<String>?>('proxies');

@@ -200,10 +200,26 @@ class VpcEndpointAssociation extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     subnetMapping = registerOutput<VpcEndpointAssociationSubnetMapping>(
       'subnetMapping',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpcEndpointAssociationSubnetMapping.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<VpcEndpointAssociationTimeouts?>('timeouts');
+    timeouts = registerOutput<VpcEndpointAssociationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpcEndpointAssociationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vpcEndpointAssociationArn = registerOutput<String>(
       'vpcEndpointAssociationArn',
     );
@@ -244,10 +260,26 @@ class VpcEndpointAssociation extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     subnetMapping = registerOutput<VpcEndpointAssociationSubnetMapping>(
       'subnetMapping',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpcEndpointAssociationSubnetMapping.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<VpcEndpointAssociationTimeouts?>('timeouts');
+    timeouts = registerOutput<VpcEndpointAssociationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpcEndpointAssociationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vpcEndpointAssociationArn = registerOutput<String>(
       'vpcEndpointAssociationArn',
     );

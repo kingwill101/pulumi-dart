@@ -2391,13 +2391,31 @@ class Certificate extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String?>('location');
-    managed = registerOutput<CertificateManaged?>('managed');
+    managed = registerOutput<CertificateManaged?>(
+      'managed',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CertificateManaged.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     sanDnsnames = registerOutput<List<String>>('sanDnsnames');
     scope = registerOutput<String?>('scope');
-    selfManaged = registerOutput<CertificateSelfManaged?>('selfManaged');
+    selfManaged = registerOutput<CertificateSelfManaged?>(
+      'selfManaged',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CertificateSelfManaged.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Certificate] resource's state with the given [name] and [id].
@@ -2427,12 +2445,30 @@ class Certificate extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String?>('location');
-    managed = registerOutput<CertificateManaged?>('managed');
+    managed = registerOutput<CertificateManaged?>(
+      'managed',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CertificateManaged.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     sanDnsnames = registerOutput<List<String>>('sanDnsnames');
     scope = registerOutput<String?>('scope');
-    selfManaged = registerOutput<CertificateSelfManaged?>('selfManaged');
+    selfManaged = registerOutput<CertificateSelfManaged?>(
+      'selfManaged',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CertificateSelfManaged.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

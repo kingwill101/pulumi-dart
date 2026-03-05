@@ -215,7 +215,8 @@ Future<GetAnomaliesResult> getAnomalies(
 /// Uses Azure REST API version 2024-09-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_securityinsights_get_anomaly_security_mlanalytics_settings_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetAnomalySecurityMLAnalyticsSettingsResult> getAnomalySecurityMLAnalyticsSettings(
+Future<GetAnomalySecurityMLAnalyticsSettingsResult>
+getAnomalySecurityMLAnalyticsSettings(
   GetAnomalySecurityMLAnalyticsSettingsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -354,7 +355,8 @@ Future<GetContentTemplateResult> getContentTemplate(
 /// Uses Azure REST API version 2024-09-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_securityinsights_get_customizable_connector_definition_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetCustomizableConnectorDefinitionResult> getCustomizableConnectorDefinition(
+Future<GetCustomizableConnectorDefinitionResult>
+getCustomizableConnectorDefinition(
   GetCustomizableConnectorDefinitionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -700,7 +702,8 @@ Future<GetMetadataResult> getMetadata(
 /// Uses Azure REST API version 2024-09-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_securityinsights_get_microsoft_security_incident_creation_alert_rule_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetMicrosoftSecurityIncidentCreationAlertRuleResult> getMicrosoftSecurityIncidentCreationAlertRule(
+Future<GetMicrosoftSecurityIncidentCreationAlertRuleResult>
+getMicrosoftSecurityIncidentCreationAlertRule(
   GetMicrosoftSecurityIncidentCreationAlertRuleArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -736,7 +739,8 @@ Future<GetOfficeDataConnectorResult> getOfficeDataConnector(
 /// Uses Azure REST API version 2024-09-01.
 /// [args] Arguments passed to this invoke. {@macro pulumi_securityinsights_get_premium_microsoft_defender_for_threat_intelligence_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetPremiumMicrosoftDefenderForThreatIntelligenceResult> getPremiumMicrosoftDefenderForThreatIntelligence(
+Future<GetPremiumMicrosoftDefenderForThreatIntelligenceResult>
+getPremiumMicrosoftDefenderForThreatIntelligence(
   GetPremiumMicrosoftDefenderForThreatIntelligenceArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

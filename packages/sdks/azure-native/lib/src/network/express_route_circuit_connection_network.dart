@@ -263,14 +263,35 @@ class ExpressRouteCircuitConnectionNetwork extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     expressRouteCircuitPeering = registerOutput<SubResourceResponse?>(
       'expressRouteCircuitPeering',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     ipv6CircuitConnectionConfig =
         registerOutput<Ipv6CircuitConnectionConfigResponse?>(
           'ipv6CircuitConnectionConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return Ipv6CircuitConnectionConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String?>('name');
     peerExpressRouteCircuitPeering = registerOutput<SubResourceResponse?>(
       'peerExpressRouteCircuitPeering',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     provisioningState = registerOutput<String>('provisioningState');
     type = registerOutput<String>('type');

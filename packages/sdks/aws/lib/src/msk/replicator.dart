@@ -386,6 +386,13 @@ class Replicator extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     replicationInfoList = registerOutput<ReplicatorReplicationInfoList>(
       'replicationInfoList',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReplicatorReplicationInfoList.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     replicatorName = registerOutput<String>('replicatorName');
     serviceExecutionRoleArn = registerOutput<String>('serviceExecutionRoleArn');
@@ -423,6 +430,13 @@ class Replicator extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     replicationInfoList = registerOutput<ReplicatorReplicationInfoList>(
       'replicationInfoList',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReplicatorReplicationInfoList.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     replicatorName = registerOutput<String>('replicatorName');
     serviceExecutionRoleArn = registerOutput<String>('serviceExecutionRoleArn');

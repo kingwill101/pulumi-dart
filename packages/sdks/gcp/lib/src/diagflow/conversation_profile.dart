@@ -466,38 +466,107 @@ class ConversationProfile extends pulumi.CustomResource {
     automatedAgentConfig =
         registerOutput<ConversationProfileAutomatedAgentConfig?>(
           'automatedAgentConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConversationProfileAutomatedAgentConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     displayName = registerOutput<String>('displayName');
     humanAgentAssistantConfig =
         registerOutput<ConversationProfileHumanAgentAssistantConfig?>(
           'humanAgentAssistantConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConversationProfileHumanAgentAssistantConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     humanAgentHandoffConfig =
         registerOutput<ConversationProfileHumanAgentHandoffConfig?>(
           'humanAgentHandoffConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConversationProfileHumanAgentHandoffConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     languageCode = registerOutput<String>('languageCode');
     location = registerOutput<String>('location');
     loggingConfig = registerOutput<ConversationProfileLoggingConfig?>(
       'loggingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConversationProfileLoggingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     newMessageEventNotificationConfig =
         registerOutput<ConversationProfileNewMessageEventNotificationConfig?>(
           'newMessageEventNotificationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConversationProfileNewMessageEventNotificationConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     newRecognitionResultNotificationConfig =
         registerOutput<
           ConversationProfileNewRecognitionResultNotificationConfig?
-        >('newRecognitionResultNotificationConfig');
+        >(
+          'newRecognitionResultNotificationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConversationProfileNewRecognitionResultNotificationConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     notificationConfig = registerOutput<ConversationProfileNotificationConfig?>(
       'notificationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConversationProfileNotificationConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     securitySettings = registerOutput<String?>('securitySettings');
-    sttConfig = registerOutput<ConversationProfileSttConfig?>('sttConfig');
+    sttConfig = registerOutput<ConversationProfileSttConfig?>(
+      'sttConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConversationProfileSttConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     timeZone = registerOutput<String?>('timeZone');
-    ttsConfig = registerOutput<ConversationProfileTtsConfig?>('ttsConfig');
+    ttsConfig = registerOutput<ConversationProfileTtsConfig?>(
+      'ttsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConversationProfileTtsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [ConversationProfile] resource's state with the given [name] and [id].
@@ -526,37 +595,106 @@ class ConversationProfile extends pulumi.CustomResource {
     automatedAgentConfig =
         registerOutput<ConversationProfileAutomatedAgentConfig?>(
           'automatedAgentConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConversationProfileAutomatedAgentConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     displayName = registerOutput<String>('displayName');
     humanAgentAssistantConfig =
         registerOutput<ConversationProfileHumanAgentAssistantConfig?>(
           'humanAgentAssistantConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConversationProfileHumanAgentAssistantConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     humanAgentHandoffConfig =
         registerOutput<ConversationProfileHumanAgentHandoffConfig?>(
           'humanAgentHandoffConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConversationProfileHumanAgentHandoffConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     languageCode = registerOutput<String>('languageCode');
     location = registerOutput<String>('location');
     loggingConfig = registerOutput<ConversationProfileLoggingConfig?>(
       'loggingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConversationProfileLoggingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     newMessageEventNotificationConfig =
         registerOutput<ConversationProfileNewMessageEventNotificationConfig?>(
           'newMessageEventNotificationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConversationProfileNewMessageEventNotificationConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     newRecognitionResultNotificationConfig =
         registerOutput<
           ConversationProfileNewRecognitionResultNotificationConfig?
-        >('newRecognitionResultNotificationConfig');
+        >(
+          'newRecognitionResultNotificationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConversationProfileNewRecognitionResultNotificationConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     notificationConfig = registerOutput<ConversationProfileNotificationConfig?>(
       'notificationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConversationProfileNotificationConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     securitySettings = registerOutput<String?>('securitySettings');
-    sttConfig = registerOutput<ConversationProfileSttConfig?>('sttConfig');
+    sttConfig = registerOutput<ConversationProfileSttConfig?>(
+      'sttConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConversationProfileSttConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     timeZone = registerOutput<String?>('timeZone');
-    ttsConfig = registerOutput<ConversationProfileTtsConfig?>('ttsConfig');
+    ttsConfig = registerOutput<ConversationProfileTtsConfig?>(
+      'ttsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConversationProfileTtsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

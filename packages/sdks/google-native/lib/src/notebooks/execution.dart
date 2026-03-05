@@ -57,6 +57,13 @@ class Execution extends pulumi.CustomResource {
     executionId = registerOutput<String>('executionId');
     executionTemplate = registerOutput<ExecutionTemplateResponse>(
       'executionTemplate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExecutionTemplateResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     jobUri = registerOutput<String>('jobUri');
     location = registerOutput<String>('location');

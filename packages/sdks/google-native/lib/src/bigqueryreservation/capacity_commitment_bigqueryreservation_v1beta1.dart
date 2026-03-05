@@ -64,6 +64,13 @@ class CapacityCommitmentBigqueryreservationV1beta1
     );
     failureStatus = registerOutput<StatusResponseBigqueryreservationV1beta1>(
       'failureStatus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StatusResponseBigqueryreservationV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     multiRegionAuxiliary = registerOutput<bool>('multiRegionAuxiliary');

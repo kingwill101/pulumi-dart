@@ -622,7 +622,16 @@ class ScheduledAction extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     schedule = registerOutput<String>('schedule');
     startTime = registerOutput<String?>('startTime');
-    targetAction = registerOutput<ScheduledActionTargetAction>('targetAction');
+    targetAction = registerOutput<ScheduledActionTargetAction>(
+      'targetAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduledActionTargetAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [ScheduledAction] resource's state with the given [name] and [id].
@@ -656,6 +665,15 @@ class ScheduledAction extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     schedule = registerOutput<String>('schedule');
     startTime = registerOutput<String?>('startTime');
-    targetAction = registerOutput<ScheduledActionTargetAction>('targetAction');
+    targetAction = registerOutput<ScheduledActionTargetAction>(
+      'targetAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduledActionTargetAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

@@ -567,6 +567,13 @@ class GlobalVMShutdownSchedule extends pulumi.CustomResource {
     notificationSettings =
         registerOutput<GlobalVMShutdownScheduleNotificationSettings>(
           'notificationSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GlobalVMShutdownScheduleNotificationSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tags = registerOutput<Map<String, String>?>('tags');
     timezone = registerOutput<String>('timezone');
@@ -602,6 +609,13 @@ class GlobalVMShutdownSchedule extends pulumi.CustomResource {
     notificationSettings =
         registerOutput<GlobalVMShutdownScheduleNotificationSettings>(
           'notificationSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GlobalVMShutdownScheduleNotificationSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tags = registerOutput<Map<String, String>?>('tags');
     timezone = registerOutput<String>('timezone');

@@ -201,18 +201,41 @@ class Instance extends pulumi.CustomResource {
        ) {
     advancedMachineFeatures = registerOutput<AdvancedMachineFeaturesResponse>(
       'advancedMachineFeatures',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AdvancedMachineFeaturesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     canIpForward = registerOutput<bool>('canIpForward');
     confidentialInstanceConfig =
         registerOutput<ConfidentialInstanceConfigResponse>(
           'confidentialInstanceConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConfidentialInstanceConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     cpuPlatform = registerOutput<String>('cpuPlatform');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionProtection = registerOutput<bool>('deletionProtection');
     description = registerOutput<String>('description');
     disks = registerOutput<List<Map<String, dynamic>>>('disks');
-    displayDevice = registerOutput<DisplayDeviceResponse>('displayDevice');
+    displayDevice = registerOutput<DisplayDeviceResponse>(
+      'displayDevice',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DisplayDeviceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     eraseWindowsVssSignature = registerOutput<bool>('eraseWindowsVssSignature');
     fingerprint = registerOutput<String>('fingerprint');
     guestAccelerators = registerOutput<List<Map<String, dynamic>>>(
@@ -221,6 +244,13 @@ class Instance extends pulumi.CustomResource {
     hostname = registerOutput<String>('hostname');
     instanceEncryptionKey = registerOutput<CustomerEncryptionKeyResponse>(
       'instanceEncryptionKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomerEncryptionKeyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     keyRevocationActionType = registerOutput<String>('keyRevocationActionType');
     kind = registerOutput<String>('kind');
@@ -230,7 +260,16 @@ class Instance extends pulumi.CustomResource {
     lastStopTimestamp = registerOutput<String>('lastStopTimestamp');
     lastSuspendedTimestamp = registerOutput<String>('lastSuspendedTimestamp');
     machineType = registerOutput<String>('machineType');
-    metadata = registerOutput<MetadataResponse>('metadata');
+    metadata = registerOutput<MetadataResponse>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MetadataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     minCpuPlatform = registerOutput<String>('minCpuPlatform');
     this.name = registerOutput<String>('name');
     networkInterfaces = registerOutput<List<Map<String, dynamic>>>(
@@ -238,8 +277,24 @@ class Instance extends pulumi.CustomResource {
     );
     networkPerformanceConfig = registerOutput<NetworkPerformanceConfigResponse>(
       'networkPerformanceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkPerformanceConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    params = registerOutput<InstanceParamsResponse>('params');
+    params = registerOutput<InstanceParamsResponse>(
+      'params',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceParamsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     partnerMetadata = registerOutput<Map<String, String>>('partnerMetadata');
     postKeyRevocationActionType = registerOutput<String>(
       'postKeyRevocationActionType',
@@ -250,11 +305,36 @@ class Instance extends pulumi.CustomResource {
     requestId = registerOutput<String?>('requestId');
     reservationAffinity = registerOutput<ReservationAffinityResponse>(
       'reservationAffinity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReservationAffinityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     resourcePolicies = registerOutput<List<String>>('resourcePolicies');
-    resourceStatus = registerOutput<ResourceStatusResponse>('resourceStatus');
+    resourceStatus = registerOutput<ResourceStatusResponse>(
+      'resourceStatus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
-    scheduling = registerOutput<SchedulingResponse>('scheduling');
+    scheduling = registerOutput<SchedulingResponse>(
+      'scheduling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SchedulingResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     secureTags = registerOutput<List<String>>('secureTags');
     selfLink = registerOutput<String>('selfLink');
     selfLinkWithId = registerOutput<String>('selfLinkWithId');
@@ -266,30 +346,81 @@ class Instance extends pulumi.CustomResource {
     );
     shieldedInstanceConfig = registerOutput<ShieldedInstanceConfigResponse>(
       'shieldedInstanceConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ShieldedInstanceConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     shieldedInstanceIntegrityPolicy =
         registerOutput<ShieldedInstanceIntegrityPolicyResponse>(
           'shieldedInstanceIntegrityPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ShieldedInstanceIntegrityPolicyResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     shieldedVmConfig = registerOutput<ShieldedVmConfigResponse>(
       'shieldedVmConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ShieldedVmConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     shieldedVmIntegrityPolicy =
         registerOutput<ShieldedVmIntegrityPolicyResponse>(
           'shieldedVmIntegrityPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ShieldedVmIntegrityPolicyResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     sourceInstanceTemplate = registerOutput<String?>('sourceInstanceTemplate');
     sourceMachineImage = registerOutput<String>('sourceMachineImage');
     sourceMachineImageEncryptionKey =
         registerOutput<CustomerEncryptionKeyResponse>(
           'sourceMachineImageEncryptionKey',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CustomerEncryptionKeyResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     startRestricted = registerOutput<bool>('startRestricted');
     status = registerOutput<String>('status');
     statusMessage = registerOutput<String>('statusMessage');
-    tags = registerOutput<TagsResponse>('tags');
+    tags = registerOutput<TagsResponse>(
+      'tags',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TagsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     upcomingMaintenance = registerOutput<UpcomingMaintenanceResponse>(
       'upcomingMaintenance',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UpcomingMaintenanceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     zone = registerOutput<String>('zone');
   }

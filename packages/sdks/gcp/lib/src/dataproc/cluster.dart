@@ -758,7 +758,16 @@ class Cluster extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    clusterConfig = registerOutput<ClusterClusterConfig>('clusterConfig');
+    clusterConfig = registerOutput<ClusterClusterConfig>(
+      'clusterConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterClusterConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     gracefulDecommissionTimeout = registerOutput<String?>(
       'gracefulDecommissionTimeout',
@@ -770,6 +779,13 @@ class Cluster extends pulumi.CustomResource {
     region = registerOutput<String?>('region');
     virtualClusterConfig = registerOutput<ClusterVirtualClusterConfig>(
       'virtualClusterConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterVirtualClusterConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -796,7 +812,16 @@ class Cluster extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    clusterConfig = registerOutput<ClusterClusterConfig>('clusterConfig');
+    clusterConfig = registerOutput<ClusterClusterConfig>(
+      'clusterConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterClusterConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     gracefulDecommissionTimeout = registerOutput<String?>(
       'gracefulDecommissionTimeout',
@@ -808,6 +833,13 @@ class Cluster extends pulumi.CustomResource {
     region = registerOutput<String?>('region');
     virtualClusterConfig = registerOutput<ClusterVirtualClusterConfig>(
       'virtualClusterConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterVirtualClusterConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

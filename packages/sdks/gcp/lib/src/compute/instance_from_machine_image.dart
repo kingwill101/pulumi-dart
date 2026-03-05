@@ -319,6 +319,13 @@ class InstanceFromMachineImage extends pulumi.CustomResource {
     advancedMachineFeatures =
         registerOutput<InstanceFromMachineImageAdvancedMachineFeatures>(
           'advancedMachineFeatures',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceFromMachineImageAdvancedMachineFeatures.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     allowStoppingForUpdate = registerOutput<bool>('allowStoppingForUpdate');
     attachedDisks = registerOutput<List<Map<String, dynamic>>>('attachedDisks');
@@ -327,6 +334,13 @@ class InstanceFromMachineImage extends pulumi.CustomResource {
     confidentialInstanceConfig =
         registerOutput<InstanceFromMachineImageConfidentialInstanceConfig>(
           'confidentialInstanceConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceFromMachineImageConfidentialInstanceConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     cpuPlatform = registerOutput<String>('cpuPlatform');
     creationTimestamp = registerOutput<String>('creationTimestamp');
@@ -343,6 +357,13 @@ class InstanceFromMachineImage extends pulumi.CustomResource {
     instanceEncryptionKey =
         registerOutput<InstanceFromMachineImageInstanceEncryptionKey>(
           'instanceEncryptionKey',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceFromMachineImageInstanceEncryptionKey.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     instanceId = registerOutput<String>('instanceId');
     keyRevocationActionType = registerOutput<String>('keyRevocationActionType');
@@ -360,33 +381,86 @@ class InstanceFromMachineImage extends pulumi.CustomResource {
     networkPerformanceConfig =
         registerOutput<InstanceFromMachineImageNetworkPerformanceConfig>(
           'networkPerformanceConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceFromMachineImageNetworkPerformanceConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    params = registerOutput<InstanceFromMachineImageParams>('params');
+    params = registerOutput<InstanceFromMachineImageParams>(
+      'params',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceFromMachineImageParams.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     partnerMetadata = registerOutput<Map<String, String>>('partnerMetadata');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     reservationAffinity =
         registerOutput<InstanceFromMachineImageReservationAffinity>(
           'reservationAffinity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceFromMachineImageReservationAffinity.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     resourcePolicies = registerOutput<String>('resourcePolicies');
     scheduling = registerOutput<InstanceFromMachineImageScheduling>(
       'scheduling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceFromMachineImageScheduling.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     scratchDisks = registerOutput<List<Map<String, dynamic>>>('scratchDisks');
     selfLink = registerOutput<String>('selfLink');
     serviceAccount = registerOutput<InstanceFromMachineImageServiceAccount>(
       'serviceAccount',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceFromMachineImageServiceAccount.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     shieldedInstanceConfig =
         registerOutput<InstanceFromMachineImageShieldedInstanceConfig>(
           'shieldedInstanceConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceFromMachineImageShieldedInstanceConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     sourceMachineImage = registerOutput<String>('sourceMachineImage');
     sourceMachineImageEncryptionKey =
         registerOutput<
           InstanceFromMachineImageSourceMachineImageEncryptionKey?
-        >('sourceMachineImageEncryptionKey');
+        >(
+          'sourceMachineImageEncryptionKey',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceFromMachineImageSourceMachineImageEncryptionKey.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     tags = registerOutput<List<String>>('tags');
     tagsFingerprint = registerOutput<String>('tagsFingerprint');
     zone = registerOutput<String>('zone');
@@ -418,6 +492,13 @@ class InstanceFromMachineImage extends pulumi.CustomResource {
     advancedMachineFeatures =
         registerOutput<InstanceFromMachineImageAdvancedMachineFeatures>(
           'advancedMachineFeatures',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceFromMachineImageAdvancedMachineFeatures.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     allowStoppingForUpdate = registerOutput<bool>('allowStoppingForUpdate');
     attachedDisks = registerOutput<List<Map<String, dynamic>>>('attachedDisks');
@@ -426,6 +507,13 @@ class InstanceFromMachineImage extends pulumi.CustomResource {
     confidentialInstanceConfig =
         registerOutput<InstanceFromMachineImageConfidentialInstanceConfig>(
           'confidentialInstanceConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceFromMachineImageConfidentialInstanceConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     cpuPlatform = registerOutput<String>('cpuPlatform');
     creationTimestamp = registerOutput<String>('creationTimestamp');
@@ -442,6 +530,13 @@ class InstanceFromMachineImage extends pulumi.CustomResource {
     instanceEncryptionKey =
         registerOutput<InstanceFromMachineImageInstanceEncryptionKey>(
           'instanceEncryptionKey',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceFromMachineImageInstanceEncryptionKey.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     instanceId = registerOutput<String>('instanceId');
     keyRevocationActionType = registerOutput<String>('keyRevocationActionType');
@@ -459,33 +554,86 @@ class InstanceFromMachineImage extends pulumi.CustomResource {
     networkPerformanceConfig =
         registerOutput<InstanceFromMachineImageNetworkPerformanceConfig>(
           'networkPerformanceConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceFromMachineImageNetworkPerformanceConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    params = registerOutput<InstanceFromMachineImageParams>('params');
+    params = registerOutput<InstanceFromMachineImageParams>(
+      'params',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceFromMachineImageParams.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     partnerMetadata = registerOutput<Map<String, String>>('partnerMetadata');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     reservationAffinity =
         registerOutput<InstanceFromMachineImageReservationAffinity>(
           'reservationAffinity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceFromMachineImageReservationAffinity.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     resourcePolicies = registerOutput<String>('resourcePolicies');
     scheduling = registerOutput<InstanceFromMachineImageScheduling>(
       'scheduling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceFromMachineImageScheduling.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     scratchDisks = registerOutput<List<Map<String, dynamic>>>('scratchDisks');
     selfLink = registerOutput<String>('selfLink');
     serviceAccount = registerOutput<InstanceFromMachineImageServiceAccount>(
       'serviceAccount',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceFromMachineImageServiceAccount.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     shieldedInstanceConfig =
         registerOutput<InstanceFromMachineImageShieldedInstanceConfig>(
           'shieldedInstanceConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceFromMachineImageShieldedInstanceConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     sourceMachineImage = registerOutput<String>('sourceMachineImage');
     sourceMachineImageEncryptionKey =
         registerOutput<
           InstanceFromMachineImageSourceMachineImageEncryptionKey?
-        >('sourceMachineImageEncryptionKey');
+        >(
+          'sourceMachineImageEncryptionKey',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return InstanceFromMachineImageSourceMachineImageEncryptionKey.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     tags = registerOutput<List<String>>('tags');
     tagsFingerprint = registerOutput<String>('tagsFingerprint');
     zone = registerOutput<String>('zone');

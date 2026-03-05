@@ -1,15 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getFloatingIp.
 class GetFloatingIpResult {
   /// The Droplet id that the floating IP has been assigned to.
   final int dropletId;
+
   /// The uniform resource name of the floating IP.
   final String floatingIpUrn;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String ipAddress;
+
   /// The region that the floating IP is reserved to.
   final String region;
 
@@ -47,4 +49,3 @@ class GetFloatingIpResult {
     );
   }
 }
-

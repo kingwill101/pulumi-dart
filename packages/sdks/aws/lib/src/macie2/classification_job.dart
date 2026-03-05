@@ -266,10 +266,24 @@ class ClassificationJob extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     s3JobDefinition = registerOutput<ClassificationJobS3JobDefinition>(
       's3JobDefinition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClassificationJobS3JobDefinition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     samplingPercentage = registerOutput<int>('samplingPercentage');
     scheduleFrequency = registerOutput<ClassificationJobScheduleFrequency>(
       'scheduleFrequency',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClassificationJobScheduleFrequency.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -316,10 +330,24 @@ class ClassificationJob extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     s3JobDefinition = registerOutput<ClassificationJobS3JobDefinition>(
       's3JobDefinition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClassificationJobS3JobDefinition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     samplingPercentage = registerOutput<int>('samplingPercentage');
     scheduleFrequency = registerOutput<ClassificationJobScheduleFrequency>(
       'scheduleFrequency',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClassificationJobScheduleFrequency.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

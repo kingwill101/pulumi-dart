@@ -1,20 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getProducerImageShareGroupMember.
 class GetProducerImageShareGroupMemberResult {
   /// When the member was created.
   final String created;
+
   /// When the member will expire.
   final String expiry;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The label of the member.
   final String label;
   final int sharegroupId;
+
   /// The status of the member.
   final String status;
   final String tokenUuid;
+
   /// When the member was last updated.
   final String updated;
 
@@ -51,7 +55,9 @@ class GetProducerImageShareGroupMemberResult {
     };
   }
 
-  factory GetProducerImageShareGroupMemberResult.fromMap(Map<String, dynamic> map) {
+  factory GetProducerImageShareGroupMemberResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetProducerImageShareGroupMemberResult(
       created: map['created'] as String,
       expiry: map['expiry'] as String,
@@ -64,4 +70,3 @@ class GetProducerImageShareGroupMemberResult {
     );
   }
 }
-

@@ -59,7 +59,16 @@ class EnvironmentDialogflowV3 extends pulumi.CustomResource {
     testCasesConfig =
         registerOutput<
           GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponse
-        >('testCasesConfig');
+        >(
+          'testCasesConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     updateTime = registerOutput<String>('updateTime');
     versionConfigs = registerOutput<List<Map<String, dynamic>>>(
       'versionConfigs',
@@ -67,6 +76,15 @@ class EnvironmentDialogflowV3 extends pulumi.CustomResource {
     webhookConfig =
         registerOutput<
           GoogleCloudDialogflowCxV3EnvironmentWebhookConfigResponse
-        >('webhookConfig');
+        >(
+          'webhookConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowCxV3EnvironmentWebhookConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
   }
 }

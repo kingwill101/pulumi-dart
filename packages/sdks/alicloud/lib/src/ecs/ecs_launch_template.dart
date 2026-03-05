@@ -885,6 +885,13 @@ class EcsLaunchTemplate extends pulumi.CustomResource {
     imageId = registerOutput<String?>('imageId');
     imageOptions = registerOutput<EcsLaunchTemplateImageOptions>(
       'imageOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EcsLaunchTemplateImageOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     imageOwnerAlias = registerOutput<String?>('imageOwnerAlias');
     instanceChargeType = registerOutput<String?>('instanceChargeType');
@@ -900,6 +907,13 @@ class EcsLaunchTemplate extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkInterfaces = registerOutput<EcsLaunchTemplateNetworkInterfaces?>(
       'networkInterfaces',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EcsLaunchTemplateNetworkInterfaces.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     networkType = registerOutput<String?>('networkType');
     passwordInherit = registerOutput<bool?>('passwordInherit');
@@ -916,7 +930,16 @@ class EcsLaunchTemplate extends pulumi.CustomResource {
     spotDuration = registerOutput<String?>('spotDuration');
     spotPriceLimit = registerOutput<double?>('spotPriceLimit');
     spotStrategy = registerOutput<String?>('spotStrategy');
-    systemDisk = registerOutput<EcsLaunchTemplateSystemDisk>('systemDisk');
+    systemDisk = registerOutput<EcsLaunchTemplateSystemDisk>(
+      'systemDisk',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EcsLaunchTemplateSystemDisk.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     systemDiskCategory = registerOutput<String>('systemDiskCategory');
     systemDiskDescription = registerOutput<String>('systemDiskDescription');
     systemDiskName = registerOutput<String>('systemDiskName');
@@ -975,6 +998,13 @@ class EcsLaunchTemplate extends pulumi.CustomResource {
     imageId = registerOutput<String?>('imageId');
     imageOptions = registerOutput<EcsLaunchTemplateImageOptions>(
       'imageOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EcsLaunchTemplateImageOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     imageOwnerAlias = registerOutput<String?>('imageOwnerAlias');
     instanceChargeType = registerOutput<String?>('instanceChargeType');
@@ -990,6 +1020,13 @@ class EcsLaunchTemplate extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkInterfaces = registerOutput<EcsLaunchTemplateNetworkInterfaces?>(
       'networkInterfaces',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EcsLaunchTemplateNetworkInterfaces.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     networkType = registerOutput<String?>('networkType');
     passwordInherit = registerOutput<bool?>('passwordInherit');
@@ -1006,7 +1043,16 @@ class EcsLaunchTemplate extends pulumi.CustomResource {
     spotDuration = registerOutput<String?>('spotDuration');
     spotPriceLimit = registerOutput<double?>('spotPriceLimit');
     spotStrategy = registerOutput<String?>('spotStrategy');
-    systemDisk = registerOutput<EcsLaunchTemplateSystemDisk>('systemDisk');
+    systemDisk = registerOutput<EcsLaunchTemplateSystemDisk>(
+      'systemDisk',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EcsLaunchTemplateSystemDisk.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     systemDiskCategory = registerOutput<String>('systemDiskCategory');
     systemDiskDescription = registerOutput<String>('systemDiskDescription');
     systemDiskName = registerOutput<String>('systemDiskName');

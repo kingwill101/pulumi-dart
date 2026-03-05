@@ -1910,6 +1910,13 @@ class AppEngineServiceIamMember extends pulumi.CustomResource {
     appId = registerOutput<String>('appId');
     condition = registerOutput<AppEngineServiceIamMemberCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppEngineServiceIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     member = registerOutput<String>('member');
@@ -1944,6 +1951,13 @@ class AppEngineServiceIamMember extends pulumi.CustomResource {
     appId = registerOutput<String>('appId');
     condition = registerOutput<AppEngineServiceIamMemberCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppEngineServiceIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     member = registerOutput<String>('member');

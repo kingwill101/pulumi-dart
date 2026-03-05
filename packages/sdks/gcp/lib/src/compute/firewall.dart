@@ -591,10 +591,28 @@ class Firewall extends pulumi.CustomResource {
     direction = registerOutput<String>('direction');
     disabled = registerOutput<bool?>('disabled');
     enableLogging = registerOutput<bool>('enableLogging');
-    logConfig = registerOutput<FirewallLogConfig?>('logConfig');
+    logConfig = registerOutput<FirewallLogConfig?>(
+      'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FirewallLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
-    params = registerOutput<FirewallParams?>('params');
+    params = registerOutput<FirewallParams?>(
+      'params',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FirewallParams.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     priority = registerOutput<int?>('priority');
     project = registerOutput<String>('project');
     selfLink = registerOutput<String>('selfLink');
@@ -640,10 +658,28 @@ class Firewall extends pulumi.CustomResource {
     direction = registerOutput<String>('direction');
     disabled = registerOutput<bool?>('disabled');
     enableLogging = registerOutput<bool>('enableLogging');
-    logConfig = registerOutput<FirewallLogConfig?>('logConfig');
+    logConfig = registerOutput<FirewallLogConfig?>(
+      'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FirewallLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
-    params = registerOutput<FirewallParams?>('params');
+    params = registerOutput<FirewallParams?>(
+      'params',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FirewallParams.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     priority = registerOutput<int?>('priority');
     project = registerOutput<String>('project');
     selfLink = registerOutput<String>('selfLink');

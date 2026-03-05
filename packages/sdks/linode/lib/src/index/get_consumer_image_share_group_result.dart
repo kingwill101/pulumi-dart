@@ -1,21 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getConsumerImageShareGroup.
 class GetConsumerImageShareGroupResult {
   /// The date and time the Image Share Group was created.
   final String created;
+
   /// The description of the Image Share Group.
   final String description;
+
   /// The ID of the Image Share Group.
   final int id;
+
   /// Whether the Image Share Group is suspended.
   final bool isSuspended;
+
   /// The label of the Image Share Group.
   final String label;
   final String tokenUuid;
+
   /// The date and time the Image Share Group was last updated.
   final String updated;
+
   /// The UUID of the Image Share Group.
   final String uuid;
 
@@ -65,4 +70,3 @@ class GetConsumerImageShareGroupResult {
     );
   }
 }
-

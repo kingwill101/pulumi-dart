@@ -319,6 +319,13 @@ class Workspace extends pulumi.CustomResource {
     volumeEncryptionKey = registerOutput<String?>('volumeEncryptionKey');
     workspaceProperties = registerOutput<WorkspaceWorkspaceProperties>(
       'workspaceProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkspaceWorkspaceProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -363,6 +370,13 @@ class Workspace extends pulumi.CustomResource {
     volumeEncryptionKey = registerOutput<String?>('volumeEncryptionKey');
     workspaceProperties = registerOutput<WorkspaceWorkspaceProperties>(
       'workspaceProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkspaceWorkspaceProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

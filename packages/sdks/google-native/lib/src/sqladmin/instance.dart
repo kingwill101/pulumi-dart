@@ -162,14 +162,35 @@ class Instance extends pulumi.CustomResource {
     diskEncryptionConfiguration =
         registerOutput<DiskEncryptionConfigurationResponse>(
           'diskEncryptionConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DiskEncryptionConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     diskEncryptionStatus = registerOutput<DiskEncryptionStatusResponse>(
       'diskEncryptionStatus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DiskEncryptionStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dnsName = registerOutput<String>('dnsName');
     etag = registerOutput<String>('etag');
     failoverReplica = registerOutput<InstanceFailoverReplicaResponse>(
       'failoverReplica',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceFailoverReplicaResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     gceZone = registerOutput<String>('gceZone');
     instanceType = registerOutput<String>('instanceType');
@@ -182,9 +203,23 @@ class Instance extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     onPremisesConfiguration = registerOutput<OnPremisesConfigurationResponse>(
       'onPremisesConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return OnPremisesConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     outOfDiskReport = registerOutput<SqlOutOfDiskReportResponse>(
       'outOfDiskReport',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SqlOutOfDiskReportResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     primaryDnsName = registerOutput<String>('primaryDnsName');
     project = registerOutput<String>('project');
@@ -194,20 +229,52 @@ class Instance extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     replicaConfiguration = registerOutput<ReplicaConfigurationResponse>(
       'replicaConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReplicaConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     replicaNames = registerOutput<List<String>>('replicaNames');
     rootPassword = registerOutput<String>('rootPassword');
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
     scheduledMaintenance = registerOutput<SqlScheduledMaintenanceResponse>(
       'scheduledMaintenance',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SqlScheduledMaintenanceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     secondaryGceZone = registerOutput<String>('secondaryGceZone');
     selfLink = registerOutput<String>('selfLink');
-    serverCaCert = registerOutput<SslCertResponse>('serverCaCert');
+    serverCaCert = registerOutput<SslCertResponse>(
+      'serverCaCert',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SslCertResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     serviceAccountEmailAddress = registerOutput<String>(
       'serviceAccountEmailAddress',
     );
-    settings = registerOutput<SettingsResponse>('settings');
+    settings = registerOutput<SettingsResponse>(
+      'settings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sqlNetworkArchitecture = registerOutput<String>('sqlNetworkArchitecture');
     state = registerOutput<String>('state');
     suspensionReason = registerOutput<List<String>>('suspensionReason');

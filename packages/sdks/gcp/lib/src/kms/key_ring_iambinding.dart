@@ -1455,7 +1455,16 @@ class KeyRingIAMBinding extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<KeyRingIAMBindingCondition?>('condition');
+    condition = registerOutput<KeyRingIAMBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KeyRingIAMBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     keyRingId = registerOutput<String>('keyRingId');
     members = registerOutput<List<String>>('members');
@@ -1485,7 +1494,16 @@ class KeyRingIAMBinding extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<KeyRingIAMBindingCondition?>('condition');
+    condition = registerOutput<KeyRingIAMBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KeyRingIAMBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     etag = registerOutput<String>('etag');
     keyRingId = registerOutput<String>('keyRingId');
     members = registerOutput<List<String>>('members');

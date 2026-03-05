@@ -1,32 +1,43 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getPlan.
 class GetPlanResult {
   final String arn;
+
   /// Description of the plan.
   final String description;
+
   /// Execution role ARN for the plan.
   final String executionRole;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Name of the plan.
   final String name;
+
   /// Owner of the plan.
   final String owner;
+
   /// Primary region for the plan.
   final String primaryRegion;
+
   /// Recovery approach for the plan.
   final String recoveryApproach;
+
   /// Recovery time objective in minutes.
   final int recoveryTimeObjectiveMinutes;
   final String region;
+
   /// List of regions included in the plan.
   final List<String> regions;
+
   /// Map of tags assigned to the resource.
   final Map<String, String> tags;
+
   /// Timestamp when the plan was last updated (RFC3339 format).
   final String updatedAt;
+
   /// Version of the plan.
   final String version;
 
@@ -100,4 +111,3 @@ class GetPlanResult {
     );
   }
 }
-

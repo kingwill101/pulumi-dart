@@ -70,7 +70,16 @@ class VmwareNodePool extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     annotations = registerOutput<Map<String, String>>('annotations');
-    config = registerOutput<VmwareNodeConfigResponse>('config');
+    config = registerOutput<VmwareNodeConfigResponse>(
+      'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VmwareNodeConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     displayName = registerOutput<String>('displayName');
@@ -80,12 +89,28 @@ class VmwareNodePool extends pulumi.CustomResource {
     nodePoolAutoscaling =
         registerOutput<VmwareNodePoolAutoscalingConfigResponse>(
           'nodePoolAutoscaling',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VmwareNodePoolAutoscalingConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     onPremVersion = registerOutput<String>('onPremVersion');
     project = registerOutput<String>('project');
     reconciling = registerOutput<bool>('reconciling');
     state = registerOutput<String>('state');
-    status = registerOutput<ResourceStatusResponse>('status');
+    status = registerOutput<ResourceStatusResponse>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
     vmwareClusterId = registerOutput<String>('vmwareClusterId');

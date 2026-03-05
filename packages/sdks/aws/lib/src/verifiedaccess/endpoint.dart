@@ -427,7 +427,16 @@ class Endpoint extends pulumi.CustomResource {
        ) {
     applicationDomain = registerOutput<String?>('applicationDomain');
     attachmentType = registerOutput<String>('attachmentType');
-    cidrOptions = registerOutput<EndpointCidrOptions?>('cidrOptions');
+    cidrOptions = registerOutput<EndpointCidrOptions?>(
+      'cidrOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointCidrOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     deviceValidationDomain = registerOutput<String>('deviceValidationDomain');
     domainCertificateArn = registerOutput<String?>('domainCertificateArn');
@@ -436,16 +445,46 @@ class Endpoint extends pulumi.CustomResource {
     endpointType = registerOutput<String>('endpointType');
     loadBalancerOptions = registerOutput<EndpointLoadBalancerOptions?>(
       'loadBalancerOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointLoadBalancerOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     networkInterfaceOptions = registerOutput<EndpointNetworkInterfaceOptions?>(
       'networkInterfaceOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointNetworkInterfaceOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     policyDocument = registerOutput<String?>('policyDocument');
-    rdsOptions = registerOutput<EndpointRdsOptions?>('rdsOptions');
+    rdsOptions = registerOutput<EndpointRdsOptions?>(
+      'rdsOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointRdsOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
     sseSpecification = registerOutput<EndpointSseSpecification>(
       'sseSpecification',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointSseSpecification.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -480,7 +519,16 @@ class Endpoint extends pulumi.CustomResource {
        ) {
     applicationDomain = registerOutput<String?>('applicationDomain');
     attachmentType = registerOutput<String>('attachmentType');
-    cidrOptions = registerOutput<EndpointCidrOptions?>('cidrOptions');
+    cidrOptions = registerOutput<EndpointCidrOptions?>(
+      'cidrOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointCidrOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     deviceValidationDomain = registerOutput<String>('deviceValidationDomain');
     domainCertificateArn = registerOutput<String?>('domainCertificateArn');
@@ -489,16 +537,46 @@ class Endpoint extends pulumi.CustomResource {
     endpointType = registerOutput<String>('endpointType');
     loadBalancerOptions = registerOutput<EndpointLoadBalancerOptions?>(
       'loadBalancerOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointLoadBalancerOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     networkInterfaceOptions = registerOutput<EndpointNetworkInterfaceOptions?>(
       'networkInterfaceOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointNetworkInterfaceOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     policyDocument = registerOutput<String?>('policyDocument');
-    rdsOptions = registerOutput<EndpointRdsOptions?>('rdsOptions');
+    rdsOptions = registerOutput<EndpointRdsOptions?>(
+      'rdsOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointRdsOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
     sseSpecification = registerOutput<EndpointSseSpecification>(
       'sseSpecification',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointSseSpecification.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

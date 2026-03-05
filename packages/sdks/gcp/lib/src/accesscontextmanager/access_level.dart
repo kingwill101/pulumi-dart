@@ -313,8 +313,26 @@ class AccessLevel extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    basic = registerOutput<AccessLevelBasic?>('basic');
-    custom = registerOutput<AccessLevelCustom?>('custom');
+    basic = registerOutput<AccessLevelBasic?>(
+      'basic',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccessLevelBasic.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    custom = registerOutput<AccessLevelCustom?>(
+      'custom',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccessLevelCustom.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
@@ -344,8 +362,26 @@ class AccessLevel extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    basic = registerOutput<AccessLevelBasic?>('basic');
-    custom = registerOutput<AccessLevelCustom?>('custom');
+    basic = registerOutput<AccessLevelBasic?>(
+      'basic',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccessLevelBasic.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    custom = registerOutput<AccessLevelCustom?>(
+      'custom',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccessLevelCustom.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');

@@ -515,7 +515,16 @@ class ScalingPlanPersonalSchedule extends pulumi.CustomResource {
     offPeakMinutesToWaitOnLogoff = registerOutput<int?>(
       'offPeakMinutesToWaitOnLogoff',
     );
-    offPeakStartTime = registerOutput<TimeResponse?>('offPeakStartTime');
+    offPeakStartTime = registerOutput<TimeResponse?>(
+      'offPeakStartTime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TimeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     offPeakStartVMOnConnect = registerOutput<String?>(
       'offPeakStartVMOnConnect',
     );
@@ -527,7 +536,16 @@ class ScalingPlanPersonalSchedule extends pulumi.CustomResource {
     peakMinutesToWaitOnLogoff = registerOutput<int?>(
       'peakMinutesToWaitOnLogoff',
     );
-    peakStartTime = registerOutput<TimeResponse?>('peakStartTime');
+    peakStartTime = registerOutput<TimeResponse?>(
+      'peakStartTime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TimeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     peakStartVMOnConnect = registerOutput<String?>('peakStartVMOnConnect');
     rampDownActionOnDisconnect = registerOutput<String?>(
       'rampDownActionOnDisconnect',
@@ -539,7 +557,16 @@ class ScalingPlanPersonalSchedule extends pulumi.CustomResource {
     rampDownMinutesToWaitOnLogoff = registerOutput<int?>(
       'rampDownMinutesToWaitOnLogoff',
     );
-    rampDownStartTime = registerOutput<TimeResponse?>('rampDownStartTime');
+    rampDownStartTime = registerOutput<TimeResponse?>(
+      'rampDownStartTime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TimeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     rampDownStartVMOnConnect = registerOutput<String?>(
       'rampDownStartVMOnConnect',
     );
@@ -554,9 +581,27 @@ class ScalingPlanPersonalSchedule extends pulumi.CustomResource {
     rampUpMinutesToWaitOnLogoff = registerOutput<int?>(
       'rampUpMinutesToWaitOnLogoff',
     );
-    rampUpStartTime = registerOutput<TimeResponse?>('rampUpStartTime');
+    rampUpStartTime = registerOutput<TimeResponse?>(
+      'rampUpStartTime',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TimeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     rampUpStartVMOnConnect = registerOutput<String?>('rampUpStartVMOnConnect');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

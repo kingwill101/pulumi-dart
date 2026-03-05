@@ -404,13 +404,29 @@ class Rule extends pulumi.CustomResource {
     );
     lockConfiguration = registerOutput<RuleLockConfiguration?>(
       'lockConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RuleLockConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     lockEndTime = registerOutput<String>('lockEndTime');
     lockState = registerOutput<String>('lockState');
     region = registerOutput<String>('region');
     resourceTags = registerOutput<List<Map<String, dynamic>>?>('resourceTags');
     resourceType = registerOutput<String>('resourceType');
-    retentionPeriod = registerOutput<RuleRetentionPeriod>('retentionPeriod');
+    retentionPeriod = registerOutput<RuleRetentionPeriod>(
+      'retentionPeriod',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RuleRetentionPeriod.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -442,13 +458,29 @@ class Rule extends pulumi.CustomResource {
     );
     lockConfiguration = registerOutput<RuleLockConfiguration?>(
       'lockConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RuleLockConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     lockEndTime = registerOutput<String>('lockEndTime');
     lockState = registerOutput<String>('lockState');
     region = registerOutput<String>('region');
     resourceTags = registerOutput<List<Map<String, dynamic>>?>('resourceTags');
     resourceType = registerOutput<String>('resourceType');
-    retentionPeriod = registerOutput<RuleRetentionPeriod>('retentionPeriod');
+    retentionPeriod = registerOutput<RuleRetentionPeriod>(
+      'retentionPeriod',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RuleRetentionPeriod.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

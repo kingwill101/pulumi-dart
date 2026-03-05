@@ -611,6 +611,13 @@ class FolderCustomModule extends pulumi.CustomResource {
     ancestorModule = registerOutput<String>('ancestorModule');
     customConfig = registerOutput<FolderCustomModuleCustomConfig>(
       'customConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FolderCustomModuleCustomConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     displayName = registerOutput<String>('displayName');
     enablementState = registerOutput<String>('enablementState');
@@ -646,6 +653,13 @@ class FolderCustomModule extends pulumi.CustomResource {
     ancestorModule = registerOutput<String>('ancestorModule');
     customConfig = registerOutput<FolderCustomModuleCustomConfig>(
       'customConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FolderCustomModuleCustomConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     displayName = registerOutput<String>('displayName');
     enablementState = registerOutput<String>('enablementState');

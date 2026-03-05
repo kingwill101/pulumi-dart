@@ -1083,12 +1083,26 @@ class Snapshot extends pulumi.CustomResource {
     selfLink = registerOutput<String>('selfLink');
     snapshotEncryptionKey = registerOutput<SnapshotSnapshotEncryptionKey?>(
       'snapshotEncryptionKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SnapshotSnapshotEncryptionKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     snapshotId = registerOutput<int>('snapshotId');
     snapshotType = registerOutput<String?>('snapshotType');
     sourceDisk = registerOutput<String>('sourceDisk');
     sourceDiskEncryptionKey = registerOutput<SnapshotSourceDiskEncryptionKey?>(
       'sourceDiskEncryptionKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SnapshotSourceDiskEncryptionKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sourceInstantSnapshot = registerOutput<String?>('sourceInstantSnapshot');
     storageBytes = registerOutput<int>('storageBytes');
@@ -1134,12 +1148,26 @@ class Snapshot extends pulumi.CustomResource {
     selfLink = registerOutput<String>('selfLink');
     snapshotEncryptionKey = registerOutput<SnapshotSnapshotEncryptionKey?>(
       'snapshotEncryptionKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SnapshotSnapshotEncryptionKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     snapshotId = registerOutput<int>('snapshotId');
     snapshotType = registerOutput<String?>('snapshotType');
     sourceDisk = registerOutput<String>('sourceDisk');
     sourceDiskEncryptionKey = registerOutput<SnapshotSourceDiskEncryptionKey?>(
       'sourceDiskEncryptionKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SnapshotSourceDiskEncryptionKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sourceInstantSnapshot = registerOutput<String?>('sourceInstantSnapshot');
     storageBytes = registerOutput<int>('storageBytes');

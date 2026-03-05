@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getUser.
 class GetUserResult {
   final String authenticationDomainId;
   final String emailId;
+
   /// The ID of the matching user fetched.
   final String id;
   final String name;
@@ -39,4 +39,3 @@ class GetUserResult {
     );
   }
 }
-

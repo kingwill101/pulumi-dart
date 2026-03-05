@@ -1707,34 +1707,85 @@ class Workspace extends pulumi.CustomResource {
     accessConnector =
         registerOutput<WorkspacePropertiesResponseAccessConnector?>(
           'accessConnector',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WorkspacePropertiesResponseAccessConnector.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     authorizations = registerOutput<List<Map<String, dynamic>>?>(
       'authorizations',
     );
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    createdBy = registerOutput<CreatedByResponse?>('createdBy');
+    createdBy = registerOutput<CreatedByResponse?>(
+      'createdBy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CreatedByResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createdDateTime = registerOutput<String>('createdDateTime');
     defaultCatalog = registerOutput<DefaultCatalogPropertiesResponse?>(
       'defaultCatalog',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DefaultCatalogPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     defaultStorageFirewall = registerOutput<String?>('defaultStorageFirewall');
     diskEncryptionSetId = registerOutput<String>('diskEncryptionSetId');
     encryption = registerOutput<WorkspacePropertiesResponseEncryption?>(
       'encryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkspacePropertiesResponseEncryption.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     enhancedSecurityCompliance =
         registerOutput<EnhancedSecurityComplianceDefinitionResponse?>(
           'enhancedSecurityCompliance',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EnhancedSecurityComplianceDefinitionResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     isUcEnabled = registerOutput<bool>('isUcEnabled');
     location = registerOutput<String>('location');
     managedDiskIdentity = registerOutput<ManagedIdentityConfigurationResponse?>(
       'managedDiskIdentity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedIdentityConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     managedResourceGroupId = registerOutput<String>('managedResourceGroupId');
     this.name = registerOutput<String>('name');
     parameters = registerOutput<WorkspaceCustomParametersResponse?>(
       'parameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkspaceCustomParametersResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
       'privateEndpointConnections',
@@ -1742,16 +1793,50 @@ class Workspace extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     requiredNsgRules = registerOutput<String?>('requiredNsgRules');
-    sku = registerOutput<SkuResponse?>('sku');
+    sku = registerOutput<SkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     storageAccountIdentity =
         registerOutput<ManagedIdentityConfigurationResponse?>(
           'storageAccountIdentity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ManagedIdentityConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     uiDefinitionUri = registerOutput<String?>('uiDefinitionUri');
-    updatedBy = registerOutput<CreatedByResponse?>('updatedBy');
+    updatedBy = registerOutput<CreatedByResponse?>(
+      'updatedBy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CreatedByResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     workspaceId = registerOutput<String>('workspaceId');
     workspaceUrl = registerOutput<String>('workspaceUrl');
   }

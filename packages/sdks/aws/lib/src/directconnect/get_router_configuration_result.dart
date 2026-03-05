@@ -7,11 +7,14 @@ import 'get_router_configuration_router.dart';
 class GetRouterConfigurationResult {
   /// Instructions for configuring your router
   final String customerRouterConfig;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
+
   /// Router type identifier
   final String routerTypeIdentifier;
+
   /// Block of the router type details
   final List<GetRouterConfigurationRouter> routers;
   final String virtualInterfaceId;
@@ -41,7 +44,11 @@ class GetRouterConfigurationResult {
       'id': id,
       'region': region,
       'routerTypeIdentifier': routerTypeIdentifier,
-      'routers': pulumi.Input.encodeList<GetRouterConfigurationRouter, Map<String, dynamic>>(routers, (value) => value.toMap()),
+      'routers':
+          pulumi.Input.encodeList<
+            GetRouterConfigurationRouter,
+            Map<String, dynamic>
+          >(routers, (value) => value.toMap()),
       'virtualInterfaceId': virtualInterfaceId,
       'virtualInterfaceName': virtualInterfaceName,
     };
@@ -53,10 +60,14 @@ class GetRouterConfigurationResult {
       id: map['id'] as String,
       region: map['region'] as String,
       routerTypeIdentifier: map['routerTypeIdentifier'] as String,
-      routers: pulumi.Input.decodeList<GetRouterConfigurationRouter>(map['routers']!, (value) => GetRouterConfigurationRouter.fromMap((value as Map).cast<String, dynamic>())),
+      routers: pulumi.Input.decodeList<GetRouterConfigurationRouter>(
+        map['routers']!,
+        (value) => GetRouterConfigurationRouter.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       virtualInterfaceId: map['virtualInterfaceId'] as String,
       virtualInterfaceName: map['virtualInterfaceName'] as String,
     );
   }
 }
-

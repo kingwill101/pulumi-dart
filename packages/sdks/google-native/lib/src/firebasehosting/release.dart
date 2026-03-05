@@ -52,10 +52,28 @@ class Release extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     releaseTime = registerOutput<String>('releaseTime');
-    releaseUser = registerOutput<ActingUserResponse>('releaseUser');
+    releaseUser = registerOutput<ActingUserResponse>(
+      'releaseUser',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ActingUserResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     siteId = registerOutput<String>('siteId');
     type = registerOutput<String>('type');
-    version = registerOutput<VersionResponse>('version');
+    version = registerOutput<VersionResponse>(
+      'version',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VersionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     versionName = registerOutput<String?>('versionName');
   }
 }

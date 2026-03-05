@@ -66,6 +66,13 @@ class DlpJob extends pulumi.CustomResource {
     inspectDetails =
         registerOutput<GooglePrivacyDlpV2InspectDataSourceDetailsResponse>(
           'inspectDetails',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GooglePrivacyDlpV2InspectDataSourceDetailsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     jobTriggerName = registerOutput<String>('jobTriggerName');
     lastModified = registerOutput<String>('lastModified');
@@ -75,6 +82,13 @@ class DlpJob extends pulumi.CustomResource {
     riskDetails =
         registerOutput<GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse>(
           'riskDetails',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     startTime = registerOutput<String>('startTime');
     state = registerOutput<String>('state');

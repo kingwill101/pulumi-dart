@@ -213,9 +213,25 @@ class VpcOrigin extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<VpcOriginTimeouts?>('timeouts');
+    timeouts = registerOutput<VpcOriginTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpcOriginTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vpcOriginEndpointConfig = registerOutput<VpcOriginVpcOriginEndpointConfig>(
       'vpcOriginEndpointConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpcOriginVpcOriginEndpointConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -246,9 +262,25 @@ class VpcOrigin extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<VpcOriginTimeouts?>('timeouts');
+    timeouts = registerOutput<VpcOriginTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpcOriginTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vpcOriginEndpointConfig = registerOutput<VpcOriginVpcOriginEndpointConfig>(
       'vpcOriginEndpointConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpcOriginVpcOriginEndpointConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

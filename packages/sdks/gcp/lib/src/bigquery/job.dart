@@ -2828,18 +2828,48 @@ class Job extends pulumi.CustomResource {
         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
         options ?? pulumi.CustomResourceOptions(),
       ) {
-    copy = registerOutput<JobCopy?>('copy');
+    copy = registerOutput<JobCopy?>(
+      'copy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobCopy.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    extract = registerOutput<JobExtract?>('extract');
+    extract = registerOutput<JobExtract?>(
+      'extract',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobExtract.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     jobId = registerOutput<String>('jobId');
     jobTimeoutMs = registerOutput<String?>('jobTimeoutMs');
     jobType = registerOutput<String>('jobType');
     labels = registerOutput<Map<String, String>?>('labels');
-    load = registerOutput<JobLoad?>('load');
+    load = registerOutput<JobLoad?>(
+      'load',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobLoad.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     location = registerOutput<String?>('location');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    query = registerOutput<JobQuery?>('query');
+    query = registerOutput<JobQuery?>(
+      'query',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobQuery.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     reservation = registerOutput<String?>('reservation');
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
     userEmail = registerOutput<String>('userEmail');
@@ -2864,18 +2894,48 @@ class Job extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    copy = registerOutput<JobCopy?>('copy');
+    copy = registerOutput<JobCopy?>(
+      'copy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobCopy.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    extract = registerOutput<JobExtract?>('extract');
+    extract = registerOutput<JobExtract?>(
+      'extract',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobExtract.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     jobId = registerOutput<String>('jobId');
     jobTimeoutMs = registerOutput<String?>('jobTimeoutMs');
     jobType = registerOutput<String>('jobType');
     labels = registerOutput<Map<String, String>?>('labels');
-    load = registerOutput<JobLoad?>('load');
+    load = registerOutput<JobLoad?>(
+      'load',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobLoad.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     location = registerOutput<String?>('location');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    query = registerOutput<JobQuery?>('query');
+    query = registerOutput<JobQuery?>(
+      'query',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobQuery.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     reservation = registerOutput<String?>('reservation');
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
     userEmail = registerOutput<String>('userEmail');

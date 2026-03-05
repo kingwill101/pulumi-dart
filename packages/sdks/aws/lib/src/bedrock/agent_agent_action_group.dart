@@ -848,16 +848,39 @@ class AgentAgentActionGroup extends pulumi.CustomResource {
     actionGroupExecutor =
         registerOutput<AgentAgentActionGroupActionGroupExecutor?>(
           'actionGroupExecutor',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AgentAgentActionGroupActionGroupExecutor.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     actionGroupId = registerOutput<String>('actionGroupId');
     actionGroupName = registerOutput<String>('actionGroupName');
     actionGroupState = registerOutput<String>('actionGroupState');
     agentId = registerOutput<String>('agentId');
     agentVersion = registerOutput<String>('agentVersion');
-    apiSchema = registerOutput<AgentAgentActionGroupApiSchema?>('apiSchema');
+    apiSchema = registerOutput<AgentAgentActionGroupApiSchema?>(
+      'apiSchema',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentAgentActionGroupApiSchema.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     functionSchema = registerOutput<AgentAgentActionGroupFunctionSchema?>(
       'functionSchema',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentAgentActionGroupFunctionSchema.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     parentActionGroupSignature = registerOutput<String?>(
       'parentActionGroupSignature',
@@ -865,7 +888,16 @@ class AgentAgentActionGroup extends pulumi.CustomResource {
     prepareAgent = registerOutput<bool>('prepareAgent');
     region = registerOutput<String>('region');
     skipResourceInUseCheck = registerOutput<bool>('skipResourceInUseCheck');
-    timeouts = registerOutput<AgentAgentActionGroupTimeouts?>('timeouts');
+    timeouts = registerOutput<AgentAgentActionGroupTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentAgentActionGroupTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [AgentAgentActionGroup] resource's state with the given [name] and [id].
@@ -894,16 +926,39 @@ class AgentAgentActionGroup extends pulumi.CustomResource {
     actionGroupExecutor =
         registerOutput<AgentAgentActionGroupActionGroupExecutor?>(
           'actionGroupExecutor',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AgentAgentActionGroupActionGroupExecutor.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     actionGroupId = registerOutput<String>('actionGroupId');
     actionGroupName = registerOutput<String>('actionGroupName');
     actionGroupState = registerOutput<String>('actionGroupState');
     agentId = registerOutput<String>('agentId');
     agentVersion = registerOutput<String>('agentVersion');
-    apiSchema = registerOutput<AgentAgentActionGroupApiSchema?>('apiSchema');
+    apiSchema = registerOutput<AgentAgentActionGroupApiSchema?>(
+      'apiSchema',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentAgentActionGroupApiSchema.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     functionSchema = registerOutput<AgentAgentActionGroupFunctionSchema?>(
       'functionSchema',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentAgentActionGroupFunctionSchema.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     parentActionGroupSignature = registerOutput<String?>(
       'parentActionGroupSignature',
@@ -911,6 +966,15 @@ class AgentAgentActionGroup extends pulumi.CustomResource {
     prepareAgent = registerOutput<bool>('prepareAgent');
     region = registerOutput<String>('region');
     skipResourceInUseCheck = registerOutput<bool>('skipResourceInUseCheck');
-    timeouts = registerOutput<AgentAgentActionGroupTimeouts?>('timeouts');
+    timeouts = registerOutput<AgentAgentActionGroupTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentAgentActionGroupTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

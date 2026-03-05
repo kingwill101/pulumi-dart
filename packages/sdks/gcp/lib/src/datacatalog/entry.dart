@@ -779,7 +779,16 @@ class Entry extends pulumi.CustomResource {
     displayName = registerOutput<String?>('displayName');
     entryGroup = registerOutput<String>('entryGroup');
     entryId = registerOutput<String>('entryId');
-    gcsFilesetSpec = registerOutput<EntryGcsFilesetSpec?>('gcsFilesetSpec');
+    gcsFilesetSpec = registerOutput<EntryGcsFilesetSpec?>(
+      'gcsFilesetSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EntryGcsFilesetSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     integratedSystem = registerOutput<String>('integratedSystem');
     linkedResource = registerOutput<String>('linkedResource');
     this.name = registerOutput<String>('name');
@@ -818,7 +827,16 @@ class Entry extends pulumi.CustomResource {
     displayName = registerOutput<String?>('displayName');
     entryGroup = registerOutput<String>('entryGroup');
     entryId = registerOutput<String>('entryId');
-    gcsFilesetSpec = registerOutput<EntryGcsFilesetSpec?>('gcsFilesetSpec');
+    gcsFilesetSpec = registerOutput<EntryGcsFilesetSpec?>(
+      'gcsFilesetSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EntryGcsFilesetSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     integratedSystem = registerOutput<String>('integratedSystem');
     linkedResource = registerOutput<String>('linkedResource');
     this.name = registerOutput<String>('name');

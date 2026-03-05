@@ -1,18 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getEventConnection.
 class GetEventConnectionResult {
   /// ARN (Amazon Resource Name) of the connection.
   final String arn;
+
   /// Type of authorization specified for the connection. One of `API_KEY`,`BASIC`,`OAUTH_CLIENT_CREDENTIALS`.
   final String authorizationType;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// (Optional) Identifier of the AWS KMS customer managed key for EventBridge to use to encrypt the connection, if one has been specified.
   final String kmsKeyIdentifier;
   final String name;
   final String region;
+
   /// ARN of the secret created from the authorization parameters specified for the connection.
   final String secretArn;
 
@@ -58,4 +61,3 @@ class GetEventConnectionResult {
     );
   }
 }
-

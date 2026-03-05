@@ -591,7 +591,16 @@ class As3 extends pulumi.CustomResource {
     applicationList = registerOutput<String>('applicationList');
     as3Json = registerOutput<String?>('as3Json');
     controls = registerOutput<Map<String, String>?>('controls');
-    deleteApps = registerOutput<As3DeleteApps?>('deleteApps');
+    deleteApps = registerOutput<As3DeleteApps?>(
+      'deleteApps',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return As3DeleteApps.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ignoreMetadata = registerOutput<bool?>('ignoreMetadata');
     perAppMode = registerOutput<bool>('perAppMode');
     taskId = registerOutput<String>('taskId');
@@ -622,7 +631,16 @@ class As3 extends pulumi.CustomResource {
     applicationList = registerOutput<String>('applicationList');
     as3Json = registerOutput<String?>('as3Json');
     controls = registerOutput<Map<String, String>?>('controls');
-    deleteApps = registerOutput<As3DeleteApps?>('deleteApps');
+    deleteApps = registerOutput<As3DeleteApps?>(
+      'deleteApps',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return As3DeleteApps.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ignoreMetadata = registerOutput<bool?>('ignoreMetadata');
     perAppMode = registerOutput<bool>('perAppMode');
     taskId = registerOutput<String>('taskId');

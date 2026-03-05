@@ -135,6 +135,13 @@ class EndpointServicePrivateDnsVerification extends pulumi.CustomResource {
     serviceId = registerOutput<String>('serviceId');
     timeouts = registerOutput<EndpointServicePrivateDnsVerificationTimeouts?>(
       'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointServicePrivateDnsVerificationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     waitForVerification = registerOutput<bool?>('waitForVerification');
   }
@@ -166,6 +173,13 @@ class EndpointServicePrivateDnsVerification extends pulumi.CustomResource {
     serviceId = registerOutput<String>('serviceId');
     timeouts = registerOutput<EndpointServicePrivateDnsVerificationTimeouts?>(
       'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EndpointServicePrivateDnsVerificationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     waitForVerification = registerOutput<bool?>('waitForVerification');
   }

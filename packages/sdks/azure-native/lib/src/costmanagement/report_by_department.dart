@@ -54,11 +54,38 @@ class ReportByDepartment extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    definition = registerOutput<ReportDefinitionResponse>('definition');
-    deliveryInfo = registerOutput<ReportDeliveryInfoResponse>('deliveryInfo');
+    definition = registerOutput<ReportDefinitionResponse>(
+      'definition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReportDefinitionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    deliveryInfo = registerOutput<ReportDeliveryInfoResponse>(
+      'deliveryInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReportDeliveryInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     format = registerOutput<String?>('format');
     this.name = registerOutput<String>('name');
-    schedule = registerOutput<ReportScheduleResponse?>('schedule');
+    schedule = registerOutput<ReportScheduleResponse?>(
+      'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReportScheduleResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>>('tags');
     type = registerOutput<String>('type');
   }

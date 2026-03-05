@@ -299,6 +299,13 @@ class CatalogDatabase extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     federatedDatabase = registerOutput<CatalogDatabaseFederatedDatabase?>(
       'federatedDatabase',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CatalogDatabaseFederatedDatabase.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     locationUri = registerOutput<String>('locationUri');
     this.name = registerOutput<String>('name');
@@ -308,6 +315,13 @@ class CatalogDatabase extends pulumi.CustomResource {
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     targetDatabase = registerOutput<CatalogDatabaseTargetDatabase?>(
       'targetDatabase',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CatalogDatabaseTargetDatabase.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -342,6 +356,13 @@ class CatalogDatabase extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     federatedDatabase = registerOutput<CatalogDatabaseFederatedDatabase?>(
       'federatedDatabase',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CatalogDatabaseFederatedDatabase.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     locationUri = registerOutput<String>('locationUri');
     this.name = registerOutput<String>('name');
@@ -351,6 +372,13 @@ class CatalogDatabase extends pulumi.CustomResource {
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     targetDatabase = registerOutput<CatalogDatabaseTargetDatabase?>(
       'targetDatabase',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CatalogDatabaseTargetDatabase.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

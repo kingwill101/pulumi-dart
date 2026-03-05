@@ -203,8 +203,24 @@ class Cluster extends pulumi.ComponentResource {
       'clusterSecurityGroup',
     );
     clusterSecurityGroupId = registerOutput<String?>('clusterSecurityGroupId');
-    core = registerOutput<CoreData?>('core');
-    defaultNodeGroup = registerOutput<NodeGroupData?>('defaultNodeGroup');
+    core = registerOutput<CoreData?>(
+      'core',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CoreData.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
+    defaultNodeGroup = registerOutput<NodeGroupData?>(
+      'defaultNodeGroup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodeGroupData.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     defaultNodeGroupAsgName = registerOutput<String?>(
       'defaultNodeGroupAsgName',
     );

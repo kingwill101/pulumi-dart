@@ -259,7 +259,16 @@ class IotHubDps extends pulumi.CustomResource {
     serviceOperationsHostName = registerOutput<String>(
       'serviceOperationsHostName',
     );
-    sku = registerOutput<IotHubDpsSku>('sku');
+    sku = registerOutput<IotHubDpsSku>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IotHubDpsSku.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
   }
 
@@ -305,7 +314,16 @@ class IotHubDps extends pulumi.CustomResource {
     serviceOperationsHostName = registerOutput<String>(
       'serviceOperationsHostName',
     );
-    sku = registerOutput<IotHubDpsSku>('sku');
+    sku = registerOutput<IotHubDpsSku>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IotHubDpsSku.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
   }
 }

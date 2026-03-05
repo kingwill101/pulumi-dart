@@ -33,7 +33,8 @@ Future<GetConnectedClusterResult> getConnectedCluster(
 /// Other available API versions: 2021-10-01, 2022-05-01-preview, 2022-10-01-preview, 2023-11-01-preview, 2024-01-01, 2024-06-01-preview, 2024-07-01-preview, 2024-07-15-preview, 2024-12-01-preview, 2025-08-01-preview, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native kubernetes [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_kubernetes_list_connected_cluster_user_credential_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListConnectedClusterUserCredentialResult> listConnectedClusterUserCredential(
+Future<ListConnectedClusterUserCredentialResult>
+listConnectedClusterUserCredential(
   ListConnectedClusterUserCredentialArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -51,7 +52,8 @@ Future<ListConnectedClusterUserCredentialResult> listConnectedClusterUserCredent
 /// Uses Azure REST API version 2021-04-01-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_kubernetes_list_connected_cluster_user_credentials_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListConnectedClusterUserCredentialsResult> listConnectedClusterUserCredentials(
+Future<ListConnectedClusterUserCredentialsResult>
+listConnectedClusterUserCredentials(
   ListConnectedClusterUserCredentialsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

@@ -61,7 +61,16 @@ class EntityTypeAiplatformV1beta1 extends pulumi.CustomResource {
     monitoringConfig =
         registerOutput<
           GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigResponse
-        >('monitoringConfig');
+        >(
+          'monitoringConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     this.name = registerOutput<String>('name');
     offlineStorageTtlDays = registerOutput<int>('offlineStorageTtlDays');
     project = registerOutput<String>('project');

@@ -65,20 +65,52 @@ class PageDialogflowV3beta1 extends pulumi.CustomResource {
     advancedSettings =
         registerOutput<GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse>(
           'advancedSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     agentId = registerOutput<String>('agentId');
     displayName = registerOutput<String>('displayName');
     entryFulfillment =
         registerOutput<GoogleCloudDialogflowCxV3beta1FulfillmentResponse>(
           'entryFulfillment',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowCxV3beta1FulfillmentResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     eventHandlers = registerOutput<List<Map<String, dynamic>>>('eventHandlers');
     flowId = registerOutput<String>('flowId');
-    form = registerOutput<GoogleCloudDialogflowCxV3beta1FormResponse>('form');
+    form = registerOutput<GoogleCloudDialogflowCxV3beta1FormResponse>(
+      'form',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudDialogflowCxV3beta1FormResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     knowledgeConnectorSettings =
         registerOutput<
           GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettingsResponse
-        >('knowledgeConnectorSettings');
+        >(
+          'knowledgeConnectorSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettingsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     languageCode = registerOutput<String?>('languageCode');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

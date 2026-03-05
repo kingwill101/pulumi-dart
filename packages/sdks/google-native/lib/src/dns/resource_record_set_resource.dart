@@ -49,6 +49,13 @@ class ResourceRecordSetResource extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     routingPolicy = registerOutput<RRSetRoutingPolicyResponseDnsV1beta2>(
       'routingPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RRSetRoutingPolicyResponseDnsV1beta2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     rrdatas = registerOutput<List<String>>('rrdatas');
     signatureRrdatas = registerOutput<List<String>>('signatureRrdatas');

@@ -355,6 +355,13 @@ class Instance extends pulumi.CustomResource {
        ) {
     accessRulesOptions = registerOutput<InstanceAccessRulesOptions?>(
       'accessRulesOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceAccessRulesOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     capacityGib = registerOutput<String>('capacityGib');
     createTime = registerOutput<String>('createTime');
@@ -405,6 +412,13 @@ class Instance extends pulumi.CustomResource {
        ) {
     accessRulesOptions = registerOutput<InstanceAccessRulesOptions?>(
       'accessRulesOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceAccessRulesOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     capacityGib = registerOutput<String>('capacityGib');
     createTime = registerOutput<String>('createTime');

@@ -7,9 +7,11 @@ import 'get_route_table_routes_route.dart';
 /// Result data returned by getRouteTableRoutes.
 class GetRouteTableRoutesResult {
   final List<GetRouteTableRoutesFilter> filters;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
+
   /// List of Transit Gateway Routes.
   final List<GetRouteTableRoutesRoute> routes;
   final String transitGatewayRouteTableId;
@@ -30,22 +32,39 @@ class GetRouteTableRoutesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': pulumi.Input.encodeList<GetRouteTableRoutesFilter, Map<String, dynamic>>(filters, (value) => value.toMap()),
+      'filters':
+          pulumi.Input.encodeList<
+            GetRouteTableRoutesFilter,
+            Map<String, dynamic>
+          >(filters, (value) => value.toMap()),
       'id': id,
       'region': region,
-      'routes': pulumi.Input.encodeList<GetRouteTableRoutesRoute, Map<String, dynamic>>(routes, (value) => value.toMap()),
+      'routes':
+          pulumi.Input.encodeList<
+            GetRouteTableRoutesRoute,
+            Map<String, dynamic>
+          >(routes, (value) => value.toMap()),
       'transitGatewayRouteTableId': transitGatewayRouteTableId,
     };
   }
 
   factory GetRouteTableRoutesResult.fromMap(Map<String, dynamic> map) {
     return GetRouteTableRoutesResult(
-      filters: pulumi.Input.decodeList<GetRouteTableRoutesFilter>(map['filters']!, (value) => GetRouteTableRoutesFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: pulumi.Input.decodeList<GetRouteTableRoutesFilter>(
+        map['filters']!,
+        (value) => GetRouteTableRoutesFilter.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       region: map['region'] as String,
-      routes: pulumi.Input.decodeList<GetRouteTableRoutesRoute>(map['routes']!, (value) => GetRouteTableRoutesRoute.fromMap((value as Map).cast<String, dynamic>())),
+      routes: pulumi.Input.decodeList<GetRouteTableRoutesRoute>(
+        map['routes']!,
+        (value) => GetRouteTableRoutesRoute.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       transitGatewayRouteTableId: map['transitGatewayRouteTableId'] as String,
     );
   }
 }
-

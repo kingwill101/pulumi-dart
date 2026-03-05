@@ -246,7 +246,16 @@ class SQuotaPreference extends pulumi.CustomResource {
     justification = registerOutput<String?>('justification');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
-    quotaConfig = registerOutput<SQuotaPreferenceQuotaConfig>('quotaConfig');
+    quotaConfig = registerOutput<SQuotaPreferenceQuotaConfig>(
+      'quotaConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SQuotaPreferenceQuotaConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     quotaId = registerOutput<String>('quotaId');
     reconciling = registerOutput<bool>('reconciling');
     service = registerOutput<String>('service');
@@ -284,7 +293,16 @@ class SQuotaPreference extends pulumi.CustomResource {
     justification = registerOutput<String?>('justification');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
-    quotaConfig = registerOutput<SQuotaPreferenceQuotaConfig>('quotaConfig');
+    quotaConfig = registerOutput<SQuotaPreferenceQuotaConfig>(
+      'quotaConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SQuotaPreferenceQuotaConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     quotaId = registerOutput<String>('quotaId');
     reconciling = registerOutput<bool>('reconciling');
     service = registerOutput<String>('service');

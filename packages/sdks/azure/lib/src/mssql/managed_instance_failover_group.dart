@@ -1466,7 +1466,16 @@ class ManagedInstanceFailoverGroup extends pulumi.CustomResource {
     readWriteEndpointFailoverPolicy =
         registerOutput<
           ManagedInstanceFailoverGroupReadWriteEndpointFailoverPolicy
-        >('readWriteEndpointFailoverPolicy');
+        >(
+          'readWriteEndpointFailoverPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ManagedInstanceFailoverGroupReadWriteEndpointFailoverPolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     readonlyEndpointFailoverPolicyEnabled = registerOutput<bool?>(
       'readonlyEndpointFailoverPolicyEnabled',
     );
@@ -1509,7 +1518,16 @@ class ManagedInstanceFailoverGroup extends pulumi.CustomResource {
     readWriteEndpointFailoverPolicy =
         registerOutput<
           ManagedInstanceFailoverGroupReadWriteEndpointFailoverPolicy
-        >('readWriteEndpointFailoverPolicy');
+        >(
+          'readWriteEndpointFailoverPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ManagedInstanceFailoverGroupReadWriteEndpointFailoverPolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     readonlyEndpointFailoverPolicyEnabled = registerOutput<bool?>(
       'readonlyEndpointFailoverPolicyEnabled',
     );

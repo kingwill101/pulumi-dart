@@ -685,9 +685,25 @@ class WebAcl extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     arn = registerOutput<String>('arn');
-    defaultAction = registerOutput<WebAclDefaultAction>('defaultAction');
+    defaultAction = registerOutput<WebAclDefaultAction>(
+      'defaultAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebAclDefaultAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     loggingConfiguration = registerOutput<WebAclLoggingConfiguration?>(
       'loggingConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebAclLoggingConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     metricName = registerOutput<String>('metricName');
     this.name = registerOutput<String>('name');
@@ -721,9 +737,25 @@ class WebAcl extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    defaultAction = registerOutput<WebAclDefaultAction>('defaultAction');
+    defaultAction = registerOutput<WebAclDefaultAction>(
+      'defaultAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebAclDefaultAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     loggingConfiguration = registerOutput<WebAclLoggingConfiguration?>(
       'loggingConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebAclLoggingConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     metricName = registerOutput<String>('metricName');
     this.name = registerOutput<String>('name');

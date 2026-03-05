@@ -1408,14 +1408,32 @@ class Redis extends pulumi.CustomResource {
         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
         options ?? pulumi.CustomResourceOptions(),
       ) {
-    accessKeys = registerOutput<RedisAccessKeysResponse>('accessKeys');
+    accessKeys = registerOutput<RedisAccessKeysResponse>(
+      'accessKeys',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RedisAccessKeysResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     disableAccessKeyAuthentication = registerOutput<bool?>(
       'disableAccessKeyAuthentication',
     );
     enableNonSslPort = registerOutput<bool?>('enableNonSslPort');
     hostName = registerOutput<String>('hostName');
-    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    identity = registerOutput<ManagedServiceIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedServiceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     instances = registerOutput<List<Map<String, dynamic>>>('instances');
     linkedServers = registerOutput<List<Map<String, dynamic>>>('linkedServers');
     location = registerOutput<String>('location');
@@ -1430,16 +1448,41 @@ class Redis extends pulumi.CustomResource {
     redisConfiguration =
         registerOutput<RedisCommonPropertiesRedisConfigurationResponse?>(
           'redisConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RedisCommonPropertiesRedisConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     redisVersion = registerOutput<String?>('redisVersion');
     replicasPerMaster = registerOutput<int?>('replicasPerMaster');
     replicasPerPrimary = registerOutput<int?>('replicasPerPrimary');
     shardCount = registerOutput<int?>('shardCount');
-    sku = registerOutput<SkuResponse>('sku');
+    sku = registerOutput<SkuResponse>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sslPort = registerOutput<int>('sslPort');
     staticIP = registerOutput<String?>('staticIP');
     subnetId = registerOutput<String?>('subnetId');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tenantSettings = registerOutput<Map<String, String>?>('tenantSettings');
     type = registerOutput<String>('type');

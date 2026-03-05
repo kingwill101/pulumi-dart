@@ -243,7 +243,8 @@ Future<GetAppServiceEnvironmentResult> getAppServiceEnvironment(
 /// Other available API versions: 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_web_get_app_service_environment_ase_custom_dns_suffix_configuration_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult> getAppServiceEnvironmentAseCustomDnsSuffixConfiguration(
+Future<GetAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult>
+getAppServiceEnvironmentAseCustomDnsSuffixConfiguration(
   GetAppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -253,7 +254,9 @@ Future<GetAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult> getAppServ
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult.fromMap(result);
+  return GetAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult.fromMap(
+    result,
+  );
 }
 
 /// Description for Gets a private endpoint connection
@@ -263,7 +266,8 @@ Future<GetAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult> getAppServ
 /// Other available API versions: 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_web_get_app_service_environment_private_endpoint_connection_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetAppServiceEnvironmentPrivateEndpointConnectionResult> getAppServiceEnvironmentPrivateEndpointConnection(
+Future<GetAppServiceEnvironmentPrivateEndpointConnectionResult>
+getAppServiceEnvironmentPrivateEndpointConnection(
   GetAppServiceEnvironmentPrivateEndpointConnectionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -273,7 +277,9 @@ Future<GetAppServiceEnvironmentPrivateEndpointConnectionResult> getAppServiceEnv
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetAppServiceEnvironmentPrivateEndpointConnectionResult.fromMap(result);
+  return GetAppServiceEnvironmentPrivateEndpointConnectionResult.fromMap(
+    result,
+  );
 }
 
 /// Description for Get an App Service plan.
@@ -303,7 +309,8 @@ Future<GetAppServicePlanResult> getAppServicePlan(
 /// Other available API versions: 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_web_get_app_service_plan_server_farm_rdp_password_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetAppServicePlanServerFarmRdpPasswordResult> getAppServicePlanServerFarmRdpPassword(
+Future<GetAppServicePlanServerFarmRdpPasswordResult>
+getAppServicePlanServerFarmRdpPassword(
   GetAppServicePlanServerFarmRdpPasswordArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -479,7 +486,8 @@ Future<GetStaticSiteResult> getStaticSite(
 /// Other available API versions: 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_web_get_static_site_build_database_connection_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetStaticSiteBuildDatabaseConnectionResult> getStaticSiteBuildDatabaseConnection(
+Future<GetStaticSiteBuildDatabaseConnectionResult>
+getStaticSiteBuildDatabaseConnection(
   GetStaticSiteBuildDatabaseConnectionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -559,7 +567,8 @@ Future<GetStaticSiteLinkedBackendResult> getStaticSiteLinkedBackend(
 /// Other available API versions: 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_web_get_static_site_linked_backend_for_build_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetStaticSiteLinkedBackendForBuildResult> getStaticSiteLinkedBackendForBuild(
+Future<GetStaticSiteLinkedBackendForBuildResult>
+getStaticSiteLinkedBackendForBuild(
   GetStaticSiteLinkedBackendForBuildArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -579,7 +588,8 @@ Future<GetStaticSiteLinkedBackendForBuildResult> getStaticSiteLinkedBackendForBu
 /// Other available API versions: 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_web_get_static_site_private_endpoint_connection_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetStaticSitePrivateEndpointConnectionResult> getStaticSitePrivateEndpointConnection(
+Future<GetStaticSitePrivateEndpointConnectionResult>
+getStaticSitePrivateEndpointConnection(
   GetStaticSitePrivateEndpointConnectionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -599,7 +609,8 @@ Future<GetStaticSitePrivateEndpointConnectionResult> getStaticSitePrivateEndpoin
 /// Other available API versions: 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_web_get_static_site_user_provided_function_app_for_static_site_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetStaticSiteUserProvidedFunctionAppForStaticSiteResult> getStaticSiteUserProvidedFunctionAppForStaticSite(
+Future<GetStaticSiteUserProvidedFunctionAppForStaticSiteResult>
+getStaticSiteUserProvidedFunctionAppForStaticSite(
   GetStaticSiteUserProvidedFunctionAppForStaticSiteArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -609,7 +620,9 @@ Future<GetStaticSiteUserProvidedFunctionAppForStaticSiteResult> getStaticSiteUse
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetStaticSiteUserProvidedFunctionAppForStaticSiteResult.fromMap(result);
+  return GetStaticSiteUserProvidedFunctionAppForStaticSiteResult.fromMap(
+    result,
+  );
 }
 
 /// Description for Gets the details of the user provided function app registered with a static site build
@@ -619,7 +632,8 @@ Future<GetStaticSiteUserProvidedFunctionAppForStaticSiteResult> getStaticSiteUse
 /// Other available API versions: 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_web_get_static_site_user_provided_function_app_for_static_site_build_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult> getStaticSiteUserProvidedFunctionAppForStaticSiteBuild(
+Future<GetStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult>
+getStaticSiteUserProvidedFunctionAppForStaticSiteBuild(
   GetStaticSiteUserProvidedFunctionAppForStaticSiteBuildArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -629,7 +643,9 @@ Future<GetStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult> getStaticSi
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult.fromMap(result);
+  return GetStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult.fromMap(
+    result,
+  );
 }
 
 /// Description for Gets the details of a web, mobile, or API app.
@@ -659,7 +675,8 @@ Future<GetWebAppResult> getWebApp(
 /// Other available API versions: 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_web_get_web_app_auth_settings_v2_without_secrets_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetWebAppAuthSettingsV2WithoutSecretsResult> getWebAppAuthSettingsV2WithoutSecrets(
+Future<GetWebAppAuthSettingsV2WithoutSecretsResult>
+getWebAppAuthSettingsV2WithoutSecrets(
   GetWebAppAuthSettingsV2WithoutSecretsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -679,7 +696,8 @@ Future<GetWebAppAuthSettingsV2WithoutSecretsResult> getWebAppAuthSettingsV2Witho
 /// Other available API versions: 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_web_get_web_app_auth_settings_v2_without_secrets_slot_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetWebAppAuthSettingsV2WithoutSecretsSlotResult> getWebAppAuthSettingsV2WithoutSecretsSlot(
+Future<GetWebAppAuthSettingsV2WithoutSecretsSlotResult>
+getWebAppAuthSettingsV2WithoutSecretsSlot(
   GetWebAppAuthSettingsV2WithoutSecretsSlotArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -739,7 +757,8 @@ Future<GetWebAppDeploymentSlotResult> getWebAppDeploymentSlot(
 /// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_web_get_web_app_diagnostic_logs_configuration_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetWebAppDiagnosticLogsConfigurationResult> getWebAppDiagnosticLogsConfiguration(
+Future<GetWebAppDiagnosticLogsConfigurationResult>
+getWebAppDiagnosticLogsConfiguration(
   GetWebAppDiagnosticLogsConfigurationArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -759,7 +778,8 @@ Future<GetWebAppDiagnosticLogsConfigurationResult> getWebAppDiagnosticLogsConfig
 /// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_web_get_web_app_diagnostic_logs_configuration_slot_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetWebAppDiagnosticLogsConfigurationSlotResult> getWebAppDiagnosticLogsConfigurationSlot(
+Future<GetWebAppDiagnosticLogsConfigurationSlotResult>
+getWebAppDiagnosticLogsConfigurationSlot(
   GetWebAppDiagnosticLogsConfigurationSlotArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -779,7 +799,8 @@ Future<GetWebAppDiagnosticLogsConfigurationSlotResult> getWebAppDiagnosticLogsCo
 /// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_web_get_web_app_domain_ownership_identifier_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetWebAppDomainOwnershipIdentifierResult> getWebAppDomainOwnershipIdentifier(
+Future<GetWebAppDomainOwnershipIdentifierResult>
+getWebAppDomainOwnershipIdentifier(
   GetWebAppDomainOwnershipIdentifierArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -799,7 +820,8 @@ Future<GetWebAppDomainOwnershipIdentifierResult> getWebAppDomainOwnershipIdentif
 /// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_web_get_web_app_domain_ownership_identifier_slot_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetWebAppDomainOwnershipIdentifierSlotResult> getWebAppDomainOwnershipIdentifierSlot(
+Future<GetWebAppDomainOwnershipIdentifierSlotResult>
+getWebAppDomainOwnershipIdentifierSlot(
   GetWebAppDomainOwnershipIdentifierSlotArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1019,7 +1041,8 @@ Future<GetWebAppPremierAddOnSlotResult> getWebAppPremierAddOnSlot(
 /// Other available API versions: 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_web_get_web_app_private_endpoint_connection_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetWebAppPrivateEndpointConnectionResult> getWebAppPrivateEndpointConnection(
+Future<GetWebAppPrivateEndpointConnectionResult>
+getWebAppPrivateEndpointConnection(
   GetWebAppPrivateEndpointConnectionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1039,7 +1062,8 @@ Future<GetWebAppPrivateEndpointConnectionResult> getWebAppPrivateEndpointConnect
 /// Other available API versions: 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_web_get_web_app_private_endpoint_connection_slot_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetWebAppPrivateEndpointConnectionSlotResult> getWebAppPrivateEndpointConnectionSlot(
+Future<GetWebAppPrivateEndpointConnectionSlotResult>
+getWebAppPrivateEndpointConnectionSlot(
   GetWebAppPrivateEndpointConnectionSlotArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1119,7 +1143,8 @@ Future<GetWebAppRelayServiceConnectionResult> getWebAppRelayServiceConnection(
 /// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_web_get_web_app_relay_service_connection_slot_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetWebAppRelayServiceConnectionSlotResult> getWebAppRelayServiceConnectionSlot(
+Future<GetWebAppRelayServiceConnectionSlotResult>
+getWebAppRelayServiceConnectionSlot(
   GetWebAppRelayServiceConnectionSlotArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1339,7 +1364,8 @@ Future<GetWebAppSourceControlSlotResult> getWebAppSourceControlSlot(
 /// Other available API versions: 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_web_get_web_app_swift_virtual_network_connection_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetWebAppSwiftVirtualNetworkConnectionResult> getWebAppSwiftVirtualNetworkConnection(
+Future<GetWebAppSwiftVirtualNetworkConnectionResult>
+getWebAppSwiftVirtualNetworkConnection(
   GetWebAppSwiftVirtualNetworkConnectionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1359,7 +1385,8 @@ Future<GetWebAppSwiftVirtualNetworkConnectionResult> getWebAppSwiftVirtualNetwor
 /// Other available API versions: 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_web_get_web_app_swift_virtual_network_connection_slot_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetWebAppSwiftVirtualNetworkConnectionSlotResult> getWebAppSwiftVirtualNetworkConnectionSlot(
+Future<GetWebAppSwiftVirtualNetworkConnectionSlotResult>
+getWebAppSwiftVirtualNetworkConnectionSlot(
   GetWebAppSwiftVirtualNetworkConnectionSlotArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1419,7 +1446,8 @@ Future<GetWebAppVnetConnectionSlotResult> getWebAppVnetConnectionSlot(
 /// Other available API versions: 2016-09-01, 2018-02-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_web_list_app_service_plan_hybrid_connection_keys_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListAppServicePlanHybridConnectionKeysResult> listAppServicePlanHybridConnectionKeys(
+Future<ListAppServicePlanHybridConnectionKeysResult>
+listAppServicePlanHybridConnectionKeys(
   ListAppServicePlanHybridConnectionKeysArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1439,7 +1467,8 @@ Future<ListAppServicePlanHybridConnectionKeysResult> listAppServicePlanHybridCon
 /// Other available API versions: 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_web_list_app_service_plan_server_farm_instance_details_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListAppServicePlanServerFarmInstanceDetailsResult> listAppServicePlanServerFarmInstanceDetails(
+Future<ListAppServicePlanServerFarmInstanceDetailsResult>
+listAppServicePlanServerFarmInstanceDetails(
   ListAppServicePlanServerFarmInstanceDetailsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1515,7 +1544,8 @@ Future<ListCustomApiWsdlInterfacesResult> listCustomApiWsdlInterfaces(
 /// Other available API versions: 2016-03-01, 2018-02-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_web_list_site_identifiers_assigned_to_host_name_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListSiteIdentifiersAssignedToHostNameResult> listSiteIdentifiersAssignedToHostName(
+Future<ListSiteIdentifiersAssignedToHostNameResult>
+listSiteIdentifiersAssignedToHostName(
   ListSiteIdentifiersAssignedToHostNameArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1575,7 +1605,8 @@ Future<ListStaticSiteBuildAppSettingsResult> listStaticSiteBuildAppSettings(
 /// Other available API versions: 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_web_list_static_site_build_function_app_settings_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListStaticSiteBuildFunctionAppSettingsResult> listStaticSiteBuildFunctionAppSettings(
+Future<ListStaticSiteBuildFunctionAppSettingsResult>
+listStaticSiteBuildFunctionAppSettings(
   ListStaticSiteBuildFunctionAppSettingsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1615,7 +1646,8 @@ Future<ListStaticSiteConfiguredRolesResult> listStaticSiteConfiguredRoles(
 /// Other available API versions: 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_web_list_static_site_function_app_settings_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListStaticSiteFunctionAppSettingsResult> listStaticSiteFunctionAppSettings(
+Future<ListStaticSiteFunctionAppSettingsResult>
+listStaticSiteFunctionAppSettings(
   ListStaticSiteFunctionAppSettingsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1695,7 +1727,8 @@ Future<ListWebAppApplicationSettingsResult> listWebAppApplicationSettings(
 /// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_web_list_web_app_application_settings_slot_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListWebAppApplicationSettingsSlotResult> listWebAppApplicationSettingsSlot(
+Future<ListWebAppApplicationSettingsSlotResult>
+listWebAppApplicationSettingsSlot(
   ListWebAppApplicationSettingsSlotArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1775,7 +1808,8 @@ Future<ListWebAppAzureStorageAccountsResult> listWebAppAzureStorageAccounts(
 /// Other available API versions: 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_web_list_web_app_azure_storage_accounts_slot_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListWebAppAzureStorageAccountsSlotResult> listWebAppAzureStorageAccountsSlot(
+Future<ListWebAppAzureStorageAccountsSlotResult>
+listWebAppAzureStorageAccountsSlot(
   ListWebAppAzureStorageAccountsSlotArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1815,7 +1849,8 @@ Future<ListWebAppBackupConfigurationResult> listWebAppBackupConfiguration(
 /// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_web_list_web_app_backup_configuration_slot_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListWebAppBackupConfigurationSlotResult> listWebAppBackupConfigurationSlot(
+Future<ListWebAppBackupConfigurationSlotResult>
+listWebAppBackupConfigurationSlot(
   ListWebAppBackupConfigurationSlotArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1855,7 +1890,8 @@ Future<ListWebAppBackupStatusSecretsResult> listWebAppBackupStatusSecrets(
 /// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_web_list_web_app_backup_status_secrets_slot_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListWebAppBackupStatusSecretsSlotResult> listWebAppBackupStatusSecretsSlot(
+Future<ListWebAppBackupStatusSecretsSlotResult>
+listWebAppBackupStatusSecretsSlot(
   ListWebAppBackupStatusSecretsSlotArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2055,7 +2091,8 @@ Future<ListWebAppHybridConnectionKeysResult> listWebAppHybridConnectionKeys(
 /// Other available API versions: 2016-08-01, 2018-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_web_list_web_app_hybrid_connection_keys_slot_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListWebAppHybridConnectionKeysSlotResult> listWebAppHybridConnectionKeysSlot(
+Future<ListWebAppHybridConnectionKeysSlotResult>
+listWebAppHybridConnectionKeysSlot(
   ListWebAppHybridConnectionKeysSlotArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2135,7 +2172,8 @@ Future<ListWebAppPublishingCredentialsResult> listWebAppPublishingCredentials(
 /// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_web_list_web_app_publishing_credentials_slot_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListWebAppPublishingCredentialsSlotResult> listWebAppPublishingCredentialsSlot(
+Future<ListWebAppPublishingCredentialsSlotResult>
+listWebAppPublishingCredentialsSlot(
   ListWebAppPublishingCredentialsSlotArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2255,7 +2293,8 @@ Future<ListWebAppSyncFunctionTriggersResult> listWebAppSyncFunctionTriggers(
 /// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_web_list_web_app_sync_function_triggers_slot_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListWebAppSyncFunctionTriggersSlotResult> listWebAppSyncFunctionTriggersSlot(
+Future<ListWebAppSyncFunctionTriggersSlotResult>
+listWebAppSyncFunctionTriggersSlot(
   ListWebAppSyncFunctionTriggersSlotArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2295,7 +2334,8 @@ Future<ListWebAppWorkflowsConnectionsResult> listWebAppWorkflowsConnections(
 /// Other available API versions: 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_web_list_web_app_workflows_connections_slot_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListWebAppWorkflowsConnectionsSlotResult> listWebAppWorkflowsConnectionsSlot(
+Future<ListWebAppWorkflowsConnectionsSlotResult>
+listWebAppWorkflowsConnectionsSlot(
   ListWebAppWorkflowsConnectionsSlotArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2315,7 +2355,8 @@ Future<ListWebAppWorkflowsConnectionsSlotResult> listWebAppWorkflowsConnectionsS
 /// Other available API versions: 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_web_list_workflow_run_action_expression_traces_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListWorkflowRunActionExpressionTracesResult> listWorkflowRunActionExpressionTraces(
+Future<ListWorkflowRunActionExpressionTracesResult>
+listWorkflowRunActionExpressionTraces(
   ListWorkflowRunActionExpressionTracesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2335,7 +2376,8 @@ Future<ListWorkflowRunActionExpressionTracesResult> listWorkflowRunActionExpress
 /// Other available API versions: 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-11-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_web_list_workflow_run_action_repetition_expression_traces_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListWorkflowRunActionRepetitionExpressionTracesResult> listWorkflowRunActionRepetitionExpressionTraces(
+Future<ListWorkflowRunActionRepetitionExpressionTracesResult>
+listWorkflowRunActionRepetitionExpressionTraces(
   ListWorkflowRunActionRepetitionExpressionTracesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

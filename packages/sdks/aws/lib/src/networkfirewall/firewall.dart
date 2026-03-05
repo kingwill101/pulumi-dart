@@ -456,6 +456,13 @@ class Firewall extends pulumi.CustomResource {
     );
     encryptionConfiguration = registerOutput<FirewallEncryptionConfiguration?>(
       'encryptionConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FirewallEncryptionConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     firewallPolicyArn = registerOutput<String>('firewallPolicyArn');
     firewallPolicyChangeProtection = registerOutput<bool?>(
@@ -517,6 +524,13 @@ class Firewall extends pulumi.CustomResource {
     );
     encryptionConfiguration = registerOutput<FirewallEncryptionConfiguration?>(
       'encryptionConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FirewallEncryptionConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     firewallPolicyArn = registerOutput<String>('firewallPolicyArn');
     firewallPolicyChangeProtection = registerOutput<bool?>(

@@ -362,7 +362,16 @@ class ObjectStorageBucket extends pulumi.CustomResource {
        ) {
     accessKey = registerOutput<String?>('accessKey');
     acl = registerOutput<String?>('acl');
-    cert = registerOutput<ObjectStorageBucketCert?>('cert');
+    cert = registerOutput<ObjectStorageBucketCert?>(
+      'cert',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectStorageBucketCert.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     cluster = registerOutput<String>('cluster');
     corsEnabled = registerOutput<bool>('corsEnabled');
     endpoint = registerOutput<String>('endpoint');
@@ -403,7 +412,16 @@ class ObjectStorageBucket extends pulumi.CustomResource {
        ) {
     accessKey = registerOutput<String?>('accessKey');
     acl = registerOutput<String?>('acl');
-    cert = registerOutput<ObjectStorageBucketCert?>('cert');
+    cert = registerOutput<ObjectStorageBucketCert?>(
+      'cert',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectStorageBucketCert.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     cluster = registerOutput<String>('cluster');
     corsEnabled = registerOutput<bool>('corsEnabled');
     endpoint = registerOutput<String>('endpoint');

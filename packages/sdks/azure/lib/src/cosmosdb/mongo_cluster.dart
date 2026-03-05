@@ -535,16 +535,41 @@ class MongoCluster extends pulumi.CustomResource {
     createMode = registerOutput<String?>('createMode');
     customerManagedKey = registerOutput<MongoClusterCustomerManagedKey?>(
       'customerManagedKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MongoClusterCustomerManagedKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dataApiModeEnabled = registerOutput<bool?>('dataApiModeEnabled');
     highAvailabilityMode = registerOutput<String?>('highAvailabilityMode');
-    identity = registerOutput<MongoClusterIdentity?>('identity');
+    identity = registerOutput<MongoClusterIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MongoClusterIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     previewFeatures = registerOutput<List<String>?>('previewFeatures');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    restore = registerOutput<MongoClusterRestore?>('restore');
+    restore = registerOutput<MongoClusterRestore?>(
+      'restore',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MongoClusterRestore.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     shardCount = registerOutput<int?>('shardCount');
     sourceLocation = registerOutput<String?>('sourceLocation');
     sourceServerId = registerOutput<String?>('sourceServerId');
@@ -589,16 +614,41 @@ class MongoCluster extends pulumi.CustomResource {
     createMode = registerOutput<String?>('createMode');
     customerManagedKey = registerOutput<MongoClusterCustomerManagedKey?>(
       'customerManagedKey',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MongoClusterCustomerManagedKey.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dataApiModeEnabled = registerOutput<bool?>('dataApiModeEnabled');
     highAvailabilityMode = registerOutput<String?>('highAvailabilityMode');
-    identity = registerOutput<MongoClusterIdentity?>('identity');
+    identity = registerOutput<MongoClusterIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MongoClusterIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     previewFeatures = registerOutput<List<String>?>('previewFeatures');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    restore = registerOutput<MongoClusterRestore?>('restore');
+    restore = registerOutput<MongoClusterRestore?>(
+      'restore',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MongoClusterRestore.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     shardCount = registerOutput<int?>('shardCount');
     sourceLocation = registerOutput<String?>('sourceLocation');
     sourceServerId = registerOutput<String?>('sourceServerId');

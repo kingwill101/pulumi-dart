@@ -573,6 +573,13 @@ class AgentcoreOauth2CredentialProvider extends pulumi.CustomResource {
     oauth2ProviderConfig =
         registerOutput<AgentcoreOauth2CredentialProviderOauth2ProviderConfig?>(
           'oauth2ProviderConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AgentcoreOauth2CredentialProviderOauth2ProviderConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
   }
@@ -611,6 +618,13 @@ class AgentcoreOauth2CredentialProvider extends pulumi.CustomResource {
     oauth2ProviderConfig =
         registerOutput<AgentcoreOauth2CredentialProviderOauth2ProviderConfig?>(
           'oauth2ProviderConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AgentcoreOauth2CredentialProviderOauth2ProviderConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
   }

@@ -1,16 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getServicesAccount.
 class GetServicesAccountResult {
   /// The application ID associated with the Graph Services Account.
   final String applicationId;
+
   /// The billing plan ID for the Graph Services Account.
   final String billingPlanId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
   final String resourceGroupName;
+
   /// A mapping of tags assigned to the Graph Services Account.
   final Map<String, String> tags;
 
@@ -52,4 +54,3 @@ class GetServicesAccountResult {
     );
   }
 }
-

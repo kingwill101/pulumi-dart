@@ -508,13 +508,36 @@ class Service extends pulumi.CustomResource {
        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
-    dnsConfig = registerOutput<ServiceDnsConfig?>('dnsConfig');
+    dnsConfig = registerOutput<ServiceDnsConfig?>(
+      'dnsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceDnsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     forceDestroy = registerOutput<bool?>('forceDestroy');
     healthCheckConfig = registerOutput<ServiceHealthCheckConfig?>(
       'healthCheckConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceHealthCheckConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     healthCheckCustomConfig = registerOutput<ServiceHealthCheckCustomConfig?>(
       'healthCheckCustomConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceHealthCheckCustomConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     namespaceId = registerOutput<String>('namespaceId');
@@ -549,13 +572,36 @@ class Service extends pulumi.CustomResource {
        ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
-    dnsConfig = registerOutput<ServiceDnsConfig?>('dnsConfig');
+    dnsConfig = registerOutput<ServiceDnsConfig?>(
+      'dnsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceDnsConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     forceDestroy = registerOutput<bool?>('forceDestroy');
     healthCheckConfig = registerOutput<ServiceHealthCheckConfig?>(
       'healthCheckConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceHealthCheckConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     healthCheckCustomConfig = registerOutput<ServiceHealthCheckCustomConfig?>(
       'healthCheckCustomConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceHealthCheckCustomConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     namespaceId = registerOutput<String>('namespaceId');

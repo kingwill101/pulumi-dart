@@ -457,7 +457,16 @@ class FolderKajPolicyConfig extends pulumi.CustomResource {
     defaultKeyAccessJustificationPolicy =
         registerOutput<
           FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy?
-        >('defaultKeyAccessJustificationPolicy');
+        >(
+          'defaultKeyAccessJustificationPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     folder = registerOutput<String>('folder');
   }
 
@@ -487,7 +496,16 @@ class FolderKajPolicyConfig extends pulumi.CustomResource {
     defaultKeyAccessJustificationPolicy =
         registerOutput<
           FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy?
-        >('defaultKeyAccessJustificationPolicy');
+        >(
+          'defaultKeyAccessJustificationPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     folder = registerOutput<String>('folder');
   }
 }

@@ -115,7 +115,16 @@ class Device extends pulumi.CustomResource {
     androidSpecificAttributes =
         registerOutput<
           GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse
-        >('androidSpecificAttributes');
+        >(
+          'androidSpecificAttributes',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     assetTag = registerOutput<String>('assetTag');
     basebandVersion = registerOutput<String>('basebandVersion');
     bootloaderVersion = registerOutput<String>('bootloaderVersion');

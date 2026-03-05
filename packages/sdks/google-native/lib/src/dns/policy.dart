@@ -42,6 +42,13 @@ class Policy extends pulumi.CustomResource {
     alternativeNameServerConfig =
         registerOutput<PolicyAlternativeNameServerConfigResponse>(
           'alternativeNameServerConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PolicyAlternativeNameServerConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     clientOperationId = registerOutput<String?>('clientOperationId');
     description = registerOutput<String>('description');

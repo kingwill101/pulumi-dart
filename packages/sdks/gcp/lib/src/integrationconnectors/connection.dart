@@ -1870,7 +1870,16 @@ class Connection extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    authConfig = registerOutput<ConnectionAuthConfig?>('authConfig');
+    authConfig = registerOutput<ConnectionAuthConfig?>(
+      'authConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionAuthConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     configVariables = registerOutput<List<Map<String, dynamic>>?>(
       'configVariables',
     );
@@ -1890,6 +1899,13 @@ class Connection extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     eventingConfig = registerOutput<ConnectionEventingConfig?>(
       'eventingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionEventingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     eventingEnablementType = registerOutput<String?>('eventingEnablementType');
     eventingRuntimeDatas = registerOutput<List<Map<String, dynamic>>>(
@@ -1897,15 +1913,51 @@ class Connection extends pulumi.CustomResource {
     );
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
-    lockConfig = registerOutput<ConnectionLockConfig?>('lockConfig');
-    logConfig = registerOutput<ConnectionLogConfig?>('logConfig');
+    lockConfig = registerOutput<ConnectionLockConfig?>(
+      'lockConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionLockConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    logConfig = registerOutput<ConnectionLogConfig?>(
+      'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
-    nodeConfig = registerOutput<ConnectionNodeConfig>('nodeConfig');
+    nodeConfig = registerOutput<ConnectionNodeConfig>(
+      'nodeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionNodeConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     serviceAccount = registerOutput<String>('serviceAccount');
     serviceDirectory = registerOutput<String>('serviceDirectory');
-    sslConfig = registerOutput<ConnectionSslConfig?>('sslConfig');
+    sslConfig = registerOutput<ConnectionSslConfig?>(
+      'sslConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionSslConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
     subscriptionType = registerOutput<String>('subscriptionType');
     suspended = registerOutput<bool?>('suspended');
@@ -1935,7 +1987,16 @@ class Connection extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    authConfig = registerOutput<ConnectionAuthConfig?>('authConfig');
+    authConfig = registerOutput<ConnectionAuthConfig?>(
+      'authConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionAuthConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     configVariables = registerOutput<List<Map<String, dynamic>>?>(
       'configVariables',
     );
@@ -1955,6 +2016,13 @@ class Connection extends pulumi.CustomResource {
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     eventingConfig = registerOutput<ConnectionEventingConfig?>(
       'eventingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionEventingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     eventingEnablementType = registerOutput<String?>('eventingEnablementType');
     eventingRuntimeDatas = registerOutput<List<Map<String, dynamic>>>(
@@ -1962,15 +2030,51 @@ class Connection extends pulumi.CustomResource {
     );
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
-    lockConfig = registerOutput<ConnectionLockConfig?>('lockConfig');
-    logConfig = registerOutput<ConnectionLogConfig?>('logConfig');
+    lockConfig = registerOutput<ConnectionLockConfig?>(
+      'lockConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionLockConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    logConfig = registerOutput<ConnectionLogConfig?>(
+      'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
-    nodeConfig = registerOutput<ConnectionNodeConfig>('nodeConfig');
+    nodeConfig = registerOutput<ConnectionNodeConfig>(
+      'nodeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionNodeConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     serviceAccount = registerOutput<String>('serviceAccount');
     serviceDirectory = registerOutput<String>('serviceDirectory');
-    sslConfig = registerOutput<ConnectionSslConfig?>('sslConfig');
+    sslConfig = registerOutput<ConnectionSslConfig?>(
+      'sslConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionSslConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
     subscriptionType = registerOutput<String>('subscriptionType');
     suspended = registerOutput<bool?>('suspended');

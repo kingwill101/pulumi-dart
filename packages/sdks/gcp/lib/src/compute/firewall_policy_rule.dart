@@ -1432,7 +1432,16 @@ class FirewallPolicyRule extends pulumi.CustomResource {
     enableLogging = registerOutput<bool?>('enableLogging');
     firewallPolicy = registerOutput<String>('firewallPolicy');
     kind = registerOutput<String>('kind');
-    match = registerOutput<FirewallPolicyRuleMatch>('match');
+    match = registerOutput<FirewallPolicyRuleMatch>(
+      'match',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FirewallPolicyRuleMatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     priority = registerOutput<int>('priority');
     ruleTupleCount = registerOutput<int>('ruleTupleCount');
     securityProfileGroup = registerOutput<String?>('securityProfileGroup');
@@ -1477,7 +1486,16 @@ class FirewallPolicyRule extends pulumi.CustomResource {
     enableLogging = registerOutput<bool?>('enableLogging');
     firewallPolicy = registerOutput<String>('firewallPolicy');
     kind = registerOutput<String>('kind');
-    match = registerOutput<FirewallPolicyRuleMatch>('match');
+    match = registerOutput<FirewallPolicyRuleMatch>(
+      'match',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FirewallPolicyRuleMatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     priority = registerOutput<int>('priority');
     ruleTupleCount = registerOutput<int>('ruleTupleCount');
     securityProfileGroup = registerOutput<String?>('securityProfileGroup');

@@ -316,31 +316,89 @@ class ClusterContainerV1beta1 extends pulumi.CustomResource {
        ) {
     addonsConfig = registerOutput<AddonsConfigResponseContainerV1beta1>(
       'addonsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AddonsConfigResponseContainerV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     authenticatorGroupsConfig =
         registerOutput<AuthenticatorGroupsConfigResponseContainerV1beta1>(
           'authenticatorGroupsConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AuthenticatorGroupsConfigResponseContainerV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    autopilot = registerOutput<AutopilotResponseContainerV1beta1>('autopilot');
+    autopilot = registerOutput<AutopilotResponseContainerV1beta1>(
+      'autopilot',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AutopilotResponseContainerV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     autoscaling = registerOutput<ClusterAutoscalingResponseContainerV1beta1>(
       'autoscaling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterAutoscalingResponseContainerV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     binaryAuthorization =
         registerOutput<BinaryAuthorizationResponseContainerV1beta1>(
           'binaryAuthorization',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return BinaryAuthorizationResponseContainerV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     clusterIpv4Cidr = registerOutput<String>('clusterIpv4Cidr');
     clusterTelemetry = registerOutput<ClusterTelemetryResponse>(
       'clusterTelemetry',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterTelemetryResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
     confidentialNodes =
         registerOutput<ConfidentialNodesResponseContainerV1beta1>(
           'confidentialNodes',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConfidentialNodesResponseContainerV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     costManagementConfig =
         registerOutput<CostManagementConfigResponseContainerV1beta1>(
           'costManagementConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CostManagementConfigResponseContainerV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     createTime = registerOutput<String>('createTime');
     currentMasterVersion = registerOutput<String>('currentMasterVersion');
@@ -349,28 +407,72 @@ class ClusterContainerV1beta1 extends pulumi.CustomResource {
     databaseEncryption =
         registerOutput<DatabaseEncryptionResponseContainerV1beta1>(
           'databaseEncryption',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DatabaseEncryptionResponseContainerV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     defaultMaxPodsConstraint =
         registerOutput<MaxPodsConstraintResponseContainerV1beta1>(
           'defaultMaxPodsConstraint',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MaxPodsConstraintResponseContainerV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String>('description');
     enableK8sBetaApis =
         registerOutput<K8sBetaAPIConfigResponseContainerV1beta1>(
           'enableK8sBetaApis',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return K8sBetaAPIConfigResponseContainerV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     enableKubernetesAlpha = registerOutput<bool>('enableKubernetesAlpha');
     enableTpu = registerOutput<bool>('enableTpu');
     endpoint = registerOutput<String>('endpoint');
     enterpriseConfig = registerOutput<EnterpriseConfigResponseContainerV1beta1>(
       'enterpriseConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnterpriseConfigResponseContainerV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     expireTime = registerOutput<String>('expireTime');
-    fleet = registerOutput<FleetResponseContainerV1beta1>('fleet');
+    fleet = registerOutput<FleetResponseContainerV1beta1>(
+      'fleet',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FleetResponseContainerV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     identityServiceConfig =
         registerOutput<IdentityServiceConfigResponseContainerV1beta1>(
           'identityServiceConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return IdentityServiceConfigResponseContainerV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     initialClusterVersion = registerOutput<String>('initialClusterVersion');
     initialNodeCount = registerOutput<int>('initialNodeCount');
@@ -378,110 +480,303 @@ class ClusterContainerV1beta1 extends pulumi.CustomResource {
     ipAllocationPolicy =
         registerOutput<IPAllocationPolicyResponseContainerV1beta1>(
           'ipAllocationPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return IPAllocationPolicyResponseContainerV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     labelFingerprint = registerOutput<String>('labelFingerprint');
     legacyAbac = registerOutput<LegacyAbacResponseContainerV1beta1>(
       'legacyAbac',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LegacyAbacResponseContainerV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     locations = registerOutput<List<String>>('locations');
     loggingConfig = registerOutput<LoggingConfigResponseContainerV1beta1>(
       'loggingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoggingConfigResponseContainerV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     loggingService = registerOutput<String>('loggingService');
     maintenancePolicy =
         registerOutput<MaintenancePolicyResponseContainerV1beta1>(
           'maintenancePolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MaintenancePolicyResponseContainerV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     master = registerOutput<Map<String, dynamic>>('master');
     masterAuth = registerOutput<MasterAuthResponseContainerV1beta1>(
       'masterAuth',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MasterAuthResponseContainerV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     masterAuthorizedNetworksConfig =
         registerOutput<MasterAuthorizedNetworksConfigResponseContainerV1beta1>(
           'masterAuthorizedNetworksConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MasterAuthorizedNetworksConfigResponseContainerV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     masterIpv4CidrBlock = registerOutput<String>('masterIpv4CidrBlock');
     meshCertificates = registerOutput<MeshCertificatesResponseContainerV1beta1>(
       'meshCertificates',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MeshCertificatesResponseContainerV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     monitoringConfig = registerOutput<MonitoringConfigResponseContainerV1beta1>(
       'monitoringConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MonitoringConfigResponseContainerV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     monitoringService = registerOutput<String>('monitoringService');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     networkConfig = registerOutput<NetworkConfigResponseContainerV1beta1>(
       'networkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkConfigResponseContainerV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     networkPolicy = registerOutput<NetworkPolicyResponseContainerV1beta1>(
       'networkPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkPolicyResponseContainerV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     nodeConfig = registerOutput<NodeConfigResponseContainerV1beta1>(
       'nodeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodeConfigResponseContainerV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     nodeIpv4CidrSize = registerOutput<int>('nodeIpv4CidrSize');
     nodePoolAutoConfig =
         registerOutput<NodePoolAutoConfigResponseContainerV1beta1>(
           'nodePoolAutoConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NodePoolAutoConfigResponseContainerV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     nodePoolDefaults = registerOutput<NodePoolDefaultsResponseContainerV1beta1>(
       'nodePoolDefaults',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodePoolDefaultsResponseContainerV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     nodePools = registerOutput<List<Map<String, dynamic>>>('nodePools');
     notificationConfig =
         registerOutput<NotificationConfigResponseContainerV1beta1>(
           'notificationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NotificationConfigResponseContainerV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     parentProductConfig =
         registerOutput<ParentProductConfigResponseContainerV1beta1>(
           'parentProductConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ParentProductConfigResponseContainerV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     podSecurityPolicyConfig = registerOutput<PodSecurityPolicyConfigResponse>(
       'podSecurityPolicyConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PodSecurityPolicyConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     privateCluster = registerOutput<bool>('privateCluster');
     privateClusterConfig =
         registerOutput<PrivateClusterConfigResponseContainerV1beta1>(
           'privateClusterConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PrivateClusterConfigResponseContainerV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     project = registerOutput<String>('project');
-    protectConfig = registerOutput<ProtectConfigResponse>('protectConfig');
+    protectConfig = registerOutput<ProtectConfigResponse>(
+      'protectConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ProtectConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     releaseChannel = registerOutput<ReleaseChannelResponseContainerV1beta1>(
       'releaseChannel',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReleaseChannelResponseContainerV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     resourceLabels = registerOutput<Map<String, String>>('resourceLabels');
     resourceUsageExportConfig =
         registerOutput<ResourceUsageExportConfigResponseContainerV1beta1>(
           'resourceUsageExportConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResourceUsageExportConfigResponseContainerV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     securityPostureConfig =
         registerOutput<SecurityPostureConfigResponseContainerV1beta1>(
           'securityPostureConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SecurityPostureConfigResponseContainerV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     selfLink = registerOutput<String>('selfLink');
     servicesIpv4Cidr = registerOutput<String>('servicesIpv4Cidr');
     shieldedNodes = registerOutput<ShieldedNodesResponseContainerV1beta1>(
       'shieldedNodes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ShieldedNodesResponseContainerV1beta1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     status = registerOutput<String>('status');
     statusMessage = registerOutput<String>('statusMessage');
     subnetwork = registerOutput<String>('subnetwork');
-    tpuConfig = registerOutput<TpuConfigResponse>('tpuConfig');
+    tpuConfig = registerOutput<TpuConfigResponse>(
+      'tpuConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TpuConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tpuIpv4CidrBlock = registerOutput<String>('tpuIpv4CidrBlock');
     verticalPodAutoscaling =
         registerOutput<VerticalPodAutoscalingResponseContainerV1beta1>(
           'verticalPodAutoscaling',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return VerticalPodAutoscalingResponseContainerV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     workloadAltsConfig = registerOutput<WorkloadALTSConfigResponse>(
       'workloadAltsConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkloadALTSConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     workloadCertificates = registerOutput<WorkloadCertificatesResponse>(
       'workloadCertificates',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkloadCertificatesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     workloadIdentityConfig =
         registerOutput<WorkloadIdentityConfigResponseContainerV1beta1>(
           'workloadIdentityConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WorkloadIdentityConfigResponseContainerV1beta1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     zone = registerOutput<String>('zone');
   }

@@ -49,6 +49,15 @@ class TargetServer extends pulumi.CustomResource {
     organizationId = registerOutput<String>('organizationId');
     port = registerOutput<int>('port');
     protocol = registerOutput<String>('protocol');
-    sSLInfo = registerOutput<GoogleCloudApigeeV1TlsInfoResponse>('sSLInfo');
+    sSLInfo = registerOutput<GoogleCloudApigeeV1TlsInfoResponse>(
+      'sSLInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudApigeeV1TlsInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

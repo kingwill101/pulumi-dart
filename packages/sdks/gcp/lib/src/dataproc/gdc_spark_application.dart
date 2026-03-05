@@ -1357,21 +1357,49 @@ class GdcSparkApplication extends pulumi.CustomResource {
     pysparkApplicationConfig =
         registerOutput<GdcSparkApplicationPysparkApplicationConfig?>(
           'pysparkApplicationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GdcSparkApplicationPysparkApplicationConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     reconciling = registerOutput<bool>('reconciling');
     serviceinstance = registerOutput<String>('serviceinstance');
     sparkApplicationConfig =
         registerOutput<GdcSparkApplicationSparkApplicationConfig?>(
           'sparkApplicationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GdcSparkApplicationSparkApplicationConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     sparkApplicationId = registerOutput<String>('sparkApplicationId');
     sparkRApplicationConfig =
         registerOutput<GdcSparkApplicationSparkRApplicationConfig?>(
           'sparkRApplicationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GdcSparkApplicationSparkRApplicationConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     sparkSqlApplicationConfig =
         registerOutput<GdcSparkApplicationSparkSqlApplicationConfig?>(
           'sparkSqlApplicationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GdcSparkApplicationSparkSqlApplicationConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     state = registerOutput<String>('state');
     stateMessage = registerOutput<String>('stateMessage');
@@ -1424,21 +1452,49 @@ class GdcSparkApplication extends pulumi.CustomResource {
     pysparkApplicationConfig =
         registerOutput<GdcSparkApplicationPysparkApplicationConfig?>(
           'pysparkApplicationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GdcSparkApplicationPysparkApplicationConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     reconciling = registerOutput<bool>('reconciling');
     serviceinstance = registerOutput<String>('serviceinstance');
     sparkApplicationConfig =
         registerOutput<GdcSparkApplicationSparkApplicationConfig?>(
           'sparkApplicationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GdcSparkApplicationSparkApplicationConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     sparkApplicationId = registerOutput<String>('sparkApplicationId');
     sparkRApplicationConfig =
         registerOutput<GdcSparkApplicationSparkRApplicationConfig?>(
           'sparkRApplicationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GdcSparkApplicationSparkRApplicationConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     sparkSqlApplicationConfig =
         registerOutput<GdcSparkApplicationSparkSqlApplicationConfig?>(
           'sparkSqlApplicationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GdcSparkApplicationSparkSqlApplicationConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.state = registerOutput<String>('state');
     stateMessage = registerOutput<String>('stateMessage');

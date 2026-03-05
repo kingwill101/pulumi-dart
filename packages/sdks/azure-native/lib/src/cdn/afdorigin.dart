@@ -236,7 +236,16 @@ class AFDOrigin extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    azureOrigin = registerOutput<ResourceReferenceResponse?>('azureOrigin');
+    azureOrigin = registerOutput<ResourceReferenceResponse?>(
+      'azureOrigin',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceReferenceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     deploymentStatus = registerOutput<String>('deploymentStatus');
     enabledState = registerOutput<String?>('enabledState');
     enforceCertificateNameCheck = registerOutput<bool?>(
@@ -253,8 +262,24 @@ class AFDOrigin extends pulumi.CustomResource {
     sharedPrivateLinkResource =
         registerOutput<SharedPrivateLinkResourcePropertiesResponse?>(
           'sharedPrivateLinkResource',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SharedPrivateLinkResourcePropertiesResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     weight = registerOutput<int?>('weight');
   }

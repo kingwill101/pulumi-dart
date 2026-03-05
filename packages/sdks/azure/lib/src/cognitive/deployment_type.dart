@@ -291,10 +291,28 @@ class DeploymentType extends pulumi.CustomResource {
     dynamicThrottlingEnabled = registerOutput<bool?>(
       'dynamicThrottlingEnabled',
     );
-    model = registerOutput<DeploymentModel>('model');
+    model = registerOutput<DeploymentModel>(
+      'model',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentModel.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     raiPolicyName = registerOutput<String?>('raiPolicyName');
-    sku = registerOutput<DeploymentSku>('sku');
+    sku = registerOutput<DeploymentSku>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentSku.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     versionUpgradeOption = registerOutput<String?>('versionUpgradeOption');
   }
 
@@ -325,10 +343,28 @@ class DeploymentType extends pulumi.CustomResource {
     dynamicThrottlingEnabled = registerOutput<bool?>(
       'dynamicThrottlingEnabled',
     );
-    model = registerOutput<DeploymentModel>('model');
+    model = registerOutput<DeploymentModel>(
+      'model',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentModel.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     raiPolicyName = registerOutput<String?>('raiPolicyName');
-    sku = registerOutput<DeploymentSku>('sku');
+    sku = registerOutput<DeploymentSku>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentSku.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     versionUpgradeOption = registerOutput<String?>('versionUpgradeOption');
   }
 }

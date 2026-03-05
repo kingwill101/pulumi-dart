@@ -1,28 +1,37 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getPredictionModelStatus.
 class GetPredictionModelStatusResult {
   /// The model status message.
   final String message;
+
   /// Version of the model.
   final String modelVersion;
+
   /// The prediction GUID ID.
   final String predictionGuidId;
+
   /// The prediction name.
   final String predictionName;
+
   /// The signals used.
   final int signalsUsed;
+
   /// Prediction model life cycle.  When prediction is in PendingModelConfirmation status, it is allowed to update the status to PendingFeaturing or Active through API.
   final String status;
+
   /// The hub name.
   final String tenantId;
+
   /// Count of the test set.
   final int testSetCount;
+
   /// The training accuracy.
   final int trainingAccuracy;
+
   /// Count of the training set.
   final int trainingSetCount;
+
   /// Count of the validation set.
   final int validationSetCount;
 
@@ -84,4 +93,3 @@ class GetPredictionModelStatusResult {
     );
   }
 }
-

@@ -55,6 +55,13 @@ class Instruction extends pulumi.CustomResource {
     csvInstruction =
         registerOutput<GoogleCloudDatalabelingV1beta1CsvInstructionResponse>(
           'csvInstruction',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDatalabelingV1beta1CsvInstructionResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dataType = registerOutput<String>('dataType');
     description = registerOutput<String>('description');
@@ -63,6 +70,13 @@ class Instruction extends pulumi.CustomResource {
     pdfInstruction =
         registerOutput<GoogleCloudDatalabelingV1beta1PdfInstructionResponse>(
           'pdfInstruction',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDatalabelingV1beta1PdfInstructionResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     project = registerOutput<String>('project');
     updateTime = registerOutput<String>('updateTime');

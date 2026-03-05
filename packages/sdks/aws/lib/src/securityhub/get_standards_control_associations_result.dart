@@ -7,11 +7,14 @@ import 'get_standards_control_associations_standards_control_association.dart';
 class GetStandardsControlAssociationsResult {
   final String id;
   final String region;
+
   /// ID of the security control.
   final String securityControlId;
+
   /// A list that provides the status and other details for each security control that applies to each enabled standard.
   /// See `standards_control_associations` below.
-  final List<GetStandardsControlAssociationsStandardsControlAssociation> standardsControlAssociations;
+  final List<GetStandardsControlAssociationsStandardsControlAssociation>
+  standardsControlAssociations;
 
   /// Creates a new [GetStandardsControlAssociationsResult].
   /// [id] Required.
@@ -30,17 +33,31 @@ class GetStandardsControlAssociationsResult {
       'id': id,
       'region': region,
       'securityControlId': securityControlId,
-      'standardsControlAssociations': pulumi.Input.encodeList<GetStandardsControlAssociationsStandardsControlAssociation, Map<String, dynamic>>(standardsControlAssociations, (value) => value.toMap()),
+      'standardsControlAssociations':
+          pulumi.Input.encodeList<
+            GetStandardsControlAssociationsStandardsControlAssociation,
+            Map<String, dynamic>
+          >(standardsControlAssociations, (value) => value.toMap()),
     };
   }
 
-  factory GetStandardsControlAssociationsResult.fromMap(Map<String, dynamic> map) {
+  factory GetStandardsControlAssociationsResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetStandardsControlAssociationsResult(
       id: map['id'] as String,
       region: map['region'] as String,
       securityControlId: map['securityControlId'] as String,
-      standardsControlAssociations: pulumi.Input.decodeList<GetStandardsControlAssociationsStandardsControlAssociation>(map['standardsControlAssociations']!, (value) => GetStandardsControlAssociationsStandardsControlAssociation.fromMap((value as Map).cast<String, dynamic>())),
+      standardsControlAssociations:
+          pulumi.Input.decodeList<
+            GetStandardsControlAssociationsStandardsControlAssociation
+          >(
+            map['standardsControlAssociations']!,
+            (value) =>
+                GetStandardsControlAssociationsStandardsControlAssociation.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

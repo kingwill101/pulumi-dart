@@ -1,24 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getApplicationTemplate.
 class GetApplicationTemplateResult {
   /// List of categories for this templated application.
   final List<String> categories;
+
   /// The display name for the templated application.
   final String displayName;
+
   /// Home page URL of the templated application.
   final String homepageUrl;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// URL to retrieve the logo for this templated application.
   final String logoUrl;
+
   /// Name of the publisher for this templated application.
   final String publisher;
+
   /// List of provisioning modes supported by this templated application.
   final List<String> supportedProvisioningTypes;
+
   /// List of single sign on modes supported by this templated application.
   final List<String> supportedSingleSignOnModes;
+
   /// The ID of the templated application.
   final String templateId;
 
@@ -66,10 +73,11 @@ class GetApplicationTemplateResult {
       id: map['id'] as String,
       logoUrl: map['logoUrl'] as String,
       publisher: map['publisher'] as String,
-      supportedProvisioningTypes: (map['supportedProvisioningTypes'] as List).cast<String>(),
-      supportedSingleSignOnModes: (map['supportedSingleSignOnModes'] as List).cast<String>(),
+      supportedProvisioningTypes: (map['supportedProvisioningTypes'] as List)
+          .cast<String>(),
+      supportedSingleSignOnModes: (map['supportedSingleSignOnModes'] as List)
+          .cast<String>(),
       templateId: map['templateId'] as String,
     );
   }
 }
-

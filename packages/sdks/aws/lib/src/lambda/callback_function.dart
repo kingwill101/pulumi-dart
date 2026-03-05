@@ -450,30 +450,94 @@ class CallbackFunction extends pulumi.CustomResource {
     arn = registerOutput<String?>('arn');
     capacityProviderConfig = registerOutput<FunctionCapacityProviderConfig?>(
       'capacityProviderConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionCapacityProviderConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     code = registerOutput<dynamic>('code');
     codeSha256 = registerOutput<String?>('codeSha256');
     codeSigningConfigArn = registerOutput<String?>('codeSigningConfigArn');
     deadLetterConfig = registerOutput<FunctionDeadLetterConfig?>(
       'deadLetterConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionDeadLetterConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
-    durableConfig = registerOutput<FunctionDurableConfig?>('durableConfig');
-    environment = registerOutput<FunctionEnvironment?>('environment');
+    durableConfig = registerOutput<FunctionDurableConfig?>(
+      'durableConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionDurableConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    environment = registerOutput<FunctionEnvironment?>(
+      'environment',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionEnvironment.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ephemeralStorage = registerOutput<FunctionEphemeralStorage?>(
       'ephemeralStorage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionEphemeralStorage.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     fileSystemConfig = registerOutput<FunctionFileSystemConfig?>(
       'fileSystemConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionFileSystemConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     handler = registerOutput<String?>('handler');
-    imageConfig = registerOutput<FunctionImageConfig?>('imageConfig');
+    imageConfig = registerOutput<FunctionImageConfig?>(
+      'imageConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionImageConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     imageUri = registerOutput<String?>('imageUri');
     invokeArn = registerOutput<String?>('invokeArn');
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     lastModified = registerOutput<String?>('lastModified');
     layers = registerOutput<List<String>?>('layers');
-    loggingConfig = registerOutput<FunctionLoggingConfig?>('loggingConfig');
+    loggingConfig = registerOutput<FunctionLoggingConfig?>(
+      'loggingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionLoggingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     memorySize = registerOutput<int?>('memorySize');
     this.name = registerOutput<String?>('name');
     packageType = registerOutput<String?>('packageType');
@@ -505,16 +569,52 @@ class CallbackFunction extends pulumi.CustomResource {
       'signingProfileVersionArn',
     );
     skipDestroy = registerOutput<bool?>('skipDestroy');
-    snapStart = registerOutput<FunctionSnapStart?>('snapStart');
+    snapStart = registerOutput<FunctionSnapStart?>(
+      'snapStart',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionSnapStart.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sourceCodeHash = registerOutput<String?>('sourceCodeHash');
     sourceCodeSize = registerOutput<int?>('sourceCodeSize');
     sourceKmsKeyArn = registerOutput<String?>('sourceKmsKeyArn');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>?>('tagsAll');
-    tenancyConfig = registerOutput<FunctionTenancyConfig?>('tenancyConfig');
+    tenancyConfig = registerOutput<FunctionTenancyConfig?>(
+      'tenancyConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionTenancyConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     timeout = registerOutput<int?>('timeout');
-    tracingConfig = registerOutput<FunctionTracingConfig?>('tracingConfig');
+    tracingConfig = registerOutput<FunctionTracingConfig?>(
+      'tracingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionTracingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     version = registerOutput<String?>('version');
-    vpcConfig = registerOutput<FunctionVpcConfig?>('vpcConfig');
+    vpcConfig = registerOutput<FunctionVpcConfig?>(
+      'vpcConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FunctionVpcConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

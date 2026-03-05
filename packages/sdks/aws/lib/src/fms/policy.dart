@@ -366,9 +366,27 @@ class Policy extends pulumi.CustomResource {
       'deleteUnusedFmManagedResources',
     );
     description = registerOutput<String?>('description');
-    excludeMap = registerOutput<PolicyExcludeMap?>('excludeMap');
+    excludeMap = registerOutput<PolicyExcludeMap?>(
+      'excludeMap',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyExcludeMap.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     excludeResourceTags = registerOutput<bool>('excludeResourceTags');
-    includeMap = registerOutput<PolicyIncludeMap?>('includeMap');
+    includeMap = registerOutput<PolicyIncludeMap?>(
+      'includeMap',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyIncludeMap.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     policyUpdateToken = registerOutput<String>('policyUpdateToken');
     region = registerOutput<String>('region');
@@ -382,6 +400,13 @@ class Policy extends pulumi.CustomResource {
     resourceTypeLists = registerOutput<List<String>>('resourceTypeLists');
     securityServicePolicyData = registerOutput<PolicySecurityServicePolicyData>(
       'securityServicePolicyData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicySecurityServicePolicyData.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -418,9 +443,27 @@ class Policy extends pulumi.CustomResource {
       'deleteUnusedFmManagedResources',
     );
     description = registerOutput<String?>('description');
-    excludeMap = registerOutput<PolicyExcludeMap?>('excludeMap');
+    excludeMap = registerOutput<PolicyExcludeMap?>(
+      'excludeMap',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyExcludeMap.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     excludeResourceTags = registerOutput<bool>('excludeResourceTags');
-    includeMap = registerOutput<PolicyIncludeMap?>('includeMap');
+    includeMap = registerOutput<PolicyIncludeMap?>(
+      'includeMap',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyIncludeMap.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     policyUpdateToken = registerOutput<String>('policyUpdateToken');
     region = registerOutput<String>('region');
@@ -434,6 +477,13 @@ class Policy extends pulumi.CustomResource {
     resourceTypeLists = registerOutput<List<String>>('resourceTypeLists');
     securityServicePolicyData = registerOutput<PolicySecurityServicePolicyData>(
       'securityServicePolicyData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicySecurityServicePolicyData.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

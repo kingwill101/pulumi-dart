@@ -397,7 +397,16 @@ class PolicyVMWorkload extends pulumi.CustomResource {
     );
     recoveryVaultName = registerOutput<String>('recoveryVaultName');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    settings = registerOutput<PolicyVMWorkloadSettings>('settings');
+    settings = registerOutput<PolicyVMWorkloadSettings>(
+      'settings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyVMWorkloadSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     workloadType = registerOutput<String>('workloadType');
   }
 
@@ -430,7 +439,16 @@ class PolicyVMWorkload extends pulumi.CustomResource {
     );
     recoveryVaultName = registerOutput<String>('recoveryVaultName');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    settings = registerOutput<PolicyVMWorkloadSettings>('settings');
+    settings = registerOutput<PolicyVMWorkloadSettings>(
+      'settings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyVMWorkloadSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     workloadType = registerOutput<String>('workloadType');
   }
 }

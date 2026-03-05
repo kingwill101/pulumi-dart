@@ -254,6 +254,13 @@ class Generator extends pulumi.CustomResource {
     generatorId = registerOutput<String>('generatorId');
     inferenceParameter = registerOutput<GeneratorInferenceParameter?>(
       'inferenceParameter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GeneratorInferenceParameter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -261,6 +268,13 @@ class Generator extends pulumi.CustomResource {
     publishedModel = registerOutput<String?>('publishedModel');
     summarizationContext = registerOutput<GeneratorSummarizationContext>(
       'summarizationContext',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GeneratorSummarizationContext.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     triggerEvent = registerOutput<String?>('triggerEvent');
   }
@@ -292,6 +306,13 @@ class Generator extends pulumi.CustomResource {
     generatorId = registerOutput<String>('generatorId');
     inferenceParameter = registerOutput<GeneratorInferenceParameter?>(
       'inferenceParameter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GeneratorInferenceParameter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -299,6 +320,13 @@ class Generator extends pulumi.CustomResource {
     publishedModel = registerOutput<String?>('publishedModel');
     summarizationContext = registerOutput<GeneratorSummarizationContext>(
       'summarizationContext',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GeneratorSummarizationContext.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     triggerEvent = registerOutput<String?>('triggerEvent');
   }

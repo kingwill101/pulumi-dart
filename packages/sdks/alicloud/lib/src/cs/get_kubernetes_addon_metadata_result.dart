@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getKubernetesAddonMetadata.
 class GetKubernetesAddonMetadataResult {
   final String clusterId;
+
   /// The addon configuration that can be customized. The returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet.
   final String configSchema;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -45,4 +46,3 @@ class GetKubernetesAddonMetadataResult {
     );
   }
 }
-

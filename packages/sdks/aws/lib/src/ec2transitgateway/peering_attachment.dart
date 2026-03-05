@@ -265,7 +265,16 @@ class PeeringAttachment extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    this.options = registerOutput<PeeringAttachmentOptions?>('options');
+    this.options = registerOutput<PeeringAttachmentOptions?>(
+      'options',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PeeringAttachmentOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     peerAccountId = registerOutput<String>('peerAccountId');
     peerRegion = registerOutput<String>('peerRegion');
     peerTransitGatewayId = registerOutput<String>('peerTransitGatewayId');
@@ -300,7 +309,16 @@ class PeeringAttachment extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    this.options = registerOutput<PeeringAttachmentOptions?>('options');
+    this.options = registerOutput<PeeringAttachmentOptions?>(
+      'options',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PeeringAttachmentOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     peerAccountId = registerOutput<String>('peerAccountId');
     peerRegion = registerOutput<String>('peerRegion');
     peerTransitGatewayId = registerOutput<String>('peerTransitGatewayId');

@@ -76,7 +76,8 @@ import 'list_palo_alto_networks_cloudngfw_operation_support_info_result.dart';
 /// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_get_certificate_object_global_rulestack_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetCertificateObjectGlobalRulestackResult> getCertificateObjectGlobalRulestack(
+Future<GetCertificateObjectGlobalRulestackResult>
+getCertificateObjectGlobalRulestack(
   GetCertificateObjectGlobalRulestackArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -96,7 +97,8 @@ Future<GetCertificateObjectGlobalRulestackResult> getCertificateObjectGlobalRule
 /// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_get_certificate_object_local_rulestack_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetCertificateObjectLocalRulestackResult> getCertificateObjectLocalRulestack(
+Future<GetCertificateObjectLocalRulestackResult>
+getCertificateObjectLocalRulestack(
   GetCertificateObjectLocalRulestackArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -496,7 +498,8 @@ Future<GetPrefixListLocalRulestackResult> getPrefixListLocalRulestack(
 /// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_list_global_rulestack_advanced_security_objects_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListGlobalRulestackAdvancedSecurityObjectsResult> listGlobalRulestackAdvancedSecurityObjects(
+Future<ListGlobalRulestackAdvancedSecurityObjectsResult>
+listGlobalRulestackAdvancedSecurityObjects(
   ListGlobalRulestackAdvancedSecurityObjectsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -576,7 +579,8 @@ Future<ListGlobalRulestackFirewallsResult> listGlobalRulestackFirewalls(
 /// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_list_global_rulestack_predefined_url_categories_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListGlobalRulestackPredefinedUrlCategoriesResult> listGlobalRulestackPredefinedUrlCategories(
+Future<ListGlobalRulestackPredefinedUrlCategoriesResult>
+listGlobalRulestackPredefinedUrlCategories(
   ListGlobalRulestackPredefinedUrlCategoriesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -596,7 +600,8 @@ Future<ListGlobalRulestackPredefinedUrlCategoriesResult> listGlobalRulestackPred
 /// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_list_global_rulestack_security_services_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListGlobalRulestackSecurityServicesResult> listGlobalRulestackSecurityServices(
+Future<ListGlobalRulestackSecurityServicesResult>
+listGlobalRulestackSecurityServices(
   ListGlobalRulestackSecurityServicesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -616,7 +621,8 @@ Future<ListGlobalRulestackSecurityServicesResult> listGlobalRulestackSecuritySer
 /// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_list_local_rulestack_advanced_security_objects_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListLocalRulestackAdvancedSecurityObjectsResult> listLocalRulestackAdvancedSecurityObjects(
+Future<ListLocalRulestackAdvancedSecurityObjectsResult>
+listLocalRulestackAdvancedSecurityObjects(
   ListLocalRulestackAdvancedSecurityObjectsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -696,7 +702,8 @@ Future<ListLocalRulestackFirewallsResult> listLocalRulestackFirewalls(
 /// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_list_local_rulestack_predefined_url_categories_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListLocalRulestackPredefinedUrlCategoriesResult> listLocalRulestackPredefinedUrlCategories(
+Future<ListLocalRulestackPredefinedUrlCategoriesResult>
+listLocalRulestackPredefinedUrlCategories(
   ListLocalRulestackPredefinedUrlCategoriesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -716,7 +723,8 @@ Future<ListLocalRulestackPredefinedUrlCategoriesResult> listLocalRulestackPredef
 /// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudngfw_list_local_rulestack_security_services_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListLocalRulestackSecurityServicesResult> listLocalRulestackSecurityServices(
+Future<ListLocalRulestackSecurityServicesResult>
+listLocalRulestackSecurityServices(
   ListLocalRulestackSecurityServicesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -735,8 +743,8 @@ Future<ListLocalRulestackSecurityServicesResult> listLocalRulestackSecurityServi
 ///
 /// Other available API versions: 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [options] Invoke options controlling this call.
-Future<ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsResult> listPaloAltoNetworksCloudngfwOperationCloudManagerTenants(
-  {
+Future<ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsResult>
+listPaloAltoNetworksCloudngfwOperationCloudManagerTenants({
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
@@ -745,7 +753,9 @@ Future<ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsResult> listPalo
     const <String, dynamic>{},
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsResult.fromMap(result);
+  return ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsResult.fromMap(
+    result,
+  );
 }
 
 /// Product serial and status for the service
@@ -754,8 +764,8 @@ Future<ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsResult> listPalo
 ///
 /// Other available API versions: 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [options] Invoke options controlling this call.
-Future<ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusResult> listPaloAltoNetworksCloudngfwOperationProductSerialNumberStatus(
-  {
+Future<ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusResult>
+listPaloAltoNetworksCloudngfwOperationProductSerialNumberStatus({
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
@@ -764,7 +774,9 @@ Future<ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusResult> li
     const <String, dynamic>{},
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusResult.fromMap(result);
+  return ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusResult.fromMap(
+    result,
+  );
 }
 
 /// Support information for the service
@@ -773,8 +785,8 @@ Future<ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusResult> li
 ///
 /// Other available API versions: 2025-07-07-preview, 2025-10-08. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [options] Invoke options controlling this call.
-Future<ListPaloAltoNetworksCloudngfwOperationSupportInfoResult> listPaloAltoNetworksCloudngfwOperationSupportInfo(
-  {
+Future<ListPaloAltoNetworksCloudngfwOperationSupportInfoResult>
+listPaloAltoNetworksCloudngfwOperationSupportInfo({
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
@@ -783,5 +795,7 @@ Future<ListPaloAltoNetworksCloudngfwOperationSupportInfoResult> listPaloAltoNetw
     const <String, dynamic>{},
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return ListPaloAltoNetworksCloudngfwOperationSupportInfoResult.fromMap(result);
+  return ListPaloAltoNetworksCloudngfwOperationSupportInfoResult.fromMap(
+    result,
+  );
 }

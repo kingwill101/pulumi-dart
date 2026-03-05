@@ -452,6 +452,13 @@ class MultiAccountDeliveryChannel extends pulumi.CustomResource {
     deliveryChannelFilter =
         registerOutput<MultiAccountDeliveryChannelDeliveryChannelFilter>(
           'deliveryChannelFilter',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MultiAccountDeliveryChannelDeliveryChannelFilter.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     multiAccountDeliveryChannelName = registerOutput<String>(
       'multiAccountDeliveryChannelName',
@@ -459,10 +466,24 @@ class MultiAccountDeliveryChannel extends pulumi.CustomResource {
     resourceChangeDelivery =
         registerOutput<MultiAccountDeliveryChannelResourceChangeDelivery?>(
           'resourceChangeDelivery',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MultiAccountDeliveryChannelResourceChangeDelivery.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     resourceSnapshotDelivery =
         registerOutput<MultiAccountDeliveryChannelResourceSnapshotDelivery?>(
           'resourceSnapshotDelivery',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MultiAccountDeliveryChannelResourceSnapshotDelivery.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 
@@ -495,6 +516,13 @@ class MultiAccountDeliveryChannel extends pulumi.CustomResource {
     deliveryChannelFilter =
         registerOutput<MultiAccountDeliveryChannelDeliveryChannelFilter>(
           'deliveryChannelFilter',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MultiAccountDeliveryChannelDeliveryChannelFilter.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     multiAccountDeliveryChannelName = registerOutput<String>(
       'multiAccountDeliveryChannelName',
@@ -502,10 +530,24 @@ class MultiAccountDeliveryChannel extends pulumi.CustomResource {
     resourceChangeDelivery =
         registerOutput<MultiAccountDeliveryChannelResourceChangeDelivery?>(
           'resourceChangeDelivery',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MultiAccountDeliveryChannelResourceChangeDelivery.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     resourceSnapshotDelivery =
         registerOutput<MultiAccountDeliveryChannelResourceSnapshotDelivery?>(
           'resourceSnapshotDelivery',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MultiAccountDeliveryChannelResourceSnapshotDelivery.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

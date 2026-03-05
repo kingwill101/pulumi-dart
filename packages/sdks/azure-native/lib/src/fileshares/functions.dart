@@ -51,7 +51,8 @@ Future<GetFileShareLimitsResult> getFileShareLimits(
 /// Uses Azure REST API version 2025-06-01-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_fileshares_get_file_share_provisioning_recommendation_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetFileShareProvisioningRecommendationResult> getFileShareProvisioningRecommendation(
+Future<GetFileShareProvisioningRecommendationResult>
+getFileShareProvisioningRecommendation(
   GetFileShareProvisioningRecommendationArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

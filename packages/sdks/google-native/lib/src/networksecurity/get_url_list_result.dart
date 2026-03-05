@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getUrlList.
 class GetUrlListResult {
   /// Time when the security policy was created.
   final String createTime;
+
   /// Optional. Free-text description of the resource.
   final String description;
+
   /// Name of the resource provided by the user. Name is of the form projects/{project}/locations/{location}/urlLists/{url_list} url_list should match the pattern:(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$).
   final String name;
+
   /// Time when the security policy was updated.
   final String updateTime;
+
   /// FQDNs and URLs.
   final List<String> values;
 
@@ -48,4 +51,3 @@ class GetUrlListResult {
     );
   }
 }
-

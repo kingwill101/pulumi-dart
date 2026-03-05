@@ -254,9 +254,27 @@ class DeploymentType extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     environmentId = registerOutput<String?>('environmentId');
     this.name = registerOutput<String>('name');
-    server = registerOutput<DeploymentServerResponse?>('server');
+    server = registerOutput<DeploymentServerResponse?>(
+      'server',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeploymentServerResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     state = registerOutput<String?>('state');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     title = registerOutput<String?>('title');
     type = registerOutput<String>('type');
   }

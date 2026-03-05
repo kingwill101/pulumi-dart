@@ -250,9 +250,27 @@ class TransitHub extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     resourceCollection = registerOutput<List<String>>('resourceCollection');
     state = registerOutput<String?>('state');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
-    transitOption = registerOutput<TransitOptionResponse?>('transitOption');
+    transitOption = registerOutput<TransitOptionResponse?>(
+      'transitOption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TransitOptionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

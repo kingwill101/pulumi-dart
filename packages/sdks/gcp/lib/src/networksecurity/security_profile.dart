@@ -1451,10 +1451,24 @@ class SecurityProfile extends pulumi.CustomResource {
     customInterceptProfile =
         registerOutput<SecurityProfileCustomInterceptProfile?>(
           'customInterceptProfile',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SecurityProfileCustomInterceptProfile.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     customMirroringProfile =
         registerOutput<SecurityProfileCustomMirroringProfile?>(
           'customMirroringProfile',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SecurityProfileCustomMirroringProfile.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -1468,11 +1482,25 @@ class SecurityProfile extends pulumi.CustomResource {
     threatPreventionProfile =
         registerOutput<SecurityProfileThreatPreventionProfile?>(
           'threatPreventionProfile',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SecurityProfileThreatPreventionProfile.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     type = registerOutput<String>('type');
     updateTime = registerOutput<String>('updateTime');
     urlFilteringProfile = registerOutput<SecurityProfileUrlFilteringProfile?>(
       'urlFilteringProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityProfileUrlFilteringProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -1503,10 +1531,24 @@ class SecurityProfile extends pulumi.CustomResource {
     customInterceptProfile =
         registerOutput<SecurityProfileCustomInterceptProfile?>(
           'customInterceptProfile',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SecurityProfileCustomInterceptProfile.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     customMirroringProfile =
         registerOutput<SecurityProfileCustomMirroringProfile?>(
           'customMirroringProfile',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SecurityProfileCustomMirroringProfile.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -1520,11 +1562,25 @@ class SecurityProfile extends pulumi.CustomResource {
     threatPreventionProfile =
         registerOutput<SecurityProfileThreatPreventionProfile?>(
           'threatPreventionProfile',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SecurityProfileThreatPreventionProfile.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     type = registerOutput<String>('type');
     updateTime = registerOutput<String>('updateTime');
     urlFilteringProfile = registerOutput<SecurityProfileUrlFilteringProfile?>(
       'urlFilteringProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityProfileUrlFilteringProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

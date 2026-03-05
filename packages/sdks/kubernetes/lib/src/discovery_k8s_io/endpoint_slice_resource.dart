@@ -40,7 +40,16 @@ class EndpointSliceResource extends pulumi.CustomResource {
     apiVersion = registerOutput<String>('apiVersion');
     endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
     kind = registerOutput<String>('kind');
-    metadata = registerOutput<ObjectMeta>('metadata');
+    metadata = registerOutput<ObjectMeta>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ports = registerOutput<List<Map<String, dynamic>>>('ports');
   }
 }

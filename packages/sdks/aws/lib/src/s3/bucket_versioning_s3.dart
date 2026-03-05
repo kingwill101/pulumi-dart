@@ -595,6 +595,13 @@ class BucketVersioningS3 extends pulumi.CustomResource {
     versioningConfiguration =
         registerOutput<BucketVersioningVersioningConfiguration>(
           'versioningConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return BucketVersioningVersioningConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 
@@ -628,6 +635,13 @@ class BucketVersioningS3 extends pulumi.CustomResource {
     versioningConfiguration =
         registerOutput<BucketVersioningVersioningConfiguration>(
           'versioningConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return BucketVersioningVersioningConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

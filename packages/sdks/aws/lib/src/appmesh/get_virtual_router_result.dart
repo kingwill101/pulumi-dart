@@ -7,20 +7,26 @@ import 'get_virtual_router_spec.dart';
 class GetVirtualRouterResult {
   /// ARN of the virtual router.
   final String arn;
+
   /// Creation date of the virtual router.
   final String createdDate;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Last update date of the virtual router.
   final String lastUpdatedDate;
   final String meshName;
   final String meshOwner;
   final String name;
   final String region;
+
   /// Resource owner's AWS account ID.
   final String resourceOwner;
+
   /// Virtual routers specification. See the `aws.appmesh.VirtualRouter` resource for details.
   final List<GetVirtualRouterSpec> specs;
+
   /// Map of tags.
   final Map<String, String> tags;
 
@@ -61,7 +67,11 @@ class GetVirtualRouterResult {
       'name': name,
       'region': region,
       'resourceOwner': resourceOwner,
-      'specs': pulumi.Input.encodeList<GetVirtualRouterSpec, Map<String, dynamic>>(specs, (value) => value.toMap()),
+      'specs':
+          pulumi.Input.encodeList<GetVirtualRouterSpec, Map<String, dynamic>>(
+            specs,
+            (value) => value.toMap(),
+          ),
       'tags': tags,
     };
   }
@@ -77,9 +87,13 @@ class GetVirtualRouterResult {
       name: map['name'] as String,
       region: map['region'] as String,
       resourceOwner: map['resourceOwner'] as String,
-      specs: pulumi.Input.decodeList<GetVirtualRouterSpec>(map['specs']!, (value) => GetVirtualRouterSpec.fromMap((value as Map).cast<String, dynamic>())),
+      specs: pulumi.Input.decodeList<GetVirtualRouterSpec>(
+        map['specs']!,
+        (value) => GetVirtualRouterSpec.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       tags: (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

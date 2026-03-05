@@ -180,7 +180,16 @@ class LoadTestProfileMapping extends pulumi.CustomResource {
     );
     this.name = registerOutput<String>('name');
     sourceResourceId = registerOutput<String?>('sourceResourceId');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     testProfileId = registerOutput<String?>('testProfileId');
     type = registerOutput<String>('type');
   }

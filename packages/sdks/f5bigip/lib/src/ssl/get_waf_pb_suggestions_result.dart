@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getWafPbSuggestions.
 class GetWafPbSuggestionsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Json string representing exported PB suggestions ready to be used in WAF policy declaration
   final String json;
   final int minimumLearningScore;
   final String partition;
+
   /// System generated id of the WAF policy
   final String policyId;
   final String policyName;
@@ -51,4 +52,3 @@ class GetWafPbSuggestionsResult {
     );
   }
 }
-

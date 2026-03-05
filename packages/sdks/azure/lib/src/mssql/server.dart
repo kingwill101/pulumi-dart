@@ -903,6 +903,13 @@ class Server extends pulumi.CustomResource {
     );
     azureadAdministrator = registerOutput<ServerAzureadAdministrator?>(
       'azureadAdministrator',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerAzureadAdministrator.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     connectionPolicy = registerOutput<String?>('connectionPolicy');
     expressVulnerabilityAssessmentEnabled = registerOutput<bool?>(
@@ -911,7 +918,16 @@ class Server extends pulumi.CustomResource {
     fullyQualifiedDomainName = registerOutput<String>(
       'fullyQualifiedDomainName',
     );
-    identity = registerOutput<ServerIdentity?>('identity');
+    identity = registerOutput<ServerIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
     this.name = registerOutput<String>('name');
@@ -967,6 +983,13 @@ class Server extends pulumi.CustomResource {
     );
     azureadAdministrator = registerOutput<ServerAzureadAdministrator?>(
       'azureadAdministrator',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerAzureadAdministrator.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     connectionPolicy = registerOutput<String?>('connectionPolicy');
     expressVulnerabilityAssessmentEnabled = registerOutput<bool?>(
@@ -975,7 +998,16 @@ class Server extends pulumi.CustomResource {
     fullyQualifiedDomainName = registerOutput<String>(
       'fullyQualifiedDomainName',
     );
-    identity = registerOutput<ServerIdentity?>('identity');
+    identity = registerOutput<ServerIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServerIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
     this.name = registerOutput<String>('name');

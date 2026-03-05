@@ -54,6 +54,13 @@ class CertificateIssuanceConfig extends pulumi.CustomResource {
     certificateAuthorityConfig =
         registerOutput<CertificateAuthorityConfigResponse>(
           'certificateAuthorityConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CertificateAuthorityConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     certificateIssuanceConfigId = registerOutput<String>(
       'certificateIssuanceConfigId',

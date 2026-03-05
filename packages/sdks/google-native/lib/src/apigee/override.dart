@@ -37,6 +37,13 @@ class Override extends pulumi.CustomResource {
     samplingConfig =
         registerOutput<GoogleCloudApigeeV1TraceSamplingConfigResponse>(
           'samplingConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudApigeeV1TraceSamplingConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

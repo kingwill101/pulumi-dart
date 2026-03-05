@@ -150,6 +150,13 @@ class TrafficSourceAttachment extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     trafficSource = registerOutput<TrafficSourceAttachmentTrafficSource?>(
       'trafficSource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TrafficSourceAttachmentTrafficSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -180,6 +187,13 @@ class TrafficSourceAttachment extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     trafficSource = registerOutput<TrafficSourceAttachmentTrafficSource?>(
       'trafficSource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TrafficSourceAttachmentTrafficSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

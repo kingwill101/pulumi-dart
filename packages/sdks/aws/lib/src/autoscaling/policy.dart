@@ -1540,6 +1540,13 @@ class Policy extends pulumi.CustomResource {
     predictiveScalingConfiguration =
         registerOutput<PolicyPredictiveScalingConfiguration?>(
           'predictiveScalingConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PolicyPredictiveScalingConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     scalingAdjustment = registerOutput<int?>('scalingAdjustment');
@@ -1549,6 +1556,13 @@ class Policy extends pulumi.CustomResource {
     targetTrackingConfiguration =
         registerOutput<PolicyTargetTrackingConfiguration?>(
           'targetTrackingConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PolicyTargetTrackingConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 
@@ -1588,6 +1602,13 @@ class Policy extends pulumi.CustomResource {
     predictiveScalingConfiguration =
         registerOutput<PolicyPredictiveScalingConfiguration?>(
           'predictiveScalingConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PolicyPredictiveScalingConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     scalingAdjustment = registerOutput<int?>('scalingAdjustment');
@@ -1597,6 +1618,13 @@ class Policy extends pulumi.CustomResource {
     targetTrackingConfiguration =
         registerOutput<PolicyTargetTrackingConfiguration?>(
           'targetTrackingConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PolicyTargetTrackingConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

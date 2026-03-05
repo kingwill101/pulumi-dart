@@ -171,6 +171,13 @@ class Project extends pulumi.CustomResource {
     serviceCatalogProvisioningDetails =
         registerOutput<ProjectServiceCatalogProvisioningDetails>(
           'serviceCatalogProvisioningDetails',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ProjectServiceCatalogProvisioningDetails.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -207,6 +214,13 @@ class Project extends pulumi.CustomResource {
     serviceCatalogProvisioningDetails =
         registerOutput<ProjectServiceCatalogProvisioningDetails>(
           'serviceCatalogProvisioningDetails',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ProjectServiceCatalogProvisioningDetails.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

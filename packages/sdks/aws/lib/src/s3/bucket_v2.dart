@@ -282,6 +282,13 @@ class BucketV2 extends pulumi.CustomResource {
     loggings = registerOutput<List<Map<String, dynamic>>>('loggings');
     objectLockConfiguration = registerOutput<BucketV2ObjectLockConfiguration>(
       'objectLockConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketV2ObjectLockConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     objectLockEnabled = registerOutput<bool>('objectLockEnabled');
     policy = registerOutput<String>('policy');
@@ -345,6 +352,13 @@ class BucketV2 extends pulumi.CustomResource {
     loggings = registerOutput<List<Map<String, dynamic>>>('loggings');
     objectLockConfiguration = registerOutput<BucketV2ObjectLockConfiguration>(
       'objectLockConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketV2ObjectLockConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     objectLockEnabled = registerOutput<bool>('objectLockEnabled');
     policy = registerOutput<String>('policy');

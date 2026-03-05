@@ -63,6 +63,13 @@ class FolderSink extends pulumi.CustomResource {
        ) {
     bigqueryOptions = registerOutput<BigQueryOptionsResponse>(
       'bigqueryOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BigQueryOptionsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     customWriterIdentity = registerOutput<String?>('customWriterIdentity');

@@ -365,14 +365,32 @@ class StorageBox extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    accessSettings = registerOutput<StorageBoxAccessSettings>('accessSettings');
+    accessSettings = registerOutput<StorageBoxAccessSettings>(
+      'accessSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StorageBoxAccessSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     deleteProtection = registerOutput<bool>('deleteProtection');
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     password = registerOutput<String>('password');
     server = registerOutput<String>('server');
-    snapshotPlan = registerOutput<StorageBoxSnapshotPlan?>('snapshotPlan');
+    snapshotPlan = registerOutput<StorageBoxSnapshotPlan?>(
+      'snapshotPlan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StorageBoxSnapshotPlan.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sshKeys = registerOutput<List<String>>('sshKeys');
     storageBoxType = registerOutput<String>('storageBoxType');
     system = registerOutput<String>('system');
@@ -402,14 +420,32 @@ class StorageBox extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    accessSettings = registerOutput<StorageBoxAccessSettings>('accessSettings');
+    accessSettings = registerOutput<StorageBoxAccessSettings>(
+      'accessSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StorageBoxAccessSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     deleteProtection = registerOutput<bool>('deleteProtection');
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     password = registerOutput<String>('password');
     server = registerOutput<String>('server');
-    snapshotPlan = registerOutput<StorageBoxSnapshotPlan?>('snapshotPlan');
+    snapshotPlan = registerOutput<StorageBoxSnapshotPlan?>(
+      'snapshotPlan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StorageBoxSnapshotPlan.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sshKeys = registerOutput<List<String>>('sshKeys');
     storageBoxType = registerOutput<String>('storageBoxType');
     system = registerOutput<String>('system');

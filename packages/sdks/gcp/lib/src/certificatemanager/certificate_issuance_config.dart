@@ -580,6 +580,13 @@ class CertificateIssuanceConfig extends pulumi.CustomResource {
     certificateAuthorityConfig =
         registerOutput<CertificateIssuanceConfigCertificateAuthorityConfig>(
           'certificateAuthorityConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CertificateIssuanceConfigCertificateAuthorityConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
@@ -621,6 +628,13 @@ class CertificateIssuanceConfig extends pulumi.CustomResource {
     certificateAuthorityConfig =
         registerOutput<CertificateIssuanceConfigCertificateAuthorityConfig>(
           'certificateAuthorityConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CertificateIssuanceConfigCertificateAuthorityConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');

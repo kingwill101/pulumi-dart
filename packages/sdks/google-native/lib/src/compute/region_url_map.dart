@@ -73,17 +73,47 @@ class RegionUrlMap extends pulumi.CustomResource {
     defaultCustomErrorResponsePolicy =
         registerOutput<CustomErrorResponsePolicyResponse>(
           'defaultCustomErrorResponsePolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CustomErrorResponsePolicyResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     defaultRouteAction = registerOutput<HttpRouteActionResponse>(
       'defaultRouteAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HttpRouteActionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     defaultService = registerOutput<String>('defaultService');
     defaultUrlRedirect = registerOutput<HttpRedirectActionResponse>(
       'defaultUrlRedirect',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HttpRedirectActionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String>('description');
     fingerprint = registerOutput<String>('fingerprint');
-    headerAction = registerOutput<HttpHeaderActionResponse>('headerAction');
+    headerAction = registerOutput<HttpHeaderActionResponse>(
+      'headerAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HttpHeaderActionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     hostRules = registerOutput<List<Map<String, dynamic>>>('hostRules');
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');

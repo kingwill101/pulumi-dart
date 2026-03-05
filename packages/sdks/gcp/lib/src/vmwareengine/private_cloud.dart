@@ -731,9 +731,25 @@ class PrivateCloud extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     managementCluster = registerOutput<PrivateCloudManagementCluster>(
       'managementCluster',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PrivateCloudManagementCluster.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
-    networkConfig = registerOutput<PrivateCloudNetworkConfig>('networkConfig');
+    networkConfig = registerOutput<PrivateCloudNetworkConfig>(
+      'networkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PrivateCloudNetworkConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     nsxes = registerOutput<List<Map<String, dynamic>>>('nsxes');
     project = registerOutput<String>('project');
     sendDeletionDelayHoursIfZero = registerOutput<bool?>(
@@ -778,9 +794,25 @@ class PrivateCloud extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     managementCluster = registerOutput<PrivateCloudManagementCluster>(
       'managementCluster',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PrivateCloudManagementCluster.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
-    networkConfig = registerOutput<PrivateCloudNetworkConfig>('networkConfig');
+    networkConfig = registerOutput<PrivateCloudNetworkConfig>(
+      'networkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PrivateCloudNetworkConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     nsxes = registerOutput<List<Map<String, dynamic>>>('nsxes');
     project = registerOutput<String>('project');
     sendDeletionDelayHoursIfZero = registerOutput<bool?>(

@@ -70,7 +70,16 @@ class DocumentDialogflowV2beta1 extends pulumi.CustomResource {
     latestReloadStatus =
         registerOutput<
           GoogleCloudDialogflowV2beta1DocumentReloadStatusResponse
-        >('latestReloadStatus');
+        >(
+          'latestReloadStatus',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowV2beta1DocumentReloadStatusResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     location = registerOutput<String>('location');
     metadata = registerOutput<Map<String, String>>('metadata');
     mimeType = registerOutput<String>('mimeType');

@@ -266,7 +266,16 @@ class DrtAccessRoleArnAssociation extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     roleArn = registerOutput<String>('roleArn');
-    timeouts = registerOutput<DrtAccessRoleArnAssociationTimeouts?>('timeouts');
+    timeouts = registerOutput<DrtAccessRoleArnAssociationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DrtAccessRoleArnAssociationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [DrtAccessRoleArnAssociation] resource's state with the given [name] and [id].
@@ -293,6 +302,15 @@ class DrtAccessRoleArnAssociation extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     roleArn = registerOutput<String>('roleArn');
-    timeouts = registerOutput<DrtAccessRoleArnAssociationTimeouts?>('timeouts');
+    timeouts = registerOutput<DrtAccessRoleArnAssociationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DrtAccessRoleArnAssociationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

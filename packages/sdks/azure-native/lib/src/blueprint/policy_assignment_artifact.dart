@@ -881,6 +881,16 @@ class PolicyAssignmentArtifact extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, ParameterValueResponse>>(
       'parameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeMapValues<ParameterValueResponse>(
+          guardedValue,
+          (value) => ParameterValueResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      },
     );
     policyDefinitionId = registerOutput<String>('policyDefinitionId');
     resourceGroup = registerOutput<String?>('resourceGroup');

@@ -917,13 +917,36 @@ class ContainerAppsSessionPool extends pulumi.CustomResource {
     containerType = registerOutput<String?>('containerType');
     customContainerTemplate = registerOutput<CustomContainerTemplateResponse?>(
       'customContainerTemplate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CustomContainerTemplateResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     dynamicPoolConfiguration =
         registerOutput<DynamicPoolConfigurationResponse?>(
           'dynamicPoolConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DynamicPoolConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     environmentId = registerOutput<String?>('environmentId');
-    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    identity = registerOutput<ManagedServiceIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedServiceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     managedIdentitySettings = registerOutput<List<Map<String, dynamic>>?>(
       'managedIdentitySettings',
@@ -935,13 +958,36 @@ class ContainerAppsSessionPool extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     scaleConfiguration = registerOutput<ScaleConfigurationResponse?>(
       'scaleConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScaleConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     secrets = registerOutput<List<Map<String, dynamic>>?>('secrets');
     sessionNetworkConfiguration =
         registerOutput<SessionNetworkConfigurationResponse?>(
           'sessionNetworkConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SessionNetworkConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

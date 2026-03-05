@@ -547,24 +547,77 @@ class DataSource extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     dynamodbConfig = registerOutput<DataSourceDynamodbConfig?>(
       'dynamodbConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataSourceDynamodbConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     elasticsearchConfig = registerOutput<DataSourceElasticsearchConfig?>(
       'elasticsearchConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataSourceElasticsearchConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     eventBridgeConfig = registerOutput<DataSourceEventBridgeConfig?>(
       'eventBridgeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataSourceEventBridgeConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    httpConfig = registerOutput<DataSourceHttpConfig?>('httpConfig');
-    lambdaConfig = registerOutput<DataSourceLambdaConfig?>('lambdaConfig');
+    httpConfig = registerOutput<DataSourceHttpConfig?>(
+      'httpConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataSourceHttpConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    lambdaConfig = registerOutput<DataSourceLambdaConfig?>(
+      'lambdaConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataSourceLambdaConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     opensearchserviceConfig =
         registerOutput<DataSourceOpensearchserviceConfig?>(
           'opensearchserviceConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataSourceOpensearchserviceConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     relationalDatabaseConfig =
         registerOutput<DataSourceRelationalDatabaseConfig?>(
           'relationalDatabaseConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataSourceRelationalDatabaseConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     serviceRoleArn = registerOutput<String?>('serviceRoleArn');
     type = registerOutput<String>('type');
@@ -598,24 +651,77 @@ class DataSource extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     dynamodbConfig = registerOutput<DataSourceDynamodbConfig?>(
       'dynamodbConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataSourceDynamodbConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     elasticsearchConfig = registerOutput<DataSourceElasticsearchConfig?>(
       'elasticsearchConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataSourceElasticsearchConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     eventBridgeConfig = registerOutput<DataSourceEventBridgeConfig?>(
       'eventBridgeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataSourceEventBridgeConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    httpConfig = registerOutput<DataSourceHttpConfig?>('httpConfig');
-    lambdaConfig = registerOutput<DataSourceLambdaConfig?>('lambdaConfig');
+    httpConfig = registerOutput<DataSourceHttpConfig?>(
+      'httpConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataSourceHttpConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    lambdaConfig = registerOutput<DataSourceLambdaConfig?>(
+      'lambdaConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DataSourceLambdaConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     opensearchserviceConfig =
         registerOutput<DataSourceOpensearchserviceConfig?>(
           'opensearchserviceConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataSourceOpensearchserviceConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     region = registerOutput<String>('region');
     relationalDatabaseConfig =
         registerOutput<DataSourceRelationalDatabaseConfig?>(
           'relationalDatabaseConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataSourceRelationalDatabaseConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     serviceRoleArn = registerOutput<String?>('serviceRoleArn');
     type = registerOutput<String>('type');

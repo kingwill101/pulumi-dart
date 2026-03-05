@@ -975,14 +975,41 @@ class Peering extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    direct = registerOutput<PeeringPropertiesDirectResponse?>('direct');
-    exchange = registerOutput<PeeringPropertiesExchangeResponse?>('exchange');
+    direct = registerOutput<PeeringPropertiesDirectResponse?>(
+      'direct',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PeeringPropertiesDirectResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    exchange = registerOutput<PeeringPropertiesExchangeResponse?>(
+      'exchange',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PeeringPropertiesExchangeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     peeringLocation = registerOutput<String?>('peeringLocation');
     provisioningState = registerOutput<String>('provisioningState');
-    sku = registerOutput<PeeringSkuResponse>('sku');
+    sku = registerOutput<PeeringSkuResponse>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PeeringSkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

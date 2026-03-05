@@ -223,8 +223,26 @@ class DiscoveryRule extends pulumi.CustomResource {
     properties =
         registerOutput<
           ApplicationInsightsTopologyDiscoveryRulePropertiesResponse
-        >('properties');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+        >(
+          'properties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ApplicationInsightsTopologyDiscoveryRulePropertiesResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

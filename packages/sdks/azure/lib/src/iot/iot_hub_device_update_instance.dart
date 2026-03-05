@@ -396,6 +396,13 @@ class IotHubDeviceUpdateInstance extends pulumi.CustomResource {
     diagnosticStorageAccount =
         registerOutput<IotHubDeviceUpdateInstanceDiagnosticStorageAccount?>(
           'diagnosticStorageAccount',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return IotHubDeviceUpdateInstanceDiagnosticStorageAccount.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     iothubId = registerOutput<String>('iothubId');
     this.name = registerOutput<String>('name');
@@ -430,6 +437,13 @@ class IotHubDeviceUpdateInstance extends pulumi.CustomResource {
     diagnosticStorageAccount =
         registerOutput<IotHubDeviceUpdateInstanceDiagnosticStorageAccount?>(
           'diagnosticStorageAccount',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return IotHubDeviceUpdateInstanceDiagnosticStorageAccount.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     iothubId = registerOutput<String>('iothubId');
     this.name = registerOutput<String>('name');

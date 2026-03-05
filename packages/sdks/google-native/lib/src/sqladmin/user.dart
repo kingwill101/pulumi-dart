@@ -52,10 +52,24 @@ class User extends pulumi.CustomResource {
     password = registerOutput<String>('password');
     passwordPolicy = registerOutput<UserPasswordValidationPolicyResponse>(
       'passwordPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UserPasswordValidationPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     project = registerOutput<String>('project');
     sqlserverUserDetails = registerOutput<SqlServerUserDetailsResponse>(
       'sqlserverUserDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SqlServerUserDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     type = registerOutput<String>('type');
   }

@@ -214,6 +214,13 @@ class PeeringService extends pulumi.CustomResource {
     logAnalyticsWorkspaceProperties =
         registerOutput<LogAnalyticsWorkspacePropertiesResponse?>(
           'logAnalyticsWorkspaceProperties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LogAnalyticsWorkspacePropertiesResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     peeringServiceLocation = registerOutput<String?>('peeringServiceLocation');
@@ -225,7 +232,16 @@ class PeeringService extends pulumi.CustomResource {
       'providerPrimaryPeeringLocation',
     );
     provisioningState = registerOutput<String>('provisioningState');
-    sku = registerOutput<PeeringServiceSkuResponse?>('sku');
+    sku = registerOutput<PeeringServiceSkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PeeringServiceSkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
   }

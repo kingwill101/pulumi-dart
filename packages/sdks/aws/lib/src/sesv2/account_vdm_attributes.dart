@@ -177,9 +177,23 @@ class AccountVdmAttributes extends pulumi.CustomResource {
     dashboardAttributes =
         registerOutput<AccountVdmAttributesDashboardAttributes>(
           'dashboardAttributes',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AccountVdmAttributesDashboardAttributes.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     guardianAttributes = registerOutput<AccountVdmAttributesGuardianAttributes>(
       'guardianAttributes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountVdmAttributesGuardianAttributes.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     vdmEnabled = registerOutput<String>('vdmEnabled');
@@ -211,9 +225,23 @@ class AccountVdmAttributes extends pulumi.CustomResource {
     dashboardAttributes =
         registerOutput<AccountVdmAttributesDashboardAttributes>(
           'dashboardAttributes',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AccountVdmAttributesDashboardAttributes.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     guardianAttributes = registerOutput<AccountVdmAttributesGuardianAttributes>(
       'guardianAttributes',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountVdmAttributesGuardianAttributes.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     vdmEnabled = registerOutput<String>('vdmEnabled');

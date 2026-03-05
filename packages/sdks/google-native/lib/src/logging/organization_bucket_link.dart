@@ -42,6 +42,13 @@ class OrganizationBucketLink extends pulumi.CustomResource {
        ) {
     bigqueryDataset = registerOutput<BigQueryDatasetResponse>(
       'bigqueryDataset',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BigQueryDatasetResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     bucketId = registerOutput<String>('bucketId');
     createTime = registerOutput<String>('createTime');

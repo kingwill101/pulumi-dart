@@ -2063,7 +2063,16 @@ class Instance extends pulumi.CustomResource {
     enableThirdPartyIdentity = registerOutput<bool?>(
       'enableThirdPartyIdentity',
     );
-    gceSetup = registerOutput<InstanceGceSetup>('gceSetup');
+    gceSetup = registerOutput<InstanceGceSetup>(
+      'gceSetup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceGceSetup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     healthInfos = registerOutput<List<Map<String, dynamic>>>('healthInfos');
     healthState = registerOutput<String>('healthState');
     instanceId = registerOutput<String?>('instanceId');
@@ -2113,7 +2122,16 @@ class Instance extends pulumi.CustomResource {
     enableThirdPartyIdentity = registerOutput<bool?>(
       'enableThirdPartyIdentity',
     );
-    gceSetup = registerOutput<InstanceGceSetup>('gceSetup');
+    gceSetup = registerOutput<InstanceGceSetup>(
+      'gceSetup',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InstanceGceSetup.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     healthInfos = registerOutput<List<Map<String, dynamic>>>('healthInfos');
     healthState = registerOutput<String>('healthState');
     instanceId = registerOutput<String?>('instanceId');

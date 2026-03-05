@@ -397,6 +397,13 @@ class Profile extends pulumi.CustomResource {
     containerNetworkInterface =
         registerOutput<ProfileContainerNetworkInterface>(
           'containerNetworkInterface',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ProfileContainerNetworkInterface.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     containerNetworkInterfaceIds = registerOutput<List<String>>(
       'containerNetworkInterfaceIds',
@@ -433,6 +440,13 @@ class Profile extends pulumi.CustomResource {
     containerNetworkInterface =
         registerOutput<ProfileContainerNetworkInterface>(
           'containerNetworkInterface',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ProfileContainerNetworkInterface.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     containerNetworkInterfaceIds = registerOutput<List<String>>(
       'containerNetworkInterfaceIds',

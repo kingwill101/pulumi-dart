@@ -58,7 +58,16 @@ class ConversionWorkspace extends pulumi.CustomResource {
        ) {
     conversionWorkspaceId = registerOutput<String>('conversionWorkspaceId');
     createTime = registerOutput<String>('createTime');
-    destination = registerOutput<DatabaseEngineInfoResponse>('destination');
+    destination = registerOutput<DatabaseEngineInfoResponse>(
+      'destination',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseEngineInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     displayName = registerOutput<String>('displayName');
     globalSettings = registerOutput<Map<String, String>>('globalSettings');
     hasUncommittedChanges = registerOutput<bool>('hasUncommittedChanges');
@@ -68,7 +77,16 @@ class ConversionWorkspace extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');
-    source = registerOutput<DatabaseEngineInfoResponse>('source');
+    source = registerOutput<DatabaseEngineInfoResponse>(
+      'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseEngineInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     updateTime = registerOutput<String>('updateTime');
   }
 }

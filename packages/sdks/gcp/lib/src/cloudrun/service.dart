@@ -2595,11 +2595,29 @@ class Service extends pulumi.CustomResource {
       'autogenerateRevisionName',
     );
     location = registerOutput<String>('location');
-    metadata = registerOutput<ServiceMetadata>('metadata');
+    metadata = registerOutput<ServiceMetadata>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceMetadata.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
-    template = registerOutput<ServiceTemplate?>('template');
+    template = registerOutput<ServiceTemplate?>(
+      'template',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceTemplate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     traffics = registerOutput<List<Map<String, dynamic>>>('traffics');
   }
 
@@ -2630,11 +2648,29 @@ class Service extends pulumi.CustomResource {
       'autogenerateRevisionName',
     );
     location = registerOutput<String>('location');
-    metadata = registerOutput<ServiceMetadata>('metadata');
+    metadata = registerOutput<ServiceMetadata>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceMetadata.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
-    template = registerOutput<ServiceTemplate?>('template');
+    template = registerOutput<ServiceTemplate?>(
+      'template',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceTemplate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     traffics = registerOutput<List<Map<String, dynamic>>>('traffics');
   }
 }

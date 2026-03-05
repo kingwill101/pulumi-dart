@@ -437,20 +437,54 @@ class WorkspaceApiDiagnostic extends pulumi.CustomResource {
        ) {
     alwaysLog = registerOutput<String?>('alwaysLog');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    backend = registerOutput<PipelineDiagnosticSettingsResponse?>('backend');
-    frontend = registerOutput<PipelineDiagnosticSettingsResponse?>('frontend');
+    backend = registerOutput<PipelineDiagnosticSettingsResponse?>(
+      'backend',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineDiagnosticSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    frontend = registerOutput<PipelineDiagnosticSettingsResponse?>(
+      'frontend',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineDiagnosticSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     httpCorrelationProtocol = registerOutput<String?>(
       'httpCorrelationProtocol',
     );
     largeLanguageModel = registerOutput<LLMDiagnosticSettingsResponse?>(
       'largeLanguageModel',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LLMDiagnosticSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     logClientIp = registerOutput<bool?>('logClientIp');
     loggerId = registerOutput<String>('loggerId');
     metrics = registerOutput<bool?>('metrics');
     this.name = registerOutput<String>('name');
     operationNameFormat = registerOutput<String?>('operationNameFormat');
-    sampling = registerOutput<SamplingSettingsResponse?>('sampling');
+    sampling = registerOutput<SamplingSettingsResponse?>(
+      'sampling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SamplingSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     verbosity = registerOutput<String?>('verbosity');
   }

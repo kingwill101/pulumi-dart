@@ -356,7 +356,16 @@ class Vault extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    notification = registerOutput<VaultNotification?>('notification');
+    notification = registerOutput<VaultNotification?>(
+      'notification',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VaultNotification.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -385,7 +394,16 @@ class Vault extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    notification = registerOutput<VaultNotification?>('notification');
+    notification = registerOutput<VaultNotification?>(
+      'notification',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VaultNotification.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

@@ -752,7 +752,16 @@ class AgentFlow extends pulumi.CustomResource {
     customerEncryptionKeyArn = registerOutput<String?>(
       'customerEncryptionKeyArn',
     );
-    definition = registerOutput<AgentFlowDefinition?>('definition');
+    definition = registerOutput<AgentFlowDefinition?>(
+      'definition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentFlowDefinition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     executionRoleArn = registerOutput<String>('executionRoleArn');
     this.name = registerOutput<String>('name');
@@ -760,7 +769,16 @@ class AgentFlow extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<AgentFlowTimeouts?>('timeouts');
+    timeouts = registerOutput<AgentFlowTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentFlowTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     updatedAt = registerOutput<String>('updatedAt');
     version = registerOutput<String>('version');
   }
@@ -793,7 +811,16 @@ class AgentFlow extends pulumi.CustomResource {
     customerEncryptionKeyArn = registerOutput<String?>(
       'customerEncryptionKeyArn',
     );
-    definition = registerOutput<AgentFlowDefinition?>('definition');
+    definition = registerOutput<AgentFlowDefinition?>(
+      'definition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentFlowDefinition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     executionRoleArn = registerOutput<String>('executionRoleArn');
     this.name = registerOutput<String>('name');
@@ -801,7 +828,16 @@ class AgentFlow extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<AgentFlowTimeouts?>('timeouts');
+    timeouts = registerOutput<AgentFlowTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentFlowTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     updatedAt = registerOutput<String>('updatedAt');
     version = registerOutput<String>('version');
   }

@@ -308,6 +308,13 @@ class ScaleSetStandbyPool extends pulumi.CustomResource {
     );
     elasticityProfile = registerOutput<ScaleSetStandbyPoolElasticityProfile>(
       'elasticityProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScaleSetStandbyPoolElasticityProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -344,6 +351,13 @@ class ScaleSetStandbyPool extends pulumi.CustomResource {
     );
     elasticityProfile = registerOutput<ScaleSetStandbyPoolElasticityProfile>(
       'elasticityProfile',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScaleSetStandbyPoolElasticityProfile.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

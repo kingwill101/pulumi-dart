@@ -275,7 +275,16 @@ class SqlPool extends pulumi.CustomResource {
     provisioningState = registerOutput<String?>('provisioningState');
     recoverableDatabaseId = registerOutput<String?>('recoverableDatabaseId');
     restorePointInTime = registerOutput<String?>('restorePointInTime');
-    sku = registerOutput<SkuResponse?>('sku');
+    sku = registerOutput<SkuResponse?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     sourceDatabaseDeletionDate = registerOutput<String?>(
       'sourceDatabaseDeletionDate',
     );

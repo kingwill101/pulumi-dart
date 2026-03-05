@@ -608,7 +608,16 @@ class AvsAssessmentsOperation extends pulumi.CustomResource {
     suitability = registerOutput<String>('suitability');
     suitabilityExplanation = registerOutput<String>('suitabilityExplanation');
     suitabilitySummary = registerOutput<Map<String, int>>('suitabilitySummary');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     timeRange = registerOutput<String?>('timeRange');
     totalCpuCores = registerOutput<double>('totalCpuCores');
     totalMonthlyCost = registerOutput<double>('totalMonthlyCost');

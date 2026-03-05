@@ -659,7 +659,16 @@ class TargetServer extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     port = registerOutput<int>('port');
     protocol = registerOutput<String>('protocol');
-    sSlInfo = registerOutput<TargetServerSSlInfo?>('sSlInfo');
+    sSlInfo = registerOutput<TargetServerSSlInfo?>(
+      'sSlInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TargetServerSSlInfo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [TargetServer] resource's state with the given [name] and [id].
@@ -692,6 +701,15 @@ class TargetServer extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     port = registerOutput<int>('port');
     protocol = registerOutput<String>('protocol');
-    sSlInfo = registerOutput<TargetServerSSlInfo?>('sSlInfo');
+    sSlInfo = registerOutput<TargetServerSSlInfo?>(
+      'sSlInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TargetServerSSlInfo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

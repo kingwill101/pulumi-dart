@@ -241,8 +241,26 @@ class LoadTest extends pulumi.CustomResource {
        ) {
     dataPlaneUri = registerOutput<String>('dataPlaneUri');
     description = registerOutput<String?>('description');
-    encryption = registerOutput<LoadTestEncryption?>('encryption');
-    identity = registerOutput<LoadTestIdentity?>('identity');
+    encryption = registerOutput<LoadTestEncryption?>(
+      'encryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadTestEncryption.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    identity = registerOutput<LoadTestIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadTestIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -274,8 +292,26 @@ class LoadTest extends pulumi.CustomResource {
        ) {
     dataPlaneUri = registerOutput<String>('dataPlaneUri');
     description = registerOutput<String?>('description');
-    encryption = registerOutput<LoadTestEncryption?>('encryption');
-    identity = registerOutput<LoadTestIdentity?>('identity');
+    encryption = registerOutput<LoadTestEncryption?>(
+      'encryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadTestEncryption.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    identity = registerOutput<LoadTestIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadTestIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

@@ -673,7 +673,16 @@ class Integration extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     targetArn = registerOutput<String>('targetArn');
-    timeouts = registerOutput<IntegrationTimeouts?>('timeouts');
+    timeouts = registerOutput<IntegrationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IntegrationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Integration] resource's state with the given [name] and [id].
@@ -711,6 +720,15 @@ class Integration extends pulumi.CustomResource {
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     targetArn = registerOutput<String>('targetArn');
-    timeouts = registerOutput<IntegrationTimeouts?>('timeouts');
+    timeouts = registerOutput<IntegrationTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IntegrationTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

@@ -578,7 +578,16 @@ class NatGateway extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    accessMode = registerOutput<NatGatewayAccessMode>('accessMode');
+    accessMode = registerOutput<NatGatewayAccessMode>(
+      'accessMode',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NatGatewayAccessMode.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     deletionProtection = registerOutput<bool>('deletionProtection');
     description = registerOutput<String?>('description');
     dryRun = registerOutput<bool?>('dryRun');
@@ -626,7 +635,16 @@ class NatGateway extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    accessMode = registerOutput<NatGatewayAccessMode>('accessMode');
+    accessMode = registerOutput<NatGatewayAccessMode>(
+      'accessMode',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NatGatewayAccessMode.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     deletionProtection = registerOutput<bool>('deletionProtection');
     description = registerOutput<String?>('description');
     dryRun = registerOutput<bool?>('dryRun');

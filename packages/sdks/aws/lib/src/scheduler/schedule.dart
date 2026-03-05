@@ -427,6 +427,13 @@ class Schedule extends pulumi.CustomResource {
     endDate = registerOutput<String?>('endDate');
     flexibleTimeWindow = registerOutput<ScheduleFlexibleTimeWindow>(
       'flexibleTimeWindow',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduleFlexibleTimeWindow.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     groupName = registerOutput<String>('groupName');
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
@@ -439,7 +446,16 @@ class Schedule extends pulumi.CustomResource {
     );
     startDate = registerOutput<String?>('startDate');
     state = registerOutput<String?>('state');
-    target = registerOutput<ScheduleTarget>('target');
+    target = registerOutput<ScheduleTarget>(
+      'target',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduleTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Schedule] resource's state with the given [name] and [id].
@@ -471,6 +487,13 @@ class Schedule extends pulumi.CustomResource {
     endDate = registerOutput<String?>('endDate');
     flexibleTimeWindow = registerOutput<ScheduleFlexibleTimeWindow>(
       'flexibleTimeWindow',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduleFlexibleTimeWindow.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     groupName = registerOutput<String>('groupName');
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
@@ -483,6 +506,15 @@ class Schedule extends pulumi.CustomResource {
     );
     startDate = registerOutput<String?>('startDate');
     this.state = registerOutput<String?>('state');
-    target = registerOutput<ScheduleTarget>('target');
+    target = registerOutput<ScheduleTarget>(
+      'target',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduleTarget.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

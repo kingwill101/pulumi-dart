@@ -43,8 +43,26 @@ class ClusterRoleBindingPatchRbacAuthorizationK8sIoV1
        ) {
     apiVersion = registerOutput<String?>('apiVersion');
     kind = registerOutput<String?>('kind');
-    metadata = registerOutput<ObjectMetaPatch?>('metadata');
-    roleRef = registerOutput<RoleRefPatch?>('roleRef');
+    metadata = registerOutput<ObjectMetaPatch?>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMetaPatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    roleRef = registerOutput<RoleRefPatch?>(
+      'roleRef',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RoleRefPatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     subjects = registerOutput<List<Map<String, dynamic>>?>('subjects');
   }
 }

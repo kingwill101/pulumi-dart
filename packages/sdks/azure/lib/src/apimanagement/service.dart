@@ -326,15 +326,40 @@ class Service extends pulumi.CustomResource {
     clientCertificateEnabled = registerOutput<bool?>(
       'clientCertificateEnabled',
     );
-    delegation = registerOutput<ServiceDelegation>('delegation');
+    delegation = registerOutput<ServiceDelegation>(
+      'delegation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceDelegation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     developerPortalUrl = registerOutput<String>('developerPortalUrl');
     gatewayDisabled = registerOutput<bool?>('gatewayDisabled');
     gatewayRegionalUrl = registerOutput<String>('gatewayRegionalUrl');
     gatewayUrl = registerOutput<String>('gatewayUrl');
     hostnameConfiguration = registerOutput<ServiceHostnameConfiguration>(
       'hostnameConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceHostnameConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    identity = registerOutput<ServiceIdentity?>('identity');
+    identity = registerOutput<ServiceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     managementApiUrl = registerOutput<String>('managementApiUrl');
     minApiVersion = registerOutput<String?>('minApiVersion');
@@ -342,7 +367,16 @@ class Service extends pulumi.CustomResource {
     notificationSenderEmail = registerOutput<String>('notificationSenderEmail');
     portalUrl = registerOutput<String>('portalUrl');
     privateIpAddresses = registerOutput<List<String>>('privateIpAddresses');
-    protocols = registerOutput<ServiceProtocols>('protocols');
+    protocols = registerOutput<ServiceProtocols>(
+      'protocols',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceProtocols.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     publicIpAddressId = registerOutput<String?>('publicIpAddressId');
     publicIpAddresses = registerOutput<List<String>>('publicIpAddresses');
     publicNetworkAccessEnabled = registerOutput<bool?>(
@@ -352,15 +386,58 @@ class Service extends pulumi.CustomResource {
     publisherName = registerOutput<String>('publisherName');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     scmUrl = registerOutput<String>('scmUrl');
-    security = registerOutput<ServiceSecurity>('security');
-    signIn = registerOutput<ServiceSignIn>('signIn');
-    signUp = registerOutput<ServiceSignUp>('signUp');
+    security = registerOutput<ServiceSecurity>(
+      'security',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceSecurity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    signIn = registerOutput<ServiceSignIn>(
+      'signIn',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceSignIn.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    signUp = registerOutput<ServiceSignUp>(
+      'signUp',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceSignUp.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     skuName = registerOutput<String>('skuName');
     tags = registerOutput<Map<String, String>?>('tags');
-    tenantAccess = registerOutput<ServiceTenantAccess>('tenantAccess');
+    tenantAccess = registerOutput<ServiceTenantAccess>(
+      'tenantAccess',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceTenantAccess.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     virtualNetworkConfiguration =
         registerOutput<ServiceVirtualNetworkConfiguration?>(
           'virtualNetworkConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ServiceVirtualNetworkConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     virtualNetworkType = registerOutput<String?>('virtualNetworkType');
     zones = registerOutput<List<String>?>('zones');
@@ -396,15 +473,40 @@ class Service extends pulumi.CustomResource {
     clientCertificateEnabled = registerOutput<bool?>(
       'clientCertificateEnabled',
     );
-    delegation = registerOutput<ServiceDelegation>('delegation');
+    delegation = registerOutput<ServiceDelegation>(
+      'delegation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceDelegation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     developerPortalUrl = registerOutput<String>('developerPortalUrl');
     gatewayDisabled = registerOutput<bool?>('gatewayDisabled');
     gatewayRegionalUrl = registerOutput<String>('gatewayRegionalUrl');
     gatewayUrl = registerOutput<String>('gatewayUrl');
     hostnameConfiguration = registerOutput<ServiceHostnameConfiguration>(
       'hostnameConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceHostnameConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    identity = registerOutput<ServiceIdentity?>('identity');
+    identity = registerOutput<ServiceIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     managementApiUrl = registerOutput<String>('managementApiUrl');
     minApiVersion = registerOutput<String?>('minApiVersion');
@@ -412,7 +514,16 @@ class Service extends pulumi.CustomResource {
     notificationSenderEmail = registerOutput<String>('notificationSenderEmail');
     portalUrl = registerOutput<String>('portalUrl');
     privateIpAddresses = registerOutput<List<String>>('privateIpAddresses');
-    protocols = registerOutput<ServiceProtocols>('protocols');
+    protocols = registerOutput<ServiceProtocols>(
+      'protocols',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceProtocols.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     publicIpAddressId = registerOutput<String?>('publicIpAddressId');
     publicIpAddresses = registerOutput<List<String>>('publicIpAddresses');
     publicNetworkAccessEnabled = registerOutput<bool?>(
@@ -422,15 +533,58 @@ class Service extends pulumi.CustomResource {
     publisherName = registerOutput<String>('publisherName');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     scmUrl = registerOutput<String>('scmUrl');
-    security = registerOutput<ServiceSecurity>('security');
-    signIn = registerOutput<ServiceSignIn>('signIn');
-    signUp = registerOutput<ServiceSignUp>('signUp');
+    security = registerOutput<ServiceSecurity>(
+      'security',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceSecurity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    signIn = registerOutput<ServiceSignIn>(
+      'signIn',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceSignIn.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    signUp = registerOutput<ServiceSignUp>(
+      'signUp',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceSignUp.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     skuName = registerOutput<String>('skuName');
     tags = registerOutput<Map<String, String>?>('tags');
-    tenantAccess = registerOutput<ServiceTenantAccess>('tenantAccess');
+    tenantAccess = registerOutput<ServiceTenantAccess>(
+      'tenantAccess',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServiceTenantAccess.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     virtualNetworkConfiguration =
         registerOutput<ServiceVirtualNetworkConfiguration?>(
           'virtualNetworkConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ServiceVirtualNetworkConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     virtualNetworkType = registerOutput<String?>('virtualNetworkType');
     zones = registerOutput<List<String>?>('zones');

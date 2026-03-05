@@ -779,17 +779,56 @@ class DatabaseAccount extends pulumi.CustomResource {
     analyticalStorageConfiguration =
         registerOutput<AnalyticalStorageConfigurationResponse?>(
           'analyticalStorageConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AnalyticalStorageConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    apiProperties = registerOutput<ApiPropertiesResponse?>('apiProperties');
+    apiProperties = registerOutput<ApiPropertiesResponse?>(
+      'apiProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     backupPolicy = registerOutput<ContinuousModeBackupPolicyResponse?>(
       'backupPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContinuousModeBackupPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     capabilities = registerOutput<List<Map<String, dynamic>>?>('capabilities');
-    capacity = registerOutput<CapacityResponse?>('capacity');
+    capacity = registerOutput<CapacityResponse?>(
+      'capacity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CapacityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     connectorOffer = registerOutput<String?>('connectorOffer');
     consistencyPolicy = registerOutput<ConsistencyPolicyResponse?>(
       'consistencyPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConsistencyPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     cors = registerOutput<List<Map<String, dynamic>>?>('cors');
     createMode = registerOutput<String?>('createMode');
@@ -826,7 +865,16 @@ class DatabaseAccount extends pulumi.CustomResource {
     failoverPolicies = registerOutput<List<Map<String, dynamic>>>(
       'failoverPolicies',
     );
-    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    identity = registerOutput<ManagedServiceIdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedServiceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     instanceId = registerOutput<String>('instanceId');
     ipRules = registerOutput<List<Map<String, dynamic>>?>('ipRules');
     isVirtualNetworkFilterEnabled = registerOutput<bool?>(
@@ -836,6 +884,13 @@ class DatabaseAccount extends pulumi.CustomResource {
     keyVaultKeyUriVersion = registerOutput<String>('keyVaultKeyUriVersion');
     keysMetadata = registerOutput<DatabaseAccountKeysMetadataResponse>(
       'keysMetadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabaseAccountKeysMetadataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     kind = registerOutput<String?>('kind');
     location = registerOutput<String?>('location');
@@ -854,8 +909,24 @@ class DatabaseAccount extends pulumi.CustomResource {
     readLocations = registerOutput<List<Map<String, dynamic>>>('readLocations');
     restoreParameters = registerOutput<RestoreParametersResponse?>(
       'restoreParameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RestoreParametersResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     type = registerOutput<String>('type');
     virtualNetworkRules = registerOutput<List<Map<String, dynamic>>?>(

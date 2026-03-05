@@ -295,14 +295,32 @@ class Fleet extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     arn = registerOutput<String>('arn');
-    computeCapacity = registerOutput<FleetComputeCapacity>('computeCapacity');
+    computeCapacity = registerOutput<FleetComputeCapacity>(
+      'computeCapacity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FleetComputeCapacity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createdTime = registerOutput<String>('createdTime');
     description = registerOutput<String>('description');
     disconnectTimeoutInSeconds = registerOutput<int>(
       'disconnectTimeoutInSeconds',
     );
     displayName = registerOutput<String>('displayName');
-    domainJoinInfo = registerOutput<FleetDomainJoinInfo>('domainJoinInfo');
+    domainJoinInfo = registerOutput<FleetDomainJoinInfo>(
+      'domainJoinInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FleetDomainJoinInfo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     enableDefaultInternetAccess = registerOutput<bool>(
       'enableDefaultInternetAccess',
     );
@@ -322,7 +340,16 @@ class Fleet extends pulumi.CustomResource {
     streamView = registerOutput<String>('streamView');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    vpcConfig = registerOutput<FleetVpcConfig>('vpcConfig');
+    vpcConfig = registerOutput<FleetVpcConfig>(
+      'vpcConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FleetVpcConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Fleet] resource's state with the given [name] and [id].
@@ -345,14 +372,32 @@ class Fleet extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    computeCapacity = registerOutput<FleetComputeCapacity>('computeCapacity');
+    computeCapacity = registerOutput<FleetComputeCapacity>(
+      'computeCapacity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FleetComputeCapacity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createdTime = registerOutput<String>('createdTime');
     description = registerOutput<String>('description');
     disconnectTimeoutInSeconds = registerOutput<int>(
       'disconnectTimeoutInSeconds',
     );
     displayName = registerOutput<String>('displayName');
-    domainJoinInfo = registerOutput<FleetDomainJoinInfo>('domainJoinInfo');
+    domainJoinInfo = registerOutput<FleetDomainJoinInfo>(
+      'domainJoinInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FleetDomainJoinInfo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     enableDefaultInternetAccess = registerOutput<bool>(
       'enableDefaultInternetAccess',
     );
@@ -372,6 +417,15 @@ class Fleet extends pulumi.CustomResource {
     streamView = registerOutput<String>('streamView');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    vpcConfig = registerOutput<FleetVpcConfig>('vpcConfig');
+    vpcConfig = registerOutput<FleetVpcConfig>(
+      'vpcConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FleetVpcConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

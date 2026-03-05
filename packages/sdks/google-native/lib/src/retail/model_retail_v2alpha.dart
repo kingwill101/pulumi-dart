@@ -91,13 +91,31 @@ class ModelRetailV2alpha extends pulumi.CustomResource {
     modelFeaturesConfig =
         registerOutput<
           GoogleCloudRetailV2alphaModelModelFeaturesConfigResponse
-        >('modelFeaturesConfig');
+        >(
+          'modelFeaturesConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudRetailV2alphaModelModelFeaturesConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     this.name = registerOutput<String>('name');
     optimizationObjective = registerOutput<String>('optimizationObjective');
     pageOptimizationConfig =
         registerOutput<
           GoogleCloudRetailV2alphaModelPageOptimizationConfigResponse
-        >('pageOptimizationConfig');
+        >(
+          'pageOptimizationConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudRetailV2alphaModelPageOptimizationConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     periodicTuningState = registerOutput<String>('periodicTuningState');
     project = registerOutput<String>('project');
     servingConfigLists = registerOutput<List<Map<String, dynamic>>>(

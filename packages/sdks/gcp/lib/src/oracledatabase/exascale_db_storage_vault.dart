@@ -455,7 +455,16 @@ class ExascaleDbStorageVault extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    properties = registerOutput<ExascaleDbStorageVaultProperties>('properties');
+    properties = registerOutput<ExascaleDbStorageVaultProperties>(
+      'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExascaleDbStorageVaultProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
   }
 
@@ -495,7 +504,16 @@ class ExascaleDbStorageVault extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    properties = registerOutput<ExascaleDbStorageVaultProperties>('properties');
+    properties = registerOutput<ExascaleDbStorageVaultProperties>(
+      'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExascaleDbStorageVaultProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
   }
 }

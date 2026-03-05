@@ -74,7 +74,16 @@ class CustomDomain extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     annotations = registerOutput<Map<String, String>>('annotations');
-    cert = registerOutput<CertificateResponse>('cert');
+    cert = registerOutput<CertificateResponse>(
+      'cert',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CertificateResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     certPreference = registerOutput<String>('certPreference');
     createTime = registerOutput<String>('createTime');
     customDomainId = registerOutput<String>('customDomainId');
@@ -91,6 +100,13 @@ class CustomDomain extends pulumi.CustomResource {
     redirectTarget = registerOutput<String>('redirectTarget');
     requiredDnsUpdates = registerOutput<DnsUpdatesResponse>(
       'requiredDnsUpdates',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DnsUpdatesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     siteId = registerOutput<String>('siteId');
     updateTime = registerOutput<String>('updateTime');

@@ -359,13 +359,49 @@ class Volume extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    creationData = registerOutput<SourceCreationDataResponse?>('creationData');
-    managedBy = registerOutput<ManagedByInfoResponse?>('managedBy');
+    creationData = registerOutput<SourceCreationDataResponse?>(
+      'creationData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SourceCreationDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    managedBy = registerOutput<ManagedByInfoResponse?>(
+      'managedBy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ManagedByInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     sizeGiB = registerOutput<double>('sizeGiB');
-    storageTarget = registerOutput<IscsiTargetInfoResponse>('storageTarget');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    storageTarget = registerOutput<IscsiTargetInfoResponse>(
+      'storageTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IscsiTargetInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     volumeId = registerOutput<String>('volumeId');
   }

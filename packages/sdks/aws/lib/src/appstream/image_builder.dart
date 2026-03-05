@@ -256,6 +256,13 @@ class ImageBuilder extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     domainJoinInfo = registerOutput<ImageBuilderDomainJoinInfo>(
       'domainJoinInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImageBuilderDomainJoinInfo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     enableDefaultInternetAccess = registerOutput<bool>(
       'enableDefaultInternetAccess',
@@ -269,7 +276,16 @@ class ImageBuilder extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    vpcConfig = registerOutput<ImageBuilderVpcConfig>('vpcConfig');
+    vpcConfig = registerOutput<ImageBuilderVpcConfig>(
+      'vpcConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImageBuilderVpcConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [ImageBuilder] resource's state with the given [name] and [id].
@@ -305,6 +321,13 @@ class ImageBuilder extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     domainJoinInfo = registerOutput<ImageBuilderDomainJoinInfo>(
       'domainJoinInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImageBuilderDomainJoinInfo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     enableDefaultInternetAccess = registerOutput<bool>(
       'enableDefaultInternetAccess',
@@ -318,6 +341,15 @@ class ImageBuilder extends pulumi.CustomResource {
     this.state = registerOutput<String>('state');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    vpcConfig = registerOutput<ImageBuilderVpcConfig>('vpcConfig');
+    vpcConfig = registerOutput<ImageBuilderVpcConfig>(
+      'vpcConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImageBuilderVpcConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

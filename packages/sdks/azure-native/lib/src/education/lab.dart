@@ -232,7 +232,16 @@ class Lab extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    budgetPerStudent = registerOutput<AmountResponse>('budgetPerStudent');
+    budgetPerStudent = registerOutput<AmountResponse>(
+      'budgetPerStudent',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AmountResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     currency = registerOutput<String?>('currency');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
@@ -242,8 +251,26 @@ class Lab extends pulumi.CustomResource {
     maxStudentCount = registerOutput<double>('maxStudentCount');
     this.name = registerOutput<String>('name');
     status = registerOutput<String>('status');
-    systemData = registerOutput<SystemDataResponse>('systemData');
-    totalBudget = registerOutput<AmountResponse>('totalBudget');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    totalBudget = registerOutput<AmountResponse>(
+      'totalBudget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AmountResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     value = registerOutput<double?>('value');
   }

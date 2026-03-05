@@ -2135,6 +2135,13 @@ class BucketLifecycleConfigurationV2 extends pulumi.CustomResource {
     rules = registerOutput<List<Map<String, dynamic>>?>('rules');
     timeouts = registerOutput<BucketLifecycleConfigurationV2Timeouts?>(
       'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketLifecycleConfigurationV2Timeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     transitionDefaultMinimumObjectSize = registerOutput<String>(
       'transitionDefaultMinimumObjectSize',
@@ -2170,6 +2177,13 @@ class BucketLifecycleConfigurationV2 extends pulumi.CustomResource {
     rules = registerOutput<List<Map<String, dynamic>>?>('rules');
     timeouts = registerOutput<BucketLifecycleConfigurationV2Timeouts?>(
       'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BucketLifecycleConfigurationV2Timeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     transitionDefaultMinimumObjectSize = registerOutput<String>(
       'transitionDefaultMinimumObjectSize',

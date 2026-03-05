@@ -56,6 +56,15 @@ class ImportDataFile extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');
     state = registerOutput<String>('state');
-    uploadFileInfo = registerOutput<UploadFileInfoResponse>('uploadFileInfo');
+    uploadFileInfo = registerOutput<UploadFileInfoResponse>(
+      'uploadFileInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return UploadFileInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

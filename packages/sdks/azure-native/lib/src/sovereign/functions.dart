@@ -29,7 +29,8 @@ Future<GetLandingZoneAccountOperationResult> getLandingZoneAccountOperation(
 /// Uses Azure REST API version 2025-02-27-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_sovereign_get_landing_zone_configuration_operation_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetLandingZoneConfigurationOperationResult> getLandingZoneConfigurationOperation(
+Future<GetLandingZoneConfigurationOperationResult>
+getLandingZoneConfigurationOperation(
   GetLandingZoneConfigurationOperationArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -47,7 +48,8 @@ Future<GetLandingZoneConfigurationOperationResult> getLandingZoneConfigurationOp
 /// Uses Azure REST API version 2025-02-27-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_sovereign_get_landing_zone_registration_operation_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetLandingZoneRegistrationOperationResult> getLandingZoneRegistrationOperation(
+Future<GetLandingZoneRegistrationOperationResult>
+getLandingZoneRegistrationOperation(
   GetLandingZoneRegistrationOperationArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

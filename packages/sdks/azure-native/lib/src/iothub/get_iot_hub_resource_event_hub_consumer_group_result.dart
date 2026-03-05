@@ -1,18 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getIotHubResourceEventHubConsumerGroup.
 class GetIotHubResourceEventHubConsumerGroupResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The etag.
   final String etag;
+
   /// The Event Hub-compatible consumer group identifier.
   final String id;
+
   /// The Event Hub-compatible consumer group name.
   final String name;
+
   /// The tags.
   final dynamic properties;
+
   /// the resource type.
   final String type;
 
@@ -43,7 +47,9 @@ class GetIotHubResourceEventHubConsumerGroupResult {
     };
   }
 
-  factory GetIotHubResourceEventHubConsumerGroupResult.fromMap(Map<String, dynamic> map) {
+  factory GetIotHubResourceEventHubConsumerGroupResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetIotHubResourceEventHubConsumerGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
       etag: map['etag'] as String,
@@ -54,4 +60,3 @@ class GetIotHubResourceEventHubConsumerGroupResult {
     );
   }
 }
-

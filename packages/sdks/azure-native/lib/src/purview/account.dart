@@ -238,20 +238,59 @@ class Account extends pulumi.CustomResource {
        ) {
     accountStatus = registerOutput<AccountPropertiesResponseAccountStatus>(
       'accountStatus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountPropertiesResponseAccountStatus.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     cloudConnectors = registerOutput<CloudConnectorsResponse?>(
       'cloudConnectors',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CloudConnectorsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createdAt = registerOutput<String>('createdAt');
     createdBy = registerOutput<String>('createdBy');
     createdByObjectId = registerOutput<String>('createdByObjectId');
     defaultDomain = registerOutput<String>('defaultDomain');
-    endpoints = registerOutput<AccountPropertiesResponseEndpoints>('endpoints');
+    endpoints = registerOutput<AccountPropertiesResponseEndpoints>(
+      'endpoints',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountPropertiesResponseEndpoints.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     friendlyName = registerOutput<String>('friendlyName');
-    identity = registerOutput<IdentityResponse?>('identity');
+    identity = registerOutput<IdentityResponse?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ingestionStorage = registerOutput<IngestionStorageResponse?>(
       'ingestionStorage',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IngestionStorageResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String?>('location');
     managedEventHubState = registerOutput<String?>('managedEventHubState');
@@ -261,20 +300,52 @@ class Account extends pulumi.CustomResource {
     managedResources =
         registerOutput<AccountPropertiesResponseManagedResources>(
           'managedResources',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AccountPropertiesResponseManagedResources.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     managedResourcesPublicNetworkAccess = registerOutput<String?>(
       'managedResourcesPublicNetworkAccess',
     );
-    mergeInfo = registerOutput<AccountMergeInfoResponse?>('mergeInfo');
+    mergeInfo = registerOutput<AccountMergeInfoResponse?>(
+      'mergeInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountMergeInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
       'privateEndpointConnections',
     );
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    sku = registerOutput<AccountResponseSku?>('sku');
+    sku = registerOutput<AccountResponseSku?>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AccountResponseSku.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     systemData = registerOutput<TrackedResourceResponseSystemData>(
       'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TrackedResourceResponseSystemData.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tenantEndpointState = registerOutput<String?>('tenantEndpointState');

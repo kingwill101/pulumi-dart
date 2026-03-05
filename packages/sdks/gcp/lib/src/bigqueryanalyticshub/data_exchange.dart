@@ -590,6 +590,13 @@ class DataExchange extends pulumi.CustomResource {
     sharingEnvironmentConfig =
         registerOutput<DataExchangeSharingEnvironmentConfig>(
           'sharingEnvironmentConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataExchangeSharingEnvironmentConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 
@@ -633,6 +640,13 @@ class DataExchange extends pulumi.CustomResource {
     sharingEnvironmentConfig =
         registerOutput<DataExchangeSharingEnvironmentConfig>(
           'sharingEnvironmentConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DataExchangeSharingEnvironmentConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

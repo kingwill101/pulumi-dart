@@ -292,16 +292,37 @@ class Cluster extends pulumi.CustomResource {
     connectivityStatus = registerOutput<String>('connectivityStatus');
     desiredProperties = registerOutput<ClusterDesiredPropertiesResponse?>(
       'desiredProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterDesiredPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     isolatedVmAttestationConfiguration =
         registerOutput<IsolatedVmAttestationConfigurationResponse>(
           'isolatedVmAttestationConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return IsolatedVmAttestationConfigurationResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     lastBillingTimestamp = registerOutput<String>('lastBillingTimestamp');
     lastSyncTimestamp = registerOutput<String>('lastSyncTimestamp');
     location = registerOutput<String>('location');
     logCollectionProperties = registerOutput<LogCollectionPropertiesResponse?>(
       'logCollectionProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LogCollectionPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     principalId = registerOutput<String>('principalId');
@@ -309,9 +330,23 @@ class Cluster extends pulumi.CustomResource {
     registrationTimestamp = registerOutput<String>('registrationTimestamp');
     remoteSupportProperties = registerOutput<RemoteSupportPropertiesResponse?>(
       'remoteSupportProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RemoteSupportPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     reportedProperties = registerOutput<ClusterReportedPropertiesResponse>(
       'reportedProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterReportedPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     resourceProviderObjectId = registerOutput<String>(
       'resourceProviderObjectId',
@@ -320,9 +355,25 @@ class Cluster extends pulumi.CustomResource {
     softwareAssuranceProperties =
         registerOutput<SoftwareAssurancePropertiesResponse?>(
           'softwareAssuranceProperties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SoftwareAssurancePropertiesResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     status = registerOutput<String>('status');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tenantId = registerOutput<String>('tenantId');
     trialDaysRemaining = registerOutput<double>('trialDaysRemaining');
@@ -330,6 +381,16 @@ class Cluster extends pulumi.CustomResource {
     userAssignedIdentities =
         registerOutput<Map<String, UserAssignedIdentityResponse>?>(
           'userAssignedIdentities',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return pulumi.Input.decodeMapValues<UserAssignedIdentityResponse>(
+              guardedValue,
+              (value) => UserAssignedIdentityResponse.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            );
+          },
         );
   }
 }

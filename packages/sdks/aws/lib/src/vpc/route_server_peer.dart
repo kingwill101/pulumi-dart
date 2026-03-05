@@ -533,7 +533,16 @@ class RouteServerPeer extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    bgpOptions = registerOutput<RouteServerPeerBgpOptions>('bgpOptions');
+    bgpOptions = registerOutput<RouteServerPeerBgpOptions>(
+      'bgpOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RouteServerPeerBgpOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     endpointEniAddress = registerOutput<String>('endpointEniAddress');
     endpointEniId = registerOutput<String>('endpointEniId');
     peerAddress = registerOutput<String>('peerAddress');
@@ -544,7 +553,16 @@ class RouteServerPeer extends pulumi.CustomResource {
     subnetId = registerOutput<String>('subnetId');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<RouteServerPeerTimeouts?>('timeouts');
+    timeouts = registerOutput<RouteServerPeerTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RouteServerPeerTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vpcId = registerOutput<String>('vpcId');
   }
 
@@ -572,7 +590,16 @@ class RouteServerPeer extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    bgpOptions = registerOutput<RouteServerPeerBgpOptions>('bgpOptions');
+    bgpOptions = registerOutput<RouteServerPeerBgpOptions>(
+      'bgpOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RouteServerPeerBgpOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     endpointEniAddress = registerOutput<String>('endpointEniAddress');
     endpointEniId = registerOutput<String>('endpointEniId');
     peerAddress = registerOutput<String>('peerAddress');
@@ -583,7 +610,16 @@ class RouteServerPeer extends pulumi.CustomResource {
     subnetId = registerOutput<String>('subnetId');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<RouteServerPeerTimeouts?>('timeouts');
+    timeouts = registerOutput<RouteServerPeerTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RouteServerPeerTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vpcId = registerOutput<String>('vpcId');
   }
 }

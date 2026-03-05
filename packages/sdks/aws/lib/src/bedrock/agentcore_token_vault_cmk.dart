@@ -147,6 +147,13 @@ class AgentcoreTokenVaultCmk extends pulumi.CustomResource {
        ) {
     kmsConfiguration = registerOutput<AgentcoreTokenVaultCmkKmsConfiguration>(
       'kmsConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentcoreTokenVaultCmkKmsConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     tokenVaultId = registerOutput<String>('tokenVaultId');
@@ -177,6 +184,13 @@ class AgentcoreTokenVaultCmk extends pulumi.CustomResource {
        ) {
     kmsConfiguration = registerOutput<AgentcoreTokenVaultCmkKmsConfiguration>(
       'kmsConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AgentcoreTokenVaultCmkKmsConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     tokenVaultId = registerOutput<String>('tokenVaultId');

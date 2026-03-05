@@ -2569,15 +2569,36 @@ class Connection extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     bitbucketCloudConfig = registerOutput<ConnectionBitbucketCloudConfig?>(
       'bitbucketCloudConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionBitbucketCloudConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     bitbucketDataCenterConfig =
         registerOutput<ConnectionBitbucketDataCenterConfig?>(
           'bitbucketDataCenterConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConnectionBitbucketDataCenterConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     connectionId = registerOutput<String>('connectionId');
     createTime = registerOutput<String>('createTime');
     cryptoKeyConfig = registerOutput<ConnectionCryptoKeyConfig?>(
       'cryptoKeyConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionCryptoKeyConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     deleteTime = registerOutput<String>('deleteTime');
     disabled = registerOutput<bool?>('disabled');
@@ -2586,13 +2607,45 @@ class Connection extends pulumi.CustomResource {
     );
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     etag = registerOutput<String?>('etag');
-    githubConfig = registerOutput<ConnectionGithubConfig?>('githubConfig');
+    githubConfig = registerOutput<ConnectionGithubConfig?>(
+      'githubConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionGithubConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     githubEnterpriseConfig = registerOutput<ConnectionGithubEnterpriseConfig?>(
       'githubEnterpriseConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionGithubEnterpriseConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    gitlabConfig = registerOutput<ConnectionGitlabConfig?>('gitlabConfig');
+    gitlabConfig = registerOutput<ConnectionGitlabConfig?>(
+      'gitlabConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionGitlabConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     gitlabEnterpriseConfig = registerOutput<ConnectionGitlabEnterpriseConfig?>(
       'gitlabEnterpriseConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionGitlabEnterpriseConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     installationStates = registerOutput<List<Map<String, dynamic>>>(
       'installationStates',
@@ -2633,15 +2686,36 @@ class Connection extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     bitbucketCloudConfig = registerOutput<ConnectionBitbucketCloudConfig?>(
       'bitbucketCloudConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionBitbucketCloudConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     bitbucketDataCenterConfig =
         registerOutput<ConnectionBitbucketDataCenterConfig?>(
           'bitbucketDataCenterConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConnectionBitbucketDataCenterConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     connectionId = registerOutput<String>('connectionId');
     createTime = registerOutput<String>('createTime');
     cryptoKeyConfig = registerOutput<ConnectionCryptoKeyConfig?>(
       'cryptoKeyConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionCryptoKeyConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     deleteTime = registerOutput<String>('deleteTime');
     disabled = registerOutput<bool?>('disabled');
@@ -2650,13 +2724,45 @@ class Connection extends pulumi.CustomResource {
     );
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     etag = registerOutput<String?>('etag');
-    githubConfig = registerOutput<ConnectionGithubConfig?>('githubConfig');
+    githubConfig = registerOutput<ConnectionGithubConfig?>(
+      'githubConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionGithubConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     githubEnterpriseConfig = registerOutput<ConnectionGithubEnterpriseConfig?>(
       'githubEnterpriseConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionGithubEnterpriseConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    gitlabConfig = registerOutput<ConnectionGitlabConfig?>('gitlabConfig');
+    gitlabConfig = registerOutput<ConnectionGitlabConfig?>(
+      'gitlabConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionGitlabConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     gitlabEnterpriseConfig = registerOutput<ConnectionGitlabEnterpriseConfig?>(
       'gitlabEnterpriseConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectionGitlabEnterpriseConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     installationStates = registerOutput<List<Map<String, dynamic>>>(
       'installationStates',

@@ -515,10 +515,26 @@ class GalleryApplicationVersion extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     manageAction = registerOutput<GalleryApplicationVersionManageAction>(
       'manageAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GalleryApplicationVersionManageAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     packageFile = registerOutput<String?>('packageFile');
-    source = registerOutput<GalleryApplicationVersionSource>('source');
+    source = registerOutput<GalleryApplicationVersionSource>(
+      'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GalleryApplicationVersionSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     targetRegions = registerOutput<List<Map<String, dynamic>>>('targetRegions');
   }
@@ -554,10 +570,26 @@ class GalleryApplicationVersion extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     manageAction = registerOutput<GalleryApplicationVersionManageAction>(
       'manageAction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GalleryApplicationVersionManageAction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     packageFile = registerOutput<String?>('packageFile');
-    source = registerOutput<GalleryApplicationVersionSource>('source');
+    source = registerOutput<GalleryApplicationVersionSource>(
+      'source',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GalleryApplicationVersionSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     targetRegions = registerOutput<List<Map<String, dynamic>>>('targetRegions');
   }

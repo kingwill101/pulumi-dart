@@ -97,7 +97,8 @@ Future<GetUserResult> getUser(
 /// Other available API versions: 2024-03-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview, 2025-08-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mongocluster [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_mongocluster_list_mongo_cluster_connection_strings_args_doc}
 /// [options] Invoke options controlling this call.
-Future<ListMongoClusterConnectionStringsResult> listMongoClusterConnectionStrings(
+Future<ListMongoClusterConnectionStringsResult>
+listMongoClusterConnectionStrings(
   ListMongoClusterConnectionStringsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

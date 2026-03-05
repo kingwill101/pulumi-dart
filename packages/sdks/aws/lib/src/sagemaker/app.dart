@@ -169,7 +169,16 @@ class App extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     domainId = registerOutput<String>('domainId');
     region = registerOutput<String>('region');
-    resourceSpec = registerOutput<AppResourceSpec>('resourceSpec');
+    resourceSpec = registerOutput<AppResourceSpec>(
+      'resourceSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppResourceSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     spaceName = registerOutput<String?>('spaceName');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -200,7 +209,16 @@ class App extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     domainId = registerOutput<String>('domainId');
     region = registerOutput<String>('region');
-    resourceSpec = registerOutput<AppResourceSpec>('resourceSpec');
+    resourceSpec = registerOutput<AppResourceSpec>(
+      'resourceSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppResourceSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     spaceName = registerOutput<String?>('spaceName');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

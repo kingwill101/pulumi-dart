@@ -266,11 +266,25 @@ class FieldLevelEncryptionConfig extends pulumi.CustomResource {
     contentTypeProfileConfig =
         registerOutput<FieldLevelEncryptionConfigContentTypeProfileConfig>(
           'contentTypeProfileConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FieldLevelEncryptionConfigContentTypeProfileConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     etag = registerOutput<String>('etag');
     queryArgProfileConfig =
         registerOutput<FieldLevelEncryptionConfigQueryArgProfileConfig>(
           'queryArgProfileConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FieldLevelEncryptionConfigQueryArgProfileConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 
@@ -303,11 +317,25 @@ class FieldLevelEncryptionConfig extends pulumi.CustomResource {
     contentTypeProfileConfig =
         registerOutput<FieldLevelEncryptionConfigContentTypeProfileConfig>(
           'contentTypeProfileConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FieldLevelEncryptionConfigContentTypeProfileConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     etag = registerOutput<String>('etag');
     queryArgProfileConfig =
         registerOutput<FieldLevelEncryptionConfigQueryArgProfileConfig>(
           'queryArgProfileConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return FieldLevelEncryptionConfigQueryArgProfileConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

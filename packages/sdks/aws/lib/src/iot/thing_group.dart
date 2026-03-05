@@ -243,7 +243,16 @@ class ThingGroup extends pulumi.CustomResource {
     metadatas = registerOutput<List<Map<String, dynamic>>>('metadatas');
     this.name = registerOutput<String>('name');
     parentGroupName = registerOutput<String?>('parentGroupName');
-    properties = registerOutput<ThingGroupProperties?>('properties');
+    properties = registerOutput<ThingGroupProperties?>(
+      'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ThingGroupProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -277,7 +286,16 @@ class ThingGroup extends pulumi.CustomResource {
     metadatas = registerOutput<List<Map<String, dynamic>>>('metadatas');
     this.name = registerOutput<String>('name');
     parentGroupName = registerOutput<String?>('parentGroupName');
-    properties = registerOutput<ThingGroupProperties?>('properties');
+    properties = registerOutput<ThingGroupProperties?>(
+      'properties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ThingGroupProperties.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

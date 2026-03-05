@@ -22,7 +22,8 @@ class AzureadConfig {
     return raw;
   }
 
-  bool get adoPipelineServiceConnectionIdIsSecret => _isSecret('adoPipelineServiceConnectionId');
+  bool get adoPipelineServiceConnectionIdIsSecret =>
+      _isSecret('adoPipelineServiceConnectionId');
 
   /// Base64 encoded PKCS#12 certificate bundle to use when authenticating as a Service Principal using a Client Certificate
   String? get clientCertificate {
@@ -38,7 +39,8 @@ class AzureadConfig {
     return raw;
   }
 
-  bool get clientCertificatePasswordIsSecret => _isSecret('clientCertificatePassword');
+  bool get clientCertificatePasswordIsSecret =>
+      _isSecret('clientCertificatePassword');
 
   /// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service Principal using a Client Certificate
   String? get clientCertificatePath {
@@ -86,7 +88,8 @@ class AzureadConfig {
     return (raw).toBool();
   }
 
-  bool get disableTerraformPartnerIdIsSecret => _isSecret('disableTerraformPartnerId');
+  bool get disableTerraformPartnerIdIsSecret =>
+      _isSecret('disableTerraformPartnerId');
 
   /// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified when `metadata_host` is specified.
   String? get environment {
@@ -174,7 +177,8 @@ class AzureadConfig {
     return (raw).toBool();
   }
 
-  bool get useAksWorkloadIdentityIsSecret => _isSecret('useAksWorkloadIdentity');
+  bool get useAksWorkloadIdentityIsSecret =>
+      _isSecret('useAksWorkloadIdentity');
 
   /// Allow Azure CLI to be used for Authentication
   bool? get useCli {
@@ -199,8 +203,6 @@ class AzureadConfig {
   }
 
   bool get useOidcIsSecret => _isSecret('useOidc');
-
 }
 
 final config = AzureadConfig();
-

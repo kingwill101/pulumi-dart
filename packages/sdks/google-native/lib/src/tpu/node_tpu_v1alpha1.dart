@@ -106,6 +106,13 @@ class NodeTpuV1alpha1 extends pulumi.CustomResource {
     requestId = registerOutput<String?>('requestId');
     schedulingConfig = registerOutput<SchedulingConfigResponseTpuV1alpha1>(
       'schedulingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SchedulingConfigResponseTpuV1alpha1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     serviceAccount = registerOutput<String>('serviceAccount');
     state = registerOutput<String>('state');

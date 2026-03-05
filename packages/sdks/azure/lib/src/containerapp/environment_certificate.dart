@@ -944,6 +944,13 @@ class EnvironmentCertificate extends pulumi.CustomResource {
     certificateKeyVault =
         registerOutput<EnvironmentCertificateCertificateKeyVault?>(
           'certificateKeyVault',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EnvironmentCertificateCertificateKeyVault.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     certificatePassword = registerOutput<String?>('certificatePassword');
     containerAppEnvironmentId = registerOutput<String>(
@@ -985,6 +992,13 @@ class EnvironmentCertificate extends pulumi.CustomResource {
     certificateKeyVault =
         registerOutput<EnvironmentCertificateCertificateKeyVault?>(
           'certificateKeyVault',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return EnvironmentCertificateCertificateKeyVault.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     certificatePassword = registerOutput<String?>('certificatePassword');
     containerAppEnvironmentId = registerOutput<String>(

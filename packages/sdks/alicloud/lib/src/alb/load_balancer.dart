@@ -522,6 +522,13 @@ class LoadBalancer extends pulumi.CustomResource {
        ) {
     accessLogConfig = registerOutput<LoadBalancerAccessLogConfig?>(
       'accessLogConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerAccessLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     addressAllocatedMode = registerOutput<String?>('addressAllocatedMode');
     addressIpVersion = registerOutput<String>('addressIpVersion');
@@ -531,6 +538,13 @@ class LoadBalancer extends pulumi.CustomResource {
     deletionProtectionConfig =
         registerOutput<LoadBalancerDeletionProtectionConfig>(
           'deletionProtectionConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LoadBalancerDeletionProtectionConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     deletionProtectionEnabled = registerOutput<bool>(
       'deletionProtectionEnabled',
@@ -541,12 +555,26 @@ class LoadBalancer extends pulumi.CustomResource {
     loadBalancerBillingConfig =
         registerOutput<LoadBalancerLoadBalancerBillingConfig>(
           'loadBalancerBillingConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LoadBalancerLoadBalancerBillingConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     loadBalancerEdition = registerOutput<String>('loadBalancerEdition');
     loadBalancerName = registerOutput<String?>('loadBalancerName');
     modificationProtectionConfig =
         registerOutput<LoadBalancerModificationProtectionConfig>(
           'modificationProtectionConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LoadBalancerModificationProtectionConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     regionId = registerOutput<String>('regionId');
     resourceGroupId = registerOutput<String>('resourceGroupId');
@@ -581,6 +609,13 @@ class LoadBalancer extends pulumi.CustomResource {
        ) {
     accessLogConfig = registerOutput<LoadBalancerAccessLogConfig?>(
       'accessLogConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LoadBalancerAccessLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     addressAllocatedMode = registerOutput<String?>('addressAllocatedMode');
     addressIpVersion = registerOutput<String>('addressIpVersion');
@@ -590,6 +625,13 @@ class LoadBalancer extends pulumi.CustomResource {
     deletionProtectionConfig =
         registerOutput<LoadBalancerDeletionProtectionConfig>(
           'deletionProtectionConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LoadBalancerDeletionProtectionConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     deletionProtectionEnabled = registerOutput<bool>(
       'deletionProtectionEnabled',
@@ -600,12 +642,26 @@ class LoadBalancer extends pulumi.CustomResource {
     loadBalancerBillingConfig =
         registerOutput<LoadBalancerLoadBalancerBillingConfig>(
           'loadBalancerBillingConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LoadBalancerLoadBalancerBillingConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     loadBalancerEdition = registerOutput<String>('loadBalancerEdition');
     loadBalancerName = registerOutput<String?>('loadBalancerName');
     modificationProtectionConfig =
         registerOutput<LoadBalancerModificationProtectionConfig>(
           'modificationProtectionConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LoadBalancerModificationProtectionConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     regionId = registerOutput<String>('regionId');
     resourceGroupId = registerOutput<String>('resourceGroupId');

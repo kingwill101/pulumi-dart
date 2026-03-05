@@ -214,12 +214,35 @@ class RemediationAtManagementGroup extends pulumi.CustomResource {
     createdOn = registerOutput<String>('createdOn');
     deploymentStatus = registerOutput<RemediationDeploymentSummaryResponse>(
       'deploymentStatus',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RemediationDeploymentSummaryResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     failureThreshold =
         registerOutput<RemediationPropertiesResponseFailureThreshold?>(
           'failureThreshold',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RemediationPropertiesResponseFailureThreshold.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    filters = registerOutput<RemediationFiltersResponse?>('filters');
+    filters = registerOutput<RemediationFiltersResponse?>(
+      'filters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RemediationFiltersResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     lastUpdatedOn = registerOutput<String>('lastUpdatedOn');
     this.name = registerOutput<String>('name');
     parallelDeployments = registerOutput<int?>('parallelDeployments');
@@ -231,7 +254,16 @@ class RemediationAtManagementGroup extends pulumi.CustomResource {
     resourceCount = registerOutput<int?>('resourceCount');
     resourceDiscoveryMode = registerOutput<String?>('resourceDiscoveryMode');
     statusMessage = registerOutput<String>('statusMessage');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

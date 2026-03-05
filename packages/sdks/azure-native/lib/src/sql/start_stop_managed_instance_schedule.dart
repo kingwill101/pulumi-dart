@@ -469,7 +469,16 @@ class StartStopManagedInstanceSchedule extends pulumi.CustomResource {
     nextExecutionTime = registerOutput<String>('nextExecutionTime');
     nextRunAction = registerOutput<String>('nextRunAction');
     scheduleList = registerOutput<List<Map<String, dynamic>>>('scheduleList');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     timeZoneId = registerOutput<String?>('timeZoneId');
     type = registerOutput<String>('type');
   }

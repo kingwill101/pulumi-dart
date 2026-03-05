@@ -1068,9 +1068,25 @@ class CxPlaybook extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
     goal = registerOutput<String>('goal');
-    instruction = registerOutput<CxPlaybookInstruction?>('instruction');
+    instruction = registerOutput<CxPlaybookInstruction?>(
+      'instruction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxPlaybookInstruction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     llmModelSettings = registerOutput<CxPlaybookLlmModelSettings?>(
       'llmModelSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxPlaybookLlmModelSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     parent = registerOutput<String?>('parent');
@@ -1108,9 +1124,25 @@ class CxPlaybook extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
     goal = registerOutput<String>('goal');
-    instruction = registerOutput<CxPlaybookInstruction?>('instruction');
+    instruction = registerOutput<CxPlaybookInstruction?>(
+      'instruction',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxPlaybookInstruction.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     llmModelSettings = registerOutput<CxPlaybookLlmModelSettings?>(
       'llmModelSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxPlaybookLlmModelSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     parent = registerOutput<String?>('parent');

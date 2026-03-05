@@ -1,29 +1,37 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getNamespaceAuthorizationRule.
 class GetNamespaceAuthorizationRuleResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Does this Authorization Rule have permissions to Listen to the Event Hub?
   final bool listen;
+
   /// Does this Authorization Rule have permissions to Manage to the Event Hub?
   final bool manage;
   final String name;
   final String namespaceName;
+
   /// The Primary Connection String for the Event Hubs authorization Rule.
   final String primaryConnectionString;
+
   /// The alias of the Primary Connection String for the Event Hubs authorization Rule.
   final String primaryConnectionStringAlias;
+
   /// The Primary Key for the Event Hubs authorization Rule.
   final String primaryKey;
   final String resourceGroupName;
+
   /// The Secondary Connection String for the Event Hubs authorization Rule.
   final String secondaryConnectionString;
+
   /// The alias of the Secondary Connection String for the Event Hubs authorization Rule.
   final String secondaryConnectionStringAlias;
+
   /// The Secondary Key for the Event Hubs authorization Rule.
   final String secondaryKey;
+
   /// Does this Authorization Rule have permissions to Send to the Event Hub?
   final bool send;
 
@@ -75,7 +83,9 @@ class GetNamespaceAuthorizationRuleResult {
     };
   }
 
-  factory GetNamespaceAuthorizationRuleResult.fromMap(Map<String, dynamic> map) {
+  factory GetNamespaceAuthorizationRuleResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetNamespaceAuthorizationRuleResult(
       id: map['id'] as String,
       listen: map['listen'] as bool,
@@ -83,14 +93,15 @@ class GetNamespaceAuthorizationRuleResult {
       name: map['name'] as String,
       namespaceName: map['namespaceName'] as String,
       primaryConnectionString: map['primaryConnectionString'] as String,
-      primaryConnectionStringAlias: map['primaryConnectionStringAlias'] as String,
+      primaryConnectionStringAlias:
+          map['primaryConnectionStringAlias'] as String,
       primaryKey: map['primaryKey'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
       secondaryConnectionString: map['secondaryConnectionString'] as String,
-      secondaryConnectionStringAlias: map['secondaryConnectionStringAlias'] as String,
+      secondaryConnectionStringAlias:
+          map['secondaryConnectionStringAlias'] as String,
       secondaryKey: map['secondaryKey'] as String,
       send: map['send'] as bool,
     );
   }
 }
-

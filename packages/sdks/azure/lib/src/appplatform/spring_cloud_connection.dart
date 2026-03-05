@@ -548,11 +548,25 @@ class SpringCloudConnection extends pulumi.CustomResource {
        ) {
     authentication = registerOutput<SpringCloudConnectionAuthentication>(
       'authentication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpringCloudConnectionAuthentication.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clientType = registerOutput<String?>('clientType');
     this.name = registerOutput<String>('name');
     secretStore = registerOutput<SpringCloudConnectionSecretStore?>(
       'secretStore',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpringCloudConnectionSecretStore.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     springCloudId = registerOutput<String>('springCloudId');
     targetResourceId = registerOutput<String>('targetResourceId');
@@ -584,11 +598,25 @@ class SpringCloudConnection extends pulumi.CustomResource {
        ) {
     authentication = registerOutput<SpringCloudConnectionAuthentication>(
       'authentication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpringCloudConnectionAuthentication.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     clientType = registerOutput<String?>('clientType');
     this.name = registerOutput<String>('name');
     secretStore = registerOutput<SpringCloudConnectionSecretStore?>(
       'secretStore',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpringCloudConnectionSecretStore.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     springCloudId = registerOutput<String>('springCloudId');
     targetResourceId = registerOutput<String>('targetResourceId');

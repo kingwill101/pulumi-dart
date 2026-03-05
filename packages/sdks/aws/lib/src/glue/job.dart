@@ -1480,13 +1480,29 @@ class Job extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     arn = registerOutput<String>('arn');
-    command = registerOutput<JobCommand>('command');
+    command = registerOutput<JobCommand>(
+      'command',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobCommand.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     connections = registerOutput<List<String>?>('connections');
     defaultArguments = registerOutput<Map<String, String>?>('defaultArguments');
     description = registerOutput<String?>('description');
     executionClass = registerOutput<String?>('executionClass');
     executionProperty = registerOutput<JobExecutionProperty>(
       'executionProperty',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobExecutionProperty.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     glueVersion = registerOutput<String>('glueVersion');
     jobMode = registerOutput<String>('jobMode');
@@ -1500,6 +1516,13 @@ class Job extends pulumi.CustomResource {
     );
     notificationProperty = registerOutput<JobNotificationProperty>(
       'notificationProperty',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobNotificationProperty.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     numberOfWorkers = registerOutput<int>('numberOfWorkers');
     region = registerOutput<String>('region');
@@ -1507,6 +1530,13 @@ class Job extends pulumi.CustomResource {
     securityConfiguration = registerOutput<String?>('securityConfiguration');
     sourceControlDetails = registerOutput<JobSourceControlDetails?>(
       'sourceControlDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobSourceControlDetails.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -1534,13 +1564,29 @@ class Job extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    command = registerOutput<JobCommand>('command');
+    command = registerOutput<JobCommand>(
+      'command',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobCommand.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     connections = registerOutput<List<String>?>('connections');
     defaultArguments = registerOutput<Map<String, String>?>('defaultArguments');
     description = registerOutput<String?>('description');
     executionClass = registerOutput<String?>('executionClass');
     executionProperty = registerOutput<JobExecutionProperty>(
       'executionProperty',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobExecutionProperty.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     glueVersion = registerOutput<String>('glueVersion');
     jobMode = registerOutput<String>('jobMode');
@@ -1554,6 +1600,13 @@ class Job extends pulumi.CustomResource {
     );
     notificationProperty = registerOutput<JobNotificationProperty>(
       'notificationProperty',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobNotificationProperty.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     numberOfWorkers = registerOutput<int>('numberOfWorkers');
     region = registerOutput<String>('region');
@@ -1561,6 +1614,13 @@ class Job extends pulumi.CustomResource {
     securityConfiguration = registerOutput<String?>('securityConfiguration');
     sourceControlDetails = registerOutput<JobSourceControlDetails?>(
       'sourceControlDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobSourceControlDetails.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

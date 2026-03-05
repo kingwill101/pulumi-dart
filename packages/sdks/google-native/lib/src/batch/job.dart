@@ -61,18 +61,43 @@ class Job extends pulumi.CustomResource {
       ) {
     allocationPolicy = registerOutput<AllocationPolicyResponse>(
       'allocationPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AllocationPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     jobId = registerOutput<String?>('jobId');
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
-    logsPolicy = registerOutput<LogsPolicyResponse>('logsPolicy');
+    logsPolicy = registerOutput<LogsPolicyResponse>(
+      'logsPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LogsPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     notifications = registerOutput<List<Map<String, dynamic>>>('notifications');
     priority = registerOutput<String>('priority');
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');
-    status = registerOutput<JobStatusResponse>('status');
+    status = registerOutput<JobStatusResponse>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     taskGroups = registerOutput<List<Map<String, dynamic>>>('taskGroups');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');

@@ -36,7 +36,16 @@ class ProductSet extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     displayName = registerOutput<String>('displayName');
-    indexError = registerOutput<StatusResponse>('indexError');
+    indexError = registerOutput<StatusResponse>(
+      'indexError',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     indexTime = registerOutput<String>('indexTime');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

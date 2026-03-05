@@ -287,7 +287,16 @@ class DomainSamlOptions extends pulumi.CustomResource {
        ) {
     domainName = registerOutput<String>('domainName');
     region = registerOutput<String>('region');
-    samlOptions = registerOutput<DomainSamlOptionsSamlOptions?>('samlOptions');
+    samlOptions = registerOutput<DomainSamlOptionsSamlOptions?>(
+      'samlOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainSamlOptionsSamlOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [DomainSamlOptions] resource's state with the given [name] and [id].
@@ -315,6 +324,15 @@ class DomainSamlOptions extends pulumi.CustomResource {
        ) {
     domainName = registerOutput<String>('domainName');
     region = registerOutput<String>('region');
-    samlOptions = registerOutput<DomainSamlOptionsSamlOptions?>('samlOptions');
+    samlOptions = registerOutput<DomainSamlOptionsSamlOptions?>(
+      'samlOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainSamlOptionsSamlOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

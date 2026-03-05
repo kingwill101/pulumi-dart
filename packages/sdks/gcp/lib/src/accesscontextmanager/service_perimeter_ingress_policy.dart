@@ -69,9 +69,23 @@ class ServicePerimeterIngressPolicy extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     ingressFrom = registerOutput<ServicePerimeterIngressPolicyIngressFrom?>(
       'ingressFrom',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServicePerimeterIngressPolicyIngressFrom.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     ingressTo = registerOutput<ServicePerimeterIngressPolicyIngressTo?>(
       'ingressTo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServicePerimeterIngressPolicyIngressTo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     perimeter = registerOutput<String>('perimeter');
     title = registerOutput<String?>('title');
@@ -104,9 +118,23 @@ class ServicePerimeterIngressPolicy extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     ingressFrom = registerOutput<ServicePerimeterIngressPolicyIngressFrom?>(
       'ingressFrom',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServicePerimeterIngressPolicyIngressFrom.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     ingressTo = registerOutput<ServicePerimeterIngressPolicyIngressTo?>(
       'ingressTo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ServicePerimeterIngressPolicyIngressTo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     perimeter = registerOutput<String>('perimeter');
     title = registerOutput<String?>('title');

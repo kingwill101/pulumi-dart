@@ -48,14 +48,39 @@ class Registry extends pulumi.CustomResource {
     eventNotificationConfigs = registerOutput<List<Map<String, dynamic>>>(
       'eventNotificationConfigs',
     );
-    httpConfig = registerOutput<HttpConfigResponse>('httpConfig');
+    httpConfig = registerOutput<HttpConfigResponse>(
+      'httpConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HttpConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     logLevel = registerOutput<String>('logLevel');
-    mqttConfig = registerOutput<MqttConfigResponse>('mqttConfig');
+    mqttConfig = registerOutput<MqttConfigResponse>(
+      'mqttConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MqttConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     stateNotificationConfig = registerOutput<StateNotificationConfigResponse>(
       'stateNotificationConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StateNotificationConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

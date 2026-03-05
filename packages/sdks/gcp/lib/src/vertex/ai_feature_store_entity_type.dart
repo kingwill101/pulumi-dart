@@ -684,6 +684,13 @@ class AiFeatureStoreEntityType extends pulumi.CustomResource {
     monitoringConfig =
         registerOutput<AiFeatureStoreEntityTypeMonitoringConfig?>(
           'monitoringConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AiFeatureStoreEntityTypeMonitoringConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     offlineStorageTtlDays = registerOutput<int?>('offlineStorageTtlDays');
@@ -724,6 +731,13 @@ class AiFeatureStoreEntityType extends pulumi.CustomResource {
     monitoringConfig =
         registerOutput<AiFeatureStoreEntityTypeMonitoringConfig?>(
           'monitoringConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return AiFeatureStoreEntityTypeMonitoringConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     offlineStorageTtlDays = registerOutput<int?>('offlineStorageTtlDays');

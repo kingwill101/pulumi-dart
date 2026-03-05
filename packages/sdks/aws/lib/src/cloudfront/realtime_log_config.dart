@@ -482,7 +482,16 @@ class RealtimeLogConfig extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    endpoint = registerOutput<RealtimeLogConfigEndpoint>('endpoint');
+    endpoint = registerOutput<RealtimeLogConfigEndpoint>(
+      'endpoint',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RealtimeLogConfigEndpoint.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     fields = registerOutput<List<String>>('fields');
     this.name = registerOutput<String>('name');
     samplingRate = registerOutput<int>('samplingRate');
@@ -512,7 +521,16 @@ class RealtimeLogConfig extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    endpoint = registerOutput<RealtimeLogConfigEndpoint>('endpoint');
+    endpoint = registerOutput<RealtimeLogConfigEndpoint>(
+      'endpoint',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RealtimeLogConfigEndpoint.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     fields = registerOutput<List<String>>('fields');
     this.name = registerOutput<String>('name');
     samplingRate = registerOutput<int>('samplingRate');

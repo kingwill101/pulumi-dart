@@ -203,7 +203,16 @@ class Thesaurus extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    sourceS3Path = registerOutput<ThesaurusSourceS3Path>('sourceS3Path');
+    sourceS3Path = registerOutput<ThesaurusSourceS3Path>(
+      'sourceS3Path',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ThesaurusSourceS3Path.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -239,7 +248,16 @@ class Thesaurus extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    sourceS3Path = registerOutput<ThesaurusSourceS3Path>('sourceS3Path');
+    sourceS3Path = registerOutput<ThesaurusSourceS3Path>(
+      'sourceS3Path',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ThesaurusSourceS3Path.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

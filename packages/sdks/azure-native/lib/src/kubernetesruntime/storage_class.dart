@@ -225,10 +225,26 @@ class StorageClass extends pulumi.CustomResource {
     priority = registerOutput<double?>('priority');
     provisioner = registerOutput<String?>('provisioner');
     provisioningState = registerOutput<String>('provisioningState');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     typeProperties = registerOutput<BlobStorageClassTypePropertiesResponse>(
       'typeProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BlobStorageClassTypePropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     volumeBindingMode = registerOutput<String?>('volumeBindingMode');
   }

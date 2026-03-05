@@ -78,12 +78,28 @@ class Environment extends pulumi.CustomResource {
     endpoints =
         registerOutput<GoogleCloudDataplexV1EnvironmentEndpointsResponse>(
           'endpoints',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDataplexV1EnvironmentEndpointsResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     environmentId = registerOutput<String>('environmentId');
     infrastructureSpec =
         registerOutput<
           GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponse
-        >('infrastructureSpec');
+        >(
+          'infrastructureSpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     labels = registerOutput<Map<String, String>>('labels');
     lakeId = registerOutput<String>('lakeId');
     location = registerOutput<String>('location');
@@ -92,10 +108,24 @@ class Environment extends pulumi.CustomResource {
     sessionSpec =
         registerOutput<GoogleCloudDataplexV1EnvironmentSessionSpecResponse>(
           'sessionSpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDataplexV1EnvironmentSessionSpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     sessionStatus =
         registerOutput<GoogleCloudDataplexV1EnvironmentSessionStatusResponse>(
           'sessionStatus',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDataplexV1EnvironmentSessionStatusResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');

@@ -623,13 +623,38 @@ class SecurityAction extends pulumi.CustomResource {
     apiProxies = registerOutput<List<String>?>('apiProxies');
     conditionConfig = registerOutput<SecurityActionConditionConfig>(
       'conditionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityActionConditionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
-    deny = registerOutput<SecurityActionDeny?>('deny');
+    deny = registerOutput<SecurityActionDeny?>(
+      'deny',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityActionDeny.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     envId = registerOutput<String>('envId');
     expireTime = registerOutput<String?>('expireTime');
-    flag = registerOutput<SecurityActionFlag?>('flag');
+    flag = registerOutput<SecurityActionFlag?>(
+      'flag',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityActionFlag.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     orgId = registerOutput<String>('orgId');
     securityActionId = registerOutput<String>('securityActionId');
     state = registerOutput<String>('state');
@@ -664,13 +689,38 @@ class SecurityAction extends pulumi.CustomResource {
     apiProxies = registerOutput<List<String>?>('apiProxies');
     conditionConfig = registerOutput<SecurityActionConditionConfig>(
       'conditionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityActionConditionConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
-    deny = registerOutput<SecurityActionDeny?>('deny');
+    deny = registerOutput<SecurityActionDeny?>(
+      'deny',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityActionDeny.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     envId = registerOutput<String>('envId');
     expireTime = registerOutput<String?>('expireTime');
-    flag = registerOutput<SecurityActionFlag?>('flag');
+    flag = registerOutput<SecurityActionFlag?>(
+      'flag',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SecurityActionFlag.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     orgId = registerOutput<String>('orgId');
     securityActionId = registerOutput<String>('securityActionId');
     this.state = registerOutput<String>('state');

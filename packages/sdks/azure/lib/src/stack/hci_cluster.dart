@@ -67,7 +67,16 @@ class HciCluster extends pulumi.CustomResource {
     );
     clientId = registerOutput<String?>('clientId');
     cloudId = registerOutput<String>('cloudId');
-    identity = registerOutput<HciClusterIdentity?>('identity');
+    identity = registerOutput<HciClusterIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HciClusterIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -107,7 +116,16 @@ class HciCluster extends pulumi.CustomResource {
     );
     clientId = registerOutput<String?>('clientId');
     cloudId = registerOutput<String>('cloudId');
-    identity = registerOutput<HciClusterIdentity?>('identity');
+    identity = registerOutput<HciClusterIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HciClusterIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

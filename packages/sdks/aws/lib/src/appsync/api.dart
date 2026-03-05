@@ -739,7 +739,16 @@ class Api extends pulumi.CustomResource {
     apiArn = registerOutput<String>('apiArn');
     apiId = registerOutput<String>('apiId');
     dns = registerOutput<Map<String, String>>('dns');
-    eventConfig = registerOutput<ApiEventConfig>('eventConfig');
+    eventConfig = registerOutput<ApiEventConfig>(
+      'eventConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiEventConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     ownerContact = registerOutput<String?>('ownerContact');
     region = registerOutput<String>('region');
@@ -771,7 +780,16 @@ class Api extends pulumi.CustomResource {
     apiArn = registerOutput<String>('apiArn');
     apiId = registerOutput<String>('apiId');
     dns = registerOutput<Map<String, String>>('dns');
-    eventConfig = registerOutput<ApiEventConfig>('eventConfig');
+    eventConfig = registerOutput<ApiEventConfig>(
+      'eventConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiEventConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     ownerContact = registerOutput<String?>('ownerContact');
     region = registerOutput<String>('region');

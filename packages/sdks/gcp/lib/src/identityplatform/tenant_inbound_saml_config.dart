@@ -311,10 +311,28 @@ class TenantInboundSamlConfig extends pulumi.CustomResource {
        ) {
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool?>('enabled');
-    idpConfig = registerOutput<TenantInboundSamlConfigIdpConfig>('idpConfig');
+    idpConfig = registerOutput<TenantInboundSamlConfigIdpConfig>(
+      'idpConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TenantInboundSamlConfigIdpConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    spConfig = registerOutput<TenantInboundSamlConfigSpConfig>('spConfig');
+    spConfig = registerOutput<TenantInboundSamlConfigSpConfig>(
+      'spConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TenantInboundSamlConfigSpConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tenant = registerOutput<String>('tenant');
   }
 
@@ -343,10 +361,28 @@ class TenantInboundSamlConfig extends pulumi.CustomResource {
        ) {
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool?>('enabled');
-    idpConfig = registerOutput<TenantInboundSamlConfigIdpConfig>('idpConfig');
+    idpConfig = registerOutput<TenantInboundSamlConfigIdpConfig>(
+      'idpConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TenantInboundSamlConfigIdpConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    spConfig = registerOutput<TenantInboundSamlConfigSpConfig>('spConfig');
+    spConfig = registerOutput<TenantInboundSamlConfigSpConfig>(
+      'spConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TenantInboundSamlConfigSpConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tenant = registerOutput<String>('tenant');
   }
 }

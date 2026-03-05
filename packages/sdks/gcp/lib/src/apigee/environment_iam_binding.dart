@@ -885,7 +885,16 @@ class EnvironmentIamBinding extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<EnvironmentIamBindingCondition?>('condition');
+    condition = registerOutput<EnvironmentIamBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnvironmentIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     envId = registerOutput<String>('envId');
     etag = registerOutput<String>('etag');
     members = registerOutput<List<String>>('members');
@@ -916,7 +925,16 @@ class EnvironmentIamBinding extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    condition = registerOutput<EnvironmentIamBindingCondition?>('condition');
+    condition = registerOutput<EnvironmentIamBindingCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnvironmentIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     envId = registerOutput<String>('envId');
     etag = registerOutput<String>('etag');
     members = registerOutput<List<String>>('members');

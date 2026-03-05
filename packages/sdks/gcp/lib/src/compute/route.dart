@@ -1247,7 +1247,16 @@ class Route extends pulumi.CustomResource {
     nextHopOrigin = registerOutput<String>('nextHopOrigin');
     nextHopPeering = registerOutput<String>('nextHopPeering');
     nextHopVpnTunnel = registerOutput<String?>('nextHopVpnTunnel');
-    params = registerOutput<RouteParams?>('params');
+    params = registerOutput<RouteParams?>(
+      'params',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RouteParams.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     priority = registerOutput<int?>('priority');
     project = registerOutput<String>('project');
     routeStatus = registerOutput<String>('routeStatus');
@@ -1294,7 +1303,16 @@ class Route extends pulumi.CustomResource {
     nextHopOrigin = registerOutput<String>('nextHopOrigin');
     nextHopPeering = registerOutput<String>('nextHopPeering');
     nextHopVpnTunnel = registerOutput<String?>('nextHopVpnTunnel');
-    params = registerOutput<RouteParams?>('params');
+    params = registerOutput<RouteParams?>(
+      'params',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RouteParams.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     priority = registerOutput<int?>('priority');
     project = registerOutput<String>('project');
     routeStatus = registerOutput<String>('routeStatus');

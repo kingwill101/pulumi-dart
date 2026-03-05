@@ -887,26 +887,81 @@ class BlobServiceProperties extends pulumi.CustomResource {
       'automaticSnapshotPolicyEnabled',
     );
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    changeFeed = registerOutput<ChangeFeedResponse?>('changeFeed');
+    changeFeed = registerOutput<ChangeFeedResponse?>(
+      'changeFeed',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ChangeFeedResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     containerDeleteRetentionPolicy =
         registerOutput<DeleteRetentionPolicyResponse?>(
           'containerDeleteRetentionPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DeleteRetentionPolicyResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    cors = registerOutput<CorsRulesResponse?>('cors');
+    cors = registerOutput<CorsRulesResponse?>(
+      'cors',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CorsRulesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     defaultServiceVersion = registerOutput<String?>('defaultServiceVersion');
     deleteRetentionPolicy = registerOutput<DeleteRetentionPolicyResponse?>(
       'deleteRetentionPolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DeleteRetentionPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     isVersioningEnabled = registerOutput<bool?>('isVersioningEnabled');
     lastAccessTimeTrackingPolicy =
         registerOutput<LastAccessTimeTrackingPolicyResponse?>(
           'lastAccessTimeTrackingPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LastAccessTimeTrackingPolicyResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     restorePolicy = registerOutput<RestorePolicyPropertiesResponse?>(
       'restorePolicy',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RestorePolicyPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    sku = registerOutput<SkuResponse>('sku');
+    sku = registerOutput<SkuResponse>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

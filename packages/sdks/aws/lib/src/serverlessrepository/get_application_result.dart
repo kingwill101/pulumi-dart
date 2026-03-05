@@ -1,20 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getApplication.
 class GetApplicationResult {
   /// ARN of the application.
   final String applicationId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Name of the application.
   final String name;
   final String region;
+
   /// A list of capabilities describing the permissions needed to deploy the application.
   final List<String> requiredCapabilities;
   final String semanticVersion;
+
   /// URL pointing to the source code of the application version.
   final String sourceCodeUrl;
+
   /// URL pointing to the Cloud Formation template for the application version.
   final String templateUrl;
 
@@ -57,11 +61,11 @@ class GetApplicationResult {
       id: map['id'] as String,
       name: map['name'] as String,
       region: map['region'] as String,
-      requiredCapabilities: (map['requiredCapabilities'] as List).cast<String>(),
+      requiredCapabilities: (map['requiredCapabilities'] as List)
+          .cast<String>(),
       semanticVersion: map['semanticVersion'] as String,
       sourceCodeUrl: map['sourceCodeUrl'] as String,
       templateUrl: map['templateUrl'] as String,
     );
   }
 }
-

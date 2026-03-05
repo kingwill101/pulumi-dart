@@ -273,7 +273,16 @@ class Package extends pulumi.CustomResource {
     packageDescription = registerOutput<String?>('packageDescription');
     packageId = registerOutput<String>('packageId');
     packageName = registerOutput<String>('packageName');
-    packageSource = registerOutput<PackagePackageSource>('packageSource');
+    packageSource = registerOutput<PackagePackageSource>(
+      'packageSource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PackagePackageSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     packageType = registerOutput<String>('packageType');
     region = registerOutput<String>('region');
   }
@@ -306,7 +315,16 @@ class Package extends pulumi.CustomResource {
     packageDescription = registerOutput<String?>('packageDescription');
     packageId = registerOutput<String>('packageId');
     packageName = registerOutput<String>('packageName');
-    packageSource = registerOutput<PackagePackageSource>('packageSource');
+    packageSource = registerOutput<PackagePackageSource>(
+      'packageSource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PackagePackageSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     packageType = registerOutput<String>('packageType');
     region = registerOutput<String>('region');
   }

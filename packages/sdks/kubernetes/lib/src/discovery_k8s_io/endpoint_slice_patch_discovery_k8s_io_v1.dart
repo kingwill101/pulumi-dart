@@ -46,7 +46,16 @@ class EndpointSlicePatchDiscoveryK8sIoV1 extends pulumi.CustomResource {
     apiVersion = registerOutput<String?>('apiVersion');
     endpoints = registerOutput<List<Map<String, dynamic>>?>('endpoints');
     kind = registerOutput<String?>('kind');
-    metadata = registerOutput<ObjectMetaPatch?>('metadata');
+    metadata = registerOutput<ObjectMetaPatch?>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMetaPatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ports = registerOutput<List<Map<String, dynamic>>?>('ports');
   }
 }

@@ -69,6 +69,13 @@ class Attribute extends pulumi.CustomResource {
     dataAccessSpec =
         registerOutput<GoogleCloudDataplexV1DataAccessSpecResponse>(
           'dataAccessSpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDataplexV1DataAccessSpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     dataAttributeId = registerOutput<String>('dataAttributeId');
     dataTaxonomyId = registerOutput<String>('dataTaxonomyId');
@@ -83,6 +90,13 @@ class Attribute extends pulumi.CustomResource {
     resourceAccessSpec =
         registerOutput<GoogleCloudDataplexV1ResourceAccessSpecResponse>(
           'resourceAccessSpec',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDataplexV1ResourceAccessSpecResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');

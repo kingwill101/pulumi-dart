@@ -179,7 +179,16 @@ class Build extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     operatingSystem = registerOutput<String>('operatingSystem');
     region = registerOutput<String>('region');
-    storageLocation = registerOutput<BuildStorageLocation>('storageLocation');
+    storageLocation = registerOutput<BuildStorageLocation>(
+      'storageLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BuildStorageLocation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     version = registerOutput<String?>('version');
@@ -208,7 +217,16 @@ class Build extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     operatingSystem = registerOutput<String>('operatingSystem');
     region = registerOutput<String>('region');
-    storageLocation = registerOutput<BuildStorageLocation>('storageLocation');
+    storageLocation = registerOutput<BuildStorageLocation>(
+      'storageLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BuildStorageLocation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     version = registerOutput<String?>('version');

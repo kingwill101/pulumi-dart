@@ -391,6 +391,13 @@ class StorageLensConfiguration extends pulumi.CustomResource {
     storageLensConfiguration =
         registerOutput<StorageLensConfigurationStorageLensConfiguration>(
           'storageLensConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return StorageLensConfigurationStorageLensConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -426,6 +433,13 @@ class StorageLensConfiguration extends pulumi.CustomResource {
     storageLensConfiguration =
         registerOutput<StorageLensConfigurationStorageLensConfiguration>(
           'storageLensConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return StorageLensConfigurationStorageLensConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

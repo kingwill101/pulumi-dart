@@ -413,9 +413,36 @@ class PipelineRun extends pulumi.CustomResource {
     forceUpdateTag = registerOutput<String?>('forceUpdateTag');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    request = registerOutput<PipelineRunRequestResponse?>('request');
-    response = registerOutput<PipelineRunResponseResponse>('response');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    request = registerOutput<PipelineRunRequestResponse?>(
+      'request',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineRunRequestResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    response = registerOutput<PipelineRunResponseResponse>(
+      'response',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PipelineRunResponseResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

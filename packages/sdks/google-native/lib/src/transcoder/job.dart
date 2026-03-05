@@ -64,10 +64,28 @@ class Job extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     batchModePriority = registerOutput<int>('batchModePriority');
-    config = registerOutput<JobConfigResponse>('config');
+    config = registerOutput<JobConfigResponse>(
+      'config',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     endTime = registerOutput<String>('endTime');
-    error = registerOutput<StatusResponse>('error');
+    error = registerOutput<StatusResponse>(
+      'error',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     inputUri = registerOutput<String>('inputUri');
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');

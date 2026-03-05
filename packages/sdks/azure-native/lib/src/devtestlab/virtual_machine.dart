@@ -388,15 +388,38 @@ class VirtualMachine extends pulumi.CustomResource {
     allowClaim = registerOutput<bool?>('allowClaim');
     applicableSchedule = registerOutput<ApplicableScheduleResponse>(
       'applicableSchedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApplicableScheduleResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     artifactDeploymentStatus =
         registerOutput<ArtifactDeploymentStatusPropertiesResponse>(
           'artifactDeploymentStatus',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ArtifactDeploymentStatusPropertiesResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     artifacts = registerOutput<List<Map<String, dynamic>>?>('artifacts');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     computeId = registerOutput<String>('computeId');
-    computeVm = registerOutput<ComputeVmPropertiesResponse>('computeVm');
+    computeVm = registerOutput<ComputeVmPropertiesResponse>(
+      'computeVm',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ComputeVmPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createdByUser = registerOutput<String>('createdByUser');
     createdByUserId = registerOutput<String>('createdByUserId');
     createdDate = registerOutput<String?>('createdDate');
@@ -410,6 +433,13 @@ class VirtualMachine extends pulumi.CustomResource {
     fqdn = registerOutput<String>('fqdn');
     galleryImageReference = registerOutput<GalleryImageReferenceResponse?>(
       'galleryImageReference',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GalleryImageReferenceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     isAuthenticationWithSshKey = registerOutput<bool?>(
       'isAuthenticationWithSshKey',
@@ -421,6 +451,13 @@ class VirtualMachine extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkInterface = registerOutput<NetworkInterfacePropertiesResponse?>(
       'networkInterface',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkInterfacePropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     notes = registerOutput<String?>('notes');
     osType = registerOutput<String>('osType');

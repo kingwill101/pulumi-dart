@@ -441,7 +441,16 @@ class VpcConnection extends pulumi.CustomResource {
     subnetIds = registerOutput<List<String>>('subnetIds');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<VpcConnectionTimeouts?>('timeouts');
+    timeouts = registerOutput<VpcConnectionTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpcConnectionTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vpcConnectionId = registerOutput<String>('vpcConnectionId');
   }
 
@@ -479,7 +488,16 @@ class VpcConnection extends pulumi.CustomResource {
     subnetIds = registerOutput<List<String>>('subnetIds');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<VpcConnectionTimeouts?>('timeouts');
+    timeouts = registerOutput<VpcConnectionTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpcConnectionTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vpcConnectionId = registerOutput<String>('vpcConnectionId');
   }
 }

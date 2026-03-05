@@ -422,6 +422,13 @@ class CryptoKey extends pulumi.CustomResource {
     keyAccessJustificationsPolicy =
         registerOutput<CryptoKeyKeyAccessJustificationsPolicy>(
           'keyAccessJustificationsPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CryptoKeyKeyAccessJustificationsPolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     keyRing = registerOutput<String>('keyRing');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -435,6 +442,13 @@ class CryptoKey extends pulumi.CustomResource {
     );
     versionTemplate = registerOutput<CryptoKeyVersionTemplate>(
       'versionTemplate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CryptoKeyVersionTemplate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -470,6 +484,13 @@ class CryptoKey extends pulumi.CustomResource {
     keyAccessJustificationsPolicy =
         registerOutput<CryptoKeyKeyAccessJustificationsPolicy>(
           'keyAccessJustificationsPolicy',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CryptoKeyKeyAccessJustificationsPolicy.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     keyRing = registerOutput<String>('keyRing');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -483,6 +504,13 @@ class CryptoKey extends pulumi.CustomResource {
     );
     versionTemplate = registerOutput<CryptoKeyVersionTemplate>(
       'versionTemplate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CryptoKeyVersionTemplate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

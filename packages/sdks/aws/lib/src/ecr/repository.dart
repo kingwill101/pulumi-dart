@@ -356,6 +356,13 @@ class Repository extends pulumi.CustomResource {
     imageScanningConfiguration =
         registerOutput<RepositoryImageScanningConfiguration?>(
           'imageScanningConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RepositoryImageScanningConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     imageTagMutability = registerOutput<String?>('imageTagMutability');
     imageTagMutabilityExclusionFilters =
@@ -401,6 +408,13 @@ class Repository extends pulumi.CustomResource {
     imageScanningConfiguration =
         registerOutput<RepositoryImageScanningConfiguration?>(
           'imageScanningConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RepositoryImageScanningConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     imageTagMutability = registerOutput<String?>('imageTagMutability');
     imageTagMutabilityExclusionFilters =

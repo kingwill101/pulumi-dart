@@ -3366,83 +3366,547 @@ class AwsIntegrations extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     accountId = registerOutput<String>('accountId');
-    alb = registerOutput<AwsIntegrationsAlb?>('alb');
-    apiGateway = registerOutput<AwsIntegrationsApiGateway?>('apiGateway');
-    autoScaling = registerOutput<AwsIntegrationsAutoScaling?>('autoScaling');
-    awsAppSync = registerOutput<AwsIntegrationsAwsAppSync?>('awsAppSync');
-    awsAthena = registerOutput<AwsIntegrationsAwsAthena?>('awsAthena');
+    alb = registerOutput<AwsIntegrationsAlb?>(
+      'alb',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAlb.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    apiGateway = registerOutput<AwsIntegrationsApiGateway?>(
+      'apiGateway',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsApiGateway.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    autoScaling = registerOutput<AwsIntegrationsAutoScaling?>(
+      'autoScaling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAutoScaling.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    awsAppSync = registerOutput<AwsIntegrationsAwsAppSync?>(
+      'awsAppSync',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsAppSync.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    awsAthena = registerOutput<AwsIntegrationsAwsAthena?>(
+      'awsAthena',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsAthena.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     awsAutoDiscovery = registerOutput<AwsIntegrationsAwsAutoDiscovery?>(
       'awsAutoDiscovery',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsAutoDiscovery.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    awsCognito = registerOutput<AwsIntegrationsAwsCognito?>('awsCognito');
-    awsConnect = registerOutput<AwsIntegrationsAwsConnect?>('awsConnect');
+    awsCognito = registerOutput<AwsIntegrationsAwsCognito?>(
+      'awsCognito',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsCognito.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    awsConnect = registerOutput<AwsIntegrationsAwsConnect?>(
+      'awsConnect',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsConnect.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     awsDirectConnect = registerOutput<AwsIntegrationsAwsDirectConnect?>(
       'awsDirectConnect',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsDirectConnect.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    awsFsx = registerOutput<AwsIntegrationsAwsFsx?>('awsFsx');
-    awsGlue = registerOutput<AwsIntegrationsAwsGlue?>('awsGlue');
+    awsFsx = registerOutput<AwsIntegrationsAwsFsx?>(
+      'awsFsx',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsFsx.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    awsGlue = registerOutput<AwsIntegrationsAwsGlue?>(
+      'awsGlue',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsGlue.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     awsKinesisAnalytics = registerOutput<AwsIntegrationsAwsKinesisAnalytics?>(
       'awsKinesisAnalytics',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsKinesisAnalytics.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     awsMediaConvert = registerOutput<AwsIntegrationsAwsMediaConvert?>(
       'awsMediaConvert',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsMediaConvert.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     awsMediaPackageVod = registerOutput<AwsIntegrationsAwsMediaPackageVod?>(
       'awsMediaPackageVod',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsMediaPackageVod.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    awsMq = registerOutput<AwsIntegrationsAwsMq?>('awsMq');
-    awsMsk = registerOutput<AwsIntegrationsAwsMsk?>('awsMsk');
-    awsNeptune = registerOutput<AwsIntegrationsAwsNeptune?>('awsNeptune');
-    awsQldb = registerOutput<AwsIntegrationsAwsQldb?>('awsQldb');
+    awsMq = registerOutput<AwsIntegrationsAwsMq?>(
+      'awsMq',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsMq.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    awsMsk = registerOutput<AwsIntegrationsAwsMsk?>(
+      'awsMsk',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsMsk.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    awsNeptune = registerOutput<AwsIntegrationsAwsNeptune?>(
+      'awsNeptune',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsNeptune.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    awsQldb = registerOutput<AwsIntegrationsAwsQldb?>(
+      'awsQldb',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsQldb.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     awsRoute53resolver = registerOutput<AwsIntegrationsAwsRoute53resolver?>(
       'awsRoute53resolver',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsRoute53resolver.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    awsStates = registerOutput<AwsIntegrationsAwsStates?>('awsStates');
+    awsStates = registerOutput<AwsIntegrationsAwsStates?>(
+      'awsStates',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsStates.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     awsTransitGateway = registerOutput<AwsIntegrationsAwsTransitGateway?>(
       'awsTransitGateway',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsTransitGateway.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    awsWaf = registerOutput<AwsIntegrationsAwsWaf?>('awsWaf');
-    awsWafv2 = registerOutput<AwsIntegrationsAwsWafv2?>('awsWafv2');
-    billing = registerOutput<AwsIntegrationsBilling?>('billing');
-    cloudfront = registerOutput<AwsIntegrationsCloudfront?>('cloudfront');
-    cloudtrail = registerOutput<AwsIntegrationsCloudtrail?>('cloudtrail');
-    docDb = registerOutput<AwsIntegrationsDocDb?>('docDb');
-    dynamodb = registerOutput<AwsIntegrationsDynamodb?>('dynamodb');
-    ebs = registerOutput<AwsIntegrationsEbs?>('ebs');
-    ec2 = registerOutput<AwsIntegrationsEc2?>('ec2');
-    ecs = registerOutput<AwsIntegrationsEcs?>('ecs');
-    efs = registerOutput<AwsIntegrationsEfs?>('efs');
-    elasticache = registerOutput<AwsIntegrationsElasticache?>('elasticache');
+    awsWaf = registerOutput<AwsIntegrationsAwsWaf?>(
+      'awsWaf',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsWaf.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    awsWafv2 = registerOutput<AwsIntegrationsAwsWafv2?>(
+      'awsWafv2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsWafv2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    billing = registerOutput<AwsIntegrationsBilling?>(
+      'billing',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsBilling.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    cloudfront = registerOutput<AwsIntegrationsCloudfront?>(
+      'cloudfront',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsCloudfront.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    cloudtrail = registerOutput<AwsIntegrationsCloudtrail?>(
+      'cloudtrail',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsCloudtrail.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    docDb = registerOutput<AwsIntegrationsDocDb?>(
+      'docDb',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsDocDb.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    dynamodb = registerOutput<AwsIntegrationsDynamodb?>(
+      'dynamodb',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsDynamodb.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    ebs = registerOutput<AwsIntegrationsEbs?>(
+      'ebs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsEbs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    ec2 = registerOutput<AwsIntegrationsEc2?>(
+      'ec2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsEc2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    ecs = registerOutput<AwsIntegrationsEcs?>(
+      'ecs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsEcs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    efs = registerOutput<AwsIntegrationsEfs?>(
+      'efs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsEfs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    elasticache = registerOutput<AwsIntegrationsElasticache?>(
+      'elasticache',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsElasticache.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     elasticbeanstalk = registerOutput<AwsIntegrationsElasticbeanstalk?>(
       'elasticbeanstalk',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsElasticbeanstalk.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     elasticsearch = registerOutput<AwsIntegrationsElasticsearch?>(
       'elasticsearch',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsElasticsearch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    elb = registerOutput<AwsIntegrationsElb?>('elb');
-    emr = registerOutput<AwsIntegrationsEmr?>('emr');
-    health = registerOutput<AwsIntegrationsHealth?>('health');
-    iam = registerOutput<AwsIntegrationsIam?>('iam');
-    iot = registerOutput<AwsIntegrationsIot?>('iot');
-    kinesis = registerOutput<AwsIntegrationsKinesis?>('kinesis');
+    elb = registerOutput<AwsIntegrationsElb?>(
+      'elb',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsElb.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    emr = registerOutput<AwsIntegrationsEmr?>(
+      'emr',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsEmr.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    health = registerOutput<AwsIntegrationsHealth?>(
+      'health',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsHealth.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    iam = registerOutput<AwsIntegrationsIam?>(
+      'iam',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsIam.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    iot = registerOutput<AwsIntegrationsIot?>(
+      'iot',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsIot.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    kinesis = registerOutput<AwsIntegrationsKinesis?>(
+      'kinesis',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsKinesis.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kinesisFirehose = registerOutput<AwsIntegrationsKinesisFirehose?>(
       'kinesisFirehose',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsKinesisFirehose.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    lambda = registerOutput<AwsIntegrationsLambda?>('lambda');
+    lambda = registerOutput<AwsIntegrationsLambda?>(
+      'lambda',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsLambda.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     linkedAccountId = registerOutput<String>('linkedAccountId');
-    rds = registerOutput<AwsIntegrationsRds?>('rds');
-    redshift = registerOutput<AwsIntegrationsRedshift?>('redshift');
-    route53 = registerOutput<AwsIntegrationsRoute53?>('route53');
-    s3 = registerOutput<AwsIntegrationsS3?>('s3');
-    securityHub = registerOutput<AwsIntegrationsSecurityHub?>('securityHub');
-    ses = registerOutput<AwsIntegrationsSes?>('ses');
-    sns = registerOutput<AwsIntegrationsSns?>('sns');
-    sqs = registerOutput<AwsIntegrationsSqs?>('sqs');
+    rds = registerOutput<AwsIntegrationsRds?>(
+      'rds',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsRds.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    redshift = registerOutput<AwsIntegrationsRedshift?>(
+      'redshift',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsRedshift.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    route53 = registerOutput<AwsIntegrationsRoute53?>(
+      'route53',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsRoute53.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    s3 = registerOutput<AwsIntegrationsS3?>(
+      's3',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsS3.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    securityHub = registerOutput<AwsIntegrationsSecurityHub?>(
+      'securityHub',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsSecurityHub.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    ses = registerOutput<AwsIntegrationsSes?>(
+      'ses',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsSes.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    sns = registerOutput<AwsIntegrationsSns?>(
+      'sns',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsSns.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    sqs = registerOutput<AwsIntegrationsSqs?>(
+      'sqs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsSqs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     trustedAdvisor = registerOutput<AwsIntegrationsTrustedAdvisor?>(
       'trustedAdvisor',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsTrustedAdvisor.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    vpc = registerOutput<AwsIntegrationsVpc?>('vpc');
-    xRay = registerOutput<AwsIntegrationsXRay?>('xRay');
+    vpc = registerOutput<AwsIntegrationsVpc?>(
+      'vpc',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsVpc.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    xRay = registerOutput<AwsIntegrationsXRay?>(
+      'xRay',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsXRay.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [AwsIntegrations] resource's state with the given [name] and [id].
@@ -3469,82 +3933,546 @@ class AwsIntegrations extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     accountId = registerOutput<String>('accountId');
-    alb = registerOutput<AwsIntegrationsAlb?>('alb');
-    apiGateway = registerOutput<AwsIntegrationsApiGateway?>('apiGateway');
-    autoScaling = registerOutput<AwsIntegrationsAutoScaling?>('autoScaling');
-    awsAppSync = registerOutput<AwsIntegrationsAwsAppSync?>('awsAppSync');
-    awsAthena = registerOutput<AwsIntegrationsAwsAthena?>('awsAthena');
+    alb = registerOutput<AwsIntegrationsAlb?>(
+      'alb',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAlb.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    apiGateway = registerOutput<AwsIntegrationsApiGateway?>(
+      'apiGateway',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsApiGateway.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    autoScaling = registerOutput<AwsIntegrationsAutoScaling?>(
+      'autoScaling',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAutoScaling.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    awsAppSync = registerOutput<AwsIntegrationsAwsAppSync?>(
+      'awsAppSync',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsAppSync.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    awsAthena = registerOutput<AwsIntegrationsAwsAthena?>(
+      'awsAthena',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsAthena.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     awsAutoDiscovery = registerOutput<AwsIntegrationsAwsAutoDiscovery?>(
       'awsAutoDiscovery',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsAutoDiscovery.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    awsCognito = registerOutput<AwsIntegrationsAwsCognito?>('awsCognito');
-    awsConnect = registerOutput<AwsIntegrationsAwsConnect?>('awsConnect');
+    awsCognito = registerOutput<AwsIntegrationsAwsCognito?>(
+      'awsCognito',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsCognito.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    awsConnect = registerOutput<AwsIntegrationsAwsConnect?>(
+      'awsConnect',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsConnect.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     awsDirectConnect = registerOutput<AwsIntegrationsAwsDirectConnect?>(
       'awsDirectConnect',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsDirectConnect.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    awsFsx = registerOutput<AwsIntegrationsAwsFsx?>('awsFsx');
-    awsGlue = registerOutput<AwsIntegrationsAwsGlue?>('awsGlue');
+    awsFsx = registerOutput<AwsIntegrationsAwsFsx?>(
+      'awsFsx',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsFsx.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    awsGlue = registerOutput<AwsIntegrationsAwsGlue?>(
+      'awsGlue',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsGlue.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     awsKinesisAnalytics = registerOutput<AwsIntegrationsAwsKinesisAnalytics?>(
       'awsKinesisAnalytics',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsKinesisAnalytics.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     awsMediaConvert = registerOutput<AwsIntegrationsAwsMediaConvert?>(
       'awsMediaConvert',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsMediaConvert.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     awsMediaPackageVod = registerOutput<AwsIntegrationsAwsMediaPackageVod?>(
       'awsMediaPackageVod',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsMediaPackageVod.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    awsMq = registerOutput<AwsIntegrationsAwsMq?>('awsMq');
-    awsMsk = registerOutput<AwsIntegrationsAwsMsk?>('awsMsk');
-    awsNeptune = registerOutput<AwsIntegrationsAwsNeptune?>('awsNeptune');
-    awsQldb = registerOutput<AwsIntegrationsAwsQldb?>('awsQldb');
+    awsMq = registerOutput<AwsIntegrationsAwsMq?>(
+      'awsMq',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsMq.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    awsMsk = registerOutput<AwsIntegrationsAwsMsk?>(
+      'awsMsk',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsMsk.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    awsNeptune = registerOutput<AwsIntegrationsAwsNeptune?>(
+      'awsNeptune',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsNeptune.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    awsQldb = registerOutput<AwsIntegrationsAwsQldb?>(
+      'awsQldb',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsQldb.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     awsRoute53resolver = registerOutput<AwsIntegrationsAwsRoute53resolver?>(
       'awsRoute53resolver',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsRoute53resolver.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    awsStates = registerOutput<AwsIntegrationsAwsStates?>('awsStates');
+    awsStates = registerOutput<AwsIntegrationsAwsStates?>(
+      'awsStates',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsStates.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     awsTransitGateway = registerOutput<AwsIntegrationsAwsTransitGateway?>(
       'awsTransitGateway',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsTransitGateway.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    awsWaf = registerOutput<AwsIntegrationsAwsWaf?>('awsWaf');
-    awsWafv2 = registerOutput<AwsIntegrationsAwsWafv2?>('awsWafv2');
-    billing = registerOutput<AwsIntegrationsBilling?>('billing');
-    cloudfront = registerOutput<AwsIntegrationsCloudfront?>('cloudfront');
-    cloudtrail = registerOutput<AwsIntegrationsCloudtrail?>('cloudtrail');
-    docDb = registerOutput<AwsIntegrationsDocDb?>('docDb');
-    dynamodb = registerOutput<AwsIntegrationsDynamodb?>('dynamodb');
-    ebs = registerOutput<AwsIntegrationsEbs?>('ebs');
-    ec2 = registerOutput<AwsIntegrationsEc2?>('ec2');
-    ecs = registerOutput<AwsIntegrationsEcs?>('ecs');
-    efs = registerOutput<AwsIntegrationsEfs?>('efs');
-    elasticache = registerOutput<AwsIntegrationsElasticache?>('elasticache');
+    awsWaf = registerOutput<AwsIntegrationsAwsWaf?>(
+      'awsWaf',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsWaf.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    awsWafv2 = registerOutput<AwsIntegrationsAwsWafv2?>(
+      'awsWafv2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsAwsWafv2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    billing = registerOutput<AwsIntegrationsBilling?>(
+      'billing',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsBilling.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    cloudfront = registerOutput<AwsIntegrationsCloudfront?>(
+      'cloudfront',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsCloudfront.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    cloudtrail = registerOutput<AwsIntegrationsCloudtrail?>(
+      'cloudtrail',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsCloudtrail.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    docDb = registerOutput<AwsIntegrationsDocDb?>(
+      'docDb',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsDocDb.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    dynamodb = registerOutput<AwsIntegrationsDynamodb?>(
+      'dynamodb',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsDynamodb.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    ebs = registerOutput<AwsIntegrationsEbs?>(
+      'ebs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsEbs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    ec2 = registerOutput<AwsIntegrationsEc2?>(
+      'ec2',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsEc2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    ecs = registerOutput<AwsIntegrationsEcs?>(
+      'ecs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsEcs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    efs = registerOutput<AwsIntegrationsEfs?>(
+      'efs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsEfs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    elasticache = registerOutput<AwsIntegrationsElasticache?>(
+      'elasticache',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsElasticache.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     elasticbeanstalk = registerOutput<AwsIntegrationsElasticbeanstalk?>(
       'elasticbeanstalk',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsElasticbeanstalk.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     elasticsearch = registerOutput<AwsIntegrationsElasticsearch?>(
       'elasticsearch',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsElasticsearch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    elb = registerOutput<AwsIntegrationsElb?>('elb');
-    emr = registerOutput<AwsIntegrationsEmr?>('emr');
-    health = registerOutput<AwsIntegrationsHealth?>('health');
-    iam = registerOutput<AwsIntegrationsIam?>('iam');
-    iot = registerOutput<AwsIntegrationsIot?>('iot');
-    kinesis = registerOutput<AwsIntegrationsKinesis?>('kinesis');
+    elb = registerOutput<AwsIntegrationsElb?>(
+      'elb',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsElb.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    emr = registerOutput<AwsIntegrationsEmr?>(
+      'emr',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsEmr.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    health = registerOutput<AwsIntegrationsHealth?>(
+      'health',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsHealth.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    iam = registerOutput<AwsIntegrationsIam?>(
+      'iam',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsIam.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    iot = registerOutput<AwsIntegrationsIot?>(
+      'iot',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsIot.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    kinesis = registerOutput<AwsIntegrationsKinesis?>(
+      'kinesis',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsKinesis.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     kinesisFirehose = registerOutput<AwsIntegrationsKinesisFirehose?>(
       'kinesisFirehose',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsKinesisFirehose.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    lambda = registerOutput<AwsIntegrationsLambda?>('lambda');
+    lambda = registerOutput<AwsIntegrationsLambda?>(
+      'lambda',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsLambda.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     linkedAccountId = registerOutput<String>('linkedAccountId');
-    rds = registerOutput<AwsIntegrationsRds?>('rds');
-    redshift = registerOutput<AwsIntegrationsRedshift?>('redshift');
-    route53 = registerOutput<AwsIntegrationsRoute53?>('route53');
-    s3 = registerOutput<AwsIntegrationsS3?>('s3');
-    securityHub = registerOutput<AwsIntegrationsSecurityHub?>('securityHub');
-    ses = registerOutput<AwsIntegrationsSes?>('ses');
-    sns = registerOutput<AwsIntegrationsSns?>('sns');
-    sqs = registerOutput<AwsIntegrationsSqs?>('sqs');
+    rds = registerOutput<AwsIntegrationsRds?>(
+      'rds',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsRds.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    redshift = registerOutput<AwsIntegrationsRedshift?>(
+      'redshift',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsRedshift.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    route53 = registerOutput<AwsIntegrationsRoute53?>(
+      'route53',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsRoute53.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    s3 = registerOutput<AwsIntegrationsS3?>(
+      's3',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsS3.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    securityHub = registerOutput<AwsIntegrationsSecurityHub?>(
+      'securityHub',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsSecurityHub.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    ses = registerOutput<AwsIntegrationsSes?>(
+      'ses',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsSes.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    sns = registerOutput<AwsIntegrationsSns?>(
+      'sns',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsSns.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    sqs = registerOutput<AwsIntegrationsSqs?>(
+      'sqs',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsSqs.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     trustedAdvisor = registerOutput<AwsIntegrationsTrustedAdvisor?>(
       'trustedAdvisor',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsTrustedAdvisor.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    vpc = registerOutput<AwsIntegrationsVpc?>('vpc');
-    xRay = registerOutput<AwsIntegrationsXRay?>('xRay');
+    vpc = registerOutput<AwsIntegrationsVpc?>(
+      'vpc',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsVpc.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    xRay = registerOutput<AwsIntegrationsXRay?>(
+      'xRay',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsIntegrationsXRay.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

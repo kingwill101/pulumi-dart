@@ -589,9 +589,27 @@ class EligibleRoleAssignment extends pulumi.CustomResource {
     principalId = registerOutput<String>('principalId');
     principalType = registerOutput<String>('principalType');
     roleDefinitionId = registerOutput<String>('roleDefinitionId');
-    schedule = registerOutput<EligibleRoleAssignmentSchedule>('schedule');
+    schedule = registerOutput<EligibleRoleAssignmentSchedule>(
+      'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EligibleRoleAssignmentSchedule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     scope = registerOutput<String>('scope');
-    ticket = registerOutput<EligibleRoleAssignmentTicket>('ticket');
+    ticket = registerOutput<EligibleRoleAssignmentTicket>(
+      'ticket',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EligibleRoleAssignmentTicket.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [EligibleRoleAssignment] resource's state with the given [name] and [id].
@@ -623,8 +641,26 @@ class EligibleRoleAssignment extends pulumi.CustomResource {
     principalId = registerOutput<String>('principalId');
     principalType = registerOutput<String>('principalType');
     roleDefinitionId = registerOutput<String>('roleDefinitionId');
-    schedule = registerOutput<EligibleRoleAssignmentSchedule>('schedule');
+    schedule = registerOutput<EligibleRoleAssignmentSchedule>(
+      'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EligibleRoleAssignmentSchedule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     scope = registerOutput<String>('scope');
-    ticket = registerOutput<EligibleRoleAssignmentTicket>('ticket');
+    ticket = registerOutput<EligibleRoleAssignmentTicket>(
+      'ticket',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EligibleRoleAssignmentTicket.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

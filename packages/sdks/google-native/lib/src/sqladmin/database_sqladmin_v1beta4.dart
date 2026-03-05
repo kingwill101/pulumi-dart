@@ -51,6 +51,13 @@ class DatabaseSqladminV1beta4 extends pulumi.CustomResource {
     sqlserverDatabaseDetails =
         registerOutput<SqlServerDatabaseDetailsResponseSqladminV1beta4>(
           'sqlserverDatabaseDetails',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SqlServerDatabaseDetailsResponseSqladminV1beta4.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

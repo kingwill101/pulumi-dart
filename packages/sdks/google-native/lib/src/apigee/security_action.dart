@@ -67,16 +67,39 @@ class SecurityAction extends pulumi.CustomResource {
     conditionConfig =
         registerOutput<
           GoogleCloudApigeeV1SecurityActionConditionConfigResponse
-        >('conditionConfig');
+        >(
+          'conditionConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudApigeeV1SecurityActionConditionConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     createTime = registerOutput<String>('createTime');
     deny = registerOutput<GoogleCloudApigeeV1SecurityActionDenyResponse>(
       'deny',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudApigeeV1SecurityActionDenyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String>('description');
     environmentId = registerOutput<String>('environmentId');
     expireTime = registerOutput<String>('expireTime');
     flag = registerOutput<GoogleCloudApigeeV1SecurityActionFlagResponse>(
       'flag',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudApigeeV1SecurityActionFlagResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     organizationId = registerOutput<String>('organizationId');

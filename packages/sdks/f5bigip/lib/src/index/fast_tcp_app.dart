@@ -241,14 +241,32 @@ class FastTcpApp extends pulumi.CustomResource {
     fallbackPersistence = registerOutput<String?>('fallbackPersistence');
     fastTcpJson = registerOutput<String>('fastTcpJson');
     loadBalancingMode = registerOutput<String?>('loadBalancingMode');
-    monitor = registerOutput<FastTcpAppMonitor?>('monitor');
+    monitor = registerOutput<FastTcpAppMonitor?>(
+      'monitor',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FastTcpAppMonitor.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     persistenceProfile = registerOutput<String?>('persistenceProfile');
     persistenceType = registerOutput<String?>('persistenceType');
     poolMembers = registerOutput<List<Map<String, dynamic>>?>('poolMembers');
     slowRampTime = registerOutput<int?>('slowRampTime');
     snatPoolAddresses = registerOutput<List<String>?>('snatPoolAddresses');
     tenant = registerOutput<String>('tenant');
-    virtualServer = registerOutput<FastTcpAppVirtualServer?>('virtualServer');
+    virtualServer = registerOutput<FastTcpAppVirtualServer?>(
+      'virtualServer',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FastTcpAppVirtualServer.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [FastTcpApp] resource's state with the given [name] and [id].
@@ -281,13 +299,31 @@ class FastTcpApp extends pulumi.CustomResource {
     fallbackPersistence = registerOutput<String?>('fallbackPersistence');
     fastTcpJson = registerOutput<String>('fastTcpJson');
     loadBalancingMode = registerOutput<String?>('loadBalancingMode');
-    monitor = registerOutput<FastTcpAppMonitor?>('monitor');
+    monitor = registerOutput<FastTcpAppMonitor?>(
+      'monitor',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FastTcpAppMonitor.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     persistenceProfile = registerOutput<String?>('persistenceProfile');
     persistenceType = registerOutput<String?>('persistenceType');
     poolMembers = registerOutput<List<Map<String, dynamic>>?>('poolMembers');
     slowRampTime = registerOutput<int?>('slowRampTime');
     snatPoolAddresses = registerOutput<List<String>?>('snatPoolAddresses');
     tenant = registerOutput<String>('tenant');
-    virtualServer = registerOutput<FastTcpAppVirtualServer?>('virtualServer');
+    virtualServer = registerOutput<FastTcpAppVirtualServer?>(
+      'virtualServer',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FastTcpAppVirtualServer.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

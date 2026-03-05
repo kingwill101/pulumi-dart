@@ -900,7 +900,16 @@ class InfraAlertCondition extends pulumi.CustomResource {
        ) {
     comparison = registerOutput<String?>('comparison');
     createdAt = registerOutput<int>('createdAt');
-    critical = registerOutput<InfraAlertConditionCritical?>('critical');
+    critical = registerOutput<InfraAlertConditionCritical?>(
+      'critical',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InfraAlertConditionCritical.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
     entityGuid = registerOutput<String>('entityGuid');
@@ -914,7 +923,16 @@ class InfraAlertCondition extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     updatedAt = registerOutput<int>('updatedAt');
     violationCloseTimer = registerOutput<int?>('violationCloseTimer');
-    warning = registerOutput<InfraAlertConditionWarning?>('warning');
+    warning = registerOutput<InfraAlertConditionWarning?>(
+      'warning',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InfraAlertConditionWarning.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     where = registerOutput<String?>('where');
   }
 
@@ -943,7 +961,16 @@ class InfraAlertCondition extends pulumi.CustomResource {
        ) {
     comparison = registerOutput<String?>('comparison');
     createdAt = registerOutput<int>('createdAt');
-    critical = registerOutput<InfraAlertConditionCritical?>('critical');
+    critical = registerOutput<InfraAlertConditionCritical?>(
+      'critical',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InfraAlertConditionCritical.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
     entityGuid = registerOutput<String>('entityGuid');
@@ -957,7 +984,16 @@ class InfraAlertCondition extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     updatedAt = registerOutput<int>('updatedAt');
     violationCloseTimer = registerOutput<int?>('violationCloseTimer');
-    warning = registerOutput<InfraAlertConditionWarning?>('warning');
+    warning = registerOutput<InfraAlertConditionWarning?>(
+      'warning',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return InfraAlertConditionWarning.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     where = registerOutput<String?>('where');
   }
 }

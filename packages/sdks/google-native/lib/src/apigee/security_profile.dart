@@ -68,6 +68,13 @@ class SecurityProfile extends pulumi.CustomResource {
     organizationId = registerOutput<String>('organizationId');
     profileConfig = registerOutput<GoogleCloudApigeeV1ProfileConfigResponse>(
       'profileConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudApigeeV1ProfileConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     revisionCreateTime = registerOutput<String>('revisionCreateTime');
     revisionId = registerOutput<String>('revisionId');

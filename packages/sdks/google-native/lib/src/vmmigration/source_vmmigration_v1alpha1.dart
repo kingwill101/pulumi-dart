@@ -62,16 +62,48 @@ class SourceVmmigrationV1alpha1 extends pulumi.CustomResource {
          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
          options ?? pulumi.CustomResourceOptions(),
        ) {
-    aws = registerOutput<AwsSourceDetailsResponseVmmigrationV1alpha1>('aws');
+    aws = registerOutput<AwsSourceDetailsResponseVmmigrationV1alpha1>(
+      'aws',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AwsSourceDetailsResponseVmmigrationV1alpha1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     azure = registerOutput<AzureSourceDetailsResponseVmmigrationV1alpha1>(
       'azure',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AzureSourceDetailsResponseVmmigrationV1alpha1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     encryption = registerOutput<EncryptionResponseVmmigrationV1alpha1>(
       'encryption',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EncryptionResponseVmmigrationV1alpha1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    error = registerOutput<StatusResponseVmmigrationV1alpha1>('error');
+    error = registerOutput<StatusResponseVmmigrationV1alpha1>(
+      'error',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StatusResponseVmmigrationV1alpha1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -81,6 +113,13 @@ class SourceVmmigrationV1alpha1 extends pulumi.CustomResource {
     updateTime = registerOutput<String>('updateTime');
     vmware = registerOutput<VmwareSourceDetailsResponseVmmigrationV1alpha1>(
       'vmware',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VmwareSourceDetailsResponseVmmigrationV1alpha1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

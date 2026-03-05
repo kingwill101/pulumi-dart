@@ -1279,6 +1279,16 @@ class TemplateArtifact extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, ParameterValueResponse>>(
       'parameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeMapValues<ParameterValueResponse>(
+          guardedValue,
+          (value) => ParameterValueResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      },
     );
     resourceGroup = registerOutput<String?>('resourceGroup');
     template = registerOutput<dynamic>('template');

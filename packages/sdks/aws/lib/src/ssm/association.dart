@@ -1687,6 +1687,13 @@ class Association extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     outputLocation = registerOutput<AssociationOutputLocation?>(
       'outputLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AssociationOutputLocation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     parameters = registerOutput<Map<String, String>>('parameters');
     region = registerOutput<String>('region');
@@ -1738,6 +1745,13 @@ class Association extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     outputLocation = registerOutput<AssociationOutputLocation?>(
       'outputLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AssociationOutputLocation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     parameters = registerOutput<Map<String, String>>('parameters');
     region = registerOutput<String>('region');

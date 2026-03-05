@@ -189,12 +189,30 @@ class Baseline extends pulumi.CustomResource {
     baselineIdentifier = registerOutput<String>('baselineIdentifier');
     baselineVersion = registerOutput<String>('baselineVersion');
     operationIdentifier = registerOutput<String>('operationIdentifier');
-    parameters = registerOutput<BaselineParameters?>('parameters');
+    parameters = registerOutput<BaselineParameters?>(
+      'parameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BaselineParameters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     targetIdentifier = registerOutput<String>('targetIdentifier');
-    timeouts = registerOutput<BaselineTimeouts?>('timeouts');
+    timeouts = registerOutput<BaselineTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BaselineTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Baseline] resource's state with the given [name] and [id].
@@ -224,11 +242,29 @@ class Baseline extends pulumi.CustomResource {
     baselineIdentifier = registerOutput<String>('baselineIdentifier');
     baselineVersion = registerOutput<String>('baselineVersion');
     operationIdentifier = registerOutput<String>('operationIdentifier');
-    parameters = registerOutput<BaselineParameters?>('parameters');
+    parameters = registerOutput<BaselineParameters?>(
+      'parameters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BaselineParameters.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     targetIdentifier = registerOutput<String>('targetIdentifier');
-    timeouts = registerOutput<BaselineTimeouts?>('timeouts');
+    timeouts = registerOutput<BaselineTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return BaselineTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

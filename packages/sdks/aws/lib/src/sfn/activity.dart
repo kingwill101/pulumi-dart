@@ -267,6 +267,13 @@ class Activity extends pulumi.CustomResource {
     creationDate = registerOutput<String>('creationDate');
     encryptionConfiguration = registerOutput<ActivityEncryptionConfiguration>(
       'encryptionConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ActivityEncryptionConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -301,6 +308,13 @@ class Activity extends pulumi.CustomResource {
     creationDate = registerOutput<String>('creationDate');
     encryptionConfiguration = registerOutput<ActivityEncryptionConfiguration>(
       'encryptionConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ActivityEncryptionConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

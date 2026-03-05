@@ -92,6 +92,13 @@ class CloudFormationType extends pulumi.CustomResource {
     isDefaultVersion = registerOutput<bool>('isDefaultVersion');
     loggingConfig = registerOutput<CloudFormationTypeLoggingConfig?>(
       'loggingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CloudFormationTypeLoggingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     provisioningType = registerOutput<String>('provisioningType');
     region = registerOutput<String>('region');
@@ -137,6 +144,13 @@ class CloudFormationType extends pulumi.CustomResource {
     isDefaultVersion = registerOutput<bool>('isDefaultVersion');
     loggingConfig = registerOutput<CloudFormationTypeLoggingConfig?>(
       'loggingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CloudFormationTypeLoggingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     provisioningType = registerOutput<String>('provisioningType');
     region = registerOutput<String>('region');

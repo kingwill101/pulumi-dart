@@ -77,17 +77,49 @@ class CloneJobVmmigrationV1alpha1 extends pulumi.CustomResource {
     computeEngineDisksTargetDetails =
         registerOutput<
           ComputeEngineDisksTargetDetailsResponseVmmigrationV1alpha1
-        >('computeEngineDisksTargetDetails');
+        >(
+          'computeEngineDisksTargetDetails',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ComputeEngineDisksTargetDetailsResponseVmmigrationV1alpha1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     computeEngineTargetDetails =
         registerOutput<ComputeEngineTargetDetailsResponseVmmigrationV1alpha1>(
           'computeEngineTargetDetails',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ComputeEngineTargetDetailsResponseVmmigrationV1alpha1.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     computeEngineVmDetails = registerOutput<TargetVMDetailsResponse>(
       'computeEngineVmDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TargetVMDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     endTime = registerOutput<String>('endTime');
-    error = registerOutput<StatusResponseVmmigrationV1alpha1>('error');
+    error = registerOutput<StatusResponseVmmigrationV1alpha1>(
+      'error',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StatusResponseVmmigrationV1alpha1.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     migratingVmId = registerOutput<String>('migratingVmId');
     this.name = registerOutput<String>('name');
@@ -97,6 +129,15 @@ class CloneJobVmmigrationV1alpha1 extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     stateTime = registerOutput<String>('stateTime');
     steps = registerOutput<List<Map<String, dynamic>>>('steps');
-    targetDetails = registerOutput<TargetVMDetailsResponse>('targetDetails');
+    targetDetails = registerOutput<TargetVMDetailsResponse>(
+      'targetDetails',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TargetVMDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

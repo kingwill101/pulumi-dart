@@ -470,6 +470,13 @@ class LinuxVirtualMachine extends pulumi.CustomResource {
     galleryImageReference =
         registerOutput<LinuxVirtualMachineGalleryImageReference>(
           'galleryImageReference',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinuxVirtualMachineGalleryImageReference.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     inboundNatRules = registerOutput<List<Map<String, dynamic>>?>(
       'inboundNatRules',
@@ -519,6 +526,13 @@ class LinuxVirtualMachine extends pulumi.CustomResource {
     galleryImageReference =
         registerOutput<LinuxVirtualMachineGalleryImageReference>(
           'galleryImageReference',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return LinuxVirtualMachineGalleryImageReference.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     inboundNatRules = registerOutput<List<Map<String, dynamic>>?>(
       'inboundNatRules',

@@ -229,10 +229,28 @@ class ModelCard extends pulumi.CustomResource {
     modelCardName = registerOutput<String>('modelCardName');
     modelCardStatus = registerOutput<String>('modelCardStatus');
     region = registerOutput<String>('region');
-    securityConfig = registerOutput<ModelCardSecurityConfig?>('securityConfig');
+    securityConfig = registerOutput<ModelCardSecurityConfig?>(
+      'securityConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ModelCardSecurityConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ModelCardTimeouts?>('timeouts');
+    timeouts = registerOutput<ModelCardTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ModelCardTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [ModelCard] resource's state with the given [name] and [id].
@@ -263,9 +281,27 @@ class ModelCard extends pulumi.CustomResource {
     modelCardName = registerOutput<String>('modelCardName');
     modelCardStatus = registerOutput<String>('modelCardStatus');
     region = registerOutput<String>('region');
-    securityConfig = registerOutput<ModelCardSecurityConfig?>('securityConfig');
+    securityConfig = registerOutput<ModelCardSecurityConfig?>(
+      'securityConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ModelCardSecurityConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<ModelCardTimeouts?>('timeouts');
+    timeouts = registerOutput<ModelCardTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ModelCardTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

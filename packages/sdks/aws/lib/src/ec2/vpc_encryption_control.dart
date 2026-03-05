@@ -244,12 +244,28 @@ class VpcEncryptionControl extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     resourceExclusions = registerOutput<VpcEncryptionControlResourceExclusions>(
       'resourceExclusions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpcEncryptionControlResourceExclusions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     state = registerOutput<String>('state');
     stateMessage = registerOutput<String>('stateMessage');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<VpcEncryptionControlTimeouts?>('timeouts');
+    timeouts = registerOutput<VpcEncryptionControlTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpcEncryptionControlTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     virtualPrivateGatewayExclusion = registerOutput<String>(
       'virtualPrivateGatewayExclusion',
     );
@@ -296,12 +312,28 @@ class VpcEncryptionControl extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     resourceExclusions = registerOutput<VpcEncryptionControlResourceExclusions>(
       'resourceExclusions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpcEncryptionControlResourceExclusions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.state = registerOutput<String>('state');
     stateMessage = registerOutput<String>('stateMessage');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timeouts = registerOutput<VpcEncryptionControlTimeouts?>('timeouts');
+    timeouts = registerOutput<VpcEncryptionControlTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpcEncryptionControlTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     virtualPrivateGatewayExclusion = registerOutput<String>(
       'virtualPrivateGatewayExclusion',
     );

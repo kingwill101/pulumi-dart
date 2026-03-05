@@ -192,6 +192,13 @@ class RecordingConfiguration extends pulumi.CustomResource {
     destinationConfiguration =
         registerOutput<RecordingConfigurationDestinationConfiguration>(
           'destinationConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RecordingConfigurationDestinationConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     recordingReconnectWindowSeconds = registerOutput<int>(
@@ -204,6 +211,13 @@ class RecordingConfiguration extends pulumi.CustomResource {
     thumbnailConfiguration =
         registerOutput<RecordingConfigurationThumbnailConfiguration>(
           'thumbnailConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RecordingConfigurationThumbnailConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 
@@ -234,6 +248,13 @@ class RecordingConfiguration extends pulumi.CustomResource {
     destinationConfiguration =
         registerOutput<RecordingConfigurationDestinationConfiguration>(
           'destinationConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RecordingConfigurationDestinationConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     recordingReconnectWindowSeconds = registerOutput<int>(
@@ -246,6 +267,13 @@ class RecordingConfiguration extends pulumi.CustomResource {
     thumbnailConfiguration =
         registerOutput<RecordingConfigurationThumbnailConfiguration>(
           'thumbnailConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RecordingConfigurationThumbnailConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

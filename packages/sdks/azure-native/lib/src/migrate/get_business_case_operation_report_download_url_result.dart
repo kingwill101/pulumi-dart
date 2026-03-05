@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getBusinessCaseOperationReportDownloadUrl.
 class GetBusinessCaseOperationReportDownloadUrlResult {
   /// Hyperlink to download report.
   final String businessCaseReportUrl;
+
   /// Expiry date of download url.
   final String expirationTime;
 
@@ -23,11 +23,12 @@ class GetBusinessCaseOperationReportDownloadUrlResult {
     };
   }
 
-  factory GetBusinessCaseOperationReportDownloadUrlResult.fromMap(Map<String, dynamic> map) {
+  factory GetBusinessCaseOperationReportDownloadUrlResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetBusinessCaseOperationReportDownloadUrlResult(
       businessCaseReportUrl: map['businessCaseReportUrl'] as String,
       expirationTime: map['expirationTime'] as String,
     );
   }
 }
-

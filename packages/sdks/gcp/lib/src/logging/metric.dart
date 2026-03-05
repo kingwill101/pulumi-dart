@@ -943,13 +943,29 @@ class Metric extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     bucketName = registerOutput<String?>('bucketName');
-    bucketOptions = registerOutput<MetricBucketOptions?>('bucketOptions');
+    bucketOptions = registerOutput<MetricBucketOptions?>(
+      'bucketOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MetricBucketOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');
     filter = registerOutput<String>('filter');
     labelExtractors = registerOutput<Map<String, String>?>('labelExtractors');
     metricDescriptor = registerOutput<MetricMetricDescriptor>(
       'metricDescriptor',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MetricMetricDescriptor.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -980,13 +996,29 @@ class Metric extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     bucketName = registerOutput<String?>('bucketName');
-    bucketOptions = registerOutput<MetricBucketOptions?>('bucketOptions');
+    bucketOptions = registerOutput<MetricBucketOptions?>(
+      'bucketOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MetricBucketOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');
     filter = registerOutput<String>('filter');
     labelExtractors = registerOutput<Map<String, String>?>('labelExtractors');
     metricDescriptor = registerOutput<MetricMetricDescriptor>(
       'metricDescriptor',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MetricMetricDescriptor.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

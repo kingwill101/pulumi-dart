@@ -542,10 +542,26 @@ class PolicyBasedRoute extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    filter = registerOutput<PolicyBasedRouteFilter>('filter');
+    filter = registerOutput<PolicyBasedRouteFilter>(
+      'filter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyBasedRouteFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     interconnectAttachment =
         registerOutput<PolicyBasedRouteInterconnectAttachment?>(
           'interconnectAttachment',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PolicyBasedRouteInterconnectAttachment.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     kind = registerOutput<String>('kind');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -559,6 +575,13 @@ class PolicyBasedRoute extends pulumi.CustomResource {
     updateTime = registerOutput<String>('updateTime');
     virtualMachine = registerOutput<PolicyBasedRouteVirtualMachine?>(
       'virtualMachine',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyBasedRouteVirtualMachine.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     warnings = registerOutput<List<Map<String, dynamic>>>('warnings');
   }
@@ -589,10 +612,26 @@ class PolicyBasedRoute extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    filter = registerOutput<PolicyBasedRouteFilter>('filter');
+    filter = registerOutput<PolicyBasedRouteFilter>(
+      'filter',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyBasedRouteFilter.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     interconnectAttachment =
         registerOutput<PolicyBasedRouteInterconnectAttachment?>(
           'interconnectAttachment',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return PolicyBasedRouteInterconnectAttachment.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     kind = registerOutput<String>('kind');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -606,6 +645,13 @@ class PolicyBasedRoute extends pulumi.CustomResource {
     updateTime = registerOutput<String>('updateTime');
     virtualMachine = registerOutput<PolicyBasedRouteVirtualMachine?>(
       'virtualMachine',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PolicyBasedRouteVirtualMachine.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     warnings = registerOutput<List<Map<String, dynamic>>>('warnings');
   }

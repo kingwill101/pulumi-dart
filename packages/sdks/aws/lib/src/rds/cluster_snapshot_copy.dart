@@ -293,7 +293,16 @@ class ClusterSnapshotCopy extends pulumi.CustomResource {
     targetDbClusterSnapshotIdentifier = registerOutput<String>(
       'targetDbClusterSnapshotIdentifier',
     );
-    timeouts = registerOutput<ClusterSnapshotCopyTimeouts?>('timeouts');
+    timeouts = registerOutput<ClusterSnapshotCopyTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterSnapshotCopyTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vpcId = registerOutput<String>('vpcId');
   }
 
@@ -342,7 +351,16 @@ class ClusterSnapshotCopy extends pulumi.CustomResource {
     targetDbClusterSnapshotIdentifier = registerOutput<String>(
       'targetDbClusterSnapshotIdentifier',
     );
-    timeouts = registerOutput<ClusterSnapshotCopyTimeouts?>('timeouts');
+    timeouts = registerOutput<ClusterSnapshotCopyTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterSnapshotCopyTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     vpcId = registerOutput<String>('vpcId');
   }
 }

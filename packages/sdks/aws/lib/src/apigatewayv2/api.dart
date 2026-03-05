@@ -303,6 +303,13 @@ class Api extends pulumi.CustomResource {
     body = registerOutput<String?>('body');
     corsConfiguration = registerOutput<ApiCorsConfiguration?>(
       'corsConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiCorsConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     credentialsArn = registerOutput<String?>('credentialsArn');
     description = registerOutput<String?>('description');
@@ -352,6 +359,13 @@ class Api extends pulumi.CustomResource {
     body = registerOutput<String?>('body');
     corsConfiguration = registerOutput<ApiCorsConfiguration?>(
       'corsConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiCorsConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     credentialsArn = registerOutput<String?>('credentialsArn');
     description = registerOutput<String?>('description');

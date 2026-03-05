@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getManagedInstanceAzureADOnlyAuthentication.
 class GetManagedInstanceAzureADOnlyAuthenticationResult {
   /// Azure Active Directory only Authentication enabled.
   final bool azureADOnlyAuthentication;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Resource ID.
   final String id;
+
   /// Resource name.
   final String name;
+
   /// Resource type.
   final String type;
 
@@ -38,7 +41,9 @@ class GetManagedInstanceAzureADOnlyAuthenticationResult {
     };
   }
 
-  factory GetManagedInstanceAzureADOnlyAuthenticationResult.fromMap(Map<String, dynamic> map) {
+  factory GetManagedInstanceAzureADOnlyAuthenticationResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetManagedInstanceAzureADOnlyAuthenticationResult(
       azureADOnlyAuthentication: map['azureADOnlyAuthentication'] as bool,
       azureApiVersion: map['azureApiVersion'] as String,
@@ -48,4 +53,3 @@ class GetManagedInstanceAzureADOnlyAuthenticationResult {
     );
   }
 }
-

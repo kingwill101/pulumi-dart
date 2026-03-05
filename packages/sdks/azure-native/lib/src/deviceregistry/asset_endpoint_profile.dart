@@ -461,7 +461,16 @@ class AssetEndpointProfile extends pulumi.CustomResource {
     additionalConfiguration = registerOutput<String?>(
       'additionalConfiguration',
     );
-    authentication = registerOutput<AuthenticationResponse?>('authentication');
+    authentication = registerOutput<AuthenticationResponse?>(
+      'authentication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AuthenticationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     azureApiVersion = registerOutput<String>('azureApiVersion');
     discoveredAssetEndpointProfileRef = registerOutput<String?>(
       'discoveredAssetEndpointProfileRef',
@@ -469,12 +478,37 @@ class AssetEndpointProfile extends pulumi.CustomResource {
     endpointProfileType = registerOutput<String>('endpointProfileType');
     extendedLocation = registerOutput<ExtendedLocationResponse>(
       'extendedLocation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    status = registerOutput<AssetEndpointProfileStatusResponse>('status');
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    status = registerOutput<AssetEndpointProfileStatusResponse>(
+      'status',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AssetEndpointProfileStatusResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     targetAddress = registerOutput<String>('targetAddress');
     type = registerOutput<String>('type');

@@ -89,16 +89,43 @@ class Engine extends pulumi.CustomResource {
     chatEngineConfig =
         registerOutput<
           GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigResponse
-        >('chatEngineConfig');
+        >(
+          'chatEngineConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     chatEngineMetadata =
         registerOutput<
           GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadataResponse
-        >('chatEngineMetadata');
+        >(
+          'chatEngineMetadata',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadataResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     collectionId = registerOutput<String>('collectionId');
     commonConfig =
         registerOutput<
           GoogleCloudDiscoveryengineV1alphaEngineCommonConfigResponse
-        >('commonConfig');
+        >(
+          'commonConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDiscoveryengineV1alphaEngineCommonConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     createTime = registerOutput<String>('createTime');
     dataStoreIds = registerOutput<List<String>>('dataStoreIds');
     displayName = registerOutput<String>('displayName');
@@ -108,17 +135,44 @@ class Engine extends pulumi.CustomResource {
     mediaRecommendationEngineConfig =
         registerOutput<
           GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigResponse
-        >('mediaRecommendationEngineConfig');
+        >(
+          'mediaRecommendationEngineConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     recommendationMetadata =
         registerOutput<
           GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadataResponse
-        >('recommendationMetadata');
+        >(
+          'recommendationMetadata',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadataResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     searchEngineConfig =
         registerOutput<
           GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigResponse
-        >('searchEngineConfig');
+        >(
+          'searchEngineConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     similarDocumentsConfig = registerOutput<Map<String, dynamic>>(
       'similarDocumentsConfig',
     );

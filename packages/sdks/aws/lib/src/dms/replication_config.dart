@@ -260,6 +260,13 @@ class ReplicationConfig extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     computeConfig = registerOutput<ReplicationConfigComputeConfig>(
       'computeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReplicationConfigComputeConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     replicationConfigIdentifier = registerOutput<String>(
@@ -303,6 +310,13 @@ class ReplicationConfig extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     computeConfig = registerOutput<ReplicationConfigComputeConfig>(
       'computeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ReplicationConfigComputeConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     replicationConfigIdentifier = registerOutput<String>(

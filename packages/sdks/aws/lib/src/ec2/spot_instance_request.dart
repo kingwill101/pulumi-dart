@@ -397,11 +397,34 @@ class SpotInstanceRequest extends pulumi.CustomResource {
     capacityReservationSpecification =
         registerOutput<SpotInstanceRequestCapacityReservationSpecification>(
           'capacityReservationSpecification',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SpotInstanceRequestCapacityReservationSpecification.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    cpuOptions = registerOutput<SpotInstanceRequestCpuOptions>('cpuOptions');
+    cpuOptions = registerOutput<SpotInstanceRequestCpuOptions>(
+      'cpuOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpotInstanceRequestCpuOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     creditSpecification =
         registerOutput<SpotInstanceRequestCreditSpecification?>(
           'creditSpecification',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SpotInstanceRequestCreditSpecification.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     disableApiStop = registerOutput<bool>('disableApiStop');
     disableApiTermination = registerOutput<bool>('disableApiTermination');
@@ -412,6 +435,13 @@ class SpotInstanceRequest extends pulumi.CustomResource {
     enablePrimaryIpv6 = registerOutput<bool>('enablePrimaryIpv6');
     enclaveOptions = registerOutput<SpotInstanceRequestEnclaveOptions>(
       'enclaveOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpotInstanceRequestEnclaveOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     ephemeralBlockDevices = registerOutput<List<Map<String, dynamic>>>(
       'ephemeralBlockDevices',
@@ -436,12 +466,33 @@ class SpotInstanceRequest extends pulumi.CustomResource {
     launchGroup = registerOutput<String?>('launchGroup');
     launchTemplate = registerOutput<SpotInstanceRequestLaunchTemplate?>(
       'launchTemplate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpotInstanceRequestLaunchTemplate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     maintenanceOptions = registerOutput<SpotInstanceRequestMaintenanceOptions>(
       'maintenanceOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpotInstanceRequestMaintenanceOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     metadataOptions = registerOutput<SpotInstanceRequestMetadataOptions>(
       'metadataOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpotInstanceRequestMetadataOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     monitoring = registerOutput<bool>('monitoring');
     networkInterfaces = registerOutput<List<Map<String, dynamic>>>(
@@ -462,6 +513,13 @@ class SpotInstanceRequest extends pulumi.CustomResource {
     privateDnsNameOptions =
         registerOutput<SpotInstanceRequestPrivateDnsNameOptions>(
           'privateDnsNameOptions',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SpotInstanceRequestPrivateDnsNameOptions.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     privateIp = registerOutput<String>('privateIp');
     publicDns = registerOutput<String>('publicDns');
@@ -469,6 +527,13 @@ class SpotInstanceRequest extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     rootBlockDevice = registerOutput<SpotInstanceRequestRootBlockDevice>(
       'rootBlockDevice',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpotInstanceRequestRootBlockDevice.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     secondaryNetworkInterfaces = registerOutput<List<Map<String, dynamic>>>(
       'secondaryNetworkInterfaces',
@@ -525,11 +590,34 @@ class SpotInstanceRequest extends pulumi.CustomResource {
     capacityReservationSpecification =
         registerOutput<SpotInstanceRequestCapacityReservationSpecification>(
           'capacityReservationSpecification',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SpotInstanceRequestCapacityReservationSpecification.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
-    cpuOptions = registerOutput<SpotInstanceRequestCpuOptions>('cpuOptions');
+    cpuOptions = registerOutput<SpotInstanceRequestCpuOptions>(
+      'cpuOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpotInstanceRequestCpuOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     creditSpecification =
         registerOutput<SpotInstanceRequestCreditSpecification?>(
           'creditSpecification',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SpotInstanceRequestCreditSpecification.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     disableApiStop = registerOutput<bool>('disableApiStop');
     disableApiTermination = registerOutput<bool>('disableApiTermination');
@@ -540,6 +628,13 @@ class SpotInstanceRequest extends pulumi.CustomResource {
     enablePrimaryIpv6 = registerOutput<bool>('enablePrimaryIpv6');
     enclaveOptions = registerOutput<SpotInstanceRequestEnclaveOptions>(
       'enclaveOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpotInstanceRequestEnclaveOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     ephemeralBlockDevices = registerOutput<List<Map<String, dynamic>>>(
       'ephemeralBlockDevices',
@@ -564,12 +659,33 @@ class SpotInstanceRequest extends pulumi.CustomResource {
     launchGroup = registerOutput<String?>('launchGroup');
     launchTemplate = registerOutput<SpotInstanceRequestLaunchTemplate?>(
       'launchTemplate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpotInstanceRequestLaunchTemplate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     maintenanceOptions = registerOutput<SpotInstanceRequestMaintenanceOptions>(
       'maintenanceOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpotInstanceRequestMaintenanceOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     metadataOptions = registerOutput<SpotInstanceRequestMetadataOptions>(
       'metadataOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpotInstanceRequestMetadataOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     monitoring = registerOutput<bool>('monitoring');
     networkInterfaces = registerOutput<List<Map<String, dynamic>>>(
@@ -590,6 +706,13 @@ class SpotInstanceRequest extends pulumi.CustomResource {
     privateDnsNameOptions =
         registerOutput<SpotInstanceRequestPrivateDnsNameOptions>(
           'privateDnsNameOptions',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SpotInstanceRequestPrivateDnsNameOptions.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     privateIp = registerOutput<String>('privateIp');
     publicDns = registerOutput<String>('publicDns');
@@ -597,6 +720,13 @@ class SpotInstanceRequest extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     rootBlockDevice = registerOutput<SpotInstanceRequestRootBlockDevice>(
       'rootBlockDevice',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SpotInstanceRequestRootBlockDevice.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     secondaryNetworkInterfaces = registerOutput<List<Map<String, dynamic>>>(
       'secondaryNetworkInterfaces',

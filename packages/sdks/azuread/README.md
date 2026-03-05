@@ -20,7 +20,7 @@ import 'package:pulumi_azuread/pulumi_azuread.dart' as provider;
 dependencies:
   pulumi_azuread:
     git:
-      url: https://github.com/<owner>/<repo>.git
+      url: https://github.com/kingwill101/pulumi-dart.git
       path: packages/azuread
       ref: main
 ~~~

@@ -218,7 +218,16 @@ class Connector extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    collection = registerOutput<ConnectorCollectionInfoResponse>('collection');
+    collection = registerOutput<ConnectorCollectionInfoResponse>(
+      'collection',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ConnectorCollectionInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createdOn = registerOutput<String>('createdOn');
     credentialsKey = registerOutput<String?>('credentialsKey');
     displayName = registerOutput<String?>('displayName');

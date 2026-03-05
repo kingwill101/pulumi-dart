@@ -65,8 +65,26 @@ class Domain extends pulumi.CustomResource {
     domain = registerOutput<String>('domain');
     domainId = registerOutput<String>('domainId');
     instanceId = registerOutput<String>('instanceId');
-    listen = registerOutput<DomainListen>('listen');
-    redirect = registerOutput<DomainRedirect>('redirect');
+    listen = registerOutput<DomainListen>(
+      'listen',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainListen.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    redirect = registerOutput<DomainRedirect>(
+      'redirect',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainRedirect.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceManagerResourceGroupId = registerOutput<String>(
       'resourceManagerResourceGroupId',
     );
@@ -102,8 +120,26 @@ class Domain extends pulumi.CustomResource {
     domain = registerOutput<String>('domain');
     domainId = registerOutput<String>('domainId');
     instanceId = registerOutput<String>('instanceId');
-    listen = registerOutput<DomainListen>('listen');
-    redirect = registerOutput<DomainRedirect>('redirect');
+    listen = registerOutput<DomainListen>(
+      'listen',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainListen.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    redirect = registerOutput<DomainRedirect>(
+      'redirect',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainRedirect.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceManagerResourceGroupId = registerOutput<String>(
       'resourceManagerResourceGroupId',
     );

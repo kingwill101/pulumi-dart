@@ -909,6 +909,13 @@ class FrontdoorFirewallPolicy extends pulumi.CustomResource {
     );
     logScrubbing = registerOutput<FrontdoorFirewallPolicyLogScrubbing?>(
       'logScrubbing',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FrontdoorFirewallPolicyLogScrubbing.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     managedRules = registerOutput<List<Map<String, dynamic>>?>('managedRules');
     mode = registerOutput<String>('mode');
@@ -960,6 +967,13 @@ class FrontdoorFirewallPolicy extends pulumi.CustomResource {
     );
     logScrubbing = registerOutput<FrontdoorFirewallPolicyLogScrubbing?>(
       'logScrubbing',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return FrontdoorFirewallPolicyLogScrubbing.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     managedRules = registerOutput<List<Map<String, dynamic>>?>('managedRules');
     mode = registerOutput<String>('mode');

@@ -231,8 +231,24 @@ class ResourceSyncRule extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     selector = registerOutput<ResourceSyncRulePropertiesResponseSelector?>(
       'selector',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ResourceSyncRulePropertiesResponseSelector.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
-    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemData = registerOutput<SystemDataResponse>(
+      'systemData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SystemDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     targetResourceGroup = registerOutput<String?>('targetResourceGroup');
     type = registerOutput<String>('type');

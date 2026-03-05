@@ -335,6 +335,13 @@ class RestoreTestingSelection extends pulumi.CustomResource {
     protectedResourceConditions =
         registerOutput<RestoreTestingSelectionProtectedResourceConditions?>(
           'protectedResourceConditions',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RestoreTestingSelectionProtectedResourceConditions.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     protectedResourceType = registerOutput<String>('protectedResourceType');
     region = registerOutput<String>('region');
@@ -376,6 +383,13 @@ class RestoreTestingSelection extends pulumi.CustomResource {
     protectedResourceConditions =
         registerOutput<RestoreTestingSelectionProtectedResourceConditions?>(
           'protectedResourceConditions',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RestoreTestingSelectionProtectedResourceConditions.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     protectedResourceType = registerOutput<String>('protectedResourceType');
     region = registerOutput<String>('region');

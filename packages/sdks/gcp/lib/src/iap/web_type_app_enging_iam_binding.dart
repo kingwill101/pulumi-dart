@@ -1833,6 +1833,13 @@ class WebTypeAppEngingIamBinding extends pulumi.CustomResource {
     appId = registerOutput<String>('appId');
     condition = registerOutput<WebTypeAppEngingIamBindingCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebTypeAppEngingIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     members = registerOutput<List<String>>('members');
@@ -1866,6 +1873,13 @@ class WebTypeAppEngingIamBinding extends pulumi.CustomResource {
     appId = registerOutput<String>('appId');
     condition = registerOutput<WebTypeAppEngingIamBindingCondition?>(
       'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebTypeAppEngingIamBindingCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     members = registerOutput<List<String>>('members');

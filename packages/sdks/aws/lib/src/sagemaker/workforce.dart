@@ -420,14 +420,48 @@ class Workforce extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    cognitoConfig = registerOutput<WorkforceCognitoConfig?>('cognitoConfig');
-    oidcConfig = registerOutput<WorkforceOidcConfig?>('oidcConfig');
+    cognitoConfig = registerOutput<WorkforceCognitoConfig?>(
+      'cognitoConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkforceCognitoConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    oidcConfig = registerOutput<WorkforceOidcConfig?>(
+      'oidcConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkforceOidcConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
-    sourceIpConfig = registerOutput<WorkforceSourceIpConfig>('sourceIpConfig');
+    sourceIpConfig = registerOutput<WorkforceSourceIpConfig>(
+      'sourceIpConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkforceSourceIpConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     subdomain = registerOutput<String>('subdomain');
     workforceName = registerOutput<String>('workforceName');
     workforceVpcConfig = registerOutput<WorkforceWorkforceVpcConfig?>(
       'workforceVpcConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkforceWorkforceVpcConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -455,14 +489,48 @@ class Workforce extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     arn = registerOutput<String>('arn');
-    cognitoConfig = registerOutput<WorkforceCognitoConfig?>('cognitoConfig');
-    oidcConfig = registerOutput<WorkforceOidcConfig?>('oidcConfig');
+    cognitoConfig = registerOutput<WorkforceCognitoConfig?>(
+      'cognitoConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkforceCognitoConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    oidcConfig = registerOutput<WorkforceOidcConfig?>(
+      'oidcConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkforceOidcConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     region = registerOutput<String>('region');
-    sourceIpConfig = registerOutput<WorkforceSourceIpConfig>('sourceIpConfig');
+    sourceIpConfig = registerOutput<WorkforceSourceIpConfig>(
+      'sourceIpConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkforceSourceIpConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     subdomain = registerOutput<String>('subdomain');
     workforceName = registerOutput<String>('workforceName');
     workforceVpcConfig = registerOutput<WorkforceWorkforceVpcConfig?>(
       'workforceVpcConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WorkforceWorkforceVpcConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

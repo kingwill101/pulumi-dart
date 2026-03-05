@@ -59,9 +59,23 @@ class QueueCloudtasksV2beta2 extends pulumi.CustomResource {
        ) {
     appEngineHttpTarget = registerOutput<AppEngineHttpTargetResponse>(
       'appEngineHttpTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AppEngineHttpTargetResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     httpTarget = registerOutput<HttpTargetResponseCloudtasksV2beta2>(
       'httpTarget',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return HttpTargetResponseCloudtasksV2beta2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -70,12 +84,35 @@ class QueueCloudtasksV2beta2 extends pulumi.CustomResource {
     purgeTime = registerOutput<String>('purgeTime');
     rateLimits = registerOutput<RateLimitsResponseCloudtasksV2beta2>(
       'rateLimits',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RateLimitsResponseCloudtasksV2beta2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     retryConfig = registerOutput<RetryConfigResponseCloudtasksV2beta2>(
       'retryConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RetryConfigResponseCloudtasksV2beta2.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     state = registerOutput<String>('state');
-    stats = registerOutput<QueueStatsResponse>('stats');
+    stats = registerOutput<QueueStatsResponse>(
+      'stats',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return QueueStatsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     taskTtl = registerOutput<String>('taskTtl');
     tombstoneTtl = registerOutput<String>('tombstoneTtl');
   }

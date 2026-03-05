@@ -41,7 +41,14 @@ class DeploymentSchedule extends pulumi.CustomResource {
        ) {
     organization = registerOutput<String>('organization');
     project = registerOutput<String>('project');
-    pulumiOperation = registerOutput<PulumiOperation>('pulumiOperation');
+    pulumiOperation = registerOutput<PulumiOperation>(
+      'pulumiOperation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PulumiOperation.fromValue(guardedValue as String);
+      },
+    );
     scheduleCron = registerOutput<String?>('scheduleCron');
     scheduleId = registerOutput<String>('scheduleId');
     stack = registerOutput<String>('stack');

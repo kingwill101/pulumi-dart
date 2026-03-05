@@ -1,18 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getService.
 class GetServiceResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Azure location where the resource exists.
   final String location;
   final String name;
   final String resourceGroupName;
+
   /// The SKU name of database migration service.
   final String skuName;
+
   /// The ID of the virtual subnet resource to which the database migration service exists.
   final String subnetId;
+
   /// A mapping of tags to assigned to the resource.
   final Map<String, String> tags;
 
@@ -58,4 +61,3 @@ class GetServiceResult {
     );
   }
 }
-

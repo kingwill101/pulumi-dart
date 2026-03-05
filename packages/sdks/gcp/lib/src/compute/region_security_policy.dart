@@ -779,10 +779,24 @@ class RegionSecurityPolicy extends pulumi.CustomResource {
     advancedOptionsConfig =
         registerOutput<RegionSecurityPolicyAdvancedOptionsConfig?>(
           'advancedOptionsConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RegionSecurityPolicyAdvancedOptionsConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     ddosProtectionConfig =
         registerOutput<RegionSecurityPolicyDdosProtectionConfig?>(
           'ddosProtectionConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RegionSecurityPolicyDdosProtectionConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
@@ -825,10 +839,24 @@ class RegionSecurityPolicy extends pulumi.CustomResource {
     advancedOptionsConfig =
         registerOutput<RegionSecurityPolicyAdvancedOptionsConfig?>(
           'advancedOptionsConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RegionSecurityPolicyAdvancedOptionsConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     ddosProtectionConfig =
         registerOutput<RegionSecurityPolicyDdosProtectionConfig?>(
           'ddosProtectionConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RegionSecurityPolicyDdosProtectionConfig.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');

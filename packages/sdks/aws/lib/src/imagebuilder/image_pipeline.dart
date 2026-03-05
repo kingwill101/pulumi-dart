@@ -127,21 +127,51 @@ class ImagePipeline extends pulumi.CustomResource {
     imageScanningConfiguration =
         registerOutput<ImagePipelineImageScanningConfiguration>(
           'imageScanningConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ImagePipelineImageScanningConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     imageTestsConfiguration =
         registerOutput<ImagePipelineImageTestsConfiguration>(
           'imageTestsConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ImagePipelineImageTestsConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     infrastructureConfigurationArn = registerOutput<String>(
       'infrastructureConfigurationArn',
     );
     loggingConfiguration = registerOutput<ImagePipelineLoggingConfiguration?>(
       'loggingConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImagePipelineLoggingConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     platform = registerOutput<String>('platform');
     region = registerOutput<String>('region');
-    schedule = registerOutput<ImagePipelineSchedule?>('schedule');
+    schedule = registerOutput<ImagePipelineSchedule?>(
+      'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImagePipelineSchedule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String?>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
@@ -189,21 +219,51 @@ class ImagePipeline extends pulumi.CustomResource {
     imageScanningConfiguration =
         registerOutput<ImagePipelineImageScanningConfiguration>(
           'imageScanningConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ImagePipelineImageScanningConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     imageTestsConfiguration =
         registerOutput<ImagePipelineImageTestsConfiguration>(
           'imageTestsConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ImagePipelineImageTestsConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     infrastructureConfigurationArn = registerOutput<String>(
       'infrastructureConfigurationArn',
     );
     loggingConfiguration = registerOutput<ImagePipelineLoggingConfiguration?>(
       'loggingConfiguration',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImagePipelineLoggingConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     platform = registerOutput<String>('platform');
     region = registerOutput<String>('region');
-    schedule = registerOutput<ImagePipelineSchedule?>('schedule');
+    schedule = registerOutput<ImagePipelineSchedule?>(
+      'schedule',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ImagePipelineSchedule.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String?>('status');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');

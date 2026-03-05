@@ -397,6 +397,13 @@ class ClientTlsPolicy extends pulumi.CustomResource {
        ) {
     clientCertificate = registerOutput<ClientTlsPolicyClientCertificate?>(
       'clientCertificate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClientTlsPolicyClientCertificate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');
@@ -438,6 +445,13 @@ class ClientTlsPolicy extends pulumi.CustomResource {
        ) {
     clientCertificate = registerOutput<ClientTlsPolicyClientCertificate?>(
       'clientCertificate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClientTlsPolicyClientCertificate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String?>('description');

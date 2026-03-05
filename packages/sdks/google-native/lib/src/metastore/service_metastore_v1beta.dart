@@ -110,30 +110,72 @@ class ServiceMetastoreV1beta extends pulumi.CustomResource {
     databaseType = registerOutput<String>('databaseType');
     encryptionConfig = registerOutput<EncryptionConfigResponseMetastoreV1beta>(
       'encryptionConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EncryptionConfigResponseMetastoreV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     endpointUri = registerOutput<String>('endpointUri');
     hiveMetastoreConfig =
         registerOutput<HiveMetastoreConfigResponseMetastoreV1beta>(
           'hiveMetastoreConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return HiveMetastoreConfigResponseMetastoreV1beta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
     maintenanceWindow =
         registerOutput<MaintenanceWindowResponseMetastoreV1beta>(
           'maintenanceWindow',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MaintenanceWindowResponseMetastoreV1beta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     metadataIntegration =
         registerOutput<MetadataIntegrationResponseMetastoreV1beta>(
           'metadataIntegration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MetadataIntegrationResponseMetastoreV1beta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     metadataManagementActivity =
         registerOutput<MetadataManagementActivityResponseMetastoreV1beta>(
           'metadataManagementActivity',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return MetadataManagementActivityResponseMetastoreV1beta.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     networkConfig = registerOutput<NetworkConfigResponseMetastoreV1beta>(
       'networkConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkConfigResponseMetastoreV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     port = registerOutput<int>('port');
     project = registerOutput<String>('project');
@@ -141,12 +183,26 @@ class ServiceMetastoreV1beta extends pulumi.CustomResource {
     requestId = registerOutput<String?>('requestId');
     scalingConfig = registerOutput<ScalingConfigResponseMetastoreV1beta>(
       'scalingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScalingConfigResponseMetastoreV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     serviceId = registerOutput<String>('serviceId');
     state = registerOutput<String>('state');
     stateMessage = registerOutput<String>('stateMessage');
     telemetryConfig = registerOutput<TelemetryConfigResponseMetastoreV1beta>(
       'telemetryConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TelemetryConfigResponseMetastoreV1beta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     tier = registerOutput<String>('tier');
     uid = registerOutput<String>('uid');

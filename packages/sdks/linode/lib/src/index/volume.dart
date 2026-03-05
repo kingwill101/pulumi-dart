@@ -485,7 +485,16 @@ class Volume extends pulumi.CustomResource {
     sourceVolumeId = registerOutput<int?>('sourceVolumeId');
     status = registerOutput<String>('status');
     tags = registerOutput<List<String>>('tags');
-    timeouts = registerOutput<VolumeTimeouts?>('timeouts');
+    timeouts = registerOutput<VolumeTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VolumeTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Volume] resource's state with the given [name] and [id].
@@ -520,6 +529,15 @@ class Volume extends pulumi.CustomResource {
     sourceVolumeId = registerOutput<int?>('sourceVolumeId');
     status = registerOutput<String>('status');
     tags = registerOutput<List<String>>('tags');
-    timeouts = registerOutput<VolumeTimeouts?>('timeouts');
+    timeouts = registerOutput<VolumeTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VolumeTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

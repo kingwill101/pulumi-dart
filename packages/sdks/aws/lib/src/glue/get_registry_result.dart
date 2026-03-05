@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getRegistry.
 class GetRegistryResult {
   /// Amazon Resource Name (ARN) of Glue Registry.
   final String arn;
+
   /// A description of the registry.
   final String description;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -46,4 +47,3 @@ class GetRegistryResult {
     );
   }
 }
-

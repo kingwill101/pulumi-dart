@@ -83,7 +83,16 @@ class KeystoresAliasesKeyCertFile extends pulumi.CustomResource {
     keystore = registerOutput<String>('keystore');
     orgId = registerOutput<String>('orgId');
     password = registerOutput<String?>('password');
-    timeouts = registerOutput<KeystoresAliasesKeyCertFileTimeouts?>('timeouts');
+    timeouts = registerOutput<KeystoresAliasesKeyCertFileTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KeystoresAliasesKeyCertFileTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 
@@ -118,7 +127,16 @@ class KeystoresAliasesKeyCertFile extends pulumi.CustomResource {
     keystore = registerOutput<String>('keystore');
     orgId = registerOutput<String>('orgId');
     password = registerOutput<String?>('password');
-    timeouts = registerOutput<KeystoresAliasesKeyCertFileTimeouts?>('timeouts');
+    timeouts = registerOutput<KeystoresAliasesKeyCertFileTimeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KeystoresAliasesKeyCertFileTimeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
   }
 }

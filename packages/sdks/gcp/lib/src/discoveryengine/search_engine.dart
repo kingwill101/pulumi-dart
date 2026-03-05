@@ -521,7 +521,16 @@ class SearchEngine extends pulumi.CustomResource {
        ) {
     appType = registerOutput<String?>('appType');
     collectionId = registerOutput<String>('collectionId');
-    commonConfig = registerOutput<SearchEngineCommonConfig?>('commonConfig');
+    commonConfig = registerOutput<SearchEngineCommonConfig?>(
+      'commonConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SearchEngineCommonConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     dataStoreIds = registerOutput<List<String>>('dataStoreIds');
     displayName = registerOutput<String>('displayName');
@@ -534,6 +543,13 @@ class SearchEngine extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     searchEngineConfig = registerOutput<SearchEngineSearchEngineConfig>(
       'searchEngineConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SearchEngineSearchEngineConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     updateTime = registerOutput<String>('updateTime');
   }
@@ -563,7 +579,16 @@ class SearchEngine extends pulumi.CustomResource {
        ) {
     appType = registerOutput<String?>('appType');
     collectionId = registerOutput<String>('collectionId');
-    commonConfig = registerOutput<SearchEngineCommonConfig?>('commonConfig');
+    commonConfig = registerOutput<SearchEngineCommonConfig?>(
+      'commonConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SearchEngineCommonConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     dataStoreIds = registerOutput<List<String>>('dataStoreIds');
     displayName = registerOutput<String>('displayName');
@@ -576,6 +601,13 @@ class SearchEngine extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     searchEngineConfig = registerOutput<SearchEngineSearchEngineConfig>(
       'searchEngineConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SearchEngineSearchEngineConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     updateTime = registerOutput<String>('updateTime');
   }

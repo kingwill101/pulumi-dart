@@ -316,15 +316,36 @@ class DeliveryChannel extends pulumi.CustomResource {
     deliveryChannelFilter =
         registerOutput<DeliveryChannelDeliveryChannelFilter>(
           'deliveryChannelFilter',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DeliveryChannelDeliveryChannelFilter.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     deliveryChannelName = registerOutput<String>('deliveryChannelName');
     resourceChangeDelivery =
         registerOutput<DeliveryChannelResourceChangeDelivery?>(
           'resourceChangeDelivery',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DeliveryChannelResourceChangeDelivery.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     resourceSnapshotDelivery =
         registerOutput<DeliveryChannelResourceSnapshotDelivery?>(
           'resourceSnapshotDelivery',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DeliveryChannelResourceSnapshotDelivery.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 
@@ -357,15 +378,36 @@ class DeliveryChannel extends pulumi.CustomResource {
     deliveryChannelFilter =
         registerOutput<DeliveryChannelDeliveryChannelFilter>(
           'deliveryChannelFilter',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DeliveryChannelDeliveryChannelFilter.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     deliveryChannelName = registerOutput<String>('deliveryChannelName');
     resourceChangeDelivery =
         registerOutput<DeliveryChannelResourceChangeDelivery?>(
           'resourceChangeDelivery',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DeliveryChannelResourceChangeDelivery.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     resourceSnapshotDelivery =
         registerOutput<DeliveryChannelResourceSnapshotDelivery?>(
           'resourceSnapshotDelivery',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return DeliveryChannelResourceSnapshotDelivery.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
   }
 }

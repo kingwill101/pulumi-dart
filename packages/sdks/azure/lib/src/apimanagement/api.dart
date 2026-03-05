@@ -370,19 +370,58 @@ class Api extends pulumi.CustomResource {
       ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     apiType = registerOutput<String>('apiType');
-    contact = registerOutput<ApiContact?>('contact');
+    contact = registerOutput<ApiContact?>(
+      'contact',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiContact.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    import = registerOutput<ApiImport?>('import');
+    import = registerOutput<ApiImport?>(
+      'import',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiImport.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     isCurrent = registerOutput<bool>('isCurrent');
     isOnline = registerOutput<bool>('isOnline');
-    license = registerOutput<ApiLicense?>('license');
+    license = registerOutput<ApiLicense?>(
+      'license',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiLicense.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     oauth2Authorization = registerOutput<ApiOauth2Authorization?>(
       'oauth2Authorization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiOauth2Authorization.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     openidAuthentication = registerOutput<ApiOpenidAuthentication?>(
       'openidAuthentication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiOpenidAuthentication.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     path = registerOutput<String>('path');
     protocols = registerOutput<List<String>>('protocols');
@@ -394,6 +433,13 @@ class Api extends pulumi.CustomResource {
     subscriptionKeyParameterNames =
         registerOutput<ApiSubscriptionKeyParameterNames>(
           'subscriptionKeyParameterNames',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ApiSubscriptionKeyParameterNames.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     subscriptionRequired = registerOutput<bool?>('subscriptionRequired');
     termsOfServiceUrl = registerOutput<String?>('termsOfServiceUrl');
@@ -423,19 +469,58 @@ class Api extends pulumi.CustomResource {
        ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     apiType = registerOutput<String>('apiType');
-    contact = registerOutput<ApiContact?>('contact');
+    contact = registerOutput<ApiContact?>(
+      'contact',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiContact.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    import = registerOutput<ApiImport?>('import');
+    import = registerOutput<ApiImport?>(
+      'import',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiImport.fromMap((guardedValue as Map).cast<String, dynamic>());
+      },
+    );
     isCurrent = registerOutput<bool>('isCurrent');
     isOnline = registerOutput<bool>('isOnline');
-    license = registerOutput<ApiLicense?>('license');
+    license = registerOutput<ApiLicense?>(
+      'license',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiLicense.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     oauth2Authorization = registerOutput<ApiOauth2Authorization?>(
       'oauth2Authorization',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiOauth2Authorization.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     openidAuthentication = registerOutput<ApiOpenidAuthentication?>(
       'openidAuthentication',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ApiOpenidAuthentication.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     path = registerOutput<String>('path');
     protocols = registerOutput<List<String>>('protocols');
@@ -447,6 +532,13 @@ class Api extends pulumi.CustomResource {
     subscriptionKeyParameterNames =
         registerOutput<ApiSubscriptionKeyParameterNames>(
           'subscriptionKeyParameterNames',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ApiSubscriptionKeyParameterNames.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     subscriptionRequired = registerOutput<bool?>('subscriptionRequired');
     termsOfServiceUrl = registerOutput<String?>('termsOfServiceUrl');

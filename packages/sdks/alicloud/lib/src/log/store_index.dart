@@ -370,7 +370,16 @@ class StoreIndex extends pulumi.CustomResource {
     fieldSearches = registerOutput<List<Map<String, dynamic>>?>(
       'fieldSearches',
     );
-    fullText = registerOutput<StoreIndexFullText?>('fullText');
+    fullText = registerOutput<StoreIndexFullText?>(
+      'fullText',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StoreIndexFullText.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     logReduce = registerOutput<bool?>('logReduce');
     logReduceBlackLists = registerOutput<List<String>?>('logReduceBlackLists');
     logReduceWhiteLists = registerOutput<List<String>?>('logReduceWhiteLists');
@@ -405,7 +414,16 @@ class StoreIndex extends pulumi.CustomResource {
     fieldSearches = registerOutput<List<Map<String, dynamic>>?>(
       'fieldSearches',
     );
-    fullText = registerOutput<StoreIndexFullText?>('fullText');
+    fullText = registerOutput<StoreIndexFullText?>(
+      'fullText',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return StoreIndexFullText.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     logReduce = registerOutput<bool?>('logReduce');
     logReduceBlackLists = registerOutput<List<String>?>('logReduceBlackLists');
     logReduceWhiteLists = registerOutput<List<String>?>('logReduceWhiteLists');

@@ -325,6 +325,13 @@ class Subscription extends pulumi.CustomResource {
     clientScopedSubscription =
         registerOutput<SubscriptionClientScopedSubscription?>(
           'clientScopedSubscription',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SubscriptionClientScopedSubscription.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     clientScopedSubscriptionEnabled = registerOutput<bool?>(
       'clientScopedSubscriptionEnabled',
@@ -378,6 +385,13 @@ class Subscription extends pulumi.CustomResource {
     clientScopedSubscription =
         registerOutput<SubscriptionClientScopedSubscription?>(
           'clientScopedSubscription',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return SubscriptionClientScopedSubscription.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     clientScopedSubscriptionEnabled = registerOutput<bool?>(
       'clientScopedSubscriptionEnabled',

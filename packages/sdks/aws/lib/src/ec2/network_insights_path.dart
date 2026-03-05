@@ -183,9 +183,23 @@ class NetworkInsightsPath extends pulumi.CustomResource {
     filterAtDestination =
         registerOutput<NetworkInsightsPathFilterAtDestination>(
           'filterAtDestination',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NetworkInsightsPathFilterAtDestination.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     filterAtSource = registerOutput<NetworkInsightsPathFilterAtSource>(
       'filterAtSource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkInsightsPathFilterAtSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     protocol = registerOutput<String>('protocol');
     region = registerOutput<String>('region');
@@ -227,9 +241,23 @@ class NetworkInsightsPath extends pulumi.CustomResource {
     filterAtDestination =
         registerOutput<NetworkInsightsPathFilterAtDestination>(
           'filterAtDestination',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NetworkInsightsPathFilterAtDestination.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     filterAtSource = registerOutput<NetworkInsightsPathFilterAtSource>(
       'filterAtSource',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NetworkInsightsPathFilterAtSource.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     protocol = registerOutput<String>('protocol');
     region = registerOutput<String>('region');

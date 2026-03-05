@@ -200,6 +200,13 @@ class JobTemplate extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     jobTemplateData = registerOutput<JobTemplateJobTemplateData>(
       'jobTemplateData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobTemplateJobTemplateData.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     this.name = registerOutput<String>('name');
@@ -234,6 +241,13 @@ class JobTemplate extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     jobTemplateData = registerOutput<JobTemplateJobTemplateData>(
       'jobTemplateData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return JobTemplateJobTemplateData.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     this.name = registerOutput<String>('name');

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getFirewallGlobalRulestack.
 class GetFirewallGlobalRulestackResult {
   /// rulestack description
@@ -8,20 +7,13 @@ class GetFirewallGlobalRulestackResult {
 
   /// Creates a new [GetFirewallGlobalRulestackResult].
   /// [azureId] rulestack description
-  GetFirewallGlobalRulestackResult({
-    required this.azureId,
-  });
+  GetFirewallGlobalRulestackResult({required this.azureId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'azureId': azureId,
-    };
+    return <String, dynamic>{'azureId': azureId};
   }
 
   factory GetFirewallGlobalRulestackResult.fromMap(Map<String, dynamic> map) {
-    return GetFirewallGlobalRulestackResult(
-      azureId: map['azureId'] as String,
-    );
+    return GetFirewallGlobalRulestackResult(azureId: map['azureId'] as String);
   }
 }
-

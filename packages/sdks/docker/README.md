@@ -20,7 +20,7 @@ import 'package:pulumi_docker/pulumi_docker.dart' as provider;
 dependencies:
   pulumi_docker:
     git:
-      url: https://github.com/<owner>/<repo>.git
+      url: https://github.com/kingwill101/pulumi-dart.git
       path: packages/docker
       ref: main
 ~~~

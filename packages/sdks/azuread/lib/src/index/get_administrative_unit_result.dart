@@ -1,18 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAdministrativeUnit.
 class GetAdministrativeUnitResult {
   /// The description of the administrative unit.
   final String description;
+
   /// The display name of the administrative unit.
   final String displayName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of object IDs of members who are present in this administrative unit.
   final List<String> members;
+
   /// The object ID of the administrative unit.
   final String objectId;
+
   /// Whether the administrative unit _and_ its members are hidden or publicly viewable in the directory. One of: `Hiddenmembership` or `Public`.
   final String visibility;
 
@@ -54,4 +58,3 @@ class GetAdministrativeUnitResult {
     );
   }
 }
-

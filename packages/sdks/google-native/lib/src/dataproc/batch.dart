@@ -86,19 +86,80 @@ class Batch extends pulumi.CustomResource {
     creator = registerOutput<String>('creator');
     environmentConfig = registerOutput<EnvironmentConfigResponse>(
       'environmentConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EnvironmentConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     labels = registerOutput<Map<String, String>>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     operation = registerOutput<String>('operation');
     project = registerOutput<String>('project');
-    pysparkBatch = registerOutput<PySparkBatchResponse>('pysparkBatch');
+    pysparkBatch = registerOutput<PySparkBatchResponse>(
+      'pysparkBatch',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return PySparkBatchResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     requestId = registerOutput<String?>('requestId');
-    runtimeConfig = registerOutput<RuntimeConfigResponse>('runtimeConfig');
-    runtimeInfo = registerOutput<RuntimeInfoResponse>('runtimeInfo');
-    sparkBatch = registerOutput<SparkBatchResponse>('sparkBatch');
-    sparkRBatch = registerOutput<SparkRBatchResponse>('sparkRBatch');
-    sparkSqlBatch = registerOutput<SparkSqlBatchResponse>('sparkSqlBatch');
+    runtimeConfig = registerOutput<RuntimeConfigResponse>(
+      'runtimeConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RuntimeConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    runtimeInfo = registerOutput<RuntimeInfoResponse>(
+      'runtimeInfo',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RuntimeInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    sparkBatch = registerOutput<SparkBatchResponse>(
+      'sparkBatch',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkBatchResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    sparkRBatch = registerOutput<SparkRBatchResponse>(
+      'sparkRBatch',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkRBatchResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    sparkSqlBatch = registerOutput<SparkSqlBatchResponse>(
+      'sparkSqlBatch',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SparkSqlBatchResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     state = registerOutput<String>('state');
     stateHistory = registerOutput<List<Map<String, dynamic>>>('stateHistory');
     stateMessage = registerOutput<String>('stateMessage');

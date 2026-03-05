@@ -82,6 +82,13 @@ class Experiment extends pulumi.CustomResource {
     definition =
         registerOutput<GoogleCloudDialogflowCxV3ExperimentDefinitionResponse>(
           'definition',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowCxV3ExperimentDefinitionResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
@@ -94,15 +101,36 @@ class Experiment extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     result = registerOutput<GoogleCloudDialogflowCxV3ExperimentResultResponse>(
       'result',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GoogleCloudDialogflowCxV3ExperimentResultResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     rolloutConfig =
         registerOutput<GoogleCloudDialogflowCxV3RolloutConfigResponse>(
           'rolloutConfig',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowCxV3RolloutConfigResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     rolloutFailureReason = registerOutput<String>('rolloutFailureReason');
     rolloutState =
         registerOutput<GoogleCloudDialogflowCxV3RolloutStateResponse>(
           'rolloutState',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return GoogleCloudDialogflowCxV3RolloutStateResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     startTime = registerOutput<String>('startTime');
     state = registerOutput<String>('state');

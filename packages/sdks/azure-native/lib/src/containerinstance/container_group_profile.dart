@@ -2020,13 +2020,34 @@ class ContainerGroupProfile extends pulumi.CustomResource {
     confidentialComputeProperties =
         registerOutput<ConfidentialComputePropertiesResponse?>(
           'confidentialComputeProperties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ConfidentialComputePropertiesResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     containers = registerOutput<List<Map<String, dynamic>>>('containers');
     diagnostics = registerOutput<ContainerGroupDiagnosticsResponse?>(
       'diagnostics',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ContainerGroupDiagnosticsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     encryptionProperties = registerOutput<EncryptionPropertiesResponse?>(
       'encryptionProperties',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EncryptionPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     extensions = registerOutput<List<Map<String, dynamic>>?>('extensions');
     imageRegistryCredentials = registerOutput<List<Map<String, dynamic>>?>(
@@ -2035,7 +2056,16 @@ class ContainerGroupProfile extends pulumi.CustomResource {
     initContainers = registerOutput<List<Map<String, dynamic>>?>(
       'initContainers',
     );
-    ipAddress = registerOutput<IpAddressResponse?>('ipAddress');
+    ipAddress = registerOutput<IpAddressResponse?>(
+      'ipAddress',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return IpAddressResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     osType = registerOutput<String>('osType');

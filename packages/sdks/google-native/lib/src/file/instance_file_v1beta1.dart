@@ -90,6 +90,13 @@ class InstanceFileV1beta1 extends pulumi.CustomResource {
     description = registerOutput<String>('description');
     directoryServices = registerOutput<DirectoryServicesConfigResponse>(
       'directoryServices',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DirectoryServicesConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     etag = registerOutput<String>('etag');
     fileShares = registerOutput<List<Map<String, dynamic>>>('fileShares');

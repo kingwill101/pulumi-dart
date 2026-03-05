@@ -1006,7 +1006,16 @@ class AssetIamMember extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     asset = registerOutput<String>('asset');
-    condition = registerOutput<AssetIamMemberCondition?>('condition');
+    condition = registerOutput<AssetIamMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AssetIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dataplexZone = registerOutput<String>('dataplexZone');
     etag = registerOutput<String>('etag');
     lake = registerOutput<String>('lake');
@@ -1040,7 +1049,16 @@ class AssetIamMember extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     asset = registerOutput<String>('asset');
-    condition = registerOutput<AssetIamMemberCondition?>('condition');
+    condition = registerOutput<AssetIamMemberCondition?>(
+      'condition',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AssetIamMemberCondition.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     dataplexZone = registerOutput<String>('dataplexZone');
     etag = registerOutput<String>('etag');
     lake = registerOutput<String>('lake');

@@ -617,6 +617,13 @@ class EncryptionSpec extends pulumi.CustomResource {
        ) {
     encryptionSpec = registerOutput<EncryptionSpecEncryptionSpec>(
       'encryptionSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EncryptionSpecEncryptionSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     project = registerOutput<String>('project');
@@ -647,6 +654,13 @@ class EncryptionSpec extends pulumi.CustomResource {
        ) {
     encryptionSpec = registerOutput<EncryptionSpecEncryptionSpec>(
       'encryptionSpec',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return EncryptionSpecEncryptionSpec.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     location = registerOutput<String>('location');
     project = registerOutput<String>('project');

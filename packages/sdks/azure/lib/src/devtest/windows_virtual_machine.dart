@@ -441,6 +441,13 @@ class WindowsVirtualMachine extends pulumi.CustomResource {
     galleryImageReference =
         registerOutput<WindowsVirtualMachineGalleryImageReference>(
           'galleryImageReference',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WindowsVirtualMachineGalleryImageReference.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     inboundNatRules = registerOutput<List<Map<String, dynamic>>?>(
       'inboundNatRules',
@@ -489,6 +496,13 @@ class WindowsVirtualMachine extends pulumi.CustomResource {
     galleryImageReference =
         registerOutput<WindowsVirtualMachineGalleryImageReference>(
           'galleryImageReference',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return WindowsVirtualMachineGalleryImageReference.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     inboundNatRules = registerOutput<List<Map<String, dynamic>>?>(
       'inboundNatRules',

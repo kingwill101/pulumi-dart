@@ -291,7 +291,16 @@ class Cluster extends pulumi.CustomResource {
     dataIngestionUri = registerOutput<String>('dataIngestionUri');
     diskEncryptionEnabled = registerOutput<bool?>('diskEncryptionEnabled');
     doubleEncryptionEnabled = registerOutput<bool?>('doubleEncryptionEnabled');
-    identity = registerOutput<ClusterIdentity?>('identity');
+    identity = registerOutput<ClusterIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     languageExtension = registerOutput<List<Map<String, dynamic>>>(
       'languageExtension',
     );
@@ -302,6 +311,13 @@ class Cluster extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     optimizedAutoScale = registerOutput<ClusterOptimizedAutoScale?>(
       'optimizedAutoScale',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterOptimizedAutoScale.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     outboundNetworkAccessRestricted = registerOutput<bool?>(
       'outboundNetworkAccessRestricted',
@@ -312,7 +328,16 @@ class Cluster extends pulumi.CustomResource {
     );
     purgeEnabled = registerOutput<bool?>('purgeEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    sku = registerOutput<ClusterSku>('sku');
+    sku = registerOutput<ClusterSku>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterSku.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     streamingIngestionEnabled = registerOutput<bool?>(
       'streamingIngestionEnabled',
     );
@@ -324,6 +349,13 @@ class Cluster extends pulumi.CustomResource {
     virtualNetworkConfiguration =
         registerOutput<ClusterVirtualNetworkConfiguration?>(
           'virtualNetworkConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ClusterVirtualNetworkConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     zones = registerOutput<List<String>?>('zones');
   }
@@ -357,7 +389,16 @@ class Cluster extends pulumi.CustomResource {
     dataIngestionUri = registerOutput<String>('dataIngestionUri');
     diskEncryptionEnabled = registerOutput<bool?>('diskEncryptionEnabled');
     doubleEncryptionEnabled = registerOutput<bool?>('doubleEncryptionEnabled');
-    identity = registerOutput<ClusterIdentity?>('identity');
+    identity = registerOutput<ClusterIdentity?>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     languageExtension = registerOutput<List<Map<String, dynamic>>>(
       'languageExtension',
     );
@@ -368,6 +409,13 @@ class Cluster extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     optimizedAutoScale = registerOutput<ClusterOptimizedAutoScale?>(
       'optimizedAutoScale',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterOptimizedAutoScale.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     outboundNetworkAccessRestricted = registerOutput<bool?>(
       'outboundNetworkAccessRestricted',
@@ -378,7 +426,16 @@ class Cluster extends pulumi.CustomResource {
     );
     purgeEnabled = registerOutput<bool?>('purgeEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    sku = registerOutput<ClusterSku>('sku');
+    sku = registerOutput<ClusterSku>(
+      'sku',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ClusterSku.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     streamingIngestionEnabled = registerOutput<bool?>(
       'streamingIngestionEnabled',
     );
@@ -390,6 +447,13 @@ class Cluster extends pulumi.CustomResource {
     virtualNetworkConfiguration =
         registerOutput<ClusterVirtualNetworkConfiguration?>(
           'virtualNetworkConfiguration',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ClusterVirtualNetworkConfiguration.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     zones = registerOutput<List<String>?>('zones');
   }

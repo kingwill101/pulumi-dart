@@ -316,15 +316,42 @@ class Monitor extends pulumi.CustomResource {
     environmentProperties = registerOutput<List<Map<String, dynamic>>?>(
       'environmentProperties',
     );
-    identity = registerOutput<MonitorIdentity>('identity');
+    identity = registerOutput<MonitorIdentity>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MonitorIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     marketplaceSubscription = registerOutput<String>('marketplaceSubscription');
     monitoringEnabled = registerOutput<bool?>('monitoringEnabled');
     this.name = registerOutput<String>('name');
-    plan = registerOutput<MonitorPlan>('plan');
+    plan = registerOutput<MonitorPlan>(
+      'plan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MonitorPlan.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
-    user = registerOutput<MonitorUser>('user');
+    user = registerOutput<MonitorUser>(
+      'user',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MonitorUser.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 
   /// Gets an existing [Monitor] resource's state with the given [name] and [id].
@@ -353,14 +380,41 @@ class Monitor extends pulumi.CustomResource {
     environmentProperties = registerOutput<List<Map<String, dynamic>>?>(
       'environmentProperties',
     );
-    identity = registerOutput<MonitorIdentity>('identity');
+    identity = registerOutput<MonitorIdentity>(
+      'identity',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MonitorIdentity.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     marketplaceSubscription = registerOutput<String>('marketplaceSubscription');
     monitoringEnabled = registerOutput<bool?>('monitoringEnabled');
     this.name = registerOutput<String>('name');
-    plan = registerOutput<MonitorPlan>('plan');
+    plan = registerOutput<MonitorPlan>(
+      'plan',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MonitorPlan.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     tags = registerOutput<Map<String, String>?>('tags');
-    user = registerOutput<MonitorUser>('user');
+    user = registerOutput<MonitorUser>(
+      'user',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return MonitorUser.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
   }
 }

@@ -3499,6 +3499,13 @@ class CxFlow extends pulumi.CustomResource {
       ) {
     advancedSettings = registerOutput<CxFlowAdvancedSettings?>(
       'advancedSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxFlowAdvancedSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
@@ -3507,10 +3514,26 @@ class CxFlow extends pulumi.CustomResource {
     knowledgeConnectorSettings =
         registerOutput<CxFlowKnowledgeConnectorSettings?>(
           'knowledgeConnectorSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CxFlowKnowledgeConnectorSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     languageCode = registerOutput<String?>('languageCode');
     this.name = registerOutput<String>('name');
-    nluSettings = registerOutput<CxFlowNluSettings?>('nluSettings');
+    nluSettings = registerOutput<CxFlowNluSettings?>(
+      'nluSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxFlowNluSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     parent = registerOutput<String?>('parent');
     transitionRouteGroups = registerOutput<List<String>?>(
       'transitionRouteGroups',
@@ -3545,6 +3568,13 @@ class CxFlow extends pulumi.CustomResource {
        ) {
     advancedSettings = registerOutput<CxFlowAdvancedSettings?>(
       'advancedSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxFlowAdvancedSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
@@ -3553,10 +3583,26 @@ class CxFlow extends pulumi.CustomResource {
     knowledgeConnectorSettings =
         registerOutput<CxFlowKnowledgeConnectorSettings?>(
           'knowledgeConnectorSettings',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return CxFlowKnowledgeConnectorSettings.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     languageCode = registerOutput<String?>('languageCode');
     this.name = registerOutput<String>('name');
-    nluSettings = registerOutput<CxFlowNluSettings?>('nluSettings');
+    nluSettings = registerOutput<CxFlowNluSettings?>(
+      'nluSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return CxFlowNluSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     parent = registerOutput<String?>('parent');
     transitionRouteGroups = registerOutput<List<String>?>(
       'transitionRouteGroups',

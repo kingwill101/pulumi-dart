@@ -67,9 +67,36 @@ class Webhook extends pulumi.CustomResource {
     active = registerOutput<bool>('active');
     displayName = registerOutput<String>('displayName');
     environmentName = registerOutput<String?>('environmentName');
-    filters = registerOutput<List<WebhookFilters>?>('filters');
-    format = registerOutput<WebhookFormat>('format');
-    groups = registerOutput<List<WebhookGroup>?>('groups');
+    filters = registerOutput<List<WebhookFilters>?>(
+      'filters',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<WebhookFilters>(
+          guardedValue,
+          (value) => WebhookFilters.fromValue(value as String),
+        );
+      },
+    );
+    format = registerOutput<WebhookFormat>(
+      'format',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return WebhookFormat.fromValue(guardedValue as String);
+      },
+    );
+    groups = registerOutput<List<WebhookGroup>?>(
+      'groups',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<WebhookGroup>(
+          guardedValue,
+          (value) => WebhookGroup.fromValue(value as String),
+        );
+      },
+    );
     this.name = registerOutput<String>('name');
     organizationName = registerOutput<String>('organizationName');
     payloadUrl = registerOutput<String>('payloadUrl');

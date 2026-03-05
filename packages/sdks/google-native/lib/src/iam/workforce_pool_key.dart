@@ -41,7 +41,16 @@ class WorkforcePoolKey extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     expireTime = registerOutput<String>('expireTime');
-    keyData = registerOutput<KeyDataResponse>('keyData');
+    keyData = registerOutput<KeyDataResponse>(
+      'keyData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return KeyDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     providerId = registerOutput<String>('providerId');

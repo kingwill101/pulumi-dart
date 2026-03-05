@@ -61,11 +61,27 @@ class Message extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     messageType = registerOutput<String>('messageType');
     this.name = registerOutput<String>('name');
-    parsedData = registerOutput<ParsedDataResponse>('parsedData');
+    parsedData = registerOutput<ParsedDataResponse>(
+      'parsedData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ParsedDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     patientIds = registerOutput<List<Map<String, dynamic>>>('patientIds');
     project = registerOutput<String>('project');
     schematizedData = registerOutput<SchematizedDataResponse>(
       'schematizedData',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return SchematizedDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     sendFacility = registerOutput<String>('sendFacility');
     sendTime = registerOutput<String>('sendTime');

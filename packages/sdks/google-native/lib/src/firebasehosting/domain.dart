@@ -38,9 +38,27 @@ class Domain extends pulumi.CustomResource {
         options ?? pulumi.CustomResourceOptions(),
       ) {
     domainName = registerOutput<String>('domainName');
-    domainRedirect = registerOutput<DomainRedirectResponse>('domainRedirect');
+    domainRedirect = registerOutput<DomainRedirectResponse>(
+      'domainRedirect',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainRedirectResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     project = registerOutput<String>('project');
-    provisioning = registerOutput<DomainProvisioningResponse>('provisioning');
+    provisioning = registerOutput<DomainProvisioningResponse>(
+      'provisioning',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DomainProvisioningResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     site = registerOutput<String>('site');
     siteId = registerOutput<String>('siteId');
     status = registerOutput<String>('status');

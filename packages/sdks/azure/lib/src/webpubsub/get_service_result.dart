@@ -1,31 +1,39 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getService.
 class GetServiceResult {
   final bool aadAuthEnabled;
   final int capacity;
   final String externalIp;
+
   /// The FQDN of the Web Pubsub service.
   final String hostname;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final bool localAuthEnabled;
+
   /// The Azure location where the Web Pubsub service exists.
   final String location;
   final String name;
+
   /// The primary access key of the Web Pubsub service.
   final String primaryAccessKey;
+
   /// The primary connection string of the Web Pubsub service.
   final String primaryConnectionString;
   final bool publicNetworkAccessEnabled;
+
   /// The publicly accessible port of the Web Pubsub service which is designed for browser/client use.
   final int publicPort;
   final String resourceGroupName;
+
   /// The secondary access key of the Web Pubsub service.
   final String secondaryAccessKey;
+
   /// The secondary connection string of the Web Pubsub service.
   final String secondaryConnectionString;
+
   /// The publicly accessible port of the Web Pubsub service which is designed for customer server side use.
   final int serverPort;
   final String sku;
@@ -127,4 +135,3 @@ class GetServiceResult {
     );
   }
 }
-

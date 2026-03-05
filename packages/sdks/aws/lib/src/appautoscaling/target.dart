@@ -760,7 +760,16 @@ class Target extends pulumi.CustomResource {
     roleArn = registerOutput<String>('roleArn');
     scalableDimension = registerOutput<String>('scalableDimension');
     serviceNamespace = registerOutput<String>('serviceNamespace');
-    suspendedState = registerOutput<TargetSuspendedState>('suspendedState');
+    suspendedState = registerOutput<TargetSuspendedState>(
+      'suspendedState',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TargetSuspendedState.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
@@ -796,7 +805,16 @@ class Target extends pulumi.CustomResource {
     roleArn = registerOutput<String>('roleArn');
     scalableDimension = registerOutput<String>('scalableDimension');
     serviceNamespace = registerOutput<String>('serviceNamespace');
-    suspendedState = registerOutput<TargetSuspendedState>('suspendedState');
+    suspendedState = registerOutput<TargetSuspendedState>(
+      'suspendedState',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return TargetSuspendedState.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }

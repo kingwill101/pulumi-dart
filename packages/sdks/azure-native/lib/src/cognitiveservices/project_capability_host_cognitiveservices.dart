@@ -230,6 +230,13 @@ class ProjectCapabilityHostCognitiveservices extends pulumi.CustomResource {
     projectCapabilityHostProperties =
         registerOutput<ProjectCapabilityHostResponse>(
           'projectCapabilityHostProperties',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ProjectCapabilityHostResponse.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     type = registerOutput<String>('type');
   }

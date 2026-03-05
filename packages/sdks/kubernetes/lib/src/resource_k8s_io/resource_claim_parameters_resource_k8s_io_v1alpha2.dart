@@ -50,9 +50,25 @@ class ResourceClaimParametersResourceK8sIoV1alpha2
     generatedFrom =
         registerOutput<ResourceClaimParametersReferenceResourceK8sIoV1alpha2>(
           'generatedFrom',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return ResourceClaimParametersReferenceResourceK8sIoV1alpha2.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     kind = registerOutput<String>('kind');
-    metadata = registerOutput<ObjectMeta>('metadata');
+    metadata = registerOutput<ObjectMeta>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMeta.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     shareable = registerOutput<bool>('shareable');
   }
 }

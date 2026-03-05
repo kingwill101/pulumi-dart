@@ -340,7 +340,16 @@ class VpcAttachment extends pulumi.CustomResource {
     coreNetworkArn = registerOutput<String>('coreNetworkArn');
     coreNetworkId = registerOutput<String>('coreNetworkId');
     edgeLocation = registerOutput<String>('edgeLocation');
-    this.options = registerOutput<VpcAttachmentOptions>('options');
+    this.options = registerOutput<VpcAttachmentOptions>(
+      'options',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpcAttachmentOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ownerAccountId = registerOutput<String>('ownerAccountId');
     resourceArn = registerOutput<String>('resourceArn');
     routingPolicyLabel = registerOutput<String?>('routingPolicyLabel');
@@ -383,7 +392,16 @@ class VpcAttachment extends pulumi.CustomResource {
     coreNetworkArn = registerOutput<String>('coreNetworkArn');
     coreNetworkId = registerOutput<String>('coreNetworkId');
     edgeLocation = registerOutput<String>('edgeLocation');
-    this.options = registerOutput<VpcAttachmentOptions>('options');
+    this.options = registerOutput<VpcAttachmentOptions>(
+      'options',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return VpcAttachmentOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     ownerAccountId = registerOutput<String>('ownerAccountId');
     resourceArn = registerOutput<String>('resourceArn');
     routingPolicyLabel = registerOutput<String?>('routingPolicyLabel');

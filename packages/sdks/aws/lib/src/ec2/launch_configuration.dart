@@ -323,6 +323,13 @@ class LaunchConfiguration extends pulumi.CustomResource {
     keyName = registerOutput<String>('keyName');
     metadataOptions = registerOutput<LaunchConfigurationMetadataOptions>(
       'metadataOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LaunchConfigurationMetadataOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
@@ -330,6 +337,13 @@ class LaunchConfiguration extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     rootBlockDevice = registerOutput<LaunchConfigurationRootBlockDevice>(
       'rootBlockDevice',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LaunchConfigurationRootBlockDevice.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     securityGroups = registerOutput<List<String>?>('securityGroups');
     spotPrice = registerOutput<String?>('spotPrice');
@@ -378,6 +392,13 @@ class LaunchConfiguration extends pulumi.CustomResource {
     keyName = registerOutput<String>('keyName');
     metadataOptions = registerOutput<LaunchConfigurationMetadataOptions>(
       'metadataOptions',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LaunchConfigurationMetadataOptions.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
@@ -385,6 +406,13 @@ class LaunchConfiguration extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     rootBlockDevice = registerOutput<LaunchConfigurationRootBlockDevice>(
       'rootBlockDevice',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return LaunchConfigurationRootBlockDevice.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     securityGroups = registerOutput<List<String>?>('securityGroups');
     spotPrice = registerOutput<String?>('spotPrice');

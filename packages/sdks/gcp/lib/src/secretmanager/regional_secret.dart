@@ -1190,6 +1190,13 @@ class RegionalSecret extends pulumi.CustomResource {
     customerManagedEncryption =
         registerOutput<RegionalSecretCustomerManagedEncryption?>(
           'customerManagedEncryption',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RegionalSecretCustomerManagedEncryption.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     deletionProtection = registerOutput<bool?>('deletionProtection');
     effectiveAnnotations = registerOutput<Map<String, String>>(
@@ -1202,7 +1209,16 @@ class RegionalSecret extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    rotation = registerOutput<RegionalSecretRotation?>('rotation');
+    rotation = registerOutput<RegionalSecretRotation?>(
+      'rotation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegionalSecretRotation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     secretId = registerOutput<String>('secretId');
     tags = registerOutput<Map<String, String>?>('tags');
     topics = registerOutput<List<Map<String, dynamic>>?>('topics');
@@ -1239,6 +1255,13 @@ class RegionalSecret extends pulumi.CustomResource {
     customerManagedEncryption =
         registerOutput<RegionalSecretCustomerManagedEncryption?>(
           'customerManagedEncryption',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return RegionalSecretCustomerManagedEncryption.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
         );
     deletionProtection = registerOutput<bool?>('deletionProtection');
     effectiveAnnotations = registerOutput<Map<String, String>>(
@@ -1251,7 +1274,16 @@ class RegionalSecret extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    rotation = registerOutput<RegionalSecretRotation?>('rotation');
+    rotation = registerOutput<RegionalSecretRotation?>(
+      'rotation',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return RegionalSecretRotation.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     secretId = registerOutput<String>('secretId');
     tags = registerOutput<Map<String, String>?>('tags');
     topics = registerOutput<List<Map<String, dynamic>>?>('topics');

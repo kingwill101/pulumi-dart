@@ -62,7 +62,16 @@ class Namespace extends pulumi.CustomResource {
     scope = registerOutput<String>('scope');
     scopeId = registerOutput<String>('scopeId');
     scopeNamespaceId = registerOutput<String>('scopeNamespaceId');
-    state = registerOutput<NamespaceLifecycleStateResponse>('state');
+    state = registerOutput<NamespaceLifecycleStateResponse>(
+      'state',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NamespaceLifecycleStateResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }

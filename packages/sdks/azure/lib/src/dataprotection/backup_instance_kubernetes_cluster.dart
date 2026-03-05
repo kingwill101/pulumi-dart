@@ -1303,7 +1303,16 @@ class BackupInstanceKubernetesCluster extends pulumi.CustomResource {
     backupDatasourceParameters =
         registerOutput<
           BackupInstanceKubernetesClusterBackupDatasourceParameters?
-        >('backupDatasourceParameters');
+        >(
+          'backupDatasourceParameters',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return BackupInstanceKubernetesClusterBackupDatasourceParameters.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     backupPolicyId = registerOutput<String>('backupPolicyId');
     kubernetesClusterId = registerOutput<String>('kubernetesClusterId');
     location = registerOutput<String>('location');
@@ -1341,7 +1350,16 @@ class BackupInstanceKubernetesCluster extends pulumi.CustomResource {
     backupDatasourceParameters =
         registerOutput<
           BackupInstanceKubernetesClusterBackupDatasourceParameters?
-        >('backupDatasourceParameters');
+        >(
+          'backupDatasourceParameters',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return BackupInstanceKubernetesClusterBackupDatasourceParameters.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     backupPolicyId = registerOutput<String>('backupPolicyId');
     kubernetesClusterId = registerOutput<String>('kubernetesClusterId');
     location = registerOutput<String>('location');

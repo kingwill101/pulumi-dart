@@ -85,7 +85,8 @@ Future<GetQueueCloudtasksV2beta2Result> getQueueCloudtasksV2beta2(
 /// Gets the access control policy for a Queue. Returns an empty policy if the resource exists and does not have a policy set. Authorization requires the following [Google IAM](https://cloud.google.com/iam) permission on the specified resource parent: * `cloudtasks.queues.getIamPolicy`
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudtasks_v2beta2_get_queue_iam_policy_cloudtasks_v2beta2_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetQueueIamPolicyCloudtasksV2beta2Result> getQueueIamPolicyCloudtasksV2beta2(
+Future<GetQueueIamPolicyCloudtasksV2beta2Result>
+getQueueIamPolicyCloudtasksV2beta2(
   GetQueueIamPolicyCloudtasksV2beta2Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -133,7 +134,8 @@ Future<GetQueueCloudtasksV2beta3Result> getQueueCloudtasksV2beta3(
 /// Gets the access control policy for a Queue. Returns an empty policy if the resource exists and does not have a policy set. Authorization requires the following [Google IAM](https://cloud.google.com/iam) permission on the specified resource parent: * `cloudtasks.queues.getIamPolicy`
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudtasks_v2beta3_get_queue_iam_policy_cloudtasks_v2beta3_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetQueueIamPolicyCloudtasksV2beta3Result> getQueueIamPolicyCloudtasksV2beta3(
+Future<GetQueueIamPolicyCloudtasksV2beta3Result>
+getQueueIamPolicyCloudtasksV2beta3(
   GetQueueIamPolicyCloudtasksV2beta3Args args, {
   pulumi.InvokeOptions? options,
 }) async {

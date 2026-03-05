@@ -52,7 +52,16 @@ class DeviceSession extends pulumi.CustomResource {
          options ?? pulumi.CustomResourceOptions(),
        ) {
     activeStartTime = registerOutput<String>('activeStartTime');
-    androidDevice = registerOutput<AndroidDeviceResponse>('androidDevice');
+    androidDevice = registerOutput<AndroidDeviceResponse>(
+      'androidDevice',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return AndroidDeviceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
     expireTime = registerOutput<String>('expireTime');

@@ -76,18 +76,61 @@ class Gateway extends pulumi.CustomResource {
     createTime = registerOutput<int>('createTime');
     gatewayName = registerOutput<String?>('gatewayName');
     gatewayType = registerOutput<String>('gatewayType');
-    logConfig = registerOutput<GatewayLogConfig?>('logConfig');
+    logConfig = registerOutput<GatewayLogConfig?>(
+      'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GatewayLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     networkAccessConfig = registerOutput<GatewayNetworkAccessConfig?>(
       'networkAccessConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GatewayNetworkAccessConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     paymentType = registerOutput<String>('paymentType');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     spec = registerOutput<String?>('spec');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
-    vpc = registerOutput<GatewayVpc?>('vpc');
-    vswitch = registerOutput<GatewayVswitch?>('vswitch');
-    zoneConfig = registerOutput<GatewayZoneConfig>('zoneConfig');
+    vpc = registerOutput<GatewayVpc?>(
+      'vpc',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GatewayVpc.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    vswitch = registerOutput<GatewayVswitch?>(
+      'vswitch',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GatewayVswitch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    zoneConfig = registerOutput<GatewayZoneConfig>(
+      'zoneConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GatewayZoneConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     zones = registerOutput<List<Map<String, dynamic>>>('zones');
   }
 
@@ -117,18 +160,61 @@ class Gateway extends pulumi.CustomResource {
     createTime = registerOutput<int>('createTime');
     gatewayName = registerOutput<String?>('gatewayName');
     gatewayType = registerOutput<String>('gatewayType');
-    logConfig = registerOutput<GatewayLogConfig?>('logConfig');
+    logConfig = registerOutput<GatewayLogConfig?>(
+      'logConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GatewayLogConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     networkAccessConfig = registerOutput<GatewayNetworkAccessConfig?>(
       'networkAccessConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GatewayNetworkAccessConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     paymentType = registerOutput<String>('paymentType');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     spec = registerOutput<String?>('spec');
     status = registerOutput<String>('status');
     tags = registerOutput<Map<String, String>?>('tags');
-    vpc = registerOutput<GatewayVpc?>('vpc');
-    vswitch = registerOutput<GatewayVswitch?>('vswitch');
-    zoneConfig = registerOutput<GatewayZoneConfig>('zoneConfig');
+    vpc = registerOutput<GatewayVpc?>(
+      'vpc',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GatewayVpc.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    vswitch = registerOutput<GatewayVswitch?>(
+      'vswitch',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GatewayVswitch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
+    zoneConfig = registerOutput<GatewayZoneConfig>(
+      'zoneConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return GatewayZoneConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     zones = registerOutput<List<Map<String, dynamic>>>('zones');
   }
 }

@@ -730,7 +730,16 @@ class NetworkManagerVerifierWorkspaceReachabilityAnalysisIntent
     ipTraffic =
         registerOutput<
           NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentIpTraffic
-        >('ipTraffic');
+        >(
+          'ipTraffic',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentIpTraffic.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     this.name = registerOutput<String>('name');
     sourceResourceId = registerOutput<String>('sourceResourceId');
     verifierWorkspaceId = registerOutput<String>('verifierWorkspaceId');
@@ -764,7 +773,16 @@ class NetworkManagerVerifierWorkspaceReachabilityAnalysisIntent
     ipTraffic =
         registerOutput<
           NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentIpTraffic
-        >('ipTraffic');
+        >(
+          'ipTraffic',
+          decoder: (raw) {
+            final guardedValue = raw;
+            if (guardedValue == null) return null;
+            return NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentIpTraffic.fromMap(
+              (guardedValue as Map).cast<String, dynamic>(),
+            );
+          },
+        );
     this.name = registerOutput<String>('name');
     sourceResourceId = registerOutput<String>('sourceResourceId');
     verifierWorkspaceId = registerOutput<String>('verifierWorkspaceId');

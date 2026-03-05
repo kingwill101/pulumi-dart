@@ -1474,6 +1474,13 @@ class DatabasePostgresqlV2 extends pulumi.CustomResource {
     port = registerOutput<int>('port');
     privateNetwork = registerOutput<DatabasePostgresqlV2PrivateNetwork?>(
       'privateNetwork',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabasePostgresqlV2PrivateNetwork.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     rootPassword = registerOutput<String>('rootPassword');
@@ -1481,10 +1488,28 @@ class DatabasePostgresqlV2 extends pulumi.CustomResource {
     sslConnection = registerOutput<bool>('sslConnection');
     status = registerOutput<String>('status');
     suspended = registerOutput<bool>('suspended');
-    timeouts = registerOutput<DatabasePostgresqlV2Timeouts?>('timeouts');
+    timeouts = registerOutput<DatabasePostgresqlV2Timeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabasePostgresqlV2Timeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     updated = registerOutput<String>('updated');
-    updates = registerOutput<DatabasePostgresqlV2Updates>('updates');
+    updates = registerOutput<DatabasePostgresqlV2Updates>(
+      'updates',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabasePostgresqlV2Updates.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     version = registerOutput<String>('version');
   }
 
@@ -1667,6 +1692,13 @@ class DatabasePostgresqlV2 extends pulumi.CustomResource {
     port = registerOutput<int>('port');
     privateNetwork = registerOutput<DatabasePostgresqlV2PrivateNetwork?>(
       'privateNetwork',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabasePostgresqlV2PrivateNetwork.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     region = registerOutput<String>('region');
     rootPassword = registerOutput<String>('rootPassword');
@@ -1674,10 +1706,28 @@ class DatabasePostgresqlV2 extends pulumi.CustomResource {
     sslConnection = registerOutput<bool>('sslConnection');
     status = registerOutput<String>('status');
     suspended = registerOutput<bool>('suspended');
-    timeouts = registerOutput<DatabasePostgresqlV2Timeouts?>('timeouts');
+    timeouts = registerOutput<DatabasePostgresqlV2Timeouts?>(
+      'timeouts',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabasePostgresqlV2Timeouts.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     type = registerOutput<String>('type');
     updated = registerOutput<String>('updated');
-    updates = registerOutput<DatabasePostgresqlV2Updates>('updates');
+    updates = registerOutput<DatabasePostgresqlV2Updates>(
+      'updates',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return DatabasePostgresqlV2Updates.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     version = registerOutput<String>('version');
   }
 }

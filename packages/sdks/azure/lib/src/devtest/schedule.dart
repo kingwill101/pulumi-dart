@@ -340,15 +340,36 @@ class Schedule extends pulumi.CustomResource {
        ) {
     dailyRecurrence = registerOutput<ScheduleDailyRecurrence?>(
       'dailyRecurrence',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduleDailyRecurrence.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     hourlyRecurrence = registerOutput<ScheduleHourlyRecurrence?>(
       'hourlyRecurrence',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduleHourlyRecurrence.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     labName = registerOutput<String>('labName');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     notificationSettings = registerOutput<ScheduleNotificationSettings>(
       'notificationSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduleNotificationSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     status = registerOutput<String?>('status');
@@ -357,6 +378,13 @@ class Schedule extends pulumi.CustomResource {
     timeZoneId = registerOutput<String>('timeZoneId');
     weeklyRecurrence = registerOutput<ScheduleWeeklyRecurrence?>(
       'weeklyRecurrence',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduleWeeklyRecurrence.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 
@@ -385,15 +413,36 @@ class Schedule extends pulumi.CustomResource {
        ) {
     dailyRecurrence = registerOutput<ScheduleDailyRecurrence?>(
       'dailyRecurrence',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduleDailyRecurrence.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     hourlyRecurrence = registerOutput<ScheduleHourlyRecurrence?>(
       'hourlyRecurrence',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduleHourlyRecurrence.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     labName = registerOutput<String>('labName');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     notificationSettings = registerOutput<ScheduleNotificationSettings>(
       'notificationSettings',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduleNotificationSettings.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     resourceGroupName = registerOutput<String>('resourceGroupName');
     status = registerOutput<String?>('status');
@@ -402,6 +451,13 @@ class Schedule extends pulumi.CustomResource {
     timeZoneId = registerOutput<String>('timeZoneId');
     weeklyRecurrence = registerOutput<ScheduleWeeklyRecurrence?>(
       'weeklyRecurrence',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ScheduleWeeklyRecurrence.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
   }
 }

@@ -1,20 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getDevBoxDefinition.
 class GetDevBoxDefinitionResult {
   final String devCenterId;
+
   /// Whether Dev Boxes created with this definition are capable of hibernation.
   final bool hibernateSupportEnabled;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The ID of the image for the Dev Center Dev Box Definition.
   final String imageReferenceId;
+
   /// The Azure Region where the Dev Center Dev Box Definition exists.
   final String location;
   final String name;
+
   /// The name of the SKU for the Dev Center Dev Box Definition.
   final String skuName;
+
   /// A mapping of tags assigned to the Dev Center Dev Box Definition.
   final Map<String, String> tags;
 
@@ -64,4 +69,3 @@ class GetDevBoxDefinitionResult {
     );
   }
 }
-

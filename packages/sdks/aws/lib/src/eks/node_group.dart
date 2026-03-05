@@ -824,24 +824,67 @@ class NodeGroup extends pulumi.CustomResource {
     forceUpdateVersion = registerOutput<bool?>('forceUpdateVersion');
     instanceTypes = registerOutput<List<String>>('instanceTypes');
     labels = registerOutput<Map<String, String>?>('labels');
-    launchTemplate = registerOutput<NodeGroupLaunchTemplate?>('launchTemplate');
+    launchTemplate = registerOutput<NodeGroupLaunchTemplate?>(
+      'launchTemplate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodeGroupLaunchTemplate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     nodeGroupName = registerOutput<String>('nodeGroupName');
     nodeGroupNamePrefix = registerOutput<String>('nodeGroupNamePrefix');
     nodeRepairConfig = registerOutput<NodeGroupNodeRepairConfig>(
       'nodeRepairConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodeGroupNodeRepairConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     nodeRoleArn = registerOutput<String>('nodeRoleArn');
     region = registerOutput<String>('region');
     releaseVersion = registerOutput<String>('releaseVersion');
-    remoteAccess = registerOutput<NodeGroupRemoteAccess?>('remoteAccess');
+    remoteAccess = registerOutput<NodeGroupRemoteAccess?>(
+      'remoteAccess',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodeGroupRemoteAccess.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resources = registerOutput<List<Map<String, dynamic>>>('resources');
-    scalingConfig = registerOutput<NodeGroupScalingConfig>('scalingConfig');
+    scalingConfig = registerOutput<NodeGroupScalingConfig>(
+      'scalingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodeGroupScalingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String>('status');
     subnetIds = registerOutput<List<String>>('subnetIds');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     taints = registerOutput<List<Map<String, dynamic>>?>('taints');
-    updateConfig = registerOutput<NodeGroupUpdateConfig>('updateConfig');
+    updateConfig = registerOutput<NodeGroupUpdateConfig>(
+      'updateConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodeGroupUpdateConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     version = registerOutput<String>('version');
   }
 
@@ -876,24 +919,67 @@ class NodeGroup extends pulumi.CustomResource {
     forceUpdateVersion = registerOutput<bool?>('forceUpdateVersion');
     instanceTypes = registerOutput<List<String>>('instanceTypes');
     labels = registerOutput<Map<String, String>?>('labels');
-    launchTemplate = registerOutput<NodeGroupLaunchTemplate?>('launchTemplate');
+    launchTemplate = registerOutput<NodeGroupLaunchTemplate?>(
+      'launchTemplate',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodeGroupLaunchTemplate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     nodeGroupName = registerOutput<String>('nodeGroupName');
     nodeGroupNamePrefix = registerOutput<String>('nodeGroupNamePrefix');
     nodeRepairConfig = registerOutput<NodeGroupNodeRepairConfig>(
       'nodeRepairConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodeGroupNodeRepairConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
     );
     nodeRoleArn = registerOutput<String>('nodeRoleArn');
     region = registerOutput<String>('region');
     releaseVersion = registerOutput<String>('releaseVersion');
-    remoteAccess = registerOutput<NodeGroupRemoteAccess?>('remoteAccess');
+    remoteAccess = registerOutput<NodeGroupRemoteAccess?>(
+      'remoteAccess',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodeGroupRemoteAccess.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     resources = registerOutput<List<Map<String, dynamic>>>('resources');
-    scalingConfig = registerOutput<NodeGroupScalingConfig>('scalingConfig');
+    scalingConfig = registerOutput<NodeGroupScalingConfig>(
+      'scalingConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodeGroupScalingConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     status = registerOutput<String>('status');
     subnetIds = registerOutput<List<String>>('subnetIds');
     tags = registerOutput<Map<String, String>?>('tags');
     tagsAll = registerOutput<Map<String, String>>('tagsAll');
     taints = registerOutput<List<Map<String, dynamic>>?>('taints');
-    updateConfig = registerOutput<NodeGroupUpdateConfig>('updateConfig');
+    updateConfig = registerOutput<NodeGroupUpdateConfig>(
+      'updateConfig',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return NodeGroupUpdateConfig.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     version = registerOutput<String>('version');
   }
 }

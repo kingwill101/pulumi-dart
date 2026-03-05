@@ -50,7 +50,16 @@ class ServiceAccountPatchCoreV1 extends pulumi.CustomResource {
       'imagePullSecrets',
     );
     kind = registerOutput<String?>('kind');
-    metadata = registerOutput<ObjectMetaPatch?>('metadata');
+    metadata = registerOutput<ObjectMetaPatch?>(
+      'metadata',
+      decoder: (raw) {
+        final guardedValue = raw;
+        if (guardedValue == null) return null;
+        return ObjectMetaPatch.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      },
+    );
     secrets = registerOutput<List<Map<String, dynamic>>?>('secrets');
   }
 }
