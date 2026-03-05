@@ -214,7 +214,7 @@ class _TypedOutputCompletionSource<T> implements IOutputCompletionSource {
         return decoded as T;
       } on TypeError {
         return null;
-      } on Exception {
+      } catch (_) {
         return null;
       }
     }

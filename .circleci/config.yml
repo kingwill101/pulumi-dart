@@ -56,6 +56,67 @@ jobs:
           name: Test pulumi core package
           command: cd packages/pulumi-dart && dart test
 
+  integration-tests:
+    docker:
+      - image: cimg/go:1.25-node
+    working_directory: ~/project
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - integration-go-v1-{{ checksum "integration_tests/go.sum" }}-{{ checksum "pulumi-language-dart/go.sum" }}
+      - restore_cache:
+          keys:
+            - dart-pub-v1-{{ checksum "pubspec.lock" }}
+      - run:
+          name: Install system dependencies
+          command: |
+            set -euo pipefail
+            sudo apt-get update
+            sudo apt-get install -y unzip
+      - run:
+          name: Install Pulumi CLI
+          command: |
+            set -euo pipefail
+            curl -fsSL https://get.pulumi.com | sh
+            echo 'export PATH="$HOME/.pulumi/bin:$PATH"' >> "${BASH_ENV}"
+            . "${BASH_ENV}"
+            pulumi version
+      - run:
+          name: Install Dart SDK 3.11.0
+          command: |
+            set -euo pipefail
+            curl -fsSL https://storage.googleapis.com/dart-archive/channels/stable/release/3.11.0/sdk/dartsdk-linux-x64-release.zip -o /tmp/dartsdk.zip
+            sudo unzip -q /tmp/dartsdk.zip -d /opt
+            echo 'export PATH="/opt/dart-sdk/bin:$PATH"' >> "${BASH_ENV}"
+            . "${BASH_ENV}"
+            dart --version
+      - run:
+          name: Download Go modules
+          command: |
+            cd pulumi-language-dart && go mod download
+            cd ../integration_tests && go mod download
+      - run:
+          name: Resolve Dart workspace dependencies
+          command: dart pub get
+      - save_cache:
+          key: integration-go-v1-{{ checksum "integration_tests/go.sum" }}-{{ checksum "pulumi-language-dart/go.sum" }}
+          paths:
+            - ~/go/pkg/mod
+            - ~/.cache/go-build
+      - save_cache:
+          key: dart-pub-v1-{{ checksum "pubspec.lock" }}
+          paths:
+            - ~/.pub-cache
+      - run:
+          name: Build pulumi-language-dart for integration tests
+          command: cd pulumi-language-dart && go build -o pulumi-language-dart .
+      - run:
+          name: Run integration tests
+          command: |
+            . "${BASH_ENV}"
+            cd integration_tests && go test ./...
+
   build-language-host:
     parameters:
       goos:
@@ -168,6 +229,13 @@ workflows:
           filters:
             tags:
               only: /.*/
+      - integration-tests:
+          requires:
+            - go-test
+            - dart-core
+          filters:
+            tags:
+              only: /.*/
       - build-language-host:
           name: build-language-host-linux-amd64
           goos: linux
@@ -220,6 +288,7 @@ workflows:
           requires:
             - go-test
             - dart-core
+            - integration-tests
             - build-language-host-linux-amd64
             - build-language-host-linux-arm64
             - build-language-host-darwin-amd64
