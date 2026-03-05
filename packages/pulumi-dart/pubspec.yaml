@@ -1,9 +1,16 @@
 name: pulumi
 description: Pulumi core SDK for Dart infrastructure as code programs.
 version: 3.0.0
+license: MIT
 homepage: https://www.pulumi.com
 repository: https://github.com/kingwill101/pulumi-dart/tree/master/packages/pulumi-dart
 issue_tracker: https://github.com/kingwill101/pulumi-dart/issues
+topics:
+  - pulumi
+  - dart
+  - infrastructure
+  - cloud
+  - devops
 resolution: workspace
 environment:
   sdk: ">=3.11.0 <4.0.0"
