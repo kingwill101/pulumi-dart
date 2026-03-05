@@ -59,7 +59,9 @@ func readGeneratedPackageLibraries(t *testing.T, targetDir, packageName string) 
 		if len(content) == 0 || content[len(content)-1] != '\n' {
 			b.WriteString("\n")
 		}
-		b.WriteString("\n")
+		if rel != paths[len(paths)-1] {
+			b.WriteString("\n")
+		}
 	}
 
 	return string(rootData), b.String()
