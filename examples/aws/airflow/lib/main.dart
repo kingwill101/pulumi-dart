@@ -107,9 +107,12 @@ class AirflowStack extends pulumi.Stack {
     aws.ecs.Cluster('airflow-ecs-cluster');
 
     postgresHost = db.endpoint.apply((e) => e.split(':').first);
-    redisHost = cacheCluster.cacheNodes.apply(
-      (nodes) => nodes.isNotEmpty ? nodes[0].address : '',
-    );
+    redisHost = cacheCluster.cacheNodes.apply((nodes) {
+      if (nodes.isEmpty) {
+        return '';
+      }
+      return (nodes[0]['address'] as String?) ?? '';
+    });
   }
 
   @override

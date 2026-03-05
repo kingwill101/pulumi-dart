@@ -21,7 +21,7 @@ class FargateStack extends pulumi.Stack {
     final webSg = aws.ec2.SecurityGroup(
       'web-sg',
       args: aws.ec2.SecurityGroupArgs(
-        vpcId: vpc.vpcId,
+        vpcId: vpc.vpcId.apply((v) => v!),
         egress: [
           aws.ec2.SecurityGroupEgress(
             protocol: '-1'.input(),
@@ -75,7 +75,7 @@ class FargateStack extends pulumi.Stack {
     final webLb = lb.LoadBalancer(
       'web-lb',
       args: lb.LoadBalancerArgs(
-        subnets: vpc.publicSubnetIds,
+        subnets: vpc.publicSubnetIds.apply((v) => v!),
         securityGroups: webSgIds,
       ),
     );
@@ -86,7 +86,7 @@ class FargateStack extends pulumi.Stack {
         port: 80.input(),
         protocol: 'HTTP'.input(),
         targetType: 'ip'.input(),
-        vpcId: vpc.vpcId,
+        vpcId: vpc.vpcId.apply((v) => v!),
       ),
     );
 
@@ -177,7 +177,7 @@ class FargateStack extends pulumi.Stack {
         networkConfiguration: aws.ecs
             .ServiceNetworkConfiguration(
               assignPublicIp: true.input(),
-              subnets: vpc.publicSubnetIds,
+              subnets: vpc.publicSubnetIds.apply((v) => v!),
               securityGroups: webSgIds,
             )
             .input(),

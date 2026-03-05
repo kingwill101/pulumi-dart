@@ -1,0 +1,6 @@
+name: aws-apigateway-dart-routes
+description: API Gateway routes example in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

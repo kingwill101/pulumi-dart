@@ -1,0 +1,6 @@
+name: command-dart-lambda-invoke
+description: Pulumi Command lambda invoke example in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

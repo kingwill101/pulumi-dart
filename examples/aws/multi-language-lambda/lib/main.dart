@@ -43,7 +43,11 @@ class MultiLanguageLambdaStack extends pulumi.Stack {
         handler: 'DotnetLambda::Lambda.Function::FunctionHandler',
         runtime: 'dotnet8',
       ),
-      LambdaConfig(language: 'go', handler: 'bootstrap', runtime: 'provided.al2023'),
+      LambdaConfig(
+        language: 'go',
+        handler: 'bootstrap',
+        runtime: 'provided.al2023',
+      ),
       LambdaConfig(
         language: 'typescript',
         handler: 'index.handler',
@@ -63,17 +67,19 @@ class MultiLanguageLambdaStack extends pulumi.Stack {
         '${lambda.language}-build-code',
         args: docker_build.index.ImageArgs(
           push: false.input(),
-          context: docker_build.index.BuildContext(
-            location: './${lambda.language}-lambda'.input(),
-          ).input(),
-          dockerfile: docker_build.index.Dockerfile(
-            location: './${lambda.language}-lambda/Dockerfile'.input(),
-          ).input(),
+          context: docker_build.index
+              .BuildContext(location: './${lambda.language}-lambda'.input())
+              .input(),
+          dockerfile: docker_build.index
+              .Dockerfile(
+                location: './${lambda.language}-lambda/Dockerfile'.input(),
+              )
+              .input(),
           exports: [
             docker_build.index.Export(
-              local: docker_build.index.ExportLocal(
-                dest: './dist/${lambda.language}'.input(),
-              ).input(),
+              local: docker_build.index
+                  .ExportLocal(dest: './dist/${lambda.language}'.input())
+                  .input(),
             ),
           ].input(),
           labels: {'created': createdLabel}.input(),

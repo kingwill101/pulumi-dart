@@ -1,0 +1,6 @@
+name: postgresql-dart-role-database
+description: Pulumi postgresql role and database example in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

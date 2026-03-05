@@ -7,7 +7,7 @@ description: Pulumi GCP serverless raw example.
 environment:
   sdk: ^3.11.0
 dependencies:
-  pulumi: 0.1.0
+  pulumi: 3.0.0
   pulumi_gcp: 9.11.0
 
 dev_dependencies:

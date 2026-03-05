@@ -31,7 +31,8 @@ For each port include:
 
 - `cloudrun/`
 - `cloudrun-cloudsql/`
-- `docker-gcr-cloudrun/`
+- `docker-gcr-cloudrun/docker-build-push-gcr/`
+- `docker-gcr-cloudrun/cloud-run-deploy/`
 - `functions/`
 - `functions-raw/`
 - `gke/`
@@ -73,3 +74,17 @@ For each port include:
 | `slackbot` | `gcp-ts-slackbot/` |
 | `webserver` | `gcp-go-webserver/`, `gcp-py-webserver/` |
 | `serverless-raw` | `gcp-py-serverless-raw/`, `gcp-ts-serverless-raw/` |
+
+## Smoke preview prerequisites
+
+- Install and authenticate Google Cloud SDK:
+- `gcloud auth login`
+- `gcloud auth application-default login`
+- Set required provider config:
+- `pulumi config set gcp:project <YOUR_GCP_PROJECT>`
+- For regional examples, also set:
+- `pulumi config set gcp:region <YOUR_GCP_REGION>`
+- Example-specific config keys required by some projects:
+- `cloudrun-cloudsql`: `db-password` (secret)
+- `k8s-ruby-on-rails-postgresql`: `dockerUsername`, `dockerPassword` (secret), `dbPassword` (secret)
+- `network-component`: `subnet_cidr_blocks` (path config array)

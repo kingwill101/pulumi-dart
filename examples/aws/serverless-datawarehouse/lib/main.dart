@@ -105,25 +105,28 @@ class ServerlessDataWarehouseStack extends pulumi.Stack {
         handler: 'index.handler'.input(),
         code: pulumi.FileArchive('./lambda/aggregate').input(),
         timeout: 60.input(),
-        environment: aws.lambda.FunctionEnvironment(
-          variables: pulumi
-              .Output
-              .all([db.name, queryResultsBucket.bucket, dataWarehouseBucket.bucket])
-              .apply<Map<String, String>>((values) {
-                final databaseName = values[0];
-                final resultsBucket = values[1];
-                final dataBucket = values[2];
-                return {
-                  'DATABASE_NAME': databaseName,
-                  'IMPRESSIONS_TABLE': 'impressions',
-                  'CLICKS_TABLE': 'clicks',
-                  'RESULTS_BUCKET': resultsBucket,
-                  'DW_BUCKET': dataBucket,
-                  'AGGREGATE_TABLE': 'aggregates',
-                };
-              })
-              .input(),
-        ).input(),
+        environment: aws.lambda
+            .FunctionEnvironment(
+              variables:
+                  pulumi.Output.all([
+                    db.name,
+                    queryResultsBucket.bucket,
+                    dataWarehouseBucket.bucket,
+                  ]).apply<Map<String, String>>((values) {
+                    final databaseName = values[0];
+                    final resultsBucket = values[1];
+                    final dataBucket = values[2];
+                    return {
+                      'DATABASE_NAME': databaseName,
+                      'IMPRESSIONS_TABLE': 'impressions',
+                      'CLICKS_TABLE': 'clicks',
+                      'RESULTS_BUCKET': resultsBucket,
+                      'DW_BUCKET': dataBucket,
+                      'AGGREGATE_TABLE': 'aggregates',
+                    };
+                  }).input(),
+            )
+            .input(),
       ),
     );
 

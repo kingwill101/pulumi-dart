@@ -2,8 +2,7 @@ import 'dart:convert';
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'package:pulumi_aws/pulumi_aws.dart' as aws;
-import 'package:pulumi_aws_apigateway/pulumi_aws_apigateway.dart'
-    as awsx_apigw;
+import 'package:pulumi_aws_apigateway/pulumi_aws_apigateway.dart' as awsx_apigw;
 import 'package:pulumi_aws_apigateway/index.dart' as awsx_apigw_index;
 import 'package:pulumi_awsx/pulumi_awsx.dart' as awsx;
 
@@ -22,7 +21,7 @@ class LambdaEfsStack extends pulumi.Stack {
     final securityGroup = aws.ec2.SecurityGroup(
       'group',
       args: aws.ec2.SecurityGroupArgs(
-        vpcId: vpc.vpcId,
+        vpcId: vpc.vpcId.apply((v) => v!),
         ingress: [
           aws.ec2.SecurityGroupIngress(
             protocol: 'tcp'.input(),
@@ -48,10 +47,12 @@ class LambdaEfsStack extends pulumi.Stack {
       'fs-mount-0',
       args: aws.efs.MountTargetArgs(
         fileSystemId: fileSystem.id,
-        subnetId: vpc.publicSubnetIds.apply<String>((List<String> ids) => ids[0]).input(),
-        securityGroups: pulumi.Output.all([securityGroup.id]).apply<List<String>>(
-          (List<String> ids) => [ids[0]],
-        ).input(),
+        subnetId: vpc.publicSubnetIds
+            .apply<String>((List<String>? ids) => ids![0])
+            .input(),
+        securityGroups: pulumi.Output.all([
+          securityGroup.id,
+        ]).apply<List<String>>((List<String> ids) => [ids[0]]).input(),
       ),
     );
 
@@ -59,10 +60,12 @@ class LambdaEfsStack extends pulumi.Stack {
       'fs-mount-1',
       args: aws.efs.MountTargetArgs(
         fileSystemId: fileSystem.id,
-        subnetId: vpc.publicSubnetIds.apply<String>((List<String> ids) => ids[1]).input(),
-        securityGroups: pulumi.Output.all([securityGroup.id]).apply<List<String>>(
-          (List<String> ids) => [ids[0]],
-        ).input(),
+        subnetId: vpc.publicSubnetIds
+            .apply<String>((List<String>? ids) => ids![1])
+            .input(),
+        securityGroups: pulumi.Output.all([
+          securityGroup.id,
+        ]).apply<List<String>>((List<String> ids) => [ids[0]]).input(),
       ),
     );
 
@@ -70,20 +73,25 @@ class LambdaEfsStack extends pulumi.Stack {
       'ap',
       args: aws.efs.AccessPointArgs(
         fileSystemId: fileSystem.id,
-        posixUser: aws.efs.AccessPointPosixUser(
-          uid: 1000.input(),
-          gid: 1000.input(),
-        ).input(),
-        rootDirectory: aws.efs.AccessPointRootDirectory(
-          path: '/www'.input(),
-          creationInfo: aws.efs.AccessPointRootDirectoryCreationInfo(
-            ownerGid: 1000.input(),
-            ownerUid: 1000.input(),
-            permissions: '755'.input(),
-          ).input(),
-        ).input(),
+        posixUser: aws.efs
+            .AccessPointPosixUser(uid: 1000.input(), gid: 1000.input())
+            .input(),
+        rootDirectory: aws.efs
+            .AccessPointRootDirectory(
+              path: '/www'.input(),
+              creationInfo: aws.efs
+                  .AccessPointRootDirectoryCreationInfo(
+                    ownerGid: 1000.input(),
+                    ownerUid: 1000.input(),
+                    permissions: '755'.input(),
+                  )
+                  .input(),
+            )
+            .input(),
       ),
-      options: pulumi.CustomResourceOptions(dependsOn: [mountTarget0, mountTarget1]),
+      options: pulumi.CustomResourceOptions(
+        dependsOn: [mountTarget0, mountTarget1],
+      ),
     );
 
     final lambdaRole = aws.iam.Role(
@@ -120,17 +128,25 @@ class LambdaEfsStack extends pulumi.Stack {
       ),
     );
 
-    final vpcConfig = aws.lambda.FunctionVpcConfig(
-      subnetIds: vpc.privateSubnetIds.apply<List<String>>((List<String> ids) => ids).input(),
-      securityGroupIds: pulumi.Output.all([securityGroup.id]).apply<List<String>>(
-        (List<String> ids) => [ids[0]],
-      ).input(),
-    ).input();
+    final vpcConfig = aws.lambda
+        .FunctionVpcConfig(
+          subnetIds: vpc.privateSubnetIds
+              .apply<List<String>>(
+                (List<String>? ids) => ids ?? const <String>[],
+              )
+              .input(),
+          securityGroupIds: pulumi.Output.all([
+            securityGroup.id,
+          ]).apply<List<String>>((List<String> ids) => [ids[0]]).input(),
+        )
+        .input();
 
-    final fsConfig = aws.lambda.FunctionFileSystemConfig(
-      arn: accessPoint.arn,
-      localMountPath: '/mnt/storage'.input(),
-    ).input();
+    final fsConfig = aws.lambda
+        .FunctionFileSystemConfig(
+          arn: accessPoint.arn,
+          localMountPath: '/mnt/storage'.input(),
+        )
+        .input();
 
     final getHandler = aws.lambda.FunctionType(
       'get-handler',
@@ -194,7 +210,7 @@ class LambdaEfsStack extends pulumi.Stack {
       ),
     );
 
-    url = api.url;
+    url = api.url.apply((v) => v!);
   }
 
   @override

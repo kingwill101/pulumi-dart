@@ -1,0 +1,6 @@
+name: linode-dart-webserver
+description: Pulumi Linode webserver example in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

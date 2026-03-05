@@ -1,0 +1,6 @@
+name: azure-native-dart-synapse
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: Azure Synapse Workspace and Pools in Pulumi Dart.

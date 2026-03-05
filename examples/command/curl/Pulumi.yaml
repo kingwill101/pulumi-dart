@@ -1,0 +1,6 @@
+name: command-dart-curl
+description: Pulumi Command curl GitHub label example in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

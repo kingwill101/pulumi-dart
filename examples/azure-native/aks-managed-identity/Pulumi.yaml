@@ -1,0 +1,6 @@
+name: azure-native-dart-aks-managed-identity
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: AKS cluster with user-assigned managed identity using Azure Native in Pulumi Dart.

@@ -43,7 +43,7 @@ class ApigatewayRoutesStack extends pulumi.Stack {
       'hello-handler',
       args: aws_lambda.FunctionArgs(
         role: lambdaRole.arn,
-        runtime: aws_lambda.Runtime.nodeJS20dX.value.input(),
+        runtime: aws_lambda.Runtime.nodeJS20dX.wireValue.input(),
         handler: 'index.handler'.input(),
         code: pulumi.FileArchive('./lambda/hello').input(),
       ),
@@ -122,8 +122,8 @@ class ApigatewayRoutesStack extends pulumi.Stack {
       args: aws_apigw.UsagePlanArgs(
         apiStages: [
           aws_apigw.UsagePlanApiStage(
-            apiId: api.api.apply((a) => a.id),
-            stage: api.stage.apply((s) => s.stageName),
+            apiId: api.api.apply((a) => a?.id ?? ""),
+            stage: api.stage.apply((s) => s?.stageName ?? ""),
           ),
         ].input(),
       ),
@@ -138,8 +138,8 @@ class ApigatewayRoutesStack extends pulumi.Stack {
       ),
     );
 
-    url = api.url;
-    swaggerUrl = swaggerApi.url;
+    url = api.url.apply((v) => v);
+    swaggerUrl = swaggerApi.url.apply((v) => v);
     apiKeyValue = apiKey.value;
   }
 

@@ -1,0 +1,6 @@
+name: command-dart-simple
+description: Pulumi Command simple example in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

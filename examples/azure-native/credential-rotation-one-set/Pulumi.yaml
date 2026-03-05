@@ -1,0 +1,6 @@
+name: azure-native-dart-credential-rotation-one-set
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: Azure Native credential rotation one-set example ported to Pulumi Dart.

@@ -1,0 +1,3 @@
+name: azure-native-dart-call-azure-sdk
+runtime: dart
+description: Demo of integrating Azure Native with Azure SDK-style role lookup in Dart.

@@ -1,0 +1,11 @@
+name: cross-language-fargate
+runtime: yaml
+description: Non-Dart local Pulumi program used by the Dart automation driver.
+
+resources:
+  serviceUrl:
+    type: random:RandomPet
+
+outputs:
+  url: ${serviceUrl.id}
+

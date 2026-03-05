@@ -87,7 +87,7 @@ This file catalogs AWS source examples and tracks Dart porting status.
 - [x] thumbnailer
 - [x] twitter-athena
 - [x] voting-app
-- [x] vpc-with-ecs-fargate-py
+- [x] vpc-with-ecs-fargate
 - [x] webserver
 - [x] wordpress-fargate-rds
 

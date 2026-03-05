@@ -1,0 +1,6 @@
+name: kubernetes-dart-s3-rollout
+description: Kubernetes nginx rollout from S3-hosted config in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

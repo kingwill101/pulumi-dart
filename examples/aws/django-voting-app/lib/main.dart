@@ -19,9 +19,9 @@ class DjangoVotingAppStack extends pulumi.Stack {
     final djangoAdminPassword = config.require('django-admin-password');
     final djangoSecretKey = config.require('django-secret-key');
 
-    final awsRegion = pulumi.output(
-      aws.index.getRegion(aws.index.GetRegionArgs()),
-    ).apply((region) => region.name);
+    final awsRegion = pulumi
+        .output(aws.index.getRegion(aws.index.GetRegionArgs()))
+        .apply((region) => region.name);
 
     final appCluster = aws.ecs.Cluster('app-cluster');
 
@@ -182,10 +182,10 @@ class DjangoVotingAppStack extends pulumi.Stack {
     final appDatabaseSubnetgroup = aws.rds.SubnetGroup(
       'app-database-subnetgroup',
       args: aws.rds.SubnetGroupArgs(
-        subnetIds: pulumi.Output
-            .all([appVpcSubnet.id, extraRdsSubnet.id])
-            .apply<List<String>>((ids) => ids.cast<String>())
-            .input(),
+        subnetIds: pulumi.Output.all([
+          appVpcSubnet.id,
+          extraRdsSubnet.id,
+        ]).apply<List<String>>((ids) => ids.cast<String>()).input(),
       ),
     );
 
@@ -200,10 +200,9 @@ class DjangoVotingAppStack extends pulumi.Stack {
         skipFinalSnapshot: true.input(),
         publiclyAccessible: true.input(),
         dbSubnetGroupName: appDatabaseSubnetgroup.id,
-        vpcSecurityGroupIds: pulumi.Output
-            .all([appSecurityGroup.id])
-            .apply<List<String>>((ids) => ids.cast<String>())
-            .input(),
+        vpcSecurityGroupIds: pulumi.Output.all([
+          appSecurityGroup.id,
+        ]).apply<List<String>>((ids) => ids.cast<String>()).input(),
       ),
     );
 
@@ -249,10 +248,12 @@ class DjangoVotingAppStack extends pulumi.Stack {
         port: 80.input(),
         protocol: 'TCP'.input(),
         targetType: 'ip'.input(),
-        stickiness: aws.lb.TargetGroupStickiness(
-          enabled: false.input(),
-          type: 'lb_cookie'.input(),
-        ).input(),
+        stickiness: aws.lb
+            .TargetGroupStickiness(
+              enabled: false.input(),
+              type: 'lb_cookie'.input(),
+            )
+            .input(),
         vpcId: appVpc.id,
       ),
     );
@@ -263,10 +264,9 @@ class DjangoVotingAppStack extends pulumi.Stack {
         loadBalancerType: 'network'.input(),
         internal: false.input(),
         securityGroups: <String>[].input(),
-        subnets: pulumi.Output
-            .all([appVpcSubnet.id])
-            .apply<List<String>>((ids) => ids.cast<String>())
-            .input(),
+        subnets: pulumi.Output.all([
+          appVpcSubnet.id,
+        ]).apply<List<String>>((ids) => ids.cast<String>()).input(),
       ),
     );
 
@@ -327,17 +327,15 @@ class DjangoVotingAppStack extends pulumi.Stack {
         requiresCompatibilities: ['FARGATE'].input(),
         executionRoleArn: appExecRole.arn.input(),
         taskRoleArn: appTaskRole.arn.input(),
-        containerDefinitions: pulumi
-            .Output
-            .all([
+        containerDefinitions:
+            pulumi.Output.all([
               djangoImage.imageName,
               mysqlDatabase.name,
               mysqlRdsServer.address,
               mysqlRdsServer.port,
               awsRegion,
               djangoLogGroup.name,
-            ])
-            .apply<String>((values) {
+            ]).apply<String>((values) {
               final imageName = values[0] as String;
               final dbName = values[1] as String;
               final dbAddress = values[2] as String;
@@ -374,8 +372,7 @@ class DjangoVotingAppStack extends pulumi.Stack {
                   'command': ['/mysite/setupDatabase.sh'],
                 },
               ]);
-            })
-            .input(),
+            }).input(),
       ),
     );
 
@@ -387,17 +384,17 @@ class DjangoVotingAppStack extends pulumi.Stack {
         launchType: 'FARGATE'.input(),
         taskDefinition: djangoDatabaseTaskDefinition.arn.input(),
         waitForSteadyState: false.input(),
-        networkConfiguration: aws.ecs.ServiceNetworkConfiguration(
-          assignPublicIp: true.input(),
-          subnets: pulumi.Output
-              .all([appVpcSubnet.id])
-              .apply<List<String>>((ids) => ids.cast<String>())
-              .input(),
-          securityGroups: pulumi.Output
-              .all([appSecurityGroup.id])
-              .apply<List<String>>((ids) => ids.cast<String>())
-              .input(),
-        ).input(),
+        networkConfiguration: aws.ecs
+            .ServiceNetworkConfiguration(
+              assignPublicIp: true.input(),
+              subnets: pulumi.Output.all([
+                appVpcSubnet.id,
+              ]).apply<List<String>>((ids) => ids.cast<String>()).input(),
+              securityGroups: pulumi.Output.all([
+                appSecurityGroup.id,
+              ]).apply<List<String>>((ids) => ids.cast<String>()).input(),
+            )
+            .input(),
         loadBalancers: [
           aws.ecs.ServiceLoadBalancer(
             targetGroupArn: djangoTargetgroup.arn,
@@ -419,17 +416,15 @@ class DjangoVotingAppStack extends pulumi.Stack {
         requiresCompatibilities: ['FARGATE'].input(),
         executionRoleArn: appExecRole.arn.input(),
         taskRoleArn: appTaskRole.arn.input(),
-        containerDefinitions: pulumi
-            .Output
-            .all([
+        containerDefinitions:
+            pulumi.Output.all([
               djangoImage.imageName,
               mysqlDatabase.name,
               mysqlRdsServer.address,
               mysqlRdsServer.port,
               awsRegion,
               djangoLogGroup.name,
-            ])
-            .apply<String>((values) {
+            ]).apply<String>((values) {
               final imageName = values[0] as String;
               final dbName = values[1] as String;
               final dbAddress = values[2] as String;
@@ -463,8 +458,7 @@ class DjangoVotingAppStack extends pulumi.Stack {
                   },
                 },
               ]);
-            })
-            .input(),
+            }).input(),
       ),
     );
 
@@ -476,17 +470,17 @@ class DjangoVotingAppStack extends pulumi.Stack {
         launchType: 'FARGATE'.input(),
         taskDefinition: djangoSiteTaskDefinition.arn.input(),
         waitForSteadyState: false.input(),
-        networkConfiguration: aws.ecs.ServiceNetworkConfiguration(
-          assignPublicIp: true.input(),
-          subnets: pulumi.Output
-              .all([appVpcSubnet.id])
-              .apply<List<String>>((ids) => ids.cast<String>())
-              .input(),
-          securityGroups: pulumi.Output
-              .all([appSecurityGroup.id])
-              .apply<List<String>>((ids) => ids.cast<String>())
-              .input(),
-        ).input(),
+        networkConfiguration: aws.ecs
+            .ServiceNetworkConfiguration(
+              assignPublicIp: true.input(),
+              subnets: pulumi.Output.all([
+                appVpcSubnet.id,
+              ]).apply<List<String>>((ids) => ids.cast<String>()).input(),
+              securityGroups: pulumi.Output.all([
+                appSecurityGroup.id,
+              ]).apply<List<String>>((ids) => ids.cast<String>()).input(),
+            )
+            .input(),
         loadBalancers: [
           aws.ecs.ServiceLoadBalancer(
             targetGroupArn: djangoTargetgroup.arn,

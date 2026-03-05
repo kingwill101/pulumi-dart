@@ -1,0 +1,6 @@
+name: terraform-dart-local-state-reference
+description: Pulumi terraform local state reference example in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

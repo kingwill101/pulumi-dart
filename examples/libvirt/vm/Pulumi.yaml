@@ -1,0 +1,6 @@
+name: libvirt-dart-vm
+description: Pulumi Libvirt VM example in Dart (with an Azure-hosted KVM server).
+runtime:
+  name: dart
+  options:
+    resolution: workspace

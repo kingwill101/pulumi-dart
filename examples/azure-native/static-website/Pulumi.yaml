@@ -1,0 +1,6 @@
+name: azure-native-dart-static-website
+description: Pulumi Azure Native static website example in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

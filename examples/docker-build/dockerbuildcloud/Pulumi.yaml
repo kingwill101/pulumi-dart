@@ -1,0 +1,6 @@
+name: docker-build-dockerbuildcloud
+description: Pulumi Docker Build Cloud image build example in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

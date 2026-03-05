@@ -1,0 +1,6 @@
+name: azure-native-dart-minecraft-server
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: Minecraft server on Azure VM using Azure Native + Pulumi Command in Dart.

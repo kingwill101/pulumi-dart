@@ -1,0 +1,15 @@
+name: azure-dart-stream-analytics
+description: Uses an Azure Stream Analytics job to transform data in an Event Hub.
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+template:
+  config:
+    azure:environment:
+      description: The Azure environment to use (`public`, `usgovernment`, `german`, `china`)
+      default: public
+    azure:location:
+      description: The Azure location to deploy to (e.g., `eastus` or `westeurope`)
+    azure:subscriptionId:
+      description: The Azure Subscription to deploy into

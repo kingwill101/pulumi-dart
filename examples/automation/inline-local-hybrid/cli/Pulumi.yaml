@@ -1,0 +1,7 @@
+name: hybridS3Project
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: A static website hosted on AWS S3 (Dart hybrid example)
+

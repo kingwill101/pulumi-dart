@@ -1,0 +1,34 @@
+name: azure-native-dart-virtual-data-center
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: Azure Virtual Data Center (hub and spokes) in Pulumi Dart.
+template:
+  config:
+    azure_bastion:
+      description: Azure Bastion provides secure RDP/SSH connectivity to VMs (optional)
+      default: false
+    firewall_address_space:
+      description: Address space in the hub for Azure Firewall and DMZ
+      default: 192.168.100.0/24
+    forced_tunnel:
+      description: Route all Internet-bound traffic to this designated next hop IP address (optional)
+      default: 10.0.100.1
+    hub_address_space:
+      description: Address space in the hub for connectivity and shared services subnets
+      default: 10.100.0.0/16
+    location:
+      description: Azure region to deploy to (for example australiaeast)
+      default: australiaeast
+    org:
+      description: Organization containing a project+stack to peer with (optional)
+    peer:
+      description: Stack with corresponding outputs to peer with (optional)
+    project:
+      description: Project containing the peer stack (optional)
+    separator:
+      description: Name separator character; set to single space for none (optional)
+    suffix:
+      description: Short suffix appended to each name
+      default: ae

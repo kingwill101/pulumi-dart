@@ -1,0 +1,6 @@
+name: azure-native-dart-webapp-privateendpoint-vnet-injection
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: Deploy two App Services with private endpoint and VNet injection.

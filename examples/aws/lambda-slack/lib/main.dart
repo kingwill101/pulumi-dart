@@ -43,9 +43,11 @@ class LambdaSlackStack extends pulumi.Stack {
         role: lambdaRole.arn,
         handler: 'index.handler'.input(),
         code: pulumi.FileArchive('./app').input(),
-        environment: aws.lambda.FunctionEnvironment(
-          variables: {'SLACK_WEBHOOK_URL': slackWebhookUrl}.input(),
-        ).input(),
+        environment: aws.lambda
+            .FunctionEnvironment(
+              variables: {'SLACK_WEBHOOK_URL': slackWebhookUrl}.input(),
+            )
+            .input(),
         memorySize: 128.input(),
         timeout: 30.input(),
         tags: {'Environment': 'dev'}.input(),

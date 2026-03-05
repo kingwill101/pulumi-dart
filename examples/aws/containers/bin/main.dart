@@ -18,7 +18,7 @@ class ExampleStack extends pulumi.Stack {
     final image = awsx.ecr.Image(
       'image',
       args: awsx.ecr.ImageArgs(
-        repositoryUrl: repo.url,
+        repositoryUrl: repo.url.apply((v) => v!),
         context: './app'.output(),
         platform: 'linux/amd64'.output(),
       ),
@@ -38,14 +38,14 @@ class ExampleStack extends pulumi.Stack {
                 container: awsx.ecs
                     .TaskDefinitionContainerDefinition(
                       name: 'service-container'.input(),
-                      image: values.$1.input(),
+                      image: values.$1!.input(),
                       cpu: 128.input(),
                       memory: 512.input(),
                       essential: true.input(),
                       portMappings: [
                         awsx.ecs.TaskDefinitionPortMapping(
                           containerPort: 80.input(),
-                          targetGroup: values.$2.input(),
+                          targetGroup: values.$2!.input(),
                         ),
                       ].input(),
                     )
@@ -56,7 +56,7 @@ class ExampleStack extends pulumi.Stack {
     );
 
     frontendURL = loadbalancer.loadBalancer.apply(
-      (lb) => 'http://${lb.dnsName}',
+      (lb) => 'http://${lb?.dnsName ?? ''}',
     );
   }
 

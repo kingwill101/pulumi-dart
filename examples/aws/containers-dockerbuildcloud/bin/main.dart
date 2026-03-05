@@ -58,7 +58,7 @@ class ExampleStack extends pulumi.Stack {
         registries: pulumi.Output.tuple(ecr.url, auth).apply(
           (values) => [
             docker_build.index.Registry(
-              address: values.$1.input(),
+              address: values.$1!.input(),
               username: values.$2.userName.input(),
               password: values.$2.password.input(),
             ),
@@ -92,7 +92,7 @@ class ExampleStack extends pulumi.Stack {
                       portMappings: [
                         awsx.ecs.TaskDefinitionPortMapping(
                           containerPort: 80.input(),
-                          targetGroup: values.$2.input(),
+                          targetGroup: values.$2!.input(),
                         ),
                       ].input(),
                     )
@@ -102,7 +102,9 @@ class ExampleStack extends pulumi.Stack {
       ),
     );
 
-    url = loadbalancer.loadBalancer.apply((lb) => 'http://${lb.dnsName}');
+    url = loadbalancer.loadBalancer.apply(
+      (lb) => 'http://${lb?.dnsName ?? ''}',
+    );
   }
 
   @override

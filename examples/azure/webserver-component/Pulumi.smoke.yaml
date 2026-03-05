@@ -1,0 +1,6 @@
+encryptionsalt: v1:qxtsLevElk4=:v1:GEWhAJ9eBPSw2BDA:2w2YrP00Bdb750QbCNRXDnI8E79C3g==
+config:
+  azure-dart-webserver-component:username: demo
+  azure-dart-webserver-component:password:
+    secure: v1:HAy1Ic6iFICU9dVa:d4b+drOgWyYog/biyHUs9zBnSrND08M=
+  azure-dart-webserver-component:count: "2"

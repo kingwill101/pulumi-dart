@@ -1,0 +1,8 @@
+encryptionsalt: v1:K33QAWJ0ql0=:v1:oRKFqXlryFMFVnQE:/LvPATHShMlhzOTvTAfRQXmNrHgy6w==
+config:
+  azure-dart-vm-provisioners:username: demo
+  azure-dart-vm-provisioners:password:
+    secure: v1:2eY+NEjy5wSw/Oxb:Jlzh8OFGvqiYOXFBCIMj7LIKagCdksE=
+  azure-dart-vm-provisioners:publicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDemo
+  azure-dart-vm-provisioners:privateKey:
+    secure: v1:0WMEp0N5NW0f7DbZ:5uP/HeIjZ2eWQra4fAinoVgVYISzQj7YrhMrKiKZe49R09sg/6LxhfVD/2Gm5BNjcYz/qGrzSz2d85iG

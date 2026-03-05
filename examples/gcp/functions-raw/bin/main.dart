@@ -6,9 +6,7 @@ class ExampleStack extends pulumi.Stack {
   ExampleStack() {
     final bucket = gcp.storage.Bucket(
       'bucket',
-      args: gcp.storage.BucketArgs(
-        location: 'US'.output(),
-      ),
+      args: gcp.storage.BucketArgs(location: 'US'.output()),
     );
 
     final sourceArchiveObject = gcp.storage.BucketObject(
@@ -42,9 +40,7 @@ class ExampleStack extends pulumi.Stack {
       ),
     );
 
-    registerOutputs({
-      'function': function.httpsTriggerUrl,
-    });
+    registerOutputs({'function': function.httpsTriggerUrl});
   }
 }
 

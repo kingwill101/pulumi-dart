@@ -1,0 +1,6 @@
+name: azure-native-dart-cue-static-web-app
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: CUE static web app example ported to Pulumi Dart.

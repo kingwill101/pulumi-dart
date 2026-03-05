@@ -1,0 +1,13 @@
+name: policy_dart_aws_finops
+description: Dart policy pack example ported from policy-packs/aws-ts-finops.
+version: 0.0.1
+resolution: workspace
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  pulumi_policy: 1.0.0
+
+dev_dependencies:
+  lints: ^6.1.0

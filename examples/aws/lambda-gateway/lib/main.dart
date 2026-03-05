@@ -24,7 +24,8 @@ class ExampleStack extends pulumi.Stack {
     final role = aws.iam.Role(
       'task-exec-role',
       args: aws.iam.RoleArgs(
-        assumeRolePolicy: '''{
+        assumeRolePolicy:
+            '''{
   "Version": "2012-10-17",
   "Statement": [{
     "Sid": "",
@@ -34,7 +35,8 @@ class ExampleStack extends pulumi.Stack {
     },
     "Action": "sts:AssumeRole"
   }]
-}'''.input(),
+}'''
+                .input(),
       ),
     );
 
@@ -42,7 +44,8 @@ class ExampleStack extends pulumi.Stack {
       'lambda-log-policy',
       args: aws.iam.RolePolicyArgs(
         role: role.name,
-        policy: '''{
+        policy:
+            '''{
   "Version": "2012-10-17",
   "Statement": [{
     "Effect": "Allow",
@@ -53,7 +56,8 @@ class ExampleStack extends pulumi.Stack {
     ],
     "Resource": "arn:aws:logs:*:*:*"
   }]
-}'''.input(),
+}'''
+                .input(),
       ),
     );
 
@@ -73,7 +77,8 @@ class ExampleStack extends pulumi.Stack {
       args: aws.apigateway.RestApiArgs(
         name: 'UpperCaseGateway'.input(),
         description: 'An API Gateway for the UpperCase function'.input(),
-        policy: '''{
+        policy:
+            '''{
   "Version": "2012-10-17",
   "Statement": [
     {
@@ -92,7 +97,8 @@ class ExampleStack extends pulumi.Stack {
       "Sid": ""
     }
   ]
-}'''.input(),
+}'''
+                .input(),
       ),
     );
 
@@ -127,9 +133,12 @@ class ExampleStack extends pulumi.Stack {
       ),
     );
 
-    final sourceArn = pulumi.Output
-        .all<dynamic>([regionName, accountId, gateway.id])
-        .apply<String>(
+    final sourceArn =
+        pulumi.Output.all<dynamic>([
+          regionName,
+          accountId,
+          gateway.id,
+        ]).apply<String>(
           (values) =>
               'arn:aws:execute-api:${values[0] as String}:${values[1] as String}:${values[2] as String}/*/*/*',
         );

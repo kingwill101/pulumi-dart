@@ -1,0 +1,26 @@
+name: azure-dart-vm-scaleset
+description: Azure VM Scale Set with autoscaling and load balancer
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+template:
+  config:
+    azure:environment:
+      description: The Azure environment to use (`public`, `usgovernment`, `german`, `china`)
+      default: public
+    azure:location:
+      description: The Azure location to deploy to (e.g., `eastus`, or `westeurope`)
+    azure:subscriptionId:
+      description: The Azure Subscription to deploy into
+    adminUser:
+      description: Admin username for VM scale set instances
+      default: azureuser
+    adminPassword:
+      description: Admin password for VM scale set instances (optional; random if unset)
+      secret: true
+    domain:
+      description: DNS label prefix for the public IP (optional; random if unset)
+    applicationPort:
+      description: Application port exposed by the load balancer
+      default: 80

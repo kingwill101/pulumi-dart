@@ -1,0 +1,6 @@
+name: command-dart-local-command
+description: Pulumi Command local command example in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

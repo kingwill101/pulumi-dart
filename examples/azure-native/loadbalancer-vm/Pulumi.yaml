@@ -1,0 +1,3 @@
+name: azure-native-dart-loadbalancer-vm
+runtime: dart
+description: Azure Load Balancer fronting a Linux VM with a simple HTTP server.

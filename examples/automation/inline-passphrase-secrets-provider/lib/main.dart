@@ -1,0 +1,84 @@
+import 'dart:io';
+
+import 'package:pulumi/automation.dart' as automation;
+
+Future<void> main(List<String> args) async {
+  final destroy = args.isNotEmpty && args.first == 'destroy';
+  final stackName = Platform.environment['PULUMI_STACK'] ?? 'dev';
+  final passphrase =
+      Platform.environment['PULUMI_CONFIG_PASSPHRASE'] ?? 'password';
+  final awsRegion = Platform.environment['AWS_REGION']?.trim() ?? 'us-east-1';
+
+  final inlineProgramSource = '''
+import 'package:pulumi/pulumi.dart';
+
+class InlinePassphraseSecretsProviderStack extends Stack {
+  late final Output<Object?> secretValue;
+  late final Output<Object?> message;
+
+  InlinePassphraseSecretsProviderStack() : super('inline-passphrase-secrets-provider-stack') {
+    secretValue = Output.createSecret(Output.fromInput('hello-world'));
+    message = Output.fromInput('inline-passphrase-secrets-provider');
+  }
+
+  @override
+  List<OutputProperty> getOutputProperties() {
+    return <OutputProperty>[
+      OutputProperty('secretValue', secretValue),
+      OutputProperty('message', message),
+    ];
+  }
+}
+
+Future<void> main() async {
+  await Deployment.runOrThrow(() => InlinePassphraseSecretsProviderStack());
+}
+''';
+
+  final stack = await automation.LocalWorkspace.createOrSelectInlineStack(
+    automation.InlineProgramArgs(
+      stackName: stackName,
+      projectName: 'inline-passphrase-secrets-provider',
+      workDir: Directory.current.path,
+      program: inlineProgramSource,
+      description:
+          'Pulumi Dart inline automation example with passphrase secrets',
+    ),
+    options: automation.LocalWorkspaceOptions(
+      secretsProvider: 'passphrase',
+      environmentVariables: <String, String>{
+        'PULUMI_CONFIG_PASSPHRASE': passphrase,
+      },
+    ),
+  );
+
+  final projectSettings = await stack.workspace.projectSettings();
+  projectSettings['backend'] = <String, dynamic>{
+    'url': 'file://~/.pulumi-local',
+  };
+  await stack.workspace.saveProjectSettings(projectSettings);
+  await stack.workspace.saveStackSettings(stackName, <String, dynamic>{
+    'secretsProvider': 'passphrase',
+  });
+
+  stdout.writeln('Created/Selected stack "$stackName"');
+  await stack.setConfig('aws:region', awsRegion);
+  await stack.setConfig('example:secret', 'hello-world', secret: true);
+  stdout.writeln('Successfully set config');
+  stdout.writeln('Starting refresh');
+  await stack.refresh();
+  stdout.writeln('Refresh succeeded!');
+
+  if (destroy) {
+    stdout.writeln('Starting stack destroy');
+    await stack.destroy(yes: true, skipPreview: true);
+    stdout.writeln('Stack successfully destroyed');
+    return;
+  }
+
+  stdout.writeln('Starting update');
+  await stack.up();
+  stdout.writeln('Update succeeded!');
+  final outputs = await stack.outputs(showSecrets: true);
+  stdout.writeln('secretValue: ${outputs['secretValue']}');
+}

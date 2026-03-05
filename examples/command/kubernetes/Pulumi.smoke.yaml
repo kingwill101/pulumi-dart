@@ -1,0 +1,5 @@
+encryptionsalt: v1:5qmUKlXziGM=:v1:gzlgSEz8hADB8Jgk:yP6tAfxk2g14Oyhrgcop9arx7oTOjQ==
+config:
+  command-dart-kubernetes:vpcId: vpc-12345678
+  command-dart-kubernetes:publicSubnetIds: subnet-11111111,subnet-22222222
+  command-dart-kubernetes:privateSubnetIds: subnet-33333333,subnet-44444444

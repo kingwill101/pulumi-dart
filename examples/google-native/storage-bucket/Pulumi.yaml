@@ -1,0 +1,6 @@
+name: google-native-dart-storage-bucket
+description: Pulumi google-native storage bucket example in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

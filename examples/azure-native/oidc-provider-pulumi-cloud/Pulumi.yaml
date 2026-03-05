@@ -1,0 +1,3 @@
+name: azure-native-dart-oidc-provider-pulumi-cloud
+runtime: dart
+description: Azure OIDC setup for Pulumi Cloud ESC in Dart.

@@ -1,0 +1,6 @@
+name: newrelic-dart-alert-policy
+description: Pulumi newrelic alert policy example in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

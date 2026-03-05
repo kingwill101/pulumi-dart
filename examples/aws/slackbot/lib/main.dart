@@ -87,16 +87,20 @@ class SlackbotStack extends pulumi.Stack {
       'lambda-sns-policy',
       args: aws.iam.RolePolicyArgs(
         role: lambdaRole.id,
-        policy: messageTopic.arn.apply<String>((topicArn) => jsonEncode({
-            'Version': '2012-10-17',
-            'Statement': [
-              {
-                'Effect': 'Allow',
-                'Action': ['sns:Publish'],
-                'Resource': topicArn,
-              },
-            ],
-          })).input(),
+        policy: messageTopic.arn
+            .apply<String>(
+              (topicArn) => jsonEncode({
+                'Version': '2012-10-17',
+                'Statement': [
+                  {
+                    'Effect': 'Allow',
+                    'Action': ['sns:Publish'],
+                    'Resource': topicArn,
+                  },
+                ],
+              }),
+            )
+            .input(),
       ),
     );
 
@@ -107,21 +111,24 @@ class SlackbotStack extends pulumi.Stack {
         runtime: 'nodejs20.x'.input(),
         handler: 'index.handler'.input(),
         code: pulumi.FileArchive('./lambda/webhook').input(),
-        environment: aws.lambda.FunctionEnvironment(
-          variables: pulumi.Output.all([subscriptionsTable.name, messageTopic.arn])
-              .apply<Map<String, String>>(
-            (values) {
-              final tableName = values[0];
-              final topicArn = values[1];
-              return <String, String>{
-                'SLACK_TOKEN': slackToken,
-                'SLACK_VERIFICATION_TOKEN': verificationToken,
-                'SUBSCRIPTIONS_TABLE_NAME': tableName,
-                'MESSAGE_TOPIC_ARN': topicArn,
-              };
-            },
-          ).input(),
-        ).input(),
+        environment: aws.lambda
+            .FunctionEnvironment(
+              variables:
+                  pulumi.Output.all([
+                    subscriptionsTable.name,
+                    messageTopic.arn,
+                  ]).apply<Map<String, String>>((values) {
+                    final tableName = values[0];
+                    final topicArn = values[1];
+                    return <String, String>{
+                      'SLACK_TOKEN': slackToken,
+                      'SLACK_VERIFICATION_TOKEN': verificationToken,
+                      'SUBSCRIPTIONS_TABLE_NAME': tableName,
+                      'MESSAGE_TOPIC_ARN': topicArn,
+                    };
+                  }).input(),
+            )
+            .input(),
       ),
     );
 
@@ -132,14 +139,18 @@ class SlackbotStack extends pulumi.Stack {
         runtime: 'nodejs20.x'.input(),
         handler: 'index.handler'.input(),
         code: pulumi.FileArchive('./lambda/process').input(),
-        environment: aws.lambda.FunctionEnvironment(
-          variables: subscriptionsTable.name.apply<Map<String, String>>(
-            (tableName) => {
-              'SLACK_TOKEN': slackToken,
-              'SUBSCRIPTIONS_TABLE_NAME': tableName,
-            },
-          ).input(),
-        ).input(),
+        environment: aws.lambda
+            .FunctionEnvironment(
+              variables: subscriptionsTable.name
+                  .apply<Map<String, String>>(
+                    (tableName) => {
+                      'SLACK_TOKEN': slackToken,
+                      'SUBSCRIPTIONS_TABLE_NAME': tableName,
+                    },
+                  )
+                  .input(),
+            )
+            .input(),
       ),
     );
 

@@ -115,11 +115,15 @@ class Server extends pulumi.ComponentResource {
       name,
       args: gcp.compute.InstanceArgs(
         machineType: args.machineType.output(),
-        bootDisk: gcp.compute.InstanceBootDisk(
-          initializeParams: gcp.compute.InstanceBootDiskInitializeParams(
-            image: 'ubuntu-os-cloud/ubuntu-1804-lts'.output(),
-          ).output(),
-        ).output(),
+        bootDisk: gcp.compute
+            .InstanceBootDisk(
+              initializeParams: gcp.compute
+                  .InstanceBootDiskInitializeParams(
+                    image: 'ubuntu-os-cloud/ubuntu-1804-lts'.output(),
+                  )
+                  .output(),
+            )
+            .output(),
         networkInterfaces: [
           gcp.compute.InstanceNetworkInterface(
             subnetwork: args.subnet.selfLink,
@@ -174,15 +178,16 @@ echo "Powered by Pulumi!" > /var/www/html/index.html
 
     registerOutputs({
       'network': network.network.name,
-      'nginx_public_ip': nginxInstance.instance.networkInterfaces
-          .apply((networkInterfaces) =>
-              networkInterfaces.isEmpty || networkInterfaces[0].accessConfigs == null
-                  ? ''
-                  : networkInterfaces[0].accessConfigs!.apply(
-                        (accessConfigs) => accessConfigs.isEmpty
-                            ? ''
-                            : accessConfigs[0].natIp ?? '',
-                      )),
+      'nginx_public_ip': nginxInstance.instance.networkInterfaces.apply(
+        (networkInterfaces) =>
+            networkInterfaces.isEmpty ||
+                networkInterfaces[0].accessConfigs == null
+            ? ''
+            : networkInterfaces[0].accessConfigs!.apply(
+                (accessConfigs) =>
+                    accessConfigs.isEmpty ? '' : accessConfigs[0].natIp ?? '',
+              ),
+      ),
     });
   }
 }

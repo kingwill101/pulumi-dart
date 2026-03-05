@@ -1,0 +1,3 @@
+name: azure-native-dart-functions-many
+runtime: dart
+description: Azure Functions in multiple runtimes using Azure Native in Dart.

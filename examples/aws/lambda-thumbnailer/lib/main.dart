@@ -19,11 +19,10 @@ class LambdaThumbnailerStack extends pulumi.Stack {
       'image',
       args: docker_build.index.ImageArgs(
         push: true.input(),
-        context: docker_build.index.BuildContext(
-          location: './app'.input(),
-        ).input(),
-        tags: repo
-            .repositoryUrl
+        context: docker_build.index
+            .BuildContext(location: './app'.input())
+            .input(),
+        tags: repo.repositoryUrl
             .apply<List<String>>((url) => ['$url:latest'])
             .input(),
       ),

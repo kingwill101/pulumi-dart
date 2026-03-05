@@ -43,10 +43,12 @@ class ExampleStack extends pulumi.Stack {
       args: gcp.iam.WorkloadIdentityPoolProviderArgs(
         workloadIdentityPoolId: identityPool.workloadIdentityPoolId,
         workloadIdentityPoolProviderId: 'pulumi-cloud-$escEnvOrg-oidc'.output(),
-        oidc: gcp.iam.WorkloadIdentityPoolProviderOidc(
-          issuerUri: issuer.output(),
-          allowedAudiences: ['gcp:$escEnvOrg'].output(),
-        ).output(),
+        oidc: gcp.iam
+            .WorkloadIdentityPoolProviderOidc(
+              issuerUri: issuer.output(),
+              allowedAudiences: ['gcp:$escEnvOrg'].output(),
+            )
+            .output(),
         attributeMapping: const {'google.subject': 'assertion.sub'}.output(),
       ),
     );
@@ -71,8 +73,7 @@ class ExampleStack extends pulumi.Stack {
     gcp.projects.IAMMember(
       'service-account-role',
       args: gcp.projects.IAMMemberArgs(
-        member: serviceAccount.email
-            .apply((email) => 'serviceAccount:$email'),
+        member: serviceAccount.email.apply((email) => 'serviceAccount:$email'),
         role: 'roles/admin'.output(),
         project: gcpProjectName.output(),
       ),
@@ -83,8 +84,9 @@ class ExampleStack extends pulumi.Stack {
       args: gcp.serviceaccount.IAMBindingArgs(
         serviceAccountId: serviceAccount.id,
         role: 'roles/iam.workloadIdentityUser'.output(),
-        members: identityPool.name
-            .apply((name) => ['principalSet://iam.googleapis.com/$name/*']),
+        members: identityPool.name.apply(
+          (name) => ['principalSet://iam.googleapis.com/$name/*'],
+        ),
       ),
     );
 

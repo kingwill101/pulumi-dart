@@ -1,0 +1,18 @@
+name: azure_native_dart_net5_aks_webapp
+description: Containerized web app on AKS in Pulumi Dart.
+version: 0.0.1
+resolution: workspace
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  pulumi: 3.0.0
+  pulumi_azure_native: 3.14.0
+  pulumi_azuread: 6.8.1
+  pulumi_kubernetes: 4.26.0
+  pulumi_random: 4.19.1
+  pulumi_tls: 5.3.0
+
+dev_dependencies:
+  lints: ^6.1.0

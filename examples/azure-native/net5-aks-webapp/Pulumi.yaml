@@ -1,0 +1,6 @@
+name: azure-native-dart-net5-aks-webapp
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: Deploy a containerized web app to AKS using Azure Native in Pulumi Dart.

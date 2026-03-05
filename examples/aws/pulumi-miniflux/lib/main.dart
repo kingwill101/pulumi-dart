@@ -20,7 +20,9 @@ class PulumiMinifluxStack extends pulumi.Stack {
 
     final subnetGroup = aws.rds.SubnetGroup(
       'dbsubnets',
-      args: aws.rds.SubnetGroupArgs(subnetIds: vpc.privateSubnetIds),
+      args: aws.rds.SubnetGroupArgs(
+        subnetIds: vpc.privateSubnetIds.apply((ids) => ids ?? const <String>[]),
+      ),
     );
 
     final cluster = aws.ecs.Cluster('cluster');
@@ -51,40 +53,46 @@ class PulumiMinifluxStack extends pulumi.Stack {
       args: awsx.ecs.FargateServiceArgs(
         cluster: cluster.arn,
         desiredCount: 1.input(),
-        taskDefinitionArgs: awsx.ecs.FargateServiceTaskDefinition(
-          container: awsx.ecs.TaskDefinitionContainerDefinition(
-            name: 'service'.input(),
-            image: 'miniflux/miniflux:latest'.input(),
-            portMappings: [
-              awsx.ecs.TaskDefinitionPortMapping(
-                containerPort: 8080.input(),
-                targetGroup: loadBalancer.defaultTargetGroup,
-              ),
-            ].input(),
-            environment: [
-              awsx.ecs.TaskDefinitionKeyValuePair(
-                name: 'DATABASE_URL'.input(),
-                value: connectionString,
-              ),
-              awsx.ecs.TaskDefinitionKeyValuePair(
-                name: 'RUN_MIGRATIONS'.input(),
-                value: '1'.input(),
-              ),
-              awsx.ecs.TaskDefinitionKeyValuePair(
-                name: 'CREATE_ADMIN'.input(),
-                value: '1'.input(),
-              ),
-              awsx.ecs.TaskDefinitionKeyValuePair(
-                name: 'ADMIN_USERNAME'.input(),
-                value: adminUsername.input(),
-              ),
-              awsx.ecs.TaskDefinitionKeyValuePair(
-                name: 'ADMIN_PASSWORD'.input(),
-                value: adminPassword.input(),
-              ),
-            ].input(),
-          ).input(),
-        ).input(),
+        taskDefinitionArgs: awsx.ecs
+            .FargateServiceTaskDefinition(
+              container: awsx.ecs
+                  .TaskDefinitionContainerDefinition(
+                    name: 'service'.input(),
+                    image: 'miniflux/miniflux:latest'.input(),
+                    portMappings: [
+                      awsx.ecs.TaskDefinitionPortMapping(
+                        containerPort: 8080.input(),
+                        targetGroup: loadBalancer.defaultTargetGroup.apply(
+                          (v) => v!,
+                        ),
+                      ),
+                    ].input(),
+                    environment: [
+                      awsx.ecs.TaskDefinitionKeyValuePair(
+                        name: 'DATABASE_URL'.input(),
+                        value: connectionString,
+                      ),
+                      awsx.ecs.TaskDefinitionKeyValuePair(
+                        name: 'RUN_MIGRATIONS'.input(),
+                        value: '1'.input(),
+                      ),
+                      awsx.ecs.TaskDefinitionKeyValuePair(
+                        name: 'CREATE_ADMIN'.input(),
+                        value: '1'.input(),
+                      ),
+                      awsx.ecs.TaskDefinitionKeyValuePair(
+                        name: 'ADMIN_USERNAME'.input(),
+                        value: adminUsername.input(),
+                      ),
+                      awsx.ecs.TaskDefinitionKeyValuePair(
+                        name: 'ADMIN_PASSWORD'.input(),
+                        value: adminPassword.input(),
+                      ),
+                    ].input(),
+                  )
+                  .input(),
+            )
+            .input(),
       ),
       options: pulumi.ComponentResourceOptions(
         customTimeouts: pulumi.CustomTimeouts(
@@ -95,8 +103,9 @@ class PulumiMinifluxStack extends pulumi.Stack {
       ),
     );
 
-    url = loadBalancer.loadBalancer
-        .apply<String>((lb) => lb.dnsName.apply((dnsName) => 'http://$dnsName:8080'));
+    url = loadBalancer.loadBalancer.apply<String>(
+      (lb) => 'http://${lb?.dnsName ?? ''}:8080',
+    );
   }
 
   @override

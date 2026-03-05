@@ -60,7 +60,9 @@ class ExampleStack extends pulumi.Stack {
             )
             .output(),
         version: masterVersion,
-        management: gcp.container.NodePoolManagement(autoRepair: true.output()).output(),
+        management: gcp.container
+            .NodePoolManagement(autoRepair: true.output())
+            .output(),
       ),
       options: pulumi.CustomResourceOptions(dependsOn: [cluster]),
     );
@@ -123,8 +125,10 @@ users:
       name,
       args: k8sapps.DeploymentArgs(
         metadata: namespaceName.apply(
-          (ns) =>
-              k8smeta.ObjectMeta(namespace: ns, labels: appLabels.output()).output(),
+          (ns) => k8smeta.ObjectMeta(
+            namespace: ns,
+            labels: appLabels.output(),
+          ).output(),
         ),
         spec: k8sapps.DeploymentSpec(
           replicas: 1.output(),
@@ -157,13 +161,16 @@ users:
       name,
       args: k8score.ServiceArgs(
         metadata: namespaceName.apply(
-          (ns) =>
-              k8smeta.ObjectMeta(namespace: ns, labels: appLabels.output()).output(),
+          (ns) => k8smeta.ObjectMeta(
+            namespace: ns,
+            labels: appLabels.output(),
+          ).output(),
         ),
         spec: k8score.ServiceSpec(
           type: 'LoadBalancer'.output(),
-          ports: [k8score.ServicePort(port: 80.output(), targetPort: 80.output())]
-              .output(),
+          ports: [
+            k8score.ServicePort(port: 80.output(), targetPort: 80.output()),
+          ].output(),
           selector: appLabels.output(),
         ).output(),
       ),

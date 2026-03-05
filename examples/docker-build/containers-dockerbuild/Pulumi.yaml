@@ -1,0 +1,6 @@
+name: docker-build-containers-dockerbuild
+description: Pulumi Docker Build + AWS Fargate example in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

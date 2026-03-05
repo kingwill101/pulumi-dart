@@ -1,0 +1,6 @@
+name: command-dart-aws-ec2-command
+description: Pulumi Command aws-ec2-command example in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

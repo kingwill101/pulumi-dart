@@ -1,0 +1,6 @@
+name: digitalocean-dart-loadbalanced-droplets
+description: Pulumi DigitalOcean load-balanced droplets example in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

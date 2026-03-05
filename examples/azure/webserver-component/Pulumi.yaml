@@ -1,0 +1,21 @@
+name: azure-dart-webserver-component
+description: Web server component using Azure Virtual Machines in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+template:
+  config:
+    azure:location:
+      description: The Azure location to use
+      default: westus
+    azure:subscriptionId:
+      description: The Azure Subscription to deploy into
+    username:
+      description: The username used to configure the Virtual Machine
+    password:
+      description: The password used to configure the Virtual Machine
+      secret: true
+    count:
+      description: Number of web server VMs to create
+      default: "2"

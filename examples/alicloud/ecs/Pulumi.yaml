@@ -1,0 +1,6 @@
+name: alicloud-dart-ecs
+description: Pulumi AliCloud ECS instance example in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

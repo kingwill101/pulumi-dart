@@ -1,0 +1,6 @@
+name: pulumiservice-dart-stack
+description: Pulumi pulumiservice stack resource example in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

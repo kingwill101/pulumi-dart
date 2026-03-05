@@ -20,8 +20,8 @@ class K8sVotingAppStack extends pulumi.Stack {
     final cluster = eks.index.Cluster(
       'eks-cluster',
       args: eks.index.ClusterArgs(
-        vpcId: vpc.vpcId,
-        subnetIds: vpc.publicSubnetIds,
+        vpcId: vpc.vpcId.apply((v) => v!),
+        subnetIds: vpc.publicSubnetIds.apply((v) => v!),
         authenticationMode: eks_index.AuthenticationMode.api.input(),
         desiredCapacity: 3.input(),
         minSize: 2.input(),
@@ -32,7 +32,9 @@ class K8sVotingAppStack extends pulumi.Stack {
 
     final provider = k8sproviders.ProviderProvider(
       'k8s',
-      args: k8sproviders.ProviderArgs(kubeconfig: cluster.kubeconfigJson),
+      args: k8sproviders.ProviderArgs(
+        kubeconfig: cluster.kubeconfigJson.apply((v) => v!),
+      ),
     );
 
     final ns = k8score.NamespaceCoreV1(
@@ -53,7 +55,9 @@ class K8sVotingAppStack extends pulumi.Stack {
         ).input(),
         spec: k8sapps.DeploymentSpec(
           replicas: 1.input(),
-          selector: k8smeta.LabelSelector(matchLabels: dbLabels.input()).input(),
+          selector: k8smeta.LabelSelector(
+            matchLabels: dbLabels.input(),
+          ).input(),
           template: k8score.PodTemplateSpec(
             metadata: k8smeta.ObjectMeta(labels: dbLabels.input()).input(),
             spec: k8score.PodSpec(
@@ -62,10 +66,10 @@ class K8sVotingAppStack extends pulumi.Stack {
                   name: 'postgres'.input(),
                   image: 'postgres:16-alpine'.input(),
                   ports: [
-                      k8score.ContainerPort(
-                        name: 'db'.input(),
-                        containerPort: 5432.input(),
-                      ),
+                    k8score.ContainerPort(
+                      name: 'db'.input(),
+                      containerPort: 5432.input(),
+                    ),
                   ].input(),
                 ),
               ].input(),
@@ -104,7 +108,9 @@ class K8sVotingAppStack extends pulumi.Stack {
         ).input(),
         spec: k8sapps.DeploymentSpec(
           replicas: 2.input(),
-          selector: k8smeta.LabelSelector(matchLabels: serverLabels.input()).input(),
+          selector: k8smeta.LabelSelector(
+            matchLabels: serverLabels.input(),
+          ).input(),
           template: k8score.PodTemplateSpec(
             metadata: k8smeta.ObjectMeta(labels: serverLabels.input()).input(),
             spec: k8score.PodSpec(
@@ -121,7 +127,9 @@ class K8sVotingAppStack extends pulumi.Stack {
                   env: [
                     k8score.EnvVar(
                       name: 'POSTGRES_ADDRESS'.input(),
-                      value: dbService.metadata.apply<String>((_) => 'database-service').input(),
+                      value: dbService.metadata
+                          .apply<String>((_) => 'database-service')
+                          .input(),
                     ),
                     k8score.EnvVar(
                       name: 'POSTGRES_PORT'.input(),
@@ -169,7 +177,9 @@ class K8sVotingAppStack extends pulumi.Stack {
         ).input(),
         spec: k8sapps.DeploymentSpec(
           replicas: 2.input(),
-          selector: k8smeta.LabelSelector(matchLabels: clientLabels.input()).input(),
+          selector: k8smeta.LabelSelector(
+            matchLabels: clientLabels.input(),
+          ).input(),
           template: k8score.PodTemplateSpec(
             metadata: k8smeta.ObjectMeta(labels: clientLabels.input()).input(),
             spec: k8score.PodSpec(
@@ -186,7 +196,9 @@ class K8sVotingAppStack extends pulumi.Stack {
                   env: [
                     k8score.EnvVar(
                       name: 'SERVER_HOSTNAME'.input(),
-                      value: serverService.metadata.apply<String>((_) => 'server-service').input(),
+                      value: serverService.metadata
+                          .apply<String>((_) => 'server-service')
+                          .input(),
                     ),
                   ].input(),
                 ),

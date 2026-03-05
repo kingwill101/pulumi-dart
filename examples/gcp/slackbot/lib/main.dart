@@ -42,8 +42,7 @@ class GcpSlackbotStack extends pulumi.Stack {
       args: gcp.projects.IAMBindingArgs(
         project: project.output(),
         role: 'roles/pubsub.subscriber'.output(),
-        members: processorSa.email
-            .apply((email) => ['serviceAccount:$email']),
+        members: processorSa.email.apply((email) => ['serviceAccount:$email']),
       ),
     );
 
@@ -68,7 +67,10 @@ class GcpSlackbotStack extends pulumi.Stack {
       pulumi.OutputProperty('topicName', topicName),
       pulumi.OutputProperty('deadLetterTopicName', deadLetterTopicName),
       pulumi.OutputProperty('subscriptionName', subscriptionName),
-      pulumi.OutputProperty('processorServiceAccountEmail', processorServiceAccountEmail),
+      pulumi.OutputProperty(
+        'processorServiceAccountEmail',
+        processorServiceAccountEmail,
+      ),
     ];
   }
 }

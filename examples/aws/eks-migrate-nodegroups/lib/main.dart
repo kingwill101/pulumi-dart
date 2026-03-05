@@ -33,11 +33,11 @@ class EksMigrateNodegroupsStack extends pulumi.Stack {
       ),
     );
 
-    vpcId = vpc.vpcId;
+    vpcId = vpc.vpcId.apply((v) => v!);
     allVpcSubnets = pulumi.Output.tuple(
       vpc.privateSubnetIds,
       vpc.publicSubnetIds,
-    ).apply((pair) => [...pair.$1, ...pair.$2]);
+    ).apply((pair) => [...?pair.$1, ...?pair.$2]);
 
     final nodeRole = aws.iam.Role(
       '$projectName-node-role',
@@ -98,7 +98,7 @@ class EksMigrateNodegroupsStack extends pulumi.Stack {
     );
 
     kubeconfig = myCluster.kubeconfig;
-    clusterName = myCluster.eksCluster.apply((cluster) => cluster.name);
+    clusterName = myCluster.eksCluster.apply((cluster) => cluster?.name ?? '');
 
     final ngStandard = eks.index.ManagedNodeGroup(
       '$projectName-ng-standard',
@@ -139,12 +139,16 @@ class EksMigrateNodegroupsStack extends pulumi.Stack {
       ),
     );
 
-    ngStandardName = ngStandard.nodeGroup.apply((ng) => ng.nodeGroupName);
-    ng2xlargeName = ng2xlarge.nodeGroup.apply((ng) => ng.nodeGroupName);
+    ngStandardName = ngStandard.nodeGroup.apply(
+      (ng) => ng?.nodeGroupName ?? '',
+    );
+    ng2xlargeName = ng2xlarge.nodeGroup.apply((ng) => ng?.nodeGroupName ?? '');
 
     final k8sProvider = k8sproviders.ProviderProvider(
       '$projectName-k8s',
-      args: k8sproviders.ProviderArgs(kubeconfig: myCluster.kubeconfigJson),
+      args: k8sproviders.ProviderArgs(
+        kubeconfig: myCluster.kubeconfigJson.apply((v) => v!),
+      ),
     );
 
     final namespace = k8score.NamespaceCoreV1(

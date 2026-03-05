@@ -1,0 +1,6 @@
+name: azuread-dart-group
+description: Pulumi Azure AD group example in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

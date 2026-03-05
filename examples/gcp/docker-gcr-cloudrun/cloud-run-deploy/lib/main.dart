@@ -83,9 +83,12 @@ class CloudRunDeployStack extends pulumi.Stack {
       ),
     );
 
-    rubyUrl = rubyService.statuses.apply(
-      (statuses) => statuses.isNotEmpty ? statuses[0].url ?? '' : '',
-    );
+    rubyUrl = rubyService.statuses.apply((statuses) {
+      if (statuses.isEmpty) {
+        return '';
+      }
+      return (statuses[0]['url'] as String?) ?? '';
+    });
   }
 
   @override

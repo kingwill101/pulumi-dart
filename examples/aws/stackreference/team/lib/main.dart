@@ -21,9 +21,11 @@ class ExampleStack extends pulumi.Stack {
         .apply<String>((value) => value as String);
     final teamName = config.require('teamName');
 
-    final combinedTags = pulumi.Output
-        .all<dynamic>([companyName, departmentName])
-        .apply<Map<String, String>>(
+    final combinedTags =
+        pulumi.Output.all<dynamic>([
+          companyName,
+          departmentName,
+        ]).apply<Map<String, String>>(
           (values) => <String, String>{
             'company': values[0] as String,
             'department': values[1] as String,

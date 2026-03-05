@@ -1,0 +1,14 @@
+name: google_native_dart_storage_bucket
+description: Pulumi google-native storage bucket example in Dart.
+version: 0.0.1
+resolution: workspace
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  pulumi: 3.0.0
+  pulumi_google_native: 0.32.0
+
+dev_dependencies:
+  lints: ^6.1.0

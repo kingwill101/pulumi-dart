@@ -1,0 +1,6 @@
+name: aws-dart-hello-fargate
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: A minimal "Hello, World" container in Fargate.

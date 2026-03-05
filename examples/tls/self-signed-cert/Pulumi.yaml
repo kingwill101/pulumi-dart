@@ -1,0 +1,6 @@
+name: tls-dart-self-signed-cert
+description: Pulumi TLS self-signed certificate example in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

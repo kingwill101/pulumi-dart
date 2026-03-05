@@ -1,0 +1,6 @@
+name: digitalocean-dart-k8s
+description: Pulumi DigitalOcean Kubernetes cluster and app example in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

@@ -1,0 +1,6 @@
+name: command-dart-ec2-remote-proxy
+description: Pulumi Command ec2-remote-proxy example in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

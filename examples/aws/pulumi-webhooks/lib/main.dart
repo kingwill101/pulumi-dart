@@ -2,8 +2,7 @@ import 'dart:convert';
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'package:pulumi_aws/pulumi_aws.dart' as aws;
-import 'package:pulumi_aws_apigateway/pulumi_aws_apigateway.dart'
-    as awsx_apigw;
+import 'package:pulumi_aws_apigateway/pulumi_aws_apigateway.dart' as awsx_apigw;
 import 'package:pulumi_aws_apigateway/index.dart' as awsx_apigw_index;
 
 class PulumiWebhooksStack extends pulumi.Stack {
@@ -48,13 +47,15 @@ class PulumiWebhooksStack extends pulumi.Stack {
         runtime: 'nodejs20.x'.input(),
         handler: 'index.handler'.input(),
         code: pulumi.FileArchive('./lambda/handler').input(),
-        environment: aws.lambda.FunctionEnvironment(
-          variables: {
-            'SLACK_WEBHOOK': slackWebhook,
-            'SLACK_CHANNEL': slackChannel,
-            if (sharedSecret != null) 'SHARED_SECRET': sharedSecret,
-          }.input(),
-        ).input(),
+        environment: aws.lambda
+            .FunctionEnvironment(
+              variables: {
+                'SLACK_WEBHOOK': slackWebhook,
+                'SLACK_CHANNEL': slackChannel,
+                if (sharedSecret != null) 'SHARED_SECRET': sharedSecret,
+              }.input(),
+            )
+            .input(),
       ),
     );
 
@@ -77,7 +78,7 @@ class PulumiWebhooksStack extends pulumi.Stack {
       ),
     );
 
-    url = api.url;
+    url = api.url.apply((v) => v!);
   }
 
   @override

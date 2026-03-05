@@ -21,8 +21,8 @@ class LocalAiFlowiseStack extends pulumi.Stack {
     final cluster = eks.index.Cluster(
       'eks-cluster',
       args: eks.index.ClusterArgs(
-        vpcId: vpc.vpcId,
-        subnetIds: vpc.publicSubnetIds,
+        vpcId: vpc.vpcId.apply((v) => v!),
+        subnetIds: vpc.publicSubnetIds.apply((v) => v!),
         authenticationMode: eks_index.AuthenticationMode.api.input(),
         desiredCapacity: 3.input(),
         minSize: 2.input(),
@@ -33,7 +33,9 @@ class LocalAiFlowiseStack extends pulumi.Stack {
 
     final provider = k8sproviders.ProviderProvider(
       'k8s',
-      args: k8sproviders.ProviderArgs(kubeconfig: cluster.kubeconfigJson),
+      args: k8sproviders.ProviderArgs(
+        kubeconfig: cluster.kubeconfigJson.apply((v) => v!),
+      ),
     );
 
     final localAiLabels = <String, String>{'app': 'local-ai'};
@@ -91,14 +93,11 @@ class LocalAiFlowiseStack extends pulumi.Stack {
               .apply<Map<String, String>>((labels) => labels ?? localAiLabels)
               .input(),
         ).input(),
-          spec: k8score.ServiceSpec(
+        spec: k8score.ServiceSpec(
           type: 'LoadBalancer'.input(),
           selector: localAiLabels.input(),
           ports: [
-            k8score.ServicePort(
-              port: 8080.input(),
-              targetPort: 8080.input(),
-            ),
+            k8score.ServicePort(port: 8080.input(), targetPort: 8080.input()),
           ].input(),
         ).input(),
       ),
@@ -160,14 +159,11 @@ class LocalAiFlowiseStack extends pulumi.Stack {
               .apply<Map<String, String>>((labels) => labels ?? flowiseLabels)
               .input(),
         ).input(),
-          spec: k8score.ServiceSpec(
+        spec: k8score.ServiceSpec(
           type: 'LoadBalancer'.input(),
           selector: flowiseLabels.input(),
           ports: [
-            k8score.ServicePort(
-              port: 3000.input(),
-              targetPort: 3000.input(),
-            ),
+            k8score.ServicePort(port: 3000.input(), targetPort: 3000.input()),
           ].input(),
         ).input(),
       ),
@@ -175,8 +171,12 @@ class LocalAiFlowiseStack extends pulumi.Stack {
     );
 
     kubeconfig = cluster.kubeconfig;
-    localAiServiceHostname = localAiService.metadata.apply<String>((m) => m.name ?? '');
-    flowiseServiceHostname = flowiseService.metadata.apply<String>((m) => m.name ?? '');
+    localAiServiceHostname = localAiService.metadata.apply<String>(
+      (m) => m.name ?? '',
+    );
+    flowiseServiceHostname = flowiseService.metadata.apply<String>(
+      (m) => m.name ?? '',
+    );
   }
 
   @override

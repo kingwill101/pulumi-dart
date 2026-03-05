@@ -1,0 +1,6 @@
+name: openstack-dart-webserver
+description: Pulumi OpenStack webserver example in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

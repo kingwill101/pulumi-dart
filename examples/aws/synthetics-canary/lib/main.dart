@@ -37,9 +37,9 @@ class SyntheticsCanaryStack extends pulumi.Stack {
       '$baseName-exec-policy',
       args: iam.RolePolicyArgs(
         role: canaryExecutionRole.name,
-        policy: canaryResultsS3Bucket.arn.apply<String>(
-          _generateCanaryPolicy,
-        ).input(),
+        policy: canaryResultsS3Bucket.arn
+            .apply<String>(_generateCanaryPolicy)
+            .input(),
       ),
     );
 
@@ -66,7 +66,9 @@ class SyntheticsCanaryStack extends pulumi.Stack {
     final canary = synthetics.Canary(
       '$baseName-simple',
       args: synthetics.CanaryArgs(
-        artifactS3Location: canaryResultsS3Bucket.id.apply<String>((id) => 's3://$id'),
+        artifactS3Location: canaryResultsS3Bucket.id.apply<String>(
+          (id) => 's3://$id',
+        ),
         executionRoleArn: canaryExecutionRole.arn,
         handler: 'exports.handler'.input(),
         runtimeVersion: 'syn-nodejs-puppeteer-3.5'.input(),

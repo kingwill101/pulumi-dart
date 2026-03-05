@@ -1,0 +1,6 @@
+name: command-dart-ec2-dir-copy
+description: Pulumi Command ec2-dir-copy example in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

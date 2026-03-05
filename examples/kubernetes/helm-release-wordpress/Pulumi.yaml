@@ -1,0 +1,6 @@
+name: kubernetes-dart-helm-release-wordpress
+description: WordPress Helm release in Kubernetes using Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

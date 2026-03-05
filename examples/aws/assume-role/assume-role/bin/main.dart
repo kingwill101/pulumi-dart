@@ -30,7 +30,7 @@ class AssumeRoleStack extends pulumi.Stack {
           )
         : providers.ProviderProvider(
             'privileged',
-                args: providers.ProviderArgs(
+            args: providers.ProviderArgs(
               region: region?.input(),
               assumeRoles: [
                 aws.index.ProviderAssumeRole(

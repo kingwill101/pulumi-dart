@@ -16,10 +16,7 @@ class ServerlessRawStack extends pulumi.Stack {
         billingMode: 'PAY_PER_REQUEST'.input(),
         hashKey: 'id'.input(),
         attributes: [
-          aws.dynamodb.TableAttribute(
-            name: 'id'.input(),
-            type: 'S'.input(),
-          ),
+          aws.dynamodb.TableAttribute(name: 'id'.input(), type: 'S'.input()),
         ].input(),
       ),
     );
@@ -80,9 +77,7 @@ class ServerlessRawStack extends pulumi.Stack {
         runtime: 'nodejs20.x'.input(),
         handler: 'index.handler'.input(),
         code: pulumi.FileArchive('./app').input(),
-        environment: counterTable.name.apply((
-          String tableName,
-        ) {
+        environment: counterTable.name.apply((String tableName) {
           return aws.lambda.FunctionEnvironment(
             variables: {'TABLE_NAME': tableName}.input(),
           );

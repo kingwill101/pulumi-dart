@@ -1,0 +1,6 @@
+name: azure-native-dart-cosmosdb-logicapp
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: Azure Cosmos DB account, SQL container, API connection, and Logic App in Dart.

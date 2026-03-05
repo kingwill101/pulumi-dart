@@ -1,0 +1,15 @@
+name: automation_ssh_tunnel
+description: Pulumi Dart Automation API SSH tunnel orchestration example.
+version: 0.0.1
+publish_to: none
+resolution: workspace
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  pulumi: 3.0.0
+
+dev_dependencies:
+  lints: ^6.1.0
+

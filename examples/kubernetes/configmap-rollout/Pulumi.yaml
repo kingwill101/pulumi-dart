@@ -1,0 +1,6 @@
+name: kubernetes-dart-configmap-rollout
+description: Kubernetes ConfigMap-driven rollout example in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

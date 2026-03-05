@@ -1,0 +1,6 @@
+name: kubernetes-dart-multicloud
+description: Deploy a demo app across multiple Kubernetes clusters in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

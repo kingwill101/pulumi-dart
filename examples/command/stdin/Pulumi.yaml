@@ -1,0 +1,6 @@
+name: command-dart-stdin
+description: Pulumi Command stdin example in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

@@ -6,8 +6,8 @@ This folder tracks Dart ports of `policy-packs/*` examples from
 ## Progress
 
 - Total examples tracked: **6**
-- Implemented for Dart: **4**
-- Remaining: **2**
+- Implemented for Dart: **6**
+- Remaining: **0**
 
 ## Tracking checklist
 
@@ -15,8 +15,8 @@ This folder tracks Dart ports of `policy-packs/*` examples from
 - [x] gcp
 - [x] kubernetes
 - [x] stackvalidation
-- [ ] aws-advanced
-- [ ] aws-finops
+- [x] aws-advanced
+- [x] aws-finops
 
 ## Source mapping
 

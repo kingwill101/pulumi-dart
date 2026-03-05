@@ -1,0 +1,14 @@
+name: automation_multi_stack_orchestration
+description: Pulumi Dart Automation API multi-stack orchestration example.
+version: 0.0.1
+resolution: workspace
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  pulumi: 3.0.0
+
+dev_dependencies:
+  lints: ^6.1.0
+

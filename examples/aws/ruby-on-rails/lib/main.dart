@@ -36,7 +36,7 @@ class RubyOnRailsStack extends pulumi.Stack {
 
     final amiId = pulumi
         .output(
-            aws.ec2.getAmi(
+          aws.ec2.getAmi(
             aws.ec2.GetAmiArgs(
               mostRecent: true.input(),
               owners: ['137112412989'].input(),
@@ -55,7 +55,8 @@ class RubyOnRailsStack extends pulumi.Stack {
         )
         .apply<String>((ami) => ami.id);
 
-    final userData = '''
+    final userData =
+        '''
 #!/bin/bash
 set -euxo pipefail
 
@@ -75,14 +76,13 @@ echo "Rails bootstrap baseline complete." >/var/log/rails-bootstrap.log
 ''';
 
     final webServer = aws.ec2.Instance(
-        'webServer',
+      'webServer',
       args: aws.ec2.InstanceArgs(
         ami: amiId,
         instanceType: 't3.medium'.input(),
-        vpcSecurityGroupIds: pulumi.Output
-            .all([webSg.id])
-            .apply<List<String>>((ids) => ids.cast<String>())
-            .input(),
+        vpcSecurityGroupIds: pulumi.Output.all([
+          webSg.id,
+        ]).apply<List<String>>((ids) => ids.cast<String>()).input(),
         userData: userData.input(),
       ),
     );

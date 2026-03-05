@@ -26,8 +26,8 @@ class EksHelloWorldStack extends pulumi.Stack {
     final cluster = eks.index.Cluster(
       name,
       args: eks.index.ClusterArgs(
-        vpcId: vpc.vpcId,
-        subnetIds: vpc.publicSubnetIds,
+        vpcId: vpc.vpcId.apply((v) => v!),
+        subnetIds: vpc.publicSubnetIds.apply((v) => v!),
         authenticationMode: eks_index.AuthenticationMode.api.input(),
         desiredCapacity: 2.output(),
         minSize: 1.output(),
@@ -38,7 +38,9 @@ class EksHelloWorldStack extends pulumi.Stack {
 
     final k8sProvider = k8sproviders.ProviderProvider(
       '$name-k8s',
-      args: k8sproviders.ProviderArgs(kubeconfig: cluster.kubeconfigJson),
+      args: k8sproviders.ProviderArgs(
+        kubeconfig: cluster.kubeconfigJson.apply((v) => v!),
+      ),
     );
 
     final ns = k8score.NamespaceCoreV1(

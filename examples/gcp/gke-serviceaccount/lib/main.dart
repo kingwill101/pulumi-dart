@@ -63,17 +63,21 @@ class GkeServiceAccountStack extends pulumi.Stack {
         cluster: cluster.name,
         location: cluster.location,
         initialNodeCount: 2.output(),
-        nodeConfig: gcp.container.NodePoolNodeConfig(
-          preemptible: true.output(),
-          machineType: machineType.output(),
-          oauthScopes: const [
-            'https://www.googleapis.com/auth/compute',
-            'https://www.googleapis.com/auth/devstorage.read_only',
-            'https://www.googleapis.com/auth/logging.write',
-            'https://www.googleapis.com/auth/monitoring',
-          ].output(),
-        ).output(),
-        management: gcp.container.NodePoolManagement(autoRepair: true.output()).output(),
+        nodeConfig: gcp.container
+            .NodePoolNodeConfig(
+              preemptible: true.output(),
+              machineType: machineType.output(),
+              oauthScopes: const [
+                'https://www.googleapis.com/auth/compute',
+                'https://www.googleapis.com/auth/devstorage.read_only',
+                'https://www.googleapis.com/auth/logging.write',
+                'https://www.googleapis.com/auth/monitoring',
+              ].output(),
+            )
+            .output(),
+        management: gcp.container
+            .NodePoolManagement(autoRepair: true.output())
+            .output(),
       ),
       options: pulumi.CustomResourceOptions(dependsOn: [cluster]),
     );
@@ -127,7 +131,7 @@ users:
           name: 'pubsub'.output(),
           labels: appLabels.output(),
         ).output(),
-        ),
+      ),
       options: pulumi.CustomResourceOptions(provider: k8sProvider),
     );
 
@@ -139,7 +143,9 @@ users:
           labels: appLabels.output(),
         ).output(),
         type: 'Opaque'.output(),
-        stringData: serviceAccountKey.privateKey.apply<Map<String, String>>((key) {
+        stringData: serviceAccountKey.privateKey.apply<Map<String, String>>((
+          key,
+        ) {
           final decoded = utf8.decode(base64Decode(key));
           return {'gcp-credentials.json': decoded};
         }),
@@ -166,9 +172,9 @@ users:
                 k8score.Volume(
                   name: 'google-cloud-key'.output(),
                   secret: k8score.SecretVolumeSource(
-                  secretName: credentialsSecret.metadata.apply<String>(
-                    (m) => m.name ?? 'gcp-credentials',
-                  ),
+                    secretName: credentialsSecret.metadata.apply<String>(
+                      (m) => m.name ?? 'gcp-credentials',
+                    ),
                   ).output(),
                 ),
               ].output(),
@@ -178,16 +184,17 @@ users:
                   image: 'gcr.io/google-samples/pubsub-sample:v1'.output(),
                   volumeMounts: [
                     k8score.VolumeMount(
-                        name: 'google-cloud-key'.output(),
-                        mountPath: '/var/secrets/google'.output(),
-                      ),
-                    ].output(),
-                    env: [
-                      k8score.EnvVar(
-                        name: 'GOOGLE_APPLICATION_CREDENTIALS'.output(),
-                        value: '/var/secrets/google/gcp-credentials.json'.output(),
-                      ),
-                    ].output(),
+                      name: 'google-cloud-key'.output(),
+                      mountPath: '/var/secrets/google'.output(),
+                    ),
+                  ].output(),
+                  env: [
+                    k8score.EnvVar(
+                      name: 'GOOGLE_APPLICATION_CREDENTIALS'.output(),
+                      value: '/var/secrets/google/gcp-credentials.json'
+                          .output(),
+                    ),
+                  ].output(),
                 ),
               ].output(),
             ).output(),

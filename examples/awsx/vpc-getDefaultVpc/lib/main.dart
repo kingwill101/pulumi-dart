@@ -8,8 +8,8 @@ class TsVpcGetDefaultVpcStack extends pulumi.Stack {
   TsVpcGetDefaultVpcStack() {
     final defaultVpc = awsx.ec2.DefaultVpc('default-vpc');
 
-    vpcId = defaultVpc.vpcId;
-    publicSubnetIds = defaultVpc.publicSubnetIds;
+    vpcId = defaultVpc.vpcId.apply((v) => v!);
+    publicSubnetIds = defaultVpc.publicSubnetIds.apply((v) => v!);
   }
 
   @override

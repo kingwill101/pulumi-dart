@@ -34,9 +34,9 @@ class EksGpuDraStack extends pulumi.Stack {
       'gpu-cluster',
       args: eks.index.ClusterArgs(
         name: clusterName.output(),
-        vpcId: vpc.vpcId,
-        publicSubnetIds: vpc.publicSubnetIds,
-        privateSubnetIds: vpc.privateSubnetIds,
+        vpcId: vpc.vpcId.apply((v) => v!),
+        publicSubnetIds: vpc.publicSubnetIds.apply((v) => v!),
+        privateSubnetIds: vpc.privateSubnetIds.apply((v) => v!),
         authenticationMode: eks_index.AuthenticationMode.api.input(),
         skipDefaultNodeGroup: true.output(),
         version: '1.34'.output(),
@@ -191,7 +191,7 @@ class EksGpuDraStack extends pulumi.Stack {
     final k8sProvider = k8sProviders.ProviderProvider(
       'k8s-provider',
       args: k8sProviders.ProviderArgs(
-        kubeconfig: cluster.kubeconfigJson,
+        kubeconfig: cluster.kubeconfigJson.apply((v) => v!),
         enableServerSideApply: true.output(),
       ),
     );
@@ -433,9 +433,9 @@ class EksGpuDraStack extends pulumi.Stack {
     kubeconfig = cluster.kubeconfig;
     clusterNameOutput = clusterName.output();
     grafanaPassword = 'gpu-monitoring-demo'.output();
-    vpcId = vpc.vpcId;
-    privateSubnetIds = vpc.privateSubnetIds;
-    publicSubnetIds = vpc.publicSubnetIds;
+    vpcId = vpc.vpcId.apply((v) => v!);
+    privateSubnetIds = vpc.privateSubnetIds.apply((v) => v!);
+    publicSubnetIds = vpc.publicSubnetIds.apply((v) => v!);
   }
 
   @override

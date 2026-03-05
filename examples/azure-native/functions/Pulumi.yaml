@@ -1,0 +1,3 @@
+name: azure-native-dart-functions
+runtime: dart
+description: Deploying Azure Functions with Azure Native in Dart.

@@ -1,0 +1,6 @@
+name: command-dart-simple-with-update
+description: Pulumi Command simple-with-update example in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

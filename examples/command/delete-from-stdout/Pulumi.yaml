@@ -1,0 +1,6 @@
+name: command-dart-delete-from-stdout
+description: Pulumi Command delete-from-stdout example in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

@@ -1,0 +1,3 @@
+name: azure-native-dart-call-azure-api
+runtime: dart
+description: Demo of integrating Azure Native with direct Azure REST API role lookup in Dart.

@@ -31,32 +31,31 @@ class S3LambdaCopyzipStack extends pulumi.Stack {
       'zipTpsReportsPolicy',
       args: aws.iam.RolePolicyArgs(
         role: lambdaRole.id,
-        policy: pulumi
-            .Output
-            .all([tpsReports.arn, tpsZips.arn])
-            .apply<String>((arns) {
+        policy: pulumi.Output.all([tpsReports.arn, tpsZips.arn]).apply<String>((
+          arns,
+        ) {
           final srcArn = arns[0];
           final dstArn = arns[1];
-            return jsonEncode({
-              'Version': '2012-10-17',
-              'Statement': [
-                {
-                  'Effect': 'Allow',
-                  'Action': [
-                    'logs:CreateLogGroup',
-                    'logs:CreateLogStream',
-                    'logs:PutLogEvents',
-                  ],
-                  'Resource': 'arn:aws:logs:*:*:*',
-                },
-                {
-                  'Effect': 'Allow',
-                  'Action': ['s3:GetObject', 's3:PutObject'],
-                  'Resource': ['$srcArn/*', '$dstArn/*'],
-                },
-              ],
-            });
-            }).input(),
+          return jsonEncode({
+            'Version': '2012-10-17',
+            'Statement': [
+              {
+                'Effect': 'Allow',
+                'Action': [
+                  'logs:CreateLogGroup',
+                  'logs:CreateLogStream',
+                  'logs:PutLogEvents',
+                ],
+                'Resource': 'arn:aws:logs:*:*:*',
+              },
+              {
+                'Effect': 'Allow',
+                'Action': ['s3:GetObject', 's3:PutObject'],
+                'Resource': ['$srcArn/*', '$dstArn/*'],
+              },
+            ],
+          });
+        }).input(),
       ),
     );
 
@@ -68,8 +67,8 @@ class S3LambdaCopyzipStack extends pulumi.Stack {
         handler: 'index.handler'.input(),
         code: pulumi.FileArchive('./app').input(),
         timeout: 30.input(),
-        environment: tpsZips.bucket.apply((String bucket) => 
-          aws.lambda.FunctionEnvironment(
+        environment: tpsZips.bucket.apply(
+          (String bucket) => aws.lambda.FunctionEnvironment(
             variables: {'DEST_BUCKET': bucket}.input(),
           ),
         ),

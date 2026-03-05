@@ -1,0 +1,25 @@
+name: azure-dart-vm-provisioners
+description: Azure VM + remote provisioning via pulumi_command
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+template:
+  config:
+    azure:environment:
+      description: The Azure environment to use (`public`, `usgovernment`, `german`, `china`)
+      default: public
+    azure:location:
+      description: The Azure location to deploy to (e.g., `eastus`, or `westeurope`)
+    azure:subscriptionId:
+      description: The Azure Subscription to deploy into
+    username:
+      description: Admin username for the VM
+    password:
+      description: Admin password for the VM
+      secret: true
+    publicKey:
+      description: SSH public key content (for example contents of `rsa.pub`)
+    privateKey:
+      description: SSH private key content (raw or base64)
+      secret: true

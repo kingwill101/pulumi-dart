@@ -22,8 +22,8 @@ class VpcNodejsCustomProviderStack extends pulumi.Stack {
       options: pulumi.ComponentResourceOptions(provider: provider),
     );
 
-    defaultVpc = defaultVpcResource.vpcId;
-    vpc1 = vpc1Resource.vpcId;
+    defaultVpc = defaultVpcResource.vpcId.apply((v) => v!);
+    vpc1 = vpc1Resource.vpcId.apply((v) => v!);
   }
 
   @override

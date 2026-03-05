@@ -1,0 +1,6 @@
+name: azure-native-dart-function-graal-spring
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: Deploy a Spring Native + GraalVM Azure Function with Azure Native and Pulumi Dart.

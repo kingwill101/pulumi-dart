@@ -1,0 +1,6 @@
+name: azure-native-dart-aks-helm
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: AKS cluster and Bitnami Apache Helm chart using Azure Native in Pulumi Dart.

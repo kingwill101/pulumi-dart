@@ -1,0 +1,15 @@
+name: azure_dart_vm_provisioners
+description: Azure VM remote provisioning example using pulumi_command.
+version: 0.0.1
+resolution: workspace
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  pulumi: 3.0.0
+  pulumi_azure: 6.33.0
+  pulumi_command: 1.2.0
+
+dev_dependencies:
+  lints: ^6.1.0

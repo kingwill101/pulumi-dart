@@ -6,9 +6,7 @@ class ExampleStack extends pulumi.Stack {
   ExampleStack() {
     final network = gcp.compute.Network(
       "network",
-      args: gcp.compute.NetworkArgs(
-        autoCreateSubnetworks: true.output(),
-      ),
+      args: gcp.compute.NetworkArgs(autoCreateSubnetworks: true.output()),
     );
 
     final firewall = gcp.compute.Firewall(
@@ -34,11 +32,15 @@ nohup python -m SimpleHTTPServer 80 &''';
       args: gcp.compute.InstanceArgs(
         machineType: "f1-micro".output(),
         metadataStartupScript: startupScript.output(),
-        bootDisk: gcp.compute.InstanceBootDisk(
-          initializeParams: gcp.compute.InstanceBootDiskInitializeParams(
-            image: "debian-cloud/debian-9-stretch-v20181210".output(),
-          ).output(),
-        ).output(),
+        bootDisk: gcp.compute
+            .InstanceBootDisk(
+              initializeParams: gcp.compute
+                  .InstanceBootDiskInitializeParams(
+                    image: "debian-cloud/debian-9-stretch-v20181210".output(),
+                  )
+                  .output(),
+            )
+            .output(),
         networkInterfaces: [
           gcp.compute.InstanceNetworkInterface(
             network: network.name,
@@ -47,24 +49,26 @@ nohup python -m SimpleHTTPServer 80 &''';
             ].output(),
           ),
         ].output(),
-        serviceAccount: gcp.compute.InstanceServiceAccount(
-          scopes: [
-            "https://www.googleapis.com/auth/cloud-platform",
-          ].output(),
-        ).output(),
+        serviceAccount: gcp.compute
+            .InstanceServiceAccount(
+              scopes: [
+                "https://www.googleapis.com/auth/cloud-platform",
+              ].output(),
+            )
+            .output(),
       ),
-      options: pulumi.CustomResourceOptions(
-        dependsOn: [firewall],
-      ),
+      options: pulumi.CustomResourceOptions(dependsOn: [firewall]),
     );
 
     registerOutputs({
       "instanceName": instance.name,
-      "instanceIP": pulumi.output(instance.networkInterfaces).apply((interfaces) {
+      "instanceIP": pulumi.output(instance.networkInterfaces).apply((
+        interfaces,
+      ) {
         return interfaces.isNotEmpty && interfaces[0].accessConfigs != null
             ? (interfaces[0].accessConfigs!.isNotEmpty
-                ? interfaces[0].accessConfigs![0].natIp ?? ""
-                : "")
+                  ? interfaces[0].accessConfigs![0].natIp ?? ""
+                  : "")
             : "";
       }),
     });

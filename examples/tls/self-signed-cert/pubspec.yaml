@@ -1,0 +1,14 @@
+name: tls_dart_self_signed_cert
+description: Pulumi TLS self-signed certificate example in Dart.
+version: 0.0.1
+resolution: workspace
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  pulumi: 3.0.0
+  pulumi_tls: 5.3.0
+
+dev_dependencies:
+  lints: ^6.1.0

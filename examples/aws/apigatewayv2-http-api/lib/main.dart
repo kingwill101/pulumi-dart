@@ -29,7 +29,8 @@ class ExampleStack extends pulumi.Stack {
       'lambdaRoleAttachment',
       args: aws.iam.RolePolicyAttachmentArgs(
         role: lambdaRole.name,
-        policyArn: iam.ManagedPolicy.aWSLambdaBasicExecutionRole.value.input(),
+        policyArn: iam.ManagedPolicy.aWSLambdaBasicExecutionRole.wireValue
+            .input(),
       ),
     );
 

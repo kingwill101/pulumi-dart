@@ -1,0 +1,3 @@
+name: azure-native-dart-appservice-docker
+runtime: dart
+description: Azure App Service on Linux using Docker Hub and Azure Container Registry images.

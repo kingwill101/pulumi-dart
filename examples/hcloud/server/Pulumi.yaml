@@ -1,0 +1,6 @@
+name: hcloud-dart-server
+description: Pulumi hcloud server example in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

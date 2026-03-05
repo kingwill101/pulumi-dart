@@ -1,6 +1,6 @@
 # Dart Examples Consolidation and Porting Rules
 
-This document defines how to consolidate examples to Dart under `examples/` and how to port source examples from `thirdparty/pulumi_examples/`.
+This document defines how to consolidate examples to Dart under `examples/` and how to port source examples from `thirdparty/pulumi_examples/` and other upstream `thirdparty/` repos.
 
 ## Consolidation target
 
@@ -8,6 +8,7 @@ This document defines how to consolidate examples to Dart under `examples/` and 
 - Source material comes from:
   - `thirdparty/pulumi_examples/` for providers with upstream example repos mirrored locally.
   - `thirdparty/pulumi-awsx/` for AWSX examples.
+  - `thirdparty/pulumi-automation-api-examples/` for Automation API examples.
   - Other `thirdparty/` repos when a provider example is not present in `thirdparty/pulumi_examples/`.
 - Every ported example should end as a runnable Dart project under:
   - `examples/<provider>/<example>/`
@@ -35,6 +36,8 @@ Examples:
 - `thirdparty/pulumi_examples/`
 - `thirdparty/pulumi-aws/`
 - `thirdparty/pulumi-awsx/`
+- `thirdparty/pulumi-command/`
+- `thirdparty/pulumi-automation-api-examples/`
 - `thirdparty/pulumi-dotnet/`
 
 ## Package coverage and port sources
@@ -47,6 +50,7 @@ The workspace currently includes SDKs under `packages/sdks/`. Use this mapping w
 - `aws` -> source prefix `aws-`
 - `aws-apigateway` -> source prefix `aws-apigateway-`
 - `azure` -> source prefixes `azure-` and `classic-azure-` as needed
+- `azure-native` -> source prefix `azure-` (ported examples use Azure Native resources)
 - `digitalocean` -> source prefix `digitalocean-`
 - `docker` -> source prefix `docker-`
 - `f5bigip` -> source prefix `f5bigip-`
@@ -63,6 +67,14 @@ The workspace currently includes SDKs under `packages/sdks/`. Use this mapping w
 - `awsx`:
   - source repo: `https://github.com/pulumi/pulumi-awsx`
   - destination root: `examples/awsx/`
+- `automation`:
+  - source repo: `https://github.com/pulumi/automation-api-examples`
+  - local source root: `thirdparty/pulumi-automation-api-examples/`
+  - destination root: `examples/automation/`
+- `command`:
+  - source repo: `https://github.com/pulumi/pulumi-command`
+  - local source root: `thirdparty/pulumi-command/examples/`
+  - destination root: `examples/command/`
 - `docker-build`:
   - source examples currently align with `dockerbuildcloud-*` patterns in `pulumi_examples/`
   - destination root: `examples/docker-build/`
@@ -71,19 +83,7 @@ The workspace currently includes SDKs under `packages/sdks/`. Use this mapping w
 
 These packages still need Dart-first examples, but they are not primarily sourced from `pulumi_examples` right now:
 
-- `azure-native`
-- `azuread`
-- `command`
-- `eks`
-- `gcp-global-cloudrun`
-- `google-native`
-- `hcloud`
-- `mysql`
-- `newrelic`
-- `postgresql`
-- `pulumiservice`
-- `terraform`
-- `tls`
+- None currently.
 
 ## How to catalog a provider before porting
 
@@ -92,7 +92,7 @@ These packages still need Dart-first examples, but they are not primarily source
 - Mark status as:
   - `todo`
   - `in progress`
-  - `done` only when runnable as Dart
+  - `done` only when runnable as Dart and `dart analyze` is clean for that example
 
 Useful source listing commands:
 
@@ -103,6 +103,20 @@ find thirdparty/pulumi_examples -mindepth 1 -maxdepth 1 -type d -name 'aws-*' | 
 # Sub-provider examples
 find thirdparty/pulumi_examples -mindepth 1 -maxdepth 1 -type d -name 'aws-apigateway-*' | sort
 ```
+
+## Current backlog (as of March 4, 2026)
+
+- `thirdparty/pulumi_examples` coverage is complete for currently tracked Dart providers except `azure`.
+- `thirdparty/pulumi-command/examples` coverage is complete for tracked canonical scenarios under `examples/command/`.
+- `aws`, `aws-apigateway`, `alicloud`, `digitalocean`, `docker`, `f5bigip`, `gcp`, `kubernetes`, `libvirt`, `openstack`, and `random` have no upstream-mapped gaps in the current inventory.
+- `awsx` examples are fully mapped from `thirdparty/pulumi-awsx/examples` to `examples/awsx/`.
+- `automation` has all core scenario families ported; language/test variants are not tracked as separate Dart examples.
+
+- `azure` remaining scenarios to port from `thirdparty/pulumi_examples`:
+- none (current tracked inventory complete)
+
+- `automation` remaining upstream variants (not new scenario families):
+- none (tracked as consolidated canonical examples)
 
 ## Porting requirements
 
@@ -126,6 +140,23 @@ find thirdparty/pulumi_examples -mindepth 1 -maxdepth 1 -type d -name 'aws-apiga
 - `pubspec.yaml` must include:
   - `resolution: workspace`
   - workspace-compatible SDK constraint
+- After porting each example, run `dart analyze` and resolve all reported issues before marking the example as complete.
+
+## Automation example requirements
+
+- Place each port under `examples/automation/<scenario>/`.
+- Keep the Automation driver logic in `lib/main.dart`.
+- Keep `bin/main.dart` as a thin launcher into `lib/main.dart`.
+- For local-program scenarios, keep a nested Pulumi project fixture directory with its own:
+  - `Pulumi.yaml`
+  - `lib/main.dart`
+  - `bin/main.dart`
+- For inline-program scenarios, no nested Pulumi project directory is required.
+- Preserve behavior parity with upstream scenario intent:
+  - stack lifecycle flow (`up`, `preview`, `destroy`, `refresh`, `outputs`)
+  - config and secret handling
+  - workspace/project settings
+  - error and diagnostics handling
 
 ## README rules for each example
 

@@ -1,0 +1,4 @@
+encryptionsalt: v1:iJVEBt1xeNA=:v1:N4cY5e4O2cOJVbLQ:fYbazkcaznDMcznbsj+sMhdkCAbcrg==
+config:
+  command-dart-gcp-compute-command:publicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCtest user@test
+  command-dart-gcp-compute-command:privateKey: ZHVtbXk=

@@ -101,8 +101,7 @@ class StepFunctionsStack extends pulumi.Stack {
       'stateMachine',
       args: aws.sfn.StateMachineArgs(
         roleArn: sfnRole.arn,
-        definition: pulumi
-            .Output.all([helloFunction.arn, worldFunction.arn])
+        definition: pulumi.Output.all([helloFunction.arn, worldFunction.arn])
             .apply<String>((arns) {
               final helloArn = arns[0];
               final worldArn = arns[1];
@@ -116,11 +115,7 @@ class StepFunctionsStack extends pulumi.Stack {
                     'Resource': helloArn,
                     'Next': 'World',
                   },
-                  'World': {
-                    'Type': 'Task',
-                    'Resource': worldArn,
-                    'End': true,
-                  },
+                  'World': {'Type': 'Task', 'Resource': worldArn, 'End': true},
                 },
               });
             }),

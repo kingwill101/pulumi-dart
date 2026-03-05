@@ -1,0 +1,6 @@
+name: command-dart-kubernetes
+description: Pulumi Command kubernetes cleanup example in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

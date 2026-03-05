@@ -20,7 +20,8 @@ class K8sRubyOnRailsPostgresqlStack extends pulumi.Stack {
     final dbPassword = config.require('dbPassword');
 
     // Kubernetes config.
-    final clusterNodeCount = (config.getNumber('clusterNodeCount') ?? 3).toInt();
+    final clusterNodeCount = (config.getNumber('clusterNodeCount') ?? 3)
+        .toInt();
     final clusterNodeMachineType =
         config.get('clusterNodeMachineType') ?? 'n1-standard-1';
     config.get('clusterUsername') ?? 'admin';
@@ -47,7 +48,7 @@ class K8sRubyOnRailsPostgresqlStack extends pulumi.Stack {
                   .DatabaseInstanceSettingsIpConfiguration(
                     authorizedNetworks: [
                       gcp.sql
-                    .DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork(
+                          .DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork(
                             value: '0.0.0.0/0'.output(),
                           ),
                     ].output(),
@@ -85,18 +86,21 @@ class K8sRubyOnRailsPostgresqlStack extends pulumi.Stack {
         cluster: cluster.name,
         initialNodeCount: clusterNodeCount.output(),
         location: cluster.location,
-        nodeConfig: gcp.container.NodePoolNodeConfig(
-          preemptible: true.output(),
-          machineType: clusterNodeMachineType.output(),
-          oauthScopes: const [
-            'https://www.googleapis.com/auth/compute',
-            'https://www.googleapis.com/auth/devstorage.read_only',
-            'https://www.googleapis.com/auth/logging.write',
-            'https://www.googleapis.com/auth/monitoring',
-          ].output(),
-        ).output(),
+        nodeConfig: gcp.container
+            .NodePoolNodeConfig(
+              preemptible: true.output(),
+              machineType: clusterNodeMachineType.output(),
+              oauthScopes: const [
+                'https://www.googleapis.com/auth/compute',
+                'https://www.googleapis.com/auth/devstorage.read_only',
+                'https://www.googleapis.com/auth/logging.write',
+                'https://www.googleapis.com/auth/monitoring',
+              ].output(),
+            )
+            .output(),
         version: masterVersion,
-        management: gcp.container.NodePoolManagement(autoRepair: true.output())
+        management: gcp.container
+            .NodePoolManagement(autoRepair: true.output())
             .output(),
       ),
       options: pulumi.CustomResourceOptions(dependsOn: [cluster]),
@@ -153,7 +157,8 @@ users:
       'rails-app',
       args: docker.index.ImageArgs(
         imageName:
-            '$dockerUsername/${pulumi.Deployment.instance.projectName}_${pulumi.Deployment.instance.stackName}'.output(),
+            '$dockerUsername/${pulumi.Deployment.instance.projectName}_${pulumi.Deployment.instance.stackName}'
+                .output(),
         build: docker.index.DockerBuild(context: './app'.output()).output(),
       ),
     );
@@ -190,8 +195,9 @@ users:
                       value: dbPassword.output(),
                     ),
                   ].output(),
-                  ports: [k8score.ContainerPort(containerPort: appPort.output())]
-                      .output(),
+                  ports: [
+                    k8score.ContainerPort(containerPort: appPort.output()),
+                  ].output(),
                 ),
               ].output(),
             ).output(),
@@ -205,10 +211,9 @@ users:
       'rails-service',
       args: k8score.ServiceArgs(
         metadata: k8smeta.ObjectMeta(
-          labels: appDeployment.metadata
-              .apply<Map<String, String>>(
-                (metadata) => metadata.labels ?? appLabels,
-              ),
+          labels: appDeployment.metadata.apply<Map<String, String>>(
+            (metadata) => metadata.labels ?? appLabels,
+          ),
         ).output(),
         spec: k8score.ServiceSpec(
           type: 'LoadBalancer'.output(),

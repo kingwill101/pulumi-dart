@@ -9,9 +9,9 @@ class VpcNodejsDefaultArgsStack extends pulumi.Stack {
   VpcNodejsDefaultArgsStack() {
     final myVpc = awsx.ec2.Vpc('awsx-dart-default-args');
 
-    vpcId = myVpc.vpcId;
-    publicSubnetIds = myVpc.publicSubnetIds;
-    privateSubnetIds = myVpc.privateSubnetIds;
+    vpcId = myVpc.vpcId.apply((v) => v!);
+    publicSubnetIds = myVpc.publicSubnetIds.apply((v) => v!);
+    privateSubnetIds = myVpc.privateSubnetIds.apply((v) => v!);
   }
 
   @override

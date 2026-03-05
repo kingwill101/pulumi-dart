@@ -1,0 +1,16 @@
+name: kubernetes_dart_s3_rollout
+description: Pulumi Kubernetes S3 rollout example in Dart.
+version: 0.0.1
+resolution: workspace
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  crypto: ^3.0.6
+  pulumi: 3.0.0
+  pulumi_aws: 7.20.0
+  pulumi_kubernetes: 4.26.0
+
+dev_dependencies:
+  lints: ^6.1.0

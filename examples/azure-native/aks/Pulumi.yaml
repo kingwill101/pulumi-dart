@@ -1,0 +1,6 @@
+name: azure-native-dart-aks
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: AKS cluster with Azure AD service principal using Azure Native in Pulumi Dart.

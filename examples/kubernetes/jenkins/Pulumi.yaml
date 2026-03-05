@@ -1,0 +1,6 @@
+name: kubernetes-dart-jenkins
+description: Kubernetes Jenkins deployment in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

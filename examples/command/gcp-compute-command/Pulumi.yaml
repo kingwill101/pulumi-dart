@@ -1,0 +1,6 @@
+name: command-dart-gcp-compute-command
+description: Pulumi Command gcp-compute-command example in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

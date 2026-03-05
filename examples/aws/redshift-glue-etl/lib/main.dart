@@ -28,18 +28,15 @@ class RedshiftGlueEtlStack extends pulumi.Stack {
 
     final subnet = aws.ec2.Subnet(
       'subnet',
-      args: aws.ec2.SubnetArgs(
-        vpcId: vpc.id,
-        cidrBlock: '10.0.1.0/24'.input(),
-      ),
+      args: aws.ec2.SubnetArgs(vpcId: vpc.id, cidrBlock: '10.0.1.0/24'.input()),
     );
 
     final subnetGroup = aws.redshift.SubnetGroup(
       'subnet-group',
       args: aws.redshift.SubnetGroupArgs(
-        subnetIds: pulumi.Output.all([subnet.id]).apply<List<String>>(
-          (List<String> ids) => [ids[0]],
-        ).input(),
+        subnetIds: pulumi.Output.all([
+          subnet.id,
+        ]).apply<List<String>>((List<String> ids) => [ids[0]]).input(),
       ),
     );
 
@@ -67,9 +64,9 @@ class RedshiftGlueEtlStack extends pulumi.Stack {
       args: aws.ec2.VpcEndpointArgs(
         vpcId: vpc.id,
         serviceName: 'com.amazonaws.$awsRegion.s3'.input(),
-        routeTableIds: pulumi.Output.all([vpc.mainRouteTableId]).apply<List<String>>(
-          (List<String> ids) => [ids[0]],
-        ).input(),
+        routeTableIds: pulumi.Output.all([
+          vpc.mainRouteTableId,
+        ]).apply<List<String>>((List<String> ids) => [ids[0]]).input(),
       ),
     );
 
@@ -85,13 +82,12 @@ class RedshiftGlueEtlStack extends pulumi.Stack {
         clusterType: 'single-node'.input(),
         publiclyAccessible: false.input(),
         skipFinalSnapshot: true.input(),
-        vpcSecurityGroupIds: pulumi.Output
-            .all([vpc.defaultSecurityGroupId]).apply<List<String>>(
-              (List<String> ids) => [ids[0]],
-            ).input(),
-        iamRoles: pulumi.Output.all([redshiftRole.arn]).apply<List<String>>(
-          (List<String> ids) => [ids[0]],
-        ).input(),
+        vpcSecurityGroupIds: pulumi.Output.all([
+          vpc.defaultSecurityGroupId,
+        ]).apply<List<String>>((List<String> ids) => [ids[0]]).input(),
+        iamRoles: pulumi.Output.all([
+          redshiftRole.arn,
+        ]).apply<List<String>>((List<String> ids) => [ids[0]]).input(),
       ),
     );
 
@@ -135,7 +131,9 @@ class RedshiftGlueEtlStack extends pulumi.Stack {
         schedule: every15Minutes.input(),
         s3Targets: [
           aws.glue.CrawlerS3Target(
-            path: eventsBucket.bucket.apply<String>((name) => 's3://$name').input(),
+            path: eventsBucket.bucket
+                .apply<String>((name) => 's3://$name')
+                .input(),
           ),
         ].input(),
       ),
@@ -145,22 +143,24 @@ class RedshiftGlueEtlStack extends pulumi.Stack {
       'glue-redshift-connection',
       args: aws.glue.ConnectionArgs(
         connectionType: 'JDBC'.input(),
-        connectionProperties: cluster.endpoint.apply<Map<String, String>>((String endpoint) {
-            return <String, String>{
-              'JDBC_CONNECTION_URL':
-                  'jdbc:redshift://$endpoint/$clusterDbName',
-              'USERNAME': clusterDbUsername,
-              'PASSWORD': clusterDbPassword,
-            };
-          }).input(),
-        physicalConnectionRequirements: aws
-            .glue
+        connectionProperties: cluster.endpoint.apply<Map<String, String>>((
+          String endpoint,
+        ) {
+          return <String, String>{
+            'JDBC_CONNECTION_URL': 'jdbc:redshift://$endpoint/$clusterDbName',
+            'USERNAME': clusterDbUsername,
+            'PASSWORD': clusterDbPassword,
+          };
+        }).input(),
+        physicalConnectionRequirements: aws.glue
             .ConnectionPhysicalConnectionRequirements(
-              securityGroupIdLists:
-                  cluster.vpcSecurityGroupIds.apply<List<String>>((List<String> ids) => ids).input(),
+              securityGroupIdLists: cluster.vpcSecurityGroupIds
+                  .apply<List<String>>((List<String> ids) => ids)
+                  .input(),
               availabilityZone: subnet.availabilityZone,
               subnetId: subnet.id,
-            ).input(),
+            )
+            .input(),
       ),
     );
 
@@ -180,25 +180,21 @@ class RedshiftGlueEtlStack extends pulumi.Stack {
 
     final glueJob = aws.glue.Job(
       'glue-job',
-        args: aws.glue.JobArgs(
+      args: aws.glue.JobArgs(
         roleArn: glueRole.arn,
         glueVersion: '3.0'.input(),
-        connections: pulumi
-            .Output
-            .all([glueRedshiftConnection.name])
-            .apply<List<String>>((ids) => ids.cast<String>())
-            .input(),
+        connections: pulumi.Output.all([
+          glueRedshiftConnection.name,
+        ]).apply<List<String>>((ids) => ids.cast<String>()).input(),
         numberOfWorkers: 10.input(),
         workerType: 'G.1X'.input(),
-        defaultArguments: pulumi
-            .Output
-            .all([
+        defaultArguments:
+            pulumi.Output.all([
               glueRedshiftConnection.name,
               eventsBucket.bucket,
               redshiftRole.arn,
               glueJobBucket.bucket,
-            ])
-            .apply<Map<String, String>>((List<String> values) {
+            ]).apply<Map<String, String>>((List<String> values) {
               final connectionName = values[0];
               final eventsBucketName = values[1];
               final redshiftRoleArn = values[2];
@@ -215,12 +211,14 @@ class RedshiftGlueEtlStack extends pulumi.Stack {
                 '--TempDir': 's3://$glueJobBucketName/glue-job-temp',
               };
             }).input(),
-        command: aws.glue.JobCommand(
-          scriptLocation: glueJobBucket.bucket.apply<String>(
-            (String name) => 's3://$name/glue-job.py',
-          ).input(),
-          pythonVersion: '3'.input(),
-        ).input(),
+        command: aws.glue
+            .JobCommand(
+              scriptLocation: glueJobBucket.bucket
+                  .apply<String>((String name) => 's3://$name/glue-job.py')
+                  .input(),
+              pythonVersion: '3'.input(),
+            )
+            .input(),
       ),
     );
 
@@ -229,9 +227,7 @@ class RedshiftGlueEtlStack extends pulumi.Stack {
       args: aws.glue.TriggerArgs(
         schedule: every15Minutes.input(),
         type: 'SCHEDULED'.input(),
-        actions: [
-          aws.glue.TriggerAction(jobName: glueJob.name),
-        ].input(),
+        actions: [aws.glue.TriggerAction(jobName: glueJob.name)].input(),
       ),
     );
 

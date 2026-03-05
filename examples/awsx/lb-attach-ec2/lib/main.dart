@@ -67,7 +67,7 @@ class TsLbAttachEc2Stack extends pulumi.Stack {
     final instance = aws.ec2.Instance(
       'instance',
       args: aws.ec2.InstanceArgs(
-        instanceType: aws_ec2.InstanceType.t2Micro.value.input(),
+        instanceType: aws_ec2.InstanceType.t2Micro.wireValue.input(),
         vpcSecurityGroupIds: pulumi
             .output(group.id)
             .apply<List<String>>((id) => [id]),

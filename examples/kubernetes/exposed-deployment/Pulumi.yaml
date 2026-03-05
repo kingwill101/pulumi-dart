@@ -1,0 +1,6 @@
+name: kubernetes-dart-exposed-deployment
+description: Pulumi Kubernetes exposed deployment example in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

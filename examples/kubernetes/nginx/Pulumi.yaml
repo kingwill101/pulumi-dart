@@ -1,0 +1,6 @@
+name: kubernetes-dart-nginx
+description: Stateless Nginx deployment in Kubernetes using Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

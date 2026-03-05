@@ -67,11 +67,13 @@ class ExampleStack extends pulumi.Stack {
       args: aws.cloudwatch.LogMetricFilterArgs(
         pattern: ''.input(),
         logGroupName: logGroup.name,
-        metricTransformation: aws.cloudwatch.LogMetricFilterMetricTransformation(
-          name: 'EventCount'.input(),
-          namespace: 'YourNamespace'.input(),
-          value: '1'.input(),
-        ).input(),
+        metricTransformation: aws.cloudwatch
+            .LogMetricFilterMetricTransformation(
+              name: 'EventCount'.input(),
+              namespace: 'YourNamespace'.input(),
+              value: '1'.input(),
+            )
+            .input(),
       ),
     );
 
@@ -255,7 +257,10 @@ class ExampleStack extends pulumi.Stack {
 
     aws.iam.RolePolicyAttachment(
       'myrolepolicyattachment',
-      args: aws.iam.RolePolicyAttachmentArgs(role: role.name, policyArn: policy.arn),
+      args: aws.iam.RolePolicyAttachmentArgs(
+        role: role.name,
+        policyArn: policy.arn,
+      ),
     );
 
     aws.iam.User('myuser');

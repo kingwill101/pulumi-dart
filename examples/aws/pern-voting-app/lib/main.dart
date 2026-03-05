@@ -99,10 +99,10 @@ class PernVotingAppStack extends pulumi.Stack {
     final rdsSubnetGroup = aws.rds.SubnetGroup(
       'rds-subnet-group',
       args: aws.rds.SubnetGroupArgs(
-        subnetIds:
-            pulumi.Output.all([firstRdsSubnet.id, secondRdsSubnet.id]).apply<List<String>>(
-          (List<String> ids) => ids,
-        ).input(),
+        subnetIds: pulumi.Output.all([
+          firstRdsSubnet.id,
+          secondRdsSubnet.id,
+        ]).apply<List<String>>((List<String> ids) => ids).input(),
       ),
     );
 
@@ -118,9 +118,9 @@ class PernVotingAppStack extends pulumi.Stack {
         publiclyAccessible: true.input(),
         port: 2000.input(),
         dbSubnetGroupName: rdsSubnetGroup.name.input(),
-        vpcSecurityGroupIds: pulumi.Output.all([rdsSecurityGroup.id]).apply<List<String>>(
-          (List<String> ids) => [ids[0]],
-        ).input(),
+        vpcSecurityGroupIds: pulumi.Output.all([
+          rdsSecurityGroup.id,
+        ]).apply<List<String>>((List<String> ids) => [ids[0]]).input(),
       ),
     );
 
@@ -174,18 +174,18 @@ class PernVotingAppStack extends pulumi.Stack {
       ),
     );
 
-    final appSubnets = pulumi.Output
-        .all([firstRdsSubnet.id, secondRdsSubnet.id])
-        .apply<List<String>>((List<String> ids) => ids)
-        .input();
+    final appSubnets = pulumi.Output.all([
+      firstRdsSubnet.id,
+      secondRdsSubnet.id,
+    ]).apply<List<String>>((List<String> ids) => ids).input();
 
     final serverLb = aws.lb.LoadBalancer(
       'server-lb',
       args: aws.lb.LoadBalancerArgs(
         loadBalancerType: 'application'.input(),
-        securityGroups: pulumi.Output.all([lbSg.id]).apply<List<String>>(
-          (List<String> ids) => [ids[0]],
-        ).input(),
+        securityGroups: pulumi.Output.all([
+          lbSg.id,
+        ]).apply<List<String>>((List<String> ids) => [ids[0]]).input(),
         subnets: appSubnets,
       ),
     );
@@ -222,8 +222,8 @@ class PernVotingAppStack extends pulumi.Stack {
         cpu: '256'.input(),
         memory: '512'.input(),
         executionRoleArn: ecsExecutionRole.arn,
-        containerDefinitions: pulumi.Output
-            .all([
+        containerDefinitions:
+            pulumi.Output.all([
               postgresqlRdsServer.address,
               postgresqlRdsServer.port,
               sqlUserName.output(),
@@ -240,7 +240,11 @@ class PernVotingAppStack extends pulumi.Stack {
                   'image': 'public.ecr.aws/docker/library/node:20-alpine',
                   'essential': true,
                   'portMappings': [
-                    {'containerPort': 5000, 'hostPort': 5000, 'protocol': 'tcp'},
+                    {
+                      'containerPort': 5000,
+                      'hostPort': 5000,
+                      'protocol': 'tcp',
+                    },
                   ],
                   'command': [
                     'sh',
@@ -267,13 +271,16 @@ class PernVotingAppStack extends pulumi.Stack {
         desiredCount: 1.input(),
         launchType: 'FARGATE'.input(),
         taskDefinition: serverTask.arn,
-        networkConfiguration: aws.ecs.ServiceNetworkConfiguration(
-          assignPublicIp: true.input(),
-          subnets: appSubnets,
-          securityGroups: pulumi.Output.all([rdsSecurityGroup.id, lbSg.id]).apply<List<String>>(
-            (List<String> ids) => ids,
-          ).input(),
-        ).input(),
+        networkConfiguration: aws.ecs
+            .ServiceNetworkConfiguration(
+              assignPublicIp: true.input(),
+              subnets: appSubnets,
+              securityGroups: pulumi.Output.all([
+                rdsSecurityGroup.id,
+                lbSg.id,
+              ]).apply<List<String>>((List<String> ids) => ids).input(),
+            )
+            .input(),
         loadBalancers: [
           aws.ecs.ServiceLoadBalancer(
             targetGroupArn: serverTg.arn,
@@ -288,9 +295,9 @@ class PernVotingAppStack extends pulumi.Stack {
       'client-lb',
       args: aws.lb.LoadBalancerArgs(
         loadBalancerType: 'application'.input(),
-        securityGroups: pulumi.Output.all([lbSg.id]).apply<List<String>>(
-          (List<String> ids) => [ids[0]],
-        ).input(),
+        securityGroups: pulumi.Output.all([
+          lbSg.id,
+        ]).apply<List<String>>((List<String> ids) => [ids[0]]).input(),
         subnets: appSubnets,
       ),
     );
@@ -336,7 +343,11 @@ class PernVotingAppStack extends pulumi.Stack {
               'portMappings': [
                 {'containerPort': 3000, 'hostPort': 3000, 'protocol': 'tcp'},
               ],
-              'command': ['sh', '-c', 'node -e "console.log(\\\"client\\\")" && sleep 3600'],
+              'command': [
+                'sh',
+                '-c',
+                'node -e "console.log(\\\"client\\\")" && sleep 3600',
+              ],
               'environment': [
                 {'name': 'SERVER_HOSTNAME', 'value': serverHost},
               ],
@@ -353,13 +364,16 @@ class PernVotingAppStack extends pulumi.Stack {
         desiredCount: 1.input(),
         launchType: 'FARGATE'.input(),
         taskDefinition: clientTask.arn,
-        networkConfiguration: aws.ecs.ServiceNetworkConfiguration(
-          assignPublicIp: true.input(),
-          subnets: appSubnets,
-          securityGroups: pulumi.Output.all([rdsSecurityGroup.id, lbSg.id]).apply<List<String>>(
-            (List<String> ids) => ids,
-          ).input(),
-        ).input(),
+        networkConfiguration: aws.ecs
+            .ServiceNetworkConfiguration(
+              assignPublicIp: true.input(),
+              subnets: appSubnets,
+              securityGroups: pulumi.Output.all([
+                rdsSecurityGroup.id,
+                lbSg.id,
+              ]).apply<List<String>>((List<String> ids) => ids).input(),
+            )
+            .input(),
         loadBalancers: [
           aws.ecs.ServiceLoadBalancer(
             targetGroupArn: clientTg.arn,

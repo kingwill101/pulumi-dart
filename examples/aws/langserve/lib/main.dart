@@ -53,7 +53,9 @@ class LangserveStack extends pulumi.Stack {
       ),
     );
 
-    final region = pulumi.output(aws.index.getRegion(aws.index.GetRegionArgs()));
+    final region = pulumi.output(
+      aws.index.getRegion(aws.index.GetRegionArgs()),
+    );
 
     final subnet1 = aws.ec2.Subnet(
       'langserve-subnet1',
@@ -101,7 +103,7 @@ class LangserveStack extends pulumi.Stack {
     final image = awsx.ecr.Image(
       'langserve-image',
       args: awsx.ecr.ImageArgs(
-        repositoryUrl: repo.url,
+        repositoryUrl: repo.url.apply((v) => v!),
         context: containerContext.input(),
         platform: 'linux/amd64'.input(),
       ),
@@ -136,16 +138,13 @@ class LangserveStack extends pulumi.Stack {
       'langserve-load-balancer',
       args: aws.lb.LoadBalancerArgs(
         loadBalancerType: 'application'.input(),
-        securityGroups: pulumi
-            .Output
-            .all([securityGroup.id])
-            .apply<List<String>>((values) => values.cast<String>())
-            .input(),
-        subnets: pulumi
-            .Output
-            .all([subnet1.id, subnet2.id])
-            .apply<List<String>>((values) => values.cast<String>())
-            .input(),
+        securityGroups: pulumi.Output.all([
+          securityGroup.id,
+        ]).apply<List<String>>((values) => values.cast<String>()).input(),
+        subnets: pulumi.Output.all([
+          subnet1.id,
+          subnet2.id,
+        ]).apply<List<String>>((values) => values.cast<String>()).input(),
       ),
     );
 
@@ -251,19 +250,18 @@ class LangserveStack extends pulumi.Stack {
         desiredCount: 1.input(),
         launchType: 'FARGATE'.input(),
         taskDefinition: taskDef.arn,
-        networkConfiguration: aws.ecs.ServiceNetworkConfiguration(
-          assignPublicIp: true.input(),
-          subnets: pulumi
-              .Output
-              .all([subnet1.id, subnet2.id])
-              .apply<List<String>>((values) => values.cast<String>())
-              .input(),
-          securityGroups: pulumi
-              .Output
-              .all([securityGroup.id])
-              .apply<List<String>>((values) => values.cast<String>())
-              .input(),
-        ).input(),
+        networkConfiguration: aws.ecs
+            .ServiceNetworkConfiguration(
+              assignPublicIp: true.input(),
+              subnets: pulumi.Output.all([
+                subnet1.id,
+                subnet2.id,
+              ]).apply<List<String>>((values) => values.cast<String>()).input(),
+              securityGroups: pulumi.Output.all([
+                securityGroup.id,
+              ]).apply<List<String>>((values) => values.cast<String>()).input(),
+            )
+            .input(),
         loadBalancers: [
           aws.ecs.ServiceLoadBalancer(
             targetGroupArn: tg.arn,

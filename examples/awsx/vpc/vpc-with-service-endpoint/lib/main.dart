@@ -19,9 +19,9 @@ class VpcNodejsVpcWithServiceEndpointStack extends pulumi.Stack {
       ),
     );
 
-    vpcId = myVpc.vpcId;
-    publicSubnetIds = myVpc.publicSubnetIds;
-    privateSubnetIds = myVpc.privateSubnetIds;
+    vpcId = myVpc.vpcId.apply((v) => v!);
+    publicSubnetIds = myVpc.publicSubnetIds.apply((v) => v!);
+    privateSubnetIds = myVpc.privateSubnetIds.apply((v) => v!);
     vpcEndpoints = myVpc.vpcEndpoints;
   }
 

@@ -1,0 +1,14 @@
+name: azure_dart_api_management
+description: Example of using Azure API Management.
+version: 0.0.1
+resolution: workspace
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  pulumi: 3.0.0
+  pulumi_azure: 6.33.0
+
+dev_dependencies:
+  lints: ^6.1.0

@@ -1,0 +1,6 @@
+name: command-dart-random
+description: Pulumi Command random output example in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

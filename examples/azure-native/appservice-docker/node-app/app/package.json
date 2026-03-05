@@ -1,0 +1,10 @@
+{
+  "name": "azure-appservice-docker-node-app",
+  "version": "1.0.0",
+  "description": "Custom container for Azure App Service Docker example",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

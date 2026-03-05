@@ -1,0 +1,14 @@
+name: terraform_dart_local_state_reference
+description: Pulumi terraform local state reference example in Dart.
+version: 0.0.1
+resolution: workspace
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  pulumi: 3.0.0
+  pulumi_terraform: 6.0.1
+
+dev_dependencies:
+  lints: ^6.1.0

@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'package:pulumi_aws/pulumi_aws.dart' as aws;
 
-  class ThumbnailerStack extends pulumi.Stack {
+class ThumbnailerStack extends pulumi.Stack {
   late final pulumi.Output<String> bucketName;
 
   ThumbnailerStack() {
@@ -40,13 +40,15 @@ import 'package:pulumi_aws/pulumi_aws.dart' as aws;
         runtime: 'nodejs20.x'.input(),
         handler: 'index.handler'.input(),
         code: pulumi.FileArchive('./lambda/on-new-video').input(),
-        environment: aws.lambda.FunctionEnvironment(
-          variables: pulumi
-              .Output
-              .all([bucket.id])
-              .apply<Map<String, String>>((List<String> ids) => {'S3_BUCKET': ids[0]})
-              .input(),
-        ).input(),
+        environment: aws.lambda
+            .FunctionEnvironment(
+              variables: pulumi.Output.all([bucket.id])
+                  .apply<Map<String, String>>(
+                    (List<String> ids) => {'S3_BUCKET': ids[0]},
+                  )
+                  .input(),
+            )
+            .input(),
       ),
     );
 
@@ -85,21 +87,23 @@ import 'package:pulumi_aws/pulumi_aws.dart' as aws;
       args: aws.s3.BucketNotificationArgs(
         bucket: bucket.id,
         lambdaFunctions: [
-            aws.s3.BucketNotificationLambdaFunction(
-              id: 'on-new-video'.input(),
-              lambdaFunctionArn: onNewVideo.arn,
-              events: ['s3:ObjectCreated:*'].input(),
-              filterSuffix: '.mp4'.input(),
-            ),
-            aws.s3.BucketNotificationLambdaFunction(
-              id: 'on-new-thumbnail'.input(),
-              lambdaFunctionArn: onNewThumbnail.arn,
-              events: ['s3:ObjectCreated:*'].input(),
-              filterSuffix: '.jpg'.input(),
-            ),
+          aws.s3.BucketNotificationLambdaFunction(
+            id: 'on-new-video'.input(),
+            lambdaFunctionArn: onNewVideo.arn,
+            events: ['s3:ObjectCreated:*'].input(),
+            filterSuffix: '.mp4'.input(),
+          ),
+          aws.s3.BucketNotificationLambdaFunction(
+            id: 'on-new-thumbnail'.input(),
+            lambdaFunctionArn: onNewThumbnail.arn,
+            events: ['s3:ObjectCreated:*'].input(),
+            filterSuffix: '.jpg'.input(),
+          ),
         ].input(),
       ),
-      options: pulumi.CustomResourceOptions(dependsOn: [onNewVideo, onNewThumbnail]),
+      options: pulumi.CustomResourceOptions(
+        dependsOn: [onNewVideo, onNewThumbnail],
+      ),
     );
 
     bucketName = bucket.id;

@@ -149,7 +149,7 @@ class ConsoleSlackNotificationStack extends pulumi.Stack {
       'console-change-slack-notifier',
       args: aws.lambda.FunctionArgs(
         handler: 'index.handler'.input(),
-        runtime: aws_lambda.Runtime.nodeJS20dX.value.input(),
+        runtime: aws_lambda.Runtime.nodeJS20dX.wireValue.input(),
         code: pulumi.FileArchive('./lambda').input(),
         role: lambdaRole.arn,
         environment: aws.lambda

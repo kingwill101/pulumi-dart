@@ -1,0 +1,3 @@
+name: azure-native-dart-sqlserver
+runtime: dart
+description: An example of deploying Azure SQL Server and a database with Pulumi Dart.

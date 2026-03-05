@@ -14,25 +14,39 @@ class VotingAppStack extends pulumi.Stack {
     awsx.ecs.FargateService(
       'voting-app-cache',
       args: awsx.ecs.FargateServiceArgs(
-        taskDefinitionArgs: awsx.ecs.FargateServiceTaskDefinition(
-          container: awsx.ecs.TaskDefinitionContainerDefinition(
-            name: 'redis'.input(),
-            image: 'redis:alpine'.input(),
-            memory: 512.input(),
-            portMappings: [
-              awsx.ecs.TaskDefinitionPortMapping(
-                containerPort: redisPort.input(),
-                targetGroup: redisLB.defaultTargetGroup,
-              ),
-            ].input(),
-            command: ['redis-server', '--requirepass', redisPassword].input(),
-          ).input(),
-        ).input(),
+        taskDefinitionArgs: awsx.ecs
+            .FargateServiceTaskDefinition(
+              container: awsx.ecs
+                  .TaskDefinitionContainerDefinition(
+                    name: 'redis'.input(),
+                    image: 'redis:alpine'.input(),
+                    memory: 512.input(),
+                    portMappings: [
+                      awsx.ecs.TaskDefinitionPortMapping(
+                        containerPort: redisPort.input(),
+                        targetGroup: redisLB.defaultTargetGroup.apply(
+                          (v) => v!,
+                        ),
+                      ),
+                    ].input(),
+                    command: [
+                      'redis-server',
+                      '--requirepass',
+                      redisPassword,
+                    ].input(),
+                  )
+                  .input(),
+            )
+            .input(),
       ),
     );
 
-    final redisEndpoint = redisLB.loadBalancer.apply((dynamic lb) => lb.dnsName);
-    final redisHostPort = redisLB.defaultTargetGroup.apply((dynamic tg) => tg.port);
+    final redisEndpoint = redisLB.loadBalancer.apply(
+      (dynamic lb) => lb.dnsName,
+    );
+    final redisHostPort = redisLB.defaultTargetGroup.apply(
+      (dynamic tg) => tg.port,
+    );
 
     final frontendLB = awsx.lb.ApplicationLoadBalancer('voting-app-frontend');
 
@@ -41,7 +55,7 @@ class VotingAppStack extends pulumi.Stack {
     final image = awsx.ecr.Image(
       'voting-app-frontend',
       args: awsx.ecr.ImageArgs(
-        repositoryUrl: repo.url,
+        repositoryUrl: repo.url.apply((v) => v!),
         context: './frontend'.input(),
       ),
     );
@@ -49,48 +63,56 @@ class VotingAppStack extends pulumi.Stack {
     awsx.ecs.FargateService(
       'voting-app-frontend',
       args: awsx.ecs.FargateServiceArgs(
-        taskDefinitionArgs: awsx.ecs.FargateServiceTaskDefinition(
-          container: awsx.ecs.TaskDefinitionContainerDefinition(
-            name: 'votingAppFrontend'.input(),
-            image: image.imageUri,
-            memory: 512.input(),
-            portMappings: [
-              awsx.ecs.TaskDefinitionPortMapping(
-                containerPort: 80.input(),
-                targetGroup: frontendLB.defaultTargetGroup,
-              ),
-            ].input(),
-            environment: pulumi.Output.all([redisEndpoint, redisHostPort]).apply(
-              (List<dynamic> values) {
-                return [
-                awsx.ecs.TaskDefinitionKeyValuePair(
-                  name: 'REDIS'.input(),
-                  value: values[0].toString().input(),
-                ),
-                awsx.ecs.TaskDefinitionKeyValuePair(
-                  name: 'REDIS_PORT'.input(),
-                  value: values[1].toString().input(),
-                ),
-                awsx.ecs.TaskDefinitionKeyValuePair(
-                  name: 'REDIS_PWD'.input(),
-                  value: redisPassword.input(),
-                ),
-              ];
-              },
-            ),
-          ).input(),
-        ).input(),
+        taskDefinitionArgs: awsx.ecs
+            .FargateServiceTaskDefinition(
+              container: awsx.ecs
+                  .TaskDefinitionContainerDefinition(
+                    name: 'votingAppFrontend'.input(),
+                    image: image.imageUri.apply((v) => v!),
+                    memory: 512.input(),
+                    portMappings: [
+                      awsx.ecs.TaskDefinitionPortMapping(
+                        containerPort: 80.input(),
+                        targetGroup: frontendLB.defaultTargetGroup.apply(
+                          (v) => v!,
+                        ),
+                      ),
+                    ].input(),
+                    environment:
+                        pulumi.Output.all([redisEndpoint, redisHostPort]).apply(
+                          (List<dynamic> values) {
+                            return [
+                              awsx.ecs.TaskDefinitionKeyValuePair(
+                                name: 'REDIS'.input(),
+                                value: values[0].toString().input(),
+                              ),
+                              awsx.ecs.TaskDefinitionKeyValuePair(
+                                name: 'REDIS_PORT'.input(),
+                                value: values[1].toString().input(),
+                              ),
+                              awsx.ecs.TaskDefinitionKeyValuePair(
+                                name: 'REDIS_PWD'.input(),
+                                value: redisPassword.input(),
+                              ),
+                            ];
+                          },
+                        ),
+                  )
+                  .input(),
+            )
+            .input(),
       ),
     );
 
-    frontendUrl = pulumi.Output.all([
-      frontendLB.loadBalancer,
-      frontendLB.defaultTargetGroup,
-    ]).apply<String>((List<dynamic> values) {
-      final lb = values[0];
-      final tg = values[1];
-      return 'http://${lb.dnsName}:${tg.port}';
-    });
+    frontendUrl =
+        pulumi.Output.all([
+          frontendLB.loadBalancer,
+          frontendLB.defaultTargetGroup,
+        ]).apply<String>((List<dynamic> values) {
+          final lb = values[0];
+          final tg = values[1];
+          return 'http://${lb.dnsName}:${tg.port}';
+        });
   }
 
   @override

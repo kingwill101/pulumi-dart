@@ -1,0 +1,5 @@
+encryptionsalt: v1:8HO55duUqSo=:v1:ZRiLbbiXMnI1O7/A:Sg23oOdHd0EfeF+jrEdzuVUMqPQRQw==
+config:
+  command-dart-ec2-copyfile:keyName: placeholder-key
+  command-dart-ec2-copyfile:privateKeyBase64: ZHVtbXk=
+  command-dart-ec2-copyfile:destDir: /tmp/pulumi-command-copy

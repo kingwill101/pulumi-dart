@@ -1,0 +1,5 @@
+encryptionsalt: v1:DwMzSLOK86c=:v1:fbb/O2a9RrlnXDX4:4d284jFztUjP419pid1o6ZHVi1KDgg==
+config:
+  command-dart-ec2-dir-copy:keyName: placeholder-key
+  command-dart-ec2-dir-copy:privateKeyBase64: ZHVtbXk=
+  command-dart-ec2-dir-copy:destDir: /tmp/pulumi-command-dir-copy

@@ -1,0 +1,6 @@
+name: azure-native-dart-aks-multicluster
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: Multiple AKS clusters across regions using Azure Native in Pulumi Dart.

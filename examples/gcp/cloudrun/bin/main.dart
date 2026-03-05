@@ -13,15 +13,19 @@ class ExampleStack extends pulumi.Stack {
       "hello",
       args: gcp.cloudrun.ServiceArgs(
         location: location.output(),
-        template: gcp.cloudrun.ServiceTemplate(
-          spec: gcp.cloudrun.ServiceTemplateSpec(
-            containers: [
-              gcp.cloudrun.ServiceTemplateSpecContainer(
-                image: "gcr.io/cloudrun/hello".output(),
-              ),
-            ].output(),
-          ).output(),
-        ).output(),
+        template: gcp.cloudrun
+            .ServiceTemplate(
+              spec: gcp.cloudrun
+                  .ServiceTemplateSpec(
+                    containers: [
+                      gcp.cloudrun.ServiceTemplateSpecContainer(
+                        image: "gcr.io/cloudrun/hello".output(),
+                      ),
+                    ].output(),
+                  )
+                  .output(),
+            )
+            .output(),
       ),
     );
 
@@ -40,10 +44,12 @@ class ExampleStack extends pulumi.Stack {
       imageName,
       args: docker.index.ImageArgs(
         imageName: "gcr.io/$project/$imageName:v1.0.0".output(),
-        build: docker.index.DockerBuild(
-          context: "./app".output(),
-          platform: "linux/amd64".output(),
-        ).output(),
+        build: docker.index
+            .DockerBuild(
+              context: "./app".output(),
+              platform: "linux/amd64".output(),
+            )
+            .output(),
       ),
     );
 
@@ -51,26 +57,30 @@ class ExampleStack extends pulumi.Stack {
       "ruby",
       args: gcp.cloudrun.ServiceArgs(
         location: location.output(),
-        template: gcp.cloudrun.ServiceTemplate(
-          spec: gcp.cloudrun.ServiceTemplateSpec(
-            containerConcurrency: 50.output(),
-            containers: [
-              gcp.cloudrun.ServiceTemplateSpecContainer(
-                image: myImage.imageName,
-                resources: gcp.cloudrun.ServiceTemplateSpecContainerResources(
-                  limits: {
-                    "memory": '1Gi',
-                  }.output(),
-                ).output(),
-                ports: [
-                  gcp.cloudrun.ServiceTemplateSpecContainerPort(
-                    containerPort: 8080.output(),
-                  ),
-                ].output(),
-              ),
-            ].output(),
-          ).output(),
-        ).output(),
+        template: gcp.cloudrun
+            .ServiceTemplate(
+              spec: gcp.cloudrun
+                  .ServiceTemplateSpec(
+                    containerConcurrency: 50.output(),
+                    containers: [
+                      gcp.cloudrun.ServiceTemplateSpecContainer(
+                        image: myImage.imageName,
+                        resources: gcp.cloudrun
+                            .ServiceTemplateSpecContainerResources(
+                              limits: {"memory": '1Gi'}.output(),
+                            )
+                            .output(),
+                        ports: [
+                          gcp.cloudrun.ServiceTemplateSpecContainerPort(
+                            containerPort: 8080.output(),
+                          ),
+                        ].output(),
+                      ),
+                    ].output(),
+                  )
+                  .output(),
+            )
+            .output(),
       ),
     );
 
@@ -85,10 +95,18 @@ class ExampleStack extends pulumi.Stack {
     );
 
     registerOutputs({
-      "helloUrl": helloService.statuses.apply((statuses) =>
-          statuses.isNotEmpty ? statuses[0].url ?? "" : ""),
-      "rubyUrl": rubyService.statuses.apply((statuses) =>
-          statuses.isNotEmpty ? statuses[0].url ?? "" : ""),
+      "helloUrl": helloService.statuses.apply((statuses) {
+        if (statuses.isEmpty) {
+          return "";
+        }
+        return (statuses[0]["url"] as String?) ?? "";
+      }),
+      "rubyUrl": rubyService.statuses.apply((statuses) {
+        if (statuses.isEmpty) {
+          return "";
+        }
+        return (statuses[0]["url"] as String?) ?? "";
+      }),
     });
   }
 }

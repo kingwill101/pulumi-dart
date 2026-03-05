@@ -1,0 +1,6 @@
+name: azure-native-dart-aci
+description: Azure Container Instances on Linux in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

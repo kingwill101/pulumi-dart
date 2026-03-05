@@ -1,0 +1,3 @@
+name: azure-native-dart-containerapps
+runtime: dart
+description: Azure Container Apps with ACR and custom Docker image in Dart.

@@ -1,0 +1,25 @@
+name: ssh-tunnel-vpc
+runtime: yaml
+description: VPC/bastion side of the SSH tunnel automation example.
+
+config:
+  publicKey:
+    type: string
+
+resources:
+  bastionHostName:
+    type: random:RandomPet
+  dbHostName:
+    type: random:RandomPet
+  dbPasswordSeed:
+    type: random:RandomPassword
+    properties:
+      length: 24
+      special: false
+
+outputs:
+  bastionHost: ${bastionHostName.id}
+  dbHost: ${dbHostName.id}.internal
+  dbUsername: admin2021
+  dbPassword: ${dbPasswordSeed.result}
+

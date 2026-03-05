@@ -14,7 +14,9 @@ class ExampleStack extends pulumi.Stack {
     final username = config.require('dbUsername');
     final password = config.require('dbPassword');
     final dbName = config.require('dbName');
-    final networkingStack = pulumi.StackReference(config.require('networkingStack'));
+    final networkingStack = pulumi.StackReference(
+      config.require('networkingStack'),
+    );
 
     final subnetIds = networkingStack
         .requireOutput(pulumi.Input.fromValue('dataVpcPrivateSubnetIds'))
@@ -32,8 +34,10 @@ class ExampleStack extends pulumi.Stack {
       'db-subnet-group',
       args: aws.rds.SubnetGroupArgs(
         subnetIds: subnetIds,
-        tags: {...baseTags, 'Name': '${baseTags['Project']} DB Subnet Group'}
-            .input(),
+        tags: {
+          ...baseTags,
+          'Name': '${baseTags['Project']} DB Subnet Group',
+        }.input(),
       ),
     );
 
@@ -53,11 +57,13 @@ class ExampleStack extends pulumi.Stack {
         backupWindow: '00:00-01:00'.input(),
         maintenanceWindow: 'Mon:02:00-Mon:04:00'.input(),
         skipFinalSnapshot: true.input(),
-        vpcSecurityGroupIds: pulumi.Output
-            .all<String>([peeredSgId])
-            .apply<List<String>>((ids) => ids)
-            .input(),
-        tags: {...baseTags, 'Name': '${baseTags['Project']} DB Instance'}.input(),
+        vpcSecurityGroupIds: pulumi.Output.all<String>([
+          peeredSgId,
+        ]).apply<List<String>>((ids) => ids).input(),
+        tags: {
+          ...baseTags,
+          'Name': '${baseTags['Project']} DB Instance',
+        }.input(),
       ),
     );
 

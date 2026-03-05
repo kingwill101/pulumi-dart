@@ -1,0 +1,6 @@
+name: kubernetes-dart-staged-rollout-with-prometheus
+description: Staged Kubernetes rollout with Prometheus in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

@@ -1,0 +1,14 @@
+name: docker_build_dockerbuildcloud
+description: Pulumi Docker Build Cloud image build example in Dart.
+version: 0.0.1
+resolution: workspace
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  pulumi: 3.0.0
+  pulumi_docker_build: 0.0.14
+
+dev_dependencies:
+  lints: ^6.1.0

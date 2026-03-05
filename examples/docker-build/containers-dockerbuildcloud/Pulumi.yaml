@@ -1,0 +1,6 @@
+name: docker-build-containers-dockerbuildcloud
+description: Pulumi Docker Build Cloud + AWS Fargate example in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

@@ -1,0 +1,14 @@
+name: digitalocean_dart_loadbalanced_droplets
+description: Pulumi DigitalOcean load-balanced droplets example in Dart.
+version: 0.0.1
+resolution: workspace
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  pulumi: 3.0.0
+  pulumi_digitalocean: 4.60.0
+
+dev_dependencies:
+  lints: ^6.1.0

@@ -1,0 +1,15 @@
+name: command_dart_ec2_remote_proxy
+description: Pulumi Command ec2-remote-proxy example in Dart.
+version: 0.0.1
+resolution: workspace
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  pulumi: 3.0.0
+  pulumi_aws: 7.20.0
+  pulumi_command: 1.2.0
+
+dev_dependencies:
+  lints: ^6.1.0

@@ -32,10 +32,7 @@ class ExampleStack extends pulumi.Stack {
       args: awsx.ec2.VpcArgs(
         cidrBlock: '172.28.0.0/16'.input(),
         availabilityZoneNames: azNames,
-        tags: {
-          ...baseTags,
-          'Name': '${baseTags['ManagedBy']} App VPC',
-        }.input(),
+        tags: {...baseTags, 'Name': '${baseTags['ManagedBy']} App VPC'}.input(),
       ),
     );
 
@@ -55,7 +52,7 @@ class ExampleStack extends pulumi.Stack {
       'data-app-peering-sg',
       args: aws.ec2.SecurityGroupArgs(
         description: 'Allows traffic from app VPC to data resources'.input(),
-        vpcId: dataVpc.vpcId,
+        vpcId: dataVpc.vpcId.apply((v) => v!),
         ingress: [
           aws.ec2.SecurityGroupIngress(
             cidrBlocks: ['172.28.0.0/16'].input(),
@@ -79,12 +76,12 @@ class ExampleStack extends pulumi.Stack {
       ),
     );
 
-    appVpcId = appVpc.vpcId;
-    appVpcPrivateSubnetIds = appVpc.privateSubnetIds;
-    appVpcPublicSubnetIds = appVpc.publicSubnetIds;
-    dataVpcId = dataVpc.vpcId;
-    dataVpcPrivateSubnetIds = dataVpc.privateSubnetIds;
-    dataVpcPublicSubnetIds = dataVpc.publicSubnetIds;
+    appVpcId = appVpc.vpcId.apply((v) => v!);
+    appVpcPrivateSubnetIds = appVpc.privateSubnetIds.apply((v) => v!);
+    appVpcPublicSubnetIds = appVpc.publicSubnetIds.apply((v) => v!);
+    dataVpcId = dataVpc.vpcId.apply((v) => v!);
+    dataVpcPrivateSubnetIds = dataVpc.privateSubnetIds.apply((v) => v!);
+    dataVpcPublicSubnetIds = dataVpc.publicSubnetIds.apply((v) => v!);
     peeredSecurityGroupId = peeredSg.id;
   }
 

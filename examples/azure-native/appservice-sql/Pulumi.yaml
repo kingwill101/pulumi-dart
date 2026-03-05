@@ -1,0 +1,3 @@
+name: azure-native-dart-appservice-sql
+runtime: dart
+description: Azure App Service with SQL Database and Application Insights in Dart.

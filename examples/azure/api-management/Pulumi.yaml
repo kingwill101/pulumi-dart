@@ -1,0 +1,18 @@
+name: azure-dart-api-management
+description: Example of using Azure API Management
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+template:
+  config:
+    azure:environment:
+      description: The Azure environment to use (`public`, `usgovernment`, `german`, `china`)
+      default: public
+    azure:location:
+      description: The Azure location to deploy to (e.g., `eastus`, or `westeurope`)
+    azure:subscriptionId:
+      description: The Azure Subscription to deploy into
+    backendUrl:
+      description: Backend base URL used by the API Management API
+      default: https://postman-echo.com/get

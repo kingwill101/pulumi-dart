@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'package:pulumi_aws/pulumi_aws.dart' as aws;
-import 'package:pulumi_pulumiservice/pulumi_pulumiservice.dart' as pulumiservice;
+import 'package:pulumi_pulumiservice/pulumi_pulumiservice.dart'
+    as pulumiservice;
 import 'package:pulumi_tls/pulumi_tls.dart' as tls;
 
 class OidcProviderPulumiCloudStack extends pulumi.Stack {
@@ -15,13 +16,15 @@ class OidcProviderPulumiCloudStack extends pulumi.Stack {
     final oidcAudience = escProject == 'default' ? pulumiOrg : 'aws:$pulumiOrg';
     const oidcIdpUrl = 'https://api.pulumi.com/oidc';
 
-    final thumbprints = pulumi.output(
-      tls.index.getCertificate(
-        tls.index.GetCertificateArgs(url: oidcIdpUrl.input()),
-      ),
-    ).apply<List<String>>(
-      (certs) => [certs.certificates.first.sha1Fingerprint],
-    );
+    final thumbprints = pulumi
+        .output(
+          tls.index.getCertificate(
+            tls.index.GetCertificateArgs(url: oidcIdpUrl.input()),
+          ),
+        )
+        .apply<List<String>>(
+          (certs) => [certs.certificates.first.sha1Fingerprint],
+        );
 
     final provider = aws.iam.OpenIdConnectProvider(
       'oidcProvider',
@@ -41,7 +44,7 @@ class OidcProviderPulumiCloudStack extends pulumi.Stack {
               effect: 'Allow'.input(),
               actions: ['sts:AssumeRoleWithWebIdentity'].input(),
               principals: [
-              aws.iam.GetPolicyDocumentStatementPrincipal(
+                aws.iam.GetPolicyDocumentStatementPrincipal(
                   type: 'Federated'.input(),
                   identifiers: [arn].input(),
                 ),
@@ -105,8 +108,6 @@ values:
 
   @override
   List<pulumi.OutputProperty> getOutputProperties() {
-    return [
-      pulumi.OutputProperty('escEnvironment', escEnvironment),
-    ];
+    return [pulumi.OutputProperty('escEnvironment', escEnvironment)];
   }
 }

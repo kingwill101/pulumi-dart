@@ -20,8 +20,8 @@ class K8sMernVotingAppStack extends pulumi.Stack {
     final cluster = eks.index.Cluster(
       'eks-cluster',
       args: eks.index.ClusterArgs(
-        vpcId: vpc.vpcId,
-        subnetIds: vpc.publicSubnetIds,
+        vpcId: vpc.vpcId.apply((v) => v!),
+        subnetIds: vpc.publicSubnetIds.apply((v) => v!),
         authenticationMode: eks_index.AuthenticationMode.api.input(),
         desiredCapacity: 3.output(),
         minSize: 2.output(),
@@ -32,7 +32,9 @@ class K8sMernVotingAppStack extends pulumi.Stack {
 
     final provider = k8sproviders.ProviderProvider(
       'k8s',
-      args: k8sproviders.ProviderArgs(kubeconfig: cluster.kubeconfigJson),
+      args: k8sproviders.ProviderArgs(
+        kubeconfig: cluster.kubeconfigJson.apply((v) => v!),
+      ),
     );
 
     final ns = k8score.NamespaceCoreV1(

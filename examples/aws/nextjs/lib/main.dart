@@ -27,12 +27,16 @@ class NextJsStack extends pulumi.Stack {
       'site-website',
       args: aws.s3.BucketWebsiteConfigurationV2Args(
         bucket: siteBucket.id,
-        indexDocument: aws.s3.BucketWebsiteConfigurationV2IndexDocument(
-          suffix: 'index.html'.input(),
-        ).input(),
-        errorDocument: aws.s3.BucketWebsiteConfigurationV2ErrorDocument(
-          key: 'index.html'.input(),
-        ).input(),
+        indexDocument: aws.s3
+            .BucketWebsiteConfigurationV2IndexDocument(
+              suffix: 'index.html'.input(),
+            )
+            .input(),
+        errorDocument: aws.s3
+            .BucketWebsiteConfigurationV2ErrorDocument(
+              key: 'index.html'.input(),
+            )
+            .input(),
       ),
     );
 
@@ -63,7 +67,8 @@ class NextJsStack extends pulumi.Stack {
         bucket: siteBucket.id,
         key: 'index.html'.input(),
         contentType: 'text/html; charset=utf-8'.input(),
-        content: '''
+        content:
+            '''
 <!doctype html>
 <html>
   <head>
@@ -77,7 +82,8 @@ class NextJsStack extends pulumi.Stack {
     <p>For full OpenNext parity, add CloudFront + Lambda origins as a follow-up.</p>
   </body>
 </html>
-'''.input(),
+'''
+                .input(),
       ),
     );
 

@@ -1,0 +1,6 @@
+name: eks-dart-cluster-existing-vpc
+description: Pulumi eks cluster example in Dart using existing VPC subnets.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

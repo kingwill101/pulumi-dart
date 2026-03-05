@@ -20,9 +20,9 @@ class ExampleStack extends pulumi.Stack {
         name: cloudSqlInstanceName.output(),
         databaseVersion: 'POSTGRES_12'.output(),
         deletionProtection: false.output(),
-        settings: gcp.sql.DatabaseInstanceSettings(
-          tier: 'db-f1-micro'.output(),
-        ).output(),
+        settings: gcp.sql
+            .DatabaseInstanceSettings(tier: 'db-f1-micro'.output())
+            .output(),
       ),
     );
 
@@ -50,26 +50,33 @@ class ExampleStack extends pulumi.Stack {
       'default-service',
       args: gcp.cloudrun.ServiceArgs(
         location: region.output(),
-        template: gcp.cloudrun.ServiceTemplate(
-          metadata: gcp.cloudrun.ServiceTemplateMetadata(
-            annotations: {
-              'run.googleapis.com/cloudsql-instances': cloudSqlConnectionName,
-            }.output(),
-          ).output(),
-          spec: gcp.cloudrun.ServiceTemplateSpec(
-            containers: [
-              gcp.cloudrun.ServiceTemplateSpecContainer(
-                image: 'gcr.io/cloudrun/hello'.output(),
-                envs: [
-                  gcp.cloudrun.ServiceTemplateSpecContainerEnv(
-                    name: 'DATABASE_URL'.output(),
-                    value: cloudRunEnvironment.output(),
-                  ),
-                ].output(),
-              ),
-        ].output(),
-          ).output(),
-        ).output(),
+        template: gcp.cloudrun
+            .ServiceTemplate(
+              metadata: gcp.cloudrun
+                  .ServiceTemplateMetadata(
+                    annotations: {
+                      'run.googleapis.com/cloudsql-instances':
+                          cloudSqlConnectionName,
+                    }.output(),
+                  )
+                  .output(),
+              spec: gcp.cloudrun
+                  .ServiceTemplateSpec(
+                    containers: [
+                      gcp.cloudrun.ServiceTemplateSpecContainer(
+                        image: 'gcr.io/cloudrun/hello'.output(),
+                        envs: [
+                          gcp.cloudrun.ServiceTemplateSpecContainerEnv(
+                            name: 'DATABASE_URL'.output(),
+                            value: cloudRunEnvironment.output(),
+                          ),
+                        ].output(),
+                      ),
+                    ].output(),
+                  )
+                  .output(),
+            )
+            .output(),
         traffics: [
           gcp.cloudrun.ServiceTraffic(
             latestRevision: true.output(),
@@ -81,9 +88,12 @@ class ExampleStack extends pulumi.Stack {
 
     registerOutputs({
       'cloud_sql_instance_name': cloudSqlInstance.name,
-      'cloud_run_url': cloudRun.statuses.apply(
-        (statuses) => statuses.isNotEmpty ? statuses[0].url ?? '' : '',
-      ),
+      'cloud_run_url': cloudRun.statuses.apply((statuses) {
+        if (statuses.isEmpty) {
+          return '';
+        }
+        return (statuses[0]['url'] as String?) ?? '';
+      }),
     });
   }
 }

@@ -20,14 +20,16 @@ class WordpressFargateRdsStack extends pulumi.Stack {
     final configuredDbPassword = config.get('dbPassword');
     final dbPassword = configuredDbPassword != null
         ? configuredDbPassword.output()
-        : random.index.RandomPassword(
-            'dbPassword',
-            args: random.index.RandomPasswordArgs(
-              length: 16.output(),
-              special: true.output(),
-              overrideSpecial: '_%'.output(),
-            ),
-          ).result;
+        : random.index
+              .RandomPassword(
+                'dbPassword',
+                args: random.index.RandomPasswordArgs(
+                  length: 16.output(),
+                  special: true.output(),
+                  overrideSpecial: '_%'.output(),
+                ),
+              )
+              .result;
 
     final vpc = aws.ec2.Vpc(
       '${serviceName}-vpc',
@@ -53,7 +55,10 @@ class WordpressFargateRdsStack extends pulumi.Stack {
       args: aws.ec2.RouteTableArgs(
         vpcId: vpc.id,
         routes: [
-          aws.ec2.RouteTableRoute(cidrBlock: '0.0.0.0/0'.input(), gatewayId: igw.id),
+          aws.ec2.RouteTableRoute(
+            cidrBlock: '0.0.0.0/0'.input(),
+            gatewayId: igw.id,
+          ),
         ].input(),
         tags: {'Name': '${serviceName}-rt'}.input(),
       ),
@@ -208,13 +213,15 @@ class WordpressFargateRdsStack extends pulumi.Stack {
         protocol: 'HTTP'.input(),
         targetType: 'ip'.input(),
         vpcId: vpc.id,
-        healthCheck: aws.lb.TargetGroupHealthCheck(
-          healthyThreshold: 2.input(),
-          interval: 5.input(),
-          timeout: 4.input(),
-          protocol: 'HTTP'.input(),
-          matcher: '200-399'.input(),
-        ).input(),
+        healthCheck: aws.lb
+            .TargetGroupHealthCheck(
+              healthyThreshold: 2.input(),
+              interval: 5.input(),
+              timeout: 4.input(),
+              protocol: 'HTTP'.input(),
+              matcher: '200-399'.input(),
+            )
+            .input(),
       ),
     );
 
@@ -260,25 +267,26 @@ class WordpressFargateRdsStack extends pulumi.Stack {
     );
 
     final containerName = '${serviceName}-app-container';
-    final containerDefinitions = pulumi.Output.tuple(db.address, dbPassword).apply<String>((values) {
-      final dbHost = values.$1;
-      final dbPass = values.$2;
-      return jsonEncode([
-        {
-          'name': containerName,
-          'image': 'wordpress',
-          'portMappings': [
-            {'containerPort': 80, 'hostPort': 80, 'protocol': 'tcp'},
-          ],
-          'environment': [
-            {'name': 'WORDPRESS_DB_HOST', 'value': '$dbHost:3306'},
-            {'name': 'WORDPRESS_DB_NAME', 'value': dbName},
-            {'name': 'WORDPRESS_DB_USER', 'value': dbUser},
-            {'name': 'WORDPRESS_DB_PASSWORD', 'value': dbPass},
-          ],
-        },
-      ]);
-    });
+    final containerDefinitions = pulumi.Output.tuple(db.address, dbPassword)
+        .apply<String>((values) {
+          final dbHost = values.$1;
+          final dbPass = values.$2;
+          return jsonEncode([
+            {
+              'name': containerName,
+              'image': 'wordpress',
+              'portMappings': [
+                {'containerPort': 80, 'hostPort': 80, 'protocol': 'tcp'},
+              ],
+              'environment': [
+                {'name': 'WORDPRESS_DB_HOST', 'value': '$dbHost:3306'},
+                {'name': 'WORDPRESS_DB_NAME', 'value': dbName},
+                {'name': 'WORDPRESS_DB_USER', 'value': dbUser},
+                {'name': 'WORDPRESS_DB_PASSWORD', 'value': dbPass},
+              ],
+            },
+          ]);
+        });
 
     final taskDefinition = aws.ecs.TaskDefinition(
       '${serviceName}-task',
@@ -300,11 +308,13 @@ class WordpressFargateRdsStack extends pulumi.Stack {
         desiredCount: 1.input(),
         launchType: 'FARGATE'.input(),
         taskDefinition: taskDefinition.arn,
-        networkConfiguration: aws.ecs.ServiceNetworkConfiguration(
-          assignPublicIp: true.input(),
-          subnets: subnetIds,
-          securityGroups: pulumi.InputList<String>([feSecurityGroup.id]),
-        ).input(),
+        networkConfiguration: aws.ecs
+            .ServiceNetworkConfiguration(
+              assignPublicIp: true.input(),
+              subnets: subnetIds,
+              securityGroups: pulumi.InputList<String>([feSecurityGroup.id]),
+            )
+            .input(),
         loadBalancers: [
           aws.ecs.ServiceLoadBalancer(
             targetGroupArn: targetGroup.arn,

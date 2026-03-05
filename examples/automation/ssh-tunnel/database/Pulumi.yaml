@@ -1,0 +1,17 @@
+name: ssh-tunnel-database
+runtime: yaml
+description: Database side of the SSH tunnel automation example.
+
+resources:
+  main1:
+    type: random:RandomPet
+  main2:
+    type: random:RandomPet
+  main3:
+    type: random:RandomPet
+
+outputs:
+  main1: ${main1.id}
+  main2: ${main2.id}
+  main3: ${main3.id}
+

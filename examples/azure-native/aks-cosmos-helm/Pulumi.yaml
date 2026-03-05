@@ -1,0 +1,6 @@
+name: azure-native-dart-aks-cosmos-helm
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: AKS + Cosmos DB MongoDB + Helm node app using Azure Native in Pulumi Dart.

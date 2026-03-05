@@ -1,0 +1,6 @@
+name: mysql-dart-user-database
+description: Pulumi mysql user and database example in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

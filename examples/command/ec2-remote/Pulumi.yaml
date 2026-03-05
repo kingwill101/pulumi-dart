@@ -1,0 +1,6 @@
+name: command-dart-ec2-remote
+description: Pulumi Command ec2-remote example in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

@@ -26,10 +26,11 @@ class TwitterAthenaStack extends pulumi.Stack {
         bucket: bucket.bucket,
         rules: [
           aws.s3.BucketServerSideEncryptionConfigurationV2Rule(
-            applyServerSideEncryptionByDefault:
-                aws.s3.BucketServerSideEncryptionConfigurationV2RuleApplyServerSideEncryptionByDefault(
+            applyServerSideEncryptionByDefault: aws.s3
+                .BucketServerSideEncryptionConfigurationV2RuleApplyServerSideEncryptionByDefault(
                   sseAlgorithm: 'AES256'.input(),
-                ).input(),
+                )
+                .input(),
           ),
         ].input(),
       ),
@@ -50,7 +51,8 @@ class TwitterAthenaStack extends pulumi.Stack {
     }
   ]
 }
-'''.input(),
+'''
+                .input(),
       ),
     );
 
@@ -70,19 +72,21 @@ class TwitterAthenaStack extends pulumi.Stack {
         handler: 'index.handler'.input(),
         code: pulumi.FileArchive('./lambda/fetch-tweets').input(),
         timeout: 30.input(),
-        environment: aws.lambda.FunctionEnvironment(
-          variables: bucket.bucket.apply<Map<String, String>>((bucketName) {
-            return {
-              'TWITTER_CONSUMER_KEY': consumerKey,
-              'TWITTER_CONSUMER_SECRET': consumerSecret,
-              'TWITTER_ACCESS_TOKEN_KEY': accessTokenKey,
-              'TWITTER_ACCESS_TOKEN_SECRET': accessTokenSecret,
-              'TWITTER_QUERY': twitterQuery,
-              'OUTPUT_FOLDER': 'tweets',
-              'BUCKET_NAME': bucketName,
-            };
-          }).input(),
-        ).input(),
+        environment: aws.lambda
+            .FunctionEnvironment(
+              variables: bucket.bucket.apply<Map<String, String>>((bucketName) {
+                return {
+                  'TWITTER_CONSUMER_KEY': consumerKey,
+                  'TWITTER_CONSUMER_SECRET': consumerSecret,
+                  'TWITTER_ACCESS_TOKEN_KEY': accessTokenKey,
+                  'TWITTER_ACCESS_TOKEN_SECRET': accessTokenSecret,
+                  'TWITTER_QUERY': twitterQuery,
+                  'OUTPUT_FOLDER': 'tweets',
+                  'BUCKET_NAME': bucketName,
+                };
+              }).input(),
+            )
+            .input(),
       ),
     );
 
@@ -95,7 +99,10 @@ class TwitterAthenaStack extends pulumi.Stack {
 
     aws.cloudwatch.EventTarget(
       'twitter-search-target',
-      args: aws.cloudwatch.EventTargetArgs(arn: fetchTweets.arn, rule: rule.name),
+      args: aws.cloudwatch.EventTargetArgs(
+        arn: fetchTweets.arn,
+        rule: rule.name,
+      ),
     );
 
     aws.lambda.Permission(
@@ -117,7 +124,8 @@ class TwitterAthenaStack extends pulumi.Stack {
     );
 
     final createTableQuery = bucket.bucket.apply<String>(
-      (b) => '''
+      (b) =>
+          '''
 CREATE EXTERNAL TABLE IF NOT EXISTS tweets (
   id string,
   text string,
@@ -133,12 +141,14 @@ LOCATION 's3://$b/tweets/';
 ''',
     );
 
-    final topUsersQuery = '''
+    final topUsersQuery =
+        '''
 select distinct user, followers, text, url
 from tweets
 where isRetweet = false and followers > 1000
 order by followers desc
-'''.input();
+'''
+            .input();
 
     final createTableNamed = aws.athena.NamedQuery(
       'createTable',
@@ -150,7 +160,10 @@ order by followers desc
 
     final topUsersNamed = aws.athena.NamedQuery(
       'topUsers',
-      args: aws.athena.NamedQueryArgs(database: athenaDb.id, query: topUsersQuery),
+      args: aws.athena.NamedQueryArgs(
+        database: athenaDb.id,
+        query: topUsersQuery,
+      ),
     );
 
     final awsConfig = pulumi.Config('aws');

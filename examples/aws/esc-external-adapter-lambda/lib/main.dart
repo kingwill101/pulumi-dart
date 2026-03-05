@@ -42,7 +42,7 @@ class EscExternalAdapterLambdaStack extends pulumi.Stack {
       'escExternalAdapter',
       args: aws.lambda.FunctionArgs(
         role: lambdaRole.arn,
-        runtime: aws_lambda.Runtime.nodeJS20dX.value.input(),
+        runtime: aws_lambda.Runtime.nodeJS20dX.wireValue.input(),
         handler: 'index.handler'.input(),
         code: pulumi.FileArchive('./lambda/adapter').input(),
       ),
@@ -62,7 +62,7 @@ class EscExternalAdapterLambdaStack extends pulumi.Stack {
       ),
     );
 
-    adapterUrl = api.url;
+    adapterUrl = api.url.apply((v) => v!);
     functionName = adapterFunction.name;
     functionArn = adapterFunction.arn;
   }

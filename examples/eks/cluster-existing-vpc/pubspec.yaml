@@ -1,0 +1,14 @@
+name: eks_dart_cluster_existing_vpc
+description: Pulumi eks cluster example in Dart using existing VPC subnets.
+version: 0.0.1
+resolution: workspace
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  pulumi: 3.0.0
+  pulumi_eks: 4.2.0
+
+dev_dependencies:
+  lints: ^6.1.0
